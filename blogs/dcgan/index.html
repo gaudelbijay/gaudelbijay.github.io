@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Bijay Gaudel">
+    <meta name="description" content="GAN[1] is a method to teach deep learning model to capture training data so that we can generate duplicate (seems real) data. GAN consist of two models: Generator and Discriminator. Generator model tries to generate real like data and discriminator network tries to predict whether it is fake (generated data) or actually came from real data distribution. DCGAN[2] is the extened form (Image version) of original GAN idea. It mainly composes of convolution layers.">
+    <meta name="keywords" content="artificial intelligence, blog, machine learning, deep learning, reinforcement learning">
+
+    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Generate Synthetic Images using DCGAN"/>
+<meta name="twitter:description" content="GAN[1] is a method to teach deep learning model to capture training data so that we can generate duplicate (seems real) data. GAN consist of two models: Generator and Discriminator. Generator model tries to generate real like data and discriminator network tries to predict whether it is fake (generated data) or actually came from real data distribution. DCGAN[2] is the extened form (Image version) of original GAN idea. It mainly composes of convolution layers."/>
+
+    <meta property="og:title" content="Generate Synthetic Images using DCGAN" />
+<meta property="og:description" content="GAN[1] is a method to teach deep learning model to capture training data so that we can generate duplicate (seems real) data. GAN consist of two models: Generator and Discriminator. Generator model tries to generate real like data and discriminator network tries to predict whether it is fake (generated data) or actually came from real data distribution. DCGAN[2] is the extened form (Image version) of original GAN idea. It mainly composes of convolution layers." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gaudelbijay.github.io/blogs/dcgan/" /><meta property="article:section" content="blogs" />
+<meta property="article:published_time" content="2020-07-21T21:10:35&#43;05:45" />
+<meta property="article:modified_time" content="2020-07-21T21:10:35&#43;05:45" />
+
+
+
+    
+      <base href="https://gaudelbijay.github.io/blogs/dcgan/">
+    
+    <title>
+  Generate Synthetic Images using DCGAN · Bijay
+</title>
+
+    
+      <link rel="canonical" href="https://gaudelbijay.github.io/blogs/dcgan/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="https://gaudelbijay.github.io/css/coder.min.fce3d3684e836ce340cdd591dad1749c310472d5ed4049fab99845c9aec4d4bf.css" integrity="sha256-/OPTaE6DbONAzdWR2tF0nDEEctXtQEn6uZhFya7E1L8=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="https://gaudelbijay.github.io/css/coder-dark.min.717236c74e0a5208ef73964a9f44c6b443b689a95b270d8b2a40d0c012460dac.css" integrity="sha256-cXI2x04KUgjvc5ZKn0TGtEO2ialbJw2LKkDQwBJGDaw=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://gaudelbijay.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://gaudelbijay.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="https://gaudelbijay.github.io/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon"  sizes="180x180" href="https://gaudelbijay.github.io/images/apple-touch-icon.png">
+
+    <meta name="generator" content="Hugo 0.83.1" />
+  </head>
+  
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="https://gaudelbijay.github.io/">
+      Bijay
+    </a>
+    
+      <span id="dark-mode-toggle" class="float-right">
+        <i class="fas fa-adjust fa-fw"></i>
+      </span>
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fas fa-bars fa-fw"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://gaudelbijay.github.io/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://gaudelbijay.github.io/publications/">Publications</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://gaudelbijay.github.io/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://gaudelbijay.github.io/blogs/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://gaudelbijay.github.io/quotes/">Quotes</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="https://gaudelbijay.github.io/contact/">Contact me</a>
+            </li>
+          
+        
+        
+        <li class="navigation-item separator">
+          <span>|</span>
+        </li>
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Generate Synthetic Images using DCGAN</h1>
+    </header>
+
+    <p><strong>GAN</strong>[1] is a method to teach deep learning model to capture training data so that we can generate duplicate (seems real) data. GAN consist of two models: Generator and Discriminator. Generator model tries to generate real like data and discriminator network tries to predict whether it is fake (generated data) or actually came from real data distribution.
+<strong>DCGAN</strong>[2] is the extened form (Image version) of original GAN idea. It mainly composes of convolution layers. DCGAN uses stride convolution layer insted of max-pooling layer for downsampling and transposed convolution for upsampling. GAN are known for its difficulty in training but, this paper introduces various technique for sucessful training.</p>
+<h4 id="dcgan-architecture-from-2">DCGAN Architecture from [2]</h4>
+<p><img src="https://gaudelbijay.github.io/img/dcgan/DCGAN.PNG" alt="image alt text"></p>
+<h5 id="quick-tips-for-the-dcgan-implementation">Quick Tips for The DCGAN Implementation</h5>
+<ul>
+<li>
+<p>Use Transposed Convolution layers for upsampling</p>
+</li>
+<li>
+<p>Do not use max-pooling layers rather use strided convolution</p>
+</li>
+<li>
+<p>Remove fully conected layer in Discriminator and use convolution layer with single channel output</p>
+</li>
+<li>
+<p>Use batch normalization layers except after last convolutional layer of generator and input layer of discriminator</p>
+</li>
+<li>
+<p>Use Leaky relu activation function in the discriminator for all the layer except output layer (sigmoid)</p>
+</li>
+<li>
+<p>Use relu activation function in the generator for all layers except for output layer (tanh)</p>
+</li>
+</ul>
+<h4 id="libraries-needed-to-implement-the-model">Libraries Needed to Implement the Model</h4>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">import</span> torch
+<span style="color:#fff;font-weight:bold">import</span> torch.nn <span style="color:#fff;font-weight:bold">as</span> nn
+<span style="color:#fff;font-weight:bold">import</span> torch.nn.functional <span style="color:#fff;font-weight:bold">as</span> F
+<span style="color:#fff;font-weight:bold">import</span> torch.optim <span style="color:#fff;font-weight:bold">as</span> optim
+<span style="color:#fff;font-weight:bold">import</span> torchvision.datasets <span style="color:#fff;font-weight:bold">as</span> dset
+<span style="color:#fff;font-weight:bold">import</span> torchvision.transforms <span style="color:#fff;font-weight:bold">as</span> transforms
+<span style="color:#fff;font-weight:bold">import</span> torchvision.utils <span style="color:#fff;font-weight:bold">as</span> vutils
+<span style="color:#fff;font-weight:bold">import</span> matplotlib.pyplot <span style="color:#fff;font-weight:bold">as</span> plt
+<span style="color:#fff;font-weight:bold">import</span> numpy <span style="color:#fff;font-weight:bold">as</span> np
+</code></pre></div><h4 id="parameters-setting-for-the-model">Parameters Setting for the Model</h4>
+<p>All the parameters and hyper parameters for the discriminator and generator networks are stored in the params dictionary to keep the code clean. We pass this param dictionary to both generator and discriminator network and retrive needed value. We have closely followed all these paramters values according to the original paper.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">params = {
+    <span style="color:#0ff;font-weight:bold">&#34;bsize&#34;</span> : <span style="color:#ff0;font-weight:bold">128</span>,<span style="color:#007f7f"># Batch size during training.</span>
+    <span style="color:#0ff;font-weight:bold">&#39;imsize&#39;</span> : <span style="color:#ff0;font-weight:bold">64</span>,<span style="color:#007f7f"># Spatial size of training images. All images will be resized to this size during preprocessing.</span>
+    <span style="color:#0ff;font-weight:bold">&#39;nc&#39;</span> : <span style="color:#ff0;font-weight:bold">3</span>,<span style="color:#007f7f"># Number of channles in the training images. For coloured images this is 3.</span>
+    <span style="color:#0ff;font-weight:bold">&#39;nz&#39;</span> : <span style="color:#ff0;font-weight:bold">100</span>,<span style="color:#007f7f"># Size of the Z latent vector (the input to the generator).</span>
+    <span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span> : <span style="color:#ff0;font-weight:bold">64</span>,<span style="color:#007f7f"># Size of feature maps in the generator. The depth will be multiples of this.</span>
+    <span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span> : <span style="color:#ff0;font-weight:bold">64</span>, <span style="color:#007f7f"># Size of features maps in the discriminator. The depth will be multiples of this.</span>
+    <span style="color:#0ff;font-weight:bold">&#39;nepochs&#39;</span> : <span style="color:#ff0;font-weight:bold">30</span>, <span style="color:#007f7f"># Number of training epochs.</span>
+    <span style="color:#0ff;font-weight:bold">&#39;lr&#39;</span> : <span style="color:#ff0;font-weight:bold">0.0002</span>,<span style="color:#007f7f"># Learning rate for optimizers</span>
+    <span style="color:#0ff;font-weight:bold">&#39;beta1&#39;</span> : <span style="color:#ff0;font-weight:bold">0.5</span>,<span style="color:#007f7f"># Beta1 hyperparam for Adam optimizer</span>
+    <span style="color:#0ff;font-weight:bold">&#39;save_epoch&#39;</span> : <span style="color:#ff0;font-weight:bold">2</span><span style="color:#007f7f"># Save step.</span>
+}
+</code></pre></div><h4 id="data-preprocessig-and-data-loader">Data Preprocessig and Data Loader</h4>
+<p>You can download the datasets we are using from <a href="https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg">here</a>.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dataset_root = <span style="color:#0ff;font-weight:bold">&#34;data/&#34;</span>
+transform = transforms.Compose([
+    transforms.Resize(params[<span style="color:#0ff;font-weight:bold">&#39;imsize&#39;</span>]),
+    transforms.CenterCrop(params[<span style="color:#0ff;font-weight:bold">&#39;imsize&#39;</span>]),
+    transforms.ToTensor(),
+    transforms.Normalize((<span style="color:#ff0;font-weight:bold">0.5</span>, <span style="color:#ff0;font-weight:bold">0.5</span>, <span style="color:#ff0;font-weight:bold">0.5</span>), (<span style="color:#ff0;font-weight:bold">0.5</span>, <span style="color:#ff0;font-weight:bold">0.5</span>, <span style="color:#ff0;font-weight:bold">0.5</span>))
+])
+
+device = torch.device(<span style="color:#0ff;font-weight:bold">&#34;cudo:0&#34;</span> <span style="color:#fff;font-weight:bold">if</span> (torch.cuda.is_available()) <span style="color:#fff;font-weight:bold">else</span> <span style="color:#0ff;font-weight:bold">&#34;cpu&#34;</span>)
+dataset = dset.ImageFolder(root=dataset_root, transform=transform)
+
+dataloader = torch.utils.data.DataLoader(dataset, batch_size=params[<span style="color:#0ff;font-weight:bold">&#39;bsize&#39;</span>], shuffle=True)
+
+sample_batch = <span style="color:#fff;font-weight:bold">next</span>(<span style="color:#fff;font-weight:bold">iter</span>(dataloader))
+
+
+plt.figure(figsize=(<span style="color:#ff0;font-weight:bold">8</span>,<span style="color:#ff0;font-weight:bold">8</span>))
+plt.axis(<span style="color:#0ff;font-weight:bold">&#39;off&#39;</span>)
+plt.title(<span style="color:#0ff;font-weight:bold">&#39;Training Images&#39;</span>)
+plt.imshow(np.transpose(vutils.make_grid(sample_batch[<span style="color:#ff0;font-weight:bold">0</span>].to(device)[:<span style="color:#ff0;font-weight:bold">64</span>], padding=<span style="color:#ff0;font-weight:bold">2</span>, normalize=True).cpu(), (<span style="color:#ff0;font-weight:bold">1</span>,<span style="color:#ff0;font-weight:bold">2</span>,<span style="color:#ff0;font-weight:bold">0</span>)))
+plt.show()
+</code></pre></div><h4 id="weight-initialization">Weight Initialization</h4>
+<p>According to DCGAN original paper, all model weights should be initialized randomly from a normal distribution with mean = 0 and standard deviation (stddev) = 0.02. The <code>weights_init</code> funciton initialized weights accordingly.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">def</span> weights_init(w):
+    classname = w.__class__.__name__
+    <span style="color:#fff;font-weight:bold">if</span> classname.find(<span style="color:#0ff;font-weight:bold">&#39;conv&#39;</span>) != -<span style="color:#ff0;font-weight:bold">1</span>:
+        nn.init.normal_(w.weight.data, <span style="color:#ff0;font-weight:bold">0.0</span>, <span style="color:#ff0;font-weight:bold">0.02</span>)
+    <span style="color:#fff;font-weight:bold">elif</span> classname.find(<span style="color:#0ff;font-weight:bold">&#39;bn&#39;</span>) != -<span style="color:#ff0;font-weight:bold">1</span>:
+        nn.init.normal_(w.weight.data, <span style="color:#ff0;font-weight:bold">1.0</span>, <span style="color:#ff0;font-weight:bold">0.02</span>)
+        nn.init.normal_(w.bias.data, <span style="color:#ff0;font-weight:bold">0</span>)
+</code></pre></div><p>The weight in batchnormalization layer is initialized with mean = 1 and standard deviation = 0.02. This is because weight and bias in BatchNorm work as the rescaling parameters <code>gamma</code> and <code>beta</code> from the original paper. BatchNorm uses batch statistics (mean and std) to normalize the activations,
+their values should be close to zero with a standard deviation of 1. After the normalization gamma and beta might rescale the activation again, i.e. the normalization might be undone. However, if you 
+start with gamma = 1 and beta = 0, the first batch(es) will be normalized using thier stats.</p>
+<h4 id="generator-network">Generator Network</h4>
+<p>Generator network takes latent space vector <code>nz</code> as input and convert it into <code>nc</code> channel image data. <code>ngf</code> is the size of feature map in the generator model. Our model scaled up <code>nz</code> dimension by using fractional stride in convolution layer (Transposed convolution layer) shown in code below.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">class</span> Generator(nn.Module):
+    <span style="color:#fff;font-weight:bold">def</span> __init__(self, params):
+        <span style="color:#fff;font-weight:bold">super</span>(Generator, self).__init__()
+
+        <span style="color:#007f7f"># Input is the latent vector Z.</span>
+        self.tconv1 = nn.ConvTranspose2d(params[<span style="color:#0ff;font-weight:bold">&#39;nz&#39;</span>], params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">8</span>, kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">1</span>, padding=<span style="color:#ff0;font-weight:bold">0</span>, bias=False)
+        self.bn1 = nn.BatchNorm2d(params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">8</span>)
+
+        <span style="color:#007f7f"># Input Dimension: (ngf*8) x 4 x 4</span>
+        self.tconv2 = nn.ConvTranspose2d(params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">8</span>, params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">4</span>, kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>, bias=False)
+        self.bn2 = nn.BatchNorm2d(params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">4</span>)
+
+        <span style="color:#007f7f"># Input Dimension: (ngf*4) x 8 x 8</span>
+        self.tconv3 = nn.ConvTranspose2d(params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">4</span>, params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">2</span>, kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>, bias=False)
+        self.bn3 = nn.BatchNorm2d(params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">2</span>)
+
+        <span style="color:#007f7f"># Input Dimension: (ngf*2) x 16 x 16</span>
+        self.tconv4 = nn.ConvTranspose2d(params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>]*<span style="color:#ff0;font-weight:bold">2</span>, params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>], kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>, bias=False)
+        self.bn4 = nn.BatchNorm2d(params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>])
+
+        <span style="color:#007f7f"># Input Dimension: (ngf) * 32 * 32</span>
+        self.tconv5 = nn.ConvTranspose2d(params[<span style="color:#0ff;font-weight:bold">&#39;ngf&#39;</span>], params[<span style="color:#0ff;font-weight:bold">&#39;nc&#39;</span>], kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>, bias=False)
+        <span style="color:#007f7f">#Output Dimension: (nc) x 64 x 64</span>
+
+    <span style="color:#fff;font-weight:bold">def</span> forward(self, x):
+        x = F.relu(self.bn1(self.tconv1(x)))
+        x = F.relu(self.bn2(self.tconv2(x)))
+        x = F.relu(self.bn3(self.tconv3(x)))
+        x = F.relu(self.bn4(self.tconv4(x)))
+
+        x = F.tanh(self.tconv5(x))
+
+        <span style="color:#fff;font-weight:bold">return</span> x
+</code></pre></div><h4 id="discriminator-network">Discriminator Network</h4>
+<p>Discriminator network is a binary classification network to labeld the data as true (if it came from actual data distribution) or false (if the data is came from generator network). It takes <code>nc</code> channel images data and convert into single probability value with the help of number of stided convolution layers. <code>ndf</code> is the size of feature map in discriminator network.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#fff;font-weight:bold">class</span> Discriminator(nn.Module):
+    <span style="color:#fff;font-weight:bold">def</span> __init__(self, params):
+        <span style="color:#fff;font-weight:bold">super</span>(Discriminator, self).__init__()
+        
+        <span style="color:#007f7f"># Input: nc*64*64</span>
+        self.conv1 = nn.Conv2d(params[<span style="color:#0ff;font-weight:bold">&#39;nc&#39;</span>], params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>], kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>, bias=False)
+        
+        <span style="color:#007f7f"># Input: ndf*32*32</span>
+        self.conv2 = nn.Conv2d(params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>], params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">2</span>, kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>, bias=False)
+        self.bn2 = nn.BatchNorm2d(params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">2</span>)
+        
+        <span style="color:#007f7f"># Input: (ndf*2)*16*16</span>
+        self.conv3 = nn.Conv2d(params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">2</span>, params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">4</span>, kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>, bias=False)
+        self.bn3 = nn.BatchNorm2d(params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">4</span>)
+        
+        <span style="color:#007f7f"># Input: (ndf*4)*8*8</span>
+        self.conv4 = nn.Conv2d(params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">4</span>, params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">8</span>, kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">1</span>, bias=False)
+        self.bn4 = nn.BatchNorm2d(params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">8</span>)
+        
+        <span style="color:#007f7f"># Input: (ndf*8)*4*4</span>
+        self.conv5 = nn.Conv2d(params[<span style="color:#0ff;font-weight:bold">&#39;ndf&#39;</span>]*<span style="color:#ff0;font-weight:bold">8</span>, <span style="color:#ff0;font-weight:bold">1</span>, kernel_size=<span style="color:#ff0;font-weight:bold">4</span>, stride=<span style="color:#ff0;font-weight:bold">2</span>, padding=<span style="color:#ff0;font-weight:bold">0</span>, bias=False)
+        
+    <span style="color:#fff;font-weight:bold">def</span> forward(self, x):
+        x = F.leaky_relu(self.conv1(x), <span style="color:#ff0;font-weight:bold">0.2</span>, True)
+        x = F.leaky_relu(self.bn2(self.conv2(x)), <span style="color:#ff0;font-weight:bold">0.2</span>, True)
+        x = F.leaky_relu(self.bn3(self.conv3(x)), <span style="color:#ff0;font-weight:bold">0.2</span>, True)
+        x = F.leaky_relu(self.bn4(self.conv4(x)), <span style="color:#ff0;font-weight:bold">0.2</span>, True)
+        x = F.sigmoid(self.conv5(x))
+        
+        <span style="color:#fff;font-weight:bold">return</span> x
+</code></pre></div><h5 id="create-generator">Create Generator</h5>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">netG = Generator(params)
+netG.apply(weights_init)
+</code></pre></div><!-- raw HTML omitted -->
+<h5 id="create-discriminator">Create Discriminator</h5>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">netD = Discriminator(params)
+netD.apply(weights_init)
+</code></pre></div><!-- raw HTML omitted -->
+<h5 id="loss-function-and-optimizer">Loss Function and Optimizer</h5>
+<p>We used binary cross entropy loss function aand Adam optimizer like in DCGAN paper.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">criterion = nn.BCELoss()
+</code></pre></div><div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">optimizerG = optim.Adam(netG.parameters(), lr=params[<span style="color:#0ff;font-weight:bold">&#39;lr&#39;</span>], betas = (params[<span style="color:#0ff;font-weight:bold">&#39;beta1&#39;</span>], <span style="color:#ff0;font-weight:bold">0.999</span>))
+optimizerD = optim.Adam(netD.parameters(), lr=params[<span style="color:#0ff;font-weight:bold">&#39;lr&#39;</span>], betas = (params[<span style="color:#0ff;font-weight:bold">&#39;beta1&#39;</span>], <span style="color:#ff0;font-weight:bold">0.999</span>))
+</code></pre></div><h4 id="training-of-the-model">Training of the Model</h4>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">real_label = <span style="color:#ff0;font-weight:bold">1</span>
+fake_label = <span style="color:#ff0;font-weight:bold">0</span>
+
+<span style="color:#007f7f"># stores generated images as training progresses</span>
+img_lis = []
+
+<span style="color:#007f7f">#stores discriminator losses during training</span>
+D_losses = []
+
+<span style="color:#007f7f">#stores generator loss during training</span>
+G_losses = []
+
+iters = <span style="color:#ff0;font-weight:bold">0</span> 
+<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;Starting training loop: ... &#34;</span>)
+<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;*&#34;</span>*<span style="color:#ff0;font-weight:bold">130</span>)
+
+<span style="color:#fff;font-weight:bold">for</span> epoch in <span style="color:#fff;font-weight:bold">range</span>(params[<span style="color:#0ff;font-weight:bold">&#39;nepochs&#39;</span>]):
+    <span style="color:#fff;font-weight:bold">for</span> i, data in <span style="color:#fff;font-weight:bold">enumerate</span>(dataloader,<span style="color:#ff0;font-weight:bold">0</span>):
+        real_data = data[<span style="color:#ff0;font-weight:bold">0</span>].to(device)
+        b_size = real_data.size(<span style="color:#ff0;font-weight:bold">0</span>)
+        
+        <span style="color:#007f7f"># Make accumulated gradient of the disciminator zero</span>
+        netD.zero_grad()
+        <span style="color:#007f7f"># create label for real data (label=1)</span>
+        label = torch.full((b_size, ), real_label, device=device)
+        output = netD(real_data).view(-<span style="color:#ff0;font-weight:bold">1</span>)
+        errorD_real = criterion(output,label)
+        
+        <span style="color:#007f7f"># Calculate gradient for backpropagation</span>
+        errorD_real.backward()
+        D_X = output.mean().item()
+        
+        <span style="color:#007f7f"># Sample random data from a unit normal distribution</span>
+        noise = torch.randn(b_size, params[<span style="color:#0ff;font-weight:bold">&#39;nz&#39;</span>], <span style="color:#ff0;font-weight:bold">1</span>, <span style="color:#ff0;font-weight:bold">1</span>, device=device)
+        
+        <span style="color:#007f7f"># generate fake images</span>
+        fake_data = netG(noise)
+        
+        <span style="color:#007f7f">#create label for fake data (label=0)</span>
+        label.fill_(fake_label)
+        
+        <span style="color:#0ff;font-weight:bold">&#34;&#34;&#34;
+</span><span style="color:#0ff;font-weight:bold">        Calculate the output of the discriminator of the fake data.
+</span><span style="color:#0ff;font-weight:bold">        As no gradients w.r.t. the generator parameters are to be
+</span><span style="color:#0ff;font-weight:bold">        calculated, detach() is used. Hence, only gradients w.r.t. the
+</span><span style="color:#0ff;font-weight:bold">        discriminator parameters will be calculated.
+</span><span style="color:#0ff;font-weight:bold">        This is done because the loss functions for the discriminator
+</span><span style="color:#0ff;font-weight:bold">        and the generator are slightly different.
+</span><span style="color:#0ff;font-weight:bold">        &#34;&#34;&#34;</span>
+        
+        output = netD(fake_data.detach()).view(-<span style="color:#ff0;font-weight:bold">1</span>)
+        errorD_fake = criterion(output, label)
+        errorD_fake.backward()
+        D_G_Z1 = output.mean().item()
+        
+        <span style="color:#007f7f"># Net discriminator loss</span>
+        errD = errorD_real + errorD_fake
+        
+        <span style="color:#007f7f">#update discriminator parameters</span>
+        optimizerD.step()
+        
+        <span style="color:#007f7f"># Make accumalted gradients of the generator zero.</span>
+        netG.zero_grad()
+        
+        <span style="color:#007f7f"># we want the fake data to be classified as real. Hence real labels are used (label=1)</span>
+        label.fill_(real_label)
+        output = netD(fake_data).view(-<span style="color:#ff0;font-weight:bold">1</span>)
+        errG = criterion(output, label)
+        
+        <span style="color:#0ff;font-weight:bold">&#34;&#34;&#34;
+</span><span style="color:#0ff;font-weight:bold">        gradients for backpropagation are calculated. Gradients w.r.t both the generator
+</span><span style="color:#0ff;font-weight:bold">        and discriminator parameters are calculated. However, the generators optimizer will
+</span><span style="color:#0ff;font-weight:bold">        only update the parameters of the generator. The discriminator gradients will be 
+</span><span style="color:#0ff;font-weight:bold">        set to zero in the next iteration by netD.zero_grad()
+</span><span style="color:#0ff;font-weight:bold">        &#34;&#34;&#34;</span>
+        errG.backward()
+        
+        D_G_Z2 = output.mean().item()
+        
+        <span style="color:#007f7f"># update the generator parameters</span>
+        
+        optimizerG.step()
+        
+        <span style="color:#007f7f"># Check the progress of training </span>
+        
+        <span style="color:#fff;font-weight:bold">if</span> i%<span style="color:#ff0;font-weight:bold">50</span> == <span style="color:#ff0;font-weight:bold">0</span>:
+            <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;Is cuda avaialable: &#34;</span>, torch.cuda.is_available())
+            <span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#39;(</span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">/</span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">)(</span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">/</span><span style="color:#0ff;font-weight:bold">%d</span><span style="color:#0ff;font-weight:bold">)</span><span style="color:#0ff;font-weight:bold">\t</span><span style="color:#0ff;font-weight:bold"> loss_D: </span><span style="color:#0ff;font-weight:bold">%.4f</span><span style="color:#0ff;font-weight:bold">\t</span><span style="color:#0ff;font-weight:bold"> loss_G: </span><span style="color:#0ff;font-weight:bold">%.4f</span><span style="color:#0ff;font-weight:bold">\t</span><span style="color:#0ff;font-weight:bold"> D(x): </span><span style="color:#0ff;font-weight:bold">%.4f</span><span style="color:#0ff;font-weight:bold">\t</span><span style="color:#0ff;font-weight:bold">D(G(z)): </span><span style="color:#0ff;font-weight:bold">%.4f</span><span style="color:#0ff;font-weight:bold">/</span><span style="color:#0ff;font-weight:bold">%.4f</span><span style="color:#0ff;font-weight:bold">&#39;</span> 
+                  %(epoch, params[<span style="color:#0ff;font-weight:bold">&#39;nepochs&#39;</span>], i, <span style="color:#fff;font-weight:bold">len</span>(dataloader),errD.item(), errG.item(), D_X, D_G_Z1, D_G_Z2))
+<span style="color:#fff;font-weight:bold">print</span>(<span style="color:#0ff;font-weight:bold">&#34;*&#34;</span>*<span style="color:#ff0;font-weight:bold">130</span>)
+</code></pre></div><h6 id="cheers">Cheers!!!</h6>
+<h6 id="refrences">Refrences:</h6>
+<ol>
+<li><a href="https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf">https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf</a></li>
+<li><a href="https://arxiv.org/pdf/1511.06434.pdf">https://arxiv.org/pdf/1511.06434.pdf</a></li>
+<li><a href="https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html">https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html</a></li>
+<li><a href="https://www.tensorflow.org/tutorials/generative/dcgan">https://www.tensorflow.org/tutorials/generative/dcgan</a></li>
+<li><a href="https://towardsdatascience.com/how-to-build-a-dcgan-with-pytorch-31bfbf2ad96a">https://towardsdatascience.com/how-to-build-a-dcgan-with-pytorch-31bfbf2ad96a</a></li>
+</ol>
+
+  </article>
+</section>
+
+  
+
+      </div>
+
+      
+    </main>
+
+    
+      
+      <script src="https://gaudelbijay.github.io/js/dark-mode.min.aee9c8a464eb7b3534c7110f7c5e169e7039e2fd92710e0626d451d6725af137.js"></script>
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+  </body>
+
+</html>

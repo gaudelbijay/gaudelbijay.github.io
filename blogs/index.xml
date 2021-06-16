@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Bijay</title>
+    <link>https://gaudelbijay.github.io/blogs/</link>
+    <description>Recent content in Blogs on Bijay</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 28 Sep 2020 17:04:37 +0545</lastBuildDate><atom:link href="https://gaudelbijay.github.io/blogs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Estimating Action Values</title>
+      <link>https://gaudelbijay.github.io/blogs/estimating_action_values/</link>
+      <pubDate>Mon, 28 Sep 2020 17:04:37 +0545</pubDate>
+      
+      <guid>https://gaudelbijay.github.io/blogs/estimating_action_values/</guid>
+      <description>By the end of this post you will learn to:
+ Estimate action values using the sample average method. Describe greedy action selection. Introduce the exploration-exploitation dilemma. Describe how action values can be estimated incrementally using the sample-average method. Identify how the incremental update rule is an instance of a more general update rule. Describe how the general update rule can be used to solve a non-stationary bandit problem.  Value of Action The value of action is the expected reward when the action is taken.</description>
+    </item>
+    
+    <item>
+      <title>The K-armed Bandit Problem</title>
+      <link>https://gaudelbijay.github.io/blogs/bandit_problem/</link>
+      <pubDate>Thu, 24 Sep 2020 21:51:00 +0545</pubDate>
+      
+      <guid>https://gaudelbijay.github.io/blogs/bandit_problem/</guid>
+      <description>In this post we will formalize the problem of decision making under uncertanity using k-armed bandits. We will define fundamental concepts like : rewards, time steps and values.
+In the k-armed bandit problem, we have an agent who chooses between k actions and recives a reward based on the action it chooses.
+medication example of K-armed bandit For example a doctor is giving 3 different medication to 3 different patients with same problem and observed the effect of medication in patients.</description>
+    </item>
+    
+    <item>
+      <title>Famous Convolution Neural Network Architectures</title>
+      <link>https://gaudelbijay.github.io/blogs/cnn_architecture/</link>
+      <pubDate>Thu, 27 Aug 2020 00:09:00 +0545</pubDate>
+      
+      <guid>https://gaudelbijay.github.io/blogs/cnn_architecture/</guid>
+      <description>LeNet-5 Architecture     VGG-16 Architecture     ResNet Architecture     AlexNet Architecture     Inception Building Block     GoogleNet (inception) Architecture   Refrences: https://www.coursera.org/learn/convolutional-neural-networks/home/week/2
+https://ieeexplore.ieee.org/document/8281823/
+https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf</description>
+    </item>
+    
+    <item>
+      <title>My View on Quantum Computing</title>
+      <link>https://gaudelbijay.github.io/blogs/whatisquantumcomputing/</link>
+      <pubDate>Tue, 28 Jul 2020 22:23:02 +0545</pubDate>
+      
+      <guid>https://gaudelbijay.github.io/blogs/whatisquantumcomputing/</guid>
+      <description>Invention is the necessity rather let it be defined as an incredibility. Quantum computing is an epitome justified to the sentence. Reviewing the civilization history, the hungers who made it happen are Isaac Chuang of the Los Alamos National Laboratory, Neil Gershenfeld of the Massachusetts Institute of Technology (MIT), and Mark Kubinec of the University of California at Berkeley who first created the first quantum computer (2-qubit) that could be loaded with data and output a solution.</description>
+    </item>
+    
+    <item>
+      <title>Generate Synthetic Images using DCGAN</title>
+      <link>https://gaudelbijay.github.io/blogs/dcgan/</link>
+      <pubDate>Tue, 21 Jul 2020 21:10:35 +0545</pubDate>
+      
+      <guid>https://gaudelbijay.github.io/blogs/dcgan/</guid>
+      <description>GAN[1] is a method to teach deep learning model to capture training data so that we can generate duplicate (seems real) data. GAN consist of two models: Generator and Discriminator. Generator model tries to generate real like data and discriminator network tries to predict whether it is fake (generated data) or actually came from real data distribution. DCGAN[2] is the extened form (Image version) of original GAN idea. It mainly composes of convolution layers.</description>
+    </item>
+    
+    <item>
+      <title>My View On Artificial Intelligence</title>
+      <link>https://gaudelbijay.github.io/blogs/myviewonai/</link>
+      <pubDate>Fri, 01 May 2020 19:53:55 +0545</pubDate>
+      
+      <guid>https://gaudelbijay.github.io/blogs/myviewonai/</guid>
+      <description>About a century ago an american computer scientist John McCarthy coined a term &amp;ldquo;Artificial Intilegence&amp;rdquo;. The science and engieneering develpoment of computer systems to perform tasks normally requiring human intillegence, such as visual perception, speech recognization, decision making and translation between languages. We can say we have achieved perfect artificial intillegence when all the applications of AI such as machine learning speech robotics natural language processing expert systems vision are achieved.</description>
+    </item>
+    
+  </channel>
+</rss>
