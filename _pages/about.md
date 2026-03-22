@@ -31,3 +31,5 @@ I am building this site with the `al-folio` template.
 I will share my projects, publications, and updates here.
 
 This is the initial setup and will be customized further.
+
+Last updated on March 22, 2026.
