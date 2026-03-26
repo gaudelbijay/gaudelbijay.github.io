@@ -69,35 +69,45 @@ cv:
         summary: "Nakarmi, B., H. Chen, I. A. Ukaegbu, B. Gaudel, U. Nakarmi, S. Muthaiyah, A. Ng, X. Wang, and S. Pan."
 
     Projects:
-      - name: Human Casualty Manipulation (Ongoing)
+      - name: caveman_ros2
         url: https://github.com/stevens-armlab/caveman_ros2
         highlights:
-          - Migrated and rebuilt a human casualty model from Gazebo Classic and ROS 1 to Gazebo Harmonic and ROS 2 with position and force-torque control across joints.
-          - Fine-tuned a ViTPose-based human pose estimation model using approximately 500 custom annotated simulation images for casualty manipulation scenarios.
-          - Developed a kinematics-based correction module using robot arm forward kinematics and contact constraints to stabilize pose estimates during manipulation.
-          - Designing a mechanically safe policy learning framework with joint-level force-torque constraints to place the casualty model into a supine position.
+          - Built a ROS 2 Jazzy and Gazebo Harmonic collaborative robotics simulation stack with Clearpath Husky, UR5 and UR5e manipulators, and a compliant caveman human model.
+          - Added configurable dual-arm and single-arm operation and NASA hand end-effector customization through my_kortex platform extras.
+          - Integrated multi.launch workflows for robot plus human simulation with optional human pose and pose_refiner nodes.
+          - Established reproducible setup and build workflows with rosdep and colcon, including RealSense camera integration support.
 
-      - name: Event-Camera-Based Autonomous Mobile Robot Navigation
+      - name: teleop_touch3d_logger_ros2
+        url: https://github.com/stevens-armlab/teleop_touch3d_logger_ros2
+        highlights:
+          - Developed ROS 2 teleoperation and logging utilities for Geomagic Touch haptic-device arm-control experiments.
+          - Implemented configurable button mapping, haptic launch workflow, and NASA hand gripper command mode for multi-joint actuation.
+          - Built labeled data collection tooling that records rosbag2 sessions with metadata grouped by grasped-link class labels.
+          - Added observer dataset preparation tools to export synchronized depth samples and supervised CSV annotations for training pipelines.
+
+      - name: casperjointpose
+        url: https://github.com/stevens-armlab/casperjointpose
+        highlights:
+          - Implemented a depth-only human joint-state observer that predicts bounded joint-angle estimates and body-link label logits.
+          - Added an energy-based feasible-state modeling and threshold calibration pipeline for extracting physically plausible joint-state sets.
+          - Developed a ConvNeXt-style depth backbone with joint-query cross-attention, kinematic graph refinement, and optional temporal fusion.
+          - Built staged training and evaluation workflows with reproducible split artifacts and SLURM ablation sweep support.
+
+      - name: event_jackal
         url: https://github.com/gaudelbijay/event_jackal
         highlights:
-          - Designed an event-camera-based reinforcement learning framework integrating asynchronous event perception with policy learning.
-          - Built an event processing pipeline that converts raw event streams into structured representations for comparison across neural architectures and sensing modalities.
-          - Conducted comparative simulation studies of event-based and laser-based navigation, showing competitive performance with key temporal stability tradeoffs.
-          - Evaluated policies on a physical ground robot and identified sim-to-real performance gaps tied to event-camera modeling and environment realism.
+          - Built an event-driven reinforcement learning navigation framework that uses neuromorphic event cameras and Binary Event Maps instead of dense frame or laser sensing.
+          - Trained self-supervised contrastive perception embeddings and Soft Actor-Critic navigation policies across MLP, CNN, GRU, and Transformer agents.
+          - Achieved simulation navigation performance comparable to laser-based systems under comparable scenarios.
+          - Demonstrated transfer to a real Jackal UGV with minimal calibration, showing practical deployment potential for event-based perception.
 
-      - name: Adversarial Attacker and Generative Defender
-        url: https://github.com/gaudelbijay/diffusion-defender
+      - name: pose_refiner
+        url: https://github.com/stevens-armlab/pose_refiner
         highlights:
-          - Built an RL-based adversarial attacker for stealth attacks on perception-based navigation with a 60% success rate in stochastic environments.
-          - Developed a diffusion-model-based defender for autonomous vehicles.
-          - Demonstrated that diffusion denoising can dynamically remove perturbation noise across attacker algorithms.
-          - Experimental tests showed diffusion denoising reduces the effectiveness of reinforcement-learning-based attacks.
-
-      - name: NepaliAutoCompleteAndLM
-        url: https://github.com/gaudelbijay/NepaliAutoCompleteAndLM
-        highlights:
-          - Built a PyTorch-based deep learning framework for Nepali word suggestion during writing.
-          - Trained recurrent neural network models with GRU or LSTM layers and KL-divergence loss.
+          - Built a calibration-free real-time 2D pose refinement pipeline using EKF filtering with confidence and outlier gating.
+          - Enforced skeleton length and angle constraints to improve temporal consistency and robustness of human pose keypoints.
+          - Integrated ROS 2 interfaces that publish refined pose and diagnostics topics, with optional annotated visualization output.
+          - Added launch-time configurability for annotator toggling and runtime configuration reloading in simulation and robot workflows.
 
     Experience:
       - company: Stevens Institute of Technology
