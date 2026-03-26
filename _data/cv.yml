@@ -1,189 +1,173 @@
 cv:
-  name: Albert Einstein
-  label: Scientist
-  email: einstein@example.com
-  location: Princeton, NJ
+  name: Bijay Gaudel
+  label: Ph.D. Researcher in Robotics
+  email: gaudelbijay10@gmail.com
+  phone: "+1 (551) 344-7365"
+  website: https://gaudelbijay.github.io/
   image: ""
-  summary: A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time
+  summary: Robotics researcher focused on perception-driven, safety-aware manipulation and autonomous navigation in simulation and real-world robotic systems.
 
   social_networks:
-    - network: X
-      username: AlbertEinstein
     - network: GitHub
-      username: example
-    - network: LinkedIn
-      username: example
+      username: gaudelbijay
 
   address:
-    street: 2712 Broadway St
-    city: San Francisco
-    region: California
-    postalCode: CA 94115
+    city: Hoboken
+    region: New Jersey
     countryCode: US
 
   sections:
     Education:
-      - institution: University of Zurich
-        location: Zurich, Switzerland
-        url: https://www.uzh.ch/
-        area: Physics
-        studyType: PhD
-        start_date: 1900
-        end_date: 1905
-        score: ""
-        courses: "Theory of Relativity"
-        highlights:
-          - Description 1.
-          - Description 2.
+      - institution: Stevens Institute of Technology
+        location: New Jersey, USA
+        area: Robotics
+        studyType: Ph.D. in Mechanical Engineering
+        start_date: 2022
+        score: "GPA: 3.96"
 
-      - institution: Eidgenössische Technische Hochschule
-        location: Zurich, Switzerland
-        area: Physics
-        studyType: Federal teaching diploma
-        start_date: 1896
-        end_date: 1900
-        highlights:
-          - Description 1.
-          - Description 2.
+      - institution: Nanjing University of Aeronautics and Astronautics (NUAA)
+        location: Nanjing, China
+        area: Data Science
+        studyType: Master of Engineering in Computer Science
+        start_date: 2018
+        end_date: 2021
+        score: "GPA: 86/100"
 
-    Experience:
-      - company: Institute for Advanced Study, Princeton University
-        position: Professor of Theoretical Physics
-        location: Princeton University, NJ
-        start_date: 1933
-        end_date: 1955
-        summary: Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.
-        highlights:
-          - Relativity
-          - Description 2.
-
-      - company: California Institute of Technology
-        position: Visiting Professor
-        location: Pasadena, California, US
-        start_date: 1933
-        end_date: 1933
-        highlights:
-          - Description 1.
-          - Description 2.
-
-      - company: Kaiser Wilhelm Institute for Physics
-        position: Director
-        location: Berlin, Germany
-        start_date: 1917
-        end_date: 1933
-
-      - company: Karl-Ferdinand University
-        position: Professor of Theoretical Physics
-        location: Prague, Czechoslovakia
-        start_date: 1911
-        end_date: 1917
-
-      - company: University of Zurich
-        position: Associate Professor of Theoretical Physics
-        location: Zurich, Switzerland
-        start_date: 1909
-        end_date: 1911
-
-    Volunteer:
-      - company: People's Climate March
-        position: Lead Organizer
-        location: Zurich, Switzerland
-        start_date: 2014-04-01
-        end_date: 2015-07-01
-        summary: Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.
-        highlights:
-          - "Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march."
-          - "Men of the year 2014 by Time magazine"
-
-    Awards:
-      - title: Nobel Prize in Physics
-        authors:
-          - "Royal Swedish Academy of Sciences"
-        date: 1921-11-01
-        awarder: Royal Swedish Academy of Sciences
-        url: https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/
-        summary: The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'
-
-      - title: Max Planck Medal
-        authors:
-          - "German Physical Society"
-        date: 2029
-        awarder: German Physical Society
-        summary: Awarded for outstanding scientific achievement
+      - institution: Western Regional Campus, IOE, TU
+        location: Pokhara, Nepal
+        area: Electrical Engineering
+        studyType: Bachelor of Engineering
+        start_date: 2013
+        end_date: 2017
+        score: "GPA: 67.67% (First Division)"
 
     Publications:
-      - title: Zur Elektrodynamik bewegter Körper
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-06-30
-        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
-        summary: It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source.
+      - title: Learning Optimal UAV Trajectory for Data Collection in 3D Reconstruction Model
+        publisher: International Conference on Unmanned Aircraft Systems (ICUAS)
+        releaseDate: 2025
+        summary: "Gaudel, B., and S. Jaffarnejad. North Carolina, USA."
 
-      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-03-18
-        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
-        summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
+      - title: "CVD-SfM: A Cross-View Deep Front-end Structure-from-Motion System for Sparse Localization in Multi-Altitude Scenes"
+        publisher: IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)
+        releaseDate: 2025
+        summary: "Li, Y., Y. Huang, B. Gaudel, H. Jafarnejadsani, and B. Englot. Hangzhou, China."
 
-      - title: Die Grundlage der allgemeinen Relativitätstheorie
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1916-03-20
-        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
-        summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+      - title: Graph Representation Learning Using Attention Network
+        publisher: CCF Conference on Big Data, Springer, Singapore
+        releaseDate: 2020
+        summary: "Gaudel, B., D. Guan, W. Yuan, D. Shrestha, B. Chen, and Y. Tu."
 
-    Skills:
-      - name: Physics
-        level: Master
-        icon: fa-solid fa-hashtag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+      - title: Link Prediction in Bipartite Network Using Composite Similarities
+        publisher: KSII Transactions on Internet and Information Systems, 17(8), 2030-2052
+        releaseDate: 2023
+        url: https://doi.org/10.3837/tiis.2023.08.004
+        summary: "Gaudel, B., D. Shrestha, N. Basnet, N. Rajkarnikar, S. R. Jeong, and D. Guan."
 
-    Languages:
-      - name: German
-        summary: "Native speaker"
-
-      - name: English
-        summary: "Fluent"
-
-    Interests:
-      - name: Physics
-        icon: fa-solid fa-tag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
-
-    Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-location-dot
-
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
-
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
+      - title: Linear Frequency Modulated Photonics RADAR using Injection Locking in Semiconductor Laser
+        publisher: International Conference on Electronics, Communications and Information Technology (ICECIT), IEEE
+        releaseDate: 2021
+        summary: "Nakarmi, B., H. Chen, I. A. Ukaegbu, B. Gaudel, U. Nakarmi, S. Muthaiyah, A. Ng, X. Wang, and S. Pan."
 
     Projects:
-      - name: Quantum Computing
-        summary: Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.
+      - name: Human Casualty Manipulation (Ongoing)
+        url: https://github.com/stevens-armlab/caveman_ros2
         highlights:
-          - Quantum Teleportation
-          - Quantum Cryptography
-        start_date: 2018-01-01
-        end_date: 2018-01-01
+          - Migrated and rebuilt a human casualty model from Gazebo Classic and ROS 1 to Gazebo Harmonic and ROS 2 with position and force-torque control across joints.
+          - Fine-tuned a ViTPose-based human pose estimation model using approximately 500 custom annotated simulation images for casualty manipulation scenarios.
+          - Developed a kinematics-based correction module using robot arm forward kinematics and contact constraints to stabilize pose estimates during manipulation.
+          - Designing a mechanically safe policy learning framework with joint-level force-torque constraints to place the casualty model into a supine position.
 
-    References:
-      - name: Professor John Doe
-        icon: fa-solid fa-laptop
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+      - name: Event-Camera-Based Autonomous Mobile Robot Navigation
+        url: https://github.com/gaudelbijay/event_jackal
+        highlights:
+          - Designed an event-camera-based reinforcement learning framework integrating asynchronous event perception with policy learning.
+          - Built an event processing pipeline that converts raw event streams into structured representations for comparison across neural architectures and sensing modalities.
+          - Conducted comparative simulation studies of event-based and laser-based navigation, showing competitive performance with key temporal stability tradeoffs.
+          - Evaluated policies on a physical ground robot and identified sim-to-real performance gaps tied to event-camera modeling and environment realism.
 
-      - name: Professor Jane Smith
-        icon: fa-solid fa-thumbtack
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+      - name: Adversarial Attacker and Generative Defender
+        url: https://github.com/gaudelbijay/diffusion-defender
+        highlights:
+          - Built an RL-based adversarial attacker for stealth attacks on perception-based navigation with a 60% success rate in stochastic environments.
+          - Developed a diffusion-model-based defender for autonomous vehicles.
+          - Demonstrated that diffusion denoising can dynamically remove perturbation noise across attacker algorithms.
+          - Experimental tests showed diffusion denoising reduces the effectiveness of reinforcement-learning-based attacks.
+
+      - name: NepaliAutoCompleteAndLM
+        url: https://github.com/gaudelbijay/NepaliAutoCompleteAndLM
+        highlights:
+          - Built a PyTorch-based deep learning framework for Nepali word suggestion during writing.
+          - Trained recurrent neural network models with GRU or LSTM layers and KL-divergence loss.
+
+    Experience:
+      - company: Stevens Institute of Technology
+        position: Research Assistant
+        location: New Jersey, USA
+        start_date: 2022-09
+        summary: Researcher and developer of image-based tactile sensing and learning algorithms for dexterous robotic manipulation with focus on high-rate tactile perception and sim-to-real transfer in safety-critical tasks.
+
+      - company: Samadhan Engineering Pvt. Ltd.
+        position: AI Engineer
+        location: Kathmandu, Nepal
+        start_date: 2021-06
+        end_date: 2022-06
+        summary: Developed AI curriculum aligned with Nepal's STEAM framework, designed student mini-projects for grades 8-12, and contributed to a search-and-rescue UAV project.
+
+      - company: Nanjing University of Aeronautics and Astronautics (NUAA)
+        position: Research Assistant
+        location: Nanjing, China
+        start_date: 2019-02
+        end_date: 2021-03
+        summary: Conducted research on complex network analysis, link prediction in bipartite networks using composite similarities, and node classification using local structure properties.
+
+      - company: Nanjing University of Aeronautics and Astronautics (NUAA)
+        position: Teaching Assistant
+        location: Nanjing, China
+        start_date: 2020-03
+        end_date: 2020-07
+        summary: Designed and led a Python lab for undergraduate students, and supported evaluation and mentorship for third-year student projects.
+
+    Awards:
+      - title: Provost Fellowship Awardee
+        date: 2022
+        awarder: Stevens Institute of Technology
+
+      - title: Excellent Master's Thesis Award
+        date: 2021
+        awarder: Nanjing University of Aeronautics and Astronautics (NUAA)
+        summary: "Thesis title: Local Structure based Link Prediction and Node Classification on Complex Network."
+
+    Skills:
+      - name: Programming
+        keywords:
+          - Python
+          - C/C++
+          - Bash
+          - MATLAB
+
+      - name: Machine Learning and Vision
+        keywords:
+          - PyTorch
+          - TorchVision
+          - TorchRL
+          - PyPose
+          - TensorFlow
+          - Keras
+          - Scikit-learn
+          - OpenCV
+          - Hugging Face
+          - einops
+          - NumPy
+          - SciPy
+
+      - name: Robotics and Tooling
+        keywords:
+          - ROS1/ROS2
+          - Gazebo
+          - AirSim
+          - Isaac Sim
+          - Docker
+          - Apptainer
+          - Ubuntu/Linux
+          - Git
+          - GitHub
