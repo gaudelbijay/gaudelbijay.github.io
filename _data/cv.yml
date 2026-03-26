@@ -52,11 +52,6 @@ cv:
         releaseDate: 2025
         summary: "Li, Y., Y. Huang, B. Gaudel, H. Jafarnejadsani, and B. Englot. Hangzhou, China."
 
-      - title: Graph Representation Learning Using Attention Network
-        publisher: CCF Conference on Big Data, Springer, Singapore
-        releaseDate: 2020
-        summary: "Gaudel, B., D. Guan, W. Yuan, D. Shrestha, B. Chen, and Y. Tu."
-
       - title: Link Prediction in Bipartite Network Using Composite Similarities
         publisher: KSII Transactions on Internet and Information Systems, 17(8), 2030-2052
         releaseDate: 2023
@@ -68,46 +63,59 @@ cv:
         releaseDate: 2021
         summary: "Nakarmi, B., H. Chen, I. A. Ukaegbu, B. Gaudel, U. Nakarmi, S. Muthaiyah, A. Ng, X. Wang, and S. Pan."
 
+      - title: Graph Representation Learning Using Attention Network
+        publisher: CCF Conference on Big Data, Springer, Singapore
+        releaseDate: 2020
+        summary: "Gaudel, B., D. Guan, W. Yuan, D. Shrestha, B. Chen, and Y. Tu."
+
     Projects:
-      - name: caveman_ros2
-        url: https://github.com/stevens-armlab/caveman_ros2
+      - name: casperjointpose
+        url: https://github.com/stevens-armlab/casperjointpose
         highlights:
-          - Built a ROS 2 Jazzy and Gazebo Harmonic collaborative robotics simulation stack with Clearpath Husky, UR5 and UR5e manipulators, and a compliant caveman human model.
-          - Added configurable dual-arm and single-arm operation and NASA hand end-effector customization through my_kortex platform extras.
-          - Integrated multi.launch workflows for robot plus human simulation with optional human pose and pose_refiner nodes.
-          - Established reproducible setup and build workflows with rosdep and colcon, including RealSense camera integration support.
+          - Built a depth-only model that estimates human joint angles and body-link classes from single frames or short frame windows.
+          - Added feasible-state prediction so the model returns physically valid joint-state sets, not only one point estimate.
+          - Developed a staged training pipeline for angle prediction, ranking, and uncertainty modeling to improve reliability.
+          - Implemented reproducible split tracking and multi-GPU server training workflows using SLURM job scripts.
 
       - name: teleop_touch3d_logger_ros2
         url: https://github.com/stevens-armlab/teleop_touch3d_logger_ros2
         highlights:
-          - Developed ROS 2 teleoperation and logging utilities for Geomagic Touch haptic-device arm-control experiments.
-          - Implemented configurable button mapping, haptic launch workflow, and NASA hand gripper command mode for multi-joint actuation.
-          - Built labeled data collection tooling that records rosbag2 sessions with metadata grouped by grasped-link class labels.
-          - Added observer dataset preparation tools to export synchronized depth samples and supervised CSV annotations for training pipelines.
-
-      - name: casperjointpose
-        url: https://github.com/stevens-armlab/casperjointpose
-        highlights:
-          - Implemented a depth-only human joint-state observer that predicts bounded joint-angle estimates and body-link label logits.
-          - Added an energy-based feasible-state modeling and threshold calibration pipeline for extracting physically plausible joint-state sets.
-          - Developed a ConvNeXt-style depth backbone with joint-query cross-attention, kinematic graph refinement, and optional temporal fusion.
-          - Built staged training and evaluation workflows with reproducible split artifacts and SLURM ablation sweep support.
-
-      - name: event_jackal
-        url: https://github.com/gaudelbijay/event_jackal
-        highlights:
-          - Built an event-driven reinforcement learning navigation framework that uses neuromorphic event cameras and Binary Event Maps instead of dense frame or laser sensing.
-          - Trained self-supervised contrastive perception embeddings and Soft Actor-Critic navigation policies across MLP, CNN, GRU, and Transformer agents.
-          - Achieved simulation navigation performance comparable to laser-based systems under comparable scenarios.
-          - Demonstrated transfer to a real Jackal UGV with minimal calibration, showing practical deployment potential for event-based perception.
+          - Built a ROS 2 teleoperation package for controlling robot-arm experiments with a Geomagic Touch haptic device.
+          - Implemented configurable button mapping, launch workflows, and control support for a custom-designed hand gripper.
+          - Created labeled recording tools that store rosbag2 data and metadata by grasp target for supervised training.
+          - Added dataset-export scripts that convert recorded sessions into depth samples and CSV labels for model training.
 
       - name: pose_refiner
         url: https://github.com/stevens-armlab/pose_refiner
         highlights:
-          - Built a calibration-free real-time 2D pose refinement pipeline using EKF filtering with confidence and outlier gating.
-          - Enforced skeleton length and angle constraints to improve temporal consistency and robustness of human pose keypoints.
-          - Integrated ROS 2 interfaces that publish refined pose and diagnostics topics, with optional annotated visualization output.
-          - Added launch-time configurability for annotator toggling and runtime configuration reloading in simulation and robot workflows.
+          - Developed a real-time ROS 2 module that refines noisy 2D human keypoints using EKF filtering and kinematic constraints.
+          - Improved pose stability by rejecting outliers and enforcing consistent limb-length and joint-angle relationships.
+          - Published refined pose outputs, diagnostics, and optional annotated images for debugging and monitoring.
+          - Designed launch and runtime options for simulation and robot use cases, including configurable annotator behavior.
+
+      - name: caveman_ros2
+        url: https://github.com/stevens-armlab/caveman_ros2
+        highlights:
+          - Built an end-to-end ROS 2 Jazzy and Gazebo Harmonic simulation stack for collaborative robot and human-interaction research.
+          - Simulated a Clearpath Husky with UR manipulators and a compliant human model to support contact-rich manipulation scenarios.
+          - Added single-arm and dual-arm operating modes and integrated a custom-designed hand gripper configuration.
+          - Documented full setup, dependency installation, and launch workflows so experiments can be reproduced across systems.
+
+      - name: event_jackal
+        url: https://github.com/gaudelbijay/event_jackal
+        highlights:
+          - Built an event-camera navigation framework that learns from asynchronous event streams instead of standard image frames.
+          - Implemented compact event representations and contrastive perception features for reinforcement learning policies.
+          - Trained and compared MLP, CNN, GRU, and Transformer agents using a Soft Actor-Critic training setup.
+          - Demonstrated competitive simulation results and successful transfer to a real Jackal robot with minimal retuning.
+
+      - name: diffusion-defender
+        url: https://github.com/gaudelbijay/diffusion-defender
+        highlights:
+          - Developed a diffusion-based denoising pipeline to reduce the impact of online adversarial image attacks.
+          - Integrated an FFT-based detector to flag attack patterns during runtime.
+          - Connected the defender to an RL attacker workflow in ROS and AirSim by routing perception through denoised images.
+          - Built repeatable training and runtime workflows with Python virtual environments and catkin integration.
 
     Experience:
       - company: Stevens Institute of Technology
