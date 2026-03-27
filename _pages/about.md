@@ -27,11 +27,15 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a Ph.D. researcher in Robotics at Stevens Institute of Technology, where I work on machine learning and perception for human-centered robotic systems. My research spans computer vision, reinforcement learning, safe manipulation, and sim-to-real transfer.
+I am a Ph.D. researcher in Robotics at Stevens Institute of Technology. My dissertation work is focused on deployable robotic casualty care through human state estimation, grasp prediction, and shared autonomy.
+
+A current working thesis title is: _Toward Deployable Robotic Casualty Care: Human State Estimation, Grasp Prediction, and Shared Autonomy_.
 
 Before starting my Ph.D., I completed a Master of Engineering in Computer Science (Data Science concentration) at Nanjing University of Aeronautics and Astronautics, and a Bachelor of Engineering in Electrical Engineering at the Institute of Engineering, Tribhuvan University, Nepal.
 
-My current work includes simulation and control for human casualty manipulation, event-camera based autonomous navigation, and robust perception under adversarial perturbations. I build end-to-end research pipelines across ROS/ROS 2, Gazebo, deep learning, and reinforcement learning.
+My current thesis trajectory includes three connected directions: contact-mode-aware human joint angle estimation for robotic casualty manipulation; a mechanically interpretable, expert-tunable, hybrid learning method for medical instrument grasp prediction in combat casualty settings; and a smart assisted teleoperation scheme for mobile manipulation that integrates perception and grasp prediction for deployment.
+
+I also work on event-camera-based autonomous navigation and robust perception under adversarial perturbations. I build end-to-end research pipelines across ROS/ROS 2, Gazebo, deep learning, and reinforcement learning.
 
 In addition to research, I have worked as a research assistant and AI engineer on applied robotics and machine-learning projects, and I have contributed to publications in robotics, UAVs, structure-from-motion, and network representation learning.
 
