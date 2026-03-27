@@ -27,16 +27,12 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a Ph.D. researcher in Robotics at Stevens Institute of Technology. My dissertation work is focused on deployable robotic casualty care through human state estimation, grasp prediction, and shared autonomy.
-
-A current working thesis title is: _Toward Deployable Robotic Casualty Care: Human State Estimation, Grasp Prediction, and Shared Autonomy_.
+I am a Ph.D. researcher in Robotics at Stevens Institute of Technology. My dissertation work focuses on deployable robotic casualty care, with an emphasis on perception, learning-based manipulation, and human-in-the-loop autonomy.
 
 Before starting my Ph.D., I completed a Master of Engineering in Computer Science (Data Science concentration) at Nanjing University of Aeronautics and Astronautics, and a Bachelor of Engineering in Electrical Engineering at the Institute of Engineering, Tribhuvan University, Nepal.
 
-My current thesis trajectory includes three connected directions: contact-mode-aware human joint angle estimation for robotic casualty manipulation; a mechanically interpretable, expert-tunable, hybrid learning method for medical instrument grasp prediction in combat casualty settings; and a smart assisted teleoperation scheme for mobile manipulation that integrates perception and grasp prediction for deployment.
+My current research explores how robots can better understand human state during physical interaction, make more reliable manipulation decisions for care tasks, and support operators through shared-autonomy teleoperation in real-world scenarios.
 
 I also work on event-camera-based autonomous navigation and robust perception under adversarial perturbations. I build end-to-end research pipelines across ROS/ROS 2, Gazebo, deep learning, and reinforcement learning.
-
-In addition to research, I have worked as a research assistant and AI engineer on applied robotics and machine-learning projects, and I have contributed to publications in robotics, UAVs, structure-from-motion, and network representation learning.
 
 I received the Provost Fellowship at Stevens Institute of Technology in 2022.
