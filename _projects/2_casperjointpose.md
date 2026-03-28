@@ -8,7 +8,7 @@ category: work
 github: https://github.com/stevens-armlab/casperjointpose
 ---
 
-CasperJointPose is a depth-based observer for human joint-state estimation in robot-interaction settings.
+Joint-Angle Human Pose Estimation for Casualty Manipulation is a depth-based observer for human joint-state estimation in robot-interaction settings.
 
 From a single depth frame, it predicts:
 

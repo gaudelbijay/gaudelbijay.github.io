@@ -8,7 +8,7 @@ category: work
 github: https://github.com/gaudelbijay/diffusion-defender
 ---
 
-Diffusion Defender targets online adversarial robustness for vision-based robotic systems.
+Diffusion-Based Defense Against Adversarial Perception Attacks targets online adversarial robustness for vision-based robotic systems.
 
 The project combines:
 

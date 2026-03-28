@@ -8,7 +8,7 @@ category: work
 github: https://github.com/stevens-armlab/pose_refiner
 ---
 
-Pose Refiner improves noisy 2D keypoints from human-pose detectors in real time.
+Real-Time Human Pose Refinement with EKF and Kinematic Constraints improves noisy 2D keypoints from human-pose detectors in real time.
 
 The method combines:
 

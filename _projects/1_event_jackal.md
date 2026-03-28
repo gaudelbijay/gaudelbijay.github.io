@@ -8,7 +8,7 @@ category: work
 github: https://github.com/gaudelbijay/event_jackal
 ---
 
-Event Jackal explores navigation policies that learn directly from asynchronous event-camera signals instead of dense RGB frames or lidar.
+Event-Camera Reinforcement Learning Navigation on Jackal explores navigation policies that learn directly from asynchronous event-camera signals instead of dense RGB frames or lidar.
 
 The pipeline combines:
 

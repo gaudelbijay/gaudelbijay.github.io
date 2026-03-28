@@ -8,7 +8,7 @@ category: work
 github: https://github.com/stevens-armlab/caveman_ros2
 ---
 
-CAVEMAN ROS2 is a full simulation environment for collaborative robotics research on ROS 2 Jazzy and Gazebo Harmonic.
+ROS 2 + Gazebo Harmonic Casualty Manipulation Simulation Stack is a full simulation environment for collaborative robotics research on ROS 2 Jazzy and Gazebo Harmonic.
 
 It integrates:
 
