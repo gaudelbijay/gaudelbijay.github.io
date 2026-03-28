@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Teleop Touch3D Logger ROS2
+title: ROS 2 Haptic Teleoperation Data Logger for Manipulation Learning
 description: ROS 2 teleoperation and experiment logging stack for Geomagic Touch-based arm control.
 img: assets/img/7.jpg
 importance: 3

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Diffusion Defender
+title: Diffusion-Based Defense Against Adversarial Perception Attacks
 description: Adversarial image-attack detection and denoising with diffusion models and frequency analysis.
 img: assets/img/6.jpg
 importance: 6

@@ -69,7 +69,7 @@ cv:
         summary: "Gaudel, B., D. Guan, W. Yuan, D. Shrestha, B. Chen, and Y. Tu."
 
     Projects:
-      - name: casperjointpose
+      - name: Joint-Angle Human Pose Estimation for Casualty Manipulation
         url: https://github.com/stevens-armlab/casperjointpose
         highlights:
           - Built a depth-only model that estimates human joint angles and body-link classes from single frames or short frame windows.
@@ -77,7 +77,7 @@ cv:
           - Developed a staged training pipeline for angle prediction, ranking, and uncertainty modeling to improve reliability.
           - Implemented reproducible split tracking and multi-GPU server training workflows using SLURM job scripts.
 
-      - name: teleop_touch3d_logger_ros2
+      - name: ROS 2 Haptic Teleoperation Data Logger for Manipulation Learning
         url: https://github.com/stevens-armlab/teleop_touch3d_logger_ros2
         highlights:
           - Built a ROS 2 teleoperation package for controlling robot-arm experiments with a Geomagic Touch haptic device.
@@ -85,7 +85,7 @@ cv:
           - Created labeled recording tools that store rosbag2 data and metadata by grasp target for supervised training.
           - Added dataset-export scripts that convert recorded sessions into depth samples and CSV labels for model training.
 
-      - name: pose_refiner
+      - name: Real-Time Human Pose Refinement with EKF and Kinematic Constraints
         url: https://github.com/stevens-armlab/pose_refiner
         highlights:
           - Developed a real-time ROS 2 module that refines noisy 2D human keypoints using EKF filtering and kinematic constraints.
@@ -93,7 +93,7 @@ cv:
           - Published refined pose outputs, diagnostics, and optional annotated images for debugging and monitoring.
           - Designed launch and runtime options for simulation and robot use cases, including configurable annotator behavior.
 
-      - name: caveman_ros2
+      - name: ROS 2 + Gazebo Harmonic Casualty Manipulation Simulation Stack
         url: https://github.com/stevens-armlab/caveman_ros2
         highlights:
           - Built an end-to-end ROS 2 Jazzy and Gazebo Harmonic simulation stack for collaborative robot and human-interaction research.
@@ -101,7 +101,7 @@ cv:
           - Added single-arm and dual-arm operating modes and integrated a custom-designed hand gripper configuration.
           - Documented full setup, dependency installation, and launch workflows so experiments can be reproduced across systems.
 
-      - name: event_jackal
+      - name: Event-Camera Reinforcement Learning Navigation on Jackal
         url: https://github.com/gaudelbijay/event_jackal
         highlights:
           - Built an event-camera navigation framework that learns from asynchronous event streams instead of standard image frames.
@@ -109,7 +109,7 @@ cv:
           - Trained and compared MLP, CNN, GRU, and Transformer agents using a Soft Actor-Critic training setup.
           - Demonstrated competitive simulation results and successful transfer to a real Jackal robot with minimal retuning.
 
-      - name: diffusion-defender
+      - name: Diffusion-Based Defense Against Adversarial Perception Attacks
         url: https://github.com/gaudelbijay/diffusion-defender
         highlights:
           - Developed a diffusion-based denoising pipeline to reduce the impact of online adversarial image attacks.

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: CAVEMAN ROS2
+title: ROS 2 + Gazebo Harmonic Casualty Manipulation Simulation Stack
 description: ROS 2 and Gazebo simulation stack for collaborative human-robot manipulation research.
 img: assets/img/4.jpg
 importance: 4

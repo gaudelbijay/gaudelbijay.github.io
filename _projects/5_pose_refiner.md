@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Pose Refiner
+title: Real-Time Human Pose Refinement with EKF and Kinematic Constraints
 description: Real-time 2D pose refinement with EKF and skeleton constraints for ROS 2 pipelines.
 img: assets/img/1.jpg
 importance: 5

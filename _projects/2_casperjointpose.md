@@ -1,6 +1,6 @@
 ---
 layout: page
-title: CasperJointPose
+title: Joint-Angle Human Pose Estimation for Casualty Manipulation
 description: Depth-only human joint-state observer with feasible-set estimation.
 img: assets/img/3.jpg
 importance: 2
