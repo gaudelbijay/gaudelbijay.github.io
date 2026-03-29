@@ -2,7 +2,7 @@
 layout: page
 title: Joint-Angle Human Pose Estimation for Casualty Manipulation
 description: Depth-only human joint-state observer with feasible-set estimation.
-img: assets/img/3.jpg
+img: assets/img/joint_pose_casualty_manipulation.png
 importance: 2
 category: work
 github: https://github.com/stevens-armlab/casperjointpose
