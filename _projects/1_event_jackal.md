@@ -10,8 +10,22 @@ github: https://github.com/gaudelbijay/event_jackal
 
 # Event-Driven Reinforcement Learning for Autonomous Navigation
 
-![Model diagram]({{ '/assets/img/event_jackal_model.png' | relative_url }})
-![Perception diagram]({{ '/assets/img/event_jackal_perception_model.png' | relative_url }})
+<div style="display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: flex-start;">
+  <div style="flex: 1 1 460px; min-width: 280px;">
+    <img
+      src="{{ '/assets/img/event_jackal_model.png' | relative_url }}"
+      alt="Model diagram"
+      style="width: 100%; height: auto; border-radius: 8px;"
+    />
+  </div>
+  <div style="flex: 1 1 460px; min-width: 280px;">
+    <img
+      src="{{ '/assets/img/event_jackal_perception_model.png' | relative_url }}"
+      alt="Perception diagram"
+      style="width: 100%; height: auto; border-radius: 8px;"
+    />
+  </div>
+</div>
 
 This repository implements an event driven reinforcement learning framework for autonomous robot navigation using neuromorphic event cameras. Instead of relying on dense frame based sensors or laser scanners, the system processes asynchronous event streams to produce compact Binary Event Maps and learns a self supervised contrastive perception embedding optimized for navigation. The learned representation is used by reinforcement learning policies including MLP, CNN, GRU, and Transformer agents trained with Soft Actor Critic. The approach achieves navigation performance comparable to laser based systems in simulation and successfully transfers to a real Jackal UGV with minimal real world calibration, demonstrating the practicality of event based perception for robotic navigation.
 
@@ -105,8 +119,26 @@ python tester.py
 
 ## Results
 
-![training-result]({{ '/assets/img/event_jackal_training_metrics.png' | relative_url }})
+<div style="text-align: center; margin: 0.75rem 0;">
+  <img
+    src="{{ '/assets/img/event_jackal_training_metrics.png' | relative_url }}"
+    alt="training-result"
+    style="width: 100%; max-width: 980px; height: auto; border-radius: 8px;"
+  />
+</div>
 
-![test-table]({{ '/assets/img/event_jackal_table.png' | relative_url }})
+<div style="text-align: center; margin: 0.75rem 0;">
+  <img
+    src="{{ '/assets/img/event_jackal_table.png' | relative_url }}"
+    alt="test-table"
+    style="width: 100%; max-width: 680px; height: auto; border-radius: 8px;"
+  />
+</div>
 
-![vis]({{ '/assets/img/event_jackal_vis.png' | relative_url }})
+<div style="text-align: center; margin: 0.75rem 0;">
+  <img
+    src="{{ '/assets/img/event_jackal_vis.png' | relative_url }}"
+    alt="vis"
+    style="width: 100%; max-width: 980px; height: auto; border-radius: 8px;"
+  />
+</div>
