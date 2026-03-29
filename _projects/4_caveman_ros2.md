@@ -17,3 +17,15 @@ It integrates:
 - a human (caveman) model for interaction studies.
 
 The stack supports rapid setup of multi-agent simulation scenarios for perception, teleoperation, and policy evaluation.
+
+### Full Poster
+
+<div style="width: 100%; height: 95vh; min-height: 1200px;">
+  <iframe
+    src="{{ '/assets/pdf/casualty_sim_env_poster_24x36.pdf#zoom=page-fit' | relative_url }}"
+    title="Casualty Simulation Environment Poster"
+    width="100%"
+    height="100%"
+    style="border: 0;"
+  ></iframe>
+</div>
