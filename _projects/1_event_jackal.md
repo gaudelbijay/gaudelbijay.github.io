@@ -121,6 +121,17 @@ python tester.py
 
 <div style="text-align: center; margin: 0.75rem 0;">
   <img
+    src="{{ '/assets/img/event_rl.gif' | relative_url }}"
+    alt="Event-camera reinforcement learning navigation rollout"
+    style="width: 100%; max-width: 980px; height: auto; border-radius: 8px;"
+  />
+  <p style="margin-top: 0.45rem;">
+    <strong>Figure:</strong> Event-camera RL navigation rollout from the Jackal pipeline.
+  </p>
+</div>
+
+<div style="text-align: center; margin: 0.75rem 0;">
+  <img
     src="{{ '/assets/img/event_jackal_training_metrics.png' | relative_url }}"
     alt="training-result"
     style="width: 100%; max-width: 980px; height: auto; border-radius: 8px;"
