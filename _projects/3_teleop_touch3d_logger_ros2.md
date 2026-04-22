@@ -18,6 +18,10 @@ Core capabilities include:
 
 It is used to build labeled interaction datasets that feed downstream observer and perception models.
 
+### Teleoperation Session Playback
+
+{% include figure.liquid path="assets/img/teleop.gif" title="Figure: Recorded ROS 2 haptic teleoperation session used for manipulation-learning data collection (optimized GIF for web display)." class="img-fluid rounded z-depth-1" %}
+
 ### Resolve-Rate Algorithm and Frame Mapping
 
 <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: flex-start;">
