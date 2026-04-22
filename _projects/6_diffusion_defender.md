@@ -19,9 +19,11 @@ It is built to improve perception reliability when image streams are corrupted b
 
 ### Video Demonstration
 
+This video presents a side-by-side online reinforcement learning experiment for continuous middle-vehicle tracking under adversarial perturbations. Without Diffusion Defender, corrupted observations induce control oscillations and progressive trajectory deviation, resulting in repeated loss of stable target lock. With Diffusion Defender, denoised observations preserve tracking-critical visual structure, enabling smoother control, stronger trajectory invariance, and sustained tracking of the middle vehicle. The defended policy is markedly more stable and substantially harder to deflect from its intended path.
+
 <div style="position: relative; width: 100%; padding-top: 56.25%; margin-bottom: 1rem;">
   <iframe
-    src="https://www.youtube.com/embed/sb5Bkp0vhD8"
+    src="https://www.youtube.com/embed/FWT1ylETfQM"
     title="Diffusion Defender Video Demonstration"
     style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 8px;"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
