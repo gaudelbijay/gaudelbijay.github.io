@@ -20,7 +20,7 @@ It is used to build labeled interaction datasets that feed downstream observer a
 
 ### Teleoperation Session Playback
 
-{% include figure.liquid path="assets/img/teleop.gif" title="Figure: Recorded ROS 2 haptic teleoperation session used for manipulation-learning data collection (optimized GIF for web display)." class="img-fluid rounded z-depth-1" %}
+{% include figure.liquid path="assets/img/teleop.gif" title="Figure: Recorded ROS 2 haptic teleoperation session used for manipulation-learning data collection." class="img-fluid rounded z-depth-1" %}
 
 ### Resolve-Rate Algorithm and Frame Mapping
 
