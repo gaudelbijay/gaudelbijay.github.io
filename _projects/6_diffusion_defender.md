@@ -17,6 +17,18 @@ The project combines:
 
 It is built to improve perception reliability when image streams are corrupted by adversarial perturbations.
 
+### Video Demonstration
+
+<div style="position: relative; width: 100%; padding-top: 56.25%; margin-bottom: 1rem;">
+  <iframe
+    src="https://www.youtube.com/embed/sb5Bkp0vhD8"
+    title="Diffusion Defender Video Demonstration"
+    style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 8px;"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+  ></iframe>
+</div>
+
 ### Qualitative and Quantitative Results
 
 <div style="display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: flex-start;">
