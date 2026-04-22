@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Diffusion-Based Defense Against Adversarial Perception Attacks
-description: Adversarial image-attack detection and denoising with diffusion models and frequency analysis.
+description: Adversarial image-attack detection and denoising with diffusion models and image-domain Fourier-transform frequency analysis.
 img: assets/img/img_attacked_at_itr_212.png
 importance: 6
 category: work
@@ -69,8 +69,8 @@ It is built to improve perception reliability when image streams are corrupted b
 
 <div style="width: 100%; height: 95vh; min-height: 1200px;">
   <iframe
-    src="{{ '/assets/pdf/IROS_2023__to_arxiv_.pdf#zoom=page-fit' | relative_url }}"
-    title="IROS 2023 to arXiv PDF"
+    src="{{ '/assets/pdf/diffusion_defender.pdf#zoom=page-fit' | relative_url }}"
+    title="Diffusion Defender PDF"
     width="100%"
     height="100%"
     style="border: 0;"
