@@ -197,6 +197,7 @@ exclude:
   - lighthouse_results/
   - package.json
   - package-lock.json
+  - _posts/
   - _pages/about_einstein.md
   - purgecss.config.js
   - README.md
