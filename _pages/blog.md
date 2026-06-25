@@ -7,21 +7,258 @@ nav: true
 nav_order: 6
 ---
 
-<div class="table-responsive">
-  <table class="table table-sm table-borderless">
-    <tbody>
-      <tr>
-        <th scope="row">Jun 25, 2026</th>
-        <td>
-          <a class="post-link" href="{{ '/blog/2026/linear-algebra-study-guide/' | relative_url }}">Linear Algebra Study Guide</a>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">Jun 25, 2026</th>
-        <td>
-          <a class="post-link" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">The Exponential Map</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<style>
+  .blog-cards {
+    display: grid;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .blog-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 32%);
+    min-height: 210px;
+    overflow: hidden;
+    color: inherit;
+    background: var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease,
+      border-color 180ms ease;
+  }
+
+  .blog-card:hover {
+    color: inherit;
+    text-decoration: none;
+    border-color: var(--global-theme-color);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+  }
+
+  .blog-card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.35rem, 3vw, 2.1rem);
+  }
+
+  .blog-card-date {
+    margin-bottom: 0.75rem;
+    color: var(--global-theme-color);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .blog-card-title {
+    margin: 0;
+    color: var(--global-text-color);
+    font-size: clamp(1.55rem, 3vw, 2.2rem);
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+
+  .blog-card-summary {
+    max-width: 36rem;
+    margin: 0.85rem 0 0;
+    color: var(--global-text-color-light);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .blog-card-visual {
+    position: relative;
+    display: grid;
+    min-height: 210px;
+    place-items: center;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(184, 85, 47, 0.14), transparent 54%),
+      linear-gradient(315deg, rgba(58, 111, 168, 0.16), transparent 52%),
+      color-mix(in srgb, var(--global-card-bg-color) 88%, var(--global-theme-color));
+  }
+
+  .blog-card-visual svg {
+    width: min(84%, 260px);
+    height: auto;
+  }
+
+  .cone-ring {
+    animation: cone-spin 6s linear infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .cone-shadow {
+    animation: cone-breathe 3s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .svd-input {
+    animation: svd-rotate-input 4.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .svd-output {
+    animation: svd-stretch-output 4.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .svd-vector-a {
+    animation: svd-vector-a 4.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: 30px 130px;
+  }
+
+  .svd-vector-b {
+    animation: svd-vector-b 4.5s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: 30px 130px;
+  }
+
+  @keyframes cone-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes cone-breathe {
+    0%,
+    100% {
+      opacity: 0.24;
+      transform: scaleX(0.82);
+    }
+    50% {
+      opacity: 0.42;
+      transform: scaleX(1.08);
+    }
+  }
+
+  @keyframes svd-rotate-input {
+    0%,
+    100% {
+      transform: rotate(-18deg);
+    }
+    50% {
+      transform: rotate(18deg);
+    }
+  }
+
+  @keyframes svd-stretch-output {
+    0%,
+    100% {
+      transform: rotate(-8deg) scale(1.35, 0.74);
+    }
+    50% {
+      transform: rotate(16deg) scale(0.8, 1.36);
+    }
+  }
+
+  @keyframes svd-vector-a {
+    0%,
+    100% {
+      transform: rotate(-12deg) scaleX(1.05);
+    }
+    50% {
+      transform: rotate(22deg) scaleX(1.48);
+    }
+  }
+
+  @keyframes svd-vector-b {
+    0%,
+    100% {
+      transform: rotate(66deg) scaleX(0.92);
+    }
+    50% {
+      transform: rotate(104deg) scaleX(1.22);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cone-ring,
+    .cone-shadow,
+    .svd-input,
+    .svd-output,
+    .svd-vector-a,
+    .svd-vector-b {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .blog-card {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-card-visual {
+      min-height: 175px;
+      order: -1;
+    }
+  }
+</style>
+
+<div class="blog-cards">
+  <a class="blog-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">
+    <div class="blog-card-body">
+      <div class="blog-card-date">Jun 25, 2026</div>
+      <h2 class="blog-card-title">The Exponential Map</h2>
+      <p class="blog-card-summary">A visual guide to matrix exponentials, Lie algebra structure, and the geometry of SL(2, R).</p>
+    </div>
+    <div class="blog-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <linearGradient id="coneFill" x1="60" y1="34" x2="180" y2="180" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#b8552f" stop-opacity="0.82"></stop>
+            <stop offset="1" stop-color="#3a6fa8" stop-opacity="0.3"></stop>
+          </linearGradient>
+        </defs>
+        <ellipse class="cone-shadow" cx="120" cy="174" rx="60" ry="13" fill="#2a241e"></ellipse>
+        <path d="M120 34 L55 174 L185 174 Z" fill="url(#coneFill)" opacity="0.52"></path>
+        <path d="M55 174 C80 154 160 154 185 174" fill="none" stroke="#b8552f" stroke-width="4"></path>
+        <g class="cone-ring">
+          <ellipse cx="120" cy="112" rx="49" ry="16" fill="none" stroke="#f0c28f" stroke-width="4"></ellipse>
+          <circle cx="168" cy="112" r="5" fill="#f0c28f"></circle>
+          <circle cx="72" cy="112" r="3.5" fill="#3a6fa8"></circle>
+        </g>
+        <line x1="120" y1="34" x2="120" y2="178" stroke="#2a241e" stroke-opacity="0.34" stroke-width="2"></line>
+        <path d="M82 84 C104 70 139 70 160 84" fill="none" stroke="#2a241e" stroke-opacity="0.32" stroke-width="2"></path>
+      </svg>
+    </div>
+  </a>
+
+  <a class="blog-card" href="{{ '/blog/2026/linear-algebra-study-guide/' | relative_url }}">
+    <div class="blog-card-body">
+      <div class="blog-card-date">Jun 25, 2026</div>
+      <h2 class="blog-card-title">Linear Algebra Study Guide</h2>
+      <p class="blog-card-summary">A compact study path through vectors, transformations, eigenstructure, SVD, subspaces, and core computations.</p>
+    </div>
+    <div class="blog-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <marker id="arrowHead" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
+          </marker>
+        </defs>
+        <g transform="translate(35 28)">
+          <circle class="svd-input" cx="56" cy="78" r="42" fill="none" stroke="#3a6fa8" stroke-width="4"></circle>
+          <ellipse class="svd-output" cx="132" cy="78" rx="31" ry="44" fill="#b8552f" fill-opacity="0.14" stroke="#b8552f" stroke-width="4"></ellipse>
+          <path d="M30 130 H174" stroke="#2a241e" stroke-opacity="0.26" stroke-width="2"></path>
+          <path d="M30 130 V12" stroke="#2a241e" stroke-opacity="0.26" stroke-width="2"></path>
+          <line class="svd-vector-a" x1="30" y1="130" x2="112" y2="130" stroke="#b8552f" stroke-width="5" stroke-linecap="round" marker-end="url(#arrowHead)"></line>
+          <line class="svd-vector-b" x1="30" y1="130" x2="96" y2="130" stroke="#3a6fa8" stroke-width="5" stroke-linecap="round"></line>
+          <circle cx="30" cy="130" r="5" fill="#2a241e"></circle>
+        </g>
+      </svg>
+    </div>
+  </a>
 </div>
