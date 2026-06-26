@@ -101,22 +101,22 @@ $$
 EKF predict/update:
 
 $$
-\hat{x}_{t|t-1}=F x_{t-1|t-1},\quad
-\hat{P}_{t|t-1}=F P_{t-1|t-1}F^\top + Q,
+\hat{x}_{t\mid t-1}=F x_{t-1\mid t-1},\quad
+\hat{P}_{t\mid t-1}=F P_{t-1\mid t-1}F^\top + Q,
 $$
 
 $$
-y_t=z_t-H\hat{x}_{t|t-1},\quad
-S_t=H\hat{P}_{t|t-1}H^\top+R+\varepsilon I,
+y_t=z_t-H\hat{x}_{t\mid t-1},\quad
+S_t=H\hat{P}_{t\mid t-1}H^\top+R+\varepsilon I,
 $$
 
 $$
-K_t=\hat{P}_{t|t-1}H^\top S_t^{-1},
+K_t=\hat{P}_{t\mid t-1}H^\top S_t^{-1},
 $$
 
 $$
-x_{t|t}=\hat{x}_{t|t-1}+K_t y_t,\quad
-P_{t|t}=(I-K_tH)\hat{P}_{t|t-1}.
+x_{t\mid t}=\hat{x}_{t\mid t-1}+K_t y_t,\quad
+P_{t\mid t}=(I-K_tH)\hat{P}_{t\mid t-1}.
 $$
 
 Outlier/confidence gating used before accepting an update:
@@ -126,7 +126,7 @@ d_t^2 = y_t^\top S_t^{-1} y_t,\qquad
 \text{accept update if } c \ge c_{\text{update,min}} \text{ and } d_t^2 \le \tau_M.
 $$
 
-If the gate fails, the implementation keeps prediction $(\hat{x}_{t|t-1},\hat{P}_{t|t-1})$.
+If the gate fails, the implementation keeps the predicted state and covariance.
 
 #### Bone-Length Learning and Projection
 
@@ -191,11 +191,16 @@ Reference-angle circular EMA:
 
 $$
 \theta_{\text{ref}} \leftarrow
-\operatorname{atan2}\!\Big((1-\alpha_\theta)\sin\theta_{\text{ref}}+\alpha_\theta\sin\theta,\ 
+\operatorname{atan2}\!\Big((1-\alpha_\theta)\sin\theta_{\text{ref}}+\alpha_\theta\sin\theta,\
 (1-\alpha_\theta)\cos\theta_{\text{ref}}+\alpha_\theta\cos\theta\Big).
 $$
 
-Angle correction (if $|e_\theta|>\theta_{\text{err}}$, where $e_\theta=\operatorname{wrap}(\theta-\theta_{\text{ref}})$):
+Angle correction applies when the wrapped angular error exceeds the threshold:
+
+$$
+e_\theta=\operatorname{wrap}(\theta-\theta_{\text{ref}}),\qquad
+\lvert e_\theta\rvert>\theta_{\text{err}}.
+$$
 
 $$
 \delta_\theta = \operatorname{clip}(k_\theta e_\theta,\,-\delta_{\max},\,\delta_{\max}),
@@ -235,11 +240,11 @@ $$
 
 $$
 e_\theta=\operatorname{wrap}(\theta-\theta_{\text{ref}}),\quad
-g=\sigma\!\left(\frac{|e_\theta|-\theta_{\text{tol}}}{s_{\text{gate}}}\right),\quad
+g=\sigma\!\left(\frac{\lvert e_\theta\rvert-\theta_{\text{tol}}}{s_{\text{gate}}}\right),\quad
 \rho(e_\theta)=
 \begin{cases}
-\frac{1}{2}e_\theta^2, & |e_\theta|\le\kappa\\
-\kappa\left(|e_\theta|-\frac{1}{2}\kappa\right), & |e_\theta|>\kappa
+\frac{1}{2}e_\theta^2, & \lvert e_\theta\rvert\le\kappa\\
+\kappa\left(\lvert e_\theta\rvert-\frac{1}{2}\kappa\right), & \lvert e_\theta\rvert>\kappa
 \end{cases},
 $$
 
