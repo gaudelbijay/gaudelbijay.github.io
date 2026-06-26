@@ -236,9 +236,9 @@ nav_order: 6
     </div>
   </a>
 
-  <a class="blog-card" href="{{ '/blog/2026/linear-algebra-study-guide/' | relative_url }}">
+  <a class="blog-card" href="{{ '/blog/2025/linear-algebra-study-guide/' | relative_url }}">
     <div class="blog-card-body">
-      <div class="blog-card-date">Jun 25, 2026</div>
+      <div class="blog-card-date">Jun 25, 2025</div>
       <h2 class="blog-card-title">Linear Algebra Study Guide</h2>
       <p class="blog-card-summary">A compact study path through vectors, transformations, eigenstructure, SVD, subspaces, and core computations.</p>
     </div>
