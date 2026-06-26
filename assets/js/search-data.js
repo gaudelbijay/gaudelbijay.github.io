@@ -82,7 +82,7 @@ ninja.data = [{
               window.location.href = "/projects/1_event_jackal/";
             },},{id: "projects-joint-angle-human-pose-estimation-for-casualty-manipulation",
           title: 'Joint-Angle Human Pose Estimation for Casualty Manipulation',
-          description: "Depth-only human joint-state observer with feasible-set estimation.",
+          description: "Contact-aware 23-DoF human joint-state observer for robot-assisted casualty manipulation.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_casperjointpose/";
             },},{id: "projects-ros-2-haptic-teleoperation-data-logger-for-manipulation-learning",
