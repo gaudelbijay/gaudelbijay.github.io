@@ -194,12 +194,17 @@ _styles: |
   <div class="casper-two-col">
     <div>
       <p>
-        The perception stack uses one depth camera and wrist force/torque sensing. A
-        shared depth network predicts per-joint angle measurements, per-joint
-        uncertainty, and grasped-link confidence. Those outputs feed a contact-aware
-        extended Kalman filter that gates contact updates, blocks joints according to
-        the likely grasped link, masks unstable gains, and inflates innovation
-        covariance when the normalized innovation squared test indicates mismatch.
+        The perception stack uses one depth camera and wrist force/torque sensing.
+        The paper's observer takes a two-channel input made from normalized depth and
+        an invalid-depth mask, then passes it through a fixed lightweight CNN encoder.
+        Four CNN stages are pooled with GAP + Linear + GELU into a global descriptor
+        \( \mathbf{z}_\tau \). Direct projection heads use that descriptor to predict
+        bounded joint-angle pseudo-measurements, per-joint log-variance,
+        grasped-link probabilities, and the optional energy score used for
+        feasible-set supervision. Those outputs feed a contact-aware extended Kalman
+        filter that gates contact updates, blocks joints according to the likely
+        grasped link, masks unstable gains, and inflates innovation covariance when
+        the normalized innovation squared test indicates mismatch.
       </p>
       <p>
         Training data was collected in simulation with randomized Gazebo scenes and
@@ -226,8 +231,9 @@ _styles: |
       alt="Network architecture for depth-based joint angle, uncertainty, and contact prediction"
     />
     <figcaption>
-      The network shares a depth backbone and branches into bounded joint-angle,
-      uncertainty, feasible-set, and link-class outputs.
+      The reported observer uses a compact CNN encoder with direct per-joint
+      projection heads. It does not use attention-based query decoding or kinematic
+      graph refinement, keeping the backbone/head design fixed across ablations.
     </figcaption>
   </figure>
 </section>
