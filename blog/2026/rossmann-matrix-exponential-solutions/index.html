@@ -339,6 +339,13 @@ body{margin:0;background:#fff}
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:4px 0}
 .katex-display>.katex{max-width:100%}
 figure svg{max-width:100%;height:auto}
+.rossmann-answer{margin:16px 0 0;border:1px solid #ddd8d0;border-radius:8px;background:#fbfaf7;overflow:hidden}
+.rossmann-answer summary{cursor:pointer;list-style:none;font-family:'DM Sans',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#1c3358;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.rossmann-answer summary::-webkit-details-marker{display:none}
+.rossmann-answer summary::after{content:"Show";font-size:11px;color:#2563a4;border:1px solid #c9d7e8;border-radius:999px;padding:3px 9px;background:#eef2f8;letter-spacing:.04em}
+.rossmann-answer[open] summary{border-bottom:1px solid #ddd8d0;background:#f7f5f1}
+.rossmann-answer[open] summary::after{content:"Hide"}
+.rossmann-answer-body{padding:18px 20px 20px}
 @page{size:letter;margin:0}
 @media print{
   html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -349,6 +356,9 @@ figure svg{max-width:100%;height:auto}
   article{break-inside:avoid-page}
   figure,svg,.katex-display{break-inside:avoid}
   .screen-only{display:none!important}
+  .rossmann-answer{border:0;background:transparent}
+  .rossmann-answer summary{display:none}
+  .rossmann-answer-body{padding:0}
   p,li{orphans:3;widows:3}
 }
 </style>
@@ -453,23 +463,28 @@ figure svg{max-width:100%;height:auto}
     Prove Remark 2: for the linear vector field \(p \mapsto Xp\) on a finite-dimensional vector space \(E\), the trajectory through \(p \in E\) is \(\gamma_p(t) = \exp(tX)p\), and \(t \mapsto \exp(tX)\) is a one-parameter group.
   </div>
 
-  <p style="margin:0 0 10px"><strong>Statement.</strong> For a linear vector field on \(E\) given by \(p \mapsto Xp\), define</p>
-  \[ \exp(tX) = \sum_{k=0}^{\infty} \frac{t^k X^k}{k!}. \]
-  <p style="margin:0 0 10px">Then \(\gamma_p(t) = \exp(tX)p\) is the unique solution of \(\gamma'(t) = X\gamma(t)\), \(\gamma(0) = p\), and</p>
-  \[ \exp((s+t)X) = \exp(sX)\exp(tX), \qquad \exp(0) = I. \]
-
-  <p style="margin:0 0 10px"><em>Proof — Differentiation.</em> Term-by-term differentiation of the series gives</p>
-  \[ \frac{d}{dt}\exp(tX) = \sum_{k=1}^{\infty}\frac{kt^{k-1}X^k}{k!} = X\sum_{j=0}^{\infty}\frac{t^j X^j}{j!} = X\exp(tX). \]
-  <p style="margin:0 0 10px">Therefore \(\frac{d}{dt}(\exp(tX)p) = X\exp(tX)p\), confirming that \(\gamma_p(t) = \exp(tX)p\) solves \(\gamma'(t) = X\gamma(t)\), \(\gamma(0) = p\).</p>
-
-  <p style="margin:0 0 10px"><em>Proof — Group property.</em> Since \(sX\) and \(tX\) commute, the formal exponential addition law applies:</p>
-  \[ \exp(sX)\exp(tX) = \exp((s+t)X). \]
-  <p style="margin:0 0 10px">At \(s = t = 0\), \(\exp(0) = I\). Thus \(t \mapsto \exp(tX)\) is a one-parameter group of linear transformations.</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    The matrix exponential converts an infinitesimal linear generator \(X\) into the finite flow \(t \mapsto \exp(tX)\). The trajectory through \(p\) is \(\gamma_p(t) = \exp(tX)p\).
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Statement.</strong> For a linear vector field on \(E\) given by \(p \mapsto Xp\), define</p>
+        \[ \exp(tX) = \sum_{k=0}^{\infty} \frac{t^k X^k}{k!}. \]
+        <p style="margin:0 0 10px">Then \(\gamma_p(t) = \exp(tX)p\) is the unique solution of \(\gamma'(t) = X\gamma(t)\), \(\gamma(0) = p\), and</p>
+        \[ \exp((s+t)X) = \exp(sX)\exp(tX), \qquad \exp(0) = I. \]
+      
+        <p style="margin:0 0 10px"><em>Proof — Differentiation.</em> Term-by-term differentiation of the series gives</p>
+        \[ \frac{d}{dt}\exp(tX) = \sum_{k=1}^{\infty}\frac{kt^{k-1}X^k}{k!} = X\sum_{j=0}^{\infty}\frac{t^j X^j}{j!} = X\exp(tX). \]
+        <p style="margin:0 0 10px">Therefore \(\frac{d}{dt}(\exp(tX)p) = X\exp(tX)p\), confirming that \(\gamma_p(t) = \exp(tX)p\) solves \(\gamma'(t) = X\gamma(t)\), \(\gamma(0) = p\).</p>
+      
+        <p style="margin:0 0 10px"><em>Proof — Group property.</em> Since \(sX\) and \(tX\) commute, the formal exponential addition law applies:</p>
+        \[ \exp(sX)\exp(tX) = \exp((s+t)X). \]
+        <p style="margin:0 0 10px">At \(s = t = 0\), \(\exp(0) = I\). Thus \(t \mapsto \exp(tX)\) is a one-parameter group of linear transformations.</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          The matrix exponential converts an infinitesimal linear generator \(X\) into the finite flow \(t \mapsto \exp(tX)\). The trajectory through \(p\) is \(\gamma_p(t) = \exp(tX)p\).
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 2 -->
@@ -483,60 +498,65 @@ figure svg{max-width:100%;height:auto}
     Verify \(\exp(X) = \cosh\lambda\, I + \tfrac{\sinh\lambda}{\lambda}X\) for the hyperbolic case \(X^2 = \lambda^2 I\), \(\lambda \neq 0\), using (a) power series, (b) diagonalization.
   </div>
 
-  <p style="margin:0 0 10px"><strong>Setup.</strong> In the hyperbolic case, \(X\) is a traceless \(2{\times}2\) matrix with real eigenvalues \(\pm\lambda\), satisfying \(X^2 = \lambda^2 I\). The claim is</p>
-  \[ \exp(tX) = \cosh(t\lambda)\,I + \frac{\sinh(t\lambda)}{\lambda}\,X. \]
-
-  <p style="margin:0 0 10px"><strong>(a) Power series proof.</strong> Since \(X^2 = \lambda^2 I\), powers reduce:</p>
-  \[ X^{2k} = \lambda^{2k}I, \qquad X^{2k+1} = \lambda^{2k}X. \]
-  <p style="margin:0 0 10px">Splitting the exponential series into even and odd powers:</p>
-  \[ \exp(X) = \underbrace{\left(\sum_{k=0}^{\infty}\frac{\lambda^{2k}}{(2k)!}\right)}_{\cosh\lambda}\!I + \underbrace{\left(\sum_{k=0}^{\infty}\frac{\lambda^{2k}}{(2k+1)!}\right)}_{\sinh\lambda/\lambda}\!X = \cosh\lambda\,I + \frac{\sinh\lambda}{\lambda}\,X. \]
-
-  <!-- Power split visualization -->
-  <figure style="margin:20px 0;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
-    <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:14px;text-align:center">Even / Odd Power Split</figcaption>
-    <svg viewBox="0 0 620 160" style="width:100%;display:block;font-family:'EB Garamond',Georgia,serif" aria-label="The power series splits into even powers giving cosh and odd powers giving sinh">
-      <defs>
-        <marker id="arr2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#555"></path></marker>
-      </defs>
-      <!-- Full series box -->
-      <rect x="10" y="20" width="200" height="120" rx="6" fill="#eef2f8" stroke="#2563a4" stroke-width="1.2"></rect>
-      <text x="110" y="44" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563a4" font-family="'DM Sans',sans-serif" letter-spacing="0.5">FULL SERIES</text>
-      <text x="110" y="68" text-anchor="middle" font-size="13" fill="#1c3358">I + X + X²/2! + X³/3!</text>
-      <text x="110" y="90" text-anchor="middle" font-size="13" fill="#1c3358">+ X⁴/4! + X⁵/5! + ···</text>
-      <text x="110" y="120" text-anchor="middle" font-size="12" fill="#555" font-style="italic">X² = λ²I</text>
-
-      <!-- Arrows to two branches -->
-      <path d="M210 70 Q280 40 318 40" stroke="#555" stroke-width="1.2" fill="none" marker-end="url(#arr2)"></path>
-      <path d="M210 90 Q280 120 318 120" stroke="#555" stroke-width="1.2" fill="none" marker-end="url(#arr2)"></path>
-
-      <!-- Even branch -->
-      <rect x="320" y="10" width="140" height="60" rx="6" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.2"></rect>
-      <text x="390" y="32" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a5c3a" font-family="'DM Sans',sans-serif">EVEN POWERS</text>
-      <text x="390" y="52" text-anchor="middle" font-size="13" fill="#1a5c3a">cosh(λ) · I</text>
-
-      <!-- Odd branch -->
-      <rect x="320" y="90" width="140" height="60" rx="6" fill="#fff0ed" stroke="#8b2500" stroke-width="1.2"></rect>
-      <text x="390" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="#8b2500" font-family="'DM Sans',sans-serif">ODD POWERS</text>
-      <text x="390" y="133" text-anchor="middle" font-size="13" fill="#8b2500">sinh(λ)/λ · X</text>
-
-      <!-- Plus sign and result -->
-      <text x="475" y="80" text-anchor="middle" font-size="22" fill="#555">+</text>
-      <rect x="495" y="50" width="118" height="40" rx="6" fill="#fff8f0" stroke="#c07a18" stroke-width="1.5"></rect>
-      <text x="554" y="75" text-anchor="middle" font-size="12" fill="#7a4800" font-weight="bold">exp(X)</text>
-      <line x1="460" y1="40" x2="493" y2="62" stroke="#555" stroke-width="1" marker-end="url(#arr2)"></line>
-      <line x1="460" y1="120" x2="493" y2="78" stroke="#555" stroke-width="1" marker-end="url(#arr2)"></line>
-    </svg>
-  </figure>
-
-  <p style="margin:0 0 10px"><strong>(b) Diagonalization proof.</strong> Since eigenvalues \(\pm\lambda\) are distinct, write \(X = P\,\mathrm{diag}(\lambda,-\lambda)\,P^{-1}\). Then</p>
-  \[ \exp(X) = P\begin{bmatrix}e^\lambda & 0 \\ 0 & e^{-\lambda}\end{bmatrix}P^{-1}. \]
-  <p style="margin:0 0 10px">One checks directly that \(\cosh\lambda\,I + \frac{\sinh\lambda}{\lambda}\,\mathrm{diag}(\lambda,-\lambda) = \mathrm{diag}(e^\lambda,e^{-\lambda})\), and conjugation by \(P\) gives the result.</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    When \(X^2 = \lambda^2 I\): \(\quad\exp(tX) = \cosh(t\lambda)\,I + \dfrac{\sinh(t\lambda)}{\lambda}\,X.\)
-    The algebraic relation \(X^2 = \lambda^2 I\) causes the series to collapse into two hyperbolic functions, one for each parity of powers.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Setup.</strong> In the hyperbolic case, \(X\) is a traceless \(2{\times}2\) matrix with real eigenvalues \(\pm\lambda\), satisfying \(X^2 = \lambda^2 I\). The claim is</p>
+        \[ \exp(tX) = \cosh(t\lambda)\,I + \frac{\sinh(t\lambda)}{\lambda}\,X. \]
+      
+        <p style="margin:0 0 10px"><strong>(a) Power series proof.</strong> Since \(X^2 = \lambda^2 I\), powers reduce:</p>
+        \[ X^{2k} = \lambda^{2k}I, \qquad X^{2k+1} = \lambda^{2k}X. \]
+        <p style="margin:0 0 10px">Splitting the exponential series into even and odd powers:</p>
+        \[ \exp(X) = \underbrace{\left(\sum_{k=0}^{\infty}\frac{\lambda^{2k}}{(2k)!}\right)}_{\cosh\lambda}\!I + \underbrace{\left(\sum_{k=0}^{\infty}\frac{\lambda^{2k}}{(2k+1)!}\right)}_{\sinh\lambda/\lambda}\!X = \cosh\lambda\,I + \frac{\sinh\lambda}{\lambda}\,X. \]
+      
+        <!-- Power split visualization -->
+        <figure style="margin:20px 0;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
+          <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:14px;text-align:center">Even / Odd Power Split</figcaption>
+          <svg viewBox="0 0 620 160" style="width:100%;display:block;font-family:'EB Garamond',Georgia,serif" aria-label="The power series splits into even powers giving cosh and odd powers giving sinh">
+            <defs>
+              <marker id="arr2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#555"></path></marker>
+            </defs>
+            <!-- Full series box -->
+            <rect x="10" y="20" width="200" height="120" rx="6" fill="#eef2f8" stroke="#2563a4" stroke-width="1.2"></rect>
+            <text x="110" y="44" text-anchor="middle" font-size="11" font-weight="bold" fill="#2563a4" font-family="'DM Sans',sans-serif" letter-spacing="0.5">FULL SERIES</text>
+            <text x="110" y="68" text-anchor="middle" font-size="13" fill="#1c3358">I + X + X²/2! + X³/3!</text>
+            <text x="110" y="90" text-anchor="middle" font-size="13" fill="#1c3358">+ X⁴/4! + X⁵/5! + ···</text>
+            <text x="110" y="120" text-anchor="middle" font-size="12" fill="#555" font-style="italic">X² = λ²I</text>
+      
+            <!-- Arrows to two branches -->
+            <path d="M210 70 Q280 40 318 40" stroke="#555" stroke-width="1.2" fill="none" marker-end="url(#arr2)"></path>
+            <path d="M210 90 Q280 120 318 120" stroke="#555" stroke-width="1.2" fill="none" marker-end="url(#arr2)"></path>
+      
+            <!-- Even branch -->
+            <rect x="320" y="10" width="140" height="60" rx="6" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.2"></rect>
+            <text x="390" y="32" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a5c3a" font-family="'DM Sans',sans-serif">EVEN POWERS</text>
+            <text x="390" y="52" text-anchor="middle" font-size="13" fill="#1a5c3a">cosh(λ) · I</text>
+      
+            <!-- Odd branch -->
+            <rect x="320" y="90" width="140" height="60" rx="6" fill="#fff0ed" stroke="#8b2500" stroke-width="1.2"></rect>
+            <text x="390" y="112" text-anchor="middle" font-size="11" font-weight="bold" fill="#8b2500" font-family="'DM Sans',sans-serif">ODD POWERS</text>
+            <text x="390" y="133" text-anchor="middle" font-size="13" fill="#8b2500">sinh(λ)/λ · X</text>
+      
+            <!-- Plus sign and result -->
+            <text x="475" y="80" text-anchor="middle" font-size="22" fill="#555">+</text>
+            <rect x="495" y="50" width="118" height="40" rx="6" fill="#fff8f0" stroke="#c07a18" stroke-width="1.5"></rect>
+            <text x="554" y="75" text-anchor="middle" font-size="12" fill="#7a4800" font-weight="bold">exp(X)</text>
+            <line x1="460" y1="40" x2="493" y2="62" stroke="#555" stroke-width="1" marker-end="url(#arr2)"></line>
+            <line x1="460" y1="120" x2="493" y2="78" stroke="#555" stroke-width="1" marker-end="url(#arr2)"></line>
+          </svg>
+        </figure>
+      
+        <p style="margin:0 0 10px"><strong>(b) Diagonalization proof.</strong> Since eigenvalues \(\pm\lambda\) are distinct, write \(X = P\,\mathrm{diag}(\lambda,-\lambda)\,P^{-1}\). Then</p>
+        \[ \exp(X) = P\begin{bmatrix}e^\lambda & 0 \\ 0 & e^{-\lambda}\end{bmatrix}P^{-1}. \]
+        <p style="margin:0 0 10px">One checks directly that \(\cosh\lambda\,I + \frac{\sinh\lambda}{\lambda}\,\mathrm{diag}(\lambda,-\lambda) = \mathrm{diag}(e^\lambda,e^{-\lambda})\), and conjugation by \(P\) gives the result.</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          When \(X^2 = \lambda^2 I\): \(\quad\exp(tX) = \cosh(t\lambda)\,I + \dfrac{\sinh(t\lambda)}{\lambda}\,X.\)
+          The algebraic relation \(X^2 = \lambda^2 I\) causes the series to collapse into two hyperbolic functions, one for each parity of powers.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 3 -->
@@ -550,19 +570,24 @@ figure svg{max-width:100%;height:auto}
     Show that \(\exp(\tau X)\) is orthogonal (resp. unitary) for all \(\tau \in \mathbb{R}\) if and only if \(X\) is skew-symmetric (resp. skew-Hermitian).
   </div>
 
-  <p style="margin:0 0 10px"><strong>Real (orthogonal) case.</strong> We use the identity \(\exp(\tau X)^T = \exp(\tau X^T)\).</p>
-  <p style="margin:0 0 10px"><em>(\(\Rightarrow\))</em> Suppose \(\exp(\tau X)^T\exp(\tau X) = I\) for all \(\tau\). Then \(\exp(\tau X^T)\exp(\tau X) = I\). Differentiating at \(\tau = 0\):</p>
-  \[ X^T + X = 0 \implies X^T = -X. \]
-  <p style="margin:0 0 10px"><em>(\(\Leftarrow\))</em> Suppose \(X^T = -X\). Then</p>
-  \[ \exp(\tau X)^T\exp(\tau X) = \exp(\tau X^T)\exp(\tau X) = \exp(-\tau X)\exp(\tau X) = I. \]
-  <p style="margin:0 0 10px"><strong>Complex (unitary) case.</strong> Identical with \(T\) replaced by \(*\). We get \(\exp(\tau X)\) is unitary for all \(\tau\) iff \(X^* = -X\) (skew-Hermitian).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    \(\exp(\tau X) \in O(n)\) for all \(\tau \in \mathbb{R}\) \(\iff\) \(X^T = -X.\quad\)
-    \(\exp(\tau X) \in U(n)\) for all \(\tau \in \mathbb{R}\) \(\iff\) \(X^* = -X.\)
-    This is the infinitesimal characterization of orthogonal/unitary groups: they are generated by skew-symmetric/skew-Hermitian matrices.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Real (orthogonal) case.</strong> We use the identity \(\exp(\tau X)^T = \exp(\tau X^T)\).</p>
+        <p style="margin:0 0 10px"><em>(\(\Rightarrow\))</em> Suppose \(\exp(\tau X)^T\exp(\tau X) = I\) for all \(\tau\). Then \(\exp(\tau X^T)\exp(\tau X) = I\). Differentiating at \(\tau = 0\):</p>
+        \[ X^T + X = 0 \implies X^T = -X. \]
+        <p style="margin:0 0 10px"><em>(\(\Leftarrow\))</em> Suppose \(X^T = -X\). Then</p>
+        \[ \exp(\tau X)^T\exp(\tau X) = \exp(\tau X^T)\exp(\tau X) = \exp(-\tau X)\exp(\tau X) = I. \]
+        <p style="margin:0 0 10px"><strong>Complex (unitary) case.</strong> Identical with \(T\) replaced by \(*\). We get \(\exp(\tau X)\) is unitary for all \(\tau\) iff \(X^* = -X\) (skew-Hermitian).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          \(\exp(\tau X) \in O(n)\) for all \(\tau \in \mathbb{R}\) \(\iff\) \(X^T = -X.\quad\)
+          \(\exp(\tau X) \in U(n)\) for all \(\tau \in \mathbb{R}\) \(\iff\) \(X^* = -X.\)
+          This is the infinitesimal characterization of orthogonal/unitary groups: they are generated by skew-symmetric/skew-Hermitian matrices.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 4 -->
@@ -578,63 +603,68 @@ figure svg{max-width:100%;height:auto}
     (b) Derive Rodrigues' formula: \(\exp(X) = I + \tfrac{\sin\|x\|}{\|x\|}X + \tfrac{1-\cos\|x\|}{\|x\|^2}X^2.\)
   </div>
 
-  <p style="margin:0 0 10px"><strong>Part (a).</strong> Set \(e_3 = x/\|x\|\) and complete to a right-handed ONB. Since \(x = \|x\|e_3\):</p>
-  \[ Xe_1 = x \times e_1 = \|x\|e_2, \quad Xe_2 = x \times e_2 = -\|x\|e_1, \quad Xe_3 = 0. \]
-  <p style="margin:0 0 10px">In this basis, \(X\) has the block form \(\begin{pmatrix}0 & -\|x\| & 0\\ \|x\| & 0 & 0\\ 0&0&0\end{pmatrix}\). The upper-left block is a skew-symmetric infinitesimal rotation, whose exponential is a rotation by angle \(\|x\|\):</p>
-  \[ \exp(X)e_1 = \cos\|x\|\,e_1 + \sin\|x\|\,e_2, \quad \exp(X)e_2 = -\sin\|x\|\,e_1 + \cos\|x\|\,e_2, \quad \exp(X)e_3 = e_3. \]
-
-  <!-- Rotation visualization -->
-  <figure style="margin:20px 0;padding:20px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
-    <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:12px;text-align:center">Rotation in the e₁–e₂ Plane by Angle ‖x‖</figcaption>
-    <svg viewBox="0 0 400 320" style="width:100%;max-width:400px;display:block;margin:0 auto" aria-label="Rotation of e1 vector by angle norm-x in the e1-e2 plane">
-      <defs>
-        <marker id="arr-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#2563a4"></path></marker>
-        <marker id="arr-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#8b1a2c"></path></marker>
-        <marker id="arr-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1a5c3a"></path></marker>
-      </defs>
-      <!-- Background -->
-      <rect width="400" height="320" fill="#f9f7f4" rx="6"></rect>
-      <!-- Unit circle (dashed) -->
-      <circle cx="200" cy="170" r="105" fill="none" stroke="#c8d5e4" stroke-width="1.5" stroke-dasharray="5 4"></circle>
-      <!-- Axes (thin gray) -->
-      <line x1="60" y1="170" x2="340" y2="170" stroke="#ccc" stroke-width="1"></line>
-      <line x1="200" y1="40" x2="200" y2="300" stroke="#ccc" stroke-width="1"></line>
-      <!-- Axis labels -->
-      <text x="344" y="175" font-size="13" fill="#888" font-style="italic" font-family="'EB Garamond',Georgia,serif">e₁</text>
-      <text x="205" y="38" font-size="13" fill="#888" font-style="italic" font-family="'EB Garamond',Georgia,serif">e₂</text>
-      <!-- e1 vector (blue) -->
-      <line x1="200" y1="170" x2="300" y2="170" stroke="#2563a4" stroke-width="2.5" marker-end="url(#arr-blue)"></line>
-      <text x="240" y="190" font-size="13" fill="#2563a4" font-weight="bold" font-family="'EB Garamond',Georgia,serif">e₁</text>
-      <!-- Rotated e1: angle ≈ 52° (for illustration). cos52≈0.616, sin52≈0.788 -->
-      <!-- endpoint: 200+105*0.616, 170-105*0.788 = 265, 87 -->
-      <line x1="200" y1="170" x2="265" y2="87" stroke="#8b1a2c" stroke-width="2.5" marker-end="url(#arr-red)"></line>
-      <text x="270" y="78" font-size="11.5" fill="#8b1a2c" font-family="'EB Garamond',Georgia,serif">cos‖x‖·e₁+sin‖x‖·e₂</text>
-      <!-- Arc from e1 to rotated -->
-      <path d="M 305 170 A 105 105 0 0 0 265 87" fill="none" stroke="#555" stroke-width="1.4" stroke-dasharray="3 3"></path>
-      <!-- Angle label -->
-      <text x="318" y="140" font-size="13" fill="#555" font-style="italic" font-family="'EB Garamond',Georgia,serif">‖x‖</text>
-      <!-- e3 out-of-page indicator -->
-      <circle cx="58" cy="58" r="14" fill="none" stroke="#1a5c3a" stroke-width="1.5"></circle>
-      <circle cx="58" cy="58" r="3.5" fill="#1a5c3a"></circle>
-      <text x="78" y="55" font-size="12" fill="#1a5c3a" font-style="italic" font-family="'EB Garamond',Georgia,serif">e₃</text>
-      <text x="50" y="82" font-size="10" fill="#888" font-family="'DM Sans',sans-serif">(out of page)</text>
-      <!-- Origin dot -->
-      <circle cx="200" cy="170" r="3.5" fill="#1c3358"></circle>
-      <text x="183" y="186" font-size="12" fill="#555" font-family="'EB Garamond',Georgia,serif">O</text>
-      <!-- Explanation -->
-      <text x="200" y="310" text-anchor="middle" font-size="11.5" fill="#666" font-style="italic" font-family="'EB Garamond',Georgia,serif">exp(X) = right-handed rotation by ‖x‖ around e₃-axis</text>
-    </svg>
-  </figure>
-
-  <p style="margin:0 0 10px"><strong>Part (b) — Rodrigues' Formula.</strong> Let \(a = \|x\|\). From the basis computation, \(X^2 = -a^2\) on the plane perpendicular to \(x\) and \(X^2 = 0\) along \(x\). Furthermore \(X^3 = -a^2 X\). Collecting odd and even powers separately from the series \(\exp(X) = I + X + X^2/2! + \cdots\):</p>
-  \[ \text{Odd:}\quad X - \frac{a^2 X}{3!} + \frac{a^4 X}{5!} - \cdots = \frac{\sin a}{a}X. \]
-  \[ \text{Even (beyond }I\text{):}\quad \frac{X^2}{2!} - \frac{a^2 X^2}{4!} + \cdots = \frac{1-\cos a}{a^2}X^2. \]
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT — RODRIGUES' FORMULA</div>
-    \[\exp(X) = I + \frac{\sin\|x\|}{\|x\|}X + \frac{1-\cos\|x\|}{\|x\|^2}X^2.\]
-    This is the explicit formula for rotation in \(\mathbb{R}^3\) by angle \(\|x\|\) around the axis \(x\). The three terms represent: the fixed component along \(x\), the sine rotation, and the cosine correction.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Part (a).</strong> Set \(e_3 = x/\|x\|\) and complete to a right-handed ONB. Since \(x = \|x\|e_3\):</p>
+        \[ Xe_1 = x \times e_1 = \|x\|e_2, \quad Xe_2 = x \times e_2 = -\|x\|e_1, \quad Xe_3 = 0. \]
+        <p style="margin:0 0 10px">In this basis, \(X\) has the block form \(\begin{pmatrix}0 & -\|x\| & 0\\ \|x\| & 0 & 0\\ 0&0&0\end{pmatrix}\). The upper-left block is a skew-symmetric infinitesimal rotation, whose exponential is a rotation by angle \(\|x\|\):</p>
+        \[ \exp(X)e_1 = \cos\|x\|\,e_1 + \sin\|x\|\,e_2, \quad \exp(X)e_2 = -\sin\|x\|\,e_1 + \cos\|x\|\,e_2, \quad \exp(X)e_3 = e_3. \]
+      
+        <!-- Rotation visualization -->
+        <figure style="margin:20px 0;padding:20px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
+          <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:12px;text-align:center">Rotation in the e₁–e₂ Plane by Angle ‖x‖</figcaption>
+          <svg viewBox="0 0 400 320" style="width:100%;max-width:400px;display:block;margin:0 auto" aria-label="Rotation of e1 vector by angle norm-x in the e1-e2 plane">
+            <defs>
+              <marker id="arr-blue" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#2563a4"></path></marker>
+              <marker id="arr-red" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#8b1a2c"></path></marker>
+              <marker id="arr-green" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1a5c3a"></path></marker>
+            </defs>
+            <!-- Background -->
+            <rect width="400" height="320" fill="#f9f7f4" rx="6"></rect>
+            <!-- Unit circle (dashed) -->
+            <circle cx="200" cy="170" r="105" fill="none" stroke="#c8d5e4" stroke-width="1.5" stroke-dasharray="5 4"></circle>
+            <!-- Axes (thin gray) -->
+            <line x1="60" y1="170" x2="340" y2="170" stroke="#ccc" stroke-width="1"></line>
+            <line x1="200" y1="40" x2="200" y2="300" stroke="#ccc" stroke-width="1"></line>
+            <!-- Axis labels -->
+            <text x="344" y="175" font-size="13" fill="#888" font-style="italic" font-family="'EB Garamond',Georgia,serif">e₁</text>
+            <text x="205" y="38" font-size="13" fill="#888" font-style="italic" font-family="'EB Garamond',Georgia,serif">e₂</text>
+            <!-- e1 vector (blue) -->
+            <line x1="200" y1="170" x2="300" y2="170" stroke="#2563a4" stroke-width="2.5" marker-end="url(#arr-blue)"></line>
+            <text x="240" y="190" font-size="13" fill="#2563a4" font-weight="bold" font-family="'EB Garamond',Georgia,serif">e₁</text>
+            <!-- Rotated e1: angle ≈ 52° (for illustration). cos52≈0.616, sin52≈0.788 -->
+            <!-- endpoint: 200+105*0.616, 170-105*0.788 = 265, 87 -->
+            <line x1="200" y1="170" x2="265" y2="87" stroke="#8b1a2c" stroke-width="2.5" marker-end="url(#arr-red)"></line>
+            <text x="270" y="78" font-size="11.5" fill="#8b1a2c" font-family="'EB Garamond',Georgia,serif">cos‖x‖·e₁+sin‖x‖·e₂</text>
+            <!-- Arc from e1 to rotated -->
+            <path d="M 305 170 A 105 105 0 0 0 265 87" fill="none" stroke="#555" stroke-width="1.4" stroke-dasharray="3 3"></path>
+            <!-- Angle label -->
+            <text x="318" y="140" font-size="13" fill="#555" font-style="italic" font-family="'EB Garamond',Georgia,serif">‖x‖</text>
+            <!-- e3 out-of-page indicator -->
+            <circle cx="58" cy="58" r="14" fill="none" stroke="#1a5c3a" stroke-width="1.5"></circle>
+            <circle cx="58" cy="58" r="3.5" fill="#1a5c3a"></circle>
+            <text x="78" y="55" font-size="12" fill="#1a5c3a" font-style="italic" font-family="'EB Garamond',Georgia,serif">e₃</text>
+            <text x="50" y="82" font-size="10" fill="#888" font-family="'DM Sans',sans-serif">(out of page)</text>
+            <!-- Origin dot -->
+            <circle cx="200" cy="170" r="3.5" fill="#1c3358"></circle>
+            <text x="183" y="186" font-size="12" fill="#555" font-family="'EB Garamond',Georgia,serif">O</text>
+            <!-- Explanation -->
+            <text x="200" y="310" text-anchor="middle" font-size="11.5" fill="#666" font-style="italic" font-family="'EB Garamond',Georgia,serif">exp(X) = right-handed rotation by ‖x‖ around e₃-axis</text>
+          </svg>
+        </figure>
+      
+        <p style="margin:0 0 10px"><strong>Part (b) — Rodrigues' Formula.</strong> Let \(a = \|x\|\). From the basis computation, \(X^2 = -a^2\) on the plane perpendicular to \(x\) and \(X^2 = 0\) along \(x\). Furthermore \(X^3 = -a^2 X\). Collecting odd and even powers separately from the series \(\exp(X) = I + X + X^2/2! + \cdots\):</p>
+        \[ \text{Odd:}\quad X - \frac{a^2 X}{3!} + \frac{a^4 X}{5!} - \cdots = \frac{\sin a}{a}X. \]
+        \[ \text{Even (beyond }I\text{):}\quad \frac{X^2}{2!} - \frac{a^2 X^2}{4!} + \cdots = \frac{1-\cos a}{a^2}X^2. \]
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT — RODRIGUES' FORMULA</div>
+          \[\exp(X) = I + \frac{\sin\|x\|}{\|x\|}X + \frac{1-\cos\|x\|}{\|x\|^2}X^2.\]
+          This is the explicit formula for rotation in \(\mathbb{R}^3\) by angle \(\|x\|\) around the axis \(x\). The three terms represent: the fixed component along \(x\), the sine rotation, and the cosine correction.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 5 -->
@@ -648,69 +678,74 @@ figure svg{max-width:100%;height:auto}
     Show that the exponential of the \(n \times n\) Jordan block \(J\) with eigenvalue \(\lambda\) is the matrix with \(e^\lambda / k!\) on the \(k\)-th superdiagonal.
   </div>
 
-  <p style="margin:0 0 10px"><strong>Decomposition.</strong> Write \(J = \lambda I + N\), where \(N\) is the strictly upper-triangular matrix with 1's on the first superdiagonal. Note that \(\lambda I\) commutes with \(N\) and \(N^n = 0\) (nilpotency). Therefore</p>
-  \[ \exp(J) = \exp(\lambda I)\exp(N) = e^\lambda\exp(N). \]
-  <p style="margin:0 0 10px">Since \(N^n = 0\), the exponential of \(N\) is a finite sum:</p>
-  \[ \exp(N) = I + N + \frac{N^2}{2!} + \cdots + \frac{N^{n-1}}{(n-1)!}. \]
-  <p style="margin:0 0 10px">The matrix \(N^k\) has 1's exactly on the \(k\)-th superdiagonal. Therefore \(\exp(N)\) has \(1/k!\) on the \(k\)-th superdiagonal, giving</p>
-
-  <!-- Jordan block visualization -->
-  <figure style="margin:20px 0;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
-    <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:14px;text-align:center">Structure of J and exp(J) for n = 4</figcaption>
-    <svg viewBox="0 0 600 160" style="width:100%;display:block;font-family:'EB Garamond',Georgia,serif" aria-label="Jordan block J equals lambda I plus N, and its exponential">
-      <defs><marker id="arr3" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#555"></path></marker></defs>
-      <!-- J matrix -->
-      <text x="80" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#1c3358" font-family="'DM Sans',sans-serif">J  =  λI + N</text>
-      <rect x="10" y="35" width="140" height="115" rx="4" fill="#eef2f8" stroke="#2563a4" stroke-width="1.2"></rect>
-      <!-- λ on diagonal -->
-      <text x="30" y="68" font-size="15" fill="#2563a4" font-weight="bold">λ</text>
-      <text x="30" y="100" font-size="13" fill="#555">0</text>
-      <text x="30" y="132" font-size="13" fill="#555">0</text>
-      <!-- row 1 -->
-      <text x="64" y="68" font-size="13" fill="#8b1a2c" font-weight="bold">1</text>
-      <text x="64" y="100" font-size="15" fill="#2563a4" font-weight="bold">λ</text>
-      <text x="64" y="132" font-size="13" fill="#555">0</text>
-      <!-- row 2 -->
-      <text x="98" y="68" font-size="13" fill="#555">0</text>
-      <text x="98" y="100" font-size="13" fill="#8b1a2c" font-weight="bold">1</text>
-      <text x="98" y="132" font-size="15" fill="#2563a4" font-weight="bold">λ</text>
-      <!-- row 3 -->
-      <text x="130" y="68" font-size="13" fill="#555">0</text>
-      <text x="130" y="100" font-size="13" fill="#555">0</text>
-      <text x="130" y="132" font-size="13" fill="#8b1a2c" font-weight="bold">1</text>
-      <!-- λ label -->
-      <text x="22" y="158" font-size="10" fill="#2563a4" font-family="'DM Sans',sans-serif">diagonal: λ</text>
-      <text x="56" y="158" font-size="10" fill="#8b1a2c" font-family="'DM Sans',sans-serif">super: 1</text>
-
-      <!-- Arrow -->
-      <text x="165" y="100" font-size="11" fill="#555" font-family="'DM Sans',sans-serif">exp</text>
-      <line x1="160" y1="92" x2="192" y2="92" stroke="#555" stroke-width="1.5" marker-end="url(#arr3)"></line>
-
-      <!-- exp(J) matrix -->
-      <text x="390" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#1c3358" font-family="'DM Sans',sans-serif">exp(J)  =  e^λ · exp(N)</text>
-      <rect x="200" y="35" width="195" height="115" rx="4" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.2"></rect>
-      <text x="222" y="68" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
-      <text x="222" y="100" font-size="13" fill="#555">0</text>
-      <text x="222" y="132" font-size="13" fill="#555">0</text>
-      <text x="265" y="68" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
-      <text x="265" y="100" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
-      <text x="265" y="132" font-size="13" fill="#555">0</text>
-      <text x="308" y="68" font-size="12" fill="#1a5c3a" font-weight="bold">e^λ/2</text>
-      <text x="308" y="100" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
-      <text x="308" y="132" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
-      <text x="360" y="68" font-size="12" fill="#1a5c3a" font-weight="bold">e^λ/6</text>
-      <text x="360" y="100" font-size="12" fill="#1a5c3a" font-weight="bold">e^λ/2</text>
-      <text x="360" y="132" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
-      <text x="204" y="158" font-size="10" fill="#1a5c3a" font-family="'DM Sans',sans-serif">k-th superdiag: e^λ / k!</text>
-    </svg>
-  </figure>
-
-  \[ \boxed{\exp(J) = e^\lambda\!\left(I + N + \frac{N^2}{2!} + \cdots + \frac{N^{n-1}}{(n-1)!}\right).} \]
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    For a Jordan block \(J = \lambda I + N\) (\(N\) nilpotent, \(N^n = 0\)), the exponential \(\exp(J)\) has \(e^\lambda/k!\) on the \(k\)-th superdiagonal. The decomposition \(J = \lambda I + N\) into commuting summands — one scalar, one nilpotent — is the key algebraic step.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Decomposition.</strong> Write \(J = \lambda I + N\), where \(N\) is the strictly upper-triangular matrix with 1's on the first superdiagonal. Note that \(\lambda I\) commutes with \(N\) and \(N^n = 0\) (nilpotency). Therefore</p>
+        \[ \exp(J) = \exp(\lambda I)\exp(N) = e^\lambda\exp(N). \]
+        <p style="margin:0 0 10px">Since \(N^n = 0\), the exponential of \(N\) is a finite sum:</p>
+        \[ \exp(N) = I + N + \frac{N^2}{2!} + \cdots + \frac{N^{n-1}}{(n-1)!}. \]
+        <p style="margin:0 0 10px">The matrix \(N^k\) has 1's exactly on the \(k\)-th superdiagonal. Therefore \(\exp(N)\) has \(1/k!\) on the \(k\)-th superdiagonal, giving</p>
+      
+        <!-- Jordan block visualization -->
+        <figure style="margin:20px 0;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
+          <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:14px;text-align:center">Structure of J and exp(J) for n = 4</figcaption>
+          <svg viewBox="0 0 600 160" style="width:100%;display:block;font-family:'EB Garamond',Georgia,serif" aria-label="Jordan block J equals lambda I plus N, and its exponential">
+            <defs><marker id="arr3" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#555"></path></marker></defs>
+            <!-- J matrix -->
+            <text x="80" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#1c3358" font-family="'DM Sans',sans-serif">J  =  λI + N</text>
+            <rect x="10" y="35" width="140" height="115" rx="4" fill="#eef2f8" stroke="#2563a4" stroke-width="1.2"></rect>
+            <!-- λ on diagonal -->
+            <text x="30" y="68" font-size="15" fill="#2563a4" font-weight="bold">λ</text>
+            <text x="30" y="100" font-size="13" fill="#555">0</text>
+            <text x="30" y="132" font-size="13" fill="#555">0</text>
+            <!-- row 1 -->
+            <text x="64" y="68" font-size="13" fill="#8b1a2c" font-weight="bold">1</text>
+            <text x="64" y="100" font-size="15" fill="#2563a4" font-weight="bold">λ</text>
+            <text x="64" y="132" font-size="13" fill="#555">0</text>
+            <!-- row 2 -->
+            <text x="98" y="68" font-size="13" fill="#555">0</text>
+            <text x="98" y="100" font-size="13" fill="#8b1a2c" font-weight="bold">1</text>
+            <text x="98" y="132" font-size="15" fill="#2563a4" font-weight="bold">λ</text>
+            <!-- row 3 -->
+            <text x="130" y="68" font-size="13" fill="#555">0</text>
+            <text x="130" y="100" font-size="13" fill="#555">0</text>
+            <text x="130" y="132" font-size="13" fill="#8b1a2c" font-weight="bold">1</text>
+            <!-- λ label -->
+            <text x="22" y="158" font-size="10" fill="#2563a4" font-family="'DM Sans',sans-serif">diagonal: λ</text>
+            <text x="56" y="158" font-size="10" fill="#8b1a2c" font-family="'DM Sans',sans-serif">super: 1</text>
+      
+            <!-- Arrow -->
+            <text x="165" y="100" font-size="11" fill="#555" font-family="'DM Sans',sans-serif">exp</text>
+            <line x1="160" y1="92" x2="192" y2="92" stroke="#555" stroke-width="1.5" marker-end="url(#arr3)"></line>
+      
+            <!-- exp(J) matrix -->
+            <text x="390" y="25" text-anchor="middle" font-size="14" font-weight="bold" fill="#1c3358" font-family="'DM Sans',sans-serif">exp(J)  =  e^λ · exp(N)</text>
+            <rect x="200" y="35" width="195" height="115" rx="4" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.2"></rect>
+            <text x="222" y="68" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
+            <text x="222" y="100" font-size="13" fill="#555">0</text>
+            <text x="222" y="132" font-size="13" fill="#555">0</text>
+            <text x="265" y="68" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
+            <text x="265" y="100" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
+            <text x="265" y="132" font-size="13" fill="#555">0</text>
+            <text x="308" y="68" font-size="12" fill="#1a5c3a" font-weight="bold">e^λ/2</text>
+            <text x="308" y="100" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
+            <text x="308" y="132" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
+            <text x="360" y="68" font-size="12" fill="#1a5c3a" font-weight="bold">e^λ/6</text>
+            <text x="360" y="100" font-size="12" fill="#1a5c3a" font-weight="bold">e^λ/2</text>
+            <text x="360" y="132" font-size="14" fill="#1a5c3a" font-weight="bold">e^λ</text>
+            <text x="204" y="158" font-size="10" fill="#1a5c3a" font-family="'DM Sans',sans-serif">k-th superdiag: e^λ / k!</text>
+          </svg>
+        </figure>
+      
+        \[ \boxed{\exp(J) = e^\lambda\!\left(I + N + \frac{N^2}{2!} + \cdots + \frac{N^{n-1}}{(n-1)!}\right).} \]
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          For a Jordan block \(J = \lambda I + N\) (\(N\) nilpotent, \(N^n = 0\)), the exponential \(\exp(J)\) has \(e^\lambda/k!\) on the \(k\)-th superdiagonal. The decomposition \(J = \lambda I + N\) into commuting summands — one scalar, one nilpotent — is the key algebraic step.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 6 -->
@@ -724,18 +759,23 @@ figure svg{max-width:100%;height:auto}
     Let \(E\) be the space of polynomials of degree \(\le n{-}1\), and let \(D = d/d\xi\). Show that \(\exp(\tau D)f(\xi) = f(\xi+\tau)\).
   </div>
 
-  <p style="margin:0 0 10px"><em>Proof.</em> Since \(\deg f \le n-1\), we have \(D^n f = 0\). The series terminates:</p>
-  \[ \exp(\tau D)f = f + \tau f' + \frac{\tau^2}{2!}f'' + \cdots + \frac{\tau^{n-1}}{(n-1)!}f^{(n-1)}. \]
-  <p style="margin:0 0 10px">By Taylor's theorem for polynomials, this is exactly</p>
-  \[ f(\xi+\tau) = f(\xi) + \tau f'(\xi) + \frac{\tau^2}{2!}f''(\xi) + \cdots \]
-  <p style="margin:0 0 10px">Therefore \(\exp(\tau D)f(\xi) = f(\xi+\tau)\). The translation operator on polynomials is the exponential of differentiation.</p>
-
-  <p style="margin:0 0 10px"><strong>Connection to Problem 5.</strong> In the basis \(\{1, \xi, \xi^2/2!, \ldots, \xi^{n-1}/(n-1)!\}\), the matrix of \(D\) is a nilpotent Jordan-type matrix with 1's on one off-diagonal — exactly the nilpotent part \(N\) of a Jordan block. Its exponential produces binomial/Taylor shift coefficients, mirroring the \(N\)-part of \(\exp(J)\).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    \(\exp(\tau D)f(\xi) = f(\xi+\tau).\) The exponential of the differentiation operator is translation. This is a functional-analytic instance of the Jordan block exponential, with the shift appearing as the finite Taylor series.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><em>Proof.</em> Since \(\deg f \le n-1\), we have \(D^n f = 0\). The series terminates:</p>
+        \[ \exp(\tau D)f = f + \tau f' + \frac{\tau^2}{2!}f'' + \cdots + \frac{\tau^{n-1}}{(n-1)!}f^{(n-1)}. \]
+        <p style="margin:0 0 10px">By Taylor's theorem for polynomials, this is exactly</p>
+        \[ f(\xi+\tau) = f(\xi) + \tau f'(\xi) + \frac{\tau^2}{2!}f''(\xi) + \cdots \]
+        <p style="margin:0 0 10px">Therefore \(\exp(\tau D)f(\xi) = f(\xi+\tau)\). The translation operator on polynomials is the exponential of differentiation.</p>
+      
+        <p style="margin:0 0 10px"><strong>Connection to Problem 5.</strong> In the basis \(\{1, \xi, \xi^2/2!, \ldots, \xi^{n-1}/(n-1)!\}\), the matrix of \(D\) is a nilpotent Jordan-type matrix with 1's on one off-diagonal — exactly the nilpotent part \(N\) of a Jordan block. Its exponential produces binomial/Taylor shift coefficients, mirroring the \(N\)-part of \(\exp(J)\).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          \(\exp(\tau D)f(\xi) = f(\xi+\tau).\) The exponential of the differentiation operator is translation. This is a functional-analytic instance of the Jordan block exponential, with the shift appearing as the finite Taylor series.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 7 -->
@@ -749,17 +789,22 @@ figure svg{max-width:100%;height:auto}
     Show that \(A = \begin{pmatrix}-1&1\\0&-1\end{pmatrix}\) is not the exponential of any real \(2{\times}2\) matrix.
   </div>
 
-  <p style="margin:0 0 10px"><em>Proof by contradiction.</em> Suppose \(A = e^X\) for some real \(X \in M_2(\mathbb{R})\).</p>
-  <p style="margin:0 0 10px"><strong>Step 1: Eigenvalue constraint.</strong> The only eigenvalue of \(A\) is \(-1\). If \(\mu\) is an eigenvalue of \(X\), then \(e^\mu\) is an eigenvalue of \(e^X = A\), so \(e^\mu = -1\), giving \(\mu = (2k+1)\pi i\) for some integer \(k\).</p>
-  <p style="margin:0 0 10px"><strong>Step 2: Reality forces distinct eigenvalues.</strong> Since \(X\) is real, complex eigenvalues come in conjugate pairs. The only option is \(\mu_1 = (2k+1)\pi i\) and \(\mu_2 = -(2k+1)\pi i\) — which are distinct. So \(X\) must be diagonalizable over \(\mathbb{C}\), and is similar to \(\begin{pmatrix}0&-\theta\\\theta&0\end{pmatrix}\) with \(\theta = (2k+1)\pi\).</p>
-  <p style="margin:0 0 10px"><strong>Step 3: Contradiction.</strong> The exponential of such a matrix is</p>
-  \[ e^X = \begin{pmatrix}\cos\theta & -\sin\theta\\\sin\theta&\cos\theta\end{pmatrix} = \begin{pmatrix}-1&0\\0&-1\end{pmatrix} = -I. \]
-  <p style="margin:0 0 10px">But \(-I\) is diagonalizable, while \(A\) is not (it is a non-trivial Jordan block). Contradiction.</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    The matrix \(A = \begin{pmatrix}-1&1\\0&-1\end{pmatrix}\) is not in the image of \(\exp: M_2(\mathbb{R}) \to M_2(\mathbb{R})\). The obstruction is topological/algebraic: any real \(X\) with \(e^X = -I\) must produce a diagonalizable matrix, but \(A\) is not diagonalizable.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><em>Proof by contradiction.</em> Suppose \(A = e^X\) for some real \(X \in M_2(\mathbb{R})\).</p>
+        <p style="margin:0 0 10px"><strong>Step 1: Eigenvalue constraint.</strong> The only eigenvalue of \(A\) is \(-1\). If \(\mu\) is an eigenvalue of \(X\), then \(e^\mu\) is an eigenvalue of \(e^X = A\), so \(e^\mu = -1\), giving \(\mu = (2k+1)\pi i\) for some integer \(k\).</p>
+        <p style="margin:0 0 10px"><strong>Step 2: Reality forces distinct eigenvalues.</strong> Since \(X\) is real, complex eigenvalues come in conjugate pairs. The only option is \(\mu_1 = (2k+1)\pi i\) and \(\mu_2 = -(2k+1)\pi i\) — which are distinct. So \(X\) must be diagonalizable over \(\mathbb{C}\), and is similar to \(\begin{pmatrix}0&-\theta\\\theta&0\end{pmatrix}\) with \(\theta = (2k+1)\pi\).</p>
+        <p style="margin:0 0 10px"><strong>Step 3: Contradiction.</strong> The exponential of such a matrix is</p>
+        \[ e^X = \begin{pmatrix}\cos\theta & -\sin\theta\\\sin\theta&\cos\theta\end{pmatrix} = \begin{pmatrix}-1&0\\0&-1\end{pmatrix} = -I. \]
+        <p style="margin:0 0 10px">But \(-I\) is diagonalizable, while \(A\) is not (it is a non-trivial Jordan block). Contradiction.</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          The matrix \(A = \begin{pmatrix}-1&1\\0&-1\end{pmatrix}\) is not in the image of \(\exp: M_2(\mathbb{R}) \to M_2(\mathbb{R})\). The obstruction is topological/algebraic: any real \(X\) with \(e^X = -I\) must produce a diagonalizable matrix, but \(A\) is not diagonalizable.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 8 -->
@@ -773,55 +818,60 @@ figure svg{max-width:100%;height:auto}
     Embed \(E\) as \(E^+ = \{(p,1)\} \subset E \times \mathbb{R}\). Show (a) affine maps \(p \mapsto ap+b\) are represented by \(\bigl[\begin{smallmatrix}a&b\\0&1\end{smallmatrix}\bigr]\), and (b) the affine flow generated by \(p \mapsto Xp+v\) is \(p \mapsto \exp(\tau X)p + \tfrac{\exp(\tau X)-I}{X}v\).
   </div>
 
-  <!-- Affine embedding figure -->
-  <figure style="margin:0 0 20px;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
-    <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:14px;text-align:center">Embedding E into E × ℝ as the Hyperplane {(p, 1)}</figcaption>
-    <svg viewBox="0 0 520 200" style="width:100%;display:block;font-family:'EB Garamond',Georgia,serif" aria-label="E embedded as horizontal line at height 1 inside E cross R">
-      <defs><marker id="arr-ax" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="#888"></path></marker></defs>
-      <!-- Axes -->
-      <line x1="40" y1="160" x2="480" y2="160" stroke="#bbb" stroke-width="1.2" marker-end="url(#arr-ax)"></line>
-      <line x1="80" y1="185" x2="80" y2="15" stroke="#bbb" stroke-width="1.2" marker-end="url(#arr-ax)"></line>
-      <text x="488" y="165" font-size="13" fill="#999" font-style="italic">E</text>
-      <text x="85" y="14" font-size="13" fill="#999">ℝ</text>
-      <!-- Height labels -->
-      <text x="54" y="164" font-size="12" fill="#888">0</text>
-      <text x="54" y="84" font-size="12" fill="#888">1</text>
-      <!-- The E line at height 0 (light) -->
-      <line x1="100" y1="160" x2="460" y2="160" stroke="#c8d5e4" stroke-width="2" stroke-dasharray="4 3"></line>
-      <text x="470" y="157" font-size="12" fill="#2563a4" font-style="italic">E</text>
-      <!-- The E+ hyperplane at height 1 -->
-      <line x1="100" y1="80" x2="460" y2="80" stroke="#2563a4" stroke-width="2.5"></line>
-      <text x="360" y="68" font-size="13" fill="#2563a4" font-weight="bold" font-style="italic">E⁺ = {(p, 1)}</text>
-      <!-- A point p on E -->
-      <circle cx="240" cy="160" r="4" fill="#8b1a2c"></circle>
-      <text x="234" y="178" font-size="12" fill="#8b1a2c" font-style="italic">p</text>
-      <!-- The point (p,1) on E+ -->
-      <circle cx="240" cy="80" r="5" fill="#1a5c3a"></circle>
-      <text x="248" y="76" font-size="12" fill="#1a5c3a" font-style="italic">(p, 1)</text>
-      <!-- Dotted vertical connector -->
-      <line x1="240" y1="85" x2="240" y2="155" stroke="#888" stroke-width="1" stroke-dasharray="4 3"></line>
-      <!-- Matrix representation label -->
-      <rect x="355" y="105" width="145" height="50" rx="5" fill="#fff8f0" stroke="#c07a18" stroke-width="1.2"></rect>
-      <text x="428" y="124" text-anchor="middle" font-size="12" fill="#7a4800" font-family="'DM Sans',sans-serif">Acts by</text>
-      <text x="428" y="143" text-anchor="middle" font-size="13" fill="#7a4800">[a b; 0 1] · (p,1)</text>
-    </svg>
-  </figure>
-
-  <p style="margin:0 0 10px"><strong>Part (a).</strong> Identify \(p \in E\) with \((p,1) \in E^+\). Direct computation:</p>
-  \[ \begin{pmatrix}a&b\\0&1\end{pmatrix}\begin{pmatrix}p\\1\end{pmatrix} = \begin{pmatrix}ap+b\\1\end{pmatrix}. \]
-  <p style="margin:0 0 10px">Similarly, the vector field \(p \mapsto Xp+v\) corresponds to \(\bigl[\begin{smallmatrix}X&v\\0&0\end{smallmatrix}\bigr]\) since</p>
-  \[ \begin{pmatrix}X&v\\0&0\end{pmatrix}\begin{pmatrix}p\\1\end{pmatrix} = \begin{pmatrix}Xp+v\\0\end{pmatrix}, \]
-  <p style="margin:0 0 10px">which is tangent to \(E^+\) (last coordinate 0 = constant in \(\tau\)).</p>
-
-  <p style="margin:0 0 10px"><strong>Part (b).</strong> Let \(B = \bigl[\begin{smallmatrix}X&v\\0&0\end{smallmatrix}\bigr]\). Computing powers: \(B^k = \bigl[\begin{smallmatrix}X^k & X^{k-1}v\\0&0\end{smallmatrix}\bigr]\) for \(k \ge 1\). Summing the series:</p>
-  \[ \exp(\tau B) = \begin{pmatrix}\exp(\tau X) & \displaystyle\left(\tau I + \frac{\tau^2}{2!}X + \frac{\tau^3}{3!}X^2+\cdots\right)v\\[4pt] 0 & 1\end{pmatrix} = \begin{pmatrix}\exp(\tau X) & \dfrac{\exp(\tau X)-I}{X}\,v\\[4pt]0&1\end{pmatrix}. \]
-  <p style="margin:0 0 10px">The notation \(\tfrac{\exp(\tau X)-I}{X}\) means the power series \(\tau I + \tfrac{\tau^2}{2}X + \cdots\), valid even if \(X\) is singular. Equivalently, \(\tfrac{\exp(\tau X)-I}{X}v = \int_0^\tau \exp(sX)v\,ds\).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    \[\exp(\tau A) : p \mapsto \exp(\tau X)p + \frac{\exp(\tau X)-I}{X}\,v = \exp(\tau X)p + \int_0^\tau \exp(sX)v\,ds.\]
-    By embedding \(E \hookrightarrow E \times \mathbb{R}\), every affine problem reduces to a linear one in one dimension higher. This is a recurring technique in Lie theory.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <!-- Affine embedding figure -->
+        <figure style="margin:0 0 20px;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
+          <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:14px;text-align:center">Embedding E into E × ℝ as the Hyperplane {(p, 1)}</figcaption>
+          <svg viewBox="0 0 520 200" style="width:100%;display:block;font-family:'EB Garamond',Georgia,serif" aria-label="E embedded as horizontal line at height 1 inside E cross R">
+            <defs><marker id="arr-ax" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="#888"></path></marker></defs>
+            <!-- Axes -->
+            <line x1="40" y1="160" x2="480" y2="160" stroke="#bbb" stroke-width="1.2" marker-end="url(#arr-ax)"></line>
+            <line x1="80" y1="185" x2="80" y2="15" stroke="#bbb" stroke-width="1.2" marker-end="url(#arr-ax)"></line>
+            <text x="488" y="165" font-size="13" fill="#999" font-style="italic">E</text>
+            <text x="85" y="14" font-size="13" fill="#999">ℝ</text>
+            <!-- Height labels -->
+            <text x="54" y="164" font-size="12" fill="#888">0</text>
+            <text x="54" y="84" font-size="12" fill="#888">1</text>
+            <!-- The E line at height 0 (light) -->
+            <line x1="100" y1="160" x2="460" y2="160" stroke="#c8d5e4" stroke-width="2" stroke-dasharray="4 3"></line>
+            <text x="470" y="157" font-size="12" fill="#2563a4" font-style="italic">E</text>
+            <!-- The E+ hyperplane at height 1 -->
+            <line x1="100" y1="80" x2="460" y2="80" stroke="#2563a4" stroke-width="2.5"></line>
+            <text x="360" y="68" font-size="13" fill="#2563a4" font-weight="bold" font-style="italic">E⁺ = {(p, 1)}</text>
+            <!-- A point p on E -->
+            <circle cx="240" cy="160" r="4" fill="#8b1a2c"></circle>
+            <text x="234" y="178" font-size="12" fill="#8b1a2c" font-style="italic">p</text>
+            <!-- The point (p,1) on E+ -->
+            <circle cx="240" cy="80" r="5" fill="#1a5c3a"></circle>
+            <text x="248" y="76" font-size="12" fill="#1a5c3a" font-style="italic">(p, 1)</text>
+            <!-- Dotted vertical connector -->
+            <line x1="240" y1="85" x2="240" y2="155" stroke="#888" stroke-width="1" stroke-dasharray="4 3"></line>
+            <!-- Matrix representation label -->
+            <rect x="355" y="105" width="145" height="50" rx="5" fill="#fff8f0" stroke="#c07a18" stroke-width="1.2"></rect>
+            <text x="428" y="124" text-anchor="middle" font-size="12" fill="#7a4800" font-family="'DM Sans',sans-serif">Acts by</text>
+            <text x="428" y="143" text-anchor="middle" font-size="13" fill="#7a4800">[a b; 0 1] · (p,1)</text>
+          </svg>
+        </figure>
+      
+        <p style="margin:0 0 10px"><strong>Part (a).</strong> Identify \(p \in E\) with \((p,1) \in E^+\). Direct computation:</p>
+        \[ \begin{pmatrix}a&b\\0&1\end{pmatrix}\begin{pmatrix}p\\1\end{pmatrix} = \begin{pmatrix}ap+b\\1\end{pmatrix}. \]
+        <p style="margin:0 0 10px">Similarly, the vector field \(p \mapsto Xp+v\) corresponds to \(\bigl[\begin{smallmatrix}X&v\\0&0\end{smallmatrix}\bigr]\) since</p>
+        \[ \begin{pmatrix}X&v\\0&0\end{pmatrix}\begin{pmatrix}p\\1\end{pmatrix} = \begin{pmatrix}Xp+v\\0\end{pmatrix}, \]
+        <p style="margin:0 0 10px">which is tangent to \(E^+\) (last coordinate 0 = constant in \(\tau\)).</p>
+      
+        <p style="margin:0 0 10px"><strong>Part (b).</strong> Let \(B = \bigl[\begin{smallmatrix}X&v\\0&0\end{smallmatrix}\bigr]\). Computing powers: \(B^k = \bigl[\begin{smallmatrix}X^k & X^{k-1}v\\0&0\end{smallmatrix}\bigr]\) for \(k \ge 1\). Summing the series:</p>
+        \[ \exp(\tau B) = \begin{pmatrix}\exp(\tau X) & \displaystyle\left(\tau I + \frac{\tau^2}{2!}X + \frac{\tau^3}{3!}X^2+\cdots\right)v\\[4pt] 0 & 1\end{pmatrix} = \begin{pmatrix}\exp(\tau X) & \dfrac{\exp(\tau X)-I}{X}\,v\\[4pt]0&1\end{pmatrix}. \]
+        <p style="margin:0 0 10px">The notation \(\tfrac{\exp(\tau X)-I}{X}\) means the power series \(\tau I + \tfrac{\tau^2}{2}X + \cdots\), valid even if \(X\) is singular. Equivalently, \(\tfrac{\exp(\tau X)-I}{X}v = \int_0^\tau \exp(sX)v\,ds\).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          \[\exp(\tau A) : p \mapsto \exp(\tau X)p + \frac{\exp(\tau X)-I}{X}\,v = \exp(\tau X)p + \int_0^\tau \exp(sX)v\,ds.\]
+          By embedding \(E \hookrightarrow E \times \mathbb{R}\), every affine problem reduces to a linear one in one dimension higher. This is a recurring technique in Lie theory.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 9 -->
@@ -835,18 +885,23 @@ figure svg{max-width:100%;height:auto}
     Let \(X \in M\). Show: (a) there is exactly one trajectory of \(X\) through each point; (b) if \(a \in GL(E)\) commutes with \(X\), then \(x \mapsto ax\) permutes the trajectories.
   </div>
 
-  <p style="margin:0 0 10px"><strong>Part (a) — Existence and Uniqueness.</strong> The curve \(p(t) = \exp(tX)p_0\) satisfies \(p'(t) = Xp(t)\) and \(p(0) = p_0\) (existence). For uniqueness, if \(q(t)\) is another solution, define \(r(t) = \exp(-tX)q(t)\). Then</p>
-  \[ r'(t) = -X\exp(-tX)q(t) + \exp(-tX)q'(t) = \exp(-tX)\bigl(-Xq(t) + Xq(t)\bigr) = 0. \]
-  <p style="margin:0 0 10px">So \(r(t)\) is constant, \(r(t) = r(0) = p_0\), hence \(q(t) = \exp(tX)p_0\).</p>
-
-  <p style="margin:0 0 10px"><strong>Part (b) — Permutation by commuting maps.</strong> Suppose \(aX = Xa\). Since \(a\) commutes with \(X\), it commutes with every power of \(X\), hence with \(\exp(tX)\):</p>
-  \[ a\exp(tX) = \exp(tX)a. \]
-  <p style="margin:0 0 10px">Therefore \(a\,p(t) = a\exp(tX)p_0 = \exp(tX)(ap_0)\), which is the trajectory through \(ap_0\). So \(a\) maps the trajectory through \(p_0\) to the trajectory through \(ap_0\).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    The ODE \(\gamma' = X\gamma\), \(\gamma(0) = p_0\) has unique solution \(\gamma(t) = \exp(tX)p_0\). Any invertible \(a\) commuting with \(X\) is a symmetry of the vector field, permuting trajectories.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Part (a) — Existence and Uniqueness.</strong> The curve \(p(t) = \exp(tX)p_0\) satisfies \(p'(t) = Xp(t)\) and \(p(0) = p_0\) (existence). For uniqueness, if \(q(t)\) is another solution, define \(r(t) = \exp(-tX)q(t)\). Then</p>
+        \[ r'(t) = -X\exp(-tX)q(t) + \exp(-tX)q'(t) = \exp(-tX)\bigl(-Xq(t) + Xq(t)\bigr) = 0. \]
+        <p style="margin:0 0 10px">So \(r(t)\) is constant, \(r(t) = r(0) = p_0\), hence \(q(t) = \exp(tX)p_0\).</p>
+      
+        <p style="margin:0 0 10px"><strong>Part (b) — Permutation by commuting maps.</strong> Suppose \(aX = Xa\). Since \(a\) commutes with \(X\), it commutes with every power of \(X\), hence with \(\exp(tX)\):</p>
+        \[ a\exp(tX) = \exp(tX)a. \]
+        <p style="margin:0 0 10px">Therefore \(a\,p(t) = a\exp(tX)p_0 = \exp(tX)(ap_0)\), which is the trajectory through \(ap_0\). So \(a\) maps the trajectory through \(p_0\) to the trajectory through \(ap_0\).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          The ODE \(\gamma' = X\gamma\), \(\gamma(0) = p_0\) has unique solution \(\gamma(t) = \exp(tX)p_0\). Any invertible \(a\) commuting with \(X\) is a symmetry of the vector field, permuting trajectories.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.1 Problem 10 -->
@@ -860,16 +915,21 @@ figure svg{max-width:100%;height:auto}
     Show: (a) \(\exp(\tau X)p = p\) for all \(\tau\) \(\iff\) \(Xp = 0\). (b) If \(\lim_{\tau\to\infty}\exp(\tau X)p_0 = p_\infty\), then \(Xp_\infty = 0\).
   </div>
 
-  <p style="margin:0 0 10px"><strong>Part (a).</strong> <em>(\(\Rightarrow\))</em> If \(\exp(\tau X)p = p\) for all \(\tau\), differentiate at \(\tau = 0\): \(Xp = 0\). <em>(\(\Leftarrow\))</em> If \(Xp = 0\), then \(X^k p = 0\) for all \(k \ge 1\), so \(\exp(\tau X)p = Ip = p\).</p>
-
-  <p style="margin:0 0 10px"><strong>Part (b).</strong> For any fixed \(s \in \mathbb{R}\), use continuity of \(\exp(sX)\) and the group property:</p>
-  \[ \exp(sX)p_\infty = \exp(sX)\lim_{\tau\to\infty}\exp(\tau X)p_0 = \lim_{\tau\to\infty}\exp((s+\tau)X)p_0 = p_\infty, \]
-  <p style="margin:0 0 10px">since \(s + \tau \to \infty\) as \(\tau \to \infty\). By part (a), \(Xp_\infty = 0\).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    <em>Stationary ↔ in kernel.</em> A point \(p\) is stationary under the flow \(\exp(\tau X)\) if and only if \(p \in \ker X\). Moreover, any flow limit is automatically a stationary point — a topological stability fact.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Part (a).</strong> <em>(\(\Rightarrow\))</em> If \(\exp(\tau X)p = p\) for all \(\tau\), differentiate at \(\tau = 0\): \(Xp = 0\). <em>(\(\Leftarrow\))</em> If \(Xp = 0\), then \(X^k p = 0\) for all \(k \ge 1\), so \(\exp(\tau X)p = Ip = p\).</p>
+      
+        <p style="margin:0 0 10px"><strong>Part (b).</strong> For any fixed \(s \in \mathbb{R}\), use continuity of \(\exp(sX)\) and the group property:</p>
+        \[ \exp(sX)p_\infty = \exp(sX)\lim_{\tau\to\infty}\exp(\tau X)p_0 = \lim_{\tau\to\infty}\exp((s+\tau)X)p_0 = p_\infty, \]
+        <p style="margin:0 0 10px">since \(s + \tau \to \infty\) as \(\tau \to \infty\). By part (a), \(Xp_\infty = 0\).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          <em>Stationary ↔ in kernel.</em> A point \(p\) is stationary under the flow \(\exp(\tau X)\) if and only if \(p \in \ker X\). Moreover, any flow limit is automatically a stationary point — a topological stability fact.
+        </div>
+    </div>
+  </details>
 </article>
 
 </section>
@@ -928,19 +988,24 @@ figure svg{max-width:100%;height:auto}
     Show that \(X \mapsto \exp X\) maps nilpotent matrices bijectively onto unipotent matrices, with inverse \(a \mapsto \log a\).
   </div>
 
-  <p style="margin:0 0 10px"><strong>Nilpotent → Unipotent.</strong> Let \(X^k = 0\). The series terminates: \(\exp X = I + X + \cdots + X^{k-1}/(k-1)!\,=: I + N.\) Then \(N\) is a polynomial in \(X\) with zero constant term, hence nilpotent. Therefore \((\exp X - I)^m = N^m = 0\) for some \(m\), so \(\exp X\) is unipotent.</p>
-
-  <p style="margin:0 0 10px"><strong>Unipotent → Nilpotent via log.</strong> Let \(a = I + N\) with \(N^k = 0\). Define</p>
-  \[ \log a = \log(I+N) = N - \frac{N^2}{2} + \frac{N^3}{3} - \cdots \]
-  <p style="margin:0 0 10px">The series terminates since \(N^k = 0\). The result is nilpotent (polynomial in \(N\) with zero constant term).</p>
-  <p style="margin:0 0 10px"><strong>Bijection.</strong> The formal power series identities \(\exp(\log(1+z)) = 1+z\) and \(\log(\exp z) = z\) hold as polynomials when \(N\) is nilpotent, confirming \(\exp\) and \(\log\) are mutually inverse.</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    \(\exp\) and \(\log\) restrict to mutually inverse bijections:
-    \[\{\text{nilpotent matrices}\} \;\xleftrightarrow[\log]{\exp}\; \{\text{unipotent matrices}\}.\]
-    Both series are finite when restricted to this domain, making the bijection algebraic (no convergence needed beyond nilpotency).
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Nilpotent → Unipotent.</strong> Let \(X^k = 0\). The series terminates: \(\exp X = I + X + \cdots + X^{k-1}/(k-1)!\,=: I + N.\) Then \(N\) is a polynomial in \(X\) with zero constant term, hence nilpotent. Therefore \((\exp X - I)^m = N^m = 0\) for some \(m\), so \(\exp X\) is unipotent.</p>
+      
+        <p style="margin:0 0 10px"><strong>Unipotent → Nilpotent via log.</strong> Let \(a = I + N\) with \(N^k = 0\). Define</p>
+        \[ \log a = \log(I+N) = N - \frac{N^2}{2} + \frac{N^3}{3} - \cdots \]
+        <p style="margin:0 0 10px">The series terminates since \(N^k = 0\). The result is nilpotent (polynomial in \(N\) with zero constant term).</p>
+        <p style="margin:0 0 10px"><strong>Bijection.</strong> The formal power series identities \(\exp(\log(1+z)) = 1+z\) and \(\log(\exp z) = z\) hold as polynomials when \(N\) is nilpotent, confirming \(\exp\) and \(\log\) are mutually inverse.</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          \(\exp\) and \(\log\) restrict to mutually inverse bijections:
+          \[\{\text{nilpotent matrices}\} \;\xleftrightarrow[\log]{\exp}\; \{\text{unipotent matrices}\}.\]
+          Both series are finite when restricted to this domain, making the bijection algebraic (no convergence needed beyond nilpotency).
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 2 -->
@@ -954,16 +1019,21 @@ figure svg{max-width:100%;height:auto}
     Show: (a) exp maps semisimple matrices to semisimple matrices. (b) Every invertible semisimple matrix is an exponential of a semisimple matrix. (c) Characterize when two semisimple matrices have the same exponential.
   </div>
 
-  <p style="margin:0 0 10px"><strong>Part (a).</strong> Let \(X = PDP^{-1}\) with \(D = \mathrm{diag}(\lambda_1,\ldots,\lambda_n)\). Then \(\exp X = P\,\mathrm{diag}(e^{\lambda_1},\ldots,e^{\lambda_n})\,P^{-1}\) is diagonal in the same basis, hence semisimple.</p>
-
-  <p style="margin:0 0 10px"><strong>Part (b).</strong> Let \(a = PDP^{-1}\) be invertible semisimple, \(D = \mathrm{diag}(\mu_1,\ldots,\mu_n)\) with \(\mu_j \neq 0\). Choose logarithms \(\lambda_j\) with \(e^{\lambda_j} = \mu_j\), using the same branch for equal \(\mu_j\). Set \(X = P\,\mathrm{diag}(\lambda_1,\ldots,\lambda_n)\,P^{-1}\). Then \(X\) is semisimple and \(\exp X = a\). Moreover the \(\lambda_j\) can be chosen so no two distinct eigenvalues of \(X\) differ by a nonzero multiple of \(2\pi i\).</p>
-
-  <p style="margin:0 0 10px"><strong>Part (c).</strong> If \(X, X'\) are both semisimple with the \(2\pi i\) separation condition (no two distinct eigenvalues differing by \(2\pi i k\)) and \(\exp X = \exp X'\), then \(X\) and \(X'\) have the same eigenspaces. Being simultaneously diagonalizable, their eigenvalues satisfy \(\lambda_j' - \lambda_j \in 2\pi i \mathbb{Z}\), i.e., \(-iX\) and \(-iX'\) have diagonals differing by multiples of \(2\pi\).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    Semisimplicity is preserved by \(\exp\). Every invertible semisimple matrix is an exponential. The ambiguity in the semisimple logarithm is exactly the \(2\pi i\mathbb{Z}\) freedom in choosing the branch of log for each eigenvalue.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Part (a).</strong> Let \(X = PDP^{-1}\) with \(D = \mathrm{diag}(\lambda_1,\ldots,\lambda_n)\). Then \(\exp X = P\,\mathrm{diag}(e^{\lambda_1},\ldots,e^{\lambda_n})\,P^{-1}\) is diagonal in the same basis, hence semisimple.</p>
+      
+        <p style="margin:0 0 10px"><strong>Part (b).</strong> Let \(a = PDP^{-1}\) be invertible semisimple, \(D = \mathrm{diag}(\mu_1,\ldots,\mu_n)\) with \(\mu_j \neq 0\). Choose logarithms \(\lambda_j\) with \(e^{\lambda_j} = \mu_j\), using the same branch for equal \(\mu_j\). Set \(X = P\,\mathrm{diag}(\lambda_1,\ldots,\lambda_n)\,P^{-1}\). Then \(X\) is semisimple and \(\exp X = a\). Moreover the \(\lambda_j\) can be chosen so no two distinct eigenvalues of \(X\) differ by a nonzero multiple of \(2\pi i\).</p>
+      
+        <p style="margin:0 0 10px"><strong>Part (c).</strong> If \(X, X'\) are both semisimple with the \(2\pi i\) separation condition (no two distinct eigenvalues differing by \(2\pi i k\)) and \(\exp X = \exp X'\), then \(X\) and \(X'\) have the same eigenspaces. Being simultaneously diagonalizable, their eigenvalues satisfy \(\lambda_j' - \lambda_j \in 2\pi i \mathbb{Z}\), i.e., \(-iX\) and \(-iX'\) have diagonals differing by multiples of \(2\pi\).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          Semisimplicity is preserved by \(\exp\). Every invertible semisimple matrix is an exponential. The ambiguity in the semisimple logarithm is exactly the \(2\pi i\mathbb{Z}\) freedom in choosing the branch of log for each eigenvalue.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 3 -->
@@ -977,67 +1047,72 @@ figure svg{max-width:100%;height:auto}
     Show: (a) Every invertible \(a\) writes uniquely as \(a = bc\) with \(b\) semisimple, \(c\) unipotent, \(bc=cb\). (b) If \(X = Y+Z\) is the (additive) Jordan decomposition, then \(\exp X = \exp Y \cdot \exp Z\) is the multiplicative Jordan decomposition.
   </div>
 
-  <!-- Jordan decomposition commutative diagram -->
-  <figure style="margin:16px 0 20px;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
-    <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:16px;text-align:center">Jordan Decomposition via exp — Commutative Diagram</figcaption>
-    <svg viewBox="0 0 540 180" style="width:100%;max-width:540px;display:block;margin:0 auto;font-family:'EB Garamond',Georgia,serif" aria-label="Commutative diagram showing additive Jordan decomposition on top and multiplicative below, connected by exp">
-      <defs>
-        <marker id="arr-d" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#555"></path></marker>
-      </defs>
-      <!-- Top row: X = Y + Z -->
-      <rect x="10" y="20" width="120" height="55" rx="6" fill="#e8eef7" stroke="#2563a4" stroke-width="1.3"></rect>
-      <text x="70" y="44" text-anchor="middle" font-size="16" font-style="italic" fill="#1c3358">X</text>
-      <text x="70" y="64" text-anchor="middle" font-size="11" fill="#2563a4" font-family="'DM Sans',sans-serif">(general)</text>
-
-      <text x="235" y="50" text-anchor="middle" font-size="13" fill="#555">=</text>
-
-      <rect x="255" y="20" width="120" height="55" rx="6" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.3"></rect>
-      <text x="315" y="44" text-anchor="middle" font-size="16" font-style="italic" fill="#1a5c3a">Y</text>
-      <text x="315" y="64" text-anchor="middle" font-size="11" fill="#1a5c3a" font-family="'DM Sans',sans-serif">(semisimple)</text>
-
-      <text x="400" y="50" text-anchor="middle" font-size="13" fill="#555">+</text>
-
-      <rect x="415" y="20" width="120" height="55" rx="6" fill="#fff0ed" stroke="#8b1a2c" stroke-width="1.3"></rect>
-      <text x="475" y="44" text-anchor="middle" font-size="16" font-style="italic" fill="#8b1a2c">Z</text>
-      <text x="475" y="64" text-anchor="middle" font-size="11" fill="#8b1a2c" font-family="'DM Sans',sans-serif">(nilpotent)</text>
-
-      <!-- Vertical exp arrows -->
-      <line x1="70" y1="75" x2="70" y2="115" stroke="#555" stroke-width="1.5" marker-end="url(#arr-d)"></line>
-      <text x="78" y="100" font-size="11" fill="#555" font-family="'DM Sans',sans-serif">exp</text>
-      <line x1="315" y1="75" x2="315" y2="115" stroke="#1a5c3a" stroke-width="1.5" marker-end="url(#arr-d)"></line>
-      <text x="323" y="100" font-size="11" fill="#1a5c3a" font-family="'DM Sans',sans-serif">exp</text>
-      <line x1="475" y1="75" x2="475" y2="115" stroke="#8b1a2c" stroke-width="1.5" marker-end="url(#arr-d)"></line>
-      <text x="483" y="100" font-size="11" fill="#8b1a2c" font-family="'DM Sans',sans-serif">exp</text>
-
-      <!-- Bottom row: exp(X) = exp(Y) · exp(Z) -->
-      <rect x="10" y="115" width="120" height="55" rx="6" fill="#e8eef7" stroke="#2563a4" stroke-width="1.3"></rect>
-      <text x="70" y="143" text-anchor="middle" font-size="14" fill="#1c3358">exp(X)</text>
-      <text x="70" y="161" text-anchor="middle" font-size="11" fill="#2563a4" font-family="'DM Sans',sans-serif">(invertible)</text>
-
-      <text x="235" y="145" text-anchor="middle" font-size="13" fill="#555">=</text>
-
-      <rect x="255" y="115" width="120" height="55" rx="6" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.3"></rect>
-      <text x="315" y="143" text-anchor="middle" font-size="14" fill="#1a5c3a">exp(Y)</text>
-      <text x="315" y="161" text-anchor="middle" font-size="11" fill="#1a5c3a" font-family="'DM Sans',sans-serif">(semisimple)</text>
-
-      <text x="400" y="145" text-anchor="middle" font-size="13" fill="#555">·</text>
-
-      <rect x="415" y="115" width="120" height="55" rx="6" fill="#fff0ed" stroke="#8b1a2c" stroke-width="1.3"></rect>
-      <text x="475" y="143" text-anchor="middle" font-size="14" fill="#8b1a2c">exp(Z)</text>
-      <text x="475" y="161" text-anchor="middle" font-size="11" fill="#8b1a2c" font-family="'DM Sans',sans-serif">(unipotent)</text>
-    </svg>
-  </figure>
-
-  <p style="margin:0 0 10px"><strong>Part (a) — Multiplicative Jordan decomposition.</strong> For invertible \(a\), write \(a = b + n\) (additive Jordan, \(b\) semisimple, \(n\) nilpotent, commuting). Since \(a\) is invertible, \(b\) is invertible. Set \(c = b^{-1}a = I + b^{-1}n\). Then \(b^{-1}n\) is nilpotent, so \(c\) is unipotent, \(a = bc\), and \(bc = cb\). Uniqueness follows from uniqueness of the additive Jordan decomposition. Both \(b\) and \(c\) are polynomials in \(a\).</p>
-
-  <p style="margin:0 0 10px"><strong>Part (b) — Exponential intertwines decompositions.</strong> If \(X = Y + Z\) (semisimple \(Y\), nilpotent \(Z\), \(YZ = ZY\)), then \(\exp X = \exp(Y+Z) = \exp Y\exp Z\). By Problems 1 and 2, \(\exp Y\) is semisimple and \(\exp Z\) is unipotent and they commute. This is exactly the multiplicative Jordan decomposition of \(\exp X\).</p>
-
-  <p style="margin:0 0 10px"><strong>Part (c) — Uniqueness criterion.</strong> Under the \(2\pi i\) separation condition on eigenvalues of \(X\): \(\exp X = \exp X'\) iff \(Z = Z'\) (nilpotent parts agree) and \(Y, Y'\) are simultaneously diagonalizable with eigenvalue differences in \(2\pi i\mathbb{Z}\). The nilpotent part is completely rigid; only the semisimple logarithm has the branch ambiguity.</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    \(\exp(Y + Z) = \exp(Y)\cdot\exp(Z)\) converts the additive Jordan decomposition \(X = Y + Z\) into the multiplicative decomposition \(\exp(X) = \exp(Y)\cdot\exp(Z)\), mapping semisimple to semisimple and nilpotent to unipotent.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <!-- Jordan decomposition commutative diagram -->
+        <figure style="margin:16px 0 20px;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
+          <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:16px;text-align:center">Jordan Decomposition via exp — Commutative Diagram</figcaption>
+          <svg viewBox="0 0 540 180" style="width:100%;max-width:540px;display:block;margin:0 auto;font-family:'EB Garamond',Georgia,serif" aria-label="Commutative diagram showing additive Jordan decomposition on top and multiplicative below, connected by exp">
+            <defs>
+              <marker id="arr-d" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#555"></path></marker>
+            </defs>
+            <!-- Top row: X = Y + Z -->
+            <rect x="10" y="20" width="120" height="55" rx="6" fill="#e8eef7" stroke="#2563a4" stroke-width="1.3"></rect>
+            <text x="70" y="44" text-anchor="middle" font-size="16" font-style="italic" fill="#1c3358">X</text>
+            <text x="70" y="64" text-anchor="middle" font-size="11" fill="#2563a4" font-family="'DM Sans',sans-serif">(general)</text>
+      
+            <text x="235" y="50" text-anchor="middle" font-size="13" fill="#555">=</text>
+      
+            <rect x="255" y="20" width="120" height="55" rx="6" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.3"></rect>
+            <text x="315" y="44" text-anchor="middle" font-size="16" font-style="italic" fill="#1a5c3a">Y</text>
+            <text x="315" y="64" text-anchor="middle" font-size="11" fill="#1a5c3a" font-family="'DM Sans',sans-serif">(semisimple)</text>
+      
+            <text x="400" y="50" text-anchor="middle" font-size="13" fill="#555">+</text>
+      
+            <rect x="415" y="20" width="120" height="55" rx="6" fill="#fff0ed" stroke="#8b1a2c" stroke-width="1.3"></rect>
+            <text x="475" y="44" text-anchor="middle" font-size="16" font-style="italic" fill="#8b1a2c">Z</text>
+            <text x="475" y="64" text-anchor="middle" font-size="11" fill="#8b1a2c" font-family="'DM Sans',sans-serif">(nilpotent)</text>
+      
+            <!-- Vertical exp arrows -->
+            <line x1="70" y1="75" x2="70" y2="115" stroke="#555" stroke-width="1.5" marker-end="url(#arr-d)"></line>
+            <text x="78" y="100" font-size="11" fill="#555" font-family="'DM Sans',sans-serif">exp</text>
+            <line x1="315" y1="75" x2="315" y2="115" stroke="#1a5c3a" stroke-width="1.5" marker-end="url(#arr-d)"></line>
+            <text x="323" y="100" font-size="11" fill="#1a5c3a" font-family="'DM Sans',sans-serif">exp</text>
+            <line x1="475" y1="75" x2="475" y2="115" stroke="#8b1a2c" stroke-width="1.5" marker-end="url(#arr-d)"></line>
+            <text x="483" y="100" font-size="11" fill="#8b1a2c" font-family="'DM Sans',sans-serif">exp</text>
+      
+            <!-- Bottom row: exp(X) = exp(Y) · exp(Z) -->
+            <rect x="10" y="115" width="120" height="55" rx="6" fill="#e8eef7" stroke="#2563a4" stroke-width="1.3"></rect>
+            <text x="70" y="143" text-anchor="middle" font-size="14" fill="#1c3358">exp(X)</text>
+            <text x="70" y="161" text-anchor="middle" font-size="11" fill="#2563a4" font-family="'DM Sans',sans-serif">(invertible)</text>
+      
+            <text x="235" y="145" text-anchor="middle" font-size="13" fill="#555">=</text>
+      
+            <rect x="255" y="115" width="120" height="55" rx="6" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.3"></rect>
+            <text x="315" y="143" text-anchor="middle" font-size="14" fill="#1a5c3a">exp(Y)</text>
+            <text x="315" y="161" text-anchor="middle" font-size="11" fill="#1a5c3a" font-family="'DM Sans',sans-serif">(semisimple)</text>
+      
+            <text x="400" y="145" text-anchor="middle" font-size="13" fill="#555">·</text>
+      
+            <rect x="415" y="115" width="120" height="55" rx="6" fill="#fff0ed" stroke="#8b1a2c" stroke-width="1.3"></rect>
+            <text x="475" y="143" text-anchor="middle" font-size="14" fill="#8b1a2c">exp(Z)</text>
+            <text x="475" y="161" text-anchor="middle" font-size="11" fill="#8b1a2c" font-family="'DM Sans',sans-serif">(unipotent)</text>
+          </svg>
+        </figure>
+      
+        <p style="margin:0 0 10px"><strong>Part (a) — Multiplicative Jordan decomposition.</strong> For invertible \(a\), write \(a = b + n\) (additive Jordan, \(b\) semisimple, \(n\) nilpotent, commuting). Since \(a\) is invertible, \(b\) is invertible. Set \(c = b^{-1}a = I + b^{-1}n\). Then \(b^{-1}n\) is nilpotent, so \(c\) is unipotent, \(a = bc\), and \(bc = cb\). Uniqueness follows from uniqueness of the additive Jordan decomposition. Both \(b\) and \(c\) are polynomials in \(a\).</p>
+      
+        <p style="margin:0 0 10px"><strong>Part (b) — Exponential intertwines decompositions.</strong> If \(X = Y + Z\) (semisimple \(Y\), nilpotent \(Z\), \(YZ = ZY\)), then \(\exp X = \exp(Y+Z) = \exp Y\exp Z\). By Problems 1 and 2, \(\exp Y\) is semisimple and \(\exp Z\) is unipotent and they commute. This is exactly the multiplicative Jordan decomposition of \(\exp X\).</p>
+      
+        <p style="margin:0 0 10px"><strong>Part (c) — Uniqueness criterion.</strong> Under the \(2\pi i\) separation condition on eigenvalues of \(X\): \(\exp X = \exp X'\) iff \(Z = Z'\) (nilpotent parts agree) and \(Y, Y'\) are simultaneously diagonalizable with eigenvalue differences in \(2\pi i\mathbb{Z}\). The nilpotent part is completely rigid; only the semisimple logarithm has the branch ambiguity.</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          \(\exp(Y + Z) = \exp(Y)\cdot\exp(Z)\) converts the additive Jordan decomposition \(X = Y + Z\) into the multiplicative decomposition \(\exp(X) = \exp(Y)\cdot\exp(Z)\), mapping semisimple to semisimple and nilpotent to unipotent.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 4 -->
@@ -1051,18 +1126,23 @@ figure svg{max-width:100%;height:auto}
     Show that every Jordan block \(J\) with \(\lambda \neq 0\) is a complex exponential, and deduce that every invertible complex matrix is an exponential.
   </div>
 
-  <p style="margin:0 0 10px"><strong>Jordan block.</strong> Write \(J = \lambda I + N\) with \(N\) nilpotent. Since \(\lambda \neq 0\), choose \(\mu \in \mathbb{C}\) with \(e^\mu = \lambda\). The matrix \(\lambda^{-1}N\) is nilpotent, so \(\log(I + \lambda^{-1}N)\) is a finite sum. Define</p>
-  \[ X = \mu I + \log(I + \lambda^{-1}N). \]
-  <p style="margin:0 0 10px">Since \(\mu I\) commutes with the logarithm:</p>
-  \[ \exp(X) = e^\mu I \cdot (I + \lambda^{-1}N) = \lambda I + N = J. \]
-
-  <p style="margin:0 0 10px"><strong>General invertible matrix.</strong> By Jordan canonical form, \(A = P\,\mathrm{diag}(J_1,\ldots,J_r)\,P^{-1}\) with each \(J_i\) having nonzero eigenvalue. Choose \(X_i\) with \(\exp(X_i) = J_i\). Then</p>
-  \[ \exp\!\left(P\,\mathrm{diag}(X_1,\ldots,X_r)\,P^{-1}\right) = P\,\mathrm{diag}(e^{X_1},\ldots,e^{X_r})\,P^{-1} = A. \]
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    Over \(\mathbb{C}\), \(\exp: M_n(\mathbb{C}) \to GL_n(\mathbb{C})\) is surjective. Every invertible complex matrix has a logarithm. (Over \(\mathbb{R}\) this fails — Problem §1.1·7 gives a counterexample.)
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Jordan block.</strong> Write \(J = \lambda I + N\) with \(N\) nilpotent. Since \(\lambda \neq 0\), choose \(\mu \in \mathbb{C}\) with \(e^\mu = \lambda\). The matrix \(\lambda^{-1}N\) is nilpotent, so \(\log(I + \lambda^{-1}N)\) is a finite sum. Define</p>
+        \[ X = \mu I + \log(I + \lambda^{-1}N). \]
+        <p style="margin:0 0 10px">Since \(\mu I\) commutes with the logarithm:</p>
+        \[ \exp(X) = e^\mu I \cdot (I + \lambda^{-1}N) = \lambda I + N = J. \]
+      
+        <p style="margin:0 0 10px"><strong>General invertible matrix.</strong> By Jordan canonical form, \(A = P\,\mathrm{diag}(J_1,\ldots,J_r)\,P^{-1}\) with each \(J_i\) having nonzero eigenvalue. Choose \(X_i\) with \(\exp(X_i) = J_i\). Then</p>
+        \[ \exp\!\left(P\,\mathrm{diag}(X_1,\ldots,X_r)\,P^{-1}\right) = P\,\mathrm{diag}(e^{X_1},\ldots,e^{X_r})\,P^{-1} = A. \]
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          Over \(\mathbb{C}\), \(\exp: M_n(\mathbb{C}) \to GL_n(\mathbb{C})\) is surjective. Every invertible complex matrix has a logarithm. (Over \(\mathbb{R}\) this fails — Problem §1.1·7 gives a counterexample.)
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 5 -->
@@ -1076,13 +1156,18 @@ figure svg{max-width:100%;height:auto}
     Show that \(A = \begin{pmatrix}-1&1\\0&-1\end{pmatrix}\) has \(\det A = 1\) but is not \(\exp X\) for any trace-zero \(X\).
   </div>
 
-  <p style="margin:0 0 10px"><strong>Setup.</strong> Indeed \(\det A = 1\). The formula \(\det(\exp X) = e^{\operatorname{tr}X}\) means \(\operatorname{tr}X = 0\) would give \(\det(\exp X) = 1\), consistent — so there is no determinant obstruction. The obstruction is structural.</p>
-  <p style="margin:0 0 10px"><strong>Eigenvalue argument.</strong> Suppose \(A = \exp X\) with \(\operatorname{tr}X = 0\). Any eigenvalue \(\mu\) of \(X\) satisfies \(e^\mu = -1\), so \(\mu = (2k+1)\pi i\). With \(\operatorname{tr}X = \mu_1 + \mu_2 = 0\), we need \(\mu_2 = -\mu_1\): distinct eigenvalues \(\pm(2k+1)\pi i\). So \(X\) is diagonalizable over \(\mathbb{C}\), hence \(\exp X\) is also diagonalizable — but \(A\) is a non-trivial Jordan block and not diagonalizable. Contradiction.</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    \(\det A = 1\) is necessary but not sufficient for \(A \in \exp(\mathfrak{sl}_n)\). The matrix \(A = \begin{pmatrix}-1&1\\0&-1\end{pmatrix}\) has determinant 1 yet is not the exponential of any trace-zero matrix, whether real or complex.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Setup.</strong> Indeed \(\det A = 1\). The formula \(\det(\exp X) = e^{\operatorname{tr}X}\) means \(\operatorname{tr}X = 0\) would give \(\det(\exp X) = 1\), consistent — so there is no determinant obstruction. The obstruction is structural.</p>
+        <p style="margin:0 0 10px"><strong>Eigenvalue argument.</strong> Suppose \(A = \exp X\) with \(\operatorname{tr}X = 0\). Any eigenvalue \(\mu\) of \(X\) satisfies \(e^\mu = -1\), so \(\mu = (2k+1)\pi i\). With \(\operatorname{tr}X = \mu_1 + \mu_2 = 0\), we need \(\mu_2 = -\mu_1\): distinct eigenvalues \(\pm(2k+1)\pi i\). So \(X\) is diagonalizable over \(\mathbb{C}\), hence \(\exp X\) is also diagonalizable — but \(A\) is a non-trivial Jordan block and not diagonalizable. Contradiction.</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          \(\det A = 1\) is necessary but not sufficient for \(A \in \exp(\mathfrak{sl}_n)\). The matrix \(A = \begin{pmatrix}-1&1\\0&-1\end{pmatrix}\) has determinant 1 yet is not the exponential of any trace-zero matrix, whether real or complex.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 6 -->
@@ -1096,14 +1181,19 @@ figure svg{max-width:100%;height:auto}
     Use the Cayley–Hamilton theorem to show any matrix power series \(f(X) = \sum_k a_k X^k\) can be written as \(f(X) = c_0(X)I + c_1(X)X + \cdots + c_{n-1}(X)X^{n-1}\), where each \(c_j\) is conjugation-invariant.
   </div>
 
-  <p style="margin:0 0 10px"><strong>Reduction.</strong> By Cayley–Hamilton, \(X^n + s_{n-1}(X)X^{n-1} + \cdots + s_0(X)I = 0\), so \(X^n\) is a linear combination of \(I, X, \ldots, X^{n-1}\). Inductively, every \(X^k\) for \(k \ge n\) reduces modulo the characteristic polynomial to a combination of \(\{I, X, \ldots, X^{n-1}\}\). Applying this to each term of \(f(X) = \sum_k a_k X^k\):</p>
-  \[ f(X) = c_0(X)\,I + c_1(X)\,X + \cdots + c_{n-1}(X)\,X^{n-1}. \]
-  <p style="margin:0 0 10px"><strong>Conjugation invariance.</strong> The characteristic polynomial satisfies \(\chi_{aXa^{-1}}(t) = \chi_X(t)\) for all invertible \(a\). Therefore \(s_j(aXa^{-1}) = s_j(X)\), and the coefficients \(c_j\), being power series in the \(s_j\), also satisfy \(c_j(aXa^{-1}) = c_j(X)\).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    Any convergent matrix power series \(f(X)\) can be expressed as a polynomial of degree at most \(n-1\) in \(X\) with conjugation-invariant scalar coefficients depending on the eigenvalues of \(X\). This is why \(\exp(X)\), \(\sin(X)\), and similar functions always have explicit closed forms in low dimensions.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Reduction.</strong> By Cayley–Hamilton, \(X^n + s_{n-1}(X)X^{n-1} + \cdots + s_0(X)I = 0\), so \(X^n\) is a linear combination of \(I, X, \ldots, X^{n-1}\). Inductively, every \(X^k\) for \(k \ge n\) reduces modulo the characteristic polynomial to a combination of \(\{I, X, \ldots, X^{n-1}\}\). Applying this to each term of \(f(X) = \sum_k a_k X^k\):</p>
+        \[ f(X) = c_0(X)\,I + c_1(X)\,X + \cdots + c_{n-1}(X)\,X^{n-1}. \]
+        <p style="margin:0 0 10px"><strong>Conjugation invariance.</strong> The characteristic polynomial satisfies \(\chi_{aXa^{-1}}(t) = \chi_X(t)\) for all invertible \(a\). Therefore \(s_j(aXa^{-1}) = s_j(X)\), and the coefficients \(c_j\), being power series in the \(s_j\), also satisfy \(c_j(aXa^{-1}) = c_j(X)\).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          Any convergent matrix power series \(f(X)\) can be expressed as a polynomial of degree at most \(n-1\) in \(X\) with conjugation-invariant scalar coefficients depending on the eigenvalues of \(X\). This is why \(\exp(X)\), \(\sin(X)\), and similar functions always have explicit closed forms in low dimensions.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 7 -->
@@ -1117,16 +1207,21 @@ figure svg{max-width:100%;height:auto}
     Suppose \(\|X\| < 2\pi\). Show that \(\exp(X)v = v\) if and only if \(Xv = 0\).
   </div>
 
-  <p style="margin:0 0 10px"><em>(\(\Leftarrow\))</em> If \(Xv = 0\) then \(X^kv = 0\) for all \(k \ge 1\), so \(\exp(X)v = Iv = v\). This direction requires no norm condition.</p>
-  <p style="margin:0 0 10px"><em>(\(\Rightarrow\))</em> Suppose \(\exp(X)v = v\), so \((\exp X - I)v = 0\). The function \(g(z) = z/(e^z-1)\) has power series converging for \(|z| < 2\pi\). Since \(\|X\| < 2\pi\), the matrix \(g(X)\) is well-defined and satisfies \(g(X)(e^X - I) = X\). Applying to \(v\):</p>
-  \[ Xv = g(X)(\exp X - I)v = g(X) \cdot 0 = 0. \]
-
-  <p style="margin:0 0 10px"><strong>Geometric interpretation.</strong> When \(X\) is small, no eigenvalue of \(X\) can be a nonzero multiple of \(2\pi i\), so \(\exp(X)\) has no \(2\pi\)-periodic rotation that could accidentally bring a moving vector back to itself.</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    For \(\|X\| < 2\pi\): \(\exp(X)v = v \iff Xv = 0.\) The radius \(2\pi\) is sharp — beyond it, rotations by \(2\pi\) can fix vectors without them being in the kernel. The key tool is the convergent series for \(z/(e^z-1)\).
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><em>(\(\Leftarrow\))</em> If \(Xv = 0\) then \(X^kv = 0\) for all \(k \ge 1\), so \(\exp(X)v = Iv = v\). This direction requires no norm condition.</p>
+        <p style="margin:0 0 10px"><em>(\(\Rightarrow\))</em> Suppose \(\exp(X)v = v\), so \((\exp X - I)v = 0\). The function \(g(z) = z/(e^z-1)\) has power series converging for \(|z| < 2\pi\). Since \(\|X\| < 2\pi\), the matrix \(g(X)\) is well-defined and satisfies \(g(X)(e^X - I) = X\). Applying to \(v\):</p>
+        \[ Xv = g(X)(\exp X - I)v = g(X) \cdot 0 = 0. \]
+      
+        <p style="margin:0 0 10px"><strong>Geometric interpretation.</strong> When \(X\) is small, no eigenvalue of \(X\) can be a nonzero multiple of \(2\pi i\), so \(\exp(X)\) has no \(2\pi\)-periodic rotation that could accidentally bring a moving vector back to itself.</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          For \(\|X\| < 2\pi\): \(\exp(X)v = v \iff Xv = 0.\) The radius \(2\pi\) is sharp — beyond it, rotations by \(2\pi\) can fix vectors without them being in the kernel. The key tool is the convergent series for \(z/(e^z-1)\).
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 8 -->
@@ -1140,23 +1235,28 @@ figure svg{max-width:100%;height:auto}
     Prove \([[X,Y],Z] + [[Z,X],Y] + [[Y,Z],X] = 0\), and deduce: (a) \(\operatorname{ad}(Z)\) acts as a derivation of \([\cdot,\cdot]\); (b) \(\operatorname{ad}([X,Y]) = [\operatorname{ad}X, \operatorname{ad}Y]\).
   </div>
 
-  <p style="margin:0 0 10px"><strong>Proof of Jacobi identity.</strong> Recall \([X,Y] = XY - YX\). Expand all three brackets and add:</p>
-  \[ [[X,Y],Z] = XYZ - YXZ - ZXY + ZYX, \]
-  \[ [[Z,X],Y] = ZXY - XZY - YZX + YXZ, \]
-  \[ [[Y,Z],X] = YZX - ZYX - XYZ + XZY. \]
-  <p style="margin:0 0 10px">Each of the 12 terms \(\pm PQR\) (a signed permutation of \(X,Y,Z\)) appears exactly twice with opposite signs. Therefore the sum is zero.</p>
-
-  <p style="margin:0 0 10px"><strong>Deduction (a) — \(\operatorname{ad}(Z)\) is a derivation.</strong> Rewrite the Jacobi identity with \((\operatorname{ad}Z)W = [Z,W]\):</p>
-  \[ (\operatorname{ad}Z)[X,Y] = [Z,[X,Y]] = [[Z,X],Y] + [X,[Z,Y]] = [(\operatorname{ad}Z)X, Y] + [X, (\operatorname{ad}Z)Y]. \]
-  <p style="margin:0 0 10px">This is the Leibniz rule for \(\operatorname{ad}(Z)\) acting on the bracket product — \(\operatorname{ad}(Z)\) is a derivation of the Lie algebra.</p>
-
-  <p style="margin:0 0 10px"><strong>Deduction (b) — \(\operatorname{ad}\) is a Lie algebra homomorphism.</strong> For any \(Z\):</p>
-  \[ [\operatorname{ad}X, \operatorname{ad}Y](Z) = [X,[Y,Z]] - [Y,[X,Z]] = [[X,Y],Z] = \operatorname{ad}([X,Y])(Z). \]
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    \([[X,Y],Z]+[[Z,X],Y]+[[Y,Z],X]=0\) (Jacobi identity). This makes \(M_n\) a Lie algebra. It implies \(\operatorname{ad}: M_n \to \operatorname{End}(M_n)\) is a Lie algebra homomorphism: \(\operatorname{ad}[X,Y] = [\operatorname{ad}X, \operatorname{ad}Y]\).
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Proof of Jacobi identity.</strong> Recall \([X,Y] = XY - YX\). Expand all three brackets and add:</p>
+        \[ [[X,Y],Z] = XYZ - YXZ - ZXY + ZYX, \]
+        \[ [[Z,X],Y] = ZXY - XZY - YZX + YXZ, \]
+        \[ [[Y,Z],X] = YZX - ZYX - XYZ + XZY. \]
+        <p style="margin:0 0 10px">Each of the 12 terms \(\pm PQR\) (a signed permutation of \(X,Y,Z\)) appears exactly twice with opposite signs. Therefore the sum is zero.</p>
+      
+        <p style="margin:0 0 10px"><strong>Deduction (a) — \(\operatorname{ad}(Z)\) is a derivation.</strong> Rewrite the Jacobi identity with \((\operatorname{ad}Z)W = [Z,W]\):</p>
+        \[ (\operatorname{ad}Z)[X,Y] = [Z,[X,Y]] = [[Z,X],Y] + [X,[Z,Y]] = [(\operatorname{ad}Z)X, Y] + [X, (\operatorname{ad}Z)Y]. \]
+        <p style="margin:0 0 10px">This is the Leibniz rule for \(\operatorname{ad}(Z)\) acting on the bracket product — \(\operatorname{ad}(Z)\) is a derivation of the Lie algebra.</p>
+      
+        <p style="margin:0 0 10px"><strong>Deduction (b) — \(\operatorname{ad}\) is a Lie algebra homomorphism.</strong> For any \(Z\):</p>
+        \[ [\operatorname{ad}X, \operatorname{ad}Y](Z) = [X,[Y,Z]] - [Y,[X,Z]] = [[X,Y],Z] = \operatorname{ad}([X,Y])(Z). \]
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          \([[X,Y],Z]+[[Z,X],Y]+[[Y,Z],X]=0\) (Jacobi identity). This makes \(M_n\) a Lie algebra. It implies \(\operatorname{ad}: M_n \to \operatorname{End}(M_n)\) is a Lie algebra homomorphism: \(\operatorname{ad}[X,Y] = [\operatorname{ad}X, \operatorname{ad}Y]\).
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 9 -->
@@ -1170,19 +1270,24 @@ figure svg{max-width:100%;height:auto}
     Show that \(\exp X = \lim_{k\to\infty}(I + X/k)^k\).
   </div>
 
-  <p style="margin:0 0 10px"><em>Proof.</em> For large \(k\), \(I + X/k\) is near the identity. The matrix logarithm satisfies</p>
-  \[ \log\!\left(I + \frac{X}{k}\right) = \frac{X}{k} - \frac{X^2}{2k^2} + \frac{X^3}{3k^3} - \cdots \]
-  <p style="margin:0 0 10px">Multiplying by \(k\):</p>
-  \[ k\log\!\left(I + \frac{X}{k}\right) = X - \frac{X^2}{2k} + \frac{X^3}{3k^2} - \cdots \;\xrightarrow{k\to\infty}\; X. \]
-  <p style="margin:0 0 10px">Since \(\exp\) is continuous,</p>
-  \[ \left(I + \frac{X}{k}\right)^k = \exp\!\left(k\log\!\left(I+\frac{X}{k}\right)\right) \;\xrightarrow{k\to\infty}\; \exp(X). \]
-
-  <p style="margin:0 0 10px"><strong>Interpretation.</strong> Taking \(k\) many small linear steps \(I + X/k\) — each step approximately "flowing by \(X\) for time \(1/k\)" — converges to the continuous flow \(\exp(X)\) as \(k \to \infty\).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    \(\exp X = \lim_{k\to\infty}(I + X/k)^k.\) This matrix analogue of Euler's compound interest formula is fundamental: it defines \(\exp\) via iterated linear approximation and provides the basis for the Trotter product formula.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><em>Proof.</em> For large \(k\), \(I + X/k\) is near the identity. The matrix logarithm satisfies</p>
+        \[ \log\!\left(I + \frac{X}{k}\right) = \frac{X}{k} - \frac{X^2}{2k^2} + \frac{X^3}{3k^3} - \cdots \]
+        <p style="margin:0 0 10px">Multiplying by \(k\):</p>
+        \[ k\log\!\left(I + \frac{X}{k}\right) = X - \frac{X^2}{2k} + \frac{X^3}{3k^2} - \cdots \;\xrightarrow{k\to\infty}\; X. \]
+        <p style="margin:0 0 10px">Since \(\exp\) is continuous,</p>
+        \[ \left(I + \frac{X}{k}\right)^k = \exp\!\left(k\log\!\left(I+\frac{X}{k}\right)\right) \;\xrightarrow{k\to\infty}\; \exp(X). \]
+      
+        <p style="margin:0 0 10px"><strong>Interpretation.</strong> Taking \(k\) many small linear steps \(I + X/k\) — each step approximately "flowing by \(X\) for time \(1/k\)" — converges to the continuous flow \(\exp(X)\) as \(k \to \infty\).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          \(\exp X = \lim_{k\to\infty}(I + X/k)^k.\) This matrix analogue of Euler's compound interest formula is fundamental: it defines \(\exp\) via iterated linear approximation and provides the basis for the Trotter product formula.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 10 -->
@@ -1196,54 +1301,59 @@ figure svg{max-width:100%;height:auto}
     Prove: \(\exp(X+Y) = \lim_{k\to\infty}\bigl(\exp(X/k)\,\exp(Y/k)\bigr)^k.\)
   </div>
 
-  <p style="margin:0 0 10px"><em>Proof.</em> For small \(t = 1/k\), expand each factor:</p>
-  \[ \exp(tX)\exp(tY) = (I + tX + O(t^2))(I + tY + O(t^2)) = I + t(X+Y) + O(t^2). \]
-  <p style="margin:0 0 10px">Comparing with \(\exp(t(X+Y)) = I + t(X+Y) + O(t^2)\), we see \(\exp(tX)\exp(tY) = \exp(t(X+Y)+O(t^2))\). Setting \(t = 1/k\) and using Problem 9:</p>
-  \[ \left(\exp\frac{X}{k}\exp\frac{Y}{k}\right)^k = \left(I + \frac{X+Y}{k} + O(k^{-2})\right)^k \;\xrightarrow{k\to\infty}\; \exp(X+Y). \]
-
-  <!-- Trotter visualization -->
-  <figure style="margin:20px 0;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
-    <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:14px;text-align:center">Trotter Approximation — Alternating Small Steps Approach the Combined Flow</figcaption>
-    <svg viewBox="0 0 560 180" style="width:100%;display:block;font-family:'EB Garamond',Georgia,serif" aria-label="Zigzag path of alternating exp(X/k) and exp(Y/k) steps converges to the smooth path exp(t(X+Y))">
-      <defs>
-        <marker id="arr-t" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="#2563a4"></path></marker>
-        <marker id="arr-t2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="#8b1a2c"></path></marker>
-        <marker id="arr-t3" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1a5c3a"></path></marker>
-      </defs>
-      <!-- Smooth path (green) -->
-      <path d="M 50 150 Q 200 120 350 80 Q 430 60 510 30" fill="none" stroke="#1a5c3a" stroke-width="2.5"></path>
-      <text x="420" y="22" font-size="12" fill="#1a5c3a" font-weight="bold">exp(X+Y) (exact flow)</text>
-      <!-- Zigzag path (blue/red alternating) for k=4 -->
-      <!-- Points roughly following the curve with zigzag -->
-      <polyline points="50,150 120,130 120,118 195,100 195,87 270,72 270,60 345,46" fill="none" stroke="#2563a4" stroke-width="1.5" stroke-dasharray="none"></polyline>
-      <!-- X-steps (blue, roughly horizontal) -->
-      <line x1="50" y1="150" x2="120" y2="130" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
-      <line x1="120" y1="118" x2="195" y2="100" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
-      <line x1="195" y1="87" x2="270" y2="72" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
-      <line x1="270" y1="60" x2="345" y2="46" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
-      <!-- Y-steps (red, roughly vertical) -->
-      <line x1="120" y1="130" x2="120" y2="118" stroke="#8b1a2c" stroke-width="2" marker-end="url(#arr-t2)"></line>
-      <line x1="195" y1="100" x2="195" y2="87" stroke="#8b1a2c" stroke-width="2" marker-end="url(#arr-t2)"></line>
-      <line x1="270" y1="72" x2="270" y2="60" stroke="#8b1a2c" stroke-width="2" marker-end="url(#arr-t2)"></line>
-      <!-- Start/end dots -->
-      <circle cx="50" cy="150" r="4" fill="#1c3358"></circle>
-      <text x="30" y="163" font-size="12" fill="#555">I</text>
-      <circle cx="345" cy="46" r="4" fill="#1a5c3a"></circle>
-      <text x="350" y="42" font-size="12" fill="#555">exp(X+Y)</text>
-      <!-- Legend -->
-      <line x1="400" y1="100" x2="430" y2="100" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
-      <text x="436" y="104" font-size="12" fill="#2563a4">exp(X/k) step</text>
-      <line x1="400" y1="120" x2="430" y2="120" stroke="#8b1a2c" stroke-width="2" marker-end="url(#arr-t2)"></line>
-      <text x="436" y="124" font-size="12" fill="#8b1a2c">exp(Y/k) step</text>
-      <text x="400" y="150" font-size="11" fill="#555" font-style="italic">k → ∞ : zigzag → smooth</text>
-    </svg>
-  </figure>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT — TROTTER PRODUCT FORMULA</div>
-    \[\exp(X+Y) = \lim_{k\to\infty}\!\left(\exp\!\tfrac{X}{k}\exp\!\tfrac{Y}{k}\right)^k.\]
-    This holds even when \(X\) and \(Y\) do not commute. It is fundamental in quantum mechanics (splitting Hamiltonians), numerical ODE solvers (operator splitting), and functional analysis.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><em>Proof.</em> For small \(t = 1/k\), expand each factor:</p>
+        \[ \exp(tX)\exp(tY) = (I + tX + O(t^2))(I + tY + O(t^2)) = I + t(X+Y) + O(t^2). \]
+        <p style="margin:0 0 10px">Comparing with \(\exp(t(X+Y)) = I + t(X+Y) + O(t^2)\), we see \(\exp(tX)\exp(tY) = \exp(t(X+Y)+O(t^2))\). Setting \(t = 1/k\) and using Problem 9:</p>
+        \[ \left(\exp\frac{X}{k}\exp\frac{Y}{k}\right)^k = \left(I + \frac{X+Y}{k} + O(k^{-2})\right)^k \;\xrightarrow{k\to\infty}\; \exp(X+Y). \]
+      
+        <!-- Trotter visualization -->
+        <figure style="margin:20px 0;padding:20px 24px;background:#f9f7f4;border-radius:8px;border:1px solid #ddd8d0">
+          <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:14px;text-align:center">Trotter Approximation — Alternating Small Steps Approach the Combined Flow</figcaption>
+          <svg viewBox="0 0 560 180" style="width:100%;display:block;font-family:'EB Garamond',Georgia,serif" aria-label="Zigzag path of alternating exp(X/k) and exp(Y/k) steps converges to the smooth path exp(t(X+Y))">
+            <defs>
+              <marker id="arr-t" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="#2563a4"></path></marker>
+              <marker id="arr-t2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="#8b1a2c"></path></marker>
+              <marker id="arr-t3" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L8 4L0 8z" fill="#1a5c3a"></path></marker>
+            </defs>
+            <!-- Smooth path (green) -->
+            <path d="M 50 150 Q 200 120 350 80 Q 430 60 510 30" fill="none" stroke="#1a5c3a" stroke-width="2.5"></path>
+            <text x="420" y="22" font-size="12" fill="#1a5c3a" font-weight="bold">exp(X+Y) (exact flow)</text>
+            <!-- Zigzag path (blue/red alternating) for k=4 -->
+            <!-- Points roughly following the curve with zigzag -->
+            <polyline points="50,150 120,130 120,118 195,100 195,87 270,72 270,60 345,46" fill="none" stroke="#2563a4" stroke-width="1.5" stroke-dasharray="none"></polyline>
+            <!-- X-steps (blue, roughly horizontal) -->
+            <line x1="50" y1="150" x2="120" y2="130" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
+            <line x1="120" y1="118" x2="195" y2="100" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
+            <line x1="195" y1="87" x2="270" y2="72" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
+            <line x1="270" y1="60" x2="345" y2="46" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
+            <!-- Y-steps (red, roughly vertical) -->
+            <line x1="120" y1="130" x2="120" y2="118" stroke="#8b1a2c" stroke-width="2" marker-end="url(#arr-t2)"></line>
+            <line x1="195" y1="100" x2="195" y2="87" stroke="#8b1a2c" stroke-width="2" marker-end="url(#arr-t2)"></line>
+            <line x1="270" y1="72" x2="270" y2="60" stroke="#8b1a2c" stroke-width="2" marker-end="url(#arr-t2)"></line>
+            <!-- Start/end dots -->
+            <circle cx="50" cy="150" r="4" fill="#1c3358"></circle>
+            <text x="30" y="163" font-size="12" fill="#555">I</text>
+            <circle cx="345" cy="46" r="4" fill="#1a5c3a"></circle>
+            <text x="350" y="42" font-size="12" fill="#555">exp(X+Y)</text>
+            <!-- Legend -->
+            <line x1="400" y1="100" x2="430" y2="100" stroke="#2563a4" stroke-width="2" marker-end="url(#arr-t)"></line>
+            <text x="436" y="104" font-size="12" fill="#2563a4">exp(X/k) step</text>
+            <line x1="400" y1="120" x2="430" y2="120" stroke="#8b1a2c" stroke-width="2" marker-end="url(#arr-t2)"></line>
+            <text x="436" y="124" font-size="12" fill="#8b1a2c">exp(Y/k) step</text>
+            <text x="400" y="150" font-size="11" fill="#555" font-style="italic">k → ∞ : zigzag → smooth</text>
+          </svg>
+        </figure>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT — TROTTER PRODUCT FORMULA</div>
+          \[\exp(X+Y) = \lim_{k\to\infty}\!\left(\exp\!\tfrac{X}{k}\exp\!\tfrac{Y}{k}\right)^k.\]
+          This holds even when \(X\) and \(Y\) do not commute. It is fundamental in quantum mechanics (splitting Hamiltonians), numerical ODE solvers (operator splitting), and functional analysis.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 11 -->
@@ -1257,16 +1367,21 @@ figure svg{max-width:100%;height:auto}
     Let \(a: \mathbb{R} \to M\) be continuous with \(a(\sigma+\tau) = a(\sigma)a(\tau)\) and \(a(0) = I\). Show \(a(\tau) = \exp(\tau X)\) for some \(X \in M\).
   </div>
 
-  <p style="margin:0 0 10px"><strong>Local form.</strong> Since \(a\) is continuous and \(a(0) = I\), for sufficiently small \(\tau\) we have \(a(\tau)\) near \(I\), so \(\log a(\tau)\) is defined. Call \(X(\tau) = \log a(\tau)\). The functional equation implies all \(a(\tau)\) commute (since both sides equal \(a(\sigma+\tau) = a(\tau+\sigma)\)). Therefore for small \(\sigma, \tau\):</p>
-  \[ X(\sigma+\tau) = \log a(\sigma+\tau) = \log(a(\sigma)a(\tau)) = \log a(\sigma) + \log a(\tau) = X(\sigma) + X(\tau). \]
-  <p style="margin:0 0 10px">A continuous additive function satisfies \(X(\tau) = \tau X\) for a fixed matrix \(X = X(1)\). Thus \(a(\tau) = \exp(\tau X)\) for small \(\tau\).</p>
-  <p style="margin:0 0 10px"><strong>Extension.</strong> For general \(\tau\), choose integer \(m\) with \(\tau/m\) small. Then</p>
-  \[ a(\tau) = a(\tau/m)^m = \exp\!\left(\frac{\tau}{m}X\right)^m = \exp(\tau X). \]
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    Every continuous one-parameter matrix group is of the form \(a(\tau) = \exp(\tau X)\). Continuity alone (no differentiability assumed) forces this form. This is the matrix version of the classification of one-dimensional Lie groups.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Local form.</strong> Since \(a\) is continuous and \(a(0) = I\), for sufficiently small \(\tau\) we have \(a(\tau)\) near \(I\), so \(\log a(\tau)\) is defined. Call \(X(\tau) = \log a(\tau)\). The functional equation implies all \(a(\tau)\) commute (since both sides equal \(a(\sigma+\tau) = a(\tau+\sigma)\)). Therefore for small \(\sigma, \tau\):</p>
+        \[ X(\sigma+\tau) = \log a(\sigma+\tau) = \log(a(\sigma)a(\tau)) = \log a(\sigma) + \log a(\tau) = X(\sigma) + X(\tau). \]
+        <p style="margin:0 0 10px">A continuous additive function satisfies \(X(\tau) = \tau X\) for a fixed matrix \(X = X(1)\). Thus \(a(\tau) = \exp(\tau X)\) for small \(\tau\).</p>
+        <p style="margin:0 0 10px"><strong>Extension.</strong> For general \(\tau\), choose integer \(m\) with \(\tau/m\) small. Then</p>
+        \[ a(\tau) = a(\tau/m)^m = \exp\!\left(\frac{\tau}{m}X\right)^m = \exp(\tau X). \]
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          Every continuous one-parameter matrix group is of the form \(a(\tau) = \exp(\tau X)\). Continuity alone (no differentiability assumed) forces this form. This is the matrix version of the classification of one-dimensional Lie groups.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 12 -->
@@ -1280,19 +1395,24 @@ figure svg{max-width:100%;height:auto}
     Let \([X,L] \subset L\) for a subspace \(L \subset M\). Show: (a) \(\exp(\tau X)\,L\,\exp(-\tau X) \subset L\). (b) If also \(L \cdot L \subset L\), then \(\exp(-X)\exp(X+L) \subset I+L\).
   </div>
 
-  <p style="margin:0 0 10px"><strong>Part (a).</strong> For \(Y \in L\), define \(F(\tau) = \exp(\tau X)\,Y\,\exp(-\tau X)\). Differentiating:</p>
-  \[ F'(\tau) = [X, F(\tau)]. \]
-  <p style="margin:0 0 10px">Since \(F(0) = Y \in L\) and \([X,L] \subset L\), the differential equation \(F' = [X,F]\) with initial value in \(L\) stays in \(L\). More explicitly:</p>
-  \[ F(\tau) = e^{\tau\operatorname{ad}X}Y = Y + \tau[X,Y] + \frac{\tau^2}{2!}[X,[X,Y]] + \cdots \in L. \]
-
-  <p style="margin:0 0 10px"><strong>Part (b).</strong> Let \(Y \in L\), and define \(a(t) = \exp(-tX)\exp(t(X+Y))\). Then \(a(0) = I\) and</p>
-  \[ a'(t) = \exp(-tX)\,Y\,\exp(t(X+Y)) = \underbrace{\exp(-tX)\,Y\,\exp(tX)}_{\in L \text{ by (a)}}\cdot a(t). \]
-  <p style="margin:0 0 10px">Since \(LL \subset L\), integrating from 0 to 1 gives \(a(1) - I \in L\), so \(\exp(-X)\exp(X+Y) \in I+L\).</p>
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
-    If a subspace \(L\) is invariant under \(\operatorname{ad}(X)\) (i.e., \([X,L] \subset L\)), then \(L\) is invariant under the adjoint action of the one-parameter group \(\exp(\tau X)\). This is the infinitesimal-to-global principle for Lie algebra ideals.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Part (a).</strong> For \(Y \in L\), define \(F(\tau) = \exp(\tau X)\,Y\,\exp(-\tau X)\). Differentiating:</p>
+        \[ F'(\tau) = [X, F(\tau)]. \]
+        <p style="margin:0 0 10px">Since \(F(0) = Y \in L\) and \([X,L] \subset L\), the differential equation \(F' = [X,F]\) with initial value in \(L\) stays in \(L\). More explicitly:</p>
+        \[ F(\tau) = e^{\tau\operatorname{ad}X}Y = Y + \tau[X,Y] + \frac{\tau^2}{2!}[X,[X,Y]] + \cdots \in L. \]
+      
+        <p style="margin:0 0 10px"><strong>Part (b).</strong> Let \(Y \in L\), and define \(a(t) = \exp(-tX)\exp(t(X+Y))\). Then \(a(0) = I\) and</p>
+        \[ a'(t) = \exp(-tX)\,Y\,\exp(t(X+Y)) = \underbrace{\exp(-tX)\,Y\,\exp(tX)}_{\in L \text{ by (a)}}\cdot a(t). \]
+        <p style="margin:0 0 10px">Since \(LL \subset L\), integrating from 0 to 1 gives \(a(1) - I \in L\), so \(\exp(-X)\exp(X+Y) \in I+L\).</p>
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT</div>
+          If a subspace \(L\) is invariant under \(\operatorname{ad}(X)\) (i.e., \([X,L] \subset L\)), then \(L\) is invariant under the adjoint action of the one-parameter group \(\exp(\tau X)\). This is the infinitesimal-to-global principle for Lie algebra ideals.
+        </div>
+    </div>
+  </details>
 </article>
 
 <!-- ─────────────────────── §1.2 Problem 13 -->
@@ -1307,22 +1427,27 @@ figure svg{max-width:100%;height:auto}
     \[\dfrac{d}{d\tau}\det a = (\det a)\,\operatorname{tr}\!\left(a^{-1}\dfrac{da}{d\tau}\right).\]
   </div>
 
-  <p style="margin:0 0 10px"><strong>Step 1 — Identity case.</strong> Suppose \(a(0) = I\), write \(a(\tau) = I + \tau B + o(\tau)\) with \(B = a'(0)\). Then</p>
-  \[ \det(I + \tau B + o(\tau)) = 1 + \tau\operatorname{tr}B + o(\tau). \]
-  <p style="margin:0 0 10px">Differentiating at \(\tau = 0\):</p>
-  \[ \left.\frac{d}{d\tau}\det a\right|_{\tau=0} = \operatorname{tr}(a'(0)) = \operatorname{tr}\!\left(a^{-1}\frac{da}{d\tau}\right)\bigg|_{\tau=0}. \]
-
-  <p style="margin:0 0 10px"><strong>Step 2 — General case.</strong> For general invertible \(a(\tau_0)\), let \(b(h) = a(\tau_0)^{-1}a(\tau_0+h)\). Then \(b(0) = I\) and \(b'(0) = a(\tau_0)^{-1}a'(\tau_0)\). Using \(\det a(\tau_0+h) = \det a(\tau_0)\cdot\det b(h)\) and Step 1:</p>
-  \[ \frac{d}{d\tau}\det a(\tau_0) = \det a(\tau_0)\cdot\operatorname{tr}\bigl(b'(0)\bigr) = \det a(\tau_0)\cdot\operatorname{tr}\!\left(a(\tau_0)^{-1}a'(\tau_0)\right). \]
-
-  <p style="margin:0 0 10px"><strong>Corollary.</strong> Setting \(a(\tau) = \exp(\tau X)\):</p>
-  \[ \frac{d}{d\tau}\det\exp(\tau X) = \det\exp(\tau X)\cdot\operatorname{tr}(X) \implies \det\exp(X) = e^{\operatorname{tr}X}. \]
-
-  <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
-    <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT — JACOBI'S FORMULA</div>
-    \[\frac{d}{d\tau}\det a = (\det a)\,\operatorname{tr}\!\left(a^{-1}\frac{da}{d\tau}\right),\quad\text{equivalently, }\; d(\log\det a) = \operatorname{tr}(a^{-1}\,da).\]
-    The corollary \(\det(\exp X) = e^{\operatorname{tr}X}\) connects the determinant (a multiplicative invariant) to the trace (an additive invariant) via the exponential.
-  </div>
+  <details class="rossmann-answer">
+    <summary>Answer</summary>
+    <div class="rossmann-answer-body">
+        <p style="margin:0 0 10px"><strong>Step 1 — Identity case.</strong> Suppose \(a(0) = I\), write \(a(\tau) = I + \tau B + o(\tau)\) with \(B = a'(0)\). Then</p>
+        \[ \det(I + \tau B + o(\tau)) = 1 + \tau\operatorname{tr}B + o(\tau). \]
+        <p style="margin:0 0 10px">Differentiating at \(\tau = 0\):</p>
+        \[ \left.\frac{d}{d\tau}\det a\right|_{\tau=0} = \operatorname{tr}(a'(0)) = \operatorname{tr}\!\left(a^{-1}\frac{da}{d\tau}\right)\bigg|_{\tau=0}. \]
+      
+        <p style="margin:0 0 10px"><strong>Step 2 — General case.</strong> For general invertible \(a(\tau_0)\), let \(b(h) = a(\tau_0)^{-1}a(\tau_0+h)\). Then \(b(0) = I\) and \(b'(0) = a(\tau_0)^{-1}a'(\tau_0)\). Using \(\det a(\tau_0+h) = \det a(\tau_0)\cdot\det b(h)\) and Step 1:</p>
+        \[ \frac{d}{d\tau}\det a(\tau_0) = \det a(\tau_0)\cdot\operatorname{tr}\bigl(b'(0)\bigr) = \det a(\tau_0)\cdot\operatorname{tr}\!\left(a(\tau_0)^{-1}a'(\tau_0)\right). \]
+      
+        <p style="margin:0 0 10px"><strong>Corollary.</strong> Setting \(a(\tau) = \exp(\tau X)\):</p>
+        \[ \frac{d}{d\tau}\det\exp(\tau X) = \det\exp(\tau X)\cdot\operatorname{tr}(X) \implies \det\exp(X) = e^{\operatorname{tr}X}. \]
+      
+        <div style="background:#fef7ed;border-left:4px solid #c07a18;padding:14px 20px;margin:20px 0 0;border-radius:0 6px 6px 0">
+          <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;color:#c07a18;margin-bottom:8px">KEY RESULT — JACOBI'S FORMULA</div>
+          \[\frac{d}{d\tau}\det a = (\det a)\,\operatorname{tr}\!\left(a^{-1}\frac{da}{d\tau}\right),\quad\text{equivalently, }\; d(\log\det a) = \operatorname{tr}(a^{-1}\,da).\]
+          The corollary \(\det(\exp X) = e^{\operatorname{tr}X}\) connects the determinant (a multiplicative invariant) to the trace (an additive invariant) via the exponential.
+        </div>
+    </div>
+  </details>
 </article>
 
 </section>
