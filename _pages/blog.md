@@ -332,7 +332,7 @@ nav_order: 6
     <div class="blog-card-body">
       <div class="blog-card-date">Chapters</div>
       <h2 class="blog-card-title">Lie - Groups</h2>
-      <p class="blog-card-summary">Substitution Principle and Exponential Map.</p>
+      <p class="blog-card-summary">Stretch vs Shear, Substitution Principle, and Exponential Map.</p>
     </div>
     <div class="blog-card-visual" aria-hidden="true">
       <svg viewBox="0 0 240 210" role="img">
