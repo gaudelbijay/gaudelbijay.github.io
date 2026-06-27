@@ -84,6 +84,10 @@ nav_order: 6
     gap: 1rem;
   }
 
+  .blog-card-plate {
+    min-height: 235px;
+  }
+
   .blog-card-body {
     display: flex;
     flex-direction: column;
@@ -324,85 +328,48 @@ nav_order: 6
 </style>
 
 <div class="blog-cards">
-  <section class="blog-card-group" aria-labelledby="lie-groups-heading">
-    <div class="blog-card-group-header">
-      <div class="blog-card-group-label">Chapters</div>
-      <h2 id="lie-groups-heading" class="blog-card-group-title">Lie - Groups</h2>
-      <p class="blog-card-group-note">These posts are mostly influenced by, and heavily use ideas from, <em>Lie Groups: An Introduction Through Linear Groups</em> by Wulf Rossmann.</p>
+  <a class="blog-card blog-card-plate" href="{{ '/blog/lie-groups/' | relative_url }}">
+    <div class="blog-card-body">
+      <div class="blog-card-date">Chapters</div>
+      <h2 class="blog-card-title">Lie - Groups</h2>
+      <p class="blog-card-summary">Substitution Principle and Exponential Map.</p>
     </div>
-    <div class="blog-card-group-list">
-      <a class="blog-card" href="{{ '/blog/2026/substitution-principle-adjoints/' | relative_url }}">
-        <div class="blog-card-body">
-          <div class="blog-card-date">Jun 26, 2026</div>
-          <h2 class="blog-card-title">The Substitution Principle</h2>
-          <p class="blog-card-summary">A geometric route from power series as universal recipes to the exponential map, conjugation, Lie brackets, and adjoint representations.</p>
-        </div>
-        <div class="blog-card-visual" aria-hidden="true" style="background:#e9dfcc;">
-          <svg viewBox="0 0 240 210" role="img">
-            <defs>
-              <marker id="recipeArrow" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
-                <path d="M0 0 L7 3.5 L0 7 Z" fill="#f0c28f"></path>
-              </marker>
-              <linearGradient id="recipeCoreFill" x1="72" y1="58" x2="168" y2="150" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#3a6fa8" stop-opacity="0.28"></stop>
-                <stop offset="1" stop-color="#b8552f" stop-opacity="0.2"></stop>
-              </linearGradient>
-            </defs>
-            <rect class="recipe-core" x="74" y="52" width="92" height="106" rx="8" fill="url(#recipeCoreFill)" stroke="#3a6fa8" stroke-width="3"></rect>
-            <text x="120" y="89" text-anchor="middle" fill="#2a241e" font-size="17" font-family="serif">1 + X</text>
-            <text x="120" y="115" text-anchor="middle" fill="#2a241e" font-size="16" font-family="serif">+ X²/2!</text>
-            <text x="120" y="139" text-anchor="middle" fill="#2a241e" font-size="15" font-family="serif">+ ···</text>
-            <g class="recipe-flow-a">
-              <circle cx="28" cy="72" r="10" fill="#3a6fa8" fill-opacity="0.88"></circle>
-              <line x1="42" y1="72" x2="70" y2="72" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-            </g>
-            <g class="recipe-flow-b">
-              <rect x="22" y="101" width="22" height="22" rx="3" fill="#b8552f" fill-opacity="0.84"></rect>
-              <line x1="47" y1="112" x2="70" y2="112" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-            </g>
-            <g class="recipe-flow-c">
-              <path d="M24 151 C30 139 41 139 47 151" fill="none" stroke="#4a8c5c" stroke-width="5" stroke-linecap="round"></path>
-              <line x1="50" y1="151" x2="70" y2="151" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-            </g>
-            <line x1="166" y1="86" x2="210" y2="72" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-            <line x1="166" y1="112" x2="210" y2="112" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-            <line x1="166" y1="138" x2="210" y2="151" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-            <text x="211" y="68" fill="#3a6fa8" font-size="15" font-family="serif">eˣ</text>
-            <text x="211" y="108" fill="#b8552f" font-size="15" font-family="serif">exp X</text>
-            <text x="211" y="151" fill="#4a8c5c" font-size="15" font-family="serif">Ad</text>
-          </svg>
-        </div>
-      </a>
-
-      <a class="blog-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">
-        <div class="blog-card-body">
-          <div class="blog-card-date">Jun 25, 2026</div>
-          <h2 class="blog-card-title">The Exponential Map</h2>
-          <p class="blog-card-summary">A visual guide to matrix exponentials, Lie algebra structure, and the geometry of SL(2, R).</p>
-        </div>
-        <div class="blog-card-visual" aria-hidden="true">
-          <svg viewBox="0 0 240 210" role="img">
-            <defs>
-              <linearGradient id="coneFill" x1="60" y1="34" x2="180" y2="180" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#b8552f" stop-opacity="0.82"></stop>
-                <stop offset="1" stop-color="#3a6fa8" stop-opacity="0.3"></stop>
-              </linearGradient>
-            </defs>
-            <ellipse class="cone-shadow" cx="120" cy="174" rx="60" ry="13" fill="#2a241e"></ellipse>
-            <path d="M120 34 L55 174 L185 174 Z" fill="url(#coneFill)" opacity="0.52"></path>
-            <path d="M55 174 C80 154 160 154 185 174" fill="none" stroke="#b8552f" stroke-width="4"></path>
-            <g class="cone-ring">
-              <ellipse cx="120" cy="112" rx="49" ry="16" fill="none" stroke="#f0c28f" stroke-width="4"></ellipse>
-              <circle cx="168" cy="112" r="5" fill="#f0c28f"></circle>
-              <circle cx="72" cy="112" r="3.5" fill="#3a6fa8"></circle>
-            </g>
-            <line x1="120" y1="34" x2="120" y2="178" stroke="#2a241e" stroke-opacity="0.34" stroke-width="2"></line>
-            <path d="M82 84 C104 70 139 70 160 84" fill="none" stroke="#2a241e" stroke-opacity="0.32" stroke-width="2"></path>
-          </svg>
-        </div>
-      </a>
+    <div class="blog-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <marker id="recipeArrow" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#f0c28f"></path>
+          </marker>
+          <linearGradient id="recipeCoreFill" x1="72" y1="58" x2="168" y2="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3a6fa8" stop-opacity="0.28"></stop>
+            <stop offset="1" stop-color="#b8552f" stop-opacity="0.2"></stop>
+          </linearGradient>
+        </defs>
+        <rect class="recipe-core" x="74" y="52" width="92" height="106" rx="8" fill="url(#recipeCoreFill)" stroke="#3a6fa8" stroke-width="3"></rect>
+        <text x="120" y="89" text-anchor="middle" fill="#2a241e" font-size="17" font-family="serif">1 + X</text>
+        <text x="120" y="115" text-anchor="middle" fill="#2a241e" font-size="16" font-family="serif">+ X²/2!</text>
+        <text x="120" y="139" text-anchor="middle" fill="#2a241e" font-size="15" font-family="serif">+ ···</text>
+        <g class="recipe-flow-a">
+          <circle cx="28" cy="72" r="10" fill="#3a6fa8" fill-opacity="0.88"></circle>
+          <line x1="42" y1="72" x2="70" y2="72" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        </g>
+        <g class="recipe-flow-b">
+          <rect x="22" y="101" width="22" height="22" rx="3" fill="#b8552f" fill-opacity="0.84"></rect>
+          <line x1="47" y1="112" x2="70" y2="112" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        </g>
+        <g class="recipe-flow-c">
+          <path d="M24 151 C30 139 41 139 47 151" fill="none" stroke="#4a8c5c" stroke-width="5" stroke-linecap="round"></path>
+          <line x1="50" y1="151" x2="70" y2="151" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        </g>
+        <line x1="166" y1="86" x2="210" y2="72" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <line x1="166" y1="112" x2="210" y2="112" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <line x1="166" y1="138" x2="210" y2="151" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <text x="211" y="68" fill="#3a6fa8" font-size="15" font-family="serif">eˣ</text>
+        <text x="211" y="108" fill="#b8552f" font-size="15" font-family="serif">exp X</text>
+        <text x="211" y="151" fill="#4a8c5c" font-size="15" font-family="serif">Ad</text>
+      </svg>
     </div>
-  </section>
+  </a>
 
   <a class="blog-card" href="{{ '/blog/2025/linear-algebra-study-guide/' | relative_url }}">
     <div class="blog-card-body">
