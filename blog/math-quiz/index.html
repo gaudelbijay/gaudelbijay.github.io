@@ -4,6 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Math Blog Concept Quiz</title>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <style>
     :root { --paper:#e9dfcc; --ink:#2f2a24; --muted:#716553; --line:#c8b99f; --accent:#8a5a32; --green:#416f4a; --red:#943a31; --card:rgba(255,255,255,.28); }
     * { box-sizing:border-box; }
@@ -58,7 +72,7 @@
     </div>
     <div class="question-list">
       <article class="question" id="substitution-q1">
-        <h3>1. What does the Substitution Principle mean for a power series such as exp(x), sin(x), or log(1+x)?</h3>
+        <h3>1. What does the Substitution Principle mean for a power series such as \(\exp(x)\), \(\sin(x)\), or \(\log(1+x)\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q1" value="A">
@@ -67,7 +81,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q1" value="B">
-            <span class="choice-text"><b>B.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as x&lt;y.</span>
+            <span class="choice-text"><b>B.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as \(x<y\).</span>
             <span class="feedback wrong">Not quite. The best answer is C: The same series recipe can be evaluated on another object if that object has the needed addition, multiplication, scalar multiplication, identity element, and convergence.. The theorem is about structural compatibility. It does not say every scalar intuition survives.</span>
           </label>
           <label class="choice">
@@ -83,7 +97,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q2">
-        <h3>2. In the matrix exponential theorem, what does exp(A)=I+A+A^2/2!+A^3/3!+... mean?</h3>
+        <h3>2. In the matrix exponential theorem, what does \(\exp(A)=I+A+A^2/2!+A^3/3!+\cdots\) mean?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q2" value="A">
@@ -108,7 +122,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q3">
-        <h3>3. Why is the identity matrix I the first term in exp(A)?</h3>
+        <h3>3. Why is the identity matrix I the first term in \(\exp(A)\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q3" value="A">
@@ -147,7 +161,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q4" value="C">
-            <span class="choice-text"><b>C.</b> It says a power series cannot act on ad_X because ad_X acts on matrices rather than vectors.</span>
+            <span class="choice-text"><b>C.</b> It says a power series cannot act on \(\operatorname{ad}_X\) because \(\operatorname{ad}_X\) acts on matrices rather than vectors.</span>
             <span class="feedback wrong">Not quite. The best answer is A: Without convergence, the infinite sum may not define a valid matrix, even if every finite partial sum is meaningful.. Finite algebraic expressions are easier; infinite recipes require a limit that exists.</span>
           </label>
           <label class="choice">
@@ -162,7 +176,7 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q5" value="A">
-            <span class="choice-text"><b>A.</b> It assumes the transpose is the same thing as the adjoint representation Ad_g.</span>
+            <span class="choice-text"><b>A.</b> It assumes the transpose is the same thing as the adjoint representation \(\operatorname{Ad}_g\).</span>
             <span class="feedback wrong">Not quite. The best answer is C: A polynomial needs only finitely many matrix additions and multiplications, while an infinite series also needs convergence.. This distinction is one of the main reasons hypotheses are required.</span>
           </label>
           <label class="choice">
@@ -208,27 +222,27 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q7">
-        <h3>7. If f(x)=x^2+3x+I is evaluated at a matrix A, what is the correct meaning of A^2?</h3>
+        <h3>7. If f(x)=x^2+3x+I is evaluated at a matrix A, what is the correct meaning of \(A^2\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q7" value="A">
             <span class="choice-text"><b>A.</b> It treats a matrix function as applying the scalar function independently to every entry of the matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: A^2 means A composed with itself, represented as matrix multiplication A times A.. Matrix powers are repeated action, not entrywise squaring by default.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: \(A^2\) means A composed with itself, represented as matrix multiplication A times A.. Matrix powers are repeated action, not entrywise squaring by default.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q7" value="B">
             <span class="choice-text"><b>B.</b> It says the logarithm is a global inverse of the exponential for all invertible matrices.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: A^2 means A composed with itself, represented as matrix multiplication A times A.. Matrix powers are repeated action, not entrywise squaring by default.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: \(A^2\) means A composed with itself, represented as matrix multiplication A times A.. Matrix powers are repeated action, not entrywise squaring by default.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q7" value="C">
-            <span class="choice-text"><b>C.</b> A^2 means A composed with itself, represented as matrix multiplication A times A.</span>
+            <span class="choice-text"><b>C.</b> \(A^2\) means A composed with itself, represented as matrix multiplication A times A.</span>
             <span class="feedback correct">Correct. Matrix powers are repeated action, not entrywise squaring by default.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q7" value="D">
-            <span class="choice-text"><b>D.</b> It defines f(A) by first choosing any basis and applying f to each coordinate axis separately.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: A^2 means A composed with itself, represented as matrix multiplication A times A.. Matrix powers are repeated action, not entrywise squaring by default.</span>
+            <span class="choice-text"><b>D.</b> It defines \(f(A)\) by first choosing any basis and applying f to each coordinate axis separately.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: \(A^2\) means A composed with itself, represented as matrix multiplication A times A.. Matrix powers are repeated action, not entrywise squaring by default.</span>
           </label>
         </fieldset>
       </article>
@@ -237,103 +251,103 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q8" value="A">
-            <span class="choice-text"><b>A.</b> The matrix exponential treats the matrix as one linear operator and uses powers A^k, not independent exponentials of each entry.</span>
+            <span class="choice-text"><b>A.</b> The matrix exponential treats the matrix as one linear operator and uses powers \(A^k\), not independent exponentials of each entry.</span>
             <span class="feedback correct">Correct. The matrix is an action; its entries are only coordinates for that action.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q8" value="B">
-            <span class="choice-text"><b>B.</b> It says the identity matrix appears because exp(A) must always preserve every vector length.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers A^k, not independent exponentials of each entry.. The matrix is an action; its entries are only coordinates for that action.</span>
+            <span class="choice-text"><b>B.</b> It says the identity matrix appears because \(\exp(A)\) must always preserve every vector length.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers \(A^k\), not independent exponentials of each entry.. The matrix is an action; its entries are only coordinates for that action.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q8" value="C">
             <span class="choice-text"><b>C.</b> It says the matrix exponential is always diagonal because scalar exponentials never mix coordinates.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers A^k, not independent exponentials of each entry.. The matrix is an action; its entries are only coordinates for that action.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers \(A^k\), not independent exponentials of each entry.. The matrix is an action; its entries are only coordinates for that action.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q8" value="D">
-            <span class="choice-text"><b>D.</b> It defines sin(A) and cos(A) by taking sine and cosine of the singular values only.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers A^k, not independent exponentials of each entry.. The matrix is an action; its entries are only coordinates for that action.</span>
+            <span class="choice-text"><b>D.</b> It defines \(\sin(A)\) and \(\cos(A)\) by taking sine and cosine of the singular values only.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers \(A^k\), not independent exponentials of each entry.. The matrix is an action; its entries are only coordinates for that action.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="substitution-q9">
-        <h3>9. What does exp(ad_X) mean in Lie theory?</h3>
+        <h3>9. What does \(\exp(\operatorname{ad}_X)\) mean in Lie theory?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q9" value="A">
-            <span class="choice-text"><b>A.</b> It means ad_X is exponentiated by exponentiating X first and then taking ordinary powers of the entries.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator ad_X, where ad_X(Y)=[X,Y].. Here the input to exp is not X itself but the operator that brackets with X.</span>
+            <span class="choice-text"><b>A.</b> It means \(\operatorname{ad}_X\) is exponentiated by exponentiating X first and then taking ordinary powers of the entries.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator \(\operatorname{ad}_X\), where \(\operatorname{ad}_X(Y)=[X,Y]\).. Here the input to exp is not X itself but the operator that brackets with X.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q9" value="B">
             <span class="choice-text"><b>B.</b> It assumes all scalar constants become multiples of the zero matrix except the coefficient of x.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator ad_X, where ad_X(Y)=[X,Y].. Here the input to exp is not X itself but the operator that brackets with X.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator \(\operatorname{ad}_X\), where \(\operatorname{ad}_X(Y)=[X,Y]\).. Here the input to exp is not X itself but the operator that brackets with X.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q9" value="C">
-            <span class="choice-text"><b>C.</b> It means applying the exponential power series to the linear operator ad_X, where ad_X(Y)=[X,Y].</span>
+            <span class="choice-text"><b>C.</b> It means applying the exponential power series to the linear operator \(\operatorname{ad}_X\), where \(\operatorname{ad}_X(Y)=[X,Y]\).</span>
             <span class="feedback correct">Correct. Here the input to exp is not X itself but the operator that brackets with X.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q9" value="D">
             <span class="choice-text"><b>D.</b> It assumes the same theorem holds for matrices only when all eigenvalues are real.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator ad_X, where ad_X(Y)=[X,Y].. Here the input to exp is not X itself but the operator that brackets with X.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator \(\operatorname{ad}_X\), where \(\operatorname{ad}_X(Y)=[X,Y]\).. Here the input to exp is not X itself but the operator that brackets with X.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="substitution-q10">
-        <h3>10. What does ad_X(Y)=[X,Y] mean?</h3>
+        <h3>10. What does \(\operatorname{ad}_X(Y)=[X,Y]\) mean?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q10" value="A">
-            <span class="choice-text"><b>A.</b> It is the infinitesimal adjoint action: the operator that sends Y to the commutator XY-YX.</span>
+            <span class="choice-text"><b>A.</b> It is the infinitesimal adjoint action: the operator that sends Y to the commutator \(XY-YX\).</span>
             <span class="feedback correct">Correct. The bracket measures how X and Y fail to commute.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q10" value="B">
             <span class="choice-text"><b>B.</b> It says absolute convergence matters only for numerical approximation, not for proving identities.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator XY-YX.. The bracket measures how X and Y fail to commute.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator \(XY-YX\).. The bracket measures how X and Y fail to commute.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q10" value="C">
             <span class="choice-text"><b>C.</b> It assumes power series are formal symbols, so no topology or norm is ever involved.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator XY-YX.. The bracket measures how X and Y fail to commute.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator \(XY-YX\).. The bracket measures how X and Y fail to commute.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q10" value="D">
             <span class="choice-text"><b>D.</b> It evaluates a matrix function by applying the scalar function to the rank and nullity of the matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator XY-YX.. The bracket measures how X and Y fail to commute.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator \(XY-YX\).. The bracket measures how X and Y fail to commute.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="substitution-q11">
-        <h3>11. What does the identity exp(ad_X)=Ad_exp(X) mean?</h3>
+        <h3>11. What does the identity \(\exp(\operatorname{ad}_X)=\operatorname{Ad}_{\exp(X)}\) mean?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q11" value="A">
-            <span class="choice-text"><b>A.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as x&lt;y.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action ad_X gives the finite adjoint action by exp(X).. This named identity connects the operator-level exponential with group-level conjugation.</span>
+            <span class="choice-text"><b>A.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as \(x<y\).</span>
+            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action \(\operatorname{ad}_X\) gives the finite adjoint action by \(\exp(X)\).. This named identity connects the operator-level exponential with group-level conjugation.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q11" value="B">
             <span class="choice-text"><b>B.</b> It says finite-dimensionality alone makes every infinite series converge in every possible normed algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action ad_X gives the finite adjoint action by exp(X).. This named identity connects the operator-level exponential with group-level conjugation.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action \(\operatorname{ad}_X\) gives the finite adjoint action by \(\exp(X)\).. This named identity connects the operator-level exponential with group-level conjugation.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q11" value="C">
-            <span class="choice-text"><b>C.</b> Exponentiating the infinitesimal adjoint action ad_X gives the finite adjoint action by exp(X).</span>
+            <span class="choice-text"><b>C.</b> Exponentiating the infinitesimal adjoint action \(\operatorname{ad}_X\) gives the finite adjoint action by \(\exp(X)\).</span>
             <span class="feedback correct">Correct. This named identity connects the operator-level exponential with group-level conjugation.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q11" value="D">
             <span class="choice-text"><b>D.</b> It says scalar multiplication by coefficients changes the domain of the operator at every term.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action ad_X gives the finite adjoint action by exp(X).. This named identity connects the operator-level exponential with group-level conjugation.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action \(\operatorname{ad}_X\) gives the finite adjoint action by \(\exp(X)\).. This named identity connects the operator-level exponential with group-level conjugation.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="substitution-q12">
-        <h3>12. What does Ad_g usually mean for a matrix Lie group?</h3>
+        <h3>12. What does \(\operatorname{Ad}_g\) usually mean for a matrix Lie group?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q12" value="A">
@@ -358,7 +372,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q13">
-        <h3>13. What does the commutator [X,Y]=XY-YX tell you?</h3>
+        <h3>13. What does the commutator \(\([X,Y]\)=\(XY-YX\)\) tell you?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q13" value="A">
@@ -383,32 +397,32 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q14">
-        <h3>14. Why does noncommutativity not prevent exp(A) from being defined?</h3>
+        <h3>14. Why does noncommutativity not prevent \(\exp(A)\) from being defined?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q14" value="A">
-            <span class="choice-text"><b>A.</b> The series for exp(A) uses powers of the single matrix A, so each term A^k is unambiguous.</span>
+            <span class="choice-text"><b>A.</b> The series for \(\exp(A)\) uses powers of the single matrix A, so each term \(A^k\) is unambiguous.</span>
             <span class="feedback correct">Correct. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q14" value="B">
-            <span class="choice-text"><b>B.</b> It says a power series cannot act on ad_X because ad_X acts on matrices rather than vectors.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The series for exp(A) uses powers of the single matrix A, so each term A^k is unambiguous.. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
+            <span class="choice-text"><b>B.</b> It says a power series cannot act on \(\operatorname{ad}_X\) because \(\operatorname{ad}_X\) acts on matrices rather than vectors.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: The series for \(\exp(A)\) uses powers of the single matrix A, so each term \(A^k\) is unambiguous.. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q14" value="C">
             <span class="choice-text"><b>C.</b> It replaces the matrix by its determinant first, applies the scalar theorem, and then lifts the result back to a matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The series for exp(A) uses powers of the single matrix A, so each term A^k is unambiguous.. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: The series for \(\exp(A)\) uses powers of the single matrix A, so each term \(A^k\) is unambiguous.. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q14" value="D">
             <span class="choice-text"><b>D.</b> It assumes matrix multiplication can be rearranged inside any power-series proof just like scalar multiplication.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The series for exp(A) uses powers of the single matrix A, so each term A^k is unambiguous.. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: The series for \(\exp(A)\) uses powers of the single matrix A, so each term \(A^k\) is unambiguous.. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="substitution-q15">
-        <h3>15. Why is exp(A+B)=exp(A)exp(B) not generally true for matrices?</h3>
+        <h3>15. Why is \(\exp(A+B)\)=\(\exp(A)\)\(\exp(B)\) not generally true for matrices?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q15" value="A">
@@ -427,7 +441,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q15" value="D">
-            <span class="choice-text"><b>D.</b> It makes exp(A+B)=exp(A)exp(B) true as soon as A and B have the same eigenvalues.</span>
+            <span class="choice-text"><b>D.</b> It makes \(\exp(A+B)\)=\(\exp(A)\)\(\exp(B)\) true as soon as A and B have the same eigenvalues.</span>
             <span class="feedback wrong">Not quite. The best answer is C: The scalar law requires A and B to commute; otherwise bracket correction terms appear.. The scalar identity transfers only under the right structural condition.</span>
           </label>
         </fieldset>
@@ -437,23 +451,23 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q16" value="A">
-            <span class="choice-text"><b>A.</b> It describes log(exp(A)exp(B)) using A, B, and commutator correction terms when A and B do not commute.</span>
+            <span class="choice-text"><b>A.</b> It describes \(\log(\exp(A)\exp(B))\) using A, B, and commutator correction terms when A and B do not commute.</span>
             <span class="feedback correct">Correct. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q16" value="B">
             <span class="choice-text"><b>B.</b> It says convergence is unnecessary once every finite partial sum can be written down.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It describes log(exp(A)exp(B)) using A, B, and commutator correction terms when A and B do not commute.. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It describes \(\log(\exp(A)\exp(B))\) using A, B, and commutator correction terms when A and B do not commute.. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q16" value="C">
             <span class="choice-text"><b>C.</b> It says Ad and ad differ only by capitalization, not by finite-versus-infinitesimal meaning.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It describes log(exp(A)exp(B)) using A, B, and commutator correction terms when A and B do not commute.. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It describes \(\log(\exp(A)\exp(B))\) using A, B, and commutator correction terms when A and B do not commute.. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q16" value="D">
             <span class="choice-text"><b>D.</b> It says formulas transfer because every matrix is equivalent to a scalar under similarity.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It describes log(exp(A)exp(B)) using A, B, and commutator correction terms when A and B do not commute.. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It describes \(\log(\exp(A)\exp(B))\) using A, B, and commutator correction terms when A and B do not commute.. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
           </label>
         </fieldset>
       </article>
@@ -467,7 +481,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q17" value="B">
-            <span class="choice-text"><b>B.</b> It defines f(A) by first choosing any basis and applying f to each coordinate axis separately.</span>
+            <span class="choice-text"><b>B.</b> It defines \(f(A)\) by first choosing any basis and applying f to each coordinate axis separately.</span>
             <span class="feedback wrong">Not quite. The best answer is C: Use scalar intuition as a guide, then check whether the matrix operations and hypotheses support the same claim.. The substitution principle is disciplined transfer, not automatic transfer.</span>
           </label>
           <label class="choice">
@@ -497,7 +511,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q18" value="C">
-            <span class="choice-text"><b>C.</b> It defines sin(A) and cos(A) by taking sine and cosine of the singular values only.</span>
+            <span class="choice-text"><b>C.</b> It defines \(\sin(A)\) and \(\cos(A)\) by taking sine and cosine of the singular values only.</span>
             <span class="feedback wrong">Not quite. The best answer is A: Every operation used in the proof must still be valid in the new algebraic setting.. A proof is also a recipe, so its ingredients must survive the change of object.</span>
           </label>
           <label class="choice">
@@ -508,32 +522,32 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q19">
-        <h3>19. Why can diagonalization help compute f(A) but not define f(A) in general?</h3>
+        <h3>19. Why can diagonalization help compute \(f(A)\) but not define \(f(A)\) in general?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q19" value="A">
             <span class="choice-text"><b>A.</b> It assumes all scalar constants become multiples of the zero matrix except the coefficient of x.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, f(A) can be computed through eigenvalues, but power series can define f(A) even when A is not diagonalizable.. Diagonalization is a convenience, not the foundation of matrix functions.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, \(f(A)\) can be computed through eigenvalues, but power series can define \(f(A)\) even when A is not diagonalizable.. Diagonalization is a convenience, not the foundation of matrix functions.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q19" value="B">
             <span class="choice-text"><b>B.</b> It assumes the same theorem holds for matrices only when all eigenvalues are real.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, f(A) can be computed through eigenvalues, but power series can define f(A) even when A is not diagonalizable.. Diagonalization is a convenience, not the foundation of matrix functions.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, \(f(A)\) can be computed through eigenvalues, but power series can define \(f(A)\) even when A is not diagonalizable.. Diagonalization is a convenience, not the foundation of matrix functions.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q19" value="C">
-            <span class="choice-text"><b>C.</b> If A is diagonalizable, f(A) can be computed through eigenvalues, but power series can define f(A) even when A is not diagonalizable.</span>
+            <span class="choice-text"><b>C.</b> If A is diagonalizable, \(f(A)\) can be computed through eigenvalues, but power series can define \(f(A)\) even when A is not diagonalizable.</span>
             <span class="feedback correct">Correct. Diagonalization is a convenience, not the foundation of matrix functions.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q19" value="D">
             <span class="choice-text"><b>D.</b> It says every theorem involving exp is really a theorem about positive real numbers.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, f(A) can be computed through eigenvalues, but power series can define f(A) even when A is not diagonalizable.. Diagonalization is a convenience, not the foundation of matrix functions.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, \(f(A)\) can be computed through eigenvalues, but power series can define \(f(A)\) even when A is not diagonalizable.. Diagonalization is a convenience, not the foundation of matrix functions.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="substitution-q20">
-        <h3>20. What happens when a power series is evaluated at a nilpotent matrix N with N^k=0?</h3>
+        <h3>20. What happens when a power series is evaluated at a nilpotent matrix N with \(N^k=0\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q20" value="A">
@@ -558,7 +572,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q21">
-        <h3>21. What does the theorem det(exp(A))=exp(tr(A)) mean?</h3>
+        <h3>21. What does the theorem \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) mean?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q21" value="A">
@@ -583,7 +597,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q22">
-        <h3>22. Why does det(exp(A))=exp(tr(A)) not mean exp(A) is determined by tr(A)?</h3>
+        <h3>22. Why does \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) not mean \(\exp(A)\) is determined by \(\operatorname{tr}(A)\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q22" value="A">
@@ -627,7 +641,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q23" value="D">
-            <span class="choice-text"><b>D.</b> It relies on the determinant preserving addition, since det(A+B)=det(A)+det(B) is the hidden scalar rule.</span>
+            <span class="choice-text"><b>D.</b> It relies on the determinant preserving addition, since \(\det(A+B)=\det(A)+\det(B)\) is the hidden scalar rule.</span>
             <span class="feedback wrong">Not quite. The best answer is C: The result is another operator formed from identity, powers of that operator, scalar coefficients, and limits.. Operator substitution is the same recipe at a higher level of abstraction.</span>
           </label>
         </fieldset>
@@ -667,7 +681,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q25" value="B">
-            <span class="choice-text"><b>B.</b> It makes exp(A+B)=exp(A)exp(B) true as soon as A and B have the same eigenvalues.</span>
+            <span class="choice-text"><b>B.</b> It makes \(\exp(A+B)\)=\(\exp(A)\)\(\exp(B)\) true as soon as A and B have the same eigenvalues.</span>
             <span class="feedback wrong">Not quite. The best answer is C: The written expression may look the same, but addition, multiplication, identity, and geometry are supplied by the new object.. This is why formulas can be powerful and dangerous at the same time.</span>
           </label>
           <label class="choice">
@@ -677,33 +691,33 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q25" value="D">
-            <span class="choice-text"><b>D.</b> It says the theorem det(exp(A))=exp(tr(A)) determines exp(A) up to a change of basis.</span>
+            <span class="choice-text"><b>D.</b> It says the theorem \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) determines \(\exp(A)\) up to a change of basis.</span>
             <span class="feedback wrong">Not quite. The best answer is C: The written expression may look the same, but addition, multiplication, identity, and geometry are supplied by the new object.. This is why formulas can be powerful and dangerous at the same time.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="substitution-q26">
-        <h3>26. What is the correct meaning of log(I+A) as a matrix series?</h3>
+        <h3>26. What is the correct meaning of \(\log(I+A)\) as a matrix series?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q26" value="A">
-            <span class="choice-text"><b>A.</b> It is the scalar log(1+x) series evaluated with x replaced by A, when A is in a domain where the series converges.</span>
+            <span class="choice-text"><b>A.</b> It is the scalar \(\log(1+x)\) series evaluated with x replaced by A, when A is in a domain where the series converges.</span>
             <span class="feedback correct">Correct. The formula is not automatically a global inverse to exp on all matrices.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q26" value="B">
             <span class="choice-text"><b>B.</b> It says Ad and ad differ only by capitalization, not by finite-versus-infinitesimal meaning.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar log(1+x) series evaluated with x replaced by A, when A is in a domain where the series converges.. The formula is not automatically a global inverse to exp on all matrices.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar \(\log(1+x)\) series evaluated with x replaced by A, when A is in a domain where the series converges.. The formula is not automatically a global inverse to exp on all matrices.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q26" value="C">
             <span class="choice-text"><b>C.</b> It says formulas transfer because every matrix is equivalent to a scalar under similarity.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar log(1+x) series evaluated with x replaced by A, when A is in a domain where the series converges.. The formula is not automatically a global inverse to exp on all matrices.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar \(\log(1+x)\) series evaluated with x replaced by A, when A is in a domain where the series converges.. The formula is not automatically a global inverse to exp on all matrices.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q26" value="D">
             <span class="choice-text"><b>D.</b> It says the proof transfers if the final formula looks the same, even when intermediate steps fail.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar log(1+x) series evaluated with x replaced by A, when A is in a domain where the series converges.. The formula is not automatically a global inverse to exp on all matrices.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar \(\log(1+x)\) series evaluated with x replaced by A, when A is in a domain where the series converges.. The formula is not automatically a global inverse to exp on all matrices.</span>
           </label>
         </fieldset>
       </article>
@@ -712,7 +726,7 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q27" value="A">
-            <span class="choice-text"><b>A.</b> It defines f(A) by first choosing any basis and applying f to each coordinate axis separately.</span>
+            <span class="choice-text"><b>A.</b> It defines \(f(A)\) by first choosing any basis and applying f to each coordinate axis separately.</span>
             <span class="feedback wrong">Not quite. The best answer is C: Because exp may fail to be globally one-to-one and some matrices may have multiple or no appropriate logarithms under chosen constraints.. Substitution defines local recipes; it does not remove global ambiguity.</span>
           </label>
           <label class="choice">
@@ -742,7 +756,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q28" value="B">
-            <span class="choice-text"><b>B.</b> It defines sin(A) and cos(A) by taking sine and cosine of the singular values only.</span>
+            <span class="choice-text"><b>B.</b> It defines \(\sin(A)\) and \(\cos(A)\) by taking sine and cosine of the singular values only.</span>
             <span class="feedback wrong">Not quite. The best answer is A: Inside a set of mutually commuting objects, more scalar-like identities can hold safely.. Commutativity is the missing condition behind many familiar scalar rules.</span>
           </label>
           <label class="choice">
@@ -758,7 +772,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q29">
-        <h3>29. What does it mean to evaluate sin(A) and cos(A) for a matrix A?</h3>
+        <h3>29. What does it mean to evaluate \(\sin(A)\) and \(\cos(A)\) for a matrix A?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q29" value="A">
@@ -783,7 +797,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q30">
-        <h3>30. Why do the formulas for sin(A) and cos(A) contain alternating signs and factorials?</h3>
+        <h3>30. Why do the formulas for \(\sin(A)\) and \(\cos(A)\) contain alternating signs and factorials?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q30" value="A">
@@ -808,7 +822,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q31">
-        <h3>31. What does Euler’s formula exp(iA)=cos(A)+i sin(A) require conceptually?</h3>
+        <h3>31. What does Euler’s formula \(\exp(iA)=\cos(A)+i\sin(A)\) require conceptually?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q31" value="A">
@@ -863,22 +877,22 @@
           <label class="choice">
             <input type="radio" name="substitution-q33" value="A">
             <span class="choice-text"><b>A.</b> It depends on the Cayley-Hamilton theorem reducing every infinite series to a polynomial before the function is defined.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It supplies the meaning of repeated powers in the new recipe.. Without a multiplication operation, power-series terms such as A^3 would not be meaningful.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It supplies the meaning of repeated powers in the new recipe.. Without a multiplication operation, power-series terms such as \(A^3\) would not be meaningful.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q33" value="B">
-            <span class="choice-text"><b>B.</b> It relies on the determinant preserving addition, since det(A+B)=det(A)+det(B) is the hidden scalar rule.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It supplies the meaning of repeated powers in the new recipe.. Without a multiplication operation, power-series terms such as A^3 would not be meaningful.</span>
+            <span class="choice-text"><b>B.</b> It relies on the determinant preserving addition, since \(\det(A+B)=\det(A)+\det(B)\) is the hidden scalar rule.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It supplies the meaning of repeated powers in the new recipe.. Without a multiplication operation, power-series terms such as \(A^3\) would not be meaningful.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q33" value="C">
             <span class="choice-text"><b>C.</b> It supplies the meaning of repeated powers in the new recipe.</span>
-            <span class="feedback correct">Correct. Without a multiplication operation, power-series terms such as A^3 would not be meaningful.</span>
+            <span class="feedback correct">Correct. Without a multiplication operation, power-series terms such as \(A^3\) would not be meaningful.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q33" value="D">
-            <span class="choice-text"><b>D.</b> It means the bracket [X,Y] is a substitute for ordinary multiplication rather than a measure of order failure.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It supplies the meaning of repeated powers in the new recipe.. Without a multiplication operation, power-series terms such as A^3 would not be meaningful.</span>
+            <span class="choice-text"><b>D.</b> It means the bracket \([X,Y]\) is a substitute for ordinary multiplication rather than a measure of order failure.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It supplies the meaning of repeated powers in the new recipe.. Without a multiplication operation, power-series terms such as \(A^3\) would not be meaningful.</span>
           </label>
         </fieldset>
       </article>
@@ -912,12 +926,12 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q35" value="A">
-            <span class="choice-text"><b>A.</b> It makes exp(A+B)=exp(A)exp(B) true as soon as A and B have the same eigenvalues.</span>
+            <span class="choice-text"><b>A.</b> It makes \(\exp(A+B)\)=\(\exp(A)\)\(\exp(B)\) true as soon as A and B have the same eigenvalues.</span>
             <span class="feedback wrong">Not quite. The best answer is C: It asks whether convergent Cauchy sequences or infinite sums actually have limits inside the space.. Completeness is an analytic condition needed for many infinite recipes.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q35" value="B">
-            <span class="choice-text"><b>B.</b> It says the theorem det(exp(A))=exp(tr(A)) determines exp(A) up to a change of basis.</span>
+            <span class="choice-text"><b>B.</b> It says the theorem \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) determines \(\exp(A)\) up to a change of basis.</span>
             <span class="feedback wrong">Not quite. The best answer is C: It asks whether convergent Cauchy sequences or infinite sums actually have limits inside the space.. Completeness is an analytic condition needed for many infinite recipes.</span>
           </label>
           <label class="choice">
@@ -933,7 +947,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q36">
-        <h3>36. Why does a finite-dimensional matrix norm help define exp(A)?</h3>
+        <h3>36. Why does a finite-dimensional matrix norm help define \(\exp(A)\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q36" value="A">
@@ -952,7 +966,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q36" value="D">
-            <span class="choice-text"><b>D.</b> It assumes convergence of exp(A) follows from the determinant being nonzero.</span>
+            <span class="choice-text"><b>D.</b> It assumes convergence of \(\exp(A)\) follows from the determinant being nonzero.</span>
             <span class="feedback wrong">Not quite. The best answer is A: It provides a way to prove the infinite matrix series converges.. A norm turns the formal infinite sum into a controlled limiting process.</span>
           </label>
         </fieldset>
@@ -1058,7 +1072,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q41">
-        <h3>41. What does it mean for exp(A) to be invertible with inverse exp(-A)?</h3>
+        <h3>41. What does it mean for \(\exp(A)\) to be invertible with inverse \(\exp(-A)\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q41" value="A">
@@ -1112,12 +1126,12 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q43" value="A">
-            <span class="choice-text"><b>A.</b> It relies on the determinant preserving addition, since det(A+B)=det(A)+det(B) is the hidden scalar rule.</span>
+            <span class="choice-text"><b>A.</b> It relies on the determinant preserving addition, since \(\det(A+B)=\det(A)+\det(B)\) is the hidden scalar rule.</span>
             <span class="feedback wrong">Not quite. The best answer is C: The operations used by the formula still exist and obey enough rules for the formula to make sense.. It does not mean the visual graph or every scalar consequence survives.</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q43" value="B">
-            <span class="choice-text"><b>B.</b> It means the bracket [X,Y] is a substitute for ordinary multiplication rather than a measure of order failure.</span>
+            <span class="choice-text"><b>B.</b> It means the bracket \([X,Y]\) is a substitute for ordinary multiplication rather than a measure of order failure.</span>
             <span class="feedback wrong">Not quite. The best answer is C: The operations used by the formula still exist and obey enough rules for the formula to make sense.. It does not mean the visual graph or every scalar consequence survives.</span>
           </label>
           <label class="choice">
@@ -1152,7 +1166,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q44" value="D">
-            <span class="choice-text"><b>D.</b> It assumes the transpose is the same thing as the adjoint representation Ad_g.</span>
+            <span class="choice-text"><b>D.</b> It assumes the transpose is the same thing as the adjoint representation \(\operatorname{Ad}_g\).</span>
             <span class="feedback wrong">Not quite. The best answer is A: It supplies the language of transformations, identity maps, composition, powers, adjoints, and invariant structure.. Those are the objects and operations that power-series recipes act on.</span>
           </label>
         </fieldset>
@@ -1162,7 +1176,7 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q45" value="A">
-            <span class="choice-text"><b>A.</b> It says the theorem det(exp(A))=exp(tr(A)) determines exp(A) up to a change of basis.</span>
+            <span class="choice-text"><b>A.</b> It says the theorem \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) determines \(\exp(A)\) up to a change of basis.</span>
             <span class="feedback wrong">Not quite. The best answer is C: It shows the geometric meaning of the matrix exponential as finite motion generated by infinitesimal data.. Substitution explains legality; the exponential map explains motion.</span>
           </label>
           <label class="choice">
@@ -1183,7 +1197,7 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q46">
-        <h3>46. What does it mean for exp(A) to solve X(t)=exp(tA)?</h3>
+        <h3>46. What does it mean for \(\exp(A)\) to solve \(X(t)\)=\(\exp(tA)\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q46" value="A">
@@ -1197,7 +1211,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q46" value="C">
-            <span class="choice-text"><b>C.</b> It assumes convergence of exp(A) follows from the determinant being nonzero.</span>
+            <span class="choice-text"><b>C.</b> It assumes convergence of \(\exp(A)\) follows from the determinant being nonzero.</span>
             <span class="feedback wrong">Not quite. The best answer is A: It gives a one-parameter family of transformations generated by A.. The series is not just symbolic; it describes a flow.</span>
           </label>
           <label class="choice">
@@ -1227,7 +1241,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q47" value="D">
-            <span class="choice-text"><b>D.</b> It says the identity matrix appears because exp(A) must always preserve every vector length.</span>
+            <span class="choice-text"><b>D.</b> It says the identity matrix appears because \(\exp(A)\) must always preserve every vector length.</span>
             <span class="feedback wrong">Not quite. The best answer is C: The same notation can represent scalar multiplication, matrix composition, or operator composition depending on context.. Clear meaning comes from the algebra behind the symbols.</span>
           </label>
         </fieldset>
@@ -1252,7 +1266,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q48" value="D">
-            <span class="choice-text"><b>D.</b> It means ad_X is exponentiated by exponentiating X first and then taking ordinary powers of the entries.</span>
+            <span class="choice-text"><b>D.</b> It means \(\operatorname{ad}_X\) is exponentiated by exponentiating X first and then taking ordinary powers of the entries.</span>
             <span class="feedback wrong">Not quite. The best answer is A: Check the operations used, the identities assumed, convergence or domain conditions, and whether commutativity is required.. This checklist prevents most invalid transfers.</span>
           </label>
         </fieldset>
@@ -1283,27 +1297,27 @@
         </fieldset>
       </article>
       <article class="question" id="substitution-q50">
-        <h3>50. When a theorem uses a named object such as ad_X, what must you identify first?</h3>
+        <h3>50. When a theorem uses a named object such as \(\operatorname{ad}_X\), what must you identify first?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="substitution-q50" value="A">
             <span class="choice-text"><b>A.</b> Identify the space it acts on, the rule defining it, and the operation used in that rule.</span>
-            <span class="feedback correct">Correct. For ad_X, the space is the Lie algebra and the rule is Y maps to [X,Y].</span>
+            <span class="feedback correct">Correct. For \(\operatorname{ad}_X\), the space is the Lie algebra and the rule is Y maps to \([X,Y]\).</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q50" value="B">
             <span class="choice-text"><b>B.</b> It means the eigenvalues determine the whole matrix function even when the matrix is not diagonalizable.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule.. For ad_X, the space is the Lie algebra and the rule is Y maps to [X,Y].</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule.. For \(\operatorname{ad}_X\), the space is the Lie algebra and the rule is Y maps to \([X,Y]\).</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q50" value="C">
             <span class="choice-text"><b>C.</b> It treats nilpotent matrices as zero matrices, because their high powers eventually disappear.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule.. For ad_X, the space is the Lie algebra and the rule is Y maps to [X,Y].</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule.. For \(\operatorname{ad}_X\), the space is the Lie algebra and the rule is Y maps to \([X,Y]\).</span>
           </label>
           <label class="choice">
             <input type="radio" name="substitution-q50" value="D">
-            <span class="choice-text"><b>D.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as x&lt;y.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule.. For ad_X, the space is the Lie algebra and the rule is Y maps to [X,Y].</span>
+            <span class="choice-text"><b>D.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as \(x<y\).</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule.. For \(\operatorname{ad}_X\), the space is the Lie algebra and the rule is Y maps to \([X,Y]\).</span>
           </label>
         </fieldset>
       </article>
@@ -1345,7 +1359,7 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q2">
-        <h3>52. What does exp(tX) represent when X is a matrix generator?</h3>
+        <h3>52. What does \(\exp(tX)\) represent when X is a matrix generator?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q2" value="A">
@@ -1370,11 +1384,11 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q3">
-        <h3>53. What does exp(0)=I mean geometrically?</h3>
+        <h3>53. What does \(\exp(0)=I\) mean geometrically?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q3" value="A">
-            <span class="choice-text"><b>A.</b> It says exp(ad_X)=Ad_exp(X) is just a typographical identity between two names.</span>
+            <span class="choice-text"><b>A.</b> It says \(\exp(\operatorname{ad}_X)=\operatorname{Ad}_{\exp(X)}\) is just a typographical identity between two names.</span>
             <span class="feedback wrong">Not quite. The best answer is B: Zero infinitesimal motion produces the identity transformation, which changes nothing.. The identity is the starting point for nearby group motion.</span>
           </label>
           <label class="choice">
@@ -1389,7 +1403,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q3" value="D">
-            <span class="choice-text"><b>D.</b> It assumes differentiating exp(X(t)) only requires differentiating the eigenvalues of X(t).</span>
+            <span class="choice-text"><b>D.</b> It assumes differentiating \(\exp(X(t))\) only requires differentiating the eigenvalues of \(X(t)\).</span>
             <span class="feedback wrong">Not quite. The best answer is B: Zero infinitesimal motion produces the identity transformation, which changes nothing.. The identity is the starting point for nearby group motion.</span>
           </label>
         </fieldset>
@@ -1404,7 +1418,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q4" value="B">
-            <span class="choice-text"><b>B.</b> It assumes local errors in exp(X)exp(Y) are numerical rounding errors rather than bracket effects.</span>
+            <span class="choice-text"><b>B.</b> It assumes local errors in \(\exp(X)\)\(\exp(Y)\) are numerical rounding errors rather than bracket effects.</span>
             <span class="feedback wrong">Not quite. The best answer is D: It is the tangent space at the identity equipped with a bracket that records infinitesimal noncommutativity.. It is the local, infinitesimal structure of the group.</span>
           </label>
           <label class="choice">
@@ -1439,7 +1453,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q5" value="D">
-            <span class="choice-text"><b>D.</b> It confuses ad_X with multiplication by the scalar trace of X.</span>
+            <span class="choice-text"><b>D.</b> It confuses \(\operatorname{ad}_X\) with multiplication by the scalar trace of X.</span>
             <span class="feedback wrong">Not quite. The best answer is B: It is a smooth space of finite transformations where multiplication and inversion are smooth.. The group contains the transformations; the algebra describes infinitesimal directions.</span>
           </label>
         </fieldset>
@@ -1474,7 +1488,7 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q7" value="A">
-            <span class="choice-text"><b>A.</b> It treats exp(X) as applying the scalar exponential separately to every coordinate entry of X.</span>
+            <span class="choice-text"><b>A.</b> It treats \(\exp(X)\) as applying the scalar exponential separately to every coordinate entry of X.</span>
             <span class="feedback wrong">Not quite. The best answer is B: Different infinitesimal generators can produce the same finite transformation, especially when motion wraps around.. Rotations are the standard mental model for this global issue.</span>
           </label>
           <label class="choice">
@@ -1489,7 +1503,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q7" value="D">
-            <span class="choice-text"><b>D.</b> It says every element of every matrix Lie group is exp(X) for a unique X.</span>
+            <span class="choice-text"><b>D.</b> It says every element of every matrix Lie group is \(\exp(X)\) for a unique X.</span>
             <span class="feedback wrong">Not quite. The best answer is B: Different infinitesimal generators can produce the same finite transformation, especially when motion wraps around.. Rotations are the standard mental model for this global issue.</span>
           </label>
         </fieldset>
@@ -1499,17 +1513,17 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q8" value="A">
-            <span class="choice-text"><b>A.</b> It confuses Ad_g with the transpose or adjoint matrix g^T.</span>
+            <span class="choice-text"><b>A.</b> It confuses \(\operatorname{Ad}_g\) with the transpose or adjoint matrix g^T.</span>
             <span class="feedback wrong">Not quite. The best answer is D: Some Lie groups contain elements that are not exponentials of any Lie algebra element.. Surjectivity depends on the particular group.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q8" value="B">
-            <span class="choice-text"><b>B.</b> It says the Jacobi identity means [X,[Y,Z]] is always zero.</span>
+            <span class="choice-text"><b>B.</b> It says the Jacobi identity means \([X,[Y,Z]]\) is always zero.</span>
             <span class="feedback wrong">Not quite. The best answer is D: Some Lie groups contain elements that are not exponentials of any Lie algebra element.. Surjectivity depends on the particular group.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q8" value="C">
-            <span class="choice-text"><b>C.</b> It says det(exp(X))=exp(tr(X)) proves tr(exp(X))=exp(tr(X)).</span>
+            <span class="choice-text"><b>C.</b> It says \(\det(\exp(X))=\exp(\operatorname{tr}(X))\) proves \(\operatorname{tr}(\exp(X))=\exp(\operatorname{tr}(X))\).</span>
             <span class="feedback wrong">Not quite. The best answer is D: Some Lie groups contain elements that are not exponentials of any Lie algebra element.. Surjectivity depends on the particular group.</span>
           </label>
           <label class="choice">
@@ -1520,7 +1534,7 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q9">
-        <h3>59. What does the Lie bracket [X,Y] measure?</h3>
+        <h3>59. What does the Lie bracket \([X,Y]\) measure?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q9" value="A">
@@ -1545,76 +1559,76 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q10">
-        <h3>60. What does the commutator loop exp(eps X)exp(eps Y)exp(-eps X)exp(-eps Y) reveal?</h3>
+        <h3>60. What does the commutator loop \(\exp(\varepsilon X)\exp(\varepsilon Y)\exp(-\varepsilon X)\exp(-\varepsilon Y)\) reveal?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q10" value="A">
-            <span class="choice-text"><b>A.</b> It says exp(tX) is periodic for every generator X.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction [X,Y].. A small loop made of noncommuting moves does not close perfectly.</span>
+            <span class="choice-text"><b>A.</b> It says \(\exp(tX)\) is periodic for every generator X.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction \([X,Y]\).. A small loop made of noncommuting moves does not close perfectly.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q10" value="B">
             <span class="choice-text"><b>B.</b> It says commutator loops are exactly closed because every move is undone by its inverse.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction [X,Y].. A small loop made of noncommuting moves does not close perfectly.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction \([X,Y]\).. A small loop made of noncommuting moves does not close perfectly.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q10" value="C">
             <span class="choice-text"><b>C.</b> It treats the Lie bracket as a replacement for matrix multiplication instead of a derived operation from it.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction [X,Y].. A small loop made of noncommuting moves does not close perfectly.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction \([X,Y]\).. A small loop made of noncommuting moves does not close perfectly.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q10" value="D">
-            <span class="choice-text"><b>D.</b> Its leading nontrivial effect points in the bracket direction [X,Y].</span>
+            <span class="choice-text"><b>D.</b> Its leading nontrivial effect points in the bracket direction \([X,Y]\).</span>
             <span class="feedback correct">Correct. A small loop made of noncommuting moves does not close perfectly.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="exponential-q11">
-        <h3>61. What does the Baker-Campbell-Hausdorff theorem mean for exp(X)exp(Y)?</h3>
+        <h3>61. What does the Baker-Campbell-Hausdorff theorem mean for \(\exp(X)\)\(\exp(Y)\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q11" value="A">
             <span class="choice-text"><b>A.</b> It treats the determinant of the generator and determinant of its exponential as the same quantity.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses.. It is the theorem that repairs the false scalar rule exp(X+Y)=exp(X)exp(Y).</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses.. It is the theorem that repairs the false scalar rule \(\exp(X+Y)=\exp(X)\exp(Y)\).</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q11" value="B">
             <span class="choice-text"><b>B.</b> It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses.</span>
-            <span class="feedback correct">Correct. It is the theorem that repairs the false scalar rule exp(X+Y)=exp(X)exp(Y).</span>
+            <span class="feedback correct">Correct. It is the theorem that repairs the false scalar rule \(\exp(X+Y)=\exp(X)\exp(Y)\).</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q11" value="C">
             <span class="choice-text"><b>C.</b> It treats representation theory as a way to rename matrices, not as actions on vector spaces.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses.. It is the theorem that repairs the false scalar rule exp(X+Y)=exp(X)exp(Y).</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses.. It is the theorem that repairs the false scalar rule \(\exp(X+Y)=\exp(X)\exp(Y)\).</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q11" value="D">
-            <span class="choice-text"><b>D.</b> It says the theorem exp(tX)exp(sX)=exp((t+s)X) works because t and s are real, not because the generator is the same.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses.. It is the theorem that repairs the false scalar rule exp(X+Y)=exp(X)exp(Y).</span>
+            <span class="choice-text"><b>D.</b> It says the theorem \(\exp(tX)\exp(sX)=\exp((t+s)X)\) works because t and s are real, not because the generator is the same.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses.. It is the theorem that repairs the false scalar rule \(\exp(X+Y)=\exp(X)\exp(Y)\).</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="exponential-q12">
-        <h3>62. When is exp(X+Y)=exp(X)exp(Y) valid for matrices?</h3>
+        <h3>62. When is \(\exp(X+Y)=\exp(X)\exp(Y)\) valid for matrices?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q12" value="A">
             <span class="choice-text"><b>A.</b> It treats finite-versus-infinitesimal as a question of large numbers versus small numbers, not group versus algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so XY=YX.. Commutativity removes the bracket corrections.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so \(XY=YX\).. Commutativity removes the bracket corrections.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q12" value="B">
             <span class="choice-text"><b>B.</b> It says the cone visualization is proof that all trace-zero matrices commute on the boundary.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so XY=YX.. Commutativity removes the bracket corrections.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so \(XY=YX\).. Commutativity removes the bracket corrections.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q12" value="C">
             <span class="choice-text"><b>C.</b> It says the finite adjoint action is defined by adding X to g, not by conjugation.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so XY=YX.. Commutativity removes the bracket corrections.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so \(XY=YX\).. Commutativity removes the bracket corrections.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q12" value="D">
-            <span class="choice-text"><b>D.</b> It is valid when X and Y commute, so XY=YX.</span>
+            <span class="choice-text"><b>D.</b> It is valid when X and Y commute, so \(XY=YX\).</span>
             <span class="feedback correct">Correct. Commutativity removes the bracket corrections.</span>
           </label>
         </fieldset>
@@ -1634,7 +1648,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q13" value="C">
-            <span class="choice-text"><b>C.</b> It assumes differentiating exp(X(t)) only requires differentiating the eigenvalues of X(t).</span>
+            <span class="choice-text"><b>C.</b> It assumes differentiating \(\exp(X(t))\) only requires differentiating the eigenvalues of \(X(t)\).</span>
             <span class="feedback wrong">Not quite. The best answer is B: It expresses the same internal direction after changing frame by the group element g.. Conjugation is a finite symmetry action on the algebra.</span>
           </label>
           <label class="choice">
@@ -1645,11 +1659,11 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q14">
-        <h3>64. What does Ad_g mean?</h3>
+        <h3>64. What does \(\operatorname{Ad}_g\) mean?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q14" value="A">
-            <span class="choice-text"><b>A.</b> It assumes local errors in exp(X)exp(Y) are numerical rounding errors rather than bracket effects.</span>
+            <span class="choice-text"><b>A.</b> It assumes local errors in \(\exp(X)\)\(\exp(Y)\) are numerical rounding errors rather than bracket effects.</span>
             <span class="feedback wrong">Not quite. The best answer is D: It is the adjoint representation: the group action on its Lie algebra induced by conjugation.. This is finite action on infinitesimal directions.</span>
           </label>
           <label class="choice">
@@ -1670,51 +1684,51 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q15">
-        <h3>65. What does ad_X mean?</h3>
+        <h3>65. What does \(\operatorname{ad}_X\) mean?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q15" value="A">
             <span class="choice-text"><b>A.</b> It assumes changing basis changes the actual group element rather than its coordinate description.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; [X,Y].. Lowercase ad is a linear operator on the Lie algebra.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; \([X,Y]\).. Lowercase ad is a linear operator on the Lie algebra.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q15" value="B">
-            <span class="choice-text"><b>B.</b> It is the infinitesimal adjoint action Y -&gt; [X,Y].</span>
+            <span class="choice-text"><b>B.</b> It is the infinitesimal adjoint action Y -&gt; \([X,Y]\).</span>
             <span class="feedback correct">Correct. Lowercase ad is a linear operator on the Lie algebra.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q15" value="C">
-            <span class="choice-text"><b>C.</b> It confuses ad_X with multiplication by the scalar trace of X.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; [X,Y].. Lowercase ad is a linear operator on the Lie algebra.</span>
+            <span class="choice-text"><b>C.</b> It confuses \(\operatorname{ad}_X\) with multiplication by the scalar trace of X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; \([X,Y]\).. Lowercase ad is a linear operator on the Lie algebra.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q15" value="D">
             <span class="choice-text"><b>D.</b> It assumes associativity and commutativity are the same property for matrix products.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; [X,Y].. Lowercase ad is a linear operator on the Lie algebra.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; \([X,Y]\).. Lowercase ad is a linear operator on the Lie algebra.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="exponential-q16">
-        <h3>66. What does exp(ad_X)=Ad_exp(X) state?</h3>
+        <h3>66. What does \(\exp(\operatorname{ad}_X)=\operatorname{Ad}_{\exp(X)}\) state?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q16" value="A">
             <span class="choice-text"><b>A.</b> It says local behavior near the identity automatically determines the entire global topology of the group.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of exp(X).. This theorem links the substitution principle with Lie-group geometry.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of \(\exp(X)\).. This theorem links the substitution principle with Lie-group geometry.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q16" value="B">
             <span class="choice-text"><b>B.</b> It assumes the cone boundary is the hyperbolic case because boundaries look sharp.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of exp(X).. This theorem links the substitution principle with Lie-group geometry.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of \(\exp(X)\).. This theorem links the substitution principle with Lie-group geometry.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q16" value="C">
             <span class="choice-text"><b>C.</b> It says imaginary eigenvalues mean the motion is not real.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of exp(X).. This theorem links the substitution principle with Lie-group geometry.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of \(\exp(X)\).. This theorem links the substitution principle with Lie-group geometry.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q16" value="D">
-            <span class="choice-text"><b>D.</b> The exponential of the infinitesimal adjoint operator equals the finite adjoint action of exp(X).</span>
+            <span class="choice-text"><b>D.</b> The exponential of the infinitesimal adjoint operator equals the finite adjoint action of \(\exp(X)\).</span>
             <span class="feedback correct">Correct. This theorem links the substitution principle with Lie-group geometry.</span>
           </label>
         </fieldset>
@@ -1734,7 +1748,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q17" value="C">
-            <span class="choice-text"><b>C.</b> It says every element of every matrix Lie group is exp(X) for a unique X.</span>
+            <span class="choice-text"><b>C.</b> It says every element of every matrix Lie group is \(\exp(X)\) for a unique X.</span>
             <span class="feedback wrong">Not quite. The best answer is B: It means the infinitesimal area-growth rate is zero.. Trace controls first-order volume scaling.</span>
           </label>
           <label class="choice">
@@ -1745,26 +1759,26 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q18">
-        <h3>68. What does det(exp(X))=exp(tr(X)) imply when tr(X)=0?</h3>
+        <h3>68. What does \(\det(\exp(X))=\exp(\operatorname{tr}(X))\) imply when \(\operatorname{tr}(X)=0\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q18" value="A">
-            <span class="choice-text"><b>A.</b> It says the Jacobi identity means [X,[Y,Z]] is always zero.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: It implies det(exp(X))=1, so the finite transformation preserves area or volume scale.. This theorem connects infinitesimal trace to finite determinant.</span>
+            <span class="choice-text"><b>A.</b> It says the Jacobi identity means \([X,[Y,Z]]\) is always zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It implies \(\det(\exp(X))\)=1, so the finite transformation preserves area or volume scale.. This theorem connects infinitesimal trace to finite determinant.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q18" value="B">
-            <span class="choice-text"><b>B.</b> It says det(exp(X))=exp(tr(X)) proves tr(exp(X))=exp(tr(X)).</span>
-            <span class="feedback wrong">Not quite. The best answer is D: It implies det(exp(X))=1, so the finite transformation preserves area or volume scale.. This theorem connects infinitesimal trace to finite determinant.</span>
+            <span class="choice-text"><b>B.</b> It says \(\det(\exp(X))=\exp(\operatorname{tr}(X))\) proves \(\operatorname{tr}(\exp(X))=\exp(\operatorname{tr}(X))\).</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It implies \(\det(\exp(X))\)=1, so the finite transformation preserves area or volume scale.. This theorem connects infinitesimal trace to finite determinant.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q18" value="C">
-            <span class="choice-text"><b>C.</b> It says the exponential map is linear because exp(tX) depends smoothly on t.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: It implies det(exp(X))=1, so the finite transformation preserves area or volume scale.. This theorem connects infinitesimal trace to finite determinant.</span>
+            <span class="choice-text"><b>C.</b> It says the exponential map is linear because \(\exp(tX)\) depends smoothly on t.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It implies \(\det(\exp(X))\)=1, so the finite transformation preserves area or volume scale.. This theorem connects infinitesimal trace to finite determinant.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q18" value="D">
-            <span class="choice-text"><b>D.</b> It implies det(exp(X))=1, so the finite transformation preserves area or volume scale.</span>
+            <span class="choice-text"><b>D.</b> It implies \(\det(\exp(X))\)=1, so the finite transformation preserves area or volume scale.</span>
             <span class="feedback correct">Correct. This theorem connects infinitesimal trace to finite determinant.</span>
           </label>
         </fieldset>
@@ -1834,37 +1848,37 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q21" value="C">
-            <span class="choice-text"><b>C.</b> It says the theorem exp(tX)exp(sX)=exp((t+s)X) works because t and s are real, not because the generator is the same.</span>
+            <span class="choice-text"><b>C.</b> It says the theorem \(\exp(tX)\exp(sX)=\exp((t+s)X)\) works because t and s are real, not because the generator is the same.</span>
             <span class="feedback wrong">Not quite. The best answer is B: It is the boundary shear-like case, often associated with nilpotent behavior.. Parabolic behavior sits between elliptic and hyperbolic types.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q21" value="D">
-            <span class="choice-text"><b>D.</b> It says the bracket [X,Y] measures the angle between X and Y under the Euclidean dot product.</span>
+            <span class="choice-text"><b>D.</b> It says the bracket \([X,Y]\) measures the angle between X and Y under the Euclidean dot product.</span>
             <span class="feedback wrong">Not quite. The best answer is B: It is the boundary shear-like case, often associated with nilpotent behavior.. Parabolic behavior sits between elliptic and hyperbolic types.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="exponential-q22">
-        <h3>72. What does a nilpotent generator N with N^2=0 do under exponentiation?</h3>
+        <h3>72. What does a nilpotent generator \(N\) with \(\(N^2=0\)\) do under exponentiation?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q22" value="A">
             <span class="choice-text"><b>A.</b> It says the cone visualization is proof that all trace-zero matrices commute on the boundary.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is I+N because all higher powers vanish.. The infinite series terminates.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is \(I+N\) because all higher powers vanish.. The infinite series terminates.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q22" value="B">
             <span class="choice-text"><b>B.</b> It says the finite adjoint action is defined by adding X to g, not by conjugation.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is I+N because all higher powers vanish.. The infinite series terminates.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is \(I+N\) because all higher powers vanish.. The infinite series terminates.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q22" value="C">
             <span class="choice-text"><b>C.</b> It says the BCH theorem is a shortcut for ignoring commutators in products of exponentials.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is I+N because all higher powers vanish.. The infinite series terminates.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is \(I+N\) because all higher powers vanish.. The infinite series terminates.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q22" value="D">
-            <span class="choice-text"><b>D.</b> Its exponential is I+N because all higher powers vanish.</span>
+            <span class="choice-text"><b>D.</b> Its exponential is \(I+N\) because all higher powers vanish.</span>
             <span class="feedback correct">Correct. The infinite series terminates.</span>
           </label>
         </fieldset>
@@ -1874,7 +1888,7 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q23" value="A">
-            <span class="choice-text"><b>A.</b> It assumes differentiating exp(X(t)) only requires differentiating the eigenvalues of X(t).</span>
+            <span class="choice-text"><b>A.</b> It assumes differentiating \(\exp(X(t))\) only requires differentiating the eigenvalues of \(X(t)\).</span>
             <span class="feedback wrong">Not quite. The best answer is B: Its infinitesimal action changes direction without changing Euclidean length to first order.. Exponentiating that generator gives an orthogonal rotation-type transformation.</span>
           </label>
           <label class="choice">
@@ -1889,13 +1903,13 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q23" value="D">
-            <span class="choice-text"><b>D.</b> It says the derivative of exp(X(t)) follows the scalar chain rule because every term is differentiable.</span>
+            <span class="choice-text"><b>D.</b> It says the derivative of \(\exp(X(t))\) follows the scalar chain rule because every term is differentiable.</span>
             <span class="feedback wrong">Not quite. The best answer is B: Its infinitesimal action changes direction without changing Euclidean length to first order.. Exponentiating that generator gives an orthogonal rotation-type transformation.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="exponential-q24">
-        <h3>74. What does the theorem exp(tX)exp(sX)=exp((t+s)X) mean?</h3>
+        <h3>74. What does the theorem \(\exp(tX)\exp(sX)=\exp((t+s)X)\) mean?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q24" value="A">
@@ -1920,11 +1934,11 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q25">
-        <h3>75. What does the derivative identity d/dt exp(tX)=X exp(tX)=exp(tX)X mean?</h3>
+        <h3>75. What does the derivative identity \(\frac{d}{dt}\exp(tX)=X\exp(tX)=\exp(tX)X\) mean?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q25" value="A">
-            <span class="choice-text"><b>A.</b> It confuses ad_X with multiplication by the scalar trace of X.</span>
+            <span class="choice-text"><b>A.</b> It confuses \(\operatorname{ad}_X\) with multiplication by the scalar trace of X.</span>
             <span class="feedback wrong">Not quite. The best answer is B: For a fixed generator X, the flow has constant infinitesimal velocity X and X commutes with its own exponential.. This is the differential equation solved by the exponential flow.</span>
           </label>
           <label class="choice">
@@ -1945,71 +1959,71 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q26">
-        <h3>76. Why is d/dt exp(X(t)) not simply exp(X(t))X_prime(t) in general?</h3>
+        <h3>76. Why is \(\frac{d}{dt}\exp(X(t))\) not simply \(\exp(X(t))X^\prime(t)\) in general?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q26" value="A">
             <span class="choice-text"><b>A.</b> It assumes the cone boundary is the hyperbolic case because boundaries look sharp.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: X(t) and X_prime(t) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.. This is a direct noncommutativity issue.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: \(X(t)\) and \(X^\prime(t)\) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.. This is a direct noncommutativity issue.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q26" value="B">
             <span class="choice-text"><b>B.</b> It says imaginary eigenvalues mean the motion is not real.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: X(t) and X_prime(t) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.. This is a direct noncommutativity issue.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: \(X(t)\) and \(X^\prime(t)\) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.. This is a direct noncommutativity issue.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q26" value="C">
             <span class="choice-text"><b>C.</b> It assumes skew-symmetric matrices preserve length because their entries sum to zero.</span>
-            <span class="feedback wrong">Not quite. The best answer is D: X(t) and X_prime(t) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.. This is a direct noncommutativity issue.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: \(X(t)\) and \(X^\prime(t)\) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.. This is a direct noncommutativity issue.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q26" value="D">
-            <span class="choice-text"><b>D.</b> X(t) and X_prime(t) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.</span>
+            <span class="choice-text"><b>D.</b> \(X(t)\) and \(X^\prime(t)\) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.</span>
             <span class="feedback correct">Correct. This is a direct noncommutativity issue.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="exponential-q27">
-        <h3>77. What does Schur’s formula for the derivative of exp(X(t)) correct?</h3>
+        <h3>77. What does Schur’s formula for the derivative of \(\exp(X(t))\) correct?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q27" value="A">
-            <span class="choice-text"><b>A.</b> It says every element of every matrix Lie group is exp(X) for a unique X.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from ad_X to account for noncommutativity.. The formula explains how brackets enter derivatives of matrix exponentials.</span>
+            <span class="choice-text"><b>A.</b> It says every element of every matrix Lie group is \(\exp(X)\) for a unique X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from \(\operatorname{ad}_X\) to account for noncommutativity.. The formula explains how brackets enter derivatives of matrix exponentials.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q27" value="B">
-            <span class="choice-text"><b>B.</b> It corrects the scalar chain rule by inserting an operator built from ad_X to account for noncommutativity.</span>
+            <span class="choice-text"><b>B.</b> It corrects the scalar chain rule by inserting an operator built from \(\operatorname{ad}_X\) to account for noncommutativity.</span>
             <span class="feedback correct">Correct. The formula explains how brackets enter derivatives of matrix exponentials.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q27" value="C">
             <span class="choice-text"><b>C.</b> It assumes the order of infinitesimal moves cannot matter because each move is tiny.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from ad_X to account for noncommutativity.. The formula explains how brackets enter derivatives of matrix exponentials.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from \(\operatorname{ad}_X\) to account for noncommutativity.. The formula explains how brackets enter derivatives of matrix exponentials.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q27" value="D">
             <span class="choice-text"><b>D.</b> It says hyperbolic motion means motion on a hyperbola must literally be drawn in the original coordinate plane.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from ad_X to account for noncommutativity.. The formula explains how brackets enter derivatives of matrix exponentials.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from \(\operatorname{ad}_X\) to account for noncommutativity.. The formula explains how brackets enter derivatives of matrix exponentials.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="exponential-q28">
-        <h3>78. What does the moving-frame quantity exp(-X)d(exp X) measure?</h3>
+        <h3>78. What does the moving-frame quantity \(\exp(-X)\,d(\exp X)\) measure?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q28" value="A">
-            <span class="choice-text"><b>A.</b> It says det(exp(X))=exp(tr(X)) proves tr(exp(X))=exp(tr(X)).</span>
+            <span class="choice-text"><b>A.</b> It says \(\det(\exp(X))=\exp(\operatorname{tr}(X))\) proves \(\operatorname{tr}(\exp(X))=\exp(\operatorname{tr}(X))\).</span>
             <span class="feedback wrong">Not quite. The best answer is D: It measures the change after undoing the current motion, so the velocity is expressed in the moving/body frame.. This is why adjoint correction terms naturally appear.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q28" value="B">
-            <span class="choice-text"><b>B.</b> It says the exponential map is linear because exp(tX) depends smoothly on t.</span>
+            <span class="choice-text"><b>B.</b> It says the exponential map is linear because \(\exp(tX)\) depends smoothly on t.</span>
             <span class="feedback wrong">Not quite. The best answer is D: It measures the change after undoing the current motion, so the velocity is expressed in the moving/body frame.. This is why adjoint correction terms naturally appear.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q28" value="C">
-            <span class="choice-text"><b>C.</b> It treats the identity matrix in exp(X) as a normalization constant rather than the no-motion transformation.</span>
+            <span class="choice-text"><b>C.</b> It treats the identity matrix in \(\exp(X)\) as a normalization constant rather than the no-motion transformation.</span>
             <span class="feedback wrong">Not quite. The best answer is D: It measures the change after undoing the current motion, so the velocity is expressed in the moving/body frame.. This is why adjoint correction terms naturally appear.</span>
           </label>
           <label class="choice">
@@ -2025,22 +2039,22 @@
           <label class="choice">
             <input type="radio" name="exponential-q29" value="A">
             <span class="choice-text"><b>A.</b> It says the spectral type of a generator is irrelevant once exp has been computed.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It says [X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.. The identity is the consistency law for nested commutators.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\).. The identity is the consistency law for nested commutators.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q29" value="B">
-            <span class="choice-text"><b>B.</b> It says [X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.</span>
+            <span class="choice-text"><b>B.</b> It says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\).</span>
             <span class="feedback correct">Correct. The identity is the consistency law for nested commutators.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q29" value="C">
             <span class="choice-text"><b>C.</b> It treats flow composition as addition of matrices, regardless of whether generators commute.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It says [X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.. The identity is the consistency law for nested commutators.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\).. The identity is the consistency law for nested commutators.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q29" value="D">
             <span class="choice-text"><b>D.</b> It says exp is a global coordinate chart for every Lie group, with no identifications or missing elements.</span>
-            <span class="feedback wrong">Not quite. The best answer is B: It says [X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.. The identity is the consistency law for nested commutators.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\).. The identity is the consistency law for nested commutators.</span>
           </label>
         </fieldset>
       </article>
@@ -2074,7 +2088,7 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q31" value="A">
-            <span class="choice-text"><b>A.</b> It says the theorem exp(tX)exp(sX)=exp((t+s)X) works because t and s are real, not because the generator is the same.</span>
+            <span class="choice-text"><b>A.</b> It says the theorem \(\exp(tX)\exp(sX)=\exp((t+s)X)\) works because t and s are real, not because the generator is the same.</span>
             <span class="feedback wrong">Not quite. The best answer is B: Following the vector field over time produces a path of transformations.. This is the geometric language behind the exponential map.</span>
           </label>
           <label class="choice">
@@ -2084,7 +2098,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q31" value="C">
-            <span class="choice-text"><b>C.</b> It says the bracket [X,Y] measures the angle between X and Y under the Euclidean dot product.</span>
+            <span class="choice-text"><b>C.</b> It says the bracket \([X,Y]\) measures the angle between X and Y under the Euclidean dot product.</span>
             <span class="feedback wrong">Not quite. The best answer is B: Following the vector field over time produces a path of transformations.. This is the geometric language behind the exponential map.</span>
           </label>
           <label class="choice">
@@ -2134,7 +2148,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q33" value="C">
-            <span class="choice-text"><b>C.</b> It says the derivative of exp(X(t)) follows the scalar chain rule because every term is differentiable.</span>
+            <span class="choice-text"><b>C.</b> It says the derivative of \(\exp(X(t))\) follows the scalar chain rule because every term is differentiable.</span>
             <span class="feedback wrong">Not quite. The best answer is B: The exponential map uses linear transformations, composition, identity, eigenstructure, and matrix powers.. The Lie-theory ideas are built on transformation-level linear algebra.</span>
           </label>
           <label class="choice">
@@ -2189,7 +2203,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q35" value="D">
-            <span class="choice-text"><b>D.</b> It assumes exp(-X) is unrelated to exp(X)^{-1} in a matrix group.</span>
+            <span class="choice-text"><b>D.</b> It assumes \(\exp(-X)\) is unrelated to \(\exp(X)\)^{-1} in a matrix group.</span>
             <span class="feedback wrong">Not quite. The best answer is B: The power series defines the object algebraically; the geometric map interprets it as finite motion.. Both views describe the same construction from different angles.</span>
           </label>
         </fieldset>
@@ -2209,7 +2223,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q36" value="C">
-            <span class="choice-text"><b>C.</b> It says the group action Ad_g and the operator ad_X have the same domain and same input type.</span>
+            <span class="choice-text"><b>C.</b> It says the group action \(\operatorname{Ad}_g\) and the operator \(\operatorname{ad}_X\) have the same domain and same input type.</span>
             <span class="feedback wrong">Not quite. The best answer is D: It passes through the identity element.. At zero time, no motion has occurred.</span>
           </label>
           <label class="choice">
@@ -2245,21 +2259,21 @@
         </fieldset>
       </article>
       <article class="question" id="exponential-q38">
-        <h3>88. What does it mean if the bracket [X,Y] is zero?</h3>
+        <h3>88. What does it mean if the bracket \([X,Y]\) is zero?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q38" value="A">
-            <span class="choice-text"><b>A.</b> It says the exponential map is linear because exp(tX) depends smoothly on t.</span>
+            <span class="choice-text"><b>A.</b> It says the exponential map is linear because \(\exp(tX)\) depends smoothly on t.</span>
             <span class="feedback wrong">Not quite. The best answer is D: The infinitesimal motions commute to first nontrivial order.. A zero bracket removes the first commutator correction.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q38" value="B">
-            <span class="choice-text"><b>B.</b> It treats the identity matrix in exp(X) as a normalization constant rather than the no-motion transformation.</span>
+            <span class="choice-text"><b>B.</b> It treats the identity matrix in \(\exp(X)\) as a normalization constant rather than the no-motion transformation.</span>
             <span class="feedback wrong">Not quite. The best answer is D: The infinitesimal motions commute to first nontrivial order.. A zero bracket removes the first commutator correction.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q38" value="C">
-            <span class="choice-text"><b>C.</b> It makes exp(X+Y)=exp(X)exp(Y) true whenever X and Y are both small.</span>
+            <span class="choice-text"><b>C.</b> It makes \(\exp(X+Y)=\exp(X)\exp(Y)\) true whenever X and Y are both small.</span>
             <span class="feedback wrong">Not quite. The best answer is D: The infinitesimal motions commute to first nontrivial order.. A zero bracket removes the first commutator correction.</span>
           </label>
           <label class="choice">
@@ -2324,7 +2338,7 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q41" value="A">
-            <span class="choice-text"><b>A.</b> It says the bracket [X,Y] measures the angle between X and Y under the Euclidean dot product.</span>
+            <span class="choice-text"><b>A.</b> It says the bracket \([X,Y]\) measures the angle between X and Y under the Euclidean dot product.</span>
             <span class="feedback wrong">Not quite. The best answer is B: It classifies generator types by invariant algebraic quantities, separating elliptic, parabolic, and hyperbolic behavior.. The cone is a geometric summary of algebraic type.</span>
           </label>
           <label class="choice">
@@ -2359,7 +2373,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q42" value="C">
-            <span class="choice-text"><b>C.</b> It says exp(ad_X)=Ad_exp(X) is just a typographical identity between two names.</span>
+            <span class="choice-text"><b>C.</b> It says \(\exp(\operatorname{ad}_X)=\operatorname{Ad}_{\exp(X)}\) is just a typographical identity between two names.</span>
             <span class="feedback wrong">Not quite. The best answer is D: It marks the transition where the determinant condition produces the parabolic shear-like case.. Boundaries often represent degenerate but structurally important behavior.</span>
           </label>
           <label class="choice">
@@ -2374,7 +2388,7 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q43" value="A">
-            <span class="choice-text"><b>A.</b> It says the derivative of exp(X(t)) follows the scalar chain rule because every term is differentiable.</span>
+            <span class="choice-text"><b>A.</b> It says the derivative of \(\exp(X(t))\) follows the scalar chain rule because every term is differentiable.</span>
             <span class="feedback wrong">Not quite. The best answer is B: It is an actual group element that can act on points or vectors, not merely an infinitesimal direction.. The exponential map turns a generator into such a transformation.</span>
           </label>
           <label class="choice">
@@ -2434,7 +2448,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q45" value="C">
-            <span class="choice-text"><b>C.</b> It assumes exp(-X) is unrelated to exp(X)^{-1} in a matrix group.</span>
+            <span class="choice-text"><b>C.</b> It assumes \(\exp(-X)\) is unrelated to \(\exp(X)\)^{-1} in a matrix group.</span>
             <span class="feedback wrong">Not quite. The best answer is B: Because its meaning depends on whether the input is a scalar, matrix, or operator and what structure that input carries.. The same notation hides different levels of action.</span>
           </label>
           <label class="choice">
@@ -2454,12 +2468,12 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q46" value="B">
-            <span class="choice-text"><b>B.</b> It says the group action Ad_g and the operator ad_X have the same domain and same input type.</span>
+            <span class="choice-text"><b>B.</b> It says the group action \(\operatorname{Ad}_g\) and the operator \(\operatorname{ad}_X\) have the same domain and same input type.</span>
             <span class="feedback wrong">Not quite. The best answer is D: Scalar identities involving sums and products must be checked for commutativity or corrected by brackets.. Order is the central issue.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q46" value="C">
-            <span class="choice-text"><b>C.</b> It treats exp(X) as applying the scalar exponential separately to every coordinate entry of X.</span>
+            <span class="choice-text"><b>C.</b> It treats \(\exp(X)\) as applying the scalar exponential separately to every coordinate entry of X.</span>
             <span class="feedback wrong">Not quite. The best answer is D: Scalar identities involving sums and products must be checked for commutativity or corrected by brackets.. Order is the central issue.</span>
           </label>
           <label class="choice">
@@ -2489,7 +2503,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q47" value="D">
-            <span class="choice-text"><b>D.</b> It confuses Ad_g with the transpose or adjoint matrix g^T.</span>
+            <span class="choice-text"><b>D.</b> It confuses \(\operatorname{Ad}_g\) with the transpose or adjoint matrix g^T.</span>
             <span class="feedback wrong">Not quite. The best answer is B: It realizes abstract group elements as linear transformations of a vector space.. Representations connect group structure to linear algebra.</span>
           </label>
         </fieldset>
@@ -2499,12 +2513,12 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="exponential-q48" value="A">
-            <span class="choice-text"><b>A.</b> It treats the identity matrix in exp(X) as a normalization constant rather than the no-motion transformation.</span>
+            <span class="choice-text"><b>A.</b> It treats the identity matrix in \(\exp(X)\) as a normalization constant rather than the no-motion transformation.</span>
             <span class="feedback wrong">Not quite. The best answer is D: It represents the group on its own Lie algebra.. The group acts on its infinitesimal directions.</span>
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q48" value="B">
-            <span class="choice-text"><b>B.</b> It makes exp(X+Y)=exp(X)exp(Y) true whenever X and Y are both small.</span>
+            <span class="choice-text"><b>B.</b> It makes \(\exp(X+Y)=\exp(X)\exp(Y)\) true whenever X and Y are both small.</span>
             <span class="feedback wrong">Not quite. The best answer is D: It represents the group on its own Lie algebra.. The group acts on its infinitesimal directions.</span>
           </label>
           <label class="choice">
@@ -2539,7 +2553,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="exponential-q49" value="D">
-            <span class="choice-text"><b>D.</b> It says exp(tX) is periodic for every generator X.</span>
+            <span class="choice-text"><b>D.</b> It says \(\exp(tX)\) is periodic for every generator X.</span>
             <span class="feedback wrong">Not quite. The best answer is B: Linear maps provide actions, the exponential map turns infinitesimal actions into motion, and substitution explains why the same analytic recipes apply.. The ideas are connected by action, composition, and valid formula transfer.</span>
           </label>
         </fieldset>
@@ -2857,27 +2871,27 @@
         </fieldset>
       </article>
       <article class="question" id="linear-q12">
-        <h3>112. What does the adjoint A* mean with respect to an inner product?</h3>
+        <h3>112. What does the adjoint \(A^*\) mean with respect to an inner product?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="linear-q12" value="A">
             <span class="choice-text"><b>A.</b> It says orientation is preserved exactly when all matrix entries are positive.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It is the map satisfying &lt;Ax,y&gt;=&lt;x,A*y&gt; for all compatible vectors x and y.. This theorem-like definition says the action can move across the inner product pairing.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It is the map satisfying \(\langle Ax,y\rangle=\langle x,A^*y\rangle\) for all compatible vectors x and y.. This theorem-like definition says the action can move across the inner product pairing.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q12" value="B">
             <span class="choice-text"><b>B.</b> It interprets coordinate-free thinking as refusing to compute anything.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It is the map satisfying &lt;Ax,y&gt;=&lt;x,A*y&gt; for all compatible vectors x and y.. This theorem-like definition says the action can move across the inner product pairing.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It is the map satisfying \(\langle Ax,y\rangle=\langle x,A^*y\rangle\) for all compatible vectors x and y.. This theorem-like definition says the action can move across the inner product pairing.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q12" value="C">
-            <span class="choice-text"><b>C.</b> It is the map satisfying &lt;Ax,y&gt;=&lt;x,A*y&gt; for all compatible vectors x and y.</span>
+            <span class="choice-text"><b>C.</b> It is the map satisfying \(\langle Ax,y\rangle=\langle x,A^*y\rangle\) for all compatible vectors x and y.</span>
             <span class="feedback correct">Correct. This theorem-like definition says the action can move across the inner product pairing.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q12" value="D">
             <span class="choice-text"><b>D.</b> It treats determinant zero as meaning the map sends every vector to zero.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It is the map satisfying &lt;Ax,y&gt;=&lt;x,A*y&gt; for all compatible vectors x and y.. This theorem-like definition says the action can move across the inner product pairing.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: It is the map satisfying \(\langle Ax,y\rangle=\langle x,A^*y\rangle\) for all compatible vectors x and y.. This theorem-like definition says the action can move across the inner product pairing.</span>
           </label>
         </fieldset>
       </article>
@@ -3476,7 +3490,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="linear-q36" value="D">
-            <span class="choice-text"><b>D.</b> It treats A^k as raising every entry of A to the kth power.</span>
+            <span class="choice-text"><b>D.</b> It treats \(A^k\) as raising every entry of A to the kth power.</span>
             <span class="feedback wrong">Not quite. The best answer is C: A real symmetric transformation can be understood as independent scalings along perpendicular directions.. The theorem gives the cleanest geometric form for self-adjoint maps.</span>
           </label>
         </fieldset>
@@ -3512,22 +3526,22 @@
           <label class="choice">
             <input type="radio" name="linear-q38" value="A">
             <span class="choice-text"><b>A.</b> It confuses positive definite with all entries being positive.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The quadratic form x^T A x is positive for every nonzero vector x.. Positive definiteness is about the geometry of measurement, not entrywise positivity.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: The quadratic form \(x^T A x\) is positive for every nonzero vector x.. Positive definiteness is about the geometry of measurement, not entrywise positivity.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q38" value="B">
             <span class="choice-text"><b>B.</b> It says a transformation is understood once its largest entry is known.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The quadratic form x^T A x is positive for every nonzero vector x.. Positive definiteness is about the geometry of measurement, not entrywise positivity.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: The quadratic form \(x^T A x\) is positive for every nonzero vector x.. Positive definiteness is about the geometry of measurement, not entrywise positivity.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q38" value="C">
-            <span class="choice-text"><b>C.</b> The quadratic form x^T A x is positive for every nonzero vector x.</span>
+            <span class="choice-text"><b>C.</b> The quadratic form \(x^T A x\) is positive for every nonzero vector x.</span>
             <span class="feedback correct">Correct. Positive definiteness is about the geometry of measurement, not entrywise positivity.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q38" value="D">
             <span class="choice-text"><b>D.</b> It says coordinate changes can make a non-invertible map invertible.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The quadratic form x^T A x is positive for every nonzero vector x.. Positive definiteness is about the geometry of measurement, not entrywise positivity.</span>
+            <span class="feedback wrong">Not quite. The best answer is C: The quadratic form \(x^T A x\) is positive for every nonzero vector x.. Positive definiteness is about the geometry of measurement, not entrywise positivity.</span>
           </label>
         </fieldset>
       </article>
@@ -3536,23 +3550,23 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="linear-q39" value="A">
-            <span class="choice-text"><b>A.</b> It is a scalar-valued expression x^T A x that measures vectors according to a matrix.</span>
+            <span class="choice-text"><b>A.</b> It is a scalar-valued expression \(x^T A x\) that measures vectors according to a matrix.</span>
             <span class="feedback correct">Correct. Quadratic forms encode geometry such as energy or ellipses.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q39" value="B">
             <span class="choice-text"><b>B.</b> It assumes composition order is irrelevant because both transformations are linear.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is a scalar-valued expression x^T A x that measures vectors according to a matrix.. Quadratic forms encode geometry such as energy or ellipses.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is a scalar-valued expression \(x^T A x\) that measures vectors according to a matrix.. Quadratic forms encode geometry such as energy or ellipses.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q39" value="C">
             <span class="choice-text"><b>C.</b> It assumes a matrix with complex eigenvalues cannot act on real vectors.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is a scalar-valued expression x^T A x that measures vectors according to a matrix.. Quadratic forms encode geometry such as energy or ellipses.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is a scalar-valued expression \(x^T A x\) that measures vectors according to a matrix.. Quadratic forms encode geometry such as energy or ellipses.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q39" value="D">
             <span class="choice-text"><b>D.</b> It interprets rank-nullity as rank times nullity equals the number of columns.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is a scalar-valued expression x^T A x that measures vectors according to a matrix.. Quadratic forms encode geometry such as energy or ellipses.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is a scalar-valued expression \(x^T A x\) that measures vectors according to a matrix.. Quadratic forms encode geometry such as energy or ellipses.</span>
           </label>
         </fieldset>
       </article>
@@ -3707,7 +3721,7 @@
         </fieldset>
       </article>
       <article class="question" id="linear-q46">
-        <h3>146. What does A^k mean for a matrix A?</h3>
+        <h3>146. What does \(A^k\) mean for a matrix A?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="linear-q46" value="A">
@@ -3716,7 +3730,7 @@
           </label>
           <label class="choice">
             <input type="radio" name="linear-q46" value="B">
-            <span class="choice-text"><b>B.</b> It treats A^k as raising every entry of A to the kth power.</span>
+            <span class="choice-text"><b>B.</b> It treats \(A^k\) as raising every entry of A to the kth power.</span>
             <span class="feedback wrong">Not quite. The best answer is C: It means applying the same linear transformation k times.. Matrix powers are repeated composition.</span>
           </label>
           <label class="choice">
@@ -3736,28 +3750,28 @@
         <fieldset>
           <label class="choice">
             <input type="radio" name="linear-q47" value="A">
-            <span class="choice-text"><b>A.</b> It is a finite expression built from I, A, A^2, and scalar coefficients.</span>
+            <span class="choice-text"><b>A.</b> It is a finite expression built from \(I, A, A^2\), and scalar coefficients.</span>
             <span class="feedback correct">Correct. This is the finite version of matrix function substitution.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q47" value="B">
             <span class="choice-text"><b>B.</b> It treats affine maps as linear maps that happen to be written with a constant term.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is a finite expression built from I, A, A^2, and scalar coefficients.. This is the finite version of matrix function substitution.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is a finite expression built from \(I, A, A^2\), and scalar coefficients.. This is the finite version of matrix function substitution.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q47" value="C">
             <span class="choice-text"><b>C.</b> It assumes SVD proves a map preserves angles because it uses orthogonal matrices on both sides.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is a finite expression built from I, A, A^2, and scalar coefficients.. This is the finite version of matrix function substitution.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is a finite expression built from \(I, A, A^2\), and scalar coefficients.. This is the finite version of matrix function substitution.</span>
           </label>
           <label class="choice">
             <input type="radio" name="linear-q47" value="D">
             <span class="choice-text"><b>D.</b> It says invertibility means preserving lengths and angles, not merely preserving information.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is a finite expression built from I, A, A^2, and scalar coefficients.. This is the finite version of matrix function substitution.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: It is a finite expression built from \(I, A, A^2\), and scalar coefficients.. This is the finite version of matrix function substitution.</span>
           </label>
         </fieldset>
       </article>
       <article class="question" id="linear-q48">
-        <h3>148. What is a matrix function such as exp(A)?</h3>
+        <h3>148. What is a matrix function such as \(\exp(A)\)?</h3>
         <fieldset>
           <label class="choice">
             <input type="radio" name="linear-q48" value="A">
