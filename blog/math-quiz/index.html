@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Math Blog Concept Quiz</title>
+  <style>
+    :root {
+      --paper: #e9dfcc;
+      --ink: #2f2a24;
+      --muted: #716553;
+      --line: #c8b99f;
+      --accent: #8a5a32;
+      --blue: #2f6f88;
+      --green: #4f7a57;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.58;
+    }
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 80px;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font: 700 12px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 12px 0 12px;
+      font-size: clamp(2.3rem, 8vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+    .lead {
+      max-width: 760px;
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 42px;
+    }
+    nav a, .post-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 8px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.22);
+    }
+    nav a:hover, .post-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    section {
+      margin: 46px 0;
+      padding-top: 8px;
+    }
+    h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.08;
+    }
+    .section-note {
+      max-width: 780px;
+      margin: 0 0 20px;
+      color: var(--muted);
+    }
+    .post-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 22px;
+    }
+    details.q {
+      margin: 12px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.26);
+      overflow: hidden;
+    }
+    details.q summary {
+      cursor: pointer;
+      padding: 16px 18px;
+      font-weight: 700;
+    }
+    details.q summary:hover {
+      color: var(--accent);
+    }
+    .q-body {
+      padding: 0 18px 18px;
+    }
+    ol {
+      margin: 0 0 14px 1.3rem;
+      padding: 0;
+    }
+    li { margin: 6px 0; }
+    .answer {
+      margin: 12px 0 0;
+      padding: 12px 14px;
+      border-left: 4px solid var(--green);
+      background: rgba(79,122,87,0.12);
+    }
+    .answer b { color: var(--green); }
+    .cite {
+      color: var(--blue);
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">50-question connected quiz</div>
+  <h1>Power Series, Geometry, and Linear Maps</h1>
+  <p class="lead">These questions are deliberately conceptual and tricky. They ask what must be true, what is only suggestive, and which viewpoint survives when the object changes from numbers to matrices to operators.</p>
+
+  <nav aria-label="Quiz sections">
+    <a href="#substitution">Substitution Principle (18)</a>
+    <a href="#exponential">Exponential Map (16)</a>
+    <a href="#linear">Linear Algebra Study Guide (16)</a>
+  </nav>
+
+  <section id="substitution">
+    <h2>The Substitution Principle</h2>
+    <p class="section-note">Read with: <a href="/blog/2026/substitution-principle-adjoints/">The Substitution Principle</a>. Many explanations point back to the other two posts because the idea only becomes sharp when power series, geometry, and linear maps are held together.</p>
+    <div class="post-links">
+      <a href="/blog/2026/substitution-principle-adjoints/">Back to post</a>
+      <a href="/blog/2026/the-exponential-map/">Compare with Exponential Map</a>
+      <a href="/blog/2025/linear-algebra-study-guide/">Use Linear Algebra background</a>
+    </div>
+
+    <details class="q"><summary>1. What is the most precise reason a power series can be evaluated at a matrix?</summary><div class="q-body"><ol type="A"><li>Matrices have eigenvalues.</li><li>Matrices support addition, multiplication, scalar coefficients, and a convergence notion.</li><li>Every matrix is secretly a number in a larger field.</li><li>The determinant converts matrices to scalars.</li></ol><div class="answer"><b>Answer: B.</b> The recipe view is the point: the same formal instructions can run on any object with the required algebra and convergence. <span class="cite">This is the hinge between the Substitution Principle post and the Linear Algebra Study Guide.</span></div></div></details>
+    <details class="q"><summary>2. Which statement is most dangerous if taken as the Substitution Principle?</summary><div class="q-body"><ol type="A"><li>Formal identities can transfer when the operations and convergence are valid.</li><li>Power series are computational recipes.</li><li>All scalar intuitions about functions remain unchanged for matrices.</li><li>Absolute convergence protects rearrangements of infinite sums.</li></ol><div class="answer"><b>Answer: C.</b> The principle transfers algebraic structure, not every scalar intuition. The Exponential Map post is exactly where geometry changes the meaning of the same formula.</div></div></details>
+    <details class="q"><summary>3. Why is absolute convergence not just a technical footnote?</summary><div class="q-body"><ol type="A"><li>It makes every matrix diagonalizable.</li><li>It allows rearrangement and regrouping needed to preserve algebraic identities.</li><li>It removes the difference between commutative and noncommutative products.</li><li>It makes the exponential periodic.</li></ol><div class="answer"><b>Answer: B.</b> The theorem is fragile without control of infinite sums. It does not make matrix multiplication commutative.</div></div></details>
+    <details class="q"><summary>4. If a formula uses only addition and multiplication, why might substitution still fail?</summary><div class="q-body"><ol type="A"><li>The substituted object may not have a compatible convergence theory.</li><li>Addition is never defined for matrices.</li><li>Multiplication always commutes in power series.</li><li>Scalar coefficients cannot act on operators.</li></ol><div class="answer"><b>Answer: A.</b> Finite polynomials are forgiving; infinite series demand convergence. This is why the Substitution Principle post emphasizes the safety net before moving to Lie theory.</div></div></details>
+    <details class="q"><summary>5. What changes when the input changes from a number to a matrix?</summary><div class="q-body"><ol type="A"><li>The syntax of the recipe.</li><li>The meaning of multiplication and the geometry of the output.</li><li>The factorial coefficients.</li><li>The formal power-series symbols.</li></ol><div class="answer"><b>Answer: B.</b> The written recipe can remain the same, while the object-level meaning changes dramatically. That is why this quiz connects to both the Exponential Map and Linear Algebra posts.</div></div></details>
+    <details class="q"><summary>6. Which is the best conceptual reading of exp(X) for a matrix X?</summary><div class="q-body"><ol type="A"><li>A scalar placed in every entry.</li><li>The determinant of X exponentiated.</li><li>A finite transformation assembled from infinitesimal repeated action.</li><li>A notation for diagonalization.</li></ol><div class="answer"><b>Answer: C.</b> This is the bridge into the Exponential Map post: exp turns infinitesimal data into finite motion when the context supports that interpretation.</div></div></details>
+    <details class="q"><summary>7. Which claim about the theorem is false but tempting?</summary><div class="q-body"><ol type="A"><li>It explains why exp can accept matrices.</li><li>It makes all analytic functions globally invertible on matrices.</li><li>It legitimizes formal algebra under convergence hypotheses.</li><li>It encourages thinking of functions as recipes.</li></ol><div class="answer"><b>Answer: B.</b> Substitution does not grant invertibility or global one-to-one behavior. The Exponential Map post discusses exactly this local-versus-global tension.</div></div></details>
+    <details class="q"><summary>8. What is the deepest shift in perspective?</summary><div class="q-body"><ol type="A"><li>Numbers are less important than recipes.</li><li>Functions stop having outputs.</li><li>Series become finite sums.</li><li>Matrices become commutative.</li></ol><div class="answer"><b>Answer: A.</b> The object changes, but the algorithmic skeleton remains. This is also why adjoint operators can enter the same story.</div></div></details>
+    <details class="q"><summary>9. Why does the identity term appear in the matrix exponential?</summary><div class="q-body"><ol type="A"><li>It is the zero matrix in disguise.</li><li>It is the multiplicative neutral element for the object being exponentiated.</li><li>It represents determinant one.</li><li>It is included only for diagonal matrices.</li></ol><div class="answer"><b>Answer: B.</b> The scalar term 1 becomes the identity map or identity matrix. The Linear Algebra Study Guide supplies the background idea of identity transformations.</div></div></details>
+    <details class="q"><summary>10. In the formula exp(ad_X), what is being substituted into the recipe?</summary><div class="q-body"><ol type="A"><li>A number.</li><li>A group element.</li><li>A linear operator on the Lie algebra.</li><li>A determinant.</li></ol><div class="answer"><b>Answer: C.</b> This is the third level of substitution: numbers to matrices to operators. It connects all three posts.</div></div></details>
+    <details class="q"><summary>11. Which identity best displays substitution across levels?</summary><div class="q-body"><ol type="A"><li>rank(A) + nullity(A) = n.</li><li>exp(ad_X) = Ad_exp(X).</li><li>det(AB) = det(A)det(B).</li><li>A = U Sigma V^T.</li></ol><div class="answer"><b>Answer: B.</b> It compares an operator exponential with a group-level adjoint action. The other identities are important but not the same substitution ladder.</div></div></details>
+    <details class="q"><summary>12. Why is noncommutativity not fatal to the power series exp(X)?</summary><div class="q-body"><ol type="A"><li>Only powers of the same X occur inside each term.</li><li>All matrices commute with themselves and with all other matrices.</li><li>Noncommutativity is ignored by convention.</li><li>The trace makes the product commutative.</li></ol><div class="answer"><b>Answer: A.</b> X^k is unambiguous. Trouble appears when combining different matrices, which is why the commutator and Lie bracket matter later.</div></div></details>
+    <details class="q"><summary>13. What does the Substitution Principle not decide by itself?</summary><div class="q-body"><ol type="A"><li>Whether a series formula can be formally evaluated.</li><li>Whether the resulting transformation has a particular geometry.</li><li>Whether addition is required.</li><li>Whether multiplication is required.</li></ol><div class="answer"><b>Answer: B.</b> The principle licenses the recipe; geometry comes from the object. That is why the Exponential Map post is a companion, not a duplicate.</div></div></details>
+    <details class="q"><summary>14. Which reading of "function" is closest to the post's philosophy?</summary><div class="q-body"><ol type="A"><li>A graph in the xy-plane.</li><li>A rule bound forever to real numbers.</li><li>A transportable recipe whose domain can change when the operations make sense.</li><li>A table of values.</li></ol><div class="answer"><b>Answer: C.</b> The post is trying to move from graph intuition to algebraic portability.</div></div></details>
+    <details class="q"><summary>15. What is the hidden role of the Linear Algebra Study Guide here?</summary><div class="q-body"><ol type="A"><li>It provides only examples of row reduction.</li><li>It gives the language of transformations, identities, composition, and operators needed for substitution.</li><li>It replaces convergence.</li><li>It proves all Lie theory.</li></ol><div class="answer"><b>Answer: B.</b> Substitution becomes meaningful only because linear maps and composition are already in place.</div></div></details>
+    <details class="q"><summary>16. Which misconception best reveals shallow understanding?</summary><div class="q-body"><ol type="A"><li>exp(X) uses an infinite sum.</li><li>Matrix powers mean repeated composition.</li><li>Because the same symbols are used, the same geometric meaning must follow.</li><li>Convergence matters.</li></ol><div class="answer"><b>Answer: C.</b> Same syntax, different object, new geometry. That distinction is the whole point of reading the posts together.</div></div></details>
+    <details class="q"><summary>17. Why does the theorem appear before Lie groups?</summary><div class="q-body"><ol type="A"><li>Because Lie groups contain no geometry.</li><li>Because power-series functions such as exp and log will be reused on matrices and operators.</li><li>Because determinants are unavailable later.</li><li>Because all Lie groups are vector spaces.</li></ol><div class="answer"><b>Answer: B.</b> The theorem prepares the reader to accept the same analytic recipes in new algebraic environments.</div></div></details>
+    <details class="q"><summary>18. The safest one-sentence summary is:</summary><div class="q-body"><ol type="A"><li>Every scalar theorem is true for matrices.</li><li>Power series define universal recipes when the target object supports the required operations and convergence.</li><li>Matrix exponentials are only notation.</li><li>Lie brackets are optional decoration.</li></ol><div class="answer"><b>Answer: B.</b> This is the precise center of the post and the reason the quiz now cross-links all three articles.</div></div></details>
+  </section>
+
+  <section id="exponential">
+    <h2>The Exponential Map</h2>
+    <p class="section-note">Read with: <a href="/blog/2026/the-exponential-map/">The Exponential Map</a>. These questions probe what exp preserves, what it forgets, and what it only captures locally.</p>
+    <div class="post-links">
+      <a href="/blog/2026/the-exponential-map/">Back to post</a>
+      <a href="/blog/2026/substitution-principle-adjoints/">Substitution Principle bridge</a>
+      <a href="/blog/2025/linear-algebra-study-guide/">Linear algebra support</a>
+    </div>
+
+    <details class="q"><summary>19. What is the most misleading phrase about the exponential map?</summary><div class="q-body"><ol type="A"><li>It maps infinitesimal data to finite transformations.</li><li>It is locally a bridge from algebra to group.</li><li>It always gives a perfect global coordinate system for the group.</li><li>It can be written by a power series in matrix settings.</li></ol><div class="answer"><b>Answer: C.</b> The exponential map is often locally powerful but globally subtle.</div></div></details>
+    <details class="q"><summary>20. Why does exp(X) naturally land near the identity for small X?</summary><div class="q-body"><ol type="A"><li>The identity is the constant term of the series.</li><li>The determinant is always one.</li><li>X disappears from the series.</li><li>Every small matrix is diagonal.</li></ol><div class="answer"><b>Answer: A.</b> exp(0) is identity, and small X perturbs that identity transformation.</div></div></details>
+    <details class="q"><summary>21. Which statement best distinguishes Lie algebra from Lie group?</summary><div class="q-body"><ol type="A"><li>The algebra is finite motion; the group is infinitesimal motion.</li><li>The algebra is the tangent, infinitesimal structure; the group is the finite transformation structure.</li><li>They are always the same set.</li><li>The group is only a notation for matrices.</li></ol><div class="answer"><b>Answer: B.</b> This is why the exponential map matters at all.</div></div></details>
+    <details class="q"><summary>22. Why is the phrase "follow the vector for one unit of time" not merely poetic?</summary><div class="q-body"><ol type="A"><li>It reflects the flow generated by an infinitesimal direction.</li><li>It means a vector has a clock.</li><li>It replaces all algebraic definitions.</li><li>It makes the exponential linear.</li></ol><div class="answer"><b>Answer: A.</b> The geometry is a flow picture; the Substitution Principle supplies the algebraic recipe.</div></div></details>
+    <details class="q"><summary>23. Which failure is measured by the Lie bracket?</summary><div class="q-body"><ol type="A"><li>Failure of a matrix to have an inverse.</li><li>Failure of two infinitesimal motions to commute.</li><li>Failure of a vector to be normalized.</li><li>Failure of exp to converge.</li></ol><div class="answer"><b>Answer: B.</b> The commutator gap is the geometric trace of noncommutativity.</div></div></details>
+    <details class="q"><summary>24. If exp(X)exp(Y) differs from exp(Y)exp(X), what is the conceptual warning?</summary><div class="q-body"><ol type="A"><li>Matrix multiplication order matters.</li><li>Power series cannot be used.</li><li>All exponentials are invalid.</li><li>X and Y are not matrices.</li></ol><div class="answer"><b>Answer: A.</b> This is where Linear Algebra's composition viewpoint becomes essential.</div></div></details>
+    <details class="q"><summary>25. Why does the exponential map belong in a study path after linear transformations?</summary><div class="q-body"><ol type="A"><li>It is just another determinant trick.</li><li>It interprets repeated composition and infinitesimal generators geometrically.</li><li>It avoids linear maps.</li><li>It only applies to real numbers.</li></ol><div class="answer"><b>Answer: B.</b> The Linear Algebra post gives the transformation language the exponential map uses.</div></div></details>
+    <details class="q"><summary>26. What does exp(ad_X) = Ad_exp(X) conceptually assert?</summary><div class="q-body"><ol type="A"><li>Two unrelated notations happen to match.</li><li>The infinitesimal adjoint action exponentiates to the finite conjugation action.</li><li>Every group is abelian.</li><li>ad_X is a scalar.</li></ol><div class="answer"><b>Answer: B.</b> This is the crown jewel connecting the Exponential Map and Substitution Principle posts.</div></div></details>
+    <details class="q"><summary>27. Which local/global distinction is most important?</summary><div class="q-body"><ol type="A"><li>Locally exp relates algebra and group; globally it may not be one-to-one or onto.</li><li>Globally exp is always better behaved than locally.</li><li>Local behavior is irrelevant for Lie theory.</li><li>Global behavior can be read from one tangent vector.</li></ol><div class="answer"><b>Answer: A.</b> Good intuition respects the boundary between local linearization and global topology.</div></div></details>
+    <details class="q"><summary>28. What is the best reason not to confuse exp(X+Y) with exp(X)exp(Y)?</summary><div class="q-body"><ol type="A"><li>X+Y is undefined.</li><li>The identity matrix blocks multiplication.</li><li>Noncommutativity creates correction terms.</li><li>The exponential series diverges.</li></ol><div class="answer"><b>Answer: C.</b> When X and Y fail to commute, the simple scalar law does not transfer.</div></div></details>
+    <details class="q"><summary>29. What does conjugation gXg^{-1} preserve conceptually?</summary><div class="q-body"><ol type="A"><li>The coordinate expression of X.</li><li>The role of X as an internal direction, viewed in a changed frame.</li><li>The entries of X one by one.</li><li>The order of all products.</li></ol><div class="answer"><b>Answer: B.</b> Conjugation changes representation while keeping the action internal to the structure.</div></div></details>
+    <details class="q"><summary>30. Which statement best captures the geometry of a commutator loop?</summary><div class="q-body"><ol type="A"><li>It is always closed exactly.</li><li>Its small failure to close reveals the bracket direction.</li><li>It measures matrix size only.</li><li>It proves all exponentials commute.</li></ol><div class="answer"><b>Answer: B.</b> The gap is the geometric meaning of [X,Y].</div></div></details>
+    <details class="q"><summary>31. Why can a tangent-space idea control a group-level motion?</summary><div class="q-body"><ol type="A"><li>The exponential map integrates the infinitesimal direction.</li><li>The tangent space is larger, so it contains the group.</li><li>Every tangent vector is already a group element.</li><li>There is no distinction between algebra and group.</li></ol><div class="answer"><b>Answer: A.</b> The exponential map is the integration mechanism.</div></div></details>
+    <details class="q"><summary>32. Which observation most strongly links this post to the Substitution Principle?</summary><div class="q-body"><ol type="A"><li>Both use the same power-series recipe for exp.</li><li>Both avoid convergence.</li><li>Both require only determinants.</li><li>Both say geometry is irrelevant.</li></ol><div class="answer"><b>Answer: A.</b> The geometric story depends on the algebraic legitimacy of substituting matrices and operators.</div></div></details>
+    <details class="q"><summary>33. What is an adjoint representation, conceptually?</summary><div class="q-body"><ol type="A"><li>A way for a group to act on its own Lie algebra by conjugation-derived maps.</li><li>A matrix transpose.</li><li>A determinant-preserving scalar.</li><li>A basis choice.</li></ol><div class="answer"><b>Answer: A.</b> Do not confuse this with the linear algebra adjoint/transpose theme; the connection is conceptual but not identical.</div></div></details>
+    <details class="q"><summary>34. The exponential map is best understood as:</summary><div class="q-body"><ol type="A"><li>A deletion of higher-order terms.</li><li>A bridge from infinitesimal generators to finite transformations.</li><li>A proof that matrices commute.</li><li>A method only for diagonal matrices.</li></ol><div class="answer"><b>Answer: B.</b> This is the core image carried forward into the Substitution Principle post.</div></div></details>
+  </section>
+
+  <section id="linear">
+    <h2>Linear Algebra Study Guide</h2>
+    <p class="section-note">Read with: <a href="/blog/2025/linear-algebra-study-guide/">Linear Algebra Study Guide</a>. These questions test whether transformation-level thinking is solid enough to support the two Lie-theory posts.</p>
+    <div class="post-links">
+      <a href="/blog/2025/linear-algebra-study-guide/">Back to post</a>
+      <a href="/blog/2026/the-exponential-map/">Exponential Map bridge</a>
+      <a href="/blog/2026/substitution-principle-adjoints/">Substitution Principle bridge</a>
+    </div>
+
+    <details class="q"><summary>35. What is the most structural view of a matrix?</summary><div class="q-body"><ol type="A"><li>A rectangular storage table.</li><li>A linear transformation represented in coordinates.</li><li>A determinant waiting to be computed.</li><li>A collection of unrelated entries.</li></ol><div class="answer"><b>Answer: B.</b> The later posts depend on this view: matrices act, compose, and generate motion.</div></div></details>
+    <details class="q"><summary>36. Why is the transpose/adjoint idea conceptually subtle?</summary><div class="q-body"><ol type="A"><li>It simply flips notation.</li><li>It transfers action from vectors to measurements or dual data.</li><li>It makes every map invertible.</li><li>It changes addition into multiplication.</li></ol><div class="answer"><b>Answer: B.</b> The adjoint theme prepares the mind for later representation-level action.</div></div></details>
+    <details class="q"><summary>37. Which phrase best captures SVD conceptually?</summary><div class="q-body"><ol type="A"><li>Any matrix is random noise.</li><li>A map can be decomposed into input rotation, axis scaling, and output rotation.</li><li>Only square matrices have geometry.</li><li>SVD is the same as determinant.</li></ol><div class="answer"><b>Answer: B.</b> It is a geometric factorization, not just a computational device.</div></div></details>
+    <details class="q"><summary>38. Why does "basis" matter for advanced geometry?</summary><div class="q-body"><ol type="A"><li>Changing basis changes the underlying transformation.</li><li>Changing basis changes coordinates while preserving the abstract map.</li><li>Basis choice removes all eigenvalues.</li><li>A basis is only a list of numbers.</li></ol><div class="answer"><b>Answer: B.</b> This is the same mental discipline needed for conjugation and adjoint action.</div></div></details>
+    <details class="q"><summary>39. Which invariant-thinking habit is most useful later?</summary><div class="q-body"><ol type="A"><li>Ask what survives coordinate changes.</li><li>Trust the largest entry.</li><li>Ignore composition.</li><li>Prefer formulas without interpretation.</li></ol><div class="answer"><b>Answer: A.</b> Lie theory is full of objects whose expressions change while their role remains.</div></div></details>
+    <details class="q"><summary>40. What is the rank-nullity theorem really teaching at a conceptual level?</summary><div class="q-body"><ol type="A"><li>Information splits between directions seen by the map and directions killed by the map.</li><li>Every map is invertible.</li><li>Null spaces are numerical errors.</li><li>Rank is unrelated to geometry.</li></ol><div class="answer"><b>Answer: A.</b> This is transformation-level thinking, not mere dimension bookkeeping.</div></div></details>
+    <details class="q"><summary>41. Why is composition more fundamental than matrix multiplication notation?</summary><div class="q-body"><ol type="A"><li>Multiplication is just the coordinate expression of doing maps in sequence.</li><li>Composition only works for scalars.</li><li>Matrix multiplication is commutative.</li><li>Composition hides all structure.</li></ol><div class="answer"><b>Answer: A.</b> The Exponential Map and Substitution Principle posts both rely on repeated composition.</div></div></details>
+    <details class="q"><summary>42. What is an eigenvector's conceptual role?</summary><div class="q-body"><ol type="A"><li>A direction preserved by the map up to scaling.</li><li>A vector sent to zero by every map.</li><li>A basis-independent determinant.</li><li>A row operation.</li></ol><div class="answer"><b>Answer: A.</b> Eigenstructure is one way transformations reveal privileged directions.</div></div></details>
+    <details class="q"><summary>43. What does a projection teach that later reappears in geometry?</summary><div class="q-body"><ol type="A"><li>Some maps encode a deliberate loss of components while preserving a chosen subspace.</li><li>All maps preserve length.</li><li>Projection is always invertible.</li><li>Projection has no geometric content.</li></ol><div class="answer"><b>Answer: A.</b> It trains the distinction between acting on all directions and selecting structure.</div></div></details>
+    <details class="q"><summary>44. Which mistake blocks understanding of the exponential map?</summary><div class="q-body"><ol type="A"><li>Seeing matrices as actions.</li><li>Seeing powers as repeated composition.</li><li>Seeing matrices only as arrays of entries.</li><li>Seeing identity as neutral action.</li></ol><div class="answer"><b>Answer: C.</b> The exponential map is natural only once matrices are actions, not spreadsheets.</div></div></details>
+    <details class="q"><summary>45. What is the geometric meaning of invertibility?</summary><div class="q-body"><ol type="A"><li>The transformation loses no information and can be undone.</li><li>The determinant is ignored.</li><li>The matrix has no columns.</li><li>The map must preserve every length.</li></ol><div class="answer"><b>Answer: A.</b> This is the group-theoretic doorway: invertible transformations form groups.</div></div></details>
+    <details class="q"><summary>46. Why does the identity matrix matter beyond being easy?</summary><div class="q-body"><ol type="A"><li>It is the neutral transformation around which small motions can be understood.</li><li>It has the biggest entries.</li><li>It is the only diagonal matrix.</li><li>It deletes all vectors.</li></ol><div class="answer"><b>Answer: A.</b> Lie theory studies tangent directions at the identity; this starts in linear algebra.</div></div></details>
+    <details class="q"><summary>47. Which statement best links SVD to the substitution/exponential story?</summary><div class="q-body"><ol type="A"><li>Both require seeing formulas as descriptions of action.</li><li>SVD proves exp converges.</li><li>SVD makes Lie brackets vanish.</li><li>They are unrelated because SVD is numerical.</li></ol><div class="answer"><b>Answer: A.</b> The shared habit is translating symbolic structure into geometry.</div></div></details>
+    <details class="q"><summary>48. What is the right way to think about a linear functional?</summary><div class="q-body"><ol type="A"><li>A measurement on vectors.</li><li>A vector with no role.</li><li>A determinant.</li><li>A nonlinear curve.</li></ol><div class="answer"><b>Answer: A.</b> This supports the adjoint idea: maps can push vectors forward and pull measurements back.</div></div></details>
+    <details class="q"><summary>49. Which skill transfers most directly into Lie theory?</summary><div class="q-body"><ol type="A"><li>Memorizing many isolated formulas.</li><li>Tracking maps, compositions, identities, inverses, and coordinate changes.</li><li>Avoiding abstract objects.</li><li>Only computing determinants.</li></ol><div class="answer"><b>Answer: B.</b> This is exactly why the Linear Algebra guide should be read alongside the two Lie-theory posts.</div></div></details>
+    <details class="q"><summary>50. The most mature reading of all three posts is:</summary><div class="q-body"><ol type="A"><li>Linear algebra is computation; Lie theory is unrelated.</li><li>The same ideas of action, composition, identity, and substitution reappear at increasing levels of abstraction.</li><li>Power series replace geometry.</li><li>Geometry replaces algebra.</li></ol><div class="answer"><b>Answer: B.</b> The three posts are one chain: linear transformations, exponentiated motion, and recipes that survive across objects.</div></div></details>
+  </section>
+</main>
+</body>
+</html>
