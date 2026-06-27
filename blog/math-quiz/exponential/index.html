@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exponential Map Quiz</title>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root { --paper:#e9dfcc; --ink:#2f2a24; --muted:#716553; --line:#c8b99f; --accent:#8a5a32; --green:#416f4a; --red:#943a31; --card:rgba(255,255,255,.28); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.58; }
+    main { width:min(1040px, calc(100% - 32px)); margin:0 auto; padding:56px 0 80px; }
+    .eyebrow { color:var(--accent); font:700 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:12px 0; font-size:clamp(2.3rem,8vw,5rem); line-height:.95; letter-spacing:0; }
+    .lead { max-width:790px; margin:0 0 28px; color:var(--muted); font-size:1.16rem; }
+    nav,.post-links { display:flex; flex-wrap:wrap; gap:10px; }
+    nav { margin:28px 0 42px; }
+    nav a,.post-links a { display:inline-flex; align-items:center; min-height:38px; padding:8px 12px; color:var(--ink); text-decoration:none; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    nav a:hover,.post-links a:hover { border-color:var(--accent); color:var(--accent); }
+    .quiz-section { margin:54px 0; padding-top:10px; }
+    .section-heading span { display:block; margin-bottom:8px; color:var(--accent); font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h2 { margin:0 0 10px; font-size:clamp(1.7rem,4vw,2.5rem); line-height:1.08; }
+    .section-note { max-width:800px; margin:0 0 20px; color:var(--muted); }
+    .post-links { margin:16px 0 24px; }
+    .score-panel { display:flex; flex-wrap:wrap; align-items:center; gap:10px 12px; margin:0 0 24px; padding:12px; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    .score-panel button { min-height:38px; padding:8px 12px; border:1px solid var(--accent); border-radius:8px; background:var(--accent); color:#fffaf0; font:700 13px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.03em; cursor:pointer; }
+    .score-panel button:hover { filter:brightness(.96); }
+    .score-panel output { color:var(--ink); font-weight:700; }
+    .score-panel span { color:var(--muted); }
+    .question-list { display:grid; gap:14px; }
+    .question { border:1px solid var(--line); border-radius:8px; background:var(--card); padding:18px; }
+    .question h3 { margin:0 0 14px; font-size:1.05rem; line-height:1.4; }
+    fieldset { margin:0; padding:0; border:0; display:grid; gap:9px; }
+    .choice { display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; padding:11px 12px; border:1px solid rgba(200,185,159,.82); border-radius:8px; background:rgba(255,255,255,.24); cursor:pointer; }
+    .choice:hover { border-color:var(--accent); }
+    .choice input { margin-top:.3rem; }
+    .choice-text { min-width:0; }
+    .feedback { display:none; grid-column:2; margin-top:6px; padding:10px 12px; border-radius:7px; font-size:.96rem; }
+    .choice input:checked ~ .feedback { display:block; }
+    .feedback.correct { border-left:4px solid var(--green); background:rgba(79,122,87,.13); color:#31513a; }
+    .feedback.wrong { border-left:4px solid var(--red); background:rgba(155,63,52,.11); color:#6e3029; }
+    @media (max-width:640px) { main { width:min(100% - 22px,1040px); padding-top:38px; } .question { padding:14px; } .choice { grid-template-columns:1fr; gap:6px; } .choice input { margin:0; } .feedback { grid-column:1; } }
+
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Exponential Map quiz</div>
+  <h1>The Exponential Map</h1>
+  <p class="lead">Choose an option to reveal feedback. This page contains only the 50-question Exponential Map quiz.</p>
+  <nav aria-label="Quiz pages">
+    <a href="/blog/math-quiz/">All quiz topics</a>
+    <a href="/blog/2026/the-exponential-map/">Back to related post</a>
+  </nav>
+  <section id="exponential" class="quiz-section">
+    <div class="section-heading"><span>50 questions</span><h2>The Exponential Map</h2></div>
+    <p class="section-note">Fifty clear conceptual questions about infinitesimal generators, finite motion, brackets, adjoint action, and local-versus-global behavior.</p>
+    <div class="post-links">
+      <a href="/blog/2026/the-exponential-map/">Back to The Exponential Map</a>
+      <a href="/blog/2026/substitution-principle-adjoints/">The Substitution Principle</a>
+      <a href="/blog/2025/linear-algebra-study-guide/">Linear Algebra Study Guide</a>
+    </div>
+    <div class="score-panel">
+      <button type="button" data-score-section="exponential">Check Exponential Score</button>
+      <output id="exponential-score">0 correct out of 0 attempts</output>
+      <span>Attempts count only questions where one option is selected.</span>
+    </div>
+    <div class="question-list">
+      <article class="question" id="exponential-q1">
+        <h3>51. What does the exponential map mean for a matrix Lie group?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q1" value="A">
+            <span class="choice-text"><b>A.</b> It treats Schur’s formula as a numerical approximation rather than a correction for noncommutativity.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It maps an infinitesimal generator in the Lie algebra to a finite group transformation. The exponential map connects local velocity-like data to actual motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q1" value="B">
+            <span class="choice-text"><b>B.</b> It maps an infinitesimal generator in the Lie algebra to a finite group transformation.</span>
+            <span class="feedback correct">Correct. The exponential map connects local velocity-like data to actual motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q1" value="C">
+            <span class="choice-text"><b>C.</b> It treats the determinant of the generator and determinant of its exponential as the same quantity.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It maps an infinitesimal generator in the Lie algebra to a finite group transformation. The exponential map connects local velocity-like data to actual motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q1" value="D">
+            <span class="choice-text"><b>D.</b> It treats representation theory as a way to rename matrices, not as actions on vector spaces.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It maps an infinitesimal generator in the Lie algebra to a finite group transformation. The exponential map connects local velocity-like data to actual motion.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q2">
+        <h3>52. What does \(\exp(tX)\) represent when X is a matrix generator?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q2" value="A">
+            <span class="choice-text"><b>A.</b> It says tangent vectors are already finite transformations before exponentiation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the one-parameter flow obtained by applying the constant infinitesimal action X for time t. This is the motion interpretation of the matrix exponential.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q2" value="B">
+            <span class="choice-text"><b>B.</b> It treats finite-versus-infinitesimal as a question of large numbers versus small numbers, not group versus algebra.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the one-parameter flow obtained by applying the constant infinitesimal action X for time t. This is the motion interpretation of the matrix exponential.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q2" value="C">
+            <span class="choice-text"><b>C.</b> It says the cone visualization is proof that all trace-zero matrices commute on the boundary.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the one-parameter flow obtained by applying the constant infinitesimal action X for time t. This is the motion interpretation of the matrix exponential.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q2" value="D">
+            <span class="choice-text"><b>D.</b> It is the one-parameter flow obtained by applying the constant infinitesimal action X for time t.</span>
+            <span class="feedback correct">Correct. This is the motion interpretation of the matrix exponential.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q3">
+        <h3>53. What does \(\exp(0)=I\) mean geometrically?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q3" value="A">
+            <span class="choice-text"><b>A.</b> It says \(\exp(\operatorname{ad}_X)=\operatorname{Ad}_{\exp(X)}\) is just a typographical identity between two names.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Zero infinitesimal motion produces the identity transformation, which changes nothing. The identity is the starting point for nearby group motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q3" value="B">
+            <span class="choice-text"><b>B.</b> Zero infinitesimal motion produces the identity transformation, which changes nothing.</span>
+            <span class="feedback correct">Correct. The identity is the starting point for nearby group motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q3" value="C">
+            <span class="choice-text"><b>C.</b> It says the local inverse theorem makes exp globally invertible for every connected group.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Zero infinitesimal motion produces the identity transformation, which changes nothing. The identity is the starting point for nearby group motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q3" value="D">
+            <span class="choice-text"><b>D.</b> It assumes differentiating \(\exp(X(t))\) only requires differentiating the eigenvalues of \(X(t)\).</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Zero infinitesimal motion produces the identity transformation, which changes nothing. The identity is the starting point for nearby group motion.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q4">
+        <h3>54. What is a Lie algebra in this context?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q4" value="A">
+            <span class="choice-text"><b>A.</b> It says a generator is a force vector in physical space rather than an infinitesimal transformation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the tangent space at the identity equipped with a bracket that records infinitesimal noncommutativity. It is the local, infinitesimal structure of the group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q4" value="B">
+            <span class="choice-text"><b>B.</b> It assumes local errors in \(\exp(X)\)\(\exp(Y)\) are numerical rounding errors rather than bracket effects.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the tangent space at the identity equipped with a bracket that records infinitesimal noncommutativity. It is the local, infinitesimal structure of the group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q4" value="C">
+            <span class="choice-text"><b>C.</b> It assumes the Lie algebra and Lie group are the same object, just written with different fonts.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the tangent space at the identity equipped with a bracket that records infinitesimal noncommutativity. It is the local, infinitesimal structure of the group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q4" value="D">
+            <span class="choice-text"><b>D.</b> It is the tangent space at the identity equipped with a bracket that records infinitesimal noncommutativity.</span>
+            <span class="feedback correct">Correct. It is the local, infinitesimal structure of the group.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q5">
+        <h3>55. What is a Lie group in this context?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q5" value="A">
+            <span class="choice-text"><b>A.</b> It assumes the exponential map forgets the group law and keeps only eigenvalues.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is a smooth space of finite transformations where multiplication and inversion are smooth. The group contains the transformations; the algebra describes infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q5" value="B">
+            <span class="choice-text"><b>B.</b> It is a smooth space of finite transformations where multiplication and inversion are smooth.</span>
+            <span class="feedback correct">Correct. The group contains the transformations; the algebra describes infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q5" value="C">
+            <span class="choice-text"><b>C.</b> It assumes changing basis changes the actual group element rather than its coordinate description.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is a smooth space of finite transformations where multiplication and inversion are smooth. The group contains the transformations; the algebra describes infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q5" value="D">
+            <span class="choice-text"><b>D.</b> It confuses \(\operatorname{ad}_X\) with multiplication by the scalar trace of X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is a smooth space of finite transformations where multiplication and inversion are smooth. The group contains the transformations; the algebra describes infinitesimal directions.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q6">
+        <h3>56. What does “local” mean when discussing the exponential map?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q6" value="A">
+            <span class="choice-text"><b>A.</b> It says all generators with determinant zero produce no motion after exponentiation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It refers to behavior near the identity element and near zero in the Lie algebra. Local statements need not hold for the whole group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q6" value="B">
+            <span class="choice-text"><b>B.</b> It says local behavior near the identity automatically determines the entire global topology of the group.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It refers to behavior near the identity element and near zero in the Lie algebra. Local statements need not hold for the whole group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q6" value="C">
+            <span class="choice-text"><b>C.</b> It assumes the cone boundary is the hyperbolic case because boundaries look sharp.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It refers to behavior near the identity element and near zero in the Lie algebra. Local statements need not hold for the whole group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q6" value="D">
+            <span class="choice-text"><b>D.</b> It refers to behavior near the identity element and near zero in the Lie algebra.</span>
+            <span class="feedback correct">Correct. Local statements need not hold for the whole group.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q7">
+        <h3>57. Why can the exponential map fail to be globally one-to-one?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q7" value="A">
+            <span class="choice-text"><b>A.</b> It treats \(\exp(X)\) as applying the scalar exponential separately to every coordinate entry of X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Different infinitesimal generators can produce the same finite transformation, especially when motion wraps around. Rotations are the standard mental model for this global issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q7" value="B">
+            <span class="choice-text"><b>B.</b> Different infinitesimal generators can produce the same finite transformation, especially when motion wraps around.</span>
+            <span class="feedback correct">Correct. Rotations are the standard mental model for this global issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q7" value="C">
+            <span class="choice-text"><b>C.</b> It says trace zero means the generator must produce a pure rotation.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Different infinitesimal generators can produce the same finite transformation, especially when motion wraps around. Rotations are the standard mental model for this global issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q7" value="D">
+            <span class="choice-text"><b>D.</b> It says every element of every matrix Lie group is \(\exp(X)\) for a unique X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Different infinitesimal generators can produce the same finite transformation, especially when motion wraps around. Rotations are the standard mental model for this global issue.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q8">
+        <h3>58. Why can the exponential map fail to be globally onto?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q8" value="A">
+            <span class="choice-text"><b>A.</b> It confuses \(\operatorname{Ad}_g\) with the transpose or adjoint matrix g^T.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Some Lie groups contain elements that are not exponentials of any Lie algebra element. Surjectivity depends on the particular group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q8" value="B">
+            <span class="choice-text"><b>B.</b> It says the Jacobi identity means \([X,[Y,Z]]\) is always zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Some Lie groups contain elements that are not exponentials of any Lie algebra element. Surjectivity depends on the particular group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q8" value="C">
+            <span class="choice-text"><b>C.</b> It says \(\det(\exp(X))=\exp(\operatorname{tr}(X))\) proves \(\operatorname{tr}(\exp(X))=\exp(\operatorname{tr}(X))\).</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Some Lie groups contain elements that are not exponentials of any Lie algebra element. Surjectivity depends on the particular group.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q8" value="D">
+            <span class="choice-text"><b>D.</b> Some Lie groups contain elements that are not exponentials of any Lie algebra element.</span>
+            <span class="feedback correct">Correct. Surjectivity depends on the particular group.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q9">
+        <h3>59. What does the Lie bracket \([X,Y]\) measure?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q9" value="A">
+            <span class="choice-text"><b>A.</b> It says a nilpotent generator has no finite motion because its eigenvalues are all zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It measures the infinitesimal failure of the flows generated by X and Y to commute. The bracket is the algebraic shadow of order-dependence.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q9" value="B">
+            <span class="choice-text"><b>B.</b> It measures the infinitesimal failure of the flows generated by X and Y to commute.</span>
+            <span class="feedback correct">Correct. The bracket is the algebraic shadow of order-dependence.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q9" value="C">
+            <span class="choice-text"><b>C.</b> It assumes the flow picture replaces the power-series definition rather than interpreting it.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It measures the infinitesimal failure of the flows generated by X and Y to commute. The bracket is the algebraic shadow of order-dependence.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q9" value="D">
+            <span class="choice-text"><b>D.</b> It says the spectral type of a generator is irrelevant once exp has been computed.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It measures the infinitesimal failure of the flows generated by X and Y to commute. The bracket is the algebraic shadow of order-dependence.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q10">
+        <h3>60. What does the commutator loop \(\exp(\varepsilon X)\exp(\varepsilon Y)\exp(-\varepsilon X)\exp(-\varepsilon Y)\) reveal?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q10" value="A">
+            <span class="choice-text"><b>A.</b> It says \(\exp(tX)\) is periodic for every generator X.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction \([X,Y]\). A small loop made of noncommuting moves does not close perfectly.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q10" value="B">
+            <span class="choice-text"><b>B.</b> It says commutator loops are exactly closed because every move is undone by its inverse.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction \([X,Y]\). A small loop made of noncommuting moves does not close perfectly.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q10" value="C">
+            <span class="choice-text"><b>C.</b> It treats the Lie bracket as a replacement for matrix multiplication instead of a derived operation from it.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its leading nontrivial effect points in the bracket direction \([X,Y]\). A small loop made of noncommuting moves does not close perfectly.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q10" value="D">
+            <span class="choice-text"><b>D.</b> Its leading nontrivial effect points in the bracket direction \([X,Y]\).</span>
+            <span class="feedback correct">Correct. A small loop made of noncommuting moves does not close perfectly.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q11">
+        <h3>61. What does the Baker-Campbell-Hausdorff theorem mean for \(\exp(X)\)\(\exp(Y)\)?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q11" value="A">
+            <span class="choice-text"><b>A.</b> It treats the determinant of the generator and determinant of its exponential as the same quantity.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses. It is the theorem that repairs the false scalar rule \(\exp(X+Y)=\exp(X)\exp(Y)\).</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q11" value="B">
+            <span class="choice-text"><b>B.</b> It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses.</span>
+            <span class="feedback correct">Correct. It is the theorem that repairs the false scalar rule \(\exp(X+Y)=\exp(X)\exp(Y)\).</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q11" value="C">
+            <span class="choice-text"><b>C.</b> It treats representation theory as a way to rename matrices, not as actions on vector spaces.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses. It is the theorem that repairs the false scalar rule \(\exp(X+Y)=\exp(X)\exp(Y)\).</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q11" value="D">
+            <span class="choice-text"><b>D.</b> It says the theorem \(\exp(tX)\exp(sX)=\exp((t+s)X)\) works because t and s are real, not because the generator is the same.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the product as exp of X+Y plus bracket correction terms, under appropriate local hypotheses. It is the theorem that repairs the false scalar rule \(\exp(X+Y)=\exp(X)\exp(Y)\).</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q12">
+        <h3>62. When is \(\exp(X+Y)=\exp(X)\exp(Y)\) valid for matrices?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q12" value="A">
+            <span class="choice-text"><b>A.</b> It treats finite-versus-infinitesimal as a question of large numbers versus small numbers, not group versus algebra.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so \(XY=YX\). Commutativity removes the bracket corrections.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q12" value="B">
+            <span class="choice-text"><b>B.</b> It says the cone visualization is proof that all trace-zero matrices commute on the boundary.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so \(XY=YX\). Commutativity removes the bracket corrections.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q12" value="C">
+            <span class="choice-text"><b>C.</b> It says the finite adjoint action is defined by adding X to g, not by conjugation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is valid when X and Y commute, so \(XY=YX\). Commutativity removes the bracket corrections.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q12" value="D">
+            <span class="choice-text"><b>D.</b> It is valid when X and Y commute, so \(XY=YX\).</span>
+            <span class="feedback correct">Correct. Commutativity removes the bracket corrections.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q13">
+        <h3>63. What does conjugation gXg^{-1} do conceptually?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q13" value="A">
+            <span class="choice-text"><b>A.</b> It says the local inverse theorem makes exp globally invertible for every connected group.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the same internal direction after changing frame by the group element g. Conjugation is a finite symmetry action on the algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q13" value="B">
+            <span class="choice-text"><b>B.</b> It expresses the same internal direction after changing frame by the group element g.</span>
+            <span class="feedback correct">Correct. Conjugation is a finite symmetry action on the algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q13" value="C">
+            <span class="choice-text"><b>C.</b> It assumes differentiating \(\exp(X(t))\) only requires differentiating the eigenvalues of \(X(t)\).</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the same internal direction after changing frame by the group element g. Conjugation is a finite symmetry action on the algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q13" value="D">
+            <span class="choice-text"><b>D.</b> It treats the identity element as an arbitrary origin rather than the point where tangent directions are attached.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It expresses the same internal direction after changing frame by the group element g. Conjugation is a finite symmetry action on the algebra.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q14">
+        <h3>64. What does \(\operatorname{Ad}_g\) mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q14" value="A">
+            <span class="choice-text"><b>A.</b> It assumes local errors in \(\exp(X)\)\(\exp(Y)\) are numerical rounding errors rather than bracket effects.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the adjoint representation: the group action on its Lie algebra induced by conjugation. This is finite action on infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q14" value="B">
+            <span class="choice-text"><b>B.</b> It assumes the Lie algebra and Lie group are the same object, just written with different fonts.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the adjoint representation: the group action on its Lie algebra induced by conjugation. This is finite action on infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q14" value="C">
+            <span class="choice-text"><b>C.</b> It says determinant one means the transformation preserves every length and angle.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the adjoint representation: the group action on its Lie algebra induced by conjugation. This is finite action on infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q14" value="D">
+            <span class="choice-text"><b>D.</b> It is the adjoint representation: the group action on its Lie algebra induced by conjugation.</span>
+            <span class="feedback correct">Correct. This is finite action on infinitesimal directions.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q15">
+        <h3>65. What does \(\operatorname{ad}_X\) mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q15" value="A">
+            <span class="choice-text"><b>A.</b> It assumes changing basis changes the actual group element rather than its coordinate description.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; \([X,Y]\). Lowercase ad is a linear operator on the Lie algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q15" value="B">
+            <span class="choice-text"><b>B.</b> It is the infinitesimal adjoint action Y -&gt; \([X,Y]\).</span>
+            <span class="feedback correct">Correct. Lowercase ad is a linear operator on the Lie algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q15" value="C">
+            <span class="choice-text"><b>C.</b> It confuses \(\operatorname{ad}_X\) with multiplication by the scalar trace of X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; \([X,Y]\). Lowercase ad is a linear operator on the Lie algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q15" value="D">
+            <span class="choice-text"><b>D.</b> It assumes associativity and commutativity are the same property for matrix products.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the infinitesimal adjoint action Y -&gt; \([X,Y]\). Lowercase ad is a linear operator on the Lie algebra.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q16">
+        <h3>66. What does \(\exp(\operatorname{ad}_X)=\operatorname{Ad}_{\exp(X)}\) state?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q16" value="A">
+            <span class="choice-text"><b>A.</b> It says local behavior near the identity automatically determines the entire global topology of the group.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of \(\exp(X)\). This theorem links the substitution principle with Lie-group geometry.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q16" value="B">
+            <span class="choice-text"><b>B.</b> It assumes the cone boundary is the hyperbolic case because boundaries look sharp.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of \(\exp(X)\). This theorem links the substitution principle with Lie-group geometry.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q16" value="C">
+            <span class="choice-text"><b>C.</b> It says imaginary eigenvalues mean the motion is not real.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The exponential of the infinitesimal adjoint operator equals the finite adjoint action of \(\exp(X)\). This theorem links the substitution principle with Lie-group geometry.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q16" value="D">
+            <span class="choice-text"><b>D.</b> The exponential of the infinitesimal adjoint operator equals the finite adjoint action of \(\exp(X)\).</span>
+            <span class="feedback correct">Correct. This theorem links the substitution principle with Lie-group geometry.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q17">
+        <h3>67. What does trace zero mean for a two-by-two generator?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q17" value="A">
+            <span class="choice-text"><b>A.</b> It says trace zero means the generator must produce a pure rotation.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It means the infinitesimal area-growth rate is zero. Trace controls first-order volume scaling.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q17" value="B">
+            <span class="choice-text"><b>B.</b> It means the infinitesimal area-growth rate is zero.</span>
+            <span class="feedback correct">Correct. Trace controls first-order volume scaling.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q17" value="C">
+            <span class="choice-text"><b>C.</b> It says every element of every matrix Lie group is \(\exp(X)\) for a unique X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It means the infinitesimal area-growth rate is zero. Trace controls first-order volume scaling.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q17" value="D">
+            <span class="choice-text"><b>D.</b> It assumes the order of infinitesimal moves cannot matter because each move is tiny.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It means the infinitesimal area-growth rate is zero. Trace controls first-order volume scaling.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q18">
+        <h3>68. What does \(\det(\exp(X))=\exp(\operatorname{tr}(X))\) imply when \(\operatorname{tr}(X)=0\)?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q18" value="A">
+            <span class="choice-text"><b>A.</b> It says the Jacobi identity means \([X,[Y,Z]]\) is always zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It implies \(\det(\exp(X))\)=1, so the finite transformation preserves area or volume scale. This theorem connects infinitesimal trace to finite determinant.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q18" value="B">
+            <span class="choice-text"><b>B.</b> It says \(\det(\exp(X))=\exp(\operatorname{tr}(X))\) proves \(\operatorname{tr}(\exp(X))=\exp(\operatorname{tr}(X))\).</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It implies \(\det(\exp(X))\)=1, so the finite transformation preserves area or volume scale. This theorem connects infinitesimal trace to finite determinant.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q18" value="C">
+            <span class="choice-text"><b>C.</b> It says the exponential map is linear because \(\exp(tX)\) depends smoothly on t.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It implies \(\det(\exp(X))\)=1, so the finite transformation preserves area or volume scale. This theorem connects infinitesimal trace to finite determinant.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q18" value="D">
+            <span class="choice-text"><b>D.</b> It implies \(\det(\exp(X))\)=1, so the finite transformation preserves area or volume scale.</span>
+            <span class="feedback correct">Correct. This theorem connects infinitesimal trace to finite determinant.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q19">
+        <h3>69. In the sl(2,R) classification, what does elliptic mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q19" value="A">
+            <span class="choice-text"><b>A.</b> It assumes the flow picture replaces the power-series definition rather than interpreting it.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It means the generator is rotation-like, typically associated with imaginary eigenvalues. Elliptic behavior is the rotation-type region of the classification.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q19" value="B">
+            <span class="choice-text"><b>B.</b> It means the generator is rotation-like, typically associated with imaginary eigenvalues.</span>
+            <span class="feedback correct">Correct. Elliptic behavior is the rotation-type region of the classification.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q19" value="C">
+            <span class="choice-text"><b>C.</b> It says the spectral type of a generator is irrelevant once exp has been computed.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It means the generator is rotation-like, typically associated with imaginary eigenvalues. Elliptic behavior is the rotation-type region of the classification.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q19" value="D">
+            <span class="choice-text"><b>D.</b> It treats flow composition as addition of matrices, regardless of whether generators commute.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It means the generator is rotation-like, typically associated with imaginary eigenvalues. Elliptic behavior is the rotation-type region of the classification.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q20">
+        <h3>70. In the sl(2,R) classification, what does hyperbolic mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q20" value="A">
+            <span class="choice-text"><b>A.</b> It says commutator loops are exactly closed because every move is undone by its inverse.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It means the generator has real stretching and contracting directions. Hyperbolic behavior is saddle-like rather than rotation-like.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q20" value="B">
+            <span class="choice-text"><b>B.</b> It treats the Lie bracket as a replacement for matrix multiplication instead of a derived operation from it.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It means the generator has real stretching and contracting directions. Hyperbolic behavior is saddle-like rather than rotation-like.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q20" value="C">
+            <span class="choice-text"><b>C.</b> It treats the bracket direction as perpendicular to both X and Y in a three-dimensional cross-product sense.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It means the generator has real stretching and contracting directions. Hyperbolic behavior is saddle-like rather than rotation-like.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q20" value="D">
+            <span class="choice-text"><b>D.</b> It means the generator has real stretching and contracting directions.</span>
+            <span class="feedback correct">Correct. Hyperbolic behavior is saddle-like rather than rotation-like.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q21">
+        <h3>71. In the sl(2,R) classification, what does parabolic mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q21" value="A">
+            <span class="choice-text"><b>A.</b> It treats representation theory as a way to rename matrices, not as actions on vector spaces.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the boundary shear-like case, often associated with nilpotent behavior. Parabolic behavior sits between elliptic and hyperbolic types.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q21" value="B">
+            <span class="choice-text"><b>B.</b> It is the boundary shear-like case, often associated with nilpotent behavior.</span>
+            <span class="feedback correct">Correct. Parabolic behavior sits between elliptic and hyperbolic types.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q21" value="C">
+            <span class="choice-text"><b>C.</b> It says the theorem \(\exp(tX)\exp(sX)=\exp((t+s)X)\) works because t and s are real, not because the generator is the same.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the boundary shear-like case, often associated with nilpotent behavior. Parabolic behavior sits between elliptic and hyperbolic types.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q21" value="D">
+            <span class="choice-text"><b>D.</b> It says the bracket \([X,Y]\) measures the angle between X and Y under the Euclidean dot product.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is the boundary shear-like case, often associated with nilpotent behavior. Parabolic behavior sits between elliptic and hyperbolic types.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q22">
+        <h3>72. What does a nilpotent generator \(N\) with \(\(N^2=0\)\) do under exponentiation?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q22" value="A">
+            <span class="choice-text"><b>A.</b> It says the cone visualization is proof that all trace-zero matrices commute on the boundary.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is \(I+N\) because all higher powers vanish. The infinite series terminates.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q22" value="B">
+            <span class="choice-text"><b>B.</b> It says the finite adjoint action is defined by adding X to g, not by conjugation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is \(I+N\) because all higher powers vanish. The infinite series terminates.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q22" value="C">
+            <span class="choice-text"><b>C.</b> It says the BCH theorem is a shortcut for ignoring commutators in products of exponentials.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Its exponential is \(I+N\) because all higher powers vanish. The infinite series terminates.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q22" value="D">
+            <span class="choice-text"><b>D.</b> Its exponential is \(I+N\) because all higher powers vanish.</span>
+            <span class="feedback correct">Correct. The infinite series terminates.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q23">
+        <h3>73. Why does a skew-symmetric matrix generate rotation under exponentiation?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q23" value="A">
+            <span class="choice-text"><b>A.</b> It assumes differentiating \(\exp(X(t))\) only requires differentiating the eigenvalues of \(X(t)\).</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Its infinitesimal action changes direction without changing Euclidean length to first order. Exponentiating that generator gives an orthogonal rotation-type transformation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q23" value="B">
+            <span class="choice-text"><b>B.</b> Its infinitesimal action changes direction without changing Euclidean length to first order.</span>
+            <span class="feedback correct">Correct. Exponentiating that generator gives an orthogonal rotation-type transformation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q23" value="C">
+            <span class="choice-text"><b>C.</b> It treats the identity element as an arbitrary origin rather than the point where tangent directions are attached.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Its infinitesimal action changes direction without changing Euclidean length to first order. Exponentiating that generator gives an orthogonal rotation-type transformation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q23" value="D">
+            <span class="choice-text"><b>D.</b> It says the derivative of \(\exp(X(t))\) follows the scalar chain rule because every term is differentiable.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Its infinitesimal action changes direction without changing Euclidean length to first order. Exponentiating that generator gives an orthogonal rotation-type transformation.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q24">
+        <h3>74. What does the theorem \(\exp(tX)\exp(sX)=\exp((t+s)X)\) mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q24" value="A">
+            <span class="choice-text"><b>A.</b> It assumes the Lie algebra and Lie group are the same object, just written with different fonts.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: A single fixed generator produces a one-parameter subgroup where time parameters add. The theorem holds because X commutes with itself.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q24" value="B">
+            <span class="choice-text"><b>B.</b> It says determinant one means the transformation preserves every length and angle.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: A single fixed generator produces a one-parameter subgroup where time parameters add. The theorem holds because X commutes with itself.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q24" value="C">
+            <span class="choice-text"><b>C.</b> It treats the logarithm near the identity as a single global logarithm for the whole group.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: A single fixed generator produces a one-parameter subgroup where time parameters add. The theorem holds because X commutes with itself.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q24" value="D">
+            <span class="choice-text"><b>D.</b> A single fixed generator produces a one-parameter subgroup where time parameters add.</span>
+            <span class="feedback correct">Correct. The theorem holds because X commutes with itself.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q25">
+        <h3>75. What does the derivative identity \(\frac{d}{dt}\exp(tX)=X\exp(tX)=\exp(tX)X\) mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q25" value="A">
+            <span class="choice-text"><b>A.</b> It confuses \(\operatorname{ad}_X\) with multiplication by the scalar trace of X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: For a fixed generator X, the flow has constant infinitesimal velocity X and X commutes with its own exponential. This is the differential equation solved by the exponential flow.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q25" value="B">
+            <span class="choice-text"><b>B.</b> For a fixed generator X, the flow has constant infinitesimal velocity X and X commutes with its own exponential.</span>
+            <span class="feedback correct">Correct. This is the differential equation solved by the exponential flow.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q25" value="C">
+            <span class="choice-text"><b>C.</b> It assumes associativity and commutativity are the same property for matrix products.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: For a fixed generator X, the flow has constant infinitesimal velocity X and X commutes with its own exponential. This is the differential equation solved by the exponential flow.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q25" value="D">
+            <span class="choice-text"><b>D.</b> It assumes the adjoint representation acts on the original vector space, not on the Lie algebra.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: For a fixed generator X, the flow has constant infinitesimal velocity X and X commutes with its own exponential. This is the differential equation solved by the exponential flow.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q26">
+        <h3>76. Why is \(\frac{d}{dt}\exp(X(t))\) not simply \(\exp(X(t))X^\prime(t)\) in general?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q26" value="A">
+            <span class="choice-text"><b>A.</b> It assumes the cone boundary is the hyperbolic case because boundaries look sharp.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: \(X(t)\) and \(X^\prime(t)\) may not commute, so differentiating powers produces ordered terms that cannot be factored naively. This is a direct noncommutativity issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q26" value="B">
+            <span class="choice-text"><b>B.</b> It says imaginary eigenvalues mean the motion is not real.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: \(X(t)\) and \(X^\prime(t)\) may not commute, so differentiating powers produces ordered terms that cannot be factored naively. This is a direct noncommutativity issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q26" value="C">
+            <span class="choice-text"><b>C.</b> It assumes skew-symmetric matrices preserve length because their entries sum to zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: \(X(t)\) and \(X^\prime(t)\) may not commute, so differentiating powers produces ordered terms that cannot be factored naively. This is a direct noncommutativity issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q26" value="D">
+            <span class="choice-text"><b>D.</b> \(X(t)\) and \(X^\prime(t)\) may not commute, so differentiating powers produces ordered terms that cannot be factored naively.</span>
+            <span class="feedback correct">Correct. This is a direct noncommutativity issue.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q27">
+        <h3>77. What does Schur’s formula for the derivative of \(\exp(X(t))\) correct?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q27" value="A">
+            <span class="choice-text"><b>A.</b> It says every element of every matrix Lie group is \(\exp(X)\) for a unique X.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from \(\operatorname{ad}_X\) to account for noncommutativity. The formula explains how brackets enter derivatives of matrix exponentials.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q27" value="B">
+            <span class="choice-text"><b>B.</b> It corrects the scalar chain rule by inserting an operator built from \(\operatorname{ad}_X\) to account for noncommutativity.</span>
+            <span class="feedback correct">Correct. The formula explains how brackets enter derivatives of matrix exponentials.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q27" value="C">
+            <span class="choice-text"><b>C.</b> It assumes the order of infinitesimal moves cannot matter because each move is tiny.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from \(\operatorname{ad}_X\) to account for noncommutativity. The formula explains how brackets enter derivatives of matrix exponentials.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q27" value="D">
+            <span class="choice-text"><b>D.</b> It says hyperbolic motion means motion on a hyperbola must literally be drawn in the original coordinate plane.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It corrects the scalar chain rule by inserting an operator built from \(\operatorname{ad}_X\) to account for noncommutativity. The formula explains how brackets enter derivatives of matrix exponentials.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q28">
+        <h3>78. What does the moving-frame quantity \(\exp(-X)\,d(\exp X)\) measure?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q28" value="A">
+            <span class="choice-text"><b>A.</b> It says \(\det(\exp(X))=\exp(\operatorname{tr}(X))\) proves \(\operatorname{tr}(\exp(X))=\exp(\operatorname{tr}(X))\).</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It measures the change after undoing the current motion, so the velocity is expressed in the moving/body frame. This is why adjoint correction terms naturally appear.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q28" value="B">
+            <span class="choice-text"><b>B.</b> It says the exponential map is linear because \(\exp(tX)\) depends smoothly on t.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It measures the change after undoing the current motion, so the velocity is expressed in the moving/body frame. This is why adjoint correction terms naturally appear.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q28" value="C">
+            <span class="choice-text"><b>C.</b> It treats the identity matrix in \(\exp(X)\) as a normalization constant rather than the no-motion transformation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It measures the change after undoing the current motion, so the velocity is expressed in the moving/body frame. This is why adjoint correction terms naturally appear.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q28" value="D">
+            <span class="choice-text"><b>D.</b> It measures the change after undoing the current motion, so the velocity is expressed in the moving/body frame.</span>
+            <span class="feedback correct">Correct. This is why adjoint correction terms naturally appear.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q29">
+        <h3>79. What does the Jacobi identity say?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q29" value="A">
+            <span class="choice-text"><b>A.</b> It says the spectral type of a generator is irrelevant once exp has been computed.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\). The identity is the consistency law for nested commutators.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q29" value="B">
+            <span class="choice-text"><b>B.</b> It says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\).</span>
+            <span class="feedback correct">Correct. The identity is the consistency law for nested commutators.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q29" value="C">
+            <span class="choice-text"><b>C.</b> It treats flow composition as addition of matrices, regardless of whether generators commute.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\). The identity is the consistency law for nested commutators.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q29" value="D">
+            <span class="choice-text"><b>D.</b> It says exp is a global coordinate chart for every Lie group, with no identifications or missing elements.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\). The identity is the consistency law for nested commutators.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q30">
+        <h3>80. The Jacobi identity for a matrix commutator bracket says \([X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0\). Which algebraic property makes the cancellation work?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q30" value="A">
+            <span class="choice-text"><b>A.</b> Associativity of matrix multiplication, because the six triple products cancel in pairs after expansion.</span>
+            <span class="feedback correct">Correct. Jacobi for the commutator bracket follows from associativity, not from commutativity.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q30" value="B">
+            <span class="choice-text"><b>B.</b> Commutativity of matrix multiplication, because \(XYZ\), \(XZY\), and \(ZYX\) can all be freely reordered.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Associativity of matrix multiplication, because the six triple products cancel in pairs after expansion. Jacobi for the commutator bracket follows from associativity, not from commutativity.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q30" value="C">
+            <span class="choice-text"><b>C.</b> Diagonalizability of \(X\), \(Y\), and \(Z\), because the bracket identity is checked eigenvalue by eigenvalue.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Associativity of matrix multiplication, because the six triple products cancel in pairs after expansion. Jacobi for the commutator bracket follows from associativity, not from commutativity.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q30" value="D">
+            <span class="choice-text"><b>D.</b> Trace cyclicity, because \(\operatorname{tr}(XYZ)=\operatorname{tr}(YZX)\) forces the matrices themselves to be equal.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Associativity of matrix multiplication, because the six triple products cancel in pairs after expansion. Jacobi for the commutator bracket follows from associativity, not from commutativity.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q31">
+        <h3>81. What does it mean for a vector field to generate a flow?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q31" value="A">
+            <span class="choice-text"><b>A.</b> It says the theorem \(\exp(tX)\exp(sX)=\exp((t+s)X)\) works because t and s are real, not because the generator is the same.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Following the vector field over time produces a path of transformations. This is the geometric language behind the exponential map.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q31" value="B">
+            <span class="choice-text"><b>B.</b> Following the vector field over time produces a path of transformations.</span>
+            <span class="feedback correct">Correct. This is the geometric language behind the exponential map.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q31" value="C">
+            <span class="choice-text"><b>C.</b> It says the bracket \([X,Y]\) measures the angle between X and Y under the Euclidean dot product.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Following the vector field over time produces a path of transformations. This is the geometric language behind the exponential map.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q31" value="D">
+            <span class="choice-text"><b>D.</b> It treats parabolic, elliptic, and hyperbolic labels as visual regions only, not flow types tied to invariants.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Following the vector field over time produces a path of transformations. This is the geometric language behind the exponential map.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q32">
+        <h3>82. What does “infinitesimal generator” mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q32" value="A">
+            <span class="choice-text"><b>A.</b> It says the finite adjoint action is defined by adding X to g, not by conjugation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the derivative at the identity of a one-parameter family of transformations. The generator is velocity-like data at time zero.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q32" value="B">
+            <span class="choice-text"><b>B.</b> It says the BCH theorem is a shortcut for ignoring commutators in products of exponentials.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the derivative at the identity of a one-parameter family of transformations. The generator is velocity-like data at time zero.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q32" value="C">
+            <span class="choice-text"><b>C.</b> It says a one-parameter subgroup can start anywhere; the identity at t=0 is optional.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It is the derivative at the identity of a one-parameter family of transformations. The generator is velocity-like data at time zero.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q32" value="D">
+            <span class="choice-text"><b>D.</b> It is the derivative at the identity of a one-parameter family of transformations.</span>
+            <span class="feedback correct">Correct. The generator is velocity-like data at time zero.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q33">
+        <h3>83. The inverse function theorem applied to a matrix Lie group says \(d\exp_0=\operatorname{id}_{\mathfrak g}\). What does this imply about the exponential map?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q33" value="A">
+            <span class="choice-text"><b>A.</b> \(\exp\) is a local diffeomorphism from a neighborhood of \(0\in\mathfrak g\) to a neighborhood of the identity in the group.</span>
+            <span class="feedback correct">Correct. The inverse function theorem gives a local statement only. It does not decide global injectivity, surjectivity, or commutativity.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q33" value="B">
+            <span class="choice-text"><b>B.</b> \(\exp\) is globally one-to-one on all of \(\mathfrak g\), because its derivative at \(0\) is invertible.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: \(\exp\) is a local diffeomorphism from a neighborhood of \(0\in\mathfrak g\) to a neighborhood of the identity in the group. The inverse function theorem gives a local statement only. It does not decide global injectivity, surjectivity, or commutativity.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q33" value="C">
+            <span class="choice-text"><b>C.</b> \(\exp\) is globally onto for every connected Lie group, because every path starts at the identity.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: \(\exp\) is a local diffeomorphism from a neighborhood of \(0\in\mathfrak g\) to a neighborhood of the identity in the group. The inverse function theorem gives a local statement only. It does not decide global injectivity, surjectivity, or commutativity.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q33" value="D">
+            <span class="choice-text"><b>D.</b> \(d\exp_0=\operatorname{id}\) implies \(\exp(X+Y)=\exp(X)\exp(Y)\) for all \(X,Y\).</span>
+            <span class="feedback wrong">Not quite. The best answer is A: \(\exp\) is a local diffeomorphism from a neighborhood of \(0\in\mathfrak g\) to a neighborhood of the identity in the group. The inverse function theorem gives a local statement only. It does not decide global injectivity, surjectivity, or commutativity.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q34">
+        <h3>84. The adjoint-exponential identity says \(\operatorname{Ad}_{\exp X}=\exp(\operatorname{ad}_X)\), where \(\operatorname{ad}_X(Y)=[X,Y]\). Which interpretation is correct?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q34" value="A">
+            <span class="choice-text"><b>A.</b> Finite conjugation by \(\exp X\) acts on the Lie algebra the same way as exponentiating the linear operator \(Y\mapsto[X,Y]\).</span>
+            <span class="feedback correct">Correct. This theorem is a precise finite-versus-infinitesimal bridge: group-level conjugation equals the exponential of the bracket operator.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q34" value="B">
+            <span class="choice-text"><b>B.</b> \(\operatorname{Ad}_{\exp X}\) is the transpose of \(\exp X\), while \(\operatorname{ad}_X\) is the derivative of the determinant.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Finite conjugation by \(\exp X\) acts on the Lie algebra the same way as exponentiating the linear operator \(Y\mapsto[X,Y]\). This theorem is a precise finite-versus-infinitesimal bridge: group-level conjugation equals the exponential of the bracket operator.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q34" value="C">
+            <span class="choice-text"><b>C.</b> The identity holds only when \([X,Y]=0\) for every \(Y\), because otherwise the exponential series cannot be applied to \(\operatorname{ad}_X\).</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Finite conjugation by \(\exp X\) acts on the Lie algebra the same way as exponentiating the linear operator \(Y\mapsto[X,Y]\). This theorem is a precise finite-versus-infinitesimal bridge: group-level conjugation equals the exponential of the bracket operator.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q34" value="D">
+            <span class="choice-text"><b>D.</b> The identity says \(\exp X\) and \(X\) have the same eigenvalues after conjugation.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: Finite conjugation by \(\exp X\) acts on the Lie algebra the same way as exponentiating the linear operator \(Y\mapsto[X,Y]\). This theorem is a precise finite-versus-infinitesimal bridge: group-level conjugation equals the exponential of the bracket operator.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q35">
+        <h3>85. What is the difference between exp as a power series and exp as a geometric map?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q35" value="A">
+            <span class="choice-text"><b>A.</b> It assumes associativity and commutativity are the same property for matrix products.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: The power series defines the object algebraically; the geometric map interprets it as finite motion. Both views describe the same construction from different angles.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q35" value="B">
+            <span class="choice-text"><b>B.</b> The power series defines the object algebraically; the geometric map interprets it as finite motion.</span>
+            <span class="feedback correct">Correct. Both views describe the same construction from different angles.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q35" value="C">
+            <span class="choice-text"><b>C.</b> It assumes the adjoint representation acts on the original vector space, not on the Lie algebra.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: The power series defines the object algebraically; the geometric map interprets it as finite motion. Both views describe the same construction from different angles.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q35" value="D">
+            <span class="choice-text"><b>D.</b> It assumes \(\exp(-X)\) is unrelated to \(\exp(X)\)^{-1} in a matrix group.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: The power series defines the object algebraically; the geometric map interprets it as finite motion. Both views describe the same construction from different angles.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q36">
+        <h3>86. What does a one-parameter subgroup pass through at t=0?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q36" value="A">
+            <span class="choice-text"><b>A.</b> It says imaginary eigenvalues mean the motion is not real.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It passes through the identity element. At zero time, no motion has occurred.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q36" value="B">
+            <span class="choice-text"><b>B.</b> It assumes skew-symmetric matrices preserve length because their entries sum to zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It passes through the identity element. At zero time, no motion has occurred.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q36" value="C">
+            <span class="choice-text"><b>C.</b> It says the group action \(\operatorname{Ad}_g\) and the operator \(\operatorname{ad}_X\) have the same domain and same input type.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It passes through the identity element. At zero time, no motion has occurred.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q36" value="D">
+            <span class="choice-text"><b>D.</b> It passes through the identity element.</span>
+            <span class="feedback correct">Correct. At zero time, no motion has occurred.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q37">
+        <h3>87. What does it mean if two flows commute?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q37" value="A">
+            <span class="choice-text"><b>A.</b> It assumes the order of infinitesimal moves cannot matter because each move is tiny.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Doing them in either order gives the same transformation. Commuting flows have zero bracket in the simplest infinitesimal setting.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q37" value="B">
+            <span class="choice-text"><b>B.</b> Doing them in either order gives the same transformation.</span>
+            <span class="feedback correct">Correct. Commuting flows have zero bracket in the simplest infinitesimal setting.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q37" value="C">
+            <span class="choice-text"><b>C.</b> It says hyperbolic motion means motion on a hyperbola must literally be drawn in the original coordinate plane.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Doing them in either order gives the same transformation. Commuting flows have zero bracket in the simplest infinitesimal setting.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q37" value="D">
+            <span class="choice-text"><b>D.</b> It says the exponential map is mainly a computational shortcut for avoiding differential equations.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Doing them in either order gives the same transformation. Commuting flows have zero bracket in the simplest infinitesimal setting.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q38">
+        <h3>88. What does it mean if the bracket \([X,Y]\) is zero?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q38" value="A">
+            <span class="choice-text"><b>A.</b> It says the exponential map is linear because \(\exp(tX)\) depends smoothly on t.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The infinitesimal motions commute to first nontrivial order. A zero bracket removes the first commutator correction.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q38" value="B">
+            <span class="choice-text"><b>B.</b> It treats the identity matrix in \(\exp(X)\) as a normalization constant rather than the no-motion transformation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The infinitesimal motions commute to first nontrivial order. A zero bracket removes the first commutator correction.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q38" value="C">
+            <span class="choice-text"><b>C.</b> It makes \(\exp(X+Y)=\exp(X)\exp(Y)\) true whenever X and Y are both small.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: The infinitesimal motions commute to first nontrivial order. A zero bracket removes the first commutator correction.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q38" value="D">
+            <span class="choice-text"><b>D.</b> The infinitesimal motions commute to first nontrivial order.</span>
+            <span class="feedback correct">Correct. A zero bracket removes the first commutator correction.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q39">
+        <h3>89. What does an eigenvalue with nonzero imaginary part indicate for a real two-dimensional flow?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q39" value="A">
+            <span class="choice-text"><b>A.</b> It treats flow composition as addition of matrices, regardless of whether generators commute.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It indicates rotation-like behavior in an invariant plane. Complex eigenvalues can represent real rotation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q39" value="B">
+            <span class="choice-text"><b>B.</b> It indicates rotation-like behavior in an invariant plane.</span>
+            <span class="feedback correct">Correct. Complex eigenvalues can represent real rotation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q39" value="C">
+            <span class="choice-text"><b>C.</b> It says exp is a global coordinate chart for every Lie group, with no identifications or missing elements.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It indicates rotation-like behavior in an invariant plane. Complex eigenvalues can represent real rotation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q39" value="D">
+            <span class="choice-text"><b>D.</b> It assumes a zero bracket means X and Y are zero, not that their infinitesimal motions commute.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It indicates rotation-like behavior in an invariant plane. Complex eigenvalues can represent real rotation.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q40">
+        <h3>90. What does a real positive and negative eigenvalue pair indicate in trace-zero two-dimensional dynamics?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q40" value="A">
+            <span class="choice-text"><b>A.</b> It treats the bracket direction as perpendicular to both X and Y in a three-dimensional cross-product sense.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It indicates stretching in one direction and contraction in another. That is the hyperbolic or saddle-like case.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q40" value="B">
+            <span class="choice-text"><b>B.</b> It says conjugation gXg^{-1} changes the entries of X but has no structural meaning.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It indicates stretching in one direction and contraction in another. That is the hyperbolic or saddle-like case.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q40" value="C">
+            <span class="choice-text"><b>C.</b> It treats Schur’s formula as a numerical approximation rather than a correction for noncommutativity.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It indicates stretching in one direction and contraction in another. That is the hyperbolic or saddle-like case.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q40" value="D">
+            <span class="choice-text"><b>D.</b> It indicates stretching in one direction and contraction in another.</span>
+            <span class="feedback correct">Correct. That is the hyperbolic or saddle-like case.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q41">
+        <h3>91. What does the cone visualization classify?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q41" value="A">
+            <span class="choice-text"><b>A.</b> It says the bracket \([X,Y]\) measures the angle between X and Y under the Euclidean dot product.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It classifies generator types by invariant algebraic quantities, separating elliptic, parabolic, and hyperbolic behavior. The cone is a geometric summary of algebraic type.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q41" value="B">
+            <span class="choice-text"><b>B.</b> It classifies generator types by invariant algebraic quantities, separating elliptic, parabolic, and hyperbolic behavior.</span>
+            <span class="feedback correct">Correct. The cone is a geometric summary of algebraic type.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q41" value="C">
+            <span class="choice-text"><b>C.</b> It treats parabolic, elliptic, and hyperbolic labels as visual regions only, not flow types tied to invariants.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It classifies generator types by invariant algebraic quantities, separating elliptic, parabolic, and hyperbolic behavior. The cone is a geometric summary of algebraic type.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q41" value="D">
+            <span class="choice-text"><b>D.</b> It says tangent vectors are already finite transformations before exponentiation.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It classifies generator types by invariant algebraic quantities, separating elliptic, parabolic, and hyperbolic behavior. The cone is a geometric summary of algebraic type.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q42">
+        <h3>92. Why is the cone boundary important?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q42" value="A">
+            <span class="choice-text"><b>A.</b> It says the BCH theorem is a shortcut for ignoring commutators in products of exponentials.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It marks the transition where the determinant condition produces the parabolic shear-like case. Boundaries often represent degenerate but structurally important behavior.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q42" value="B">
+            <span class="choice-text"><b>B.</b> It says a one-parameter subgroup can start anywhere; the identity at t=0 is optional.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It marks the transition where the determinant condition produces the parabolic shear-like case. Boundaries often represent degenerate but structurally important behavior.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q42" value="C">
+            <span class="choice-text"><b>C.</b> It says \(\exp(\operatorname{ad}_X)=\operatorname{Ad}_{\exp(X)}\) is just a typographical identity between two names.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It marks the transition where the determinant condition produces the parabolic shear-like case. Boundaries often represent degenerate but structurally important behavior.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q42" value="D">
+            <span class="choice-text"><b>D.</b> It marks the transition where the determinant condition produces the parabolic shear-like case.</span>
+            <span class="feedback correct">Correct. Boundaries often represent degenerate but structurally important behavior.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q43">
+        <h3>93. What does “finite transformation” mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q43" value="A">
+            <span class="choice-text"><b>A.</b> It says the derivative of \(\exp(X(t))\) follows the scalar chain rule because every term is differentiable.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is an actual group element that can act on points or vectors, not merely an infinitesimal direction. The exponential map turns a generator into such a transformation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q43" value="B">
+            <span class="choice-text"><b>B.</b> It is an actual group element that can act on points or vectors, not merely an infinitesimal direction.</span>
+            <span class="feedback correct">Correct. The exponential map turns a generator into such a transformation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q43" value="C">
+            <span class="choice-text"><b>C.</b> It says real eigenvalues always imply area growth.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is an actual group element that can act on points or vectors, not merely an infinitesimal direction. The exponential map turns a generator into such a transformation.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q43" value="D">
+            <span class="choice-text"><b>D.</b> It says a generator is a force vector in physical space rather than an infinitesimal transformation.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It is an actual group element that can act on points or vectors, not merely an infinitesimal direction. The exponential map turns a generator into such a transformation.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q44">
+        <h3>94. What does “tangent at the identity” mean?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q44" value="A">
+            <span class="choice-text"><b>A.</b> It treats the logarithm near the identity as a single global logarithm for the whole group.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It means the infinitesimal directions are attached to the identity transformation as possible initial velocities. Lie algebras live at the identity but describe nearby motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q44" value="B">
+            <span class="choice-text"><b>B.</b> It says the moving frame is only a coordinate animation, not a way to express velocity after undoing motion.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It means the infinitesimal directions are attached to the identity transformation as possible initial velocities. Lie algebras live at the identity but describe nearby motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q44" value="C">
+            <span class="choice-text"><b>C.</b> It assumes the exponential map forgets the group law and keeps only eigenvalues.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It means the infinitesimal directions are attached to the identity transformation as possible initial velocities. Lie algebras live at the identity but describe nearby motion.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q44" value="D">
+            <span class="choice-text"><b>D.</b> It means the infinitesimal directions are attached to the identity transformation as possible initial velocities.</span>
+            <span class="feedback correct">Correct. Lie algebras live at the identity but describe nearby motion.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q45">
+        <h3>95. Why should exp not be treated as just a calculator button?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q45" value="A">
+            <span class="choice-text"><b>A.</b> It assumes the adjoint representation acts on the original vector space, not on the Lie algebra.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Because its meaning depends on whether the input is a scalar, matrix, or operator and what structure that input carries. The same notation hides different levels of action.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q45" value="B">
+            <span class="choice-text"><b>B.</b> Because its meaning depends on whether the input is a scalar, matrix, or operator and what structure that input carries.</span>
+            <span class="feedback correct">Correct. The same notation hides different levels of action.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q45" value="C">
+            <span class="choice-text"><b>C.</b> It assumes \(\exp(-X)\) is unrelated to \(\exp(X)\)^{-1} in a matrix group.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Because its meaning depends on whether the input is a scalar, matrix, or operator and what structure that input carries. The same notation hides different levels of action.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q45" value="D">
+            <span class="choice-text"><b>D.</b> It says all generators with determinant zero produce no motion after exponentiation.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: Because its meaning depends on whether the input is a scalar, matrix, or operator and what structure that input carries. The same notation hides different levels of action.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q46">
+        <h3>96. What is the most important warning about exp in noncommutative settings?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q46" value="A">
+            <span class="choice-text"><b>A.</b> It assumes skew-symmetric matrices preserve length because their entries sum to zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Scalar identities involving sums and products must be checked for commutativity or corrected by brackets. Order is the central issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q46" value="B">
+            <span class="choice-text"><b>B.</b> It says the group action \(\operatorname{Ad}_g\) and the operator \(\operatorname{ad}_X\) have the same domain and same input type.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Scalar identities involving sums and products must be checked for commutativity or corrected by brackets. Order is the central issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q46" value="C">
+            <span class="choice-text"><b>C.</b> It treats \(\exp(X)\) as applying the scalar exponential separately to every coordinate entry of X.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Scalar identities involving sums and products must be checked for commutativity or corrected by brackets. Order is the central issue.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q46" value="D">
+            <span class="choice-text"><b>D.</b> Scalar identities involving sums and products must be checked for commutativity or corrected by brackets.</span>
+            <span class="feedback correct">Correct. Order is the central issue.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q47">
+        <h3>97. What does a group representation do?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q47" value="A">
+            <span class="choice-text"><b>A.</b> It says hyperbolic motion means motion on a hyperbola must literally be drawn in the original coordinate plane.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It realizes abstract group elements as linear transformations of a vector space. Representations connect group structure to linear algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q47" value="B">
+            <span class="choice-text"><b>B.</b> It realizes abstract group elements as linear transformations of a vector space.</span>
+            <span class="feedback correct">Correct. Representations connect group structure to linear algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q47" value="C">
+            <span class="choice-text"><b>C.</b> It says the exponential map is mainly a computational shortcut for avoiding differential equations.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It realizes abstract group elements as linear transformations of a vector space. Representations connect group structure to linear algebra.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q47" value="D">
+            <span class="choice-text"><b>D.</b> It confuses \(\operatorname{Ad}_g\) with the transpose or adjoint matrix g^T.</span>
+            <span class="feedback wrong">Not quite. The best answer is B: It realizes abstract group elements as linear transformations of a vector space. Representations connect group structure to linear algebra.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q48">
+        <h3>98. What does the adjoint representation represent?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q48" value="A">
+            <span class="choice-text"><b>A.</b> It treats the identity matrix in \(\exp(X)\) as a normalization constant rather than the no-motion transformation.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It represents the group on its own Lie algebra. The group acts on its infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q48" value="B">
+            <span class="choice-text"><b>B.</b> It makes \(\exp(X+Y)=\exp(X)\exp(Y)\) true whenever X and Y are both small.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It represents the group on its own Lie algebra. The group acts on its infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q48" value="C">
+            <span class="choice-text"><b>C.</b> It says a nilpotent generator has no finite motion because its eigenvalues are all zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: It represents the group on its own Lie algebra. The group acts on its infinitesimal directions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q48" value="D">
+            <span class="choice-text"><b>D.</b> It represents the group on its own Lie algebra.</span>
+            <span class="feedback correct">Correct. The group acts on its infinitesimal directions.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q49">
+        <h3>99. The Baker-Campbell-Hausdorff theorem begins \(\log(\exp X\exp Y)=X+Y+\frac12[X,Y]+\cdots\). Which conclusion follows from the displayed first correction term?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q49" value="A">
+            <span class="choice-text"><b>A.</b> If \([X,Y]\ne0\), then \(X+Y\) is generally not the exact logarithm of \(\exp X\exp Y\), even for small \(X,Y\).</span>
+            <span class="feedback correct">Correct. The \(\frac12[X,Y]\) term is the first mathematical obstruction to importing the scalar product law for exponentials.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q49" value="B">
+            <span class="choice-text"><b>B.</b> If \([X,Y]\ne0\), then \(\exp X\exp Y\) is undefined because logarithms cannot accept noncommuting inputs.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: If \([X,Y]\ne0\), then \(X+Y\) is generally not the exact logarithm of \(\exp X\exp Y\), even for small \(X,Y\). The \(\frac12[X,Y]\) term is the first mathematical obstruction to importing the scalar product law for exponentials.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q49" value="C">
+            <span class="choice-text"><b>C.</b> The term \(\frac12[X,Y]\) can be removed by replacing \(X\) and \(Y\) with matrices of the same trace.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: If \([X,Y]\ne0\), then \(X+Y\) is generally not the exact logarithm of \(\exp X\exp Y\), even for small \(X,Y\). The \(\frac12[X,Y]\) term is the first mathematical obstruction to importing the scalar product law for exponentials.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q49" value="D">
+            <span class="choice-text"><b>D.</b> The first correction term shows \(\exp X\exp Y=\exp Y\exp X\) whenever \(X\) and \(Y\) are near zero.</span>
+            <span class="feedback wrong">Not quite. The best answer is A: If \([X,Y]\ne0\), then \(X+Y\) is generally not the exact logarithm of \(\exp X\exp Y\), even for small \(X,Y\). The \(\frac12[X,Y]\) term is the first mathematical obstruction to importing the scalar product law for exponentials.</span>
+          </label>
+        </fieldset>
+      </article>
+      <article class="question" id="exponential-q50">
+        <h3>100. What should you check when a claim about the exponential map is made?</h3>
+        <fieldset>
+          <label class="choice">
+            <input type="radio" name="exponential-q50" value="A">
+            <span class="choice-text"><b>A.</b> It says conjugation gXg^{-1} changes the entries of X but has no structural meaning.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Check whether the claim is local or global, whether commutativity is assumed, and which group or algebra is being used. Most mistakes come from ignoring one of these distinctions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q50" value="B">
+            <span class="choice-text"><b>B.</b> It treats Schur’s formula as a numerical approximation rather than a correction for noncommutativity.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Check whether the claim is local or global, whether commutativity is assumed, and which group or algebra is being used. Most mistakes come from ignoring one of these distinctions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q50" value="C">
+            <span class="choice-text"><b>C.</b> It treats the determinant of the generator and determinant of its exponential as the same quantity.</span>
+            <span class="feedback wrong">Not quite. The best answer is D: Check whether the claim is local or global, whether commutativity is assumed, and which group or algebra is being used. Most mistakes come from ignoring one of these distinctions.</span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="exponential-q50" value="D">
+            <span class="choice-text"><b>D.</b> Check whether the claim is local or global, whether commutativity is assumed, and which group or algebra is being used.</span>
+            <span class="feedback correct">Correct. Most mistakes come from ignoring one of these distinctions.</span>
+          </label>
+        </fieldset>
+      </article>
+    </div>
+  </section>
+</main>
+<script>
+  document.querySelectorAll('[data-score-section]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const section = document.getElementById(button.dataset.scoreSection);
+      const output = document.getElementById(`${button.dataset.scoreSection}-score`);
+      if (!section || !output) return;
+
+      let attempts = 0;
+      let correct = 0;
+      section.querySelectorAll('.question').forEach((question) => {
+        const checked = question.querySelector('input[type="radio"]:checked');
+        if (!checked) return;
+        attempts += 1;
+        if (checked.parentElement.querySelector('.feedback.correct')) correct += 1;
+      });
+
+      output.textContent = `${correct} correct out of ${attempts} attempts`;
+    });
+  });
+</script>
+</body>
+</html>
