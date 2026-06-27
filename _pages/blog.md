@@ -277,6 +277,12 @@ nav_order: 6
   }
 </style>
 
+<div style="margin:1.25rem 0 1.5rem; padding:1rem 1.1rem; border:1px solid var(--global-divider-color); border-radius:8px; background:var(--global-card-bg-color);">
+  <strong>Connected quiz:</strong>
+  <a href="{{ '/blog/math-quiz/' | relative_url }}">50 extremely tricky conceptual multiple-choice questions</a>
+  tying together Linear Algebra, the Exponential Map, and the Substitution Principle.
+</div>
+
 <div class="blog-cards">
   <a class="blog-card" href="{{ '/blog/2026/substitution-principle-adjoints/' | relative_url }}">
     <div class="blog-card-body">
