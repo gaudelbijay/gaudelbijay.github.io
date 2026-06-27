@@ -110,7 +110,6 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
   <div style="font:700 11px/1.2 'IBM Plex Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#B8552F;margin-bottom:8px;">Connected reading path</div>
   <p style="margin:0 0 10px;font-size:17px;line-height:1.55;color:#574c3b;">This post should be read beside <a href="/blog/2026/the-exponential-map/" style="color:#B8552F;">The Exponential Map</a>, where the same power series becomes motion, and the <a href="/blog/2025/linear-algebra-study-guide/" style="color:#B8552F;">Linear Algebra Study Guide</a>, where transformations, adjoints, identities, and composition are built from the ground up.</p>
   <a href="/blog/math-quiz/substitution/" style="display:inline-block;margin:7px 8px 0 0;padding:8px 10px;border:1px solid #E3D9C5;border-radius:7px;color:#B8552F;text-decoration:none;background:#FCF9F1;">Take the 50-question Substitution quiz</a>
-  <a href="/blog/2026/rossmann-matrix-exponential-solutions/" style="display:inline-block;margin:7px 8px 0 0;padding:8px 10px;border:1px solid #E3D9C5;border-radius:7px;color:#B8552F;text-decoration:none;background:#FCF9F1;">Open the full Rossmann matrix exponential page</a>
 </section>
 
 <!-- §1 THE QUESTION -->
@@ -390,9 +389,9 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
   <p class="lead">All 23 Rossmann matrix-exponential problems are included across the two Lie posts. This page contains the problems that belong to substitution, Jordan structure, logarithm/exponential algebra, brackets, and adjoint invariance. Click a problem to reveal the full solution.</p>
   <p class="body"><a href="/blog/2026/rossmann-matrix-exponential-solutions/" style="color:#f0c28f;">Open the full Rossmann matrix exponential solutions page</a> for the original visual problem set in one continuous page.</p>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.1 · 5 — Exponential of a Jordan block</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> For the $n\times n$ Jordan block $J=\lambda I+N$, show that $\exp(J)$ has $e^\lambda/k!$ on the $k$th superdiagonal.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.1 · 5 — Exponential of a Jordan block</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> For the $n\times n$ Jordan block $J=\lambda I+N$, show that $\exp(J)$ has $e^\lambda/k!$ on the $k$th superdiagonal.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
@@ -445,29 +444,29 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
               <text x="204" y="158" font-size="10" fill="#5E7A4E" font-family="'DM Sans',sans-serif">k-th superdiag: e^λ / k!</text>
             </svg>
             </div>
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> Write $J=\lambda I+N$, where $N$ has $1$ on the first superdiagonal and $N^n=0$. Because $\lambda I$ commutes with $N$, the exponential splits as $\exp(\lambda I+N)=\exp(\lambda I)\exp(N)$.</p>
+            <p class="body"><strong>Solution.</strong> Write $J=\lambda I+N$, where $N$ has $1$ on the first superdiagonal and $N^n=0$. Because $\lambda I$ commutes with $N$, the exponential splits as $\exp(\lambda I+N)=\exp(\lambda I)\exp(N)$.</p>
             <div class="mjd" style="font-size:1.05em;">$$e^J=e^{\lambda}\left(I+N+\frac{N^2}{2!}+\cdots+\frac{N^{n-1}}{(n-1)!}\right).$$</div>
             <p class="body">The matrix $N^k$ has $1$ on the $k$th superdiagonal and $0$ elsewhere. Hence the $k$th superdiagonal of $e^J$ is $e^\lambda/k!$. The nilpotent part is what makes the infinite series become a finite polynomial.</p>
       </div>
     </details>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.1 · 6 — Exponential of the derivative operator</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> Let $E$ be the polynomials of degree at most $n-1$ and $D=d/d\xi$. Show that $\exp(\tau D)f(\xi)=f(\xi+\tau)$.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.1 · 6 — Exponential of the derivative operator</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> Let $E$ be the polynomials of degree at most $n-1$ and $D=d/d\xi$. Show that $\exp(\tau D)f(\xi)=f(\xi+\tau)$.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> On this finite-dimensional space, $D^n=0$, so the exponential $e^{\tau D}$ is a finite operator polynomial.</p>
+            <p class="body"><strong>Solution.</strong> On this finite-dimensional space, $D^n=0$, so the exponential $e^{\tau D}$ is a finite operator polynomial.</p>
             <div class="mjd" style="font-size:1.05em;">$$e^{\tau D}f(\xi)=\sum_{k=0}^{n-1}\frac{\tau^k}{k!}D^k f(\xi)=\sum_{k=0}^{n-1}\frac{\tau^k}{k!}f^{(k)}(\xi).$$</div>
             <p class="body">The last expression is Taylor expansion of $f$ at $\xi$, evaluated at $\xi+\tau$. Thus $e^{\tau D}$ is the translation operator. This is the substitution principle in its cleanest form: the exponential recipe accepts an operator as input and produces a geometric action.</p>
       </div>
     </details>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 1 — Nilpotent matrices and unipotent matrices</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> Show that $X\mapsto \exp X$ maps nilpotent matrices bijectively onto unipotent matrices, with inverse $a\mapsto \log a$.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.2 · 1 — Nilpotent matrices and unipotent matrices</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> Show that $X\mapsto \exp X$ maps nilpotent matrices bijectively onto unipotent matrices, with inverse $a\mapsto \log a$.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
@@ -506,7 +505,7 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
             <text x="498" y="8" text-anchor="middle" font-size="10" fill="#8B3D23">exp maps to semisimple</text>
           </svg>
             </div>
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> If $X^m=0$, then $e^X$ is $I$ plus a polynomial in $X$ with zero constant term. That extra part is nilpotent, so $e^X$ is unipotent.</p>
+            <p class="body"><strong>Solution.</strong> If $X^m=0$, then $e^X$ is $I$ plus a polynomial in $X$ with zero constant term. That extra part is nilpotent, so $e^X$ is unipotent.</p>
             <div class="mjd" style="font-size:1.05em;">$$e^X=I+X+\frac{X^2}{2!}+\cdots+\frac{X^{m-1}}{(m-1)!}.$$ </div>
             <p class="body">Conversely, if $a=I+N$ with $N$ nilpotent, then $\log(I+N)$ is also finite:</p>
             <div class="mjd" style="font-size:1.05em;">$$\log(I+N)=N-\frac{N^2}{2}+\frac{N^3}{3}-\cdots.$$ </div>
@@ -515,9 +514,9 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
     </details>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 2 — Semisimple matrices and the exponential</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> Show that $\exp$ maps semisimple matrices to semisimple matrices, that every invertible semisimple complex matrix is an exponential of a semisimple matrix, and explain the logarithm ambiguity.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.2 · 2 — Semisimple matrices and the exponential</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> Show that $\exp$ maps semisimple matrices to semisimple matrices, that every invertible semisimple complex matrix is an exponential of a semisimple matrix, and explain the logarithm ambiguity.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
@@ -556,7 +555,7 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
             <text x="498" y="8" text-anchor="middle" font-size="10" fill="#8B3D23">exp maps to semisimple</text>
           </svg>
             </div>
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> If $X=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$, then powers of $D$ stay diagonal, so the exponential is computed entry by entry:</p>
+            <p class="body"><strong>Solution.</strong> If $X=PDP^{-1}$ with $D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)$, then powers of $D$ stay diagonal, so the exponential is computed entry by entry:</p>
             <div class="mjd" style="font-size:1.05em;">$$e^X=P\operatorname{diag}(e^{\lambda_1},\ldots,e^{\lambda_n})P^{-1}.$$ </div>
             <p class="body">Hence $e^X$ is semisimple. Conversely, if $a=P\operatorname{diag}(\mu_1,\ldots,\mu_n)P^{-1}$ is invertible, choose $\lambda_j$ with $e^{\lambda_j}=\mu_j$ and set $X=P\operatorname{diag}(\lambda_1,\ldots,\lambda_n)P^{-1}$.</p>
             <p class="body">The ambiguity is exactly $\lambda_j\mapsto \lambda_j+2\pi i k_j$. If distinct eigenvalues do not differ by a nonzero multiple of $2\pi i$, exponentiation does not merge their eigenspaces; otherwise, different logarithm branches can collapse to the same exponential.</p>
@@ -564,9 +563,9 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
     </details>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 3 — Jordan decomposition and the exponential</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> Relate additive Jordan decomposition $X=Y+Z$ to multiplicative Jordan decomposition of $\exp X$.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.2 · 3 — Jordan decomposition and the exponential</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> Relate additive Jordan decomposition $X=Y+Z$ to multiplicative Jordan decomposition of $\exp X$.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
@@ -619,7 +618,7 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
               <text x="475" y="161" text-anchor="middle" font-size="11" fill="#8B3D23" font-family="'DM Sans',sans-serif">(unipotent)</text>
             </svg>
             </div>
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> In the additive Jordan decomposition, $Y$ is semisimple, $Z$ is nilpotent, and $YZ=ZY$. Since the parts commute,</p>
+            <p class="body"><strong>Solution.</strong> In the additive Jordan decomposition, $Y$ is semisimple, $Z$ is nilpotent, and $YZ=ZY$. Since the parts commute,</p>
             <div class="mjd" style="font-size:1.05em;">$$e^X=e^{Y+Z}=e^Y e^Z.$$ </div>
             <p class="body">By the previous semisimple result, $e^Y$ is semisimple. By the nilpotent-unipotent result, $e^Z$ is unipotent. They commute because $Y$ and $Z$ commute. Thus the exponential turns additive Jordan decomposition into multiplicative Jordan decomposition.</p>
             <p class="body">For an invertible matrix $a$, the multiplicative decomposition $a=bc$ has $b$ semisimple, $c$ unipotent, and $bc=cb$. The point is structural: diagonalizable behavior and nilpotent behavior survive exponentiation as separate finite effects.</p>
@@ -627,13 +626,13 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
     </details>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 6 — Cayley-Hamilton reduction of power series</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> Use Cayley-Hamilton to show that a convergent matrix power series $f(X)$ can be written as a polynomial in $X$ of degree less than $n$.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.2 · 6 — Cayley-Hamilton reduction of power series</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> Use Cayley-Hamilton to show that a convergent matrix power series $f(X)$ can be written as a polynomial in $X$ of degree less than $n$.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> Cayley-Hamilton says $p_X(X)=0$. If $p_X(t)=t^n+s_{n-1}t^{n-1}+\cdots+s_0$, then</p>
+            <p class="body"><strong>Solution.</strong> Cayley-Hamilton says $p_X(X)=0$. If $p_X(t)=t^n+s_{n-1}t^{n-1}+\cdots+s_0$, then</p>
             <div class="mjd" style="font-size:1.05em;">$$X^n=-s_{n-1}X^{n-1}-\cdots-s_1X-s_0I.$$ </div>
             <p class="body">Multiplying by powers of $X$ reduces every $X^k$ with $k\ge n$ to a linear combination of $I,X,\ldots,X^{n-1}$. Therefore, once the series defining $f(X)$ has converged, its value can be represented as</p>
             <div class="mjd" style="font-size:1.05em;">$$f(X)=c_0(X)I+c_1(X)X+\cdots+c_{n-1}(X)X^{n-1}.$$ </div>
@@ -642,13 +641,13 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
     </details>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 7 — Small norm condition: $\exp(X)v=v$ iff $Xv=0$</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> For sufficiently small $\lVert X\rVert$, show that $\exp(X)v=v$ if and only if $Xv=0$.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.2 · 7 — Small norm condition: $\exp(X)v=v$ iff $Xv=0$</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> For sufficiently small $\lVert X\rVert$, show that $\exp(X)v=v$ if and only if $Xv=0$.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> If $Xv=0$, then $X^kv=0$ for all $k\ge1$, so $e^Xv=v$. Conversely, suppose $e^Xv=v$. Then $(e^X-I)v=0$.</p>
+            <p class="body"><strong>Solution.</strong> If $Xv=0$, then $X^kv=0$ for all $k\ge1$, so $e^Xv=v$. Conversely, suppose $e^Xv=v$. Then $(e^X-I)v=0$.</p>
             <div class="mjd" style="font-size:1.05em;">$$e^X-I=Xh(X),\qquad h(z)=\frac{e^z-1}{z}=1+\frac{z}{2!}+\frac{z^2}{3!}+\cdots.$$ </div>
             <p class="body">For $\lVert X\rVert$ small, $h(X)$ is invertible because $h(0)=1$ and invertibility is stable under small perturbations. Since $h(X)$ commutes with $X$, the equation $Xh(X)v=0$ implies $Xv=0$.</p>
             <p class="body">The smallness hypothesis prevents exponential wrapping, such as eigenvalues differing by $2\pi i$, from producing fixed vectors that are not killed infinitesimally.</p>
@@ -656,13 +655,13 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
     </details>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 8 — Jacobi identity and Lie bracket derivations</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> Prove the Jacobi identity and deduce that $\operatorname{ad}(Z)$ is a derivation of the bracket.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.2 · 8 — Jacobi identity and Lie bracket derivations</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> Prove the Jacobi identity and deduce that $\operatorname{ad}(Z)$ is a derivation of the bracket.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> Expand every commutator using $[X,Y]=XY-YX$. Because matrix multiplication is associative, each triple product appears once with a plus sign and once with a minus sign.</p>
+            <p class="body"><strong>Solution.</strong> Expand every commutator using $[X,Y]=XY-YX$. Because matrix multiplication is associative, each triple product appears once with a plus sign and once with a minus sign.</p>
             <div class="mjd" style="font-size:1.05em;">$$[[X,Y],Z]+[[Z,X],Y]+[[Y,Z],X]=0.$$ </div>
             <p class="body">Rearranging this identity with $\operatorname{ad}_Z(W)=[Z,W]$ gives</p>
             <div class="mjd" style="font-size:1.05em;">$$\operatorname{ad}_Z([X,Y])=[\operatorname{ad}_Z X,Y]+[X,\operatorname{ad}_Z Y].$$ </div>
@@ -671,13 +670,13 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
     </details>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 12 — Invariant subspaces under adjoint action</summary>
-    <p class="body" style="margin-top:16px;"><strong style="color:#5E7A4E;">Question.</strong> If $L$ is a subspace with $[X,L]\subset L$, show that $\exp(\tau X)L\exp(-\tau X)\subset L$.</p>
+  <details style="border:1px solid #DCD0B8;border-radius:12px;background:#FCF9F1;padding:20px 24px;margin:16px 0;">
+    <summary style="cursor:pointer;font:600 20px/1.35 Newsreader,serif;color:#2A241E;">§1.2 · 12 — Invariant subspaces under adjoint action</summary>
+    <p class="body" style="margin-top:16px;"><strong>Question.</strong> If $L$ is a subspace with $[X,L]\subset L$, show that $\exp(\tau X)L\exp(-\tau X)\subset L$.</p>
     <details class="answer-toggle">
       <summary>Answer</summary>
       <div class="answer-toggle-body">
-            <p class="body"><strong style="color:#5E7A4E;">Solution.</strong> For $Y\in L$, define $F(\tau)=e^{\tau X}Ye^{-\tau X}$. Differentiating gives</p>
+            <p class="body"><strong>Solution.</strong> For $Y\in L$, define $F(\tau)=e^{\tau X}Ye^{-\tau X}$. Differentiating gives</p>
             <div class="mjd" style="font-size:1.05em;">$$F\prime(\tau)=XF(\tau)-F(\tau)X=[X,F(\tau)].$$ </div>
             <p class="body">At $\tau=0$, $F(0)=Y\in L$. The assumption $[X,L]\subset L$ says this differential equation has velocity tangent to $L$ whenever $F(\tau)$ lies in $L$. Hence the solution stays in $L$.</p>
             <p class="body">Equivalently, $F(\tau)=e^{\tau\operatorname{ad}_X}Y$. Since $\operatorname{ad}_X$ maps $L$ into $L$, every power of $\operatorname{ad}_X$ maps $L$ into $L$, and so does its exponential.</p>
