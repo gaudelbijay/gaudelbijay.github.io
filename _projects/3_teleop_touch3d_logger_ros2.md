@@ -40,7 +40,7 @@ It is used to build labeled interaction datasets that feed downstream observer a
   </div>
 
   <div style="flex: 1 1 460px; min-width: 300px; border: 1px solid rgba(127, 127, 127, 0.35); border-radius: 12px; padding: 0.9rem;">
-    <h4 style="margin-top: 0; margin-bottom: 0.65rem;">Haptic and Robot Base Frames</h4>
+    <h4 style="margin-top: 0; margin-bottom: 0.65rem;">Haptic Interaction Frame</h4>
 
     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
       <div style="flex: 1 1 220px; min-width: 200px; text-align: center;">
@@ -50,15 +50,6 @@ It is used to build labeled interaction datasets that feed downstream observer a
           style="width: 100%; height: auto; border-radius: 8px;"
         />
         <p style="margin: 0.45rem 0 0;"><strong>Figure:</strong> Haptic interaction frame</p>
-      </div>
-
-      <div style="flex: 1 1 220px; min-width: 200px; text-align: center;">
-        <img
-          src="{{ '/assets/img/teleop_robot_base_frame.png' | relative_url }}"
-          alt="Robot base frame"
-          style="width: 100%; height: auto; border-radius: 8px;"
-        />
-        <p style="margin: 0.45rem 0 0;"><strong>Figure:</strong> Robot base frame</p>
       </div>
     </div>
 
