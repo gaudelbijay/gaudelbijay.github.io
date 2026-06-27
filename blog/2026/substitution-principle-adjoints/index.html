@@ -29,12 +29,12 @@
 </script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:#5f3326;color:#f4ece5;font-family:'Crimson Text',Georgia,serif;}
+body{background:#e9dfcc;color:#2f2a24;font-family:'Crimson Text',Georgia,serif;}
 .art{max-width:900px;margin:0 auto;padding:0 48px 120px;}
-h2.sec{font-size:46px;font-weight:600;color:#eeeef5;margin:80px 0 22px;line-height:1.15;}
+h2.sec{font-size:46px;font-weight:600;color:#2f2a24;margin:80px 0 22px;line-height:1.15;}
 h3.sub{font-size:30px;font-weight:600;color:#4aa8ff;margin:42px 0 14px;}
-p.body{font-size:22px;line-height:1.75;color:#cccce0;margin-bottom:18px;}
-p.lead{font-size:26px;line-height:1.65;color:#e2e2f0;margin-bottom:22px;}
+p.body{font-size:22px;line-height:1.75;color:#3d352c;margin-bottom:18px;}
+p.lead{font-size:26px;line-height:1.65;color:#443a30;margin-bottom:22px;}
 .rule{width:80px;height:3px;border-radius:2px;margin-bottom:32px;}
 .pull{border-left:4px solid;padding:20px 28px;margin:36px 0;border-radius:0 12px 12px 0;}
 .pull p{font-size:24px;line-height:1.6;font-style:italic;}
@@ -43,13 +43,13 @@ p.lead{font-size:26px;line-height:1.65;color:#e2e2f0;margin-bottom:22px;}
 .mj{display:inline;}
 .mjd{display:block;margin:10px 0;}
 [data-t]:empty::before{content:attr(data-t);opacity:.25;font-size:.75em;}
-canvas.vis{display:block;width:100%;border-radius:16px;background:#241713;margin:40px 0;}
-.cap{font-size:18px;color:#7777aa;text-align:center;margin-top:-30px;margin-bottom:40px;font-style:italic;}
+canvas.vis{display:block;width:100%;border-radius:16px;background:#d9cbb5;margin:40px 0;}
+.cap{font-size:18px;color:#7c6f5f;text-align:center;margin-top:-30px;margin-bottom:40px;font-style:italic;}
 .compare{display:flex;gap:32px;margin:36px 0;}
 .cbox{flex:1;border-radius:16px;padding:36px 44px;border:2px solid;}
 .cbox .label{font-size:22px;margin-bottom:16px;font-family:'JetBrains Mono',monospace;}
 .cbox .verdict{font-size:22px;margin-top:20px;}
-.divider{height:1px;background:linear-gradient(90deg,transparent,#ffffff18,transparent);margin:70px 0;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#7a5f3a38,transparent);margin:70px 0;}
 .formula-hero{background:#120f00;border:2px solid #ffd06066;border-radius:22px;padding:56px 80px;margin:48px 0;text-align:center;}
 .steps-row{display:flex;gap:28px;margin:36px 0;}
 .step-card{flex:1;background:#111128;border:1px solid #4aa8ff33;border-radius:14px;padding:24px 28px;text-align:center;}
@@ -63,7 +63,7 @@ canvas.vis{display:block;width:100%;border-radius:16px;background:#241713;margin
 </helmet>
 
 <!-- ══════════ HERO ══════════ -->
-<div style="min-height:100vh;background:radial-gradient(circle at 18% 12%, rgba(0,188,212,0.24), transparent 30%),radial-gradient(circle at 86% 18%, rgba(255,208,96,0.16), transparent 28%),linear-gradient(135deg,#6f3b28 0%,#4f2b22 46%,#174e55 100%);overflow-x:hidden;">
+<div style="min-height:100vh;background:#e9dfcc;overflow-x:hidden;">
 
 <div style="position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
   <div class="hero-ring" style="width:900px;height:900px;border-color:#4aa8ff;margin-top:-450px;margin-left:-450px;animation-delay:0s;animation-duration:5s;"></div>
@@ -71,15 +71,15 @@ canvas.vis{display:block;width:100%;border-radius:16px;background:#241713;margin
   <div class="hero-ring" style="width:360px;height:360px;border-color:#3dc9b0;margin-top:-180px;margin-left:-180px;animation-delay:3s;animation-duration:3.5s;"></div>
   <canvas id="c-hero" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
   <div style="position:relative;z-index:2;text-align:center;max-width:820px;padding:0 48px;">
-    <p style="font-size:16px;letter-spacing:8px;color:#5555aa;text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:32px;">A geometric journey</p>
-    <h1 style="font-size:78px;font-weight:600;color:#eeeef5;line-height:1.08;margin-bottom:24px;">The Substitution<br>Principle</h1>
+    <p style="font-size:16px;letter-spacing:8px;color:#8a6f48;text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:32px;">A geometric journey</p>
+    <h1 style="font-size:78px;font-weight:600;color:#2f2a24;line-height:1.08;margin-bottom:24px;">The Substitution<br>Principle</h1>
     <div style="width:180px;height:3px;background:linear-gradient(90deg,#4aa8ff,#3dc9b0,#ffd060);margin:28px auto;border-radius:2px;"></div>
     <p style="font-size:30px;color:#4aa8ff;font-style:italic;margin-bottom:20px;">&amp; the Birth of Adjoint Representations</p>
-    <p style="font-size:20px;color:#7777aa;line-height:1.6;">How one shift in perspective — from "function of numbers" to "computational recipe" — unlocks all of Lie theory.</p>
+    <p style="font-size:20px;color:#6d604f;line-height:1.6;">How one shift in perspective — from "function of numbers" to "computational recipe" — unlocks all of Lie theory.</p>
   </div>
   <div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);text-align:center;animation:float-up 2.5s ease-in-out infinite;">
-    <div style="font-size:16px;color:#5555aa;letter-spacing:4px;">SCROLL</div>
-    <div style="font-size:28px;color:#5555aa;margin-top:4px;">↓</div>
+    <div style="font-size:16px;color:#8a6f48;letter-spacing:4px;">SCROLL</div>
+    <div style="font-size:28px;color:#8a6f48;margin-top:4px;">↓</div>
   </div>
 </div>
 

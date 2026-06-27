@@ -284,7 +284,7 @@ nav_order: 6
       <h2 class="blog-card-title">The Substitution Principle</h2>
       <p class="blog-card-summary">A geometric route from power series as universal recipes to the exponential map, conjugation, Lie brackets, and adjoint representations.</p>
     </div>
-    <div class="blog-card-visual" aria-hidden="true" style="background:linear-gradient(135deg, rgba(160, 82, 45, 0.22), transparent 52%), linear-gradient(315deg, rgba(0, 188, 212, 0.18), transparent 54%), color-mix(in srgb, var(--global-card-bg-color) 86%, sienna);">
+    <div class="blog-card-visual" aria-hidden="true" style="background:#e9dfcc;">
       <svg viewBox="0 0 240 210" role="img">
         <defs>
           <marker id="recipeArrow" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
