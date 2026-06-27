@@ -125,6 +125,32 @@ nav: false
     transform-origin: center;
   }
 
+  .stretch-shear-stretch {
+    animation: stretch-shear-stretch 4.8s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .stretch-shear-stretch-line {
+    animation: stretch-shear-stretch-line 4.8s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: left center;
+  }
+
+  .stretch-shear-shear {
+    animation: stretch-shear-shear 4.8s ease-in-out infinite 0.35s;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .stretch-shear-shear-line {
+    animation: stretch-shear-shear-line 4.8s ease-in-out infinite 0.35s;
+  }
+
+  .stretch-shear-det {
+    animation: stretch-shear-det 4.8s ease-in-out infinite;
+  }
+
   @keyframes cone-spin {
     from {
       transform: rotate(0deg);
@@ -194,13 +220,76 @@ nav: false
     }
   }
 
+  @keyframes stretch-shear-stretch {
+    0%,
+    100% {
+      transform: scaleX(0.84) scaleY(1.2);
+      opacity: 0.78;
+    }
+    50% {
+      transform: scaleX(1.18) scaleY(0.86);
+      opacity: 1;
+    }
+  }
+
+  @keyframes stretch-shear-stretch-line {
+    0%,
+    100% {
+      transform: scaleX(0.82);
+      opacity: 0.72;
+    }
+    50% {
+      transform: scaleX(1.08);
+      opacity: 1;
+    }
+  }
+
+  @keyframes stretch-shear-shear {
+    0%,
+    100% {
+      transform: rotate(-16deg) skewX(0deg);
+      opacity: 0.78;
+    }
+    50% {
+      transform: rotate(-28deg) skewX(-14deg) translateX(6px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes stretch-shear-shear-line {
+    0%,
+    100% {
+      transform: translate(0, 0);
+      opacity: 0.72;
+    }
+    50% {
+      transform: translate(9px, -9px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes stretch-shear-det {
+    0%,
+    100% {
+      opacity: 0.62;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cone-ring,
     .cone-shadow,
     .recipe-flow-a,
     .recipe-flow-b,
     .recipe-flow-c,
-    .recipe-core {
+    .recipe-core,
+    .stretch-shear-stretch,
+    .stretch-shear-stretch-line,
+    .stretch-shear-shear,
+    .stretch-shear-shear-line,
+    .stretch-shear-det {
       animation: none;
     }
   }
@@ -220,34 +309,6 @@ nav: false
 <p class="lie-group-note">These posts heavily use ideas from <em>Lie Groups: An Introduction Through Linear Groups</em> by Wulf Rossmann.</p>
 
 <div class="lie-chapter-cards">
-  <a class="lie-chapter-card" href="{{ '/blog/2026/stretch-vs-shear/' | relative_url }}">
-    <div class="lie-chapter-body">
-      <div class="lie-chapter-date">Jun 27, 2026</div>
-      <h2 class="lie-chapter-title">Stretch vs Shear</h2>
-      <p class="lie-chapter-summary">A visual comparison of hyperbolic stretches and parabolic shears in SL(2, R), through eigen-directions, area preservation, and the geometry of the unit circle.</p>
-    </div>
-    <div class="lie-chapter-visual" aria-hidden="true" style="background:#ece3d0;">
-      <svg viewBox="0 0 240 210" role="img">
-        <defs>
-          <marker id="stretchShearArrowLie" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
-            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
-          </marker>
-        </defs>
-        <path d="M30 164 H210" stroke="#2a241e" stroke-opacity="0.22" stroke-width="2"></path>
-        <path d="M120 184 V26" stroke="#2a241e" stroke-opacity="0.18" stroke-width="2"></path>
-        <ellipse cx="83" cy="108" rx="42" ry="16" fill="#6e7a36" fill-opacity="0.14" stroke="#6e7a36" stroke-width="4"></ellipse>
-        <line x1="39" y1="108" x2="129" y2="108" stroke="#6e7a36" stroke-width="5" stroke-linecap="round" marker-end="url(#stretchShearArrowLie)"></line>
-        <ellipse cx="157" cy="108" rx="36" ry="18" fill="#b8552f" fill-opacity="0.14" stroke="#b8552f" stroke-width="4" transform="rotate(-24 157 108)"></ellipse>
-        <path d="M123 135 L182 74" fill="none" stroke="#b8552f" stroke-width="5" stroke-linecap="round" marker-end="url(#stretchShearArrowLie)"></path>
-        <circle cx="83" cy="108" r="5" fill="#2a241e"></circle>
-        <circle cx="157" cy="108" r="5" fill="#2a241e"></circle>
-        <text x="83" y="58" text-anchor="middle" fill="#6e7a36" font-size="17" font-family="serif">Stretch</text>
-        <text x="157" y="58" text-anchor="middle" fill="#b8552f" font-size="17" font-family="serif">Shear</text>
-        <text x="120" y="177" text-anchor="middle" fill="#2a241e" font-size="16" font-family="serif">det = 1</text>
-      </svg>
-    </div>
-  </a>
-
   <a class="lie-chapter-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">
     <div class="lie-chapter-body">
       <div class="lie-chapter-date">Jun 25, 2026</div>
@@ -315,6 +376,34 @@ nav: false
         <text x="211" y="68" fill="#4aa8ff" font-size="15" font-family="serif">e^x</text>
         <text x="211" y="108" fill="#ffd060" font-size="15" font-family="serif">exp X</text>
         <text x="211" y="151" fill="#3dc9b0" font-size="15" font-family="serif">Ad</text>
+      </svg>
+    </div>
+  </a>
+
+  <a class="lie-chapter-card" href="{{ '/blog/2026/stretch-vs-shear/' | relative_url }}">
+    <div class="lie-chapter-body">
+      <div class="lie-chapter-date">Jun 22, 2026</div>
+      <h2 class="lie-chapter-title">Stretch vs Shear</h2>
+      <p class="lie-chapter-summary">A visual comparison of hyperbolic stretches and parabolic shears in SL(2, R), through eigen-directions, area preservation, and the geometry of the unit circle.</p>
+    </div>
+    <div class="lie-chapter-visual" aria-hidden="true" style="background:#ece3d0;">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <marker id="stretchShearArrowLie" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
+          </marker>
+        </defs>
+        <path d="M30 164 H210" stroke="#2a241e" stroke-opacity="0.22" stroke-width="2"></path>
+        <path d="M120 184 V26" stroke="#2a241e" stroke-opacity="0.18" stroke-width="2"></path>
+        <ellipse class="stretch-shear-stretch" cx="83" cy="108" rx="42" ry="16" fill="#6e7a36" fill-opacity="0.14" stroke="#6e7a36" stroke-width="4"></ellipse>
+        <line class="stretch-shear-stretch-line" x1="39" y1="108" x2="129" y2="108" stroke="#6e7a36" stroke-width="5" stroke-linecap="round" marker-end="url(#stretchShearArrowLie)"></line>
+        <ellipse class="stretch-shear-shear" cx="157" cy="108" rx="36" ry="18" fill="#b8552f" fill-opacity="0.14" stroke="#b8552f" stroke-width="4"></ellipse>
+        <path class="stretch-shear-shear-line" d="M123 135 L182 74" fill="none" stroke="#b8552f" stroke-width="5" stroke-linecap="round" marker-end="url(#stretchShearArrowLie)"></path>
+        <circle cx="83" cy="108" r="5" fill="#2a241e"></circle>
+        <circle cx="157" cy="108" r="5" fill="#2a241e"></circle>
+        <text x="83" y="58" text-anchor="middle" fill="#6e7a36" font-size="17" font-family="serif">Stretch</text>
+        <text x="157" y="58" text-anchor="middle" fill="#b8552f" font-size="17" font-family="serif">Shear</text>
+        <text class="stretch-shear-det" x="120" y="177" text-anchor="middle" fill="#2a241e" font-size="16" font-family="serif">det = 1</text>
       </svg>
     </div>
   </a>
