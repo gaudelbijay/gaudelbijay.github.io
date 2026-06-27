@@ -362,50 +362,92 @@ canvas.vis{display:block;width:100%;border-radius:16px;background:#d9cbb5;margin
 
 <div class="divider"></div>
 
-<!-- §12 ROSSMANN SELECTED PROBLEMS -->
+<!-- §12 ROSSMANN COMPLETE PROBLEMS -->
 <section style="margin-top:74px;">
-  <h2 class="sec">Selected Rossmann Problems</h2>
+  <h2 class="sec">Rossmann Problem Set</h2>
   <div class="rule" style="background:#3dc9b0;"></div>
-  <p class="lead">These are the Rossmann exercises that best match the logic of this post: power series as recipes, finite-dimensional reduction, brackets, and the passage from infinitesimal adjoint action to finite conjugation.</p>
+  <p class="lead">All 23 Rossmann matrix-exponential problems are now included across the two Lie posts. This page contains the problems that belong to substitution, Jordan structure, logarithm/exponential algebra, brackets, and adjoint invariance. Click a problem to reveal the full solution.</p>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.1 · 6 — Exponential of the derivative operator</summary>
-    <p class="body" style="margin-top:16px;">Question: Let E be the space of polynomials of degree at most n - 1, and let D = d/dξ. Show that exp(τD)f(ξ) = f(ξ + τ).</p>
-    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> Substitute the operator D into the exponential series. Since D^k f is the kth derivative,</p>
-    <span class="mjd" data-t="\exp(\tau D)f=\sum_{k\ge0}\frac{\tau^k}{k!}D^k f" style="font-size:1.05em;"></span>
-    <p class="body">This is exactly Taylor's formula for shifting the input by τ. The exercise is a clean model of the Substitution Principle: the same exponential recipe that eats a number can eat a differential operator.</p>
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.1 · 5 — Exponential of a Jordan block</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> For the n by n Jordan block J = lambda I + N, show that exp(J) has e^lambda/k! on the kth superdiagonal.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> Write the Jordan block as J = lambda I + N, where N has 1 on the first superdiagonal and N^n = 0. The scalar part lambda I commutes with N, so the exponential separates into exp(lambda I) exp(N). This is the key substitution move: the power series sees lambda I and N as commuting inputs.</p>
+    <span class="mjd" data-t="e^J=e^{\lambda I+N}=e^{\lambda I}e^N=e^\lambda\left(I+N+\frac{N^2}{2!}+\cdots+\frac{N^{n-1}}{(n-1)!}\right)." style="font-size:1.05em;"></span>
+    <p class="body">Now N^k has 1 on the kth superdiagonal and 0 elsewhere. Therefore the kth superdiagonal of exp(J) is exactly e^lambda/k!. The nilpotence is not a technicality: it is what turns the infinite exponential series into a finite polynomial, so the Jordan block is the cleanest place to see how the substitution principle becomes computable.</p>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.2 · 1 — Nilpotent to unipotent</summary>
-    <p class="body" style="margin-top:16px;">Question: Show that X ↦ exp X maps nilpotent matrices bijectively onto unipotent matrices, with inverse a ↦ log a.</p>
-    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> If X is nilpotent, the exponential series terminates, so exp X = I + nilpotent terms and is unipotent. Conversely, if a = I + N with N nilpotent, then log a = log(I + N) is also a finite polynomial in N.</p>
-    <span class="mjd" data-t="\log(I+N)=N-\frac{N^2}{2}+\frac{N^3}{3}-\cdots" style="font-size:1.05em;"></span>
-    <p class="body">The exponential and logarithm series are inverse formal recipes, and nilpotence makes both recipes finite.</p>
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.1 · 6 — Exponential of the derivative operator</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> Let E be the polynomials of degree at most n - 1 and D = d/dxi. Show that exp(tau D)f(xi) = f(xi + tau).</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> The operator D is nilpotent on this finite-dimensional polynomial space because differentiating n times kills every polynomial of degree at most n - 1. Thus exp(tau D) is a finite operator polynomial, not a mysterious infinite object.</p>
+    <span class="mjd" data-t="e^{\tau D}f(\xi)=\sum_{k=0}^{n-1}\frac{\tau^k}{k!}D^k f(\xi)=\sum_{k=0}^{n-1}\frac{\tau^k}{k!}f^{(k)}(\xi)." style="font-size:1.05em;"></span>
+    <p class="body">The last expression is Taylor expansion of f at xi evaluated at xi + tau. So exp(tau D) is the translation operator. This is one of the best examples of the whole article: the same exponential recipe works after substituting a differential operator for a number, and its geometric effect is visible as shifting the input.</p>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.2 · 6 — Cayley-Hamilton reduction</summary>
-    <p class="body" style="margin-top:16px;">Question: Use the Cayley-Hamilton theorem to show that a matrix power series f(X) can be represented by a polynomial in X of degree less than n.</p>
-    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> Cayley-Hamilton says X satisfies its characteristic polynomial. Therefore every high power X^m can be reduced to a linear combination of I, X, ..., X^(n-1). After the series f(X) is defined by convergence, its value can be rewritten as</p>
-    <span class="mjd" data-t="f(X)=c_0I+c_1X+\cdots+c_{n-1}X^{n-1}" style="font-size:1.05em;"></span>
-    <p class="body">This does not create convergence by itself; it explains why finite-dimensional matrix functions can often be compressed after they are defined.</p>
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 1 — Nilpotent matrices and unipotent matrices</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> Show that X -> exp X maps nilpotent matrices bijectively onto unipotent matrices, with inverse a -> log a.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> If X is nilpotent, then X^m = 0 for some m. The exponential series terminates, so exp X is I plus a polynomial in X with zero constant term. That extra part is nilpotent because it is a polynomial in a nilpotent matrix with no constant term. Hence exp X is unipotent.</p>
+    <span class="mjd" data-t="e^X=I+X+\frac{X^2}{2!}+\cdots+\frac{X^{m-1}}{(m-1)!}." style="font-size:1.05em;"></span>
+    <p class="body">Conversely, if a is unipotent, then a = I + N with N nilpotent. The logarithm series also terminates:</p>
+    <span class="mjd" data-t="\log(I+N)=N-\frac{N^2}{2}+\frac{N^3}{3}-\cdots." style="font-size:1.05em;"></span>
+    <p class="body">The formal identities exp(log(1+z)) = 1+z and log(exp z) = z become finite polynomial identities after substituting nilpotent matrices. That proves both directions and the inverse relation. The depth here is that nilpotence removes all analytic danger; algebra alone carries the result.</p>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.2 · 8 — Jacobi identity and derivations</summary>
-    <p class="body" style="margin-top:16px;">Question: Prove the Jacobi identity and deduce that ad(Z) acts as a derivation of the bracket.</p>
-    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> Expand each commutator using [X,Y] = XY - YX. Every triple product appears once with a plus sign and once with a minus sign, so the cyclic sum is zero.</p>
-    <span class="mjd" data-t="[[X,Y],Z]+[[Z,X],Y]+[[Y,Z],X]=0" style="font-size:1.05em;"></span>
-    <p class="body">Rearranging the same identity gives the derivation rule ad_Z([X,Y]) = [ad_Z X,Y] + [X,ad_Z Y]. This is why the bracket behaves like a lawful infinitesimal product.</p>
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 2 — Semisimple matrices and the exponential</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> Show that exp maps semisimple matrices to semisimple matrices, that every invertible semisimple complex matrix is an exponential of a semisimple matrix, and explain the logarithm ambiguity.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> A complex semisimple matrix is diagonalizable. If X = PDP^{-1}, then the exponential is computed entrywise on the diagonal because powers of D remain diagonal.</p>
+    <span class="mjd" data-t="e^X=P\,\mathrm{diag}(e^{\lambda_1},\ldots,e^{\lambda_n})\,P^{-1}." style="font-size:1.05em;"></span>
+    <p class="body">So exp X is diagonalizable in the same eigenbasis, hence semisimple. Conversely, if a = P diag(mu_1,...,mu_n) P^{-1} is invertible semisimple, choose any logarithm lambda_j of each nonzero eigenvalue mu_j and set X = P diag(lambda_1,...,lambda_n) P^{-1}. Then X is semisimple and exp X = a.</p>
+    <p class="body">The ambiguity is exactly the scalar logarithm ambiguity: lambda_j may be replaced by lambda_j + 2 pi i k_j. If no two eigenvalues differ by a nonzero multiple of 2 pi i, then the exponential does not accidentally merge distinct eigenspaces. This explains why semisimple logarithms are not unique, but their nonuniqueness is controlled and spectral.</p>
   </details>
 
-  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
-    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.2 · 12 — Invariance under adjoint action</summary>
-    <p class="body" style="margin-top:16px;">Question: If [X,L] is contained in L for a subspace L, show that exp(τX)L exp(-τX) is contained in L.</p>
-    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> For Y in L, conjugate it along the one-parameter group:</p>
-    <span class="mjd" data-t="F(\tau)=\exp(\tau X)Y\exp(-\tau X)" style="font-size:1.05em;"></span>
-    <p class="body">Then F'(τ) = [X,F(τ)]. Since the bracket with X keeps vectors inside L, the solution starting in L stays in L. Equivalently, F(τ) = exp(τ ad_X)Y, and the exponential of ad_X is built from repeated brackets that remain in L.</p>
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 3 — Jordan decomposition and the exponential</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> Relate additive Jordan decomposition X = Y + Z to multiplicative Jordan decomposition of exp X.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> In the additive Jordan decomposition, Y is semisimple, Z is nilpotent, and YZ = ZY. Because the two pieces commute, the exponential separates:</p>
+    <span class="mjd" data-t="e^X=e^{Y+Z}=e^Y e^Z." style="font-size:1.05em;"></span>
+    <p class="body">By the semisimple result, e^Y is semisimple. By the nilpotent-unipotent result, e^Z is unipotent. Since Y and Z commute, e^Y and e^Z commute. Thus the exponential converts additive Jordan decomposition into multiplicative Jordan decomposition.</p>
+    <p class="body">For an invertible matrix a, its multiplicative decomposition a = bc has b semisimple, c unipotent, and bc = cb. Uniqueness follows from the uniqueness of the usual Jordan decomposition: the semisimple spectral part and the nilpotent/unipotent correction are forced by the primary decomposition. Conceptually, exp respects the two different kinds of structure separately: diagonalizable behavior goes to diagonalizable behavior, and nilpotent behavior goes to unipotent behavior.</p>
+  </details>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 6 — Cayley-Hamilton reduction of power series</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> Use Cayley-Hamilton to show that a convergent matrix power series f(X) can be written as a polynomial in X of degree less than n.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> The Cayley-Hamilton theorem says that X satisfies its characteristic polynomial. If the characteristic polynomial is p(t)=t^n+s_{n-1}t^{n-1}+...+s_0, then p(X)=0, so X^n is a linear combination of I, X, ..., X^{n-1}.</p>
+    <span class="mjd" data-t="X^n=-s_{n-1}X^{n-1}-\cdots-s_1X-s_0I." style="font-size:1.05em;"></span>
+    <p class="body">Multiplying this identity by X repeatedly reduces every higher power X^k to a linear combination of the first n powers. Therefore, after the power series f(X) is known to converge, its value can be represented as</p>
+    <span class="mjd" data-t="f(X)=c_0(X)I+c_1(X)X+\cdots+c_{n-1}(X)X^{n-1}." style="font-size:1.05em;"></span>
+    <p class="body">The coefficients depend only on spectral data, so they are invariant under conjugation. The important distinction is this: Cayley-Hamilton does not prove the original infinite series converges; it says finite-dimensional matrix functions can be compressed after convergence is established.</p>
+  </details>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 7 — Small norm condition: exp(X)v = v iff Xv = 0</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> For sufficiently small norm X, show that exp(X)v = v if and only if Xv = 0.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> One direction is immediate: if Xv = 0, then every positive power X^k v is zero, so exp(X)v = v. The converse is where the small-norm hypothesis matters. If exp(X)v = v, then (exp X - I)v = 0.</p>
+    <span class="mjd" data-t="e^X-I=X\,h(X),\qquad h(z)=\frac{e^z-1}{z}=1+\frac z{2!}+\frac {z^2}{3!}+\cdots." style="font-size:1.05em;"></span>
+    <p class="body">For ||X|| small, h(X) is invertible because h(0)=1 and invertibility is stable under small perturbation. Thus X h(X)v = 0 implies Xv = 0 after applying h(X)^{-1}, since h(X) commutes with X as a power series in X.</p>
+    <p class="body">Without the small-norm condition this fails: exp can wrap nonzero directions back to 1, for example through eigenvalues 2 pi i. The hypothesis keeps the logarithmic branch local and prevents periodic cancellation.</p>
+  </details>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 8 — Jacobi identity and Lie bracket derivations</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> Prove the Jacobi identity and deduce that ad(Z) is a derivation of the bracket.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> Use the matrix commutator [X,Y] = XY - YX. Expanding the three double brackets gives twelve terms, but because multiplication is associative each triple product appears once with a plus sign and once with a minus sign.</p>
+    <span class="mjd" data-t="[[X,Y],Z]+[[Z,X],Y]+[[Y,Z],X]=0." style="font-size:1.05em;"></span>
+    <p class="body">This is the Jacobi identity. It says the bracket is not arbitrary noncommutativity; it is noncommutativity organized by associativity. To get the derivation rule, rewrite the same identity with ad_Z(W) = [Z,W]:</p>
+    <span class="mjd" data-t="\operatorname{ad}_Z([X,Y])=[\operatorname{ad}_Z X,Y]+[X,\operatorname{ad}_Z Y]." style="font-size:1.05em;"></span>
+    <p class="body">So bracketing with Z differentiates the bracket product. This is exactly why ad is the infinitesimal version of conjugation: infinitesimal changes act by derivations, not by random linear maps.</p>
+  </details>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:22px 26px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;line-height:1.35;">§1.2 · 12 — Invariant subspaces under adjoint action</summary>
+    <p class="body" style="margin-top:16px;"><strong style="color:#3dc9b0;">Question.</strong> If L is a subspace with [X,L] contained in L, show that exp(tau X)L exp(-tau X) is contained in L.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Solution.</strong> Take Y in L and define the conjugated curve F(tau)=exp(tau X)Y exp(-tau X). Differentiating gives</p>
+    <span class="mjd" data-t="F\prime(\tau)=XF(\tau)-F(\tau)X=[X,F(\tau)]." style="font-size:1.05em;"></span>
+    <p class="body">At tau = 0, F(0)=Y is in L. The assumption [X,L] contained in L says the vector field F -> [X,F] is tangent to the subspace L. Therefore the solution curve starting inside L stays inside L.</p>
+    <p class="body">Equivalently, F(tau)=exp(tau ad_X)Y. Since ad_X maps L into L, every power of ad_X maps L into L, and therefore the exponential series also maps L into L. This is the precise bridge from infinitesimal invariance to finite adjoint invariance.</p>
   </details>
 </section>
 
