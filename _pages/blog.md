@@ -123,6 +123,24 @@ nav_order: 6
     transform-origin: 30px 130px;
   }
 
+  .recipe-flow-a {
+    animation: recipe-flow-a 4.8s ease-in-out infinite;
+  }
+
+  .recipe-flow-b {
+    animation: recipe-flow-b 4.8s ease-in-out infinite 0.45s;
+  }
+
+  .recipe-flow-c {
+    animation: recipe-flow-c 4.8s ease-in-out infinite 0.9s;
+  }
+
+  .recipe-core {
+    animation: recipe-pulse 3.2s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
   @keyframes cone-spin {
     from {
       transform: rotate(0deg);
@@ -184,13 +202,65 @@ nav_order: 6
     }
   }
 
+  @keyframes recipe-flow-a {
+    0%,
+    100% {
+      opacity: 0.28;
+      transform: translateX(0);
+    }
+    45% {
+      opacity: 1;
+      transform: translateX(28px);
+    }
+  }
+
+  @keyframes recipe-flow-b {
+    0%,
+    100% {
+      opacity: 0.28;
+      transform: translateX(0);
+    }
+    45% {
+      opacity: 1;
+      transform: translateX(22px);
+    }
+  }
+
+  @keyframes recipe-flow-c {
+    0%,
+    100% {
+      opacity: 0.28;
+      transform: translateX(0);
+    }
+    45% {
+      opacity: 1;
+      transform: translateX(18px);
+    }
+  }
+
+  @keyframes recipe-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scale(1.04);
+      opacity: 1;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cone-ring,
     .cone-shadow,
     .svd-input,
     .svd-output,
     .svd-vector-a,
-    .svd-vector-b {
+    .svd-vector-b,
+    .recipe-flow-a,
+    .recipe-flow-b,
+    .recipe-flow-c,
+    .recipe-core {
       animation: none;
     }
   }
@@ -208,6 +278,49 @@ nav_order: 6
 </style>
 
 <div class="blog-cards">
+  <a class="blog-card" href="{{ '/blog/2026/substitution-principle-adjoints/' | relative_url }}">
+    <div class="blog-card-body">
+      <div class="blog-card-date">Jun 26, 2026</div>
+      <h2 class="blog-card-title">The Substitution Principle</h2>
+      <p class="blog-card-summary">A geometric route from power series as universal recipes to the exponential map, conjugation, Lie brackets, and adjoint representations.</p>
+    </div>
+    <div class="blog-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <marker id="recipeArrow" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#f0c28f"></path>
+          </marker>
+          <linearGradient id="recipeCoreFill" x1="72" y1="58" x2="168" y2="150" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3a6fa8" stop-opacity="0.28"></stop>
+            <stop offset="1" stop-color="#b8552f" stop-opacity="0.2"></stop>
+          </linearGradient>
+        </defs>
+        <rect class="recipe-core" x="74" y="52" width="92" height="106" rx="8" fill="url(#recipeCoreFill)" stroke="#3a6fa8" stroke-width="3"></rect>
+        <text x="120" y="89" text-anchor="middle" fill="#2a241e" font-size="17" font-family="serif">1 + X</text>
+        <text x="120" y="115" text-anchor="middle" fill="#2a241e" font-size="16" font-family="serif">+ X²/2!</text>
+        <text x="120" y="139" text-anchor="middle" fill="#2a241e" font-size="15" font-family="serif">+ ···</text>
+        <g class="recipe-flow-a">
+          <circle cx="28" cy="72" r="10" fill="#3a6fa8" fill-opacity="0.88"></circle>
+          <line x1="42" y1="72" x2="70" y2="72" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        </g>
+        <g class="recipe-flow-b">
+          <rect x="22" y="101" width="22" height="22" rx="3" fill="#b8552f" fill-opacity="0.84"></rect>
+          <line x1="47" y1="112" x2="70" y2="112" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        </g>
+        <g class="recipe-flow-c">
+          <path d="M24 151 C30 139 41 139 47 151" fill="none" stroke="#4a8c5c" stroke-width="5" stroke-linecap="round"></path>
+          <line x1="50" y1="151" x2="70" y2="151" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        </g>
+        <line x1="166" y1="86" x2="210" y2="72" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <line x1="166" y1="112" x2="210" y2="112" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <line x1="166" y1="138" x2="210" y2="151" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <text x="211" y="68" fill="#3a6fa8" font-size="15" font-family="serif">eˣ</text>
+        <text x="211" y="108" fill="#b8552f" font-size="15" font-family="serif">exp X</text>
+        <text x="211" y="151" fill="#4a8c5c" font-size="15" font-family="serif">Ad</text>
+      </svg>
+    </div>
+  </a>
+
   <a class="blog-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">
     <div class="blog-card-body">
       <div class="blog-card-date">Jun 25, 2026</div>

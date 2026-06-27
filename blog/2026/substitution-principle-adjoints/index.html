@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  var flags = {};
+  function ar(ctx,x1,y1,x2,y2,color,lw){lw=lw||2.5;var dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);if(len<2)return;var nx=dx/len,ny=dy/len;ctx.strokeStyle=color;ctx.lineWidth=lw;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2-nx*13,y2-ny*13);ctx.stroke();ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(x2,y2);ctx.lineTo(x2-15*nx+5*ny,y2-15*ny-5*nx);ctx.lineTo(x2-15*nx-5*ny,y2-15*ny+5*nx);ctx.closePath();ctx.fill();}
+  function animConv(el){flags.conv=true;var W=el.width,H=el.height,ctx=el.getContext('2d');var x0=0.5,exact=Math.exp(x0);var terms=[],parts=[],term=1,sum=0;for(var k=0;k<9;k++){if(k)term*=x0/k;sum+=term;terms.push(term);parts.push(sum);}var PL=60,PR=24,PT=58,PB=62,CW=W-PL-PR,CH=H-PT-PB,BW=CW/terms.length,SH=CH/(exact*1.08);var progress=0;function draw(){if(!flags.conv)return;progress=Math.min(progress+0.02,terms.length-0.001);ctx.clearRect(0,0,W,H);ctx.fillStyle='#0d0d1a';ctx.fillRect(0,0,W,H);ctx.strokeStyle='#ffffff20';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(PL,PT);ctx.lineTo(PL,PT+CH);ctx.lineTo(PL+CW,PT+CH);ctx.stroke();var n=Math.floor(progress);for(var i=0;i<=n;i++){var a=i<n?1:(progress-n),bh=terms[i]*SH*a;ctx.fillStyle='rgba(74,168,255,'+(0.65*a)+')';ctx.fillRect(PL+i*BW+4,PT+CH-bh,BW-8,bh);ctx.fillStyle='rgba(119,119,170,'+a+')';ctx.font='14px JetBrains Mono,monospace';ctx.textAlign='center';ctx.fillText('k='+i,PL+i*BW+BW/2,PT+CH+20);}ctx.strokeStyle='#ffd060';ctx.lineWidth=2.5;ctx.beginPath();for(var j=0;j<=n;j++){var px=PL+j*BW+BW/2,py=PT+CH-parts[j]*SH;j===0?ctx.moveTo(px,py):ctx.lineTo(px,py);}ctx.stroke();for(var m=0;m<=n;m++){ctx.beginPath();ctx.arc(PL+m*BW+BW/2,PT+CH-parts[m]*SH,4,0,Math.PI*2);ctx.fillStyle='#ffd060';ctx.fill();}var ey=PT+CH-exact*SH;ctx.strokeStyle='#78d97a66';ctx.lineWidth=1.5;ctx.setLineDash([8,5]);ctx.beginPath();ctx.moveTo(PL,ey);ctx.lineTo(PL+CW,ey);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#78d97a';ctx.font='16px Crimson Text,serif';ctx.textAlign='right';ctx.fillText('e^0.5 ≈ 1.6487',PL+CW-6,ey-8);ctx.fillStyle='#7777aa';ctx.font='17px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('Partial sums of  e^0.5 = 1 + 0.5 + 0.5²/2! + ···',W/2,32);ctx.fillStyle='#ffd060';ctx.fillText('— running total converges',W/2,50);if(progress<terms.length-0.01)requestAnimationFrame(draw);else setTimeout(function(){if(!flags.conv)return;progress=0;requestAnimationFrame(draw);},2600);}draw();}
+  function animSteps(el){flags.steps=true;var W=el.width,H=el.height,ctx=el.getContext('2d');var cx=W/2,cy=H/2,R=Math.min(W,H)*0.36;var SA=-Math.PI/2,ARC=Math.PI*0.72;var Ns=[1,2,4,8,16],PDUR=2.3,elapsed=0,lastT=null;function arcPath(){ctx.beginPath();for(var a=SA;a<=SA+ARC+0.01;a+=0.02){var px=cx+R*Math.cos(a),py=cy+R*Math.sin(a);a===SA?ctx.moveTo(px,py):ctx.lineTo(px,py);}}function draw(time){if(!flags.steps)return;if(lastT===null)lastT=time;elapsed+=Math.min((time-lastT)/1000,0.05);lastT=time;ctx.clearRect(0,0,W,H);ctx.fillStyle='#0d0d1a';ctx.fillRect(0,0,W,H);for(var gx=0;gx<W;gx+=40){ctx.strokeStyle='#ffffff06';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();}for(var gy=0;gy<H;gy+=40){ctx.strokeStyle='#ffffff06';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}ctx.strokeStyle='#ffd06055';ctx.lineWidth=2;ctx.setLineDash([8,5]);arcPath();ctx.stroke();ctx.setLineDash([]);var total=Ns.length+1,idx=Math.floor((elapsed/PDUR)%total);if(idx<Ns.length){var N=Ns[idx];ctx.strokeStyle='#4aa8ff';ctx.lineWidth=N<=4?3:N<=8?2:1.5;for(var i=0;i<N;i++){var a1=SA+(i/N)*ARC,a2=SA+((i+1)/N)*ARC;var x1=cx+R*Math.cos(a1),y1=cy+R*Math.sin(a1),x2=cx+R*Math.cos(a2),y2=cy+R*Math.sin(a2);ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();if(N<=8){ctx.beginPath();ctx.arc(x1,y1,N<=2?6:4,0,Math.PI*2);ctx.fillStyle='#4aa8ff';ctx.fill();}}ctx.fillStyle='#4aa8ff';ctx.font='bold '+Math.round(W*0.028)+'px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('n = '+N+' step'+(N===1?'':'s'),W/2,34);}else{ctx.strokeStyle='#ffd060';ctx.lineWidth=4;arcPath();ctx.stroke();ctx.fillStyle='#ffd060';ctx.font='bold '+Math.round(W*0.028)+'px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('n → ∞ : smooth exp(X)',W/2,34);}var xs=cx+R*Math.cos(SA),ys=cy+R*Math.sin(SA);ctx.beginPath();ctx.arc(xs,ys,7,0,Math.PI*2);ctx.fillStyle='#3dc9b0';ctx.fill();ctx.fillStyle='#3dc9b0';ctx.font='18px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('I',xs+10,ys+22);var xe=cx+R*Math.cos(SA+ARC),ye=cy+R*Math.sin(SA+ARC);ctx.beginPath();ctx.arc(xe,ye,7,0,Math.PI*2);ctx.fillStyle='#ff6b6b';ctx.fill();ctx.fillStyle='#ff6b6b';ctx.font='18px Crimson Text,serif';ctx.fillText('exp(X)',xe+10,ye+6);requestAnimationFrame(draw);}requestAnimationFrame(draw);}
+  function animConj(el){flags.conj=true;var W=el.width,H=el.height,ctx=el.getContext('2d');var cx=W/2,cy=H/2+20,R=Math.min(W,H)*0.28,t=0;function draw(){if(!flags.conj)return;t+=0.012;var phase=(t%8)/8,GA=Math.PI*0.45,Yx=R*0.85,Yy=0;ctx.clearRect(0,0,W,H);ctx.fillStyle='#0d0d1a';ctx.fillRect(0,0,W,H);ctx.strokeStyle='#ffffff12';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(50,cy);ctx.lineTo(W-50,cy);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,30);ctx.lineTo(cx,H-30);ctx.stroke();ctx.beginPath();ctx.arc(cx,cy,5,0,Math.PI*2);ctx.fillStyle='#ffffff44';ctx.fill();ctx.fillStyle='#ffffff55';ctx.font='18px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('I',cx+8,cy-8);if(phase<0.25){var a=Math.min(1,phase/0.15);ctx.globalAlpha=a;ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b0',3);ctx.fillStyle='#3dc9b0';ctx.font='28px Crimson Text,serif';ctx.fillText('Y',cx+Yx+10,cy-8);ctx.globalAlpha=1;ctx.fillStyle='#ffd060';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('Step 1: Y is a vector in the Lie algebra 𝔤',W/2,H-28);}else if(phase<0.5){var f=(phase-0.25)/0.25,ca=f*GA;var rx=Yx*Math.cos(ca)-Yy*Math.sin(ca),ry=Yx*Math.sin(ca)+Yy*Math.cos(ca);ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b066',2);ar(ctx,cx,cy,cx+rx,cy+ry,'#ff6b6b',3);ctx.fillStyle='#ff6b6b';ctx.font='26px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('g·Y',cx+rx+10,cy+ry-8);ctx.fillStyle='#ffd060';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('Step 2: g rotates the frame',W/2,H-28);}else if(phase<0.75){var f2=(phase-0.5)/0.25;var fX=Yx*Math.cos(GA)-Yy*Math.sin(GA),fY=Yx*Math.sin(GA)+Yy*Math.cos(GA);var cx2=Yx+(fX-Yx)*f2,cy2=Yy+(fY-Yy)*f2;ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b066',2);ar(ctx,cx,cy,cx+cx2,cy+cy2,'#ffd060',3.5);ctx.fillStyle='#ffd060';ctx.font='26px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('Ad_g(Y)',cx+cx2+10,cy+cy2-8);ctx.fillStyle='#ffd060';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('Step 3: g⁻¹ returns — result is gYg⁻¹',W/2,H-28);}else{var fX2=Yx*Math.cos(GA)-Yy*Math.sin(GA),fY2=Yx*Math.sin(GA)+Yy*Math.cos(GA);ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b0',2.5);ar(ctx,cx,cy,cx+fX2,cy+fY2,'#ffd060',3.5);ctx.fillStyle='#3dc9b0';ctx.font='24px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('Y',cx+Yx+10,cy-10);ctx.fillStyle='#ffd060';ctx.fillText('Ad_g(Y) = gYg⁻¹',cx+fX2+10,cy+fY2-10);ctx.fillStyle='#ffd060';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('Y transformed to a new direction in 𝔤',W/2,H-28);}requestAnimationFrame(draw);}draw();}
+  function animComm(el){flags.comm=true;var W=el.width,H=el.height,ctx=el.getContext('2d');var cx=W/2,cy=H/2+20,R=Math.min(W,H)*0.26,t=0;function draw(){if(!flags.comm)return;t+=0.012;ctx.clearRect(0,0,W,H);ctx.fillStyle='#0d0d1a';ctx.fillRect(0,0,W,H);ctx.strokeStyle='#ffffff12';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(50,cy);ctx.lineTo(W-50,cy);ctx.stroke();ctx.beginPath();ctx.moveTo(cx,30);ctx.lineTo(cx,H-50);ctx.stroke();ctx.fillStyle='#ffffff22';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('Lie algebra 𝔤',cx,24);ar(ctx,cx,cy,cx+R,cy,'#4aa8ff',3);ctx.fillStyle='#4aa8ff';ctx.font='30px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('X',cx+R+8,cy+8);var Yx=0,Yy=-R,ga=0.55*Math.sin(t*0.75);var rYx=Yx*Math.cos(ga)-Yy*Math.sin(ga),rYy=Yx*Math.sin(ga)+Yy*Math.cos(ga);ar(ctx,cx,cy,cx+rYx,cy+rYy,'#3dc9b0',3);ctx.fillStyle='#3dc9b0';ctx.font='22px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('Ad_{e^{tX}}(Y)',cx+rYx+10,cy+rYy-10);if(Math.abs(ga)>0.08){ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b033',1.5);ctx.fillStyle='#3dc9b044';ctx.font='18px Crimson Text,serif';ctx.fillText('Y (t=0)',cx+Yx+8,cy+Yy-8);}var vel=0.55*0.75*Math.cos(t*0.75);var comX=-vel*Yy,comY=vel*Yx;var pulse=0.55+0.45*Math.abs(Math.cos(t*0.75));ar(ctx,cx+rYx,cy+rYy,cx+rYx+comX*1.4,cy+rYy+comY*1.4,'rgba(255,208,96,'+pulse+')',3);ctx.fillStyle='rgba(255,208,96,'+pulse+')';ctx.font='24px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('[X,Y]',cx+rYx+comX*1.4+8,cy+rYy+comY*1.4-8);ctx.fillStyle='#eeeef5';ctx.font='18px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('[X,Y] = velocity of  Ad_{e^{tX}}(Y)  at  t = 0',W/2,H-12);requestAnimationFrame(draw);}draw();}
+  function animGap(el){flags.gap=true;var W=el.width,H=el.height,ctx=el.getContext('2d');var cx=W*0.3,cy=H*0.68,step=Math.min(W,H)*0.24,skew=step*0.2,t=0;function draw(){if(!flags.gap)return;t+=0.01;var phase=((t*0.2)%1)*4;ctx.clearRect(0,0,W,H);ctx.fillStyle='#0d0d1a';ctx.fillRect(0,0,W,H);for(var gx=cx-step;gx<=cx+step*2+skew+20;gx+=step){for(var gy=cy-step*2;gy<=cy+8;gy+=step){ctx.beginPath();ctx.arc(gx,gy,2.5,0,Math.PI*2);ctx.fillStyle='#ffffff16';ctx.fill();}}ctx.beginPath();ctx.arc(cx,cy,7,0,Math.PI*2);ctx.fillStyle='#eeeef5';ctx.fill();ctx.fillStyle='#eeeef5';ctx.font='22px Crimson Text,serif';ctx.textAlign='right';ctx.fillText('I',cx-12,cy+6);if(phase>1){var f=Math.min(1,phase-1);ar(ctx,cx,cy,cx+step*Math.min(1,f*2),cy,'#4aa8ff',3);if(f>0.5){var f2=(f-0.5)*2;ar(ctx,cx+step,cy,cx+step+skew*f2,cy-step*f2,'#3dc9b0',3);if(f>=1){ctx.beginPath();ctx.arc(cx+step+skew,cy-step,9,0,Math.PI*2);ctx.fillStyle='#3dc9b0';ctx.fill();ctx.fillStyle='#3dc9b0';ctx.font='22px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('XY',cx+step+skew+12,cy-step+6);}}}if(phase>2){var f3=Math.min(1,phase-2);ar(ctx,cx,cy,cx,cy-step*Math.min(1,f3*2),'#3dc9b066',2.5);if(f3>0.5){var f4=(f3-0.5)*2;ar(ctx,cx,cy-step,cx+step*f4,cy-step,'#4aa8ff66',2.5);if(f3>=1){ctx.beginPath();ctx.arc(cx+step,cy-step,9,0,Math.PI*2);ctx.fillStyle='#4aa8ff88';ctx.fill();ctx.fillStyle='#4aa8ff88';ctx.font='22px Crimson Text,serif';ctx.textAlign='left';ctx.fillText('YX',cx+step+12,cy-step-14);}}}if(phase>3){var f5=Math.min(1,phase-3),pulse=0.65+0.35*Math.sin(t*3);ctx.globalAlpha=f5;ar(ctx,cx+step,cy-step,cx+step+skew,cy-step,'rgba(255,208,96,'+pulse+')',4.5);ctx.fillStyle='rgba(255,208,96,'+pulse+')';ctx.font='bold 26px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('[X,Y]',cx+step+skew/2,cy-step-18);ctx.globalAlpha=1;}ctx.fillStyle='#4aa8ff88';ctx.font='19px Crimson Text,serif';ctx.textAlign='center';ctx.fillText('→ X',cx+step/2,cy+28);ctx.save();ctx.translate(cx-28,cy-step/2);ctx.rotate(-Math.PI/2);ctx.fillStyle='#3dc9b088';ctx.fillText('↑ Y',0,0);ctx.restore();requestAnimationFrame(draw);}draw();}
+  function animHero(el){var W=el.clientWidth||window.innerWidth||1200,H=el.clientHeight||700;el.width=W;el.height=H;var ctx=el.getContext('2d');var pts=[];for(var i=0;i<160;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*1.4+.3,ph:Math.random()*Math.PI*2,sp:Math.random()*.025+.01});var t=0;function draw(){t+=.016;ctx.clearRect(0,0,W,H);pts.forEach(function(p){p.x=(p.x+p.vx+W)%W;p.y=(p.y+p.vy+H)%H;var a=.12+.35*(Math.sin(t*p.sp*20+p.ph)*.5+.5);ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(180,200,255,'+a+')';ctx.fill();});pts.forEach(function(p,i){for(var j=i+1;j<pts.length;j++){var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);if(d<160){ctx.strokeStyle='rgba(74,168,255,'+(1-d/160)*.05+')';ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();}}});requestAnimationFrame(draw);}draw();}
+  function startAll(){var hero=document.getElementById('c-hero');if(hero&&!flags.hero){flags.hero=true;animHero(hero);}var canvases=document.querySelectorAll('canvas[data-anim]');var found=0;canvases.forEach(function(el){found++;var name=el.dataset.anim;if(flags[name])return;if(name==='conv')animConv(el);if(name==='steps')animSteps(el);if(name==='conj')animConj(el);if(name==='comm')animComm(el);if(name==='gap')animGap(el);});if(found<5)setTimeout(startAll,400);}
+  setTimeout(startAll,300);setTimeout(startAll,900);setTimeout(startAll,2000);
+})();
+</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#0b0b18;color:#e2e2f0;font-family:'Crimson Text',Georgia,serif;}
+.art{max-width:900px;margin:0 auto;padding:0 48px 120px;}
+h2.sec{font-size:46px;font-weight:600;color:#eeeef5;margin:80px 0 22px;line-height:1.15;}
+h3.sub{font-size:30px;font-weight:600;color:#4aa8ff;margin:42px 0 14px;}
+p.body{font-size:22px;line-height:1.75;color:#cccce0;margin-bottom:18px;}
+p.lead{font-size:26px;line-height:1.65;color:#e2e2f0;margin-bottom:22px;}
+.rule{width:80px;height:3px;border-radius:2px;margin-bottom:32px;}
+.pull{border-left:4px solid;padding:20px 28px;margin:36px 0;border-radius:0 12px 12px 0;}
+.pull p{font-size:24px;line-height:1.6;font-style:italic;}
+.thm{border:2px solid;border-radius:18px;padding:40px 52px;margin:40px 0;}
+.thm p{font-size:22px;color:#9999bb;margin-bottom:16px;}
+.mj{display:inline;}
+.mjd{display:block;margin:10px 0;}
+[data-t]:empty::before{content:attr(data-t);opacity:.25;font-size:.75em;}
+canvas.vis{display:block;width:100%;border-radius:16px;background:#0d0d1a;margin:40px 0;}
+.cap{font-size:18px;color:#7777aa;text-align:center;margin-top:-30px;margin-bottom:40px;font-style:italic;}
+.compare{display:flex;gap:32px;margin:36px 0;}
+.cbox{flex:1;border-radius:16px;padding:36px 44px;border:2px solid;}
+.cbox .label{font-size:22px;margin-bottom:16px;font-family:'JetBrains Mono',monospace;}
+.cbox .verdict{font-size:22px;margin-top:20px;}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#ffffff18,transparent);margin:70px 0;}
+.formula-hero{background:#120f00;border:2px solid #ffd06066;border-radius:22px;padding:56px 80px;margin:48px 0;text-align:center;}
+.steps-row{display:flex;gap:28px;margin:36px 0;}
+.step-card{flex:1;background:#111128;border:1px solid #4aa8ff33;border-radius:14px;padding:24px 28px;text-align:center;}
+.step-card .num{font-size:36px;color:#4aa8ff;margin-bottom:8px;font-weight:600;}
+.step-card p{font-size:19px;color:#9999bb;line-height:1.5;}
+@keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes pulse-ring{0%,100%{opacity:.04;}50%{opacity:.09;}}
+@keyframes float-up{0%{transform:translateY(0);opacity:.5;}100%{transform:translateY(-40px);opacity:0;}}
+.hero-ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1px solid;animation:pulse-ring 4s ease-in-out infinite;}
+</style>
+</helmet>
+
+<!-- ══════════ HERO ══════════ -->
+<div style="min-height:100vh;background:#0b0b18;overflow-x:hidden;">
+
+<div style="position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+  <div class="hero-ring" style="width:900px;height:900px;border-color:#4aa8ff;margin-top:-450px;margin-left:-450px;animation-delay:0s;animation-duration:5s;"></div>
+  <div class="hero-ring" style="width:620px;height:620px;border-color:#ffd060;margin-top:-310px;margin-left:-310px;animation-delay:1.5s;animation-duration:4s;"></div>
+  <div class="hero-ring" style="width:360px;height:360px;border-color:#3dc9b0;margin-top:-180px;margin-left:-180px;animation-delay:3s;animation-duration:3.5s;"></div>
+  <canvas id="c-hero" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
+  <div style="position:relative;z-index:2;text-align:center;max-width:820px;padding:0 48px;">
+    <p style="font-size:16px;letter-spacing:8px;color:#5555aa;text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:32px;">A geometric journey</p>
+    <h1 style="font-size:78px;font-weight:600;color:#eeeef5;line-height:1.08;margin-bottom:24px;">The Substitution<br>Principle</h1>
+    <div style="width:180px;height:3px;background:linear-gradient(90deg,#4aa8ff,#3dc9b0,#ffd060);margin:28px auto;border-radius:2px;"></div>
+    <p style="font-size:30px;color:#4aa8ff;font-style:italic;margin-bottom:20px;">&amp; the Birth of Adjoint Representations</p>
+    <p style="font-size:20px;color:#7777aa;line-height:1.6;">How one shift in perspective — from "function of numbers" to "computational recipe" — unlocks all of Lie theory.</p>
+  </div>
+  <div style="position:absolute;bottom:48px;left:50%;transform:translateX(-50%);text-align:center;animation:float-up 2.5s ease-in-out infinite;">
+    <div style="font-size:16px;color:#5555aa;letter-spacing:4px;">SCROLL</div>
+    <div style="font-size:28px;color:#5555aa;margin-top:4px;">↓</div>
+  </div>
+</div>
+
+<!-- ══════════ ARTICLE BODY ══════════ -->
+<div class="art">
+
+<!-- §1 THE QUESTION -->
+<h2 class="sec">§1 — The Question</h2>
+<div class="rule" style="background:#4aa8ff;"></div>
+<p class="lead">You know that for any real number <span class="mj" data-t="x"></span>, the exponential is defined by a beautiful infinite series:</p>
+<span class="mjd" data-t="e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots" style="text-align:center;font-size:1.3em;margin:28px 0;"></span>
+<p class="body">This formula is deeply familiar. But now suppose someone hands you an <em>n×n matrix</em> X. Can you make sense of e<sup>X</sup>? The formula above would have to become:</p>
+<span class="mjd" data-t="e^X = I + X + \frac{X^2}{2!} + \frac{X^3}{3!} + \cdots" style="text-align:center;font-size:1.3em;margin:28px 0;"></span>
+<p class="body">where I is the identity matrix and X², X³, … are matrix powers. At first glance this looks bizarre — e raised to a matrix? What could that even mean?</p>
+
+<div class="compare">
+  <div class="cbox" style="background:#0d1e10;border-color:#78d97a44;">
+    <p class="label" style="color:#78d97a;">x ∈ ℝ  (a number)</p>
+    <span class="mjd" data-t="e^x = 1 + x + \frac{x^2}{2!} + \cdots" style="font-size:1.05em;"></span>
+    <p class="verdict" style="color:#78d97a;">✓ Perfectly understood</p>
+  </div>
+  <div style="font-size:48px;color:#ffd060;display:flex;align-items:center;">→</div>
+  <div class="cbox" style="background:#1e0d0d;border-color:#ff6b6b44;">
+    <p class="label" style="color:#ff6b6b;">X ∈ Mat(n×n)</p>
+    <span class="mjd" data-t="e^X = \;?" style="font-size:1.6em;color:#ff6b6b;"></span>
+    <p class="verdict" style="color:#ff6b6b;">How does this make sense?</p>
+  </div>
+</div>
+
+<div class="pull" style="border-color:#ffd060;background:#1a1200;">
+  <p style="color:#ffd060;">The Substitution Principle gives the answer — and it opens an entire universe of mathematics.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- §2 THE MACHINE -->
+<h2 class="sec">§2 — Power Series as a Universal Machine</h2>
+<div class="rule" style="background:#4aa8ff;"></div>
+<p class="lead">The key is to stop thinking of a power series as a <em>function of numbers</em> — and start thinking of it as a <em>computational recipe</em>.</p>
+<p class="body">A recipe only needs three ingredients to run:</p>
+
+<div class="steps-row">
+  <div class="step-card">
+    <div class="num">①</div>
+    <p>Addition<br><span style="color:#eeeef5;">A + B</span></p>
+  </div>
+  <div class="step-card">
+    <div class="num">②</div>
+    <p>Multiplication<br><span style="color:#eeeef5;">A · B</span></p>
+  </div>
+  <div class="step-card">
+    <div class="num">③</div>
+    <p>Convergence<br><span style="color:#eeeef5;">of infinite sums</span></p>
+  </div>
+</div>
+
+<p class="body">Matrices support all three. So the recipe runs perfectly for matrices — and the <em>same</em> machine that produces e² from 2 now produces exp(X) from X.</p>
+
+<div style="display:flex;justify-content:center;margin:44px 0;">
+  <svg width="700" height="320" viewBox="0 0 700 320">
+    <defs>
+      <marker id="ag" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#ffd060"></polygon></marker>
+      <marker id="ap" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c084fc"></polygon></marker>
+      <marker id="ac" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#3dc9b0"></polygon></marker>
+      <marker id="ag2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#ffd060"></polygon></marker>
+      <marker id="ap2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#c084fc"></polygon></marker>
+      <marker id="ac2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#3dc9b0"></polygon></marker>
+    </defs>
+    <rect x="230" y="60" width="240" height="200" rx="18" fill="#12122a" stroke="#4aa8ff" stroke-width="2"></rect>
+    <text x="350" y="130" text-anchor="middle" font-size="20" fill="#4aa8ff" font-family="JetBrains Mono,monospace">1 + X + X²/2!</text>
+    <text x="350" y="158" text-anchor="middle" font-size="20" fill="#4aa8ff" font-family="JetBrains Mono,monospace">+ X³/3! + ···</text>
+    <text x="350" y="226" text-anchor="middle" font-size="19" fill="#7777aa" font-family="Crimson Text,serif" font-style="italic">The Recipe</text>
+    <line x1="0" y1="96" x2="226" y2="130" stroke="#ffd060" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ag)"></line>
+    <text x="6" y="88" font-size="24" fill="#ffd060" font-family="JetBrains Mono,monospace">2</text>
+    <line x1="0" y1="168" x2="226" y2="168" stroke="#c084fc" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ap)"></line>
+    <text x="4" y="162" font-size="18" fill="#c084fc" font-family="JetBrains Mono,monospace">[1 2; 0 1]</text>
+    <line x1="0" y1="250" x2="226" y2="210" stroke="#3dc9b0" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#ac)"></line>
+    <text x="4" y="264" font-size="18" fill="#3dc9b0" font-family="JetBrains Mono,monospace">d/dx</text>
+    <line x1="472" y1="130" x2="694" y2="96" stroke="#ffd060" stroke-width="1.5" marker-end="url(#ag2)"></line>
+    <text x="572" y="88" font-size="24" fill="#ffd060" font-family="JetBrains Mono,monospace">e²</text>
+    <line x1="472" y1="168" x2="694" y2="168" stroke="#c084fc" stroke-width="1.5" marker-end="url(#ap2)"></line>
+    <text x="480" y="162" font-size="17" fill="#c084fc" font-family="JetBrains Mono,monospace">exp([1 2;0 1])</text>
+    <line x1="472" y1="210" x2="694" y2="250" stroke="#3dc9b0" stroke-width="1.5" marker-end="url(#ac2)"></line>
+    <text x="480" y="266" font-size="18" fill="#3dc9b0" font-family="JetBrains Mono,monospace">shift operator</text>
+    <text x="350" y="305" text-anchor="middle" font-size="18" fill="#7777aa" font-family="Crimson Text,serif" font-style="italic">Same machine — different objects</text>
+  </svg>
+</div>
+
+<div class="divider"></div>
+
+<!-- §3 THE THEOREM -->
+<h2 class="sec">§3 — The Substitution Principle</h2>
+<div class="rule" style="background:#3dc9b0;"></div>
+<p class="lead">Here is the key insight in a single line:</p>
+<p class="body">For a number, x³ means x·x·x. For a matrix, X³ means X·X·X. The <em>instruction</em> is identical. The coefficients 1/3! don't know whether X is a number or a matrix — they only multiply and add.</p>
+
+<div class="thm" style="background:#0d1a0d;border-color:#3dc9b055;">
+  <p>Theorem (Rossmann — Substitution Principle)</p>
+  <p style="font-size:20px;color:#9999bb;margin-bottom:24px;">For convergent power series F, G and any matrix X where the series converges:</p>
+  <span class="mjd" data-t="(F+G)(X) = F(X)+G(X)" style="margin-bottom:16px;"></span>
+  <span class="mjd" data-t="(F\cdot G)(X) = F(X)\,G(X)" style="margin-bottom:16px;"></span>
+  <span class="mjd" data-t="(F\circ G)(X) = F(G(X))" style="margin-bottom:24px;"></span>
+  <p>The algebra is <span style="color:#ffd060;">identical to the scalar case</span> — no new proof required.</p>
+</div>
+
+<p class="body">This theorem is not just a convenience. It changes the conceptual landscape: power series are no longer tied to numbers. They are <em>universal recipes</em> that run on anything with addition, multiplication, and convergence.</p>
+
+<div class="divider"></div>
+
+<!-- §4 CONVERGENCE -->
+<h2 class="sec">§4 — Convergence: The Safety Net</h2>
+<div class="rule" style="background:#c084fc;"></div>
+<p class="body">Infinite sums are delicate. Rearranging terms can change the value — or make it diverge. <strong style="color:#c084fc;">Absolute convergence</strong> is the safety net: it licenses all regrouping, all rearranging. Every algebraic identity that works for scalars then carries over to matrices unchanged.</p>
+<p class="body">The good news for the exponential: the series converges absolutely for <em>every</em> square matrix, with no condition on X required. Watch the partial sums converge:</p>
+
+<canvas id="c-conv" class="vis" data-anim="conv" width="800" height="420"></canvas>
+<p class="cap">Partial sums of e^0.5 = 1 + 0.5 + 0.5²/2! + 0.5³/3! + ⋯ converging to the exact value (dashed green line).</p>
+
+<div class="pull" style="border-color:#c084fc;background:#130e20;">
+  <p style="color:#c084fc;">Convergence is not a footnote — it is the engine that makes the entire Substitution Principle work for matrices.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- §5 INFINITESIMAL MOTION -->
+<h2 class="sec">§5 — X as an Infinitesimal Motion</h2>
+<div class="rule" style="background:#ffd060;"></div>
+<p class="lead">Now the geometric heart of the story.</p>
+<p class="body">Imagine X encodes a tiny rotation — an infinitesimal nudge in a direction. Taking one step of size X means performing that nudge once. Taking two steps means performing it twice. And so on.</p>
+<p class="body">Now look at the exponential formula from this angle:</p>
+<span class="mjd" data-t="e^X = \lim_{N\to\infty}\!\left(I+\frac{X}{N}\right)^N" style="text-align:center;font-size:1.25em;margin:28px 0;"></span>
+<p class="body">This says: take N equal steps of size X/N. As N → ∞, the piecewise-linear path converges to a perfectly smooth curve. That smooth curve IS exp(X). Watch it happen:</p>
+
+<canvas id="c-steps" class="vis" data-anim="steps" width="800" height="500"></canvas>
+<p class="cap">The blue piecewise-linear path (n equal chord steps) converges to the smooth golden arc as n → ∞. The smooth arc is exp(X).</p>
+
+<div class="pull" style="border-color:#ffd060;background:#1a1200;">
+  <p style="color:#ffd060;">The exponential assembles a <em>finite</em> transformation from infinitely many infinitesimal ones. This is not metaphor — it is a theorem.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- §6 EXPONENTIAL MAP -->
+<h2 class="sec">§6 — The Exponential Map: Bridge Between Worlds</h2>
+<div class="rule" style="background:#4aa8ff;"></div>
+<p class="body">In Lie theory, the story lives in two worlds at once:</p>
+
+<div class="compare" style="margin:36px 0;">
+  <div class="cbox" style="background:#0e1e3e;border-color:#4aa8ff44;text-align:center;">
+    <p style="font-size:44px;color:#4aa8ff;margin-bottom:12px;font-style:italic;">𝔤</p>
+    <p class="label" style="color:#4aa8ff;">Lie Algebra</p>
+    <p style="font-size:19px;color:#9999bb;margin-top:10px;">tangent space at the identity<br>infinitesimal motions</p>
+  </div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px 0;">
+    <div style="font-size:20px;color:#ffd060;text-align:center;font-style:italic;">exp →</div>
+    <div style="font-size:20px;color:#c084fc;text-align:center;font-style:italic;">← log</div>
+  </div>
+  <div class="cbox" style="background:#0e2e1e;border-color:#3dc9b044;text-align:center;">
+    <p style="font-size:44px;color:#3dc9b0;margin-bottom:12px;font-style:italic;">G</p>
+    <p class="label" style="color:#3dc9b0;">Lie Group</p>
+    <p style="font-size:19px;color:#9999bb;margin-top:10px;">smooth manifold<br>finite transformations</p>
+  </div>
+</div>
+
+<p class="body">The exponential map takes a tangent vector X at the identity and follows it for one unit of time. It is the mathematical mechanism that <em>integrates</em> an infinitesimal direction into a finite transformation. The Substitution Principle guarantees that the same power series formula works.</p>
+
+<div class="divider"></div>
+
+<!-- §7 CONJUGATION -->
+<h2 class="sec">§7 — Enter Conjugation: gXg⁻¹</h2>
+<div class="rule" style="background:#ff6b6b;"></div>
+<p class="lead">Now we ask: how does the group G act on its own Lie algebra?</p>
+<p class="body">Given a group element g ∈ G and a tangent vector X ∈ 𝔤, form the conjugate:</p>
+<span class="mjd" data-t="\operatorname{Ad}_g(X)\;:=\;g\,X\,g^{-1}" style="text-align:center;font-size:1.3em;margin:28px 0;"></span>
+<p class="body">The three-step interpretation: <span style="color:#ff6b6b;">step into g's frame of reference</span>, let X act, <span style="color:#ff6b6b;">step back</span>. The result gXg⁻¹ is again a tangent vector — the group acts on its own algebra. Watch the animation below:</p>
+
+<canvas id="c-conj" class="vis" data-anim="conj" width="800" height="460"></canvas>
+<p class="cap">Conjugation Ad_g(Y) = gYg⁻¹: a vector Y in the Lie algebra is transformed to a new direction as g rotates the frame.</p>
+
+<p class="body">The collection of these maps — one for each g — defines a <strong style="color:#ffd060;">group representation</strong>:</p>
+<span class="mjd" data-t="\operatorname{Ad}:G\to\operatorname{GL}(\mathfrak{g}),\quad g\mapsto\operatorname{Ad}_g" style="text-align:center;font-size:1.15em;margin:24px 0;"></span>
+
+<div class="divider"></div>
+
+<!-- §8 LIE BRACKET -->
+<h2 class="sec">§8 — Differentiating Ad: The Lie Bracket</h2>
+<div class="rule" style="background:#3dc9b0;"></div>
+<p class="body">Every group representation has an infinitesimal version — obtained by differentiating at the identity. Set g = e<sup>tX</sup> and differentiate at t = 0:</p>
+<span class="mjd" data-t="\operatorname{ad}_X(Y)\;:=\;\left.\frac{d}{dt}\right|_{t=0}\!\operatorname{Ad}_{e^{tX}}(Y)" style="text-align:center;font-size:1.2em;margin:28px 0;"></span>
+<p class="body">By direct computation, this derivative is exactly the <strong style="color:#3dc9b0;">commutator</strong>:</p>
+<span class="mjd" data-t="\operatorname{ad}_X(Y)=XY-YX=:[X,\,Y]" style="text-align:center;font-size:1.3em;margin:28px 0;"></span>
+
+<canvas id="c-comm" class="vis" data-anim="comm" width="800" height="460"></canvas>
+<p class="cap">As t varies, Ad_{exp(tX)}(Y) rotates in the Lie algebra. The velocity at t = 0 (gold arrow) is exactly [X, Y].</p>
+
+<div class="pull" style="border-color:#3dc9b0;background:#0e2e1e;">
+  <p style="color:#3dc9b0;">The Lie bracket [X, Y] = XY − YX measures how much X and Y fail to commute. It is the fundamental operation of the Lie algebra — and it arises naturally from differentiating the group action.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- §9 COMMUTATOR GEOMETRY -->
+<h2 class="sec">§9 — The Commutator as Geometry</h2>
+<div class="rule" style="background:#ffd060;"></div>
+<p class="body">The Lie bracket has beautiful geometric content. In the Lie group G, follow exp(X) then exp(Y). Now follow exp(Y) then exp(X). They arrive at different points:</p>
+<span class="mjd" data-t="e^X e^Y\;\neq\; e^Y e^X\quad\text{in general}" style="text-align:center;font-size:1.2em;margin:24px 0;"></span>
+<p class="body">The failure to close — the gap between the two endpoints — is measured to second order by [X, Y]:</p>
+<span class="mjd" data-t="e^X e^Y e^{-X} e^{-Y}\;\approx\; e^{[X,Y]}+\text{higher order terms}" style="text-align:center;font-size:1.15em;margin:24px 0;"></span>
+
+<canvas id="c-gap" class="vis" data-anim="gap" width="800" height="520"></canvas>
+<p class="cap">Path X→Y (blue→teal) and path Y→X (teal→blue, faded) arrive at different endpoints. The gold arrow — the gap — is [X, Y].</p>
+
+<div class="pull" style="border-color:#ffd060;background:#1a1200;">
+  <p style="color:#ffd060;">If [X, Y] = 0, the paths close perfectly. The Lie bracket <em>is</em> the failure to commute — made visible as a gap in the group.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- §10 MASTER FORMULA -->
+<h2 class="sec">§10 — The Crown Jewel</h2>
+<div class="rule" style="background:#ffd060;"></div>
+<p class="lead">Now apply the Substitution Principle one final time.</p>
+<p class="body">We have the operator ad<sub>X</sub> acting on the Lie algebra 𝔤. It is a linear map — the kind of object a power series can accept. So feed it into the exponential recipe:</p>
+<span class="mjd" data-t="\exp(\operatorname{ad}_X)=I+\operatorname{ad}_X+\frac{(\operatorname{ad}_X)^2}{2!}+\frac{(\operatorname{ad}_X)^3}{3!}+\cdots" style="text-align:center;font-size:1.1em;margin:24px 0;"></span>
+<p class="body">What is the result? The Substitution Principle — applied three times, to numbers, to matrices, and now to operators — gives us the master formula:</p>
+
+<div class="formula-hero">
+  <span class="mjd" data-t="\exp(\operatorname{ad}_X)\;=\;\operatorname{Ad}_{\exp(X)}" style="font-size:1.7em;"></span>
+</div>
+
+<div class="compare" style="gap:24px;">
+  <div class="cbox" style="background:#0e0e20;border-color:#c084fc33;">
+    <p class="label" style="color:#c084fc;">Left side</p>
+    <p style="font-size:20px;color:#cccce0;line-height:1.6;">Feed the <em>operator</em> ad_X into the exponential recipe — the Substitution Principle at work again, now on an operator acting on a vector space.</p>
+  </div>
+  <div class="cbox" style="background:#0e0e20;border-color:#3dc9b033;">
+    <p class="label" style="color:#3dc9b0;">Right side</p>
+    <p style="font-size:20px;color:#cccce0;line-height:1.6;">Conjugation by the group element exp(X). The finite transformation in G, acting on its Lie algebra by the Adjoint representation.</p>
+  </div>
+</div>
+
+<p class="body" style="margin-top:32px;">Both sides compute the same transformation on the Lie algebra. The bridge between the group and the algebra — built entirely from the Substitution Principle applied three times over.</p>
+
+<div class="divider"></div>
+
+<!-- §11 CLOSING -->
+<h2 class="sec" style="text-align:center;">One Recipe. Infinite Worlds.</h2>
+<div class="rule" style="background:linear-gradient(90deg,#4aa8ff,#3dc9b0,#ffd060);margin:0 auto 40px;"></div>
+<p class="lead" style="text-align:center;">Everything we have done follows from one shift in perspective:</p>
+
+<div class="steps-row">
+  <div class="step-card">
+    <div class="num" style="color:#ffd060;font-size:28px;margin-bottom:14px;">Numbers</div>
+    <span class="mj" data-t="e^x\in\mathbb{R}" style="display:block;font-size:1.1em;margin-bottom:12px;"></span>
+    <p>The familiar exponential</p>
+  </div>
+  <div style="font-size:36px;color:#4aa8ff;display:flex;align-items:center;">→</div>
+  <div class="step-card">
+    <div class="num" style="color:#3dc9b0;font-size:28px;margin-bottom:14px;">Matrices</div>
+    <span class="mj" data-t="e^X\in\mathrm{GL}(n)" style="display:block;font-size:1.1em;margin-bottom:12px;"></span>
+    <p>The exponential map on Lie groups</p>
+  </div>
+  <div style="font-size:36px;color:#4aa8ff;display:flex;align-items:center;">→</div>
+  <div class="step-card">
+    <div class="num" style="color:#c084fc;font-size:28px;margin-bottom:14px;">Operators</div>
+    <span class="mj" data-t="e^{\operatorname{ad}X}\in\mathrm{GL}(\mathfrak{g})" style="display:block;font-size:1.1em;margin-bottom:12px;"></span>
+    <p>The master formula exp(ad X) = Ad(exp X)</p>
+  </div>
+</div>
+
+<div style="text-align:center;margin-top:72px;padding:48px;border:1px solid #ffffff14;border-radius:20px;">
+  <p style="font-size:30px;color:#7777aa;font-style:italic;line-height:1.7;">"The Substitution Principle is not a technical lemma.<br>It is a change in what a <em>function</em> is."</p>
+</div>
+
+</div><!-- end .art -->
+</div><!-- end page -->
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  runFlags = {};
+
+  componentDidMount() {
+    // Hero starts immediately (no KaTeX needed)
+    setTimeout(() => this.initHero(), 100);
+    // Poll for KaTeX then set up everything else
+    this.pollKaTeX();
+  }
+
+  pollKaTeX() {
+    if (window.katex) {
+      this.renderMath();
+      // Wait for layout before measuring canvas widths
+      setTimeout(() => this.setupObserver(), 300);
+    } else {
+      setTimeout(() => this.pollKaTeX(), 80);
+    }
+  }
+
+  renderMath() {
+    document.querySelectorAll('[data-t]').forEach(el => {
+      try {
+        const isDisplay = el.classList.contains('mjd') ||
+          el.tagName === 'DIV' ||
+          getComputedStyle(el).display === 'block';
+        katex.render(el.dataset.t, el, {
+          displayMode: isDisplay,
+          throwOnError: false,
+        });
+      } catch(e) { console.warn('KaTeX:', e.message); }
+    });
+  }
+
+  setupObserver() {
+    // Animations are handled entirely by anim-lie.js — nothing to do here.
+  }
+
+  startAnim(name, el) {
+    this.stopAnim(name);
+    this.runFlags[name] = true;
+    const map = {
+      conv: () => this.animConv(el),
+      steps: () => this.animSteps(el),
+      conj: () => this.animConj(el),
+      comm: () => this.animComm(el),
+      gap: () => this.animGap(el),
+    };
+    if (map[name]) map[name]();
+  }
+
+  stopAnim(name) {
+    delete this.runFlags[name];
+  }
+
+  ar(ctx, x1, y1, x2, y2, color, lw) {
+    lw = lw || 2.5;
+    const dx = x2-x1, dy = y2-y1, len = Math.sqrt(dx*dx+dy*dy);
+    if (len < 2) return;
+    const nx = dx/len, ny = dy/len;
+    ctx.strokeStyle = color; ctx.lineWidth = lw;
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2-nx*13, y2-ny*13); ctx.stroke();
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2-15*nx+5*ny, y2-15*ny-5*nx);
+    ctx.lineTo(x2-15*nx-5*ny, y2-15*ny+5*nx);
+    ctx.closePath(); ctx.fill();
+  }
+
+  // ── HERO particles ─────────────────────────────────────────
+  initHero() {
+    const el = document.getElementById('c-hero');
+    if (!el) return;
+    const W = el.clientWidth || 1920, H = el.clientHeight || 700;
+    el.width = W; el.height = H;
+    const ctx = el.getContext('2d');
+    const pts = Array.from({length: 160}, () => ({
+      x: Math.random()*W, y: Math.random()*H,
+      vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3,
+      r: Math.random()*1.4+.3,
+      ph: Math.random()*Math.PI*2,
+      sp: Math.random()*.025+.01,
+    }));
+    let t = 0;
+    const draw = () => {
+      t += .016;
+      ctx.clearRect(0,0,W,H);
+      pts.forEach(p => {
+        p.x = (p.x+p.vx+W)%W; p.y = (p.y+p.vy+H)%H;
+        const a = .12 + .35*(Math.sin(t*p.sp*20+p.ph)*.5+.5);
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(180,200,255,${a})`; ctx.fill();
+      });
+      pts.forEach((p,i) => {
+        for (let j=i+1;j<pts.length;j++) {
+          const q=pts[j], dx=p.x-q.x, dy=p.y-q.y, d=Math.sqrt(dx*dx+dy*dy);
+          if (d<160) {
+            ctx.strokeStyle=`rgba(74,168,255,${(1-d/160)*.05})`;
+            ctx.lineWidth=.5; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(q.x,q.y); ctx.stroke();
+          }
+        }
+      });
+      requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
+  // ── CONVERGENCE ─────────────────────────────────────────────
+  animConv(el) {
+    const name='conv', W=el.width, H=el.height, ctx=el.getContext('2d');
+    const x0=.5, exact=Math.exp(x0);
+    const terms=[], parts=[];
+    let term=1, sum=0;
+    for (let k=0;k<9;k++) { if(k)term*=x0/k; sum+=term; terms.push(term); parts.push(sum); }
+    let progress=0;
+    const PL=60,PR=24,PT=58,PB=62,CW=W-PL-PR,CH=H-PT-PB,BW=CW/terms.length,SH=CH/(exact*1.08);
+    const draw=()=>{
+      if (!this.runFlags[name]) return;
+      progress=Math.min(progress+.016,terms.length-.001);
+      ctx.clearRect(0,0,W,H);
+      ctx.strokeStyle='#ffffff18'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(PL,PT); ctx.lineTo(PL,PT+CH); ctx.lineTo(PL+CW,PT+CH); ctx.stroke();
+      const n=Math.floor(progress);
+      for (let i=0;i<=n;i++) {
+        const a=i<n?1:progress-n, bh=terms[i]*SH*a;
+        ctx.fillStyle=`rgba(74,168,255,${.65*a})`;
+        ctx.fillRect(PL+i*BW+4,PT+CH-bh,BW-8,bh);
+        ctx.fillStyle=`rgba(119,119,170,${a})`;
+        ctx.font='14px JetBrains Mono,monospace'; ctx.textAlign='center';
+        ctx.fillText(`k=${i}`,PL+i*BW+BW/2,PT+CH+20);
+      }
+      ctx.strokeStyle='#ffd060'; ctx.lineWidth=2.5;
+      ctx.beginPath();
+      for (let i=0;i<=n;i++) {
+        const px=PL+i*BW+BW/2,py=PT+CH-parts[i]*SH;
+        i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+      }
+      ctx.stroke();
+      for (let i=0;i<=n;i++) {
+        ctx.beginPath(); ctx.arc(PL+i*BW+BW/2,PT+CH-parts[i]*SH,4.5,0,Math.PI*2);
+        ctx.fillStyle='#ffd060'; ctx.fill();
+      }
+      const ey=PT+CH-exact*SH;
+      ctx.strokeStyle='#78d97a77'; ctx.lineWidth=1.5; ctx.setLineDash([8,5]);
+      ctx.beginPath(); ctx.moveTo(PL,ey); ctx.lineTo(PL+CW,ey); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle='#78d97a'; ctx.font='16px Crimson Text,serif'; ctx.textAlign='right';
+      ctx.fillText('e^0.5 ≈ 1.6487',PL+CW-6,ey-8);
+      ctx.fillStyle='#7777aa'; ctx.font='17px Crimson Text,serif'; ctx.textAlign='center';
+      ctx.fillText('Partial sums of  e^0.5 = 1 + 0.5 + 0.5²/2! + ···',W/2,32);
+      ctx.fillStyle='#ffd060'; ctx.fillText('— running total',W/2,50);
+      if (progress<terms.length-.01) requestAnimationFrame(draw);
+      else setTimeout(()=>{ if(!this.runFlags[name])return; progress=0; requestAnimationFrame(draw); },2800);
+    };
+    draw();
+  }
+
+  // ── TINY STEPS → SMOOTH ARC ──────────────────────────────────
+  animSteps(el) {
+    const name='steps', W=el.width, H=el.height, ctx=el.getContext('2d');
+    const cx=W/2, cy=H/2, R=Math.min(W,H)*.36;
+    const SA=-Math.PI/2, ARC=Math.PI*.72;
+    const Ns=[1,2,4,8,16]; const PDUR=2.3;
+    let elapsed=0, lastT=null;
+    const arc=()=>{
+      ctx.beginPath();
+      for(let a=SA;a<=SA+ARC+.01;a+=.02){
+        const px=cx+R*Math.cos(a),py=cy+R*Math.sin(a);
+        a===SA?ctx.moveTo(px,py):ctx.lineTo(px,py);
+      }
+    };
+    const draw=(time)=>{
+      if(!this.runFlags[name]) return;
+      if(lastT===null)lastT=time;
+      elapsed+=Math.min((time-lastT)/1000,.05); lastT=time;
+      ctx.clearRect(0,0,W,H);
+      for(let x=0;x<W;x+=40){ctx.strokeStyle='#ffffff06';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke();}
+      for(let y=0;y<H;y+=40){ctx.strokeStyle='#ffffff06';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+      // golden reference arc
+      ctx.strokeStyle='#ffd06055'; ctx.lineWidth=2; ctx.setLineDash([8,5]);
+      arc(); ctx.stroke(); ctx.setLineDash([]);
+      const total=Ns.length+1, idx=Math.floor((elapsed/PDUR)%total);
+      if(idx<Ns.length){
+        const N=Ns[idx];
+        ctx.strokeStyle='#4aa8ff'; ctx.lineWidth=N<=4?3:N<=8?2:1.5;
+        for(let i=0;i<N;i++){
+          const a1=SA+(i/N)*ARC, a2=SA+((i+1)/N)*ARC;
+          const x1=cx+R*Math.cos(a1),y1=cy+R*Math.sin(a1);
+          const x2=cx+R*Math.cos(a2),y2=cy+R*Math.sin(a2);
+          ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+          if(N<=8){ctx.beginPath();ctx.arc(x1,y1,N<=2?6:4,0,Math.PI*2);ctx.fillStyle='#4aa8ff';ctx.fill();}
+        }
+        ctx.fillStyle='#4aa8ff'; ctx.font=`bold ${Math.round(W*.028)}px Crimson Text,serif`; ctx.textAlign='center';
+        ctx.fillText(`n = ${N} step${N===1?'':'s'}`,W/2,34);
+      } else {
+        ctx.strokeStyle='#ffd060'; ctx.lineWidth=4;
+        arc(); ctx.stroke();
+        ctx.fillStyle='#ffd060'; ctx.font=`bold ${Math.round(W*.028)}px Crimson Text,serif`; ctx.textAlign='center';
+        ctx.fillText('n → ∞ : smooth exp(X)',W/2,34);
+      }
+      // start dot
+      ctx.beginPath();ctx.arc(cx+R*Math.cos(SA),cy+R*Math.sin(SA),7,0,Math.PI*2);
+      ctx.fillStyle='#3dc9b0';ctx.fill();
+      ctx.fillStyle='#3dc9b0';ctx.font='18px Crimson Text,serif';ctx.textAlign='left';
+      ctx.fillText('I',cx+R*Math.cos(SA)+10,cy+R*Math.sin(SA)+22);
+      // end dot
+      const ex=cx+R*Math.cos(SA+ARC),ey2=cy+R*Math.sin(SA+ARC);
+      ctx.beginPath();ctx.arc(ex,ey2,7,0,Math.PI*2);ctx.fillStyle='#ff6b6b';ctx.fill();
+      ctx.fillStyle='#ff6b6b';ctx.font='18px Crimson Text,serif';ctx.textAlign='left';
+      ctx.fillText('exp(X)',ex+10,ey2+6);
+      requestAnimationFrame(draw);
+    };
+    requestAnimationFrame(draw);
+  }
+
+  // ── CONJUGATION ─────────────────────────────────────────────
+  animConj(el) {
+    const name='conj', W=el.width, H=el.height, ctx=el.getContext('2d');
+    const cx=W/2, cy=H/2+20, R=Math.min(W,H)*.28;
+    let t=0;
+    const draw=()=>{
+      if(!this.runFlags[name]) return;
+      t+=.012;
+      const phase=(t%8)/8, GA=Math.PI*.45;
+      const Yx=R*.85, Yy=0;
+      ctx.clearRect(0,0,W,H);
+      ctx.strokeStyle='#ffffff12';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(50,cy);ctx.lineTo(W-50,cy);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(cx,30);ctx.lineTo(cx,H-30);ctx.stroke();
+      ctx.beginPath();ctx.arc(cx,cy,5,0,Math.PI*2);ctx.fillStyle='#ffffff44';ctx.fill();
+      ctx.fillStyle='#ffffff55';ctx.font='18px Crimson Text,serif';ctx.textAlign='left';
+      ctx.fillText('I',cx+8,cy-8);
+      if(phase<.25){
+        const a=Math.min(1,phase/.15);
+        ctx.globalAlpha=a;
+        this.ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b0',3);
+        ctx.fillStyle='#3dc9b0';ctx.font='28px Crimson Text,serif';ctx.fillText('Y',cx+Yx+10,cy-8);
+        ctx.globalAlpha=1;
+        ctx.fillStyle='#ffd060';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';
+        ctx.fillText('Step 1: Y is a vector in the Lie algebra 𝔤',W/2,H-28);
+      } else if(phase<.5){
+        const f=(phase-.25)/.25, ca=f*GA;
+        const rx=Yx*Math.cos(ca)-Yy*Math.sin(ca), ry=Yx*Math.sin(ca)+Yy*Math.cos(ca);
+        this.ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b066',2);
+        this.ar(ctx,cx,cy,cx+rx,cy+ry,'#ff6b6b',3);
+        ctx.strokeStyle='#ff6b6b33';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);
+        ctx.beginPath();
+        for(let a=0;a<=ca;a+=.02){const px=cx+(R*.5)*Math.cos(a),py=cy+(R*.5)*Math.sin(a);a===0?ctx.moveTo(px,py):ctx.lineTo(px,py);}
+        ctx.stroke();ctx.setLineDash([]);
+        ctx.fillStyle='#ff6b6b';ctx.font='26px Crimson Text,serif';ctx.textAlign='left';
+        ctx.fillText('g·Y',cx+rx+10,cy+ry-8);
+        ctx.fillStyle='#ffd060';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';
+        ctx.fillText('Step 2: g rotates the frame (changes perspective)',W/2,H-28);
+      } else if(phase<.75){
+        const f=(phase-.5)/.25;
+        const fX=Yx*Math.cos(GA)-Yy*Math.sin(GA), fY=Yx*Math.sin(GA)+Yy*Math.cos(GA);
+        const cx2=Yx+(fX-Yx)*f, cy2=Yy+(fY-Yy)*f;
+        this.ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b066',2);
+        this.ar(ctx,cx,cy,cx+cx2,cy+cy2,'#ffd060',3.5);
+        ctx.fillStyle='#ffd060';ctx.font='26px Crimson Text,serif';ctx.textAlign='left';
+        ctx.fillText('Ad_g(Y)',cx+cx2+10,cy+cy2-8);
+        ctx.fillStyle='#ffd060';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';
+        ctx.fillText('Step 3: g⁻¹ returns — result is gYg⁻¹',W/2,H-28);
+      } else {
+        const fX=Yx*Math.cos(GA)-Yy*Math.sin(GA), fY=Yx*Math.sin(GA)+Yy*Math.cos(GA);
+        this.ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b0',2.5);
+        this.ar(ctx,cx,cy,cx+fX,cy+fY,'#ffd060',3.5);
+        ctx.fillStyle='#3dc9b0';ctx.font='24px Crimson Text,serif';ctx.textAlign='left';
+        ctx.fillText('Y',cx+Yx+10,cy-10);
+        ctx.fillStyle='#ffd060';ctx.fillText('Ad_g(Y) = gYg⁻¹',cx+fX+10,cy+fY-10);
+        ctx.fillStyle='#ffd060';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';
+        ctx.fillText('Y is transformed to a new direction in 𝔤',W/2,H-28);
+      }
+      requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
+  // ── COMMUTATOR: differentiation animation ────────────────────
+  animComm(el) {
+    const name='comm', W=el.width, H=el.height, ctx=el.getContext('2d');
+    const cx=W/2, cy=H/2+20, R=Math.min(W,H)*.26;
+    let t=0;
+    const draw=()=>{
+      if(!this.runFlags[name]) return;
+      t+=.012;
+      ctx.clearRect(0,0,W,H);
+      ctx.strokeStyle='#ffffff12';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(50,cy);ctx.lineTo(W-50,cy);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(cx,30);ctx.lineTo(cx,H-50);ctx.stroke();
+      ctx.fillStyle='#ffffff22';ctx.font='20px Crimson Text,serif';ctx.textAlign='center';
+      ctx.fillText('Lie algebra 𝔤',cx,24);
+      // X (fixed rightward)
+      this.ar(ctx,cx,cy,cx+R,cy,'#4aa8ff',3);
+      ctx.fillStyle='#4aa8ff';ctx.font='30px Crimson Text,serif';ctx.textAlign='left';
+      ctx.fillText('X',cx+R+8,cy+8);
+      // Y rotating under Ad_{exp(tX)}
+      const Yx=0,Yy=-R,ga=.55*Math.sin(t*.75);
+      const rYx=Yx*Math.cos(ga)-Yy*Math.sin(ga), rYy=Yx*Math.sin(ga)+Yy*Math.cos(ga);
+      this.ar(ctx,cx,cy,cx+rYx,cy+rYy,'#3dc9b0',3);
+      ctx.fillStyle='#3dc9b0';ctx.font='24px Crimson Text,serif';
+      ctx.fillText('Ad_{e^{tX}}(Y)',cx+rYx+10,cy+rYy-10);
+      // show Y at t=0 faintly
+      if(Math.abs(ga)>.08){
+        this.ar(ctx,cx,cy,cx+Yx,cy+Yy,'#3dc9b033',1.5);
+        ctx.fillStyle='#3dc9b044';ctx.font='20px Crimson Text,serif';
+        ctx.fillText('Y (t=0)',cx+Yx+8,cy+Yy-8);
+      }
+      // velocity arrow = [X,Y]
+      const vel=.55*.75*Math.cos(t*.75);
+      const comX=-vel*Yy, comY=vel*Yx; // = vel*R in x direction
+      const pulse=.55+.45*Math.abs(Math.cos(t*.75));
+      this.ar(ctx,cx+rYx,cy+rYy,cx+rYx+comX*1.4,cy+rYy+comY*1.4,`rgba(255,208,96,${pulse})`,3);
+      ctx.fillStyle=`rgba(255,208,96,${pulse})`;ctx.font='24px Crimson Text,serif';ctx.textAlign='left';
+      ctx.fillText('[X,Y]',cx+rYx+comX*1.4+8,cy+rYy+comY*1.4-8);
+      ctx.fillStyle='#eeeef5';ctx.font='19px Crimson Text,serif';ctx.textAlign='center';
+      ctx.fillText('[X,Y] = velocity of  Ad_{e^{tX}}(Y)  at  t = 0',W/2,H-12);
+      requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
+  // ── COMMUTATOR GAP: e^X e^Y ≠ e^Y e^X ──────────────────────
+  animGap(el) {
+    const name='gap', W=el.width, H=el.height, ctx=el.getContext('2d');
+    const cx=W*.3, cy=H*.68, step=Math.min(W,H)*.24, skew=step*.2;
+    let t=0;
+    const draw=()=>{
+      if(!this.runFlags[name]) return;
+      t+=.01;
+      const phase=(t*.2)%1*4;
+      ctx.clearRect(0,0,W,H);
+      for(let gx=cx-step;gx<=cx+step*2+skew+20;gx+=step){
+        for(let gy=cy-step*2;gy<=cy+8;gy+=step){
+          ctx.beginPath();ctx.arc(gx,gy,2.5,0,Math.PI*2);ctx.fillStyle='#ffffff16';ctx.fill();
+        }
+      }
+      ctx.beginPath();ctx.arc(cx,cy,7,0,Math.PI*2);ctx.fillStyle='#eeeef5';ctx.fill();
+      ctx.fillStyle='#eeeef5';ctx.font='22px Crimson Text,serif';ctx.textAlign='right';
+      ctx.fillText('I',cx-12,cy+6);
+      // Path 1: X then Y
+      if(phase>1){
+        const f=Math.min(1,phase-1);
+        this.ar(ctx,cx,cy,cx+step*Math.min(1,f*2),cy,'#4aa8ff',3);
+        if(f>.5){
+          const f2=(f-.5)*2;
+          this.ar(ctx,cx+step,cy,cx+step+skew*f2,cy-step*f2,'#3dc9b0',3);
+          if(f>=1){
+            ctx.beginPath();ctx.arc(cx+step+skew,cy-step,9,0,Math.PI*2);ctx.fillStyle='#3dc9b0';ctx.fill();
+            ctx.fillStyle='#3dc9b0';ctx.font='22px Crimson Text,serif';ctx.textAlign='left';
+            ctx.fillText('XY',cx+step+skew+12,cy-step+6);
+          }
+        }
+      }
+      // Path 2: Y then X
+      if(phase>2){
+        const f=Math.min(1,phase-2);
+        this.ar(ctx,cx,cy,cx,cy-step*Math.min(1,f*2),'#3dc9b066',2.5);
+        if(f>.5){
+          const f2=(f-.5)*2;
+          this.ar(ctx,cx,cy-step,cx+step*f2,cy-step,'#4aa8ff66',2.5);
+          if(f>=1){
+            ctx.beginPath();ctx.arc(cx+step,cy-step,9,0,Math.PI*2);ctx.fillStyle='#4aa8ff88';ctx.fill();
+            ctx.fillStyle='#4aa8ff88';ctx.font='22px Crimson Text,serif';ctx.textAlign='left';
+            ctx.fillText('YX',cx+step+12,cy-step-14);
+          }
+        }
+      }
+      // Gap = [X,Y]
+      if(phase>3){
+        const f=Math.min(1,phase-3);
+        const pulse=.65+.35*Math.sin(t*3);
+        ctx.globalAlpha=f;
+        this.ar(ctx,cx+step,cy-step,cx+step+skew,cy-step,`rgba(255,208,96,${pulse})`,4.5);
+        ctx.fillStyle=`rgba(255,208,96,${pulse})`;ctx.font='bold 26px Crimson Text,serif';ctx.textAlign='center';
+        ctx.fillText('[X,Y]',cx+step+skew/2,cy-step-18);
+        ctx.globalAlpha=1;
+      }
+      // axis labels
+      ctx.fillStyle='#4aa8ff88';ctx.font='19px Crimson Text,serif';ctx.textAlign='center';
+      ctx.fillText('→ X',cx+step/2,cy+28);
+      ctx.save();ctx.translate(cx-28,cy-step/2);ctx.rotate(-Math.PI/2);
+      ctx.fillStyle='#3dc9b088';ctx.fillText('↑ Y',0,0);ctx.restore();
+      requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
