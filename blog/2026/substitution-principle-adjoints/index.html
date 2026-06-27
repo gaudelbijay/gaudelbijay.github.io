@@ -360,6 +360,55 @@ canvas.vis{display:block;width:100%;border-radius:16px;background:#d9cbb5;margin
   <p style="font-size:30px;color:#7777aa;font-style:italic;line-height:1.7;">"The Substitution Principle is not a technical lemma.<br>It is a change in what a <em>function</em> is."</p>
 </div>
 
+<div class="divider"></div>
+
+<!-- §12 ROSSMANN SELECTED PROBLEMS -->
+<section style="margin-top:74px;">
+  <h2 class="sec">Selected Rossmann Problems</h2>
+  <div class="rule" style="background:#3dc9b0;"></div>
+  <p class="lead">These are the Rossmann exercises that best match the logic of this post: power series as recipes, finite-dimensional reduction, brackets, and the passage from infinitesimal adjoint action to finite conjugation.</p>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.1 · 6 — Exponential of the derivative operator</summary>
+    <p class="body" style="margin-top:16px;">Question: Let E be the space of polynomials of degree at most n - 1, and let D = d/dξ. Show that exp(τD)f(ξ) = f(ξ + τ).</p>
+    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> Substitute the operator D into the exponential series. Since D^k f is the kth derivative,</p>
+    <span class="mjd" data-t="\exp(\tau D)f=\sum_{k\ge0}\frac{\tau^k}{k!}D^k f" style="font-size:1.05em;"></span>
+    <p class="body">This is exactly Taylor's formula for shifting the input by τ. The exercise is a clean model of the Substitution Principle: the same exponential recipe that eats a number can eat a differential operator.</p>
+  </details>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.2 · 1 — Nilpotent to unipotent</summary>
+    <p class="body" style="margin-top:16px;">Question: Show that X ↦ exp X maps nilpotent matrices bijectively onto unipotent matrices, with inverse a ↦ log a.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> If X is nilpotent, the exponential series terminates, so exp X = I + nilpotent terms and is unipotent. Conversely, if a = I + N with N nilpotent, then log a = log(I + N) is also a finite polynomial in N.</p>
+    <span class="mjd" data-t="\log(I+N)=N-\frac{N^2}{2}+\frac{N^3}{3}-\cdots" style="font-size:1.05em;"></span>
+    <p class="body">The exponential and logarithm series are inverse formal recipes, and nilpotence makes both recipes finite.</p>
+  </details>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.2 · 6 — Cayley-Hamilton reduction</summary>
+    <p class="body" style="margin-top:16px;">Question: Use the Cayley-Hamilton theorem to show that a matrix power series f(X) can be represented by a polynomial in X of degree less than n.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> Cayley-Hamilton says X satisfies its characteristic polynomial. Therefore every high power X^m can be reduced to a linear combination of I, X, ..., X^(n-1). After the series f(X) is defined by convergence, its value can be rewritten as</p>
+    <span class="mjd" data-t="f(X)=c_0I+c_1X+\cdots+c_{n-1}X^{n-1}" style="font-size:1.05em;"></span>
+    <p class="body">This does not create convergence by itself; it explains why finite-dimensional matrix functions can often be compressed after they are defined.</p>
+  </details>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.2 · 8 — Jacobi identity and derivations</summary>
+    <p class="body" style="margin-top:16px;">Question: Prove the Jacobi identity and deduce that ad(Z) acts as a derivation of the bracket.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> Expand each commutator using [X,Y] = XY - YX. Every triple product appears once with a plus sign and once with a minus sign, so the cyclic sum is zero.</p>
+    <span class="mjd" data-t="[[X,Y],Z]+[[Z,X],Y]+[[Y,Z],X]=0" style="font-size:1.05em;"></span>
+    <p class="body">Rearranging the same identity gives the derivation rule ad_Z([X,Y]) = [ad_Z X,Y] + [X,ad_Z Y]. This is why the bracket behaves like a lawful infinitesimal product.</p>
+  </details>
+
+  <details style="border:1px solid #314f36;background:#0d2311;border-radius:12px;padding:20px 24px;margin:18px 0;color:#d8cdb8;">
+    <summary style="cursor:pointer;color:#f2ead9;font-size:23px;font-weight:600;">§1.2 · 12 — Invariance under adjoint action</summary>
+    <p class="body" style="margin-top:16px;">Question: If [X,L] is contained in L for a subspace L, show that exp(τX)L exp(-τX) is contained in L.</p>
+    <p class="body"><strong style="color:#3dc9b0;">Answer.</strong> For Y in L, conjugate it along the one-parameter group:</p>
+    <span class="mjd" data-t="F(\tau)=\exp(\tau X)Y\exp(-\tau X)" style="font-size:1.05em;"></span>
+    <p class="body">Then F'(τ) = [X,F(τ)]. Since the bracket with X keeps vectors inside L, the solution starting in L stays in L. Equivalently, F(τ) = exp(τ ad_X)Y, and the exponential of ad_X is built from repeated brackets that remain in L.</p>
+  </details>
+</section>
+
 </div><!-- end .art -->
 </div><!-- end page -->
 </x-dc>
