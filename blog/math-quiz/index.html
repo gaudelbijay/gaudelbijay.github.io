@@ -36,6 +36,11 @@
     h2 { margin:0 0 10px; font-size:clamp(1.7rem,4vw,2.5rem); line-height:1.08; }
     .section-note { max-width:800px; margin:0 0 20px; color:var(--muted); }
     .post-links { margin:16px 0 24px; }
+    .score-panel { display:flex; flex-wrap:wrap; align-items:center; gap:10px 12px; margin:0 0 24px; padding:12px; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    .score-panel button { min-height:38px; padding:8px 12px; border:1px solid var(--accent); border-radius:8px; background:var(--accent); color:#fffaf0; font:700 13px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.03em; cursor:pointer; }
+    .score-panel button:hover { filter:brightness(.96); }
+    .score-panel output { color:var(--ink); font-weight:700; }
+    .score-panel span { color:var(--muted); }
     .question-list { display:grid; gap:14px; }
     .question { border:1px solid var(--line); border-radius:8px; background:var(--card); padding:18px; }
     .question h3 { margin:0 0 14px; font-size:1.05rem; line-height:1.4; }
@@ -69,6 +74,11 @@
       <a href="/blog/2026/substitution-principle-adjoints/">Back to The Substitution Principle</a>
       <a href="/blog/2026/the-exponential-map/">The Exponential Map</a>
       <a href="/blog/2025/linear-algebra-study-guide/">Linear Algebra Study Guide</a>
+    </div>
+    <div class="score-panel">
+      <button type="button" data-score-section="substitution">Check Substitution Score</button>
+      <output id="substitution-score">0 correct out of 0 attempts</output>
+      <span>Attempts count only questions where one option is selected.</span>
     </div>
     <div class="question-list">
       <article class="question" id="substitution-q1">
@@ -1315,6 +1325,11 @@
       <a href="/blog/2026/the-exponential-map/">Back to The Exponential Map</a>
       <a href="/blog/2026/substitution-principle-adjoints/">The Substitution Principle</a>
       <a href="/blog/2025/linear-algebra-study-guide/">Linear Algebra Study Guide</a>
+    </div>
+    <div class="score-panel">
+      <button type="button" data-score-section="exponential">Check Exponential Score</button>
+      <output id="exponential-score">0 correct out of 0 attempts</output>
+      <span>Attempts count only questions where one option is selected.</span>
     </div>
     <div class="question-list">
       <article class="question" id="exponential-q1">
@@ -2578,6 +2593,11 @@
       <a href="/blog/2026/substitution-principle-adjoints/">The Substitution Principle</a>
       <a href="/blog/2026/the-exponential-map/">The Exponential Map</a>
     </div>
+    <div class="score-panel">
+      <button type="button" data-score-section="linear">Check Linear Algebra Score</button>
+      <output id="linear-score">0 correct out of 0 attempts</output>
+      <span>Attempts count only questions where one option is selected.</span>
+    </div>
     <div class="question-list">
       <article class="question" id="linear-q1">
         <h3>101. What is the clearest conceptual definition of a matrix in linear algebra?</h3>
@@ -3816,5 +3836,25 @@
     </div>
   </section>
 </main>
+<script>
+  document.querySelectorAll('[data-score-section]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const section = document.getElementById(button.dataset.scoreSection);
+      const output = document.getElementById(`${button.dataset.scoreSection}-score`);
+      if (!section || !output) return;
+
+      let attempts = 0;
+      let correct = 0;
+      section.querySelectorAll('.question').forEach((question) => {
+        const checked = question.querySelector('input[type="radio"]:checked');
+        if (!checked) return;
+        attempts += 1;
+        if (checked.parentElement.querySelector('.feedback.correct')) correct += 1;
+      });
+
+      output.textContent = `${correct} correct out of ${attempts} attempts`;
+    });
+  });
+</script>
 </body>
 </html>
