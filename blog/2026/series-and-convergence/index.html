@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"},startup:{typeset:false}};</script>
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]],processEscapes:true},svg:{fontCache:"global"}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#2B241C;color:#E9DDC9;font-family:"DM Sans",system-ui,sans-serif;overflow-x:hidden}::-webkit-scrollbar{width:4px;background:#2B241C}::-webkit-scrollbar-thumb{background:#6A5440;border-radius:2px}#nav a:hover{color:#5FB8B2!important}#doc,section[data-rv]{display:block!important;visibility:visible!important;opacity:1!important;transform:none!important}#doc{position:relative;z-index:1;min-height:100vh}.reader-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:30px 0 4px}.reader-map-card{background:#332A20;border:1px solid #5A4734;border-left:3px solid #C47A4B;border-radius:8px;padding:16px 18px;color:#D6C2A6;line-height:1.58}.reader-map-card strong{display:block;color:#FFF1D4;font-family:"Crimson Pro",serif;font-size:1.12rem;margin-bottom:6px}.reader-map-card code{color:#E0B84B;background:#211B14;border-radius:4px;padding:1px 4px}@media(max-width:800px){#nav{display:none!important}#doc{margin-left:0!important;padding:28px 18px!important}}@media(max-width:620px){#doc [style*="grid-template-columns:1fr 1fr 1fr"],#doc [style*="grid-template-columns:1fr 1fr"],.reader-map{grid-template-columns:1fr!important}}
@@ -267,20 +267,20 @@ const SeriesPage = {
     setTimeout(() => { this._rev(); this._nav(); this._anims(); }, 60);
     const go = () => { if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise(); else setTimeout(go, 350); };
     setTimeout(go, 400);
-  }
+  },
   _rev() {
     const io = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; io.unobserve(e.target); }
     }), { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('[data-rv]').forEach(el => io.observe(el));
-  }
+  },
   _nav() {
     const io = new IntersectionObserver(es => es.forEach(e => {
       const n = document.getElementById('na' + e.target.id.slice(1));
       if (n) n.style.color = e.isIntersecting ? '#5FB8B2' : '#B99B78';
     }), { threshold: 0.25 });
     for (let i = 1; 16 > i; i++) { const s = document.getElementById('t'+i); if (s) io.observe(s); }
-  }
+  },
   _gc(id) {
     const c = document.getElementById(id); if (!c) return null;
     const r = c.getBoundingClientRect(), w = Math.round(r.width)||600, h = Math.round(r.height)||200;
@@ -288,7 +288,7 @@ const SeriesPage = {
     c.width = w*dpr; c.height = h*dpr;
     const ctx = c.getContext('2d'); ctx.scale(dpr, dpr);
     return {ctx, w, h};
-  }
+  },
   _sa(id, fn) {
     const canvas = document.getElementById(id); if (!canvas) return;
     const c = this._gc(id); if (!c) return;
@@ -299,7 +299,7 @@ const SeriesPage = {
       else if (!e.isIntersecting && af) { cancelAnimationFrame(af); af = null; }
     }), { threshold: 0.1 });
     io.observe(canvas);
-  }
+  },
   _anims() {
     // Walker
     this._sa('v1', (ctx, w, h, t) => {
@@ -445,7 +445,7 @@ const SeriesPage = {
       ctx.fillStyle='#C47A4B'; ctx.fillText('sin h = '+sinT.toFixed(3),ix,cy-8);
       ctx.fillStyle='#E0B84B'; ctx.fillText('h = '+(((theta%(2*Math.PI))+2*Math.PI)%(2*Math.PI)).toFixed(2),ix,cy+16);
     });
-  }
+  },
   renderVals() { return {}; }
 
 };
