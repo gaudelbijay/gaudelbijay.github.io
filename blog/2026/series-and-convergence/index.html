@@ -10,7 +10,7 @@
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"},startup:{typeset:false}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#2B241C;color:#E9DDC9;font-family:"DM Sans",system-ui,sans-serif;overflow-x:hidden}::-webkit-scrollbar{width:4px;background:#2B241C}::-webkit-scrollbar-thumb{background:#6A5440;border-radius:2px}#nav a:hover{color:#5FB8B2!important}@media(max-width:800px){#nav{display:none!important}#doc{margin-left:0!important;padding:28px 18px!important}}@media(max-width:620px){#doc [style*="grid-template-columns:1fr 1fr 1fr"],#doc [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#2B241C;color:#E9DDC9;font-family:"DM Sans",system-ui,sans-serif;overflow-x:hidden}::-webkit-scrollbar{width:4px;background:#2B241C}::-webkit-scrollbar-thumb{background:#6A5440;border-radius:2px}#nav a:hover{color:#5FB8B2!important}#doc,section[data-rv]{display:block!important;visibility:visible!important;opacity:1!important;transform:none!important}#doc{position:relative;z-index:1;min-height:100vh}.reader-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:30px 0 4px}.reader-map-card{background:#332A20;border:1px solid #5A4734;border-left:3px solid #C47A4B;border-radius:8px;padding:16px 18px;color:#D6C2A6;line-height:1.58}.reader-map-card strong{display:block;color:#FFF1D4;font-family:"Crimson Pro",serif;font-size:1.12rem;margin-bottom:6px}.reader-map-card code{color:#E0B84B;background:#211B14;border-radius:4px;padding:1px 4px}@media(max-width:800px){#nav{display:none!important}#doc{margin-left:0!important;padding:28px 18px!important}}@media(max-width:620px){#doc [style*="grid-template-columns:1fr 1fr 1fr"],#doc [style*="grid-template-columns:1fr 1fr"],.reader-map{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body>
@@ -44,6 +44,12 @@
   <div style="font-family:'DM Mono',monospace;font-size:9px;color:#7A6047;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;">Mathematical Analysis</div>
   <h1 style="font-family:'Crimson Pro',serif;font-size:2.8rem;font-weight:700;color:#FFF4DC;line-height:1.0;margin-bottom:12px;">Series &amp; Convergence</h1>
   <p style="color:#C6AD8E;font-size:.95rem;max-width:58ch;line-height:1.72;font-weight:300;">From partial sums to matrix Lie groups — every concept with live visualizations and geometric intuition.</p>
+  <div class="reader-map" aria-label="Reader map">
+    <div class="reader-map-card"><strong>Series are limits of partial sums.</strong>A sequence asks what happens to individual terms. A series asks whether the accumulated totals <code>S_N</code> settle to a finite value.</div>
+    <div class="reader-map-card"><strong>Convergence is eventually-stable behavior.</strong>The important condition is not touching the limit once, but staying inside every tolerance band after some sufficiently large index.</div>
+    <div class="reader-map-card"><strong>Power series have domains.</strong>A formula such as <code>1/(1-x)=1+x+x^2+...</code> is true only inside its radius of convergence; boundary points require separate tests.</div>
+    <div class="reader-map-card"><strong>Matrix series create geometry.</strong>The same factorial control that makes <code>e^x</code> converge globally lets <code>e^A</code> turn infinitesimal generators into finite transformations.</div>
+  </div>
 </div>
 
 <!-- §1 -->
