@@ -1491,12 +1491,16 @@ figure svg{max-width:100%;height:auto}
     if (typeof renderMathInElement !== 'undefined') {
         renderMathInElement(document.body, {
           delimiters: [
+          { left: '$$', right: '$$', display: true },
           { left: '\\[', right: '\\]', display: true },
+          { left: '$', right: '$', display: false },
           { left: '\\(', right: '\\)', display: false }
         ],
         throwOnError: false,
         trust: true,
-        strict: false
+        strict: false,
+        ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'canvas'],
+        ignoredClasses: ['katex']
       });
     } else {
       setTimeout(tryRender, 200);

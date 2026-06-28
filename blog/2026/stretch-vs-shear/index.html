@@ -531,7 +531,7 @@ class Component extends DCLogic {
     const go = () => {
       const root = document.getElementById('doc');
       if (window.renderMathInElement && root) {
-        try { window.renderMathInElement(root, { delimiters: [{ left: '$$', right: '$$', display: true }, { left: '$', right: '$', display: false }], throwOnError: false, ignoredTags: ['script','noscript','style','textarea','pre','code'] }); } catch(e) {}
+        try { window.renderMathInElement(root, { delimiters: [{ left: '$$', right: '$$', display: true }, { left: '\\[', right: '\\]', display: true }, { left: '$', right: '$', display: false }, { left: '\\(', right: '\\)', display: false }], throwOnError: false, ignoredTags: ['script','noscript','style','textarea','pre','code','canvas'], ignoredClasses: ['katex'] }); } catch(e) {}
         setTimeout(() => this._drawCanvases(), 50);
         return;
       }
