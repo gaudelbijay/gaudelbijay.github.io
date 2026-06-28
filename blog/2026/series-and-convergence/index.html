@@ -10,49 +10,10 @@
 <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]],processEscapes:true},svg:{fontCache:"global"}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:#ECE3D0;color:#2A241E;font-family:"Crimson Pro",Georgia,serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 0%,rgba(255,249,236,.72),rgba(236,227,208,0) 42%),linear-gradient(90deg,rgba(112,86,52,.035),transparent 20%,transparent 80%,rgba(112,86,52,.035));z-index:-1}
-::-webkit-scrollbar{width:8px;background:#E4D8BF}
-::-webkit-scrollbar-thumb{background:#C8B895;border-radius:999px}
-#nav{display:none!important}
-#doc{position:relative;z-index:1;min-height:100vh;margin:0 auto!important;padding:48px 24px 96px!important;max-width:980px!important}
-#doc,section[data-rv]{display:block!important;visibility:visible!important;opacity:1!important;transform:none!important}
-.series-hero{text-align:center;max-width:760px;margin:0 auto 44px;padding-top:8px}
-.series-kicker{font-family:"DM Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#B8552F;font-weight:700;margin-bottom:18px}
-.series-hero h1{font-family:"Crimson Pro",Georgia,serif!important;font-size:clamp(3.1rem,6.8vw,5rem)!important;line-height:.96!important;font-weight:700!important;color:#2A241E!important;letter-spacing:0!important;margin:0 auto 24px!important;max-width:720px}
-.series-hero h1 span{color:#B8552F}
-.series-deck{font-family:"Crimson Pro",Georgia,serif!important;font-size:clamp(1.2rem,2.2vw,1.65rem)!important;line-height:1.48!important;font-style:italic;color:#786D5B!important;max-width:720px;margin:0 auto 30px!important}
-.series-meta{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;font-family:"DM Mono",ui-monospace,monospace;color:#9A8D77;font-size:12px;font-weight:700;letter-spacing:.035em}
-.series-meta a{color:#B8552F;text-decoration:underline;text-underline-offset:4px}
-.reader-map{display:block!important;margin:0 auto 52px!important;max-width:860px;background:rgba(238,229,209,.72)!important;border:1px solid #CDBF9F!important;border-radius:8px!important;box-shadow:0 18px 42px rgba(68,50,27,.07);padding:24px 26px!important;color:#2A241E!important;line-height:1.58!important}
-.reader-map:before{content:"Connected Reading Path";display:block;font-family:"DM Mono",ui-monospace,monospace;text-transform:uppercase;letter-spacing:.2em;font-size:11px;font-weight:700;color:#9D6B3A;margin-bottom:14px}
-.reader-map-card{display:block!important;background:transparent!important;border:0!important;border-radius:0!important;padding:0!important;color:#2E2921!important;font-size:1.02rem!important;line-height:1.55!important;margin:0 0 11px!important}
-.reader-map-card strong{display:inline!important;color:#2A241E!important;font-family:"Crimson Pro",Georgia,serif!important;font-size:1.12rem!important;margin:0!important}
-.reader-map-card code{color:#8E532C!important;background:#EFE5CF!important;border:1px solid #D2C09E;border-radius:5px;padding:1px 5px}
-.reader-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.reader-links a{display:inline-flex;align-items:center;min-height:38px;border:1px solid #BFAA86;border-radius:7px;padding:8px 12px;color:#2A241E;text-decoration:none;background:rgba(255,249,235,.28);font-size:.96rem}
-.reader-links a:hover{border-color:#B8552F;color:#B8552F}
-section[data-rv]{max-width:800px;margin:0 auto!important;padding:48px 0!important;border-bottom:1px solid #D7C9AB!important}
-section[data-rv] h2{font-family:"Crimson Pro",Georgia,serif!important;font-size:clamp(1.75rem,3vw,2.35rem)!important;line-height:1.12!important;color:#2A241E!important;text-align:left;margin:0 0 16px!important}
-section[data-rv] p{font-family:"Crimson Pro",Georgia,serif!important;color:#4D4437!important;font-size:1.08rem!important;line-height:1.68!important;max-width:720px!important;text-align:left;margin:0 0 18px!important}
-section[data-rv] figcaption{color:#857762!important;font-size:.9rem!important;text-align:left!important;line-height:1.5!important}
-section[data-rv] canvas{background:#2B241C!important;border:1px solid #BFAA86!important;box-shadow:0 18px 45px rgba(63,43,20,.13)}
-section[data-rv] svg{background:rgba(245,237,220,.45);border:1px solid #D6C6A7;border-radius:8px;padding:10px}
-#doc div[style*="background:#211B14"],#doc div[style*="background:#332A20"],#doc div[style*="background:#2A231B"]{background:#F4EBD8!important;border-color:#CDBF9F!important;color:#3B3329!important}
-#doc div[style*="border-left:3px"]{border-left-color:#B8552F!important;border-radius:0 7px 7px 0!important}
-#doc div[style*="border-top:2px"]{border-top-color:#B8552F!important}
-#doc div[style*="grid-template-columns"]{gap:14px!important}
-#doc div,#doc strong,#doc em{color:inherit}
-#doc strong{color:#2A241E!important}
-#doc [style*="color:#FFF"],#doc [style*="color:#E1"],#doc [style*="color:#D6"],#doc [style*="color:#C6"],#doc [style*="color:#B7"],#doc [style*="color:#A9"]{color:#3F372C!important}
-#doc [style*="color:#5FB8B2"],#doc [style*="color:#8DBB74"],#doc [style*="color:#E0B84B"],#doc [style*="color:#C47A4B"],#doc [style*="color:#D96C4E"],#doc [style*="color:#D88A45"]{color:#B8552F!important}
-.MathJax,.mjx-container{color:#2A241E!important}
-@media(max-width:760px){#doc{padding:34px 18px 76px!important}.series-hero{margin-bottom:36px}.series-kicker{letter-spacing:.24em}.series-meta{gap:10px;font-size:11px}.reader-map{padding:20px 18px!important}.reader-links a{width:100%;justify-content:center}section[data-rv]{padding:40px 0!important}#doc [style*="grid-template-columns:1fr 1fr 1fr"],#doc [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#2B241C;color:#E9DDC9;font-family:"DM Sans",system-ui,sans-serif;overflow-x:hidden}::-webkit-scrollbar{width:4px;background:#2B241C}::-webkit-scrollbar-thumb{background:#6A5440;border-radius:2px}#nav a:hover{color:#5FB8B2!important}#doc,section[data-rv]{display:block!important;visibility:visible!important;opacity:1!important;transform:none!important}#doc{position:relative;z-index:1;min-height:100vh}.reader-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:30px 0 4px}.reader-map-card{background:#332A20;border:1px solid #5A4734;border-left:3px solid #C47A4B;border-radius:8px;padding:16px 18px;color:#D6C2A6;line-height:1.58}.reader-map-card strong{display:block;color:#FFF1D4;font-family:"Crimson Pro",serif;font-size:1.12rem;margin-bottom:6px}.reader-map-card code{color:#E0B84B;background:#211B14;border-radius:4px;padding:1px 4px}@media(max-width:800px){#nav{display:none!important}#doc{margin-left:0!important;padding:28px 18px!important}}@media(max-width:620px){#doc [style*="grid-template-columns:1fr 1fr 1fr"],#doc [style*="grid-template-columns:1fr 1fr"],.reader-map{grid-template-columns:1fr!important}}
 </style>
 </head>
-<body class="series-manuscript">
+<body>
 <nav id="nav" style="position:fixed;left:0;top:0;width:178px;height:100vh;background:#241E17;border-right:1px solid #4A3C2D;overflow-y:auto;z-index:100;padding:18px 0;">
   <div style="padding:0 14px 14px;border-bottom:1px solid #4A3C2D;margin-bottom:6px;">
     <div style="font-family:'DM Mono',monospace;font-size:8px;color:#7A6047;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Series Theory</div>
@@ -79,30 +40,17 @@ section[data-rv] svg{background:rgba(245,237,220,.45);border:1px solid #D6C6A7;b
 
 <div id="doc" style="margin-left:178px;padding:48px 68px 100px;max-width:900px;">
 
-<header class="series-hero">
-  <div class="series-kicker">From sums to motion</div>
-  <h1>Series <span>&amp;</span><br>Convergence</h1>
-  <p class="series-deck">A built-from-the-ground tour: what an infinite sum really means, why convergence is a statement about partial sums, and how power series become the exponential machinery behind motion.</p>
-  <div class="series-meta">
-    <span>analysis notes</span>
-    <span>•</span>
-    <span>a study, rebuilt for flow</span>
-    <span>•</span>
-    <a href="#cmap">follow the map →</a>
-  </div>
-</header>
-
+<div style="padding-bottom:36px;border-bottom:1px solid #4A3C2D;">
+  <div style="font-family:'DM Mono',monospace;font-size:9px;color:#7A6047;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;">Mathematical Analysis</div>
+  <h1 style="font-family:'Crimson Pro',serif;font-size:2.8rem;font-weight:700;color:#FFF4DC;line-height:1.0;margin-bottom:12px;">Series &amp; Convergence</h1>
+  <p style="color:#C6AD8E;font-size:.95rem;max-width:58ch;line-height:1.72;font-weight:300;">From partial sums to matrix Lie groups — every concept with live visualizations and geometric intuition.</p>
   <div class="reader-map" aria-label="Reader map">
     <div class="reader-map-card"><strong>Series are limits of partial sums.</strong>A sequence asks what happens to individual terms. A series asks whether the accumulated totals <code>S_N</code> settle to a finite value.</div>
     <div class="reader-map-card"><strong>Convergence is eventually-stable behavior.</strong>The important condition is not touching the limit once, but staying inside every tolerance band after some sufficiently large index.</div>
     <div class="reader-map-card"><strong>Power series have domains.</strong>A formula such as <code>1/(1-x)=1+x+x^2+...</code> is true only inside its radius of convergence; boundary points require separate tests.</div>
     <div class="reader-map-card"><strong>Matrix series create geometry.</strong>The same factorial control that makes <code>e^x</code> converge globally lets <code>e^A</code> turn infinitesimal generators into finite transformations.</div>
-    <div class="reader-links">
-      <a href="/blog/2025/linear-algebra-study-guide/">Linear Algebra Study Guide</a>
-      <a href="/blog/2026/the-exponential-map/">The Exponential Map</a>
-      <a href="/blog/2026/substitution-principle-adjoints/">The Substitution Principle</a>
-    </div>
   </div>
+</div>
 
 <!-- §1 -->
 <section id="t1" data-screen-label="§1 Sequence vs Series" data-rv="1" style="padding:52px 0;border-bottom:1px solid #4A3C2D;">
