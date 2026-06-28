@@ -191,6 +191,33 @@ nav_order: 6
     transform-origin: center;
   }
 
+  .series-bar-a,
+  .series-bar-b,
+  .series-bar-c,
+  .series-bar-d {
+    animation: series-fill 4.6s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: left center;
+  }
+
+  .series-bar-b {
+    animation-delay: 0.24s;
+  }
+
+  .series-bar-c {
+    animation-delay: 0.48s;
+  }
+
+  .series-bar-d {
+    animation-delay: 0.72s;
+  }
+
+  .series-dot {
+    animation: series-dot 4.6s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
   @keyframes cone-spin {
     from {
       transform: rotate(0deg);
@@ -300,6 +327,36 @@ nav_order: 6
     }
   }
 
+  @keyframes series-fill {
+    0%,
+    12% {
+      transform: scaleX(0.08);
+      opacity: 0.35;
+    }
+    42%,
+    82% {
+      transform: scaleX(1);
+      opacity: 0.95;
+    }
+    100% {
+      transform: scaleX(0.08);
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes series-dot {
+    0%,
+    100% {
+      transform: translateX(-52px);
+      opacity: 0.35;
+    }
+    48%,
+    78% {
+      transform: translateX(34px);
+      opacity: 1;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cone-ring,
     .cone-shadow,
@@ -310,7 +367,12 @@ nav_order: 6
     .recipe-flow-a,
     .recipe-flow-b,
     .recipe-flow-c,
-    .recipe-core {
+    .recipe-core,
+    .series-bar-a,
+    .series-bar-b,
+    .series-bar-c,
+    .series-bar-d,
+    .series-dot {
       animation: none;
     }
   }
@@ -367,6 +429,36 @@ nav_order: 6
         <text x="211" y="68" fill="#3a6fa8" font-size="15" font-family="serif">eˣ</text>
         <text x="211" y="108" fill="#b8552f" font-size="15" font-family="serif">exp X</text>
         <text x="211" y="151" fill="#4a8c5c" font-size="15" font-family="serif">Ad</text>
+      </svg>
+    </div>
+  </a>
+
+  <a class="blog-card" href="{{ '/blog/2026/series-and-convergence/' | relative_url }}">
+    <div class="blog-card-body">
+      <div class="blog-card-date">Jun 28, 2026</div>
+      <h2 class="blog-card-title">Series &amp; Convergence</h2>
+      <p class="blog-card-summary">A visual path from partial sums and convergence tests to Taylor series, matrix exponentials, logarithms, and BCH corrections.</p>
+    </div>
+    <div class="blog-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <linearGradient id="seriesGlow" x1="36" y1="42" x2="190" y2="160" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#58c4e4" stop-opacity="0.26"></stop>
+            <stop offset="0.55" stop-color="#c080f0" stop-opacity="0.18"></stop>
+            <stop offset="1" stop-color="#e8d84b" stop-opacity="0.2"></stop>
+          </linearGradient>
+        </defs>
+        <rect x="34" y="38" width="172" height="134" rx="8" fill="url(#seriesGlow)" stroke="#58c4e4" stroke-opacity="0.45" stroke-width="3"></rect>
+        <text x="62" y="76" fill="#2a241e" font-size="31" font-family="serif">Σ</text>
+        <text x="95" y="73" fill="#2a241e" font-size="15" font-family="serif">aₙ</text>
+        <line x1="62" y1="102" x2="182" y2="102" stroke="#2a241e" stroke-opacity="0.24" stroke-width="2"></line>
+        <rect class="series-bar-a" x="62" y="95" width="58" height="14" rx="7" fill="#58c4e4" fill-opacity="0.88"></rect>
+        <rect class="series-bar-b" x="62" y="118" width="42" height="12" rx="6" fill="#68e090" fill-opacity="0.82"></rect>
+        <rect class="series-bar-c" x="62" y="139" width="30" height="10" rx="5" fill="#e8d84b" fill-opacity="0.82"></rect>
+        <rect class="series-bar-d" x="62" y="157" width="21" height="8" rx="4" fill="#c080f0" fill-opacity="0.86"></rect>
+        <line x1="176" y1="86" x2="176" y2="168" stroke="#b8552f" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 7"></line>
+        <circle class="series-dot" cx="142" cy="102" r="7" fill="#b8552f"></circle>
+        <text x="156" y="125" fill="#2a241e" font-size="15" font-family="serif">Sₙ → S</text>
       </svg>
     </div>
   </a>
