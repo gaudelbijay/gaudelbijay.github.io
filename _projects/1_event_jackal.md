@@ -2,7 +2,7 @@
 layout: page
 title: Event-Camera Reinforcement Learning Navigation on Jackal
 description: Event-driven reinforcement learning for autonomous navigation with neuromorphic vision.
-img: assets/img/event_jackal_model.png
+img: assets/img/projects/event-jackal/model.png
 importance: 1
 category: work
 github: https://github.com/gaudelbijay/event_jackal
@@ -13,14 +13,14 @@ github: https://github.com/gaudelbijay/event_jackal
 <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: flex-start;">
   <div style="flex: 1 1 460px; min-width: 280px;">
     <img
-      src="{{ '/assets/img/event_jackal_model.png' | relative_url }}"
+      src="{{ '/assets/img/projects/event-jackal/model.png' | relative_url }}"
       alt="Model diagram"
       style="width: 100%; height: auto; border-radius: 8px;"
     />
   </div>
   <div style="flex: 1 1 460px; min-width: 280px;">
     <img
-      src="{{ '/assets/img/event_jackal_perception_model.png' | relative_url }}"
+      src="{{ '/assets/img/projects/event-jackal/perception-model.png' | relative_url }}"
       alt="Perception diagram"
       style="width: 100%; height: auto; border-radius: 8px;"
     />
@@ -121,7 +121,7 @@ python tester.py
 
 <div style="text-align: center; margin: 0.75rem 0;">
   <img
-    src="{{ '/assets/img/event_rl.gif' | relative_url }}"
+    src="{{ '/assets/img/projects/event-jackal/navigation-rollout.gif' | relative_url }}"
     alt="Event-camera reinforcement learning navigation rollout"
     style="width: 100%; max-width: 980px; height: auto; border-radius: 8px;"
   />
@@ -132,7 +132,7 @@ python tester.py
 
 <div style="text-align: center; margin: 0.75rem 0;">
   <img
-    src="{{ '/assets/img/event_jackal_training_metrics.png' | relative_url }}"
+    src="{{ '/assets/img/projects/event-jackal/training-metrics.png' | relative_url }}"
     alt="training-result"
     style="width: 100%; max-width: 980px; height: auto; border-radius: 8px;"
   />
@@ -140,7 +140,7 @@ python tester.py
 
 <div style="text-align: center; margin: 0.75rem 0;">
   <img
-    src="{{ '/assets/img/event_jackal_table.png' | relative_url }}"
+    src="{{ '/assets/img/projects/event-jackal/results-table.png' | relative_url }}"
     alt="test-table"
     style="width: 100%; max-width: 680px; height: auto; border-radius: 8px;"
   />
@@ -148,7 +148,7 @@ python tester.py
 
 <div style="text-align: center; margin: 0.75rem 0;">
   <img
-    src="{{ '/assets/img/event_jackal_vis.png' | relative_url }}"
+    src="{{ '/assets/img/projects/event-jackal/visualization.png' | relative_url }}"
     alt="vis"
     style="width: 100%; max-width: 980px; height: auto; border-radius: 8px;"
   />

@@ -6,7 +6,7 @@ subtitle: Ph.D. Researcher in Robotics at Stevens Institute of Technology
 
 profile:
   align: right
-  image: 4.jpg
+  image: me/me.JPG
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Bijay Gaudel</p>

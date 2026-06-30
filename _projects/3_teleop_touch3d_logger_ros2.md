@@ -2,7 +2,7 @@
 layout: page
 title: ROS 2 Haptic Teleoperation Data Logger for Manipulation Learning
 description: ROS 2 teleoperation and experiment logging stack for Geomagic Touch-based arm control.
-img: assets/img/teleop_haptic_frame.png
+img: assets/img/projects/teleop-touch3d/haptic-frame.png
 importance: 3
 category: work
 github: https://github.com/stevens-armlab/teleop_touch3d_logger_ros2
@@ -20,14 +20,14 @@ It is used to build labeled interaction datasets that feed downstream observer a
 
 ### Teleoperation Session Playback
 
-{% include figure.liquid path="assets/img/teleop.gif" title="Figure: Recorded ROS 2 haptic teleoperation session used for manipulation-learning data collection." class="img-fluid rounded z-depth-1" %}
+{% include figure.liquid path="assets/img/projects/teleop-touch3d/session-playback.gif" title="Figure: Recorded ROS 2 haptic teleoperation session used for manipulation-learning data collection." class="img-fluid rounded z-depth-1" %}
 
 ### Resolve-Rate Algorithm and Frame Mapping
 
 <div style="display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: flex-start;">
   <div style="flex: 1 1 460px; min-width: 300px; border: 1px solid rgba(127, 127, 127, 0.35); border-radius: 12px; padding: 0.9rem;">
     <img
-      src="{{ '/assets/img/teleop_resolve_rate.png' | relative_url }}"
+      src="{{ '/assets/img/projects/teleop-touch3d/resolve-rate.png' | relative_url }}"
       alt="Resolved-rate algorithm diagram"
       style="width: 100%; height: auto; border-radius: 8px;"
     />
@@ -45,7 +45,7 @@ It is used to build labeled interaction datasets that feed downstream observer a
     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
       <div style="flex: 1 1 220px; min-width: 200px; text-align: center;">
         <img
-          src="{{ '/assets/img/teleop_haptic_frame.png' | relative_url }}"
+          src="{{ '/assets/img/projects/teleop-touch3d/haptic-frame.png' | relative_url }}"
           alt="Haptic interaction frame"
           style="width: 100%; height: auto; border-radius: 8px;"
         />

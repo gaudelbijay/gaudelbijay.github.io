@@ -2,7 +2,7 @@
 layout: page
 title: Diffusion-Based Defense Against Adversarial Perception Attacks
 description: Adversarial image-attack detection and denoising with diffusion models and image-domain Fourier-transform frequency analysis.
-img: assets/img/img_attacked_at_itr_212.png
+img: assets/img/projects/diffusion-defender/attacked-iteration-212.png
 importance: 6
 category: work
 github: https://github.com/gaudelbijay/diffusion-defender
@@ -36,7 +36,7 @@ This video presents an online reinforcement learning experiment for continuous m
 <div style="display: flex; flex-wrap: wrap; gap: 0.9rem; align-items: flex-start;">
   <figure style="flex: 1 1 420px; min-width: 280px; margin: 0;">
     <img
-      src="{{ '/assets/img/img_attacked_at_itr_212.png' | relative_url }}"
+      src="{{ '/assets/img/projects/diffusion-defender/attacked-iteration-212.png' | relative_url }}"
       alt="Adversarially attacked image at iteration 212"
       style="width: 100%; height: auto; border-radius: 8px;"
     />
@@ -47,7 +47,7 @@ This video presents an online reinforcement learning experiment for continuous m
 
   <figure style="flex: 1 1 420px; min-width: 280px; margin: 0;">
     <img
-      src="{{ '/assets/img/denoised_iter_212_480.png' | relative_url }}"
+      src="{{ '/assets/img/projects/diffusion-defender/denoised-iteration-212.png' | relative_url }}"
       alt="Denoised output for attacked frame at iteration 212"
       style="width: 100%; height: auto; border-radius: 8px;"
     />
@@ -58,7 +58,7 @@ This video presents an online reinforcement learning experiment for continuous m
 
   <figure style="flex: 1 1 420px; min-width: 280px; margin: 0;">
     <img
-      src="{{ '/assets/img/confusion_matrix.png' | relative_url }}"
+      src="{{ '/assets/img/projects/diffusion-defender/confusion-matrix.png' | relative_url }}"
       alt="Confusion matrix in percent for non-attacked and attacked classification"
       style="width: 100%; height: auto; border-radius: 8px;"
     />
@@ -69,7 +69,7 @@ This video presents an online reinforcement learning experiment for continuous m
 
   <figure style="flex: 1 1 420px; min-width: 280px; margin: 0;">
     <img
-      src="{{ '/assets/img/magnitude_spectrum.png' | relative_url }}"
+      src="{{ '/assets/img/projects/diffusion-defender/magnitude-spectrum.png' | relative_url }}"
       alt="Averaged magnitude spectrum with detection threshold gamma"
       style="width: 100%; height: auto; border-radius: 8px;"
     />

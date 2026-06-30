@@ -2,7 +2,7 @@
 layout: page
 title: Real-Time Human Pose Refinement with EKF and Kinematic Constraints
 description: Real-time 2D pose refinement with EKF and skeleton constraints for ROS 2 pipelines.
-img: assets/img/pose_refiner_vit_ekf.png
+img: assets/img/projects/pose-refiner/vitpose-ekf.png
 importance: 5
 category: work
 github: https://github.com/stevens-armlab/pose_refiner
@@ -21,7 +21,7 @@ Core pipeline:
 <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: flex-start;">
   <div style="flex: 1 1 320px; min-width: 260px; text-align: center;">
     <img
-      src="{{ '/assets/img/pose_refiner_vit_raw.png' | relative_url }}"
+      src="{{ '/assets/img/projects/pose-refiner/vitpose-raw.png' | relative_url }}"
       alt="Human pose estimation during manipulation using ViTPose"
       style="width: 100%; height: auto; border-radius: 8px;"
     />
@@ -29,7 +29,7 @@ Core pipeline:
 
   <div style="flex: 1 1 320px; min-width: 260px; text-align: center;">
     <img
-      src="{{ '/assets/img/pose_refiner_vit_ekf.png' | relative_url }}"
+      src="{{ '/assets/img/projects/pose-refiner/vitpose-ekf.png' | relative_url }}"
       alt="Human pose estimation after correction using EKF"
       style="width: 100%; height: auto; border-radius: 8px;"
     />
