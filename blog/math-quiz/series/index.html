@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Series and Convergence Quiz</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root { --paper:#e9dfcc; --ink:#2f2a24; --muted:#716553; --line:#c8b99f; --accent:#8a5a32; --green:#416f4a; --red:#943a31; --card:rgba(255,255,255,.28); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.58; }
+    main { width:min(1040px, calc(100% - 32px)); margin:0 auto; padding:56px 0 80px; }
+    .eyebrow { color:var(--accent); font:700 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:12px 0; font-size:clamp(2.3rem,8vw,5rem); line-height:.95; letter-spacing:0; }
+    .lead { max-width:820px; margin:0 0 28px; color:var(--muted); font-size:1.16rem; }
+    nav,.post-links { display:flex; flex-wrap:wrap; gap:10px; }
+    nav { margin:28px 0 42px; }
+    nav a,.post-links a { display:inline-flex; align-items:center; min-height:38px; padding:8px 12px; color:var(--ink); text-decoration:none; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    nav a:hover,.post-links a:hover { border-color:var(--accent); color:var(--accent); }
+    .quiz-section { margin:54px 0; padding-top:10px; }
+    .section-heading span { display:block; margin-bottom:8px; color:var(--accent); font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h2 { margin:0 0 10px; font-size:clamp(1.7rem,4vw,2.5rem); line-height:1.08; }
+    .section-note { max-width:820px; margin:0 0 20px; color:var(--muted); }
+    .post-links { margin:16px 0 24px; }
+    .score-panel { display:flex; flex-wrap:wrap; align-items:center; gap:10px 12px; margin:0 0 24px; padding:12px; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    .score-panel button { min-height:38px; padding:8px 12px; border:1px solid var(--accent); border-radius:8px; background:var(--accent); color:#fffaf0; font:700 13px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.03em; cursor:pointer; }
+    .score-panel button:hover { filter:brightness(.96); }
+    .score-panel output { color:var(--ink); font-weight:700; }
+    .score-panel span { color:var(--muted); }
+    .question-list { display:grid; gap:14px; }
+    .question { border:1px solid var(--line); border-radius:8px; background:var(--card); padding:18px; }
+    .question h3 { margin:0 0 14px; font-size:1.05rem; line-height:1.4; }
+    fieldset { margin:0; padding:0; border:0; display:grid; gap:9px; }
+    .choice { display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; padding:11px 12px; border:1px solid rgba(200,185,159,.82); border-radius:8px; background:rgba(255,255,255,.24); cursor:pointer; }
+    .choice:hover { border-color:var(--accent); }
+    .choice input { margin-top:.3rem; }
+    .choice-text { min-width:0; }
+    .feedback { display:none; grid-column:2; margin-top:6px; padding:10px 12px; border-radius:7px; font-size:.96rem; }
+    .choice input:checked ~ .feedback { display:block; }
+    .feedback.correct { border-left:4px solid var(--green); background:rgba(79,122,87,.13); color:#31513a; }
+    .feedback.wrong { border-left:4px solid var(--red); background:rgba(155,63,52,.11); color:#6e3029; }
+    @media (max-width:640px) { main { width:min(100% - 22px,1040px); padding-top:38px; } .question { padding:14px; } .choice { grid-template-columns:1fr; gap:6px; } .choice input { margin:0; } .feedback { grid-column:1; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Series and Convergence quiz</div>
+  <h1>Series &amp; Convergence</h1>
+  <p class="lead">Choose an option to reveal feedback. These 50 questions are conceptual and technical: they test definitions, hidden hypotheses, convergence tests, endpoint behavior, Taylor logic, and why power series matter for the exponential map.</p>
+  <nav aria-label="Quiz pages">
+    <a href="/blog/math-quiz/">All quiz topics</a>
+    <a href="/blog/2026/series-and-convergence/">Back to related post</a>
+  </nav>
+
+  <section id="series" class="quiz-section">
+    <div class="section-heading"><span>50 questions</span><h2>Series and Convergence</h2></div>
+    <p class="section-note">A series is not merely an infinite expression: it is a limit of partial sums. Most wrong answers below confuse terms with totals, pointwise with uniform behavior, local Taylor data with global equality, or scalar convergence with operator convergence.</p>
+    <div class="post-links">
+      <a href="/blog/2026/series-and-convergence/">Back to Series &amp; Convergence</a>
+      <a href="/blog/2026/the-exponential-map/">The Exponential Map</a>
+      <a href="/blog/2026/rossmann-matrix-exponential-solutions/">Rossmann matrix exponential solutions</a>
+    </div>
+    <div class="score-panel">
+      <button type="button" data-score-section="series">Check Series Score</button>
+      <output id="series-score">0 correct out of 0 attempts</output>
+      <span>Attempts count only questions where one option is selected.</span>
+    </div>
+    <div class="question-list" id="series-questions"></div>
+  </section>
+</main>
+
+<script>
+  const raw = String.raw;
+  const questions = [
+    {
+      q: raw`What is the precise object whose convergence defines the series \(\sum_{n=1}^{\infty} a_n\)?`,
+      choices: [
+        raw`The sequence of terms \((a_n)\), because a series converges exactly when its displayed summands approach a number.`,
+        raw`The sequence of partial sums \(S_N=\sum_{n=1}^{N}a_n\), because the infinite series is defined as \(\lim_{N\to\infty}S_N\).`,
+        raw`The set of all finite rearrangements of the terms, because order is irrelevant for every convergent series.`,
+        raw`The formal symbol \(\sum a_n\), which has a value whenever the terms are written by a formula.`
+      ],
+      correct: 1,
+      why: raw`A series is a limit of partial sums. The terms may tend to zero while the accumulated totals fail to settle, as in the harmonic series.`
+    },
+    {
+      q: raw`The term test says: if \(\sum a_n\) converges, then \(a_n\to0\). Which inference is valid?`,
+      choices: [
+        raw`If \(a_n\to0\), then \(\sum a_n\) converges, because every step eventually becomes negligible.`,
+        raw`If \(a_n\not\to0\), then \(\sum a_n\) diverges, because partial sums cannot settle while the increments fail to vanish.`,
+        raw`If \(a_n\to0\), then \(\sum |a_n|\) converges, because signs no longer matter near zero.`,
+        raw`If \(\sum a_n\) diverges, then \(a_n\not\to0\), because divergence has only one possible cause.`
+      ],
+      correct: 1,
+      why: raw`The test is one-way. Nonzero limiting increments force divergence; zero increments are only a necessary condition, not a sufficient one.`
+    },
+    {
+      q: raw`Why does \(\sum_{n=1}^{\infty}1/n\) diverge despite \(1/n\to0\)?`,
+      choices: [
+        raw`Because the terms do not become small in the ordinary sense; \(1/n\) is bounded below by a positive constant.`,
+        raw`Because grouping dyadic blocks shows repeated contributions bounded below, so the partial sums keep gaining a fixed amount indefinitely.`,
+        raw`Because all positive-term series diverge unless their terms become exactly zero after finitely many steps.`,
+        raw`Because the sequence \(1/n\) oscillates between positive and negative values, preventing cancellation.`
+      ],
+      correct: 1,
+      why: raw`The dyadic block argument gives \((1/3+1/4)>1/2\), \((1/5+\cdots+1/8)>1/2\), and so on. Infinitely many fixed-size gains force divergence.`
+    },
+    {
+      q: raw`For a geometric series \(\sum_{n=0}^{\infty} ar^n\), what is the exact convergence condition?`,
+      choices: [
+        raw`It converges when \(|r|<1\), because \(r^{N+1}\to0\) in the finite partial-sum formula.`,
+        raw`It converges when \(r\le1\), because the ratio never exceeds the first term.`,
+        raw`It converges when \(a\) is small enough, because the first term controls the long-term tail.`,
+        raw`It converges whenever \(r^n\to0\) or \(r^n\) is bounded, because bounded terms are enough.`
+      ],
+      correct: 0,
+      why: raw`The closed form \(S_N=a(1-r^{N+1})/(1-r)\) has a limit exactly when \(r^{N+1}\to0\), i.e. \(|r|<1\).`
+    },
+    {
+      q: raw`What is the conceptual difference between a sequence and a series?`,
+      choices: [
+        raw`A sequence records terms; a series records accumulated partial sums built from those terms.`,
+        raw`A sequence is finite, while a series is infinite by definition.`,
+        raw`A sequence can converge only to zero; a series can converge to any real number.`,
+        raw`A sequence is arithmetic notation, while a series is geometric notation.`
+      ],
+      correct: 0,
+      why: raw`The same \(a_n\) can be studied as a list of steps or accumulated into \(S_N\). These are different questions.`
+    },
+    {
+      q: raw`What does the \(\varepsilon\)-definition of \(a_n\to L\) require?`,
+      choices: [
+        raw`For one sufficiently small tolerance, infinitely many terms must be close to \(L\).`,
+        raw`For every tolerance \(\varepsilon>0\), all terms after some index \(N\) must remain inside \(|a_n-L|<\varepsilon\).`,
+        raw`The terms must touch \(L\) exactly at least once and then may oscillate nearby.`,
+        raw`The average of the first \(N\) terms must approach \(L\), regardless of individual terms.`
+      ],
+      correct: 1,
+      why: raw`Convergence means eventual permanence inside every tolerance band, not occasional closeness.`
+    },
+    {
+      q: raw`Which statement best captures absolute versus conditional convergence?`,
+      choices: [
+        raw`Absolute convergence means \(\sum |a_n|\) converges; conditional convergence means \(\sum a_n\) converges but \(\sum |a_n|\) diverges.`,
+        raw`Absolute convergence means every term is positive; conditional convergence means terms alternate signs.`,
+        raw`Absolute convergence means the sum is independent of \(n\); conditional convergence means the sum depends on \(n\).`,
+        raw`Absolute convergence means the terms vanish monotonically; conditional convergence means they vanish irregularly.`
+      ],
+      correct: 0,
+      why: raw`Conditional convergence is genuine convergence created by cancellation without convergence of total magnitude.`
+    },
+    {
+      q: raw`Why is absolute convergence stronger than ordinary convergence?`,
+      choices: [
+        raw`Because \(\sum |a_n|\) convergent controls every possible cancellation-free tail, forcing \(\sum a_n\) to have Cauchy tails.`,
+        raw`Because absolute values make all terms larger, so a divergent absolute series proves the original series diverges.`,
+        raw`Because absolute convergence applies only to finite sums, where no limit is involved.`,
+        raw`Because absolute convergence requires all terms to be equal after some finite index.`
+      ],
+      correct: 0,
+      why: raw`If the positive magnitudes have small tails, then signed tails are also small by the triangle inequality.`
+    },
+    {
+      q: raw`The alternating series theorem says \(\sum (-1)^{n}b_n\) converges if \(b_n\downarrow0\). What role does monotone decrease play?`,
+      choices: [
+        raw`It ensures the partial sums are trapped in nested intervals whose lengths shrink to zero.`,
+        raw`It ensures \(\sum b_n\) converges absolutely.`,
+        raw`It ensures every pair of consecutive terms cancels exactly.`,
+        raw`It is decorative; the condition \(b_n\to0\) alone is enough for alternating convergence.`
+      ],
+      correct: 0,
+      why: raw`Alternating convergence is controlled overshoot. Decreasing magnitudes make the overshoot shrink and trap the limit.`
+    },
+    {
+      q: raw`Why can rearranging a conditionally convergent series change its sum?`,
+      choices: [
+        raw`Because finite sums are noncommutative, so changing order changes every partial sum identity.`,
+        raw`Because positive and negative subseries both have infinite total size, letting rearrangements choose how much positive or negative mass arrives before correction.`,
+        raw`Because conditional convergence means the terms do not tend to zero.`,
+        raw`Because rearrangement changes the formula for \(a_n\), so it creates a different set of terms.`
+      ],
+      correct: 1,
+      why: raw`Conditional convergence balances two divergent reservoirs. Rearrangement can exploit that balance. Absolute convergence prevents this.`
+    },
+    {
+      q: raw`What is the Cauchy criterion for a numerical series \(\sum a_n\)?`,
+      choices: [
+        raw`For every \(\varepsilon>0\), there is \(N\) such that \(|a_n|<\varepsilon\) for all \(n>N\).`,
+        raw`For every \(\varepsilon>0\), there is \(N\) such that \(|a_{n+1}-a_n|<\varepsilon\) for all \(n>N\).`,
+        raw`For every \(\varepsilon>0\), there is \(N\) such that every tail \(|a_{m+1}+\cdots+a_n|<\varepsilon\) whenever \(n>m\ge N\).`,
+        raw`For every \(\varepsilon>0\), some partial sum \(S_N\) must lie within \(\varepsilon\) of zero.`
+      ],
+      correct: 2,
+      why: raw`Series convergence is convergence of partial sums, so the Cauchy condition is smallness of every sufficiently late finite tail.`
+    },
+    {
+      q: raw`What does the comparison test require for nonnegative series?`,
+      choices: [
+        raw`A divergent larger series proves a smaller series diverges.`,
+        raw`A convergent smaller series proves a larger series converges.`,
+        raw`If \(0\le a_n\le b_n\) eventually and \(\sum b_n\) converges, then \(\sum a_n\) converges.`,
+        raw`If \(a_n/b_n\to0\), then both series must have the same convergence behavior.`
+      ],
+      correct: 2,
+      why: raw`A convergent upper bound controls the total mass of the smaller nonnegative series. The reverse implications are traps.`
+    },
+    {
+      q: raw`What does the limit comparison test say when \(a_n,b_n>0\) and \(a_n/b_n\to c\) with \(0<c<\infty\)?`,
+      choices: [
+        raw`The two series have the same convergence behavior, because their tails are eventually comparable up to constant multiples.`,
+        raw`The series with smaller individual terms must converge and the other must diverge.`,
+        raw`Both series converge to the same numerical sum.`,
+        raw`The test is inconclusive because ratios never decide convergence.`
+      ],
+      correct: 0,
+      why: raw`A finite positive limiting ratio means neither tail is asymptotically much larger than the other.`
+    },
+    {
+      q: raw`For \(p\)-series \(\sum 1/n^p\), what is the sharp threshold?`,
+      choices: [
+        raw`It converges for \(p>0\), because all terms go to zero.`,
+        raw`It converges for \(p\ge1\), because \(p=1\) is the boundary case included by equality.`,
+        raw`It converges for \(p>1\) and diverges for \(p\le1\).`,
+        raw`It converges only for integer \(p\ge2\), because noninteger powers lack a discrete interpretation.`
+      ],
+      correct: 2,
+      why: raw`The harmonic case \(p=1\) diverges. Only powers strictly stronger than \(1/n\) have finite total mass.`
+    },
+    {
+      q: raw`What is the main idea of the integral test?`,
+      choices: [
+        raw`A positive decreasing sequence can be compared to areas under a positive decreasing curve.`,
+        raw`Every series is equal to the integral of its term formula.`,
+        raw`If the term formula has an antiderivative, the series converges.`,
+        raw`The test works best when terms oscillate violently.`
+      ],
+      correct: 0,
+      why: raw`The decreasing hypothesis lets rectangles bound area and area bound rectangles. Without that geometry the test loses its justification.`
+    },
+    {
+      q: raw`What does the ratio test measure most directly?`,
+      choices: [
+        raw`Whether consecutive terms eventually shrink like a geometric series.`,
+        raw`Whether the terms are eventually monotone.`,
+        raw`Whether the partial sums alternate above and below the limit.`,
+        raw`Whether the sequence of coefficients has a closed form.`
+      ],
+      correct: 0,
+      why: raw`The ratio test compares \(a_{n+1}\) to \(a_n\). A limiting ratio below one gives geometric decay.`
+    },
+    {
+      q: raw`When the ratio test gives limit \(L=1\), what should you conclude?`,
+      choices: [
+        raw`The series converges conditionally.`,
+        raw`The series diverges by the term test.`,
+        raw`The ratio test is inconclusive; another argument is needed.`,
+        raw`The radius of convergence is exactly one for every related power series.`
+      ],
+      correct: 2,
+      why: raw`The boundary \(L=1\) is exactly where the ratio test cannot distinguish harmonic-type divergence from \(p>1\)-type convergence.`
+    },
+    {
+      q: raw`What does the root test measure?`,
+      choices: [
+        raw`The limiting average exponential size of \(|a_n|\), through \(\sqrt[n]{|a_n|}\).`,
+        raw`The limiting arithmetic average of the first \(n\) terms.`,
+        raw`The number of real roots of the term formula.`,
+        raw`The sign pattern of the sequence.`
+      ],
+      correct: 0,
+      why: raw`The \(n\)th root sees exponential scale. It is especially natural when terms contain \(n\)th powers.`
+    },
+    {
+      q: raw`What is a power series centered at \(a\)?`,
+      choices: [
+        raw`A series of the form \(\sum c_n(x-a)^n\), interpreted as a function where it converges.`,
+        raw`A series whose terms are all positive powers of \(n\).`,
+        raw`A polynomial with infinitely many zeros.`,
+        raw`A sequence of derivatives evaluated at every point of the domain.`
+      ],
+      correct: 0,
+      why: raw`The coefficients \(c_n\) are fixed numbers; the variable appears through powers of \(x-a\).`
+    },
+    {
+      q: raw`What does the radius of convergence \(R\) of \(\sum c_n(x-a)^n\) describe?`,
+      choices: [
+        raw`The largest coefficient index for which the series has nonzero terms.`,
+        raw`A distance from the center: convergence for \(|x-a|<R\), divergence for \(|x-a|>R\), with endpoints needing separate tests.`,
+        raw`The exact numerical sum of the power series at \(x=a\).`,
+        raw`The number of derivatives needed to recover the function.`
+      ],
+      correct: 1,
+      why: raw`A power series has an interval of convergence around its center. Endpoints are not decided by the radius alone.`
+    },
+    {
+      q: raw`Why must endpoints of a power series interval be checked separately?`,
+      choices: [
+        raw`Because the ratio or root test typically becomes inconclusive when \(|x-a|=R\).`,
+        raw`Because endpoints are never included in the interval of convergence.`,
+        raw`Because endpoints are always included by continuity.`,
+        raw`Because endpoint convergence depends only on whether the center \(a\) is positive.`
+      ],
+      correct: 0,
+      why: raw`At the boundary, the geometric decay detected inside the radius disappears; the remaining series may converge, conditionally converge, or diverge.`
+    },
+    {
+      q: raw`What is the most accurate statement about \(\frac{1}{1-x}=\sum_{n=0}^{\infty}x^n\)?`,
+      choices: [
+        raw`The identity holds for all \(x\ne1\), because the function is defined there.`,
+        raw`The identity holds for \(|x|<1\); outside that interval the function may exist but the series representation does not converge to it.`,
+        raw`The identity holds only at \(x=0\), because every power series is local at one point only.`,
+        raw`The identity fails whenever \(x\) is negative, because geometric series need positive ratios.`
+      ],
+      correct: 1,
+      why: raw`A function and its series representation can have different domains. The nearest singularity controls the power-series radius.`
+    },
+    {
+      q: raw`What does Taylor's theorem attempt to do conceptually?`,
+      choices: [
+        raw`Rebuild a function near a point from the function's derivatives at that point.`,
+        raw`Replace every convergent series by a geometric series.`,
+        raw`Show that every smooth function equals its Taylor series everywhere.`,
+        raw`Turn a finite polynomial into an infinite sequence without changing its degree.`
+      ],
+      correct: 0,
+      why: raw`Taylor expansion encodes local derivative data into coefficients. Equality to the function requires additional convergence-to-function control.`
+    },
+    {
+      q: raw`Why do factorials appear in Taylor coefficients \(f^{(n)}(a)/n!\)?`,
+      choices: [
+        raw`Because differentiating \((x-a)^n\) exactly \(n\) times produces the factor \(n!\).`,
+        raw`Because factorials make every Taylor series absolutely convergent.`,
+        raw`Because factorials remove the need to know derivatives.`,
+        raw`Because factorials ensure all coefficients are integers.`
+      ],
+      correct: 0,
+      why: raw`The normalization makes the \(n\)th derivative of the Taylor polynomial match \(f^{(n)}(a)\).`
+    },
+    {
+      q: raw`Which statement about smoothness and Taylor series is correct?`,
+      choices: [
+        raw`If a function has derivatives of all orders at a point, its Taylor series must converge to the function near that point.`,
+        raw`A smooth function has Taylor coefficients, but its Taylor series may fail to represent the function away from the center.`,
+        raw`A Taylor series is defined only for polynomials, because non-polynomials have infinitely many derivatives.`,
+        raw`If the Taylor series converges, it must converge uniformly on the entire real line.`
+      ],
+      correct: 1,
+      why: raw`Smoothness gives formal coefficients. Analyticity is the stronger property that the Taylor series actually represents the function locally.`
+    },
+    {
+      q: raw`What is the Taylor series for \(e^x\) centered at \(0\), conceptually?`,
+      choices: [
+        raw`It is \(\sum x^n/n!\), because every derivative of \(e^x\) at \(0\) equals \(1\).`,
+        raw`It is \(\sum n!x^n\), because repeated differentiation creates factorials in the numerator.`,
+        raw`It is \(\sum x^n\), because \(e^x\) is the same as \(1/(1-x)\).`,
+        raw`It is finite, because exponentials cannot be approximated by infinitely many polynomial terms.`
+      ],
+      correct: 0,
+      why: raw`The derivative data of \(e^x\) at zero are all \(1\), so the Taylor normalization gives \(x^n/n!\).`
+    },
+    {
+      q: raw`Why does the exponential series converge for every real \(x\)?`,
+      choices: [
+        raw`The factorial \(n!\) eventually dominates every fixed power \(|x|^n\), making the ratio tend to zero.`,
+        raw`The terms are all positive, so monotone convergence applies automatically.`,
+        raw`The series has radius one, but endpoints happen to include all real numbers.`,
+        raw`Every Taylor series of a familiar function has infinite radius of convergence.`
+      ],
+      correct: 0,
+      why: raw`For fixed \(x\), the ratio \(|x|/(n+1)\to0\), so the ratio test gives convergence everywhere.`
+    },
+    {
+      q: raw`What is the conceptual meaning of Euler's identity \(e^{i\theta}=\cos\theta+i\sin\theta\)?`,
+      choices: [
+        raw`The exponential power series splits into even and odd powers, producing circular motion in the complex plane.`,
+        raw`Complex exponentials are merely notation for two unrelated real functions.`,
+        raw`The imaginary unit \(i\) makes all higher powers vanish after the first term.`,
+        raw`The identity works only for small \(\theta\), because sine and cosine are local approximations.`
+      ],
+      correct: 0,
+      why: raw`Even powers of \(i\) build cosine and odd powers build sine. The series converts exponential flow into rotation.`
+    },
+    {
+      q: raw`What is the Cauchy product of two absolutely convergent series designed to represent?`,
+      choices: [
+        raw`The coefficient rule for multiplying two infinite sums, where the \(n\)th coefficient collects all pairs whose indices add to \(n\).`,
+        raw`The derivative of a product of two power series.`,
+        raw`A rearrangement that is valid only for conditionally convergent series.`,
+        raw`A test proving that all products of divergent series converge.`
+      ],
+      correct: 0,
+      why: raw`Multiplying series requires collecting diagonals \(a_0b_n+a_1b_{n-1}+\cdots+a_nb_0\). Absolute convergence justifies the rearrangement.`
+    },
+    {
+      q: raw`Why is uniform convergence stronger than pointwise convergence?`,
+      choices: [
+        raw`Uniform convergence uses a single \(N\) that works for every point in the domain, while pointwise convergence may require \(N\) to depend on the point.`,
+        raw`Uniform convergence means every term is constant across the domain.`,
+        raw`Uniform convergence means the series converges faster at endpoints only.`,
+        raw`Uniform convergence is the same as absolute convergence for functions.`
+      ],
+      correct: 0,
+      why: raw`Uniform convergence controls the whole domain at once. This is why it preserves operations such as continuity under suitable hypotheses.`
+    },
+    {
+      q: raw`What does the Weierstrass \(M\)-test say?`,
+      choices: [
+        raw`If \(|f_n(x)|\le M_n\) for all \(x\) and \(\sum M_n\) converges, then \(\sum f_n\) converges uniformly and absolutely.`,
+        raw`If \(f_n(x)\to0\) for each \(x\), then \(\sum f_n(x)\) converges uniformly.`,
+        raw`If \(\sum f_n\) converges at one point, then it converges uniformly everywhere.`,
+        raw`If \(\sum M_n\) diverges, then \(\sum f_n\) must diverge for every \(x\).`
+      ],
+      correct: 0,
+      why: raw`The \(M\)-test turns a hard function-series problem into a numerical majorant problem.`
+    },
+    {
+      q: raw`When may a power series be differentiated term by term inside its radius of convergence?`,
+      choices: [
+        raw`Inside \(|x-a|<R\), the differentiated power series has the same radius of convergence and represents the derivative of the sum.`,
+        raw`Only at the center \(a\), because derivatives away from \(a\) use different coefficients.`,
+        raw`Only when the original series has finitely many nonzero terms.`,
+        raw`Never; termwise differentiation is invalid for infinite sums.`
+      ],
+      correct: 0,
+      why: raw`Power series are exceptionally well behaved in the interior of their convergence interval: termwise differentiation and integration are valid there.`
+    },
+    {
+      q: raw`What is the main danger in substituting a matrix \(A\) into a scalar power series \(\sum c_n x^n\)?`,
+      choices: [
+        raw`Matrix powers are meaningless unless \(A\) is diagonal.`,
+        raw`One must justify convergence in a matrix norm and respect noncommutativity when manipulating products.`,
+        raw`Every matrix substitution is invalid because matrices are not numbers.`,
+        raw`The trace of \(A\) must be zero before any power series can be evaluated.`
+      ],
+      correct: 1,
+      why: raw`Matrix power series are valid, but convergence and algebraic manipulation require structure. This is exactly the substitution-principle issue.`
+    },
+    {
+      q: raw`Why is \(e^A=\sum_{n=0}^{\infty}A^n/n!\) defined for every square matrix \(A\)?`,
+      choices: [
+        raw`Because factorial decay gives absolute convergence in any matrix norm, just as it controls scalar powers.`,
+        raw`Because \(A^n=0\) for all sufficiently large \(n\) for every square matrix.`,
+        raw`Because the determinant of \(A\) always lies inside the scalar radius of convergence.`,
+        raw`Because every square matrix is diagonalizable over the real numbers.`
+      ],
+      correct: 0,
+      why: raw`Submultiplicative norm estimates reduce convergence to the scalar exponential series for \(\|A\|\).`
+    },
+    {
+      q: raw`What is the correct reason \(e^{A+B}=e^Ae^B\) can fail for matrices?`,
+      choices: [
+        raw`The scalar identity depends on commuting multiplication; matrices need \(AB=BA\) for the usual proof to transfer.`,
+        raw`The matrix exponential is not defined for non-diagonal matrices.`,
+        raw`The identity fails only because \(A+B\) may be singular.`,
+        raw`The identity fails whenever \(A\) and \(B\) have negative entries.`
+      ],
+      correct: 0,
+      why: raw`Noncommutativity changes the combinatorics of the power series. If \(A\) and \(B\) commute, the scalar binomial argument works.`
+    },
+    {
+      q: raw`What does the radius of convergence become for a complex power series?`,
+      choices: [
+        raw`A disk centered at the expansion point, with radius determined by the nearest obstruction to analytic continuation.`,
+        raw`A rectangle whose side lengths are determined by real and imaginary parts separately.`,
+        raw`A finite set of points where the coefficients are nonzero.`,
+        raw`A line segment on the real axis, because complex variables are only notation.`
+      ],
+      correct: 0,
+      why: raw`Complex power series converge on disks, not arbitrary intervals. The nearest singularity controls the disk.`
+    },
+    {
+      q: raw`Why is \(\log(1+x)=x-x^2/2+x^3/3-\cdots\) not simply the same type of series as \(e^x\)?`,
+      choices: [
+        raw`Its radius is limited by the singularity at \(x=-1\), and endpoint behavior must be checked separately.`,
+        raw`It is finite because logarithms have only one nonzero derivative.`,
+        raw`It converges for all real \(x\) because coefficients \(1/n\) go to zero.`,
+        raw`It cannot be derived from a geometric series.`
+      ],
+      correct: 0,
+      why: raw`The logarithm series inherits a finite radius from the geometric series for \(1/(1+x)\). Coefficients going to zero are not enough.`
+    },
+    {
+      q: raw`What is the most reliable first question when seeing an unfamiliar infinite series?`,
+      choices: [
+        raw`Do the terms go to zero, and if so what known tail behavior or convergence test matches them?`,
+        raw`Can the first five terms be added exactly?`,
+        raw`Can every term be made positive by taking absolute values?`,
+        raw`Does the printed formula look similar to a Taylor series?`
+      ],
+      correct: 0,
+      why: raw`The term test screens impossible convergence; comparison, ratio, root, integral, and alternating tests then identify tail behavior.`
+    },
+    {
+      q: raw`What is a subtle limitation of the ratio test for \(\sum 1/n^p\)?`,
+      choices: [
+        raw`The ratio tends to \(1\) for every \(p\), so the test cannot see the crucial \(p>1\) threshold.`,
+        raw`The ratio test applies only to alternating series.`,
+        raw`The ratio test says all \(p\)-series converge because consecutive terms become equal.`,
+        raw`The ratio test says all \(p\)-series diverge because the ratios are positive.`
+      ],
+      correct: 0,
+      why: raw`Polynomial decay is too slow for the ratio test to distinguish. Integral or comparison tests see the \(p\)-threshold.`
+    },
+    {
+      q: raw`What does it mean for a series of functions \(\sum f_n(x)\) to converge pointwise?`,
+      choices: [
+        raw`For each fixed \(x\), the numerical series \(\sum f_n(x)\) converges, possibly with convergence speed depending on \(x\).`,
+        raw`There is one \(N\) that makes every tail small for every \(x\) at once.`,
+        raw`The functions \(f_n\) must be polynomials of the same degree.`,
+        raw`The sum function must be continuous wherever each \(f_n\) is continuous.`
+      ],
+      correct: 0,
+      why: raw`Pointwise convergence freezes \(x\) first and then studies a numerical series. Uniform convergence is the stronger global statement.`
+    },
+    {
+      q: raw`Which theorem-level warning is most relevant when passing limits through integrals, derivatives, or infinite sums?`,
+      choices: [
+        raw`Pointwise convergence alone is often too weak; uniform convergence or a domination hypothesis is usually needed.`,
+        raw`All limits commute with all algebraic and analytic operations.`,
+        raw`Only polynomial sequences have meaningful limits.`,
+        raw`If every term is continuous, then every pointwise limit must preserve all calculus operations.`
+      ],
+      correct: 0,
+      why: raw`Interchanging limiting processes is one of analysis's main traps. The missing hypothesis is usually uniformity, domination, or absolute convergence.`
+    },
+    {
+      q: raw`How should one interpret a divergent series whose terms tend to zero?`,
+      choices: [
+        raw`The individual steps vanish, but the accumulated tail still has enough total mass to prevent partial sums from settling.`,
+        raw`The series is nearly convergent and can be treated as convergent in proofs.`,
+        raw`The sequence of terms must actually fail to have a limit.`,
+        raw`The partial sums must oscillate between exactly two values.`
+      ],
+      correct: 0,
+      why: raw`Vanishing terms are local information about steps. Convergence is global information about accumulated tails.`
+    },
+    {
+      q: raw`What does the remainder term in Taylor's theorem measure?`,
+      choices: [
+        raw`The error between the function and the finite Taylor polynomial after truncating the infinite expansion.`,
+        raw`The sum of all coefficients that are exactly zero.`,
+        raw`The difference between two unrelated functions with the same value at one point.`,
+        raw`The radius of convergence itself.`
+      ],
+      correct: 0,
+      why: raw`A Taylor polynomial is finite. The remainder is the part you have not yet controlled, so it decides whether the approximations actually converge to the function.`
+    },
+    {
+      q: raw`Why is \(\sin x\) well approximated by odd Taylor polynomials near \(0\)?`,
+      choices: [
+        raw`Its even derivatives at \(0\) vanish and its odd derivatives alternate, so the Taylor series contains only odd powers with alternating signs.`,
+        raw`Sine is a polynomial of degree \(9\) near zero.`,
+        raw`Odd powers converge faster than even powers for every real \(x\).`,
+        raw`The approximation works only because \(\sin x\) is bounded by \(1\).`
+      ],
+      correct: 0,
+      why: raw`The derivative pattern of sine at zero determines the coefficients and parity of its Taylor series.`
+    },
+    {
+      q: raw`What is the best conceptual reason power series are central in Lie theory?`,
+      choices: [
+        raw`They let functions such as \(e^x\) be transported from scalars to matrices and operators, turning infinitesimal generators into finite transformations.`,
+        raw`They remove the need for group multiplication.`,
+        raw`They prove every Lie group is a vector space.`,
+        raw`They make noncommuting matrices commute after enough terms are added.`
+      ],
+      correct: 0,
+      why: raw`The exponential map is built from the power series for \(e^x\). Convergence makes that substitution meaningful for matrices.`
+    },
+    {
+      q: raw`If \(\sum a_n\) converges absolutely, what happens to every rearrangement of the series?`,
+      choices: [
+        raw`Every rearrangement converges to the same sum.`,
+        raw`Every rearrangement diverges unless the terms are eventually zero.`,
+        raw`Different rearrangements can be forced to converge to arbitrary prescribed sums.`,
+        raw`Only rearrangements preserving adjacent pairs have the same sum.`
+      ],
+      correct: 0,
+      why: raw`Absolute convergence makes total magnitude finite, so order no longer controls the limiting total.`
+    },
+    {
+      q: raw`What does it mean for a convergence test to be inconclusive?`,
+      choices: [
+        raw`The series diverges, but the test is too weak to prove it.`,
+        raw`The series converges, but the test is too weak to compute the sum.`,
+        raw`The test gives no verdict; the series may converge or diverge, and another argument is needed.`,
+        raw`The assumptions of mathematics are inconsistent for that series.`
+      ],
+      correct: 2,
+      why: raw`Inconclusive means exactly no conclusion. Ratio-test limit \(1\) is the classic example.`
+    },
+    {
+      q: raw`Which statement best describes the interval of convergence for a real power series?`,
+      choices: [
+        raw`It is centered at the expansion point and consists of an open interval plus possibly one, both, or neither endpoint.`,
+        raw`It is always closed because limits preserve endpoints.`,
+        raw`It is always open because endpoints never converge.`,
+        raw`It is unrelated to the center of the power series.`
+      ],
+      correct: 0,
+      why: raw`Inside the radius convergence is automatic; outside divergence is automatic; endpoints are independent cases.`
+    },
+    {
+      q: raw`Why is the finite partial-sum formula often more trustworthy than visual intuition about infinitely many terms?`,
+      choices: [
+        raw`It keeps the limit process explicit, so one can see exactly which term must vanish or fail to vanish.`,
+        raw`It avoids using limits altogether.`,
+        raw`It proves every infinite sum has a closed form.`,
+        raw`It replaces convergence by numerical approximation of the first term only.`
+      ],
+      correct: 0,
+      why: raw`For geometric series, for example, the entire convergence question is the fate of \(r^{N+1}\) in the exact formula for \(S_N\).`
+    },
+    {
+      q: raw`What is the correct conceptual reading of \(\sum c_n(A-aI)^n\) for a matrix \(A\)?`,
+      choices: [
+        raw`It is a matrix-valued power series built from repeated composition of \(A-aI\), requiring convergence in a norm.`,
+        raw`It is obtained by applying the scalar series separately to each entry of \(A\) in every context.`,
+        raw`It is meaningful only if \(A\) has real eigenvalues.`,
+        raw`It always equals a polynomial of degree one because matrices have finitely many entries.`
+      ],
+      correct: 0,
+      why: raw`Matrix powers mean composition. Entrywise substitution is a different operation and usually the wrong one.`
+    }
+  ];
+
+  function escapeHtml(value) {
+    return value.replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[char]);
+  }
+
+  function renderQuiz() {
+    const list = document.getElementById('series-questions');
+    list.innerHTML = questions.map((question, index) => {
+      const name = `series-q${index + 1}`;
+      const best = question.choices[question.correct];
+      const safeQuestion = escapeHtml(question.q);
+      const labels = ['A', 'B', 'C', 'D'];
+      const choices = question.choices.map((choice, choiceIndex) => {
+        const correct = choiceIndex === question.correct;
+        const feedback = correct
+          ? `Correct. ${question.why}`
+          : `Not quite. The best answer is ${labels[question.correct]}: ${best} ${question.why}`;
+        const safeChoice = escapeHtml(choice);
+        const safeFeedback = escapeHtml(feedback);
+        return `
+          <label class="choice">
+            <input type="radio" name="${name}" value="${labels[choiceIndex]}">
+            <span class="choice-text"><b>${labels[choiceIndex]}.</b> ${safeChoice}</span>
+            <span class="feedback ${correct ? 'correct' : 'wrong'}">${safeFeedback}</span>
+          </label>
+        `;
+      }).join('');
+
+      return `
+        <article class="question" id="${name}">
+          <h3>${index + 1}. ${safeQuestion}</h3>
+          <fieldset>${choices}</fieldset>
+        </article>
+      `;
+    }).join('');
+
+    if (window.MathJax?.typesetPromise) {
+      window.MathJax.typesetPromise([list]);
+    }
+  }
+
+  renderQuiz();
+
+  document.querySelectorAll('[data-score-section]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const section = document.getElementById(button.dataset.scoreSection);
+      const output = document.getElementById(`${button.dataset.scoreSection}-score`);
+      if (!section || !output) return;
+
+      let attempts = 0;
+      let correct = 0;
+      section.querySelectorAll('.question').forEach((question) => {
+        const checked = question.querySelector('input[type="radio"]:checked');
+        if (!checked) return;
+        attempts += 1;
+        if (checked.parentElement.querySelector('.feedback.correct')) correct += 1;
+      });
+
+      output.textContent = `${correct} correct out of ${attempts} attempts`;
+    });
+  });
+</script>
+</body>
+</html>
