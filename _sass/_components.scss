@@ -90,6 +90,30 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+.about-profile {
+  max-width: 240px;
+
+  img {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+  }
+}
+
+@media (min-width: 576px) {
+  .about-profile {
+    width: 24%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .about-profile {
+    float: none !important;
+    margin: 0 auto 1rem;
+    width: min(80%, 220px);
+  }
+}
+
 // CV
 
 .cv {
