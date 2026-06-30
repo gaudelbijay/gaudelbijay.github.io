@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reading Rossmann — A Geometer's Timeline</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{
+    delimiters:[
+      {left:'$$',right:'$$',display:true},
+      {left:'$',right:'$',display:false},
+      {left:'\\[',right:'\\]',display:true},
+      {left:'\\(',right:'\\)',display:false}
+    ],
+    ignoredTags:['script','noscript','style','textarea','pre','code','svg'],
+    ignoredClasses:['katex']
+  })">
+</script>
+<style>
+  :root { --accent: #B8552F; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: #ECE3D0; }
+  body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  ::selection { background: rgba(184,85,47,.20); }
+  .katex { font-size: 1.05em; }
+  .katex-display { margin: 1.2em 0; overflow-x: auto; overflow-y: hidden; padding: 2px 1px; }
+  @media (max-width: 600px) {
+    h3 { font-size: 26px !important; }
+    h1 { font-size: clamp(32px,10vw,60px) !important; }
+  }
+</style>
+</head>
+<body>
+
+<div style="--accent:#B8552F; background:#ECE3D0; color:#2A241E; font-family:'Newsreader',Georgia,serif; min-height:100vh; padding:0 22px 140px;">
+
+  <!-- ══ HERO ══ -->
+  <header style="max-width:780px; margin:0 auto; padding:84px 0 30px; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:26px;">Study Guide · Lie Groups</div>
+    <h1 style="font:500 clamp(38px,7vw,66px)/1.04 'Newsreader',serif; letter-spacing:-.018em; margin:0 0 18px;">Reading <span style="font-style:italic; color:var(--accent);">Rossmann</span></h1>
+    <p style="font:italic 400 clamp(17px,2.4vw,21px)/1.58 'Newsreader',serif; color:#6B5E49; max-width:580px; margin:0 auto;">A geometer's reading plan — what each chapter teaches your eyes to see, why each piece is inevitable from the one before it, and how long it takes to genuinely see it.</p>
+    <div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:14px 18px; margin-top:32px; font:500 13px/1 'IBM Plex Mono',monospace; color:#8B7E69;">
+      <span>Wulf Rossmann</span>
+      <span style="width:5px;height:5px;border-radius:50%;background:#C9BBA0;"></span>
+      <span>Lie Groups: An Introduction Through Linear Groups</span>
+      <span style="width:5px;height:5px;border-radius:50%;background:#C9BBA0;"></span>
+      <span>6 chapters · 9–10 weeks</span>
+    </div>
+  </header>
+
+  <!-- ══ INTRO ══ -->
+  <div style="max-width:780px; margin:0 auto;">
+    <div style="height:1px; background:linear-gradient(90deg,transparent,#CFC1A6,transparent); margin:8px 0 30px;"></div>
+    <p style="font:400 19px/1.66 'Newsreader',serif; color:#574C3B; max-width:680px; margin:0 auto; text-align:center;">Every chapter of Rossmann answers one geometric question. Chapter 1 asks: <em>what is the shape of a group near the identity?</em> Chapter 2 asks: <em>how curved is it?</em> Chapters 3 and 4 give you a zoo of examples and the right setting. Chapters 5 and 6 ask the deepest question: <em>what does it mean to do Fourier analysis on a curved space?</em> The answer to that last question is one of the most beautiful theorems in twentieth-century mathematics.</p>
+  </div>
+
+  <!-- ══════════════ PHASE 1 ══════════════ -->
+  <div style="max-width:780px; margin:80px auto 0; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Phase One</div>
+    <h2 style="font:500 clamp(26px,4vw,40px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0;">The Shape of a Group</h2>
+    <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:520px; margin:14px auto 0;">Chapters 1 and 2. The group is a curved space, the Lie algebra is its flat shadow, and the commutator is the measurement of how far the shadow deviates from the truth.</p>
+  </div>
+
+  <!-- CH 1 -->
+  <section style="max-width:680px; margin:64px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Chapter 1 &nbsp;·&nbsp; 1–2 weeks &nbsp;·&nbsp; in progress</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The Exponential Map</h3>
+
+    <figure style="max-width:680px; margin:0 0 26px;">
+      <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; border-radius:10px; background:#EDE6D8; display:block;">
+        <path d="M 60 160 C 120 80 220 60 340 80 C 460 100 560 140 620 100" stroke="#C4B49A" stroke-width="2" fill="none"/>
+        <text x="600" y="92" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9B8C78">G</text>
+        <circle cx="170" cy="104" r="5" fill="#B8552F"/>
+        <text x="158" y="97" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#B8552F">e</text>
+        <line x1="80" y1="104" x2="280" y2="104" stroke="#0F5A56" stroke-width="1.2" stroke-dasharray="4 3"/>
+        <text x="84" y="99" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#0F5A56">g = T_e G</text>
+        <defs>
+          <marker id="arr1" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#0F5A56"/></marker>
+          <marker id="arr2" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#B8552F"/></marker>
+        </defs>
+        <line x1="170" y1="104" x2="242" y2="104" stroke="#0F5A56" stroke-width="2.5" marker-end="url(#arr1)"/>
+        <text x="248" y="108" font-family="Georgia,serif" font-size="14" fill="#0F5A56" font-style="italic">X</text>
+        <path d="M 176 100 Q 240 50 308 82" stroke="#B8552F" stroke-width="2" fill="none" marker-end="url(#arr2)"/>
+        <text x="226" y="58" font-family="Georgia,serif" font-size="14" fill="#B8552F" font-style="italic">exp(X)</text>
+        <circle cx="308" cy="82" r="5" fill="#B8552F"/>
+        <text x="316" y="79" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#B8552F">g</text>
+        <path d="M 170 104 Q 200 90 220 84 Q 260 72 308 82" stroke="#7A5210" stroke-width="1.5" fill="none" stroke-dasharray="3 2"/>
+        <text x="194" y="76" font-family="Georgia,serif" font-size="12" fill="#7A5210" font-style="italic">e^{tX}, t∈[0,1]</text>
+      </svg>
+      <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:10px;">The exponential map sends a tangent vector $X \in \mathfrak{g}$ at the identity to $g = e^X \in G$. The curve $e^{tX}$ is the geodesic through $e$ in direction $X$ — the group's notion of a straight line.</figcaption>
+    </figure>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Begin here: a Lie group $G$ is a smooth manifold that is also a group, and the two structures are compatible. The identity element $e \in G$ has a tangent space $\mathfrak{g} = T_e G$ — flat, linear, and completely ordinary as a vector space. This tangent space is the <em>Lie algebra</em>. The central object of Chapter 1 is the map that connects them.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The exponential map $\exp: \mathfrak{g} \to G$ is defined by following the unique one-parameter subgroup through the identity in the direction $X$. Concretely, for matrix Lie groups it is the matrix exponential:</p>
+
+    $$e^X = I + X + \frac{X^2}{2!} + \frac{X^3}{3!} + \cdots$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The one-parameter subgroup property — $e^{(s+t)X} = e^{sX} \cdot e^{tX}$ — is the key fact. It says that moving at constant velocity $X$ for time $s$ then time $t$ is the same as moving for time $s+t$. The curve $\{e^{tX} : t \in \mathbb{R}\}$ is therefore the geodesic through $e$ in the direction $X$, and the exponential map $t \mapsto e^{tX}$ parameterizes it at unit speed.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For $G = \mathrm{SE}(2)$, writing $X = \omega E_\omega + v_x E_x + v_y E_y$ with $(\omega, v_x, v_y) \in \mathbb{R}^3$, the exponential has a closed form. When $\omega \neq 0$ the key identity is $X^3 = -\omega^2 X$, which collapses the infinite series to three terms:</p>
+
+    $$e^X = I + \frac{\sin\omega}{\omega}\,X + \frac{1-\cos\omega}{\omega^2}\,X^2 = \begin{pmatrix} \cos\omega & -\sin\omega & \frac{\sin\omega}{\omega}v_x - \frac{1-\cos\omega}{\omega}v_y \\ \sin\omega & \cos\omega & \frac{1-\cos\omega}{\omega}v_x + \frac{\sin\omega}{\omega}v_y \\ 0 & 0 & 1 \end{pmatrix}$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Look at this carefully. A rotation by angle $\omega$ and a translation — but the translation is not simply $(v_x, v_y)^T$. It is $(v_x, v_y)^T$ <em>mixed with $\omega$ via the Jacobian</em> $J(\omega)$. The group is already telling you something: rotation and translation do not act independently, they couple through the Jacobian. This coupling is the geometric seed of everything in Chapter 2.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A crucial theorem: $\exp$ is a local diffeomorphism near $0 \in \mathfrak{g}$. This means you can use the Lie algebra as a coordinate chart for the group near the identity. Every group element sufficiently close to $e$ is $e^X$ for a unique small $X$. The Lie algebra is the group's own coordinate system — the natural language in which to measure infinitesimal displacements.</p>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">What you see after Chapter 1</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The group is a curved space, and you have a coordinate system for it near the identity: the Lie algebra. Every velocity $X \in \mathfrak{g}$ defines a geodesic $e^{tX}$, and the exponential map is the "integration" of that velocity over unit time. The closed form for $\mathrm{SE}(2)$ already hints that the geometry is non-trivial: the coupling between rotation and translation in the translation part of $e^X$ is not accidental — it is the first shadow of the curvature you will measure in Chapter 2.</p>
+    </div>
+  </section>
+
+  <!-- INTERLUDE 1→2 -->
+  <div style="max-width:680px; margin:52px auto 0; padding:22px 26px; border-left:3px solid #CFC1A6; background:#EAE1CF;">
+    <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.2em; text-transform:uppercase; color:#9B8C78; margin-bottom:10px;">The question Chapter 1 leaves open</div>
+    <p style="font:italic 400 17px/1.6 'Newsreader',serif; margin:0; color:#574C3B;">You now know how to move on the group: choose a velocity $X$, follow $e^{tX}$, arrive at $e^X$. But what happens when you choose <em>two</em> velocities and move in each direction in sequence? Is $e^X \cdot e^Y$ the same as $e^{X+Y}$? On a flat space — like $\mathbb{R}^n$ under addition — yes, trivially. On a curved group, no. And the amount by which the answer deviates from $e^{X+Y}$ is the entire subject of Chapter 2.</p>
+  </div>
+
+  <!-- CH 2 -->
+  <section style="max-width:680px; margin:56px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Chapter 2 &nbsp;·&nbsp; 3–4 weeks &nbsp;·&nbsp; the hardest chapter</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Lie Theory</h3>
+
+    <figure style="max-width:680px; margin:0 0 26px;">
+      <svg viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg" style="width:100%; border-radius:10px; background:#EDE6D8; display:block;">
+        <defs>
+          <marker id="b1" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L0,5 L7,2.5 z" fill="#0F5A56"/></marker>
+          <marker id="b2" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L0,5 L7,2.5 z" fill="#B8552F"/></marker>
+          <marker id="b3" markerWidth="7" markerHeight="7" refX="6" refY="2.5" orient="auto"><path d="M0,0 L0,5 L7,2.5 z" fill="#7A5210"/></marker>
+        </defs>
+        <circle cx="160" cy="148" r="5" fill="#2A241E"/>
+        <text x="142" y="163" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#4A3D2E">start</text>
+        <line x1="165" y1="148" x2="295" y2="148" stroke="#0F5A56" stroke-width="2" marker-end="url(#b1)"/>
+        <text x="222" y="142" font-family="Georgia,serif" font-size="14" fill="#0F5A56" font-style="italic">e^X</text>
+        <line x1="300" y1="143" x2="300" y2="68" stroke="#B8552F" stroke-width="2" marker-end="url(#b2)"/>
+        <text x="307" y="110" font-family="Georgia,serif" font-size="14" fill="#B8552F" font-style="italic">e^Y</text>
+        <circle cx="300" cy="65" r="4" fill="#0F5A56"/>
+        <line x1="160" y1="143" x2="160" y2="68" stroke="#B8552F" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#b2)"/>
+        <text x="120" y="110" font-family="Georgia,serif" font-size="14" fill="#B8552F" font-style="italic">e^Y</text>
+        <line x1="165" y1="65" x2="268" y2="65" stroke="#0F5A56" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#b1)"/>
+        <text x="200" y="58" font-family="Georgia,serif" font-size="14" fill="#0F5A56" font-style="italic">e^X</text>
+        <circle cx="270" cy="65" r="4" fill="#B8552F"/>
+        <line x1="274" y1="65" x2="296" y2="65" stroke="#7A5210" stroke-width="3" marker-end="url(#b3)"/>
+        <text x="272" y="54" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#7A5210">[X,Y]</text>
+        <text x="400" y="75" font-family="Georgia,serif" font-size="14" fill="#5C5047" font-style="italic">e^X then e^Y</text>
+        <line x1="398" y1="79" x2="308" y2="72" stroke="#5C5047" stroke-width="0.8" stroke-dasharray="3 2"/>
+        <text x="400" y="105" font-family="Georgia,serif" font-size="14" fill="#5C5047" font-style="italic">e^Y then e^X</text>
+        <line x1="398" y1="108" x2="278" y2="69" stroke="#5C5047" stroke-width="0.8" stroke-dasharray="3 2"/>
+        <text x="390" y="148" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">gap = curvature</text>
+        <text x="390" y="166" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">of the group</text>
+      </svg>
+      <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:10px;">Flow along $X$ then $Y$ lands at a different point than $Y$ then $X$. To first order, the gap is $[X,Y]$ — the Lie bracket, measuring the curvature of $G$ in the $X$–$Y$ plane.</figcaption>
+    </figure>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Here is the central question: given $X, Y \in \mathfrak{g}$, what is $\log(e^X e^Y)$? On the vector space $\mathbb{R}^n$ the answer is trivial — $X + Y$ — because addition commutes. On a curved group, the product $e^X e^Y$ lands somewhere that is <em>not</em> $e^{X+Y}$, and computing exactly where it lands requires understanding the curvature of $G$.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The Baker–Campbell–Hausdorff theorem provides the answer as a series in nested commutators:</p>
+
+    $$\log(e^X e^Y) = X + Y + \frac{1}{2}[X,Y] + \frac{1}{12}\bigl([X,[X,Y]] + [Y,[Y,X]]\bigr) + \frac{1}{24}[Y,[X,[X,Y]]] + \cdots$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Read this geometrically, term by term. The first two terms, $X + Y$, are what you get on a flat space. The correction $\frac{1}{2}[X,Y]$ is the <em>first-order curvature</em>: the infinitesimal holonomy of the loop that goes along $X$, then $Y$, then back along $X$, then back along $Y$. The double commutators $[X,[X,Y]]$ are the <em>second-order curvature</em> — the twist you accumulate by rotating twice. Every term in BCH is a geometric quantity: it measures a deeper and deeper layer of how the group bends.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For $\mathfrak{se}(2)$, the commutator $[X_1, X_2]$ in coordinates $(\omega, v_x, v_y)$ is:</p>
+
+    $$[X_1, X_2] = \begin{pmatrix} 0 \\ -(\omega_1 v_{y,2} - \omega_2 v_{y,1}) \\ \omega_1 v_{x,2} - \omega_2 v_{x,1} \end{pmatrix}$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Notice: the rotation component is always zero. Pure rotations commute with each other ($[E_\omega, E_\omega] = 0$, trivially), so the curvature of $\mathrm{SE}(2)$ lives entirely in the translation components. The commutator is non-zero only when one motion has a rotational part and the other has a translational part — the rotation acts on the translation and produces a correction. This is precisely the coupling you already saw in the off-diagonal terms of $e^X$.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The <em>adjoint representation</em> $\mathrm{Ad}: G \to \mathrm{GL}(\mathfrak{g})$ is defined by $\mathrm{Ad}(g) X = g X g^{-1}$ — the group acting on its own Lie algebra by conjugation. Its derivative at the identity is the <em>adjoint map</em> $\mathrm{ad}: \mathfrak{g} \to \mathrm{End}(\mathfrak{g})$, defined by $\mathrm{ad}(X)(Y) = [X,Y]$. These two — $\mathrm{Ad}$ and $\mathrm{ad}$ — are connected by the beautiful formula:</p>
+
+    $$\mathrm{Ad}(e^X) = e^{\mathrm{ad}(X)} = I + [X, \cdot] + \frac{1}{2}[X,[X,\cdot]] + \cdots$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">This formula is not just elegant — it is the fundamental equivariance law of the group acting on itself. Conjugation distributes over the Lie bracket: $[\mathrm{Ad}(h)X, \mathrm{Ad}(h)Y] = \mathrm{Ad}(h)[X,Y]$. This means that the BCH series transforms correctly under conjugation at every order — the group's curvature is itself equivariant under the group's own action. This is why the adjoint representation is so central: it is the group looking at its own geometry.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">One more fact from Chapter 2 that is worth pausing on: the <em>Jacobi identity</em>, $[X,[Y,Z]] + [Y,[Z,X]] + [Z,[X,Y]] = 0$. Algebraically it looks like an arbitrary axiom. Geometrically it is the statement that the curvature operator satisfies the Bianchi identity — the same identity that appears in general relativity for the Riemann curvature tensor. The Lie algebra is a flat space whose "curvature" (the commutator) satisfies a Bianchi identity. This is not a coincidence; it is the deepest reason why Lie groups are tractable.</p>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">What you see after Chapter 2</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The Lie bracket is not an algebraic definition — it is the <em>infinitesimal holonomy</em>. BCH is not a formula — it is the complete measurement of the group's curvature, expressed in coordinates. A group with $[X,Y] = 0$ for all $X, Y$ is abelian — it is flat, and BCH collapses to $X + Y$ exactly. $\mathrm{SE}(2)$ is curved, and the BCH correction terms capture exactly how a translation gets rotated when you compose it with a rotation — the geometry of the group is inseparable from its algebra.</p>
+    </div>
+
+    <div style="margin:28px 0 0; padding:18px 22px; background:#B8552F10; border:1px solid #B8552F33; border-radius:9px;">
+      <div style="font:700 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#B8552F; margin-bottom:10px;">Phase 1 Complete — The core geometry is in hand</div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0; color:#4A3D2E;">After Chapter 2 you possess the essential vocabulary of Lie theory: the exponential map as the bridge between algebra and geometry, the Lie bracket as curvature, BCH as the composition law on the group written in algebraic coordinates, and $\mathrm{Ad}$ as the group reflecting on its own tangent space. Chapters 3–6 broaden the picture with examples, put it on rigorous foundations, and culminate in the beautiful theorem that ties everything together.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ PHASE 2 ══════════════ -->
+  <div style="max-width:780px; margin:96px auto 0; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Phase Two</div>
+    <h2 style="font:500 clamp(26px,4vw,40px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0;">The Menagerie</h2>
+    <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:540px; margin:14px auto 0;">Chapters 3 and 4. You have the abstract theory; now you need examples. Chapter 3 gives you a zoo of groups you can visualize. Chapter 4 gives you the right setting for everything you've done so far.</p>
+  </div>
+
+  <!-- CH 3 -->
+  <section style="max-width:680px; margin:64px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Chapter 3 &nbsp;·&nbsp; 1–2 weeks</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The Classical Groups and Their Lie Algebras</h3>
+
+    <figure style="max-width:680px; margin:0 0 26px;">
+      <svg viewBox="0 0 640 185" xmlns="http://www.w3.org/2000/svg" style="width:100%; border-radius:10px; background:#EDE6D8; display:block;">
+        <circle cx="160" cy="90" r="62" stroke="#0F5A56" stroke-width="2" fill="none"/>
+        <circle cx="160" cy="28" r="5" fill="#B8552F"/>
+        <text x="167" y="30" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#B8552F">e=0</text>
+        <path d="M 160 28 A 62 62 0 0 1 208 120" stroke="#B8552F" stroke-width="1.5" fill="none" stroke-dasharray="4 2"/>
+        <circle cx="208" cy="120" r="4" fill="#B8552F"/>
+        <text x="215" y="124" font-family="Georgia,serif" font-size="13" fill="#B8552F" font-style="italic">e^{θE}</text>
+        <text x="128" y="175" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#0F5A56">SO(2) ≅ S¹ (circle)</text>
+        <text x="138" y="191" font-family="Georgia,serif" font-size="12" fill="#8B7E69" font-style="italic">abelian, [X,Y]=0</text>
+        <line x1="280" y1="20" x2="280" y2="175" stroke="#D0C4B0" stroke-width="1" stroke-dasharray="4 3"/>
+        <ellipse cx="460" cy="90" rx="80" ry="62" stroke="#0F5A56" stroke-width="2" fill="none"/>
+        <ellipse cx="460" cy="90" rx="80" ry="20" stroke="#0F5A56" stroke-width="1" fill="none" stroke-dasharray="5 3"/>
+        <ellipse cx="460" cy="90" rx="20" ry="62" stroke="#0F5A56" stroke-width="1" fill="none" stroke-dasharray="5 3"/>
+        <line x1="460" y1="22" x2="460" y2="158" stroke="#7A5210" stroke-width="1.5" stroke-dasharray="3 2"/>
+        <circle cx="524" cy="90" r="5" fill="#B8552F"/>
+        <path d="M 524 90 A 64 20 0 0 1 396 90" stroke="#B8552F" stroke-width="1.5" fill="none" stroke-dasharray="4 2"/>
+        <text x="382" y="175" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#0F5A56">SO(3) ≅ RP³ (3-ball)</text>
+        <text x="390" y="191" font-family="Georgia,serif" font-size="12" fill="#8B7E69" font-style="italic">non-abelian, [X,Y] ≠ 0</text>
+      </svg>
+      <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:10px;">SO(2) is a circle — flat, abelian, with vanishing commutator. SO(3) is a 3-ball with antipodal points identified — curved, non-abelian, with rich commutator structure.</figcaption>
+    </figure>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">After two chapters of abstract theory you need to feel the geometry in specific examples. Chapter 3 provides them: the orthogonal groups $\mathrm{SO}(n)$, the unitary groups $\mathrm{SU}(n)$, the symplectic groups $\mathrm{Sp}(n)$, and the Euclidean groups $\mathrm{SE}(n)$.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\mathrm{SO}(2)$ is literally a circle. Every rotation in the plane is a point on the unit circle, the group multiplication is addition of angles, the Lie algebra is $\mathbb{R}$ with zero bracket ($[a, b] = 0$ for all $a, b \in \mathbb{R}$), and the exponential map is $\omega \mapsto e^{i\omega}$ — the familiar winding of the real line onto the circle. This is as flat as a group can be. BCH collapses to $\omega_1 + \omega_2$ exactly.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\mathrm{SO}(3)$ is something richer: a 3-dimensional curved space. Every rotation in $\mathbb{R}^3$ is uniquely determined by its axis (a unit vector $\hat{n} \in S^2$) and angle $\theta \in [0, \pi]$, so $\mathrm{SO}(3)$ is topologically a 3-ball of radius $\pi$ with antipodal boundary points identified — the projective space $\mathbb{RP}^3$. Its Lie algebra $\mathfrak{so}(3) \cong \mathbb{R}^3$ has the bracket $[X, Y] = X \times Y$ (the cross product). The BCH formula for $\mathrm{SO}(3)$ is the Rodrigues formula for composing rotations — and it is visibly non-commutative. Everyone who has tried to rotate a 3D object knows this: rotating 90° around $x$ then 90° around $y$ gives a different result than $y$ first then $x$. The gap between these two results is the commutator $X \times Y$.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\mathrm{SU}(2)$, the group of $2 \times 2$ unitary matrices with determinant 1, has the same Lie algebra as $\mathrm{SO}(3)$ — same bracket, same commutator structure — but it is topologically $S^3$, the 3-sphere. The map $\mathrm{SU}(2) \to \mathrm{SO}(3)$ is a $2$-to-$1$ covering: every rotation in $\mathrm{SO}(3)$ comes from exactly two elements of $\mathrm{SU}(2)$, differing by $\pm 1$. This is the mathematical explanation for the spinor double cover of physical rotations.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\mathrm{SE}(2)$ and $\mathrm{SE}(3)$ appear as <em>semidirect products</em>: $\mathrm{SE}(n) = \mathrm{SO}(n) \ltimes \mathbb{R}^n$. The symbol $\ltimes$ encodes the action: $\mathrm{SO}(n)$ acts on $\mathbb{R}^n$ by rotation, so the two parts do not commute. This action is precisely the adjoint action from Chapter 2: $\mathrm{Ad}(g(\theta, \mathbf{t}))$ rotates a translation vector by the rotation part of $g$. The non-zero commutators in $\mathfrak{se}(2)$ that you computed in Chapter 2 are exactly the infinitesimal expression of this action.</p>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">What you see after Chapter 3</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The abstract Lie bracket has a concrete feel: it is the cross product of rotation axes in $\mathrm{SO}(3)$, it is the coupling of rotation and translation in $\mathrm{SE}(2)$. Two groups can share the same Lie algebra (the same local geometry) but have different global topology — $\mathrm{SO}(3)$ and $\mathrm{SU}(2)$ are the canonical example. This distinction matters when you choose which representations to use in Chapter 6: the topology of $G$ constrains which irreps exist.</p>
+    </div>
+  </section>
+
+  <!-- CH 4 -->
+  <div style="max-width:680px; margin:56px auto 0;"><div style="height:1px; background:linear-gradient(90deg,transparent,#CFC1A6,transparent);"></div></div>
+
+  <!-- INTERLUDE 3→4 -->
+  <div style="max-width:680px; margin:44px auto 0; padding:22px 26px; border-left:3px solid #CFC1A6; background:#EAE1CF;">
+    <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.2em; text-transform:uppercase; color:#9B8C78; margin-bottom:10px;">The question Chapter 3 leaves open</div>
+    <p style="font:italic 400 17px/1.6 'Newsreader',serif; margin:0; color:#574C3B;">You have seen that two groups — $\mathrm{SO}(3)$ and $\mathrm{SU}(2)$ — share the same Lie algebra but are topologically different. Their local geometry is identical; their global structure is not. The Lie algebra only sees the group near the identity. Chapter 4 makes this precise: it asks what the Lie algebra can and cannot tell you about the group, and introduces the language of manifolds that makes the distinction between local and global rigorous.</p>
+  </div>
+
+  <section style="max-width:680px; margin:48px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Chapter 4 &nbsp;·&nbsp; 1–2 weeks &nbsp;·&nbsp; most skippable</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Manifolds, Homomorphisms, Lie Groups</h3>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Until now, "Lie group" meant "closed subgroup of $\mathrm{GL}(n, \mathbb{R})$" — a matrix group. Chapter 4 gives the general definition: a Lie group is a smooth manifold $G$ equipped with smooth group operations $(g, h) \mapsto gh$ and $g \mapsto g^{-1}$. Matrix groups are a special case. The manifold formalism is needed to talk rigorously about the tangent bundle, smooth maps between groups, and global topology.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The central theorem of this chapter — and one of the central theorems in all of Lie theory — is the <em>Lie correspondence</em>: there is a bijection between simply connected Lie groups and finite-dimensional Lie algebras (over $\mathbb{R}$). Given a Lie algebra $\mathfrak{g}$, there is a unique simply connected Lie group $\tilde{G}$ with $T_e \tilde{G} = \mathfrak{g}$, called the <em>universal cover</em>. Every other connected Lie group with the same Lie algebra is a quotient $\tilde{G}/\Gamma$ for some discrete central subgroup $\Gamma \subset Z(\tilde{G})$.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For $\mathfrak{so}(3)$: the universal cover is $\mathrm{SU}(2) \cong S^3$, and $\mathrm{SO}(3) = \mathrm{SU}(2)/\{\pm I\}$ is the quotient by the two-element central subgroup. For $\mathfrak{se}(2)$: the universal cover is $\mathrm{SE}(2)$ itself — it is already simply connected (its fundamental group is $\pi_1(\mathrm{SE}(2)) = \pi_1(S^1) = \mathbb{Z}$, wait, actually $\mathrm{SE}(2)$ is not simply connected — it has the homotopy type of $S^1$ — so its universal cover is $\mathbb{R} \ltimes \mathbb{R}^2$, covering it by unwinding the rotation angle).</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The practical consequence for Chapter 6: the representations of a group $G$ are exactly the representations of its universal cover $\tilde{G}$ that factor through the quotient map. For $\mathrm{SE}(2)$, this means the irreps must be periodic in the rotation angle with period $2\pi$ — they must be well-defined on the circle, not just on the real line. This is why the irrep indices are integers $n \in \mathbb{Z}$ (for the rotational part) rather than real numbers.</p>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">What you see after Chapter 4</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The Lie algebra is a local invariant — it sees only the group near the identity. The global topology of $G$ (its fundamental group, its covering spaces) determines which representations exist and which Fourier frequencies are allowed. For $\mathrm{SE}(2)$, the integer-valued rotation indices $n \in \mathbb{Z}$ come directly from the fact that $\mathrm{SO}(2) \cong S^1$ has fundamental group $\mathbb{Z}$. Skim this chapter for the main ideas; return to the proofs if you need them later.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ PHASE 3 ══════════════ -->
+  <div style="max-width:780px; margin:96px auto 0; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Phase Three</div>
+    <h2 style="font:500 clamp(26px,4vw,40px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0;">Fourier Analysis on Curved Space</h2>
+    <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:540px; margin:14px auto 0;">Chapters 5 and 6. The group acquires a canonical measure, functions on it form a Hilbert space, and the Peter–Weyl theorem gives that Hilbert space its natural orthonormal basis — one that is simultaneously a generalization of the Fourier series and the representation theory of the group.</p>
+  </div>
+
+  <!-- INTERLUDE 4→5 -->
+  <div style="max-width:680px; margin:52px auto 0; padding:22px 26px; border-left:3px solid #CFC1A6; background:#EAE1CF;">
+    <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.2em; text-transform:uppercase; color:#9B8C78; margin-bottom:10px;">Why Fourier analysis on a group is the right question</div>
+    <p style="font:italic 400 17px/1.6 'Newsreader',serif; margin:0; color:#574C3B;">The classical Fourier transform on $\mathbb{R}$ decomposes a signal into frequencies $e^{i\xi x}$ — functions that are eigenvectors of the translation operator. On a Lie group $G$, the natural objects to decompose into are the matrix coefficients of irreducible representations — functions that transform in the simplest possible way under group multiplication. The question "which basis is natural for $L^2(G)$?" is exactly the question of finding the group's irreducible representations. This is Peter–Weyl's answer: the irrep matrix coefficients are the Fourier modes of the group.</p>
+  </div>
+
+  <!-- CH 5 -->
+  <section style="max-width:680px; margin:52px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Chapter 5 &nbsp;·&nbsp; 2 weeks</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Integration on Lie Groups</h3>
+
+    <figure style="max-width:680px; margin:0 0 26px;">
+      <svg viewBox="0 0 640 175" xmlns="http://www.w3.org/2000/svg" style="width:100%; border-radius:10px; background:#EDE6D8; display:block;">
+        <circle cx="200" cy="90" r="70" stroke="#C4B49A" stroke-width="1.5" fill="none"/>
+        <path d="M 200 20 A 70 70 0 0 1 261 40" stroke="#0F5A56" stroke-width="9" fill="none" stroke-linecap="round" opacity=".8"/>
+        <path d="M 261 40 A 70 70 0 0 1 270 90" stroke="#0F5A56" stroke-width="9" fill="none" stroke-linecap="round" opacity=".65"/>
+        <path d="M 270 90 A 70 70 0 0 1 245 148" stroke="#0F5A56" stroke-width="9" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M 200 20 A 70 70 0 0 0 139 40" stroke="#B8552F" stroke-width="9" fill="none" stroke-linecap="round" opacity=".6"/>
+        <path d="M 139 40 A 70 70 0 0 0 130 90" stroke="#B8552F" stroke-width="9" fill="none" stroke-linecap="round" opacity=".5"/>
+        <path d="M 245 148 A 70 70 0 0 1 200 160" stroke="#7A5210" stroke-width="9" fill="none" stroke-linecap="round" opacity=".6"/>
+        <text x="200" y="98" font-family="Georgia,serif" font-size="15" fill="#4A3D2E" text-anchor="middle" font-style="italic">dμ</text>
+        <text x="200" y="115" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#8B7E69" text-anchor="middle">Haar measure</text>
+        <text x="355" y="35" font-family="Georgia,serif" font-size="14" fill="#2A241E" font-style="italic">Key property:</text>
+        <text x="355" y="58" font-family="Georgia,serif" font-size="14" fill="#4A3D2E" font-style="italic">∫_G f(gh) dμ(h) = ∫_G f(h) dμ(h)</text>
+        <text x="355" y="82" font-family="Georgia,serif" font-size="13" fill="#7A5210" font-style="italic">for all g ∈ G</text>
+        <line x1="353" y1="96" x2="600" y2="96" stroke="#E3D9C5" stroke-width="1"/>
+        <text x="355" y="116" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">For SE(2):</text>
+        <text x="355" y="136" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">dμ = dθ dt_x dt_y</text>
+        <text x="355" y="156" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">(just flat measure on ℝ³)</text>
+      </svg>
+      <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:10px;">The Haar measure is the unique (up to scaling) left-invariant measure on $G$. It colors every arc of the group equally — no region is preferred. All arc segments of equal angle have equal measure, regardless of where they sit on the circle.</figcaption>
+    </figure>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">To do analysis on a group — to define $L^2(G)$, to compute inner products, to state orthogonality theorems — you need a measure. The question is: which measure? On $\mathbb{R}^n$, the Lebesgue measure is distinguished by its translation invariance: $\int f(x + a)\,dx = \int f(x)\,dx$ for all $a$. On a Lie group, the analogous condition is left-invariance: a measure $\mu$ is left-invariant if $\mu(gE) = \mu(E)$ for all $g \in G$ and measurable sets $E$. The <em>Haar theorem</em> states that such a measure exists and is unique up to scaling. This is the Haar measure.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For compact groups (like $\mathrm{SO}(n)$ and $\mathrm{SU}(n)$), the Haar measure is also right-invariant — the group is <em>unimodular</em>. For non-compact groups, left and right invariance can differ; the ratio is measured by the <em>modular function</em> $\Delta: G \to \mathbb{R}^+$, which is a continuous group homomorphism. $\mathrm{SE}(2)$ is unimodular, and its Haar measure has a beautifully simple form: in coordinates $(\theta, t_x, t_y)$ for $\mathrm{SE}(2)$ (angle plus translation), the Haar measure is simply $d\theta\, dt_x\, dt_y$ — just the flat Lebesgue measure on $\mathbb{R}^3$. The group's curved multiplication law is invisible in the measure: the geometry is in the group law, not in the volume element.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">With the Haar measure, you define the Hilbert space $L^2(G) = \{ f: G \to \mathbb{C} : \int_G |f(g)|^2\, d\mu(g) < \infty \}$ with inner product:</p>
+
+    $$\langle f, h \rangle = \int_G f(g)\,\overline{h(g)}\,d\mu(g)$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">This inner product is left-invariant: $\langle L_k f, L_k h \rangle = \langle f, h \rangle$ where $(L_k f)(g) = f(k^{-1}g)$. This invariance is the key. It means that the decomposition of $L^2(G)$ into irreducible subspaces is compatible with the group action — which is exactly the Peter–Weyl theorem.</p>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">What you see after Chapter 5</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The group is not just a space you move through — it has a canonical <em>volume</em>. Functions on it form a Hilbert space with a natural inner product. The measure is invariant under the group's own action on itself, which means any decomposition of $L^2(G)$ that respects the inner product will automatically be compatible with the group structure. This is the setup for Peter–Weyl, which says: the "best" decomposition — the one into irreducible pieces — is also the natural Fourier decomposition.</p>
+    </div>
+  </section>
+
+  <!-- CH 6 -->
+  <div style="max-width:680px; margin:56px auto 0;"><div style="height:1px; background:linear-gradient(90deg,transparent,#CFC1A6,transparent);"></div></div>
+
+  <section style="max-width:680px; margin:56px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Chapter 6 &nbsp;·&nbsp; 3 weeks &nbsp;·&nbsp; the payoff</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Representations and the Peter–Weyl Theorem</h3>
+
+    <figure style="max-width:680px; margin:0 0 26px;">
+      <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" style="width:100%; border-radius:10px; background:#EDE6D8; display:block;">
+        <text x="30" y="28" font-family="'IBM Plex Mono',monospace" font-size="11" fill="#9B8C78">f ∈ L²(G)</text>
+        <path d="M 30 70 Q 60 40 90 70 Q 120 100 150 60 Q 180 20 210 70 Q 240 120 270 65 Q 290 42 310 70" stroke="#2A241E" stroke-width="2" fill="none"/>
+        <text x="325" y="68" font-family="'IBM Plex Mono',monospace" font-size="13" fill="#B8552F">=</text>
+        <text x="315" y="83" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#B8552F">Peter-Weyl</text>
+        <text x="355" y="30" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#0F5A56">π₁ (n=1)</text>
+        <path d="M 355 60 Q 375 35 395 60 Q 415 85 435 60 Q 455 35 475 60 Q 495 85 510 60" stroke="#0F5A56" stroke-width="2" fill="none" opacity=".9"/>
+        <text x="355" y="108" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#B8552F">π₂ (n=2)</text>
+        <path d="M 355 130 Q 365 115 375 130 Q 385 145 395 130 Q 405 115 415 130 Q 425 145 435 130 Q 445 115 455 130 Q 465 145 475 130 Q 485 115 495 130 Q 505 145 510 130" stroke="#B8552F" stroke-width="2" fill="none" opacity=".8"/>
+        <text x="355" y="168" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#7A5210">π₃ (n=3)</text>
+        <path d="M 355 178 Q 360 170 365 178 Q 370 186 375 178 Q 380 170 385 178 Q 390 186 395 178 Q 400 170 405 178 Q 410 186 415 178 Q 420 170 425 178 Q 430 186 435 178 Q 440 170 445 178 Q 450 186 455 178 Q 460 170 465 178 Q 470 186 475 178 Q 480 170 485 178 Q 490 186 495 178 Q 500 170 510 178" stroke="#7A5210" stroke-width="2" fill="none" opacity=".7"/>
+        <text x="358" y="198" font-family="'IBM Plex Mono',monospace" font-size="12" fill="#9B8C78">+ ···</text>
+        <text x="525" y="80" font-family="Georgia,serif" font-size="32" fill="#C4B49A">}</text>
+        <text x="548" y="105" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">irreducible</text>
+        <text x="548" y="122" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">representations</text>
+        <text x="548" y="139" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">of G — the</text>
+        <text x="548" y="156" font-family="Georgia,serif" font-size="13" fill="#8B7E69" font-style="italic">"pure tones"</text>
+      </svg>
+      <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:10px;">Peter–Weyl: every $f \in L^2(G)$ decomposes into an orthogonal sum of matrix coefficients of irreducible representations — exactly as a periodic function decomposes into Fourier harmonics, but now on an arbitrary Lie group.</figcaption>
+    </figure>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A unitary representation of $G$ is a continuous group homomorphism $\pi: G \to U(V)$ from $G$ into the group of unitary operators on a Hilbert space $V$ — a way of making $G$ act linearly and isometrically on a vector space. An irreducible representation (irrep) is one that has no proper closed invariant subspace: it is atomic, cannot be further decomposed. Schur's lemma characterizes them: the only operators that commute with every $\pi(g)$ are scalar multiples of the identity. This is what "irreducible" truly means — the representation has no internal symmetry beyond the group itself.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">From an irrep $\pi: G \to U(V_\pi)$ with basis $\{e_m\}$ of $V_\pi$, you extract the <em>matrix coefficient functions</em>:</p>
+
+    $$\pi_{mn}: G \to \mathbb{C}, \qquad \pi_{mn}(g) = \langle e_m, \pi(g) e_n \rangle$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">These are ordinary functions on the group — one for each pair of basis indices $(m, n)$ and each irrep $\pi$. The Peter–Weyl theorem says they form an orthogonal basis for $L^2(G)$:</p>
+
+    $$\langle \pi_{mn}, \rho_{kl} \rangle_{L^2(G)} = \frac{1}{\dim V_\pi}\,\delta_{\pi\rho}\,\delta_{mk}\,\delta_{nl}$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">This orthogonality is the group-theoretic analogue of the Fourier orthogonality $\langle e^{imx}, e^{inx} \rangle = \delta_{mn}$. For $G = S^1 = \mathrm{SO}(2)$, the irreps are exactly the one-dimensional representations $\pi_n(e^{i\theta}) = e^{in\theta}$ for $n \in \mathbb{Z}$, the matrix coefficients are $\pi_n(\theta) = e^{in\theta}$, and Peter–Weyl is the classical Fourier series theorem. The Peter–Weyl theorem is therefore the generalization of Fourier analysis from the circle to an arbitrary Lie group.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The completeness part of Peter–Weyl says that every $f \in L^2(G)$ can be written as:</p>
+
+    $$f(g) = \sum_{\pi \in \hat{G}} \dim(V_\pi) \sum_{m,n} \hat{f}_{mn}^\pi \,\pi_{mn}(g)$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">where $\hat{f}_{mn}^\pi = \langle f, \pi_{mn} \rangle_{L^2(G)}$ are the generalized Fourier coefficients and $\hat{G}$ is the set of equivalence classes of irreps. The "spectrum" of the group — the set $\hat{G}$ of all irreps — completely characterizes the group's $L^2$ analysis, just as the integers $\mathbb{Z}$ characterize the Fourier analysis of $S^1$.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The Peter–Weyl coefficients $\hat{f}_{mn}^\pi$ are the natural coordinates on $L^2(G)$. Any linear map $T: L^2(G) \to L^2(G)$ that commutes with all left translations — that is, $T \circ L_g = L_g \circ T$ for all $g \in G$ — must, by Schur's lemma, act as a scalar on each irrep subspace. This means equivariant linear maps are exactly the block-diagonal maps in the Peter–Weyl basis. Equivariance is not an additional constraint to impose — it is built into the choice of basis.</p>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">What you see after Chapter 6</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0 0 10px;">Functions on a group have a canonical frequency decomposition, and the "frequencies" are the irreducible representations. On $\mathbb{R}$, the frequencies are $e^{i\xi x}$ — eigenfunctions of the translation operator. On $G$, the frequencies are the matrix coefficients of irreps — eigenfunctions of the left-translation operators $L_g$. Fourier analysis is not a special trick for the real line; it is a universal phenomenon that emerges whenever you have a group and a Haar measure.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The Peter–Weyl decomposition is the deepest answer to the question that opened Chapter 1: what is the natural structure of a Lie group? The answer is that every function on the group decomposes canonically into irreducible pieces, each transforming in a single, atomic way under the group action. This decomposition is as natural and inevitable as the decomposition of a periodic function into Fourier modes — and for exactly the same reason.</p>
+    </div>
+
+    <div style="margin:28px 0 0; padding:18px 22px; background:#0F5A5610; border:1px solid #0F5A5633; border-radius:9px;">
+      <div style="font:700 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#0F5A56; margin-bottom:10px;">Phase 3 Complete — The theory is whole</div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0; color:#4A3D2E;">You now hold the complete picture. The group is a curved space (Ch 1). The curvature is measured by the Lie bracket and encoded by BCH (Ch 2). The classical groups give that picture flesh and examples (Ch 3). The manifold structure clarifies what the Lie algebra can and cannot see (Ch 4). The Haar measure makes analysis possible (Ch 5). And Peter–Weyl says the natural basis for that analysis is exactly the set of irreducible representations (Ch 6). Each chapter was not merely the next topic — it was the inevitable next question.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ BEYOND ROSSMANN ══════════════ -->
+  <div style="max-width:780px; margin:96px auto 0; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:#7A5210; margin-bottom:14px;">Beyond Rossmann</div>
+    <h2 style="font:500 clamp(26px,4vw,40px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0;">The Non-Compact Case: SE(2)</h2>
+    <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:560px; margin:14px auto 0;">Rossmann focuses on compact groups, where every irrep is finite-dimensional. SE(2) is non-compact — its irreps are infinite-dimensional, labeled by a continuous momentum parameter, and their matrix coefficients are Bessel functions.</p>
+  </div>
+
+  <section style="max-width:680px; margin:48px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:#7A5210; margin-bottom:14px;">External Source &nbsp;·&nbsp; 1–2 weeks &nbsp;·&nbsp; Sugiura Ch 2</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Unitary Representations and Harmonic Analysis</h3>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Rossmann's Peter–Weyl theorem applies to compact Lie groups, where the theory is clean: all irreps are finite-dimensional, the sum over $\hat{G}$ is discrete, and the matrix coefficients are smooth bounded functions. For non-compact groups like $\mathrm{SE}(2)$, the story is more delicate, and requires Mackey's theory of induced representations.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\mathrm{SE}(2) = \mathrm{SO}(2) \ltimes \mathbb{R}^2$ is a semidirect product. Mackey's machine says: to classify irreps of a semidirect product $N \rtimes H$, look at the orbits of $H$ acting on $\hat{N}$ (the Pontryagin dual of $N$). For $\mathrm{SE}(2)$: $N = \mathbb{R}^2$ with $\hat{N} = \mathbb{R}^2$ (by Fourier duality), and $H = \mathrm{SO}(2)$ acts on $\hat{\mathbb{R}}^2$ by rotation. The orbits of $\mathrm{SO}(2)$ on $\mathbb{R}^2$ are circles of radius $p \geq 0$. Each orbit gives one irrep family:</p>
+
+    $$\pi^p_{mn}(g(\theta, \mathbf{t})) = e^{-in\theta} \cdot J_{m-n}(p|\mathbf{t}|) \cdot e^{i(m-n)\arg(\mathbf{t})}$$
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">where $J_k$ is the Bessel function of the first kind of order $k$, and $m, n \in \mathbb{Z}$. The index $p \geq 0$ is the <em>momentum</em> — the radius of the SO(2)-orbit in Fourier space. The index $n$ labels the angular frequency within each momentum shell. When $\mathbf{t} = 0$ (pure rotation), the matrix coefficients reduce to $e^{-in\theta} \delta_{mn}$, recovering the SO(2) Fourier modes.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Bessel functions are not mysterious in this context — they are the natural harmonics of the plane. The function $J_k(p r) e^{ik\phi}$ (in polar coordinates $(r, \phi)$) is a simultaneous eigenfunction of the 2D Laplacian with eigenvalue $-p^2$ and of the rotation operator with eigenvalue $e^{ik\phi}$. These are the "plane waves" of $\mathbb{R}^2$ with circular symmetry, and they appear as SE(2) irrep matrix elements for exactly this reason: the irreps of SE(2) are the natural "frequency modes" of functions on the plane that transform correctly under both rotation and translation.</p>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#7A5210;">Why Bessel functions appear — the geometric reason</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">SE(2) acts on the plane. The "eigenfunctions" of this action — the functions that transform in the simplest possible way under both rotation and translation simultaneously — are the Bessel functions. The rotation index $n$ tracks how the function spins as you rotate the plane; the momentum $p$ tracks its spatial frequency. Translation couples rotation and spatial frequency through the Bessel function, because translating a spinning function mixes its angular modes. This coupling is the non-compact analogue of the coupling between rotation and translation that you first saw in the off-diagonal terms of $e^X$ in Chapter 1.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ SUMMARY ARC ══════════════ -->
+  <div style="max-width:780px; margin:0 auto;"><div style="height:1px; background:linear-gradient(90deg,transparent,#CFC1A6,transparent); margin:80px 0 56px;"></div></div>
+
+  <section style="max-width:680px; margin:0 auto;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">The Complete Arc</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 24px;">What a geometer sees at each milestone</h3>
+
+    <div>
+      <div style="display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #D9CEBA; align-items:baseline;">
+        <div style="min-width:96px; font:700 12px/1 'IBM Plex Mono',monospace; color:#B8552F;">Phase 1 · Ch 1</div>
+        <div>
+          <div style="font:600 16px/1.3 'Newsreader',serif; margin-bottom:6px;">The group as a curved space</div>
+          <div style="font:400 16px/1.6 'Newsreader',serif; color:#574C3B;">You see $G$ as a manifold, $\mathfrak{g}$ as its flat shadow, and $\exp$ as the act of walking. For SE(2), the coupling between $\omega$ and $(v_x, v_y)$ in the closed-form exponential is already visible as a hint of curvature.</div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #D9CEBA; align-items:baseline;">
+        <div style="min-width:96px; font:700 12px/1 'IBM Plex Mono',monospace; color:#B8552F;">Phase 1 · Ch 2</div>
+        <div>
+          <div style="font:600 16px/1.3 'Newsreader',serif; margin-bottom:6px;">Curvature and composition</div>
+          <div style="font:400 16px/1.6 'Newsreader',serif; color:#574C3B;">The commutator $[X,Y]$ is the infinitesimal holonomy — the failure of two flows to commute. BCH is the complete expansion of $\log(e^X e^Y)$ in terms of these holonomies. The adjoint $\mathrm{Ad}(g)$ rotates the Lie algebra: the group acts on its own tangent space. The group's curvature is now something you can see and compute.</div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #D9CEBA; align-items:baseline;">
+        <div style="min-width:96px; font:700 12px/1 'IBM Plex Mono',monospace; color:#0F5A56;">Phase 2 · Ch 3</div>
+        <div>
+          <div style="font:600 16px/1.3 'Newsreader',serif; margin-bottom:6px;">The menagerie</div>
+          <div style="font:400 16px/1.6 'Newsreader',serif; color:#574C3B;">SO(2) is a circle (flat, abelian). SO(3) is a 3-ball (curved, non-abelian). SU(2) is a 3-sphere — the double cover of SO(3). SE(2) is a twisted product of a circle and a plane, and the twist is exactly the adjoint action. The cross product $X \times Y$ in $\mathbb{R}^3$ is the Lie bracket of $\mathfrak{so}(3)$.</div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #D9CEBA; align-items:baseline;">
+        <div style="min-width:96px; font:700 12px/1 'IBM Plex Mono',monospace; color:#0F5A56;">Phase 2 · Ch 4</div>
+        <div>
+          <div style="font:600 16px/1.3 'Newsreader',serif; margin-bottom:6px;">The canonical volume</div>
+          <div style="font:400 16px/1.6 'Newsreader',serif; color:#574C3B;">The Haar measure $d\mu$ is the unique left-invariant measure on $G$. For SE(2) it is just $d\theta\, dt_x\, dt_y$ — flat Lebesgue on $\mathbb{R}^3$. The Hilbert space $L^2(G)$ with this inner product is the right setting for Fourier analysis on the group.</div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:20px; padding:20px 0; border-bottom:1px solid #D9CEBA; align-items:baseline;">
+        <div style="min-width:96px; font:700 12px/1 'IBM Plex Mono',monospace; color:#0F5A56;">Phase 3 · Ch 5–6</div>
+        <div>
+          <div style="font:600 16px/1.3 'Newsreader',serif; margin-bottom:6px;">Fourier analysis on a group</div>
+          <div style="font:400 16px/1.6 'Newsreader',serif; color:#574C3B;">Peter–Weyl: every $f \in L^2(G)$ decomposes into irrep matrix coefficients $\pi_{mn}(g)$, which are orthogonal with respect to the Haar inner product. For $G = S^1$, this is the classical Fourier series. Equivariant linear maps on $L^2(G)$ are exactly the block-diagonal ones in this basis — Schur's lemma makes this inevitable.</div>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:20px; padding:20px 0; align-items:baseline;">
+        <div style="min-width:96px; font:700 12px/1 'IBM Plex Mono',monospace; color:#7A5210;">Beyond · Sugiura</div>
+        <div>
+          <div style="font:600 16px/1.3 'Newsreader',serif; margin-bottom:6px;">Bessel functions as natural harmonics</div>
+          <div style="font:400 16px/1.6 'Newsreader',serif; color:#574C3B;">The SE(2) irreps, labeled by momentum $p \geq 0$, have Bessel function matrix coefficients $J_{m-n}(p|\mathbf{t}|)\,e^{-in\theta}$. These are the eigenfunctions of the 2D Laplacian with circular symmetry — the natural "frequencies" of the plane. The coupling between $p$ and $n$ via the Bessel function is the non-compact version of the coupling you first saw in the exponential map in Chapter 1.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin:40px 0 0; padding:24px 26px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">The single thread</div>
+      <p style="font:italic 400 18px/1.6 'Newsreader',serif; margin:0; color:#2A241E;">Every chapter is an answer to the same question, asked at a deeper level: <em>what is the natural structure of a space with symmetry?</em> The exponential map is the natural coordinate system. The Lie bracket is the natural measure of curvature. The classical groups are the natural examples. The Haar measure is the natural volume. And the Peter–Weyl decomposition into irreducible representations is the natural Fourier analysis. Each answer was not arbitrary — it was the only answer the geometry permitted.</p>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

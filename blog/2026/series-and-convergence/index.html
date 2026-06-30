@@ -4,282 +4,485 @@
 <meta charset="utf-8">
 <title>Series &amp; Convergence</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["\\[","\\]"],["$$","$$"]],processEscapes:true},svg:{fontCache:"global"}};</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["\\[","\\]"],["$$","$$"]],processEscapes:true,tags:"ams"},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]},svg:{fontCache:"global"}};</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{background:#ECE3D0;color:#2A241E;font-family:"Newsreader",Georgia,serif;overflow-x:hidden}::-webkit-scrollbar{width:4px;background:#ECE3D0}::-webkit-scrollbar-thumb{background:#B8A888;border-radius:2px}#nav a:hover{color:#B8552F!important}#doc,section[data-rv]{display:block!important;visibility:visible!important;opacity:1!important;transform:none!important}#doc{position:relative;z-index:1;min-height:100vh}.reader-map{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:30px 0 4px}.reader-map-card{background:#F3ECDD;border:1px solid #C0B098;border-left:3px solid #B8552F;border-radius:8px;padding:16px 18px;color:#4A3D2E;line-height:1.58}.reader-map-card strong{display:block;color:#1A140E;font-family:"Newsreader",Georgia,serif;font-size:1.12rem;margin-bottom:6px}.reader-map-card code{color:#8A5A32;background:#E0D8C8;border-radius:4px;padding:1px 4px}@media(max-width:800px){#nav{display:none!important}#doc{margin-left:0!important;padding:28px 18px!important}}@media(max-width:620px){#doc [style*="grid-template-columns:1fr 1fr 1fr"],#doc [style*="grid-template-columns:1fr 1fr"],.reader-map{grid-template-columns:1fr!important}}
+  :root { --accent: #B8552F; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: #ECE3D0; }
+  body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  ::selection { background: rgba(184,85,47,.20); }
+  .katex { font-size: 1.05em; }
+  .katex-display { margin: 1.15em 0; overflow-x: auto; overflow-y: hidden; padding: 3px 1px; }
+  mjx-container { overflow-x: auto; max-width: 100%; }
+  @media (max-width: 600px) {
+    h3 { font-size: 26px !important; }
+    h1 { font-size: clamp(32px,10vw,60px) !important; }
+  }
 </style>
 </head>
 <body>
-<nav id="nav" style="position:fixed;left:0;top:0;width:178px;height:100vh;background:#DDD4C0;border-right:1px solid #C8B99F;overflow-y:auto;z-index:100;padding:18px 0;">
-  <div style="padding:0 14px 14px;border-bottom:1px solid #C8B99F;margin-bottom:6px;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#8A6A50;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;">Series Theory</div>
-    <div style="font-family:'Newsreader',Georgia,serif;font-size:.95rem;font-weight:700;color:#8A5A32;">Series &amp; Convergence</div>
+
+<div style="--accent:#B8552F; background:#ECE3D0; color:#2A241E; font-family:'Newsreader',Georgia,serif; min-height:100vh; padding:0 22px 140px;">
+
+  <!-- ══════════════════════ HERO ══════════════════════ -->
+  <header style="max-width:780px; margin:0 auto; padding:84px 0 30px; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:26px;">Mathematical Analysis</div>
+    <h1 style="font:500 clamp(40px,7vw,70px)/1.04 'Newsreader',serif; letter-spacing:-.018em; margin:0 0 18px;">Series <span style="font-style:italic; color:var(--accent);">&amp;</span> Convergence</h1>
+    <p style="font:italic 400 clamp(18px,2.4vw,22px)/1.55 'Newsreader',serif; color:#6B5E49; max-width:600px; margin:0 auto;">From partial sums to matrix Lie groups — every concept built from the ground up, with live visualizations and geometric intuition.</p>
+    <div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:14px 18px; margin-top:34px; font:500 13px/1 'IBM Plex Mono',monospace; color:#8B7E69;">
+      <span>Series Theory</span>
+      <span style="width:5px; height:5px; border-radius:50%; background:#C9BBA0;"></span>
+      <span>15 sections · live animations</span>
+      <span style="width:5px; height:5px; border-radius:50%; background:#C9BBA0;"></span>
+      <a href="/blog/math-quiz/" style="color:var(--accent); text-decoration:none; border-bottom:1px solid #D8B49E;">take the quiz →</a>
+    </div>
+  </header>
+
+  <!-- connected reading path -->
+  <section style="font-family:'Newsreader',Georgia,serif; max-width:880px; margin:26px auto 22px; padding:22px 24px; border:1px solid #C8B99F; border-radius:8px; background:#E9DFCC; color:#2F2A24; box-shadow:0 10px 24px rgba(47,42,36,.08);">
+    <div style="font:700 11px/1.2 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#8A5A32; margin-bottom:8px;">Connected reading path</div>
+    <p style="margin:0 0 10px; font-size:17px; line-height:1.55;">This post pairs naturally with <a href="/blog/2026/the-exponential-map/" style="color:#8A5A32;">The Exponential Map</a>, which shows how the $e^A$ series creates finite Lie group elements, and with <a href="/blog/2026/rossmann-matrix-exponential-solutions/" style="color:#8A5A32;">the Rossmann solutions</a> for worked $SL(2,\mathbb{R})$ examples.</p>
+    <a href="/blog/math-quiz/" style="display:inline-block; margin:7px 8px 0 0; padding:8px 10px; border:1px solid #B9A789; border-radius:7px; color:#2F2A24; text-decoration:none; background:rgba(255,255,255,.24);">Take the math quiz</a>
+    <a href="/blog/2026/the-exponential-map/" style="display:inline-block; margin:7px 8px 0 0; padding:8px 10px; border:1px solid #B9A789; border-radius:7px; color:#2F2A24; text-decoration:none; background:rgba(255,255,255,.24);">Open the Exponential Map</a>
+  </section>
+
+  <div style="max-width:780px; margin:0 auto;">
+    <div style="height:1px; background:linear-gradient(90deg,transparent,#CFC1A6,transparent); margin:8px 0 30px;"></div>
+    <p style="font:400 19px/1.66 'Newsreader',serif; color:#574C3B; max-width:660px; margin:0 auto; text-align:center;">Read it in order. A sequence is a list; a series is an accumulated total. Once series converge globally — for every input — the same limit process extends to matrices, turning infinitesimal generators into the finite symmetries of Lie groups.</p>
   </div>
-  <a id="na1"  href="#t1"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§1 · Sequence vs Series</a>
-  <a id="na2"  href="#t2"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§2 · Convergence</a>
-  <a id="na3"  href="#t3"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§3 · Necessary ≠ Sufficient</a>
-  <a id="na4"  href="#t4"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§4 · Geometric Series</a>
-  <a id="na5"  href="#t5"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§5 · Power Series</a>
-  <a id="na6"  href="#t6"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§6 · Taylor Series</a>
-  <a id="na7"  href="#t7"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§7 · Exponential</a>
-  <a id="na8"  href="#t8"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§8 · Sine &amp; Cosine</a>
-  <a id="na9"  href="#t9"  style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§9 · Tangent</a>
-  <a id="na10" href="#t10" style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§10 · Radius &amp; Tests</a>
-  <a id="na11" href="#t11" style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§11 · Abs. Convergence</a>
-  <a id="na12" href="#t12" style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§12 · Remainder</a>
-  <a id="na13" href="#t13" style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§13 · Matrix Series</a>
-  <a id="na14" href="#t14" style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§14 · Matrix Log</a>
-  <a id="na15" href="#t15" style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;transition:color .1s;">§15 · BCH Formula</a>
-  <div style="border-top:1px solid #C8B99F;margin:8px 0;"></div>
-  <a href="#cmap" style="display:block;padding:4px 14px;font-size:10px;color:#6B5040;text-decoration:none;">∞ · Concept Map</a>
-</nav>
 
-<div id="doc" style="margin-left:178px;padding:48px 68px 100px;max-width:900px;">
-
-<div style="padding-bottom:36px;border-bottom:1px solid #C8B99F;">
-  <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#8A6A50;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px;">Mathematical Analysis</div>
-  <h1 style="font-family:'Newsreader',Georgia,serif;font-size:2.8rem;font-weight:700;color:#1A140E;line-height:1.0;margin-bottom:12px;">Series &amp; Convergence</h1>
-  <p style="color:#6B5E49;font-size:.95rem;max-width:58ch;line-height:1.72;font-weight:300;">From partial sums to matrix Lie groups — every concept with live visualizations and geometric intuition.</p>
-  <div class="reader-map" aria-label="Reader map">
-    <div class="reader-map-card"><strong>Series are limits of partial sums.</strong>A sequence asks what happens to individual terms. A series asks whether the accumulated totals <code>S_N</code> settle to a finite value.</div>
-    <div class="reader-map-card"><strong>Convergence is eventually-stable behavior.</strong>The important condition is not touching the limit once, but staying inside every tolerance band after some sufficiently large index.</div>
-    <div class="reader-map-card"><strong>Power series have domains.</strong>A formula such as <code>1/(1-x)=1+x+x^2+...</code> is true only inside its radius of convergence; boundary points require separate tests.</div>
-    <div class="reader-map-card"><strong>Matrix series create geometry.</strong>The same factorial control that makes <code>e^x</code> converge globally lets <code>e^A</code> turn infinitesimal generators into finite transformations.</div>
+  <!-- ══════════════════════ PART ONE ══════════════════════ -->
+  <div style="max-width:780px; margin:80px auto 0; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Part One</div>
+    <h2 style="font:500 clamp(28px,4.4vw,42px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0;">Foundations</h2>
+    <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:500px; margin:14px auto 0;">What it means for an infinite process to settle — and the one counterexample every analyst memorizes.</p>
   </div>
-</div>
 
-<!-- §1 -->
-<section id="t1" data-screen-label="§1 Sequence vs Series" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§1 · Sequence vs Series</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">A <em>sequence</em> lists numbers. A <em>series</em> adds them. A series is defined through a new sequence of partial sums \(S_N\) — series convergence IS sequence convergence.</p>
-  <canvas id="v1" style="width:100%;height:180px;display:block;border-radius:8px;background:#DDD4C0;margin-bottom:14px;"></canvas>
-  <figcaption style="font-size:.8rem;color:#9A7A60;font-style:italic;font-family:'Newsreader',Georgia,serif;margin-bottom:14px;">Fig 1 — sequence dots \((1/2)^n\to 0\) (top); series walker accumulating toward 2 (bottom).</figcaption>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ S_N = a_1+a_2+\cdots+a_N \qquad \sum_{n=1}^{\infty}a_n \;=\; \lim_{N\to\infty}S_N \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #B8552F;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#1A140E;">Intuition:</strong> sequence = step sizes; series = walker position. Same data, entirely different questions.</div>
-</section>
+  <!-- §1 Sequence vs Series -->
+  <section style="max-width:680px; margin:64px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">1 &nbsp;·&nbsp; Sequence vs series</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">A series is a sequence of partial sums</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A <em>sequence</em> lists numbers: $a_1, a_2, a_3, \ldots$ A <em>series</em> adds them. The distinction is sharper than it sounds: series convergence is defined through a new sequence $S_N$ of running totals, and asking whether the series converges is exactly asking whether that new sequence converges.</p>
 
-<!-- §2 -->
-<section id="t2" data-screen-label="§2 Convergence" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§2 · What Convergence Means</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">Convergence means settling within any prescribed tolerance — permanently past some threshold \(N\). Not reaching the limit, but getting arbitrarily close and staying there.</p>
-  <canvas id="v2" style="width:100%;height:170px;display:block;border-radius:8px;background:#DDD4C0;margin-bottom:14px;"></canvas>
-  <figcaption style="font-size:.8rem;color:#9A7A60;font-style:italic;font-family:'Newsreader',Georgia,serif;margin-bottom:14px;">Fig 2 — ε-cage (yellow) narrows over time. Blue dots inside, red dots still escaping.</figcaption>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ a_n\to L \;\iff\; \forall\,\varepsilon>0,\;\exists\,N:\;n>N\Rightarrow|a_n-L|<\varepsilon \]</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px;">
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-radius:5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A8A3A;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">Converge</div><div style="font-size:.85rem;color:#4A3D2E;">\(1/n\to 0\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-radius:5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#B8682A;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">Oscillate</div><div style="font-size:.85rem;color:#4A3D2E;">\((-1)^n\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-radius:5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#B84030;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">Escape</div><div style="font-size:.85rem;color:#4A3D2E;">\(n\to\infty\)</div></div>
+<div>$$ S_N = a_1 + a_2 + \cdots + a_N, \qquad \sum_{n=1}^{\infty} a_n \;=\; \lim_{N\to\infty} S_N $$</div>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">Intuition</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">Think of a walker. The sequence is the list of step sizes; the series is the walker's position. Same data, entirely different questions: one asks what each step looks like, the other asks where you end up. The animation below shows this: the top row is step sizes $(1/2)^n$ shrinking to zero; the bottom is the walker accumulating toward 2.</p>
+    </div>
+  </section>
+
+  <figure style="max-width:760px; margin:30px auto 0;">
+    <canvas id="v1" style="width:100%; height:180px; display:block; border-radius:10px; background:#EDE6D8;"></canvas>
+    <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:14px;">Sequence dots $(1/2)^n \to 0$ (top lane); series walker accumulating toward the dashed line at 2 (bottom lane).</figcaption>
+  </figure>
+
+  <!-- §2 Convergence -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">2 &nbsp;·&nbsp; What convergence means</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Settling inside every tolerance band — permanently</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Convergence is not reaching the limit once. It is getting arbitrarily close and <em>staying there</em>. For any tolerance $\varepsilon > 0$, no matter how tiny, all terms past some threshold $N$ must fall inside the $\varepsilon$-band around $L$:</p>
+
+<div>$$ a_n \to L \;\iff\; \forall\,\varepsilon > 0,\;\exists\, N : n > N \Rightarrow |a_n - L| < \varepsilon $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 0;">The yellow cage below narrows over time. Blue dots inside the band have converged; red dots still escaping have not — yet.</p>
+  </section>
+
+  <figure style="max-width:760px; margin:24px auto 0;">
+    <canvas id="v2" style="width:100%; height:170px; display:block; border-radius:10px; background:#EDE6D8;"></canvas>
+    <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:14px;">The $\varepsilon$-cage (amber) narrows over time. Teal dots lie inside; red dots are still outside — they will eventually enter and never leave.</figcaption>
+  </figure>
+
+  <section style="max-width:680px; margin:30px auto 0;">
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;">
+      <div style="padding:14px 16px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:8px;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A7A6A; margin-bottom:8px;">Converge</div>
+        <p style="font:400 15px/1.5 'Newsreader',serif; margin:0;">$1/n \to 0$</p>
+      </div>
+      <div style="padding:14px 16px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:8px;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#8A6A20; margin-bottom:8px;">Oscillate</div>
+        <p style="font:400 15px/1.5 'Newsreader',serif; margin:0;">$(-1)^n$ — no limit</p>
+      </div>
+      <div style="padding:14px 16px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:8px;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#922028; margin-bottom:8px;">Escape</div>
+        <p style="font:400 15px/1.5 'Newsreader',serif; margin:0;">$n \to \infty$</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 Necessary not Sufficient -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">3 &nbsp;·&nbsp; Necessary, not sufficient</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">$a_n \to 0$ is required — but never enough</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">If a series converges its terms must vanish. But vanishing terms do <em>not</em> guarantee convergence. The harmonic series $\sum 1/n$ is the canonical trap: terms go to zero, but each dyadic block $\tfrac{1}{2^k+1} + \cdots + \tfrac{1}{2^{k+1}}$ contributes more than $\tfrac{1}{2}$, so the sum grows without bound.</p>
+
+    <figure style="margin:0 0 18px;">
+      <svg viewBox="0 0 580 82" style="width:100%; max-width:580px; height:82px; display:block;">
+        <text x="8" y="32" fill="#1D7A74" font-family="IBM Plex Mono,monospace" font-size="14">1</text>
+        <text x="32" y="32" fill="#8A7060" font-family="IBM Plex Mono,monospace" font-size="13">+</text>
+        <text x="46" y="32" fill="#1D7A74" font-family="IBM Plex Mono,monospace" font-size="14">½</text>
+        <rect x="74" y="6" width="98" height="32" rx="4" fill="rgba(184,85,47,.08)" stroke="#B8552F" stroke-width="1.2"/>
+        <text x="78" y="27" fill="#B8552F" font-family="IBM Plex Mono,monospace" font-size="11.5">⅓ + ¼</text>
+        <text x="88" y="54" fill="#8A6820" font-family="IBM Plex Mono,monospace" font-size="11">&gt; ½</text>
+        <rect x="184" y="6" width="140" height="32" rx="4" fill="rgba(184,85,47,.08)" stroke="#B8552F" stroke-width="1.2"/>
+        <text x="188" y="27" fill="#B8552F" font-family="IBM Plex Mono,monospace" font-size="11.5">⅕+⅙+⅐+⅛</text>
+        <text x="238" y="54" fill="#8A6820" font-family="IBM Plex Mono,monospace" font-size="11">&gt; ½</text>
+        <rect x="336" y="6" width="138" height="32" rx="4" fill="rgba(184,85,47,.08)" stroke="#B8552F" stroke-width="1.2"/>
+        <text x="340" y="27" fill="#B8552F" font-family="IBM Plex Mono,monospace" font-size="11.5">⅑+…+1/16</text>
+        <text x="388" y="54" fill="#8A6820" font-family="IBM Plex Mono,monospace" font-size="11">&gt; ½</text>
+        <text x="486" y="27" fill="#9A8070" font-family="IBM Plex Mono,monospace" font-size="18">···</text>
+        <text x="8" y="76" fill="#9A7A60" font-family="IBM Plex Mono,monospace" font-size="9.5">Each group &gt; ½  →  total &gt; 1+½+½+½+···  →  diverges</text>
+      </svg>
+    </figure>
+
+<div>$$ \sum_{n=1}^{\infty} \frac{1}{n} = \infty \quad \text{even though} \quad \frac{1}{n} \to 0 $$</div>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#922028;">Warning</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$a_n \not\to 0$ guarantees divergence — that is useful. But $a_n \to 0$ says nothing about convergence on its own. The terms must shrink <em>fast enough</em>, which is exactly what the convergence tests in §10 are designed to measure.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ PART TWO ══════════════════════ -->
+  <div style="max-width:780px; margin:100px auto 0; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Part Two</div>
+    <h2 style="font:500 clamp(28px,4.4vw,42px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0;">Families of Series</h2>
+    <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:500px; margin:14px auto 0;">Geometric, Taylor, and the transcendental functions — all grown from one algebraic trick.</p>
   </div>
-</section>
 
-<!-- §3 -->
-<section id="t3" data-screen-label="§3 Necessary not Sufficient" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§3 · \(a_n\to 0\) Is Necessary, Not Sufficient</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">If a series converges, its terms must vanish. But vanishing terms do not guarantee convergence. The harmonic series is the essential counterexample.</p>
-  <svg viewBox="0 0 580 82" style="width:100%;max-width:580px;height:82px;display:block;margin-bottom:14px;">
-    <text x="8" y="32" fill="#2D8A84" font-family="IBM Plex Mono,monospace" font-size="14">1</text>
-    <text x="32" y="32" fill="#8A6A50" font-family="IBM Plex Mono,monospace" font-size="13">+</text>
-    <text x="46" y="32" fill="#2D8A84" font-family="IBM Plex Mono,monospace" font-size="14">½</text>
-    <rect x="74" y="6" width="98" height="32" rx="4" fill="rgba(184,85,47,.08)" stroke="#B8552F" stroke-width="1.2"/>
-    <text x="78" y="27" fill="#B8552F" font-family="IBM Plex Mono,monospace" font-size="11.5">⅓ + ¼</text>
-    <text x="88" y="54" fill="#A8832A" font-family="IBM Plex Mono,monospace" font-size="11">&gt; ½</text>
-    <rect x="184" y="6" width="140" height="32" rx="4" fill="rgba(184,85,47,.08)" stroke="#B8552F" stroke-width="1.2"/>
-    <text x="188" y="27" fill="#B8552F" font-family="IBM Plex Mono,monospace" font-size="11.5">⅕+⅙+⅐+⅛</text>
-    <text x="238" y="54" fill="#A8832A" font-family="IBM Plex Mono,monospace" font-size="11">&gt; ½</text>
-    <rect x="336" y="6" width="138" height="32" rx="4" fill="rgba(184,85,47,.08)" stroke="#B8552F" stroke-width="1.2"/>
-    <text x="340" y="27" fill="#B8552F" font-family="IBM Plex Mono,monospace" font-size="11.5">⅑+…+1/16</text>
-    <text x="388" y="54" fill="#A8832A" font-family="IBM Plex Mono,monospace" font-size="11">&gt; ½</text>
-    <text x="486" y="27" fill="#8A6A50" font-family="IBM Plex Mono,monospace" font-size="18">···</text>
-    <text x="8" y="76" fill="#9A7A60" font-family="IBM Plex Mono,monospace" font-size="9.5">Each group &gt; ½  →  total &gt; 1+½+½+½+···  →  diverges</text>
-  </svg>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ \sum_{n=1}^{\infty}\frac{1}{n}=\infty \quad\text{even though}\quad \frac{1}{n}\to 0 \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #B84030;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#D06040;">Warning:</strong> \(a_n\not\to 0\) guarantees divergence. But \(a_n\to 0\) says nothing — steps must shrink fast enough.</div>
-</section>
+  <!-- §4 Geometric -->
+  <section style="max-width:680px; margin:64px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">4 &nbsp;·&nbsp; Geometric series</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The first fully solved infinite sum</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Multiply the partial sum $S_N$ by $r$, then subtract — everything cancels except the first and last term. The result is a clean closed form whenever $|r| < 1$:</p>
 
-<!-- §4 -->
-<section id="t4" data-screen-label="§4 Geometric Series" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§4 · Geometric Series</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">The first fully solved infinite sum. Multiply by \(r\), subtract — everything cancels except the first and last term.</p>
-  <canvas id="v4" style="width:100%;height:155px;display:block;border-radius:8px;background:#DDD4C0;margin-bottom:14px;"></canvas>
-  <figcaption style="font-size:.8rem;color:#9A7A60;font-style:italic;font-family:'Newsreader',Georgia,serif;margin-bottom:14px;">Fig 4 — bars \(1, \tfrac{1}{2}, \tfrac{1}{4},\ldots\) fill in, total approaching the dashed line at 2.</figcaption>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ S_N(1-r)=1-r^{N+1} \;\implies\; \sum_{n=0}^{\infty}ar^n = \frac{a}{1-r} \quad (|r|<1) \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #4A8A3A;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#6AAA58;">Result:</strong> Converges iff \(|r|&lt;1\). At \(r=\tfrac12\): each bar is half the last; total length reaches exactly 2.</div>
-</section>
+<div>$$ S_N(1-r) = 1 - r^{N+1} \;\implies\; \sum_{n=0}^{\infty} ar^n = \frac{a}{1-r} \quad (|r| < 1) $$</div>
 
-<!-- §5 -->
-<section id="t5" data-screen-label="§5 Power Series" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§5 · From Geometric to Power Series</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">Replace constant ratio \(r\) with variable \(x\). Integrate to get \(\log\) and \(\arctan\). All three grow from one geometric root.</p>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ \frac{1}{1-x}=\sum x^n,\quad \log(1+x)=x-\tfrac{x^2}{2}+\tfrac{x^3}{3}-\cdots,\quad \arctan x=x-\tfrac{x^3}{3}+\tfrac{x^5}{5}-\cdots \quad(|x|\le1) \]</div>
-  <svg viewBox="0 0 520 58" style="width:100%;max-width:520px;height:58px;display:block;margin-bottom:12px;">
-    <line x1="20" y1="28" x2="500" y2="28" stroke="#C0B098" stroke-width="1"/>
-    <rect x="180" y="17" width="160" height="20" rx="3" fill="rgba(15,90,86,.08)" stroke="#2D8A84" stroke-width=".8"/>
-    <text x="260" y="30" fill="#2D8A84" font-family="IBM Plex Mono,monospace" font-size="8.5" text-anchor="middle" dominant-baseline="middle">series: |x| &lt; 1</text>
-    <line x1="180" y1="14" x2="180" y2="44" stroke="#2D8A84" stroke-width=".8"/>
-    <text x="180" y="11" fill="#2D8A84" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">−1</text>
-    <line x1="340" y1="14" x2="340" y2="44" stroke="#B84030" stroke-width="1.2"/>
-    <text x="340" y="11" fill="#B84030" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">1✕</text>
-    <line x1="20" y1="46" x2="338" y2="46" stroke="#4A8A3A" stroke-width="1.2"/>
-    <line x1="342" y1="46" x2="500" y2="46" stroke="#4A8A3A" stroke-width="1.2"/>
-    <text x="260" y="56" fill="#4A8A3A" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">function 1/(1−x) defined everywhere except x=1</text>
-  </svg>
-  <div style="background:#F3ECDD;border-left:3px solid #B8552F;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#1A140E;">Insight:</strong> A series has its own domain. The function \(1/(1-x)\) lives beyond \(|x|=1\); its power series does not.</div>
-</section>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 0;">The bars below fill in one by one, each half the last, total approaching the dashed line at 2. When $|r| \geq 1$ the partial sums never settle.</p>
+  </section>
 
-<!-- §6 -->
-<section id="t6" data-screen-label="§6 Taylor Series" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§6 · Taylor Series</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">Taylor rebuilds a function from its derivatives at one point. Each new term matches one more layer of bending. Factorials appear because differentiating \(x^n\) repeatedly brings down \(n!\).</p>
-  <canvas id="v6" style="width:100%;height:245px;display:block;border-radius:8px;background:#DDD4C0;margin-bottom:14px;"></canvas>
-  <figcaption style="font-size:.8rem;color:#9A7A60;font-style:italic;font-family:'Newsreader',Georgia,serif;margin-bottom:14px;">Fig 6 — \(\sin x\) (dim blue) vs. \(P_1\) (red), \(P_3\) (orange), \(P_5\) (yellow), \(P_7\) (green), \(P_9\) (teal) cycling in.</figcaption>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^n,\quad c_n=\frac{f^{(n)}(0)}{n!} \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #B8552F;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#1A140E;">Infinite contact at a point.</strong> Degree 1 matches slope; degree 2 matches curvature; higher degrees track ever-wider regions.</div>
-</section>
+  <figure style="max-width:760px; margin:24px auto 0;">
+    <canvas id="v4" style="width:100%; height:155px; display:block; border-radius:10px; background:#EDE6D8;"></canvas>
+    <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:14px;">Bars $1, \tfrac{1}{2}, \tfrac{1}{4}, \ldots$ filling in toward the dashed line at 2. Each bar is exactly half the previous.</figcaption>
+  </figure>
 
-<!-- §7 -->
-<section id="t7" data-screen-label="§7 Exponential Series" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§7 · Exponential Series &amp; Factorial Domination</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">Every derivative of \(e^x\) is \(e^x\), so every Taylor coefficient is \(1/n!\). The ratio test kills convergence globally — once \(n\) exceeds \(|x|\), every factor in \(n!\) beats \(|x|\).</p>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:14px;">\[ e^x=\sum_{n=0}^{\infty}\frac{x^n}{n!}, \qquad \left|\frac{a_{n+1}}{a_n}\right|=\frac{|x|}{n+1}\xrightarrow{n\to\infty}0 \quad \forall x \implies R=\infty \]</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-radius:5px;padding:14px;text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#6B5040;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;">ratio</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1.35rem;color:#B8552F;">\(\dfrac{|x|}{n+1}\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-radius:5px;padding:14px;text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#6B5040;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;">limit</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1.35rem;color:#4A8A3A;">\(\to 0\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-radius:5px;padding:14px;text-align:center;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#6B5040;margin-bottom:8px;text-transform:uppercase;letter-spacing:.08em;">radius</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1.35rem;color:#A8832A;">\(R=\infty\)</div></div>
+  <!-- §5 Power Series -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">5 &nbsp;·&nbsp; Power series</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">From a fixed ratio to a variable one</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Replace constant $r$ with variable $x$. Integrate to get $\log$ and $\arctan$. All three grow from the same geometric root, but each lives only inside its radius of convergence:</p>
+
+<div>$$ \frac{1}{1-x} = \sum x^n, \quad \log(1+x) = x - \tfrac{x^2}{2} + \tfrac{x^3}{3} - \cdots, \quad \arctan x = x - \tfrac{x^3}{3} + \tfrac{x^5}{5} - \cdots \quad (|x| \leq 1) $$</div>
+
+    <figure style="margin:18px 0;">
+      <svg viewBox="0 0 520 58" style="width:100%; max-width:520px; height:58px; display:block;">
+        <line x1="20" y1="28" x2="500" y2="28" stroke="#C0B098" stroke-width="1"/>
+        <rect x="180" y="17" width="160" height="20" rx="3" fill="rgba(29,122,116,.10)" stroke="#1D7A74" stroke-width=".8"/>
+        <text x="260" y="30" fill="#1D7A74" font-family="IBM Plex Mono,monospace" font-size="8.5" text-anchor="middle" dominant-baseline="middle">series: |x| &lt; 1</text>
+        <line x1="180" y1="14" x2="180" y2="44" stroke="#1D7A74" stroke-width=".8"/>
+        <text x="180" y="11" fill="#1D7A74" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">−1</text>
+        <line x1="340" y1="14" x2="340" y2="44" stroke="#B84030" stroke-width="1.2"/>
+        <text x="340" y="11" fill="#B84030" font-family="IBM Plex Mono,monospace" font-size="8" text-anchor="middle">1✕</text>
+        <line x1="20" y1="46" x2="338" y2="46" stroke="#2A6A1A" stroke-width="1.2"/>
+        <line x1="342" y1="46" x2="500" y2="46" stroke="#2A6A1A" stroke-width="1.2"/>
+        <text x="260" y="56" fill="#2A6A1A" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle">function 1/(1−x) defined everywhere except x=1</text>
+      </svg>
+      <figcaption style="font:italic 400 14px/1.5 'Newsreader',serif; color:#8B7E69; text-align:center; margin-top:8px;">The series (teal band) has a strictly smaller domain than the function it represents.</figcaption>
+    </figure>
+
+    <div style="margin:10px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">Insight</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">A series has its own domain. The function $1/(1-x)$ lives beyond $|x|=1$; its power series does not. Every power series is confined to a disc in the complex plane whose radius is determined by the nearest singularity.</p>
+    </div>
+  </section>
+
+  <!-- §6 Taylor -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">6 &nbsp;·&nbsp; Taylor series</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Rebuilding a function from derivatives at one point</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Taylor's idea: if you know every derivative of $f$ at a single point $a$, you can reconstruct $f$ everywhere (within the radius of convergence). Each new term matches one more layer of bending. Factorials appear because differentiating $x^n$ repeatedly brings down $n!$:</p>
+
+<div>$$ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n, \qquad c_n = \frac{f^{(n)}(0)}{n!} $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 0;">The animation shows $\sin x$ and successive polynomial approximations $P_1$ through $P_9$. Each odd degree extends the accurate region further.</p>
+  </section>
+
+  <figure style="max-width:760px; margin:24px auto 0;">
+    <canvas id="v6" style="width:100%; height:245px; display:block; border-radius:10px; background:#EDE6D8;"></canvas>
+    <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:14px;">$\sin x$ (dim) vs. $P_1$ through $P_9$ cycling in. Each successive polynomial tracks $\sin x$ faithfully over a wider interval.</figcaption>
+  </figure>
+
+  <!-- §7 Exponential -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">7 &nbsp;·&nbsp; Exponential series</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Factorial domination — convergence everywhere</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Every derivative of $e^x$ is $e^x$, so every Taylor coefficient is $1/n!$. The ratio test kills convergence globally: once $n$ exceeds $|x|$, every extra factor in $(n+1)!$ beats $|x|$ and the ratio collapses to zero.</p>
+
+<div>$$ e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}, \qquad \left|\frac{a_{n+1}}{a_n}\right| = \frac{|x|}{n+1} \xrightarrow{n\to\infty} 0 \quad \forall x \implies R = \infty $$</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:26px;">
+      <div style="padding:18px 16px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:10px; text-align:center;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#8B7E69; margin-bottom:10px;">Ratio</div>
+        <div style="font:500 22px/1 'Newsreader',serif; color:var(--accent);">$\dfrac{|x|}{n+1}$</div>
+      </div>
+      <div style="padding:18px 16px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:10px; text-align:center;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#8B7E69; margin-bottom:10px;">Limit</div>
+        <div style="font:500 22px/1 'Newsreader',serif; color:#2A6A1A;">$\to 0$</div>
+      </div>
+      <div style="padding:18px 16px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:10px; text-align:center;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#8B7E69; margin-bottom:10px;">Radius</div>
+        <div style="font:500 22px/1 'Newsreader',serif; color:#8A6820;">$R = \infty$</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §8 Euler -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">8 &nbsp;·&nbsp; Sine, cosine &amp; Euler's formula</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Substituting $ix$ into the exponential</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Substitute $ix$ into the exponential series. Sort real and imaginary parts using $i^2=-1, i^3=-i, i^4=1, \ldots$ The real part <em>is</em> $\cos x$; the imaginary part <em>is</em> $\sin x$. Euler's formula is not a definition — it is a consequence:</p>
+
+<div>$$ e^{ix} = \cos x + i\sin x $$</div>
+
+    <blockquote style="margin:28px 0; text-align:center; font:italic 500 22px/1.45 'Newsreader',serif; color:var(--accent);">Real exp = growth. Imaginary exp = rotation.</blockquote>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Combined: $e^{(a+bi)t}$ gives a rotating spiral — the skeleton of all oscillation. The animation shows $e^{i\theta}$ tracing the unit circle; the green shadow is $\cos\theta$, the orange shadow is $\sin\theta$.</p>
+  </section>
+
+  <figure style="max-width:760px; margin:24px auto 0;">
+    <canvas id="v8" style="width:100%; height:275px; display:block; border-radius:10px; background:#EDE6D8;"></canvas>
+    <figcaption style="font:400 15px/1.5 'Newsreader',serif; font-style:italic; color:#8B7E69; text-align:center; margin-top:14px;">$e^{i\theta}$ as a rotating unit-circle point. Green shadow = $\cos\theta$; orange shadow = $\sin\theta$. Angle $\theta$ advances in real time.</figcaption>
+  </figure>
+
+  <!-- §9 Tangent -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">9 &nbsp;·&nbsp; Tangent series &amp; convergence walls</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The nearest singularity sets the radius</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\tan x = \sin x / \cos x$ blows up when $\cos x = 0$, at $\pm\pi/2$. Those are the nearest singularities to $x=0$ in the complex plane, so the radius of convergence is exactly $\pi/2$:</p>
+
+<div>$$ \tan x = x + \frac{x^3}{3} + \frac{2x^5}{15} + \frac{17x^7}{315} + \cdots \qquad |x| < \frac{\pi}{2} $$</div>
+
+    <figure style="margin:18px 0;">
+      <svg viewBox="0 0 500 110" style="width:100%; max-width:500px; height:110px; display:block;">
+        <line x1="20" y1="55" x2="480" y2="55" stroke="#C0B098" stroke-width="1"/>
+        <rect x="132" y="10" width="236" height="90" fill="rgba(29,122,116,.06)"/>
+        <path d="M142,96 Q172,88 200,74 Q224,64 248,54 Q250,50 252,46 Q276,36 300,22 Q328,8 358,4" fill="none" stroke="#8A6820" stroke-width="2"/>
+        <line x1="132" y1="8" x2="132" y2="102" stroke="#B84030" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="368" y1="8" x2="368" y2="102" stroke="#B84030" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <text x="112" y="18" fill="#B84030" font-family="IBM Plex Mono,monospace" font-size="9.5">−π/2</text>
+        <text x="370" y="18" fill="#B84030" font-family="IBM Plex Mono,monospace" font-size="9.5">+π/2</text>
+        <text x="222" y="46" fill="#1D7A74" font-family="IBM Plex Mono,monospace" font-size="9">R=π/2</text>
+        <text x="390" y="55" fill="#B84030" font-family="IBM Plex Mono,monospace" font-size="8.5">diverges</text>
+        <text x="165" y="100" fill="#1D7A74" font-family="IBM Plex Mono,monospace" font-size="8.5">converges</text>
+      </svg>
+    </figure>
+
+    <div style="padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">General principle</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$R$ = distance from the center to the nearest singularity, measured in the <em>complex</em> plane. The real-line behavior is just a slice of this complex picture.</p>
+    </div>
+  </section>
+
+  <!-- §10 Radius & Tests -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">10 &nbsp;·&nbsp; Radius of convergence &amp; tests</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Inside converges, outside diverges, boundary needs work</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Every power series $\sum a_n x^n$ has a radius $R$: strictly inside the disc the series converges absolutely; strictly outside it diverges. The boundary circle requires case-by-case analysis.</p>
+
+<div>$$ R = \frac{1}{\limsup \sqrt[n]{|a_n|}} \qquad \text{Ratio: } L = \lim\left|\frac{a_{n+1}}{a_n}\right| < 1 \Rightarrow \text{converges},\quad L > 1 \Rightarrow \text{diverges} $$</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px;">
+      <div style="padding:16px 18px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #1D7A74; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#1D7A74; margin-bottom:8px;">Ratio Test</div>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">$L = \lim|a_{n+1}/a_n|$: converges if $L < 1$, diverges if $L > 1$</p>
+      </div>
+      <div style="padding:16px 18px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #1D7A74; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#1D7A74; margin-bottom:8px;">Root Test</div>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">$L = \lim\sqrt[n]{|a_n|}$: same criterion, especially clean for $n$th-power terms</p>
+      </div>
+      <div style="padding:16px 18px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #2A6A1A; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A6A1A; margin-bottom:8px;">p-series</div>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">$\sum n^{-p}$ converges iff $p > 1$</p>
+      </div>
+      <div style="padding:16px 18px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #2A6A1A; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A6A1A; margin-bottom:8px;">Alternating</div>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">Converges if $b_n \searrow 0$ monotonically</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ PART THREE ══════════════════════ -->
+  <div style="max-width:780px; margin:100px auto 0; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Part Three</div>
+    <h2 style="font:500 clamp(28px,4.4vw,42px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0;">Control &amp; Error</h2>
+    <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:500px; margin:14px auto 0;">What rearrangement costs, and how far a finite approximation deviates from truth.</p>
   </div>
-</section>
 
-<!-- §8 -->
-<section id="t8" data-screen-label="§8 Sine Cosine Euler" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§8 · Sine, Cosine &amp; Euler's Formula</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">Substitute \(ix\) into the exponential series. Sort real and imaginary parts. The real part IS \(\cos x\); the imaginary part IS \(\sin x\). This is Euler's formula — not a definition, a consequence.</p>
-  <canvas id="v8" style="width:100%;height:275px;display:block;border-radius:8px;background:#DDD4C0;margin-bottom:14px;"></canvas>
-  <figcaption style="font-size:.8rem;color:#9A7A60;font-style:italic;font-family:'Newsreader',Georgia,serif;margin-bottom:14px;">Fig 8 — \(e^{i\theta}\) as a rotating point. Green shadow = \(\cos\theta\); purple shadow = \(\sin\theta\).</figcaption>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ e^{ix}=\cos x+i\sin x \qquad\Leftarrow\qquad i^2=-1,\ i^3=-i,\ i^4=1,\ldots \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #B8552F;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#1A140E;">Real exp = growth. Imaginary exp = rotation.</strong> Combined: \(e^{(a+bi)t}\) gives a rotating spiral — the skeleton of all oscillation.</div>
-</section>
+  <!-- §11 Absolute Convergence -->
+  <section style="max-width:680px; margin:64px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">11 &nbsp;·&nbsp; Absolute &amp; conditional convergence</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Rearrangement safety</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;"><em>Absolute convergence</em>: $\sum|a_n| < \infty$. <em>Conditional convergence</em>: the series converges, but $\sum|a_n| = \infty$. The distinction governs whether you can safely rearrange terms:</p>
 
-<!-- §9 -->
-<section id="t9" data-screen-label="§9 Tangent Series" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§9 · Tangent Series &amp; Convergence Walls</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">\(\tan x=\sin x/\cos x\) blows up when \(\cos x=0\), at \(\pm\pi/2\). Those are the nearest singularities to \(x=0\), so the radius of convergence is exactly \(\pi/2\).</p>
-  <svg viewBox="0 0 500 110" style="width:100%;max-width:500px;height:110px;display:block;margin-bottom:14px;">
-    <line x1="20" y1="55" x2="480" y2="55" stroke="#C0B098" stroke-width="1"/>
-    <rect x="132" y="10" width="236" height="90" fill="rgba(45,138,132,.06)"/>
-    <path d="M142,96 Q172,88 200,74 Q224,64 248,54 Q250,50 252,46 Q276,36 300,22 Q328,8 358,4" fill="none" stroke="#A8832A" stroke-width="2"/>
-    <line x1="132" y1="8" x2="132" y2="102" stroke="#B84030" stroke-width="1.5" stroke-dasharray="5,4"/>
-    <line x1="368" y1="8" x2="368" y2="102" stroke="#B84030" stroke-width="1.5" stroke-dasharray="5,4"/>
-    <text x="112" y="18" fill="#B84030" font-family="IBM Plex Mono,monospace" font-size="9.5">−π/2</text>
-    <text x="370" y="18" fill="#B84030" font-family="IBM Plex Mono,monospace" font-size="9.5">+π/2</text>
-    <text x="222" y="46" fill="#2D8A84" font-family="IBM Plex Mono,monospace" font-size="9">R=π/2</text>
-    <text x="390" y="55" fill="#B84030" font-family="IBM Plex Mono,monospace" font-size="8.5">diverges</text>
-    <text x="165" y="100" fill="#2D8A84" font-family="IBM Plex Mono,monospace" font-size="8.5">converges</text>
-  </svg>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ \tan x=x+\frac{x^3}{3}+\frac{2x^5}{15}+\frac{17x^7}{315}+\cdots \qquad |x|<\frac{\pi}{2} \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #B8552F;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#1A140E;">General principle:</strong> \(R\) = distance from center to nearest singularity — measured in the complex plane.</div>
-</section>
+<div>$$ \underbrace{1 - \tfrac{1}{2} + \tfrac{1}{3} - \tfrac{1}{4} + \cdots = \log 2}_{\text{conditional: positive/negative parts each diverge}} \qquad \underbrace{\sum \frac{(-1)^n}{n^2}}_{\text{absolute: }\sum n^{-2} < \infty} $$</div>
 
-<!-- §10 -->
-<section id="t10" data-screen-label="§10 Radius and Tests" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§10 · Radius of Convergence &amp; Convergence Tests</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">Every power series \(\sum a_n x^n\) has a radius \(R\): inside converges, outside diverges, boundary requires separate analysis.</p>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:14px;">\[ R=\frac{1}{\limsup\sqrt[n]{|a_n|}}\qquad\text{Ratio: }L=\lim\left|\frac{a_{n+1}}{a_n}\right|<1\Rightarrow\text{converges},\quad L>1\Rightarrow\text{diverges} \]</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-    <div style="background:#E8E0D0;border-left:3px solid #2D8A84;padding:11px 14px;border-radius:0 5px 5px 0;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#2D8A84;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;">Ratio Test</div><div style="font-size:.85rem;color:#4A3D2E;">\(L=\lim|a_{n+1}/a_n|\): converges if \(L&lt;1\), diverges if \(L&gt;1\)</div></div>
-    <div style="background:#E8E0D0;border-left:3px solid #2D8A84;padding:11px 14px;border-radius:0 5px 5px 0;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#2D8A84;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;">Root Test</div><div style="font-size:.85rem;color:#4A3D2E;">\(L=\lim\sqrt[n]{|a_n|}\): same criterion, useful for \(n\)th-power terms</div></div>
-    <div style="background:#E8E0D0;border-left:3px solid #4A8A3A;padding:11px 14px;border-radius:0 5px 5px 0;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A8A3A;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;">p-series</div><div style="font-size:.85rem;color:#4A3D2E;">\(\sum n^{-p}\) converges iff \(p&gt;1\)</div></div>
-    <div style="background:#E8E0D0;border-left:3px solid #4A8A3A;padding:11px 14px;border-radius:0 5px 5px 0;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A8A3A;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;">Alternating</div><div style="font-size:.85rem;color:#4A3D2E;">Converges if \(b_n\searrow 0\) monotonically</div></div>
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#922028;">Riemann rearrangement</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">A conditionally convergent series can be rearranged to converge to <em>any</em> value — or to diverge entirely. Absolutely convergent series are immune: their sum is the same in any order.</p>
+    </div>
+  </section>
+
+  <!-- §12 Remainder -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">12 &nbsp;·&nbsp; Taylor remainder</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Quantifying the truncation error</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Stopping at degree $n$ leaves an error $R_n(x)$. Lagrange's form controls it exactly: there exists some $c$ between $a$ and $x$ such that:</p>
+
+<div>$$ f(x) = P_n(x) + R_n(x), \qquad R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} $$</div>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#2A6A1A;">When Taylor = function</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The Taylor series equals $f$ precisely when $R_n(x) \to 0$. For $e^x$ and $\sin x$ the $(n+1)$th derivative is bounded and $(n+1)!$ dominates — so the error vanishes for every $x$. Not every smooth function is analytic: bump functions are infinitely differentiable but cannot equal their Taylor series outside a point.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ PART FOUR ══════════════════════ -->
+  <div style="max-width:780px; margin:100px auto 0; text-align:center;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Part Four</div>
+    <h2 style="font:500 clamp(28px,4.4vw,42px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0;">Matrix World</h2>
+    <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:500px; margin:14px auto 0;">The same series machinery, lifted from numbers to matrices — where it creates the transformations of Lie groups.</p>
   </div>
-</section>
 
-<!-- §11 -->
-<section id="t11" data-screen-label="§11 Absolute Convergence" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§11 · Absolute &amp; Conditional Convergence</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;"><em>Absolute convergence</em>: \(\sum|a_n|&lt;\infty\). <em>Conditional convergence</em>: series converges, but \(\sum|a_n|=\infty\). The distinction governs whether rearrangement is safe.</p>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ \underbrace{1-\tfrac12+\tfrac13-\tfrac14+\cdots=\log 2}_{\text{conditional: positive/negative parts each diverge}} \qquad \underbrace{\sum\frac{(-1)^n}{n^2}}_{\text{absolute: }\sum n^{-2}<\infty} \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #B84030;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#D06040;">Riemann rearrangement theorem:</strong> A conditionally convergent series can be rearranged to converge to <em>any</em> value — or to diverge. Absolutely convergent series are immune to reordering.</div>
-</section>
+  <!-- §13 Matrix Exponential -->
+  <section style="max-width:680px; margin:64px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">13 &nbsp;·&nbsp; Matrix series &amp; the matrix exponential</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Replace scalar $x$ with a square matrix $A$</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Replace $1$ with the identity $I$. The same factorial denominators that gave $e^x$ its infinite radius guarantee convergence for every matrix, regardless of its norm:</p>
 
-<!-- §12 -->
-<section id="t12" data-screen-label="§12 Taylor Remainder" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§12 · Taylor Remainder</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">Stopping at degree \(n\) leaves an error \(R_n(x)\). Lagrange's theorem controls it exactly, and the Taylor series equals the function precisely when \(R_n(x)\to 0\).</p>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ f(x)=P_n(x)+R_n(x), \qquad R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} \quad\text{for some } c\in(a,x) \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #4A8A3A;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#6AAA58;">Taylor series works when \(R_n(x)\to 0\).</strong> For \(e^x\) and \(\sin x\), the \((n+1)\)th derivative is bounded and \((n+1)!\) dominates — error vanishes for every \(x\). Not every smooth function is analytic.</div>
-</section>
+<div>$$ e^A = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots \quad \text{converges for all } A $$</div>
 
-<!-- §13 -->
-<section id="t13" data-screen-label="§13 Matrix Series" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§13 · Matrix Series &amp; the Matrix Exponential</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">Replace scalar \(x\) with a square matrix \(A\), replace \(1\) with identity \(I\). The same factorial denominators guarantee convergence for every matrix.</p>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ e^A=I+A+\frac{A^2}{2!}+\frac{A^3}{3!}+\cdots \quad\text{converges for all }A \]</div>
-  <div style="background:#E8E0D0;border-left:3px solid #2D8A84;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ J=\begin{bmatrix}0&-1\\1&0\end{bmatrix},\;J^2=-I \implies e^{\theta J}=\begin{bmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{bmatrix} \quad\text{(rotation matrix!)} \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #B8552F;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#1A140E;">\(A\) = infinitesimal generator; \(e^{tA}\) = finite transformation after time \(t\).</strong> This is the core of Lie theory: every smooth symmetry has a matrix logarithm generating it.</div>
-</section>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 18px;">The key example is the infinitesimal rotation generator $J$. Because $J^2 = -I$ the series collapses into cosines and sines — the Euler formula reborn as a matrix identity:</p>
 
-<!-- §14 -->
-<section id="t14" data-screen-label="§14 Matrix Logarithm" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§14 · Matrix Logarithm</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">The inverse of \(\exp\): given \(G\approx I\), recover the generator \(A\) with \(e^A=G\). Without factorials, convergence is only local — and the logarithm can be multi-valued.</p>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:14px;">\[ \log(I+A)=A-\frac{A^2}{2}+\frac{A^3}{3}-\cdots \quad (\|A\|<1) \]</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-radius:5px;padding:14px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4A8A3A;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;">exp — global</div><div style="font-size:.85rem;color:#4A3D2E;line-height:1.65;">Factorials → converges for all \(A\). Exp map is everywhere defined.</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-radius:5px;padding:14px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:#B8682A;margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em;">log — local</div><div style="font-size:.85rem;color:#4A3D2E;line-height:1.65;">No factorials → needs \(\|A\|&lt;1\). Local inverse only; can be multi-valued.</div></div>
+<div>$$ J = \begin{bmatrix}0 & -1 \\ 1 & 0\end{bmatrix}, \quad J^2 = -I \implies e^{\theta J} = \begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{bmatrix} $$</div>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">Core of Lie theory</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$A$ is the infinitesimal generator; $e^{tA}$ is the finite transformation after time $t$. Every smooth symmetry has a matrix logarithm generating it — the exponential map is the bridge between the Lie algebra and the Lie group.</p>
+    </div>
+  </section>
+
+  <!-- §14 Matrix Log -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">14 &nbsp;·&nbsp; Matrix logarithm</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The inverse of exp — local, not global</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Given $G \approx I$, recover the generator $A$ with $e^A = G$. Without factorials, convergence is only local, and the logarithm can be multi-valued:</p>
+
+<div>$$ \log(I + A) = A - \frac{A^2}{2} + \frac{A^3}{3} - \cdots \quad (\|A\| < 1) $$</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px;">
+      <div style="padding:18px 20px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:10px;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A6A1A; margin-bottom:8px;">exp — global</div>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">Factorials → converges for all $A$. The exponential map is everywhere defined.</p>
+      </div>
+      <div style="padding:18px 20px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:10px;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#B8682A; margin-bottom:8px;">log — local</div>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">No factorials → needs $\|A\| < 1$. Local inverse only; can be multi-valued.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §15 BCH -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">15 &nbsp;·&nbsp; Noncommutativity &amp; BCH</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">When $AB \neq BA$, multiplication costs extra</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For scalars $e^{a+b} = e^a e^b$. For matrices this fails when $AB \neq BA$. The commutator $[A,B] = AB - BA$ measures the failure, and a small loop test makes it concrete:</p>
+
+<div>$$ [A,B] = AB - BA \qquad \Rightarrow \qquad e^{\varepsilon A}e^{\varepsilon B}e^{-\varepsilon A}e^{-\varepsilon B} \approx I + \varepsilon^2[A,B] $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 18px;">The Baker–Campbell–Hausdorff formula quantifies how much extra the product costs at every order:</p>
+
+<div>$$ \log(e^A e^B) = A + B + \tfrac{1}{2}[A,B] + \tfrac{1}{12}[A,[A,B]] - \tfrac{1}{12}[B,[A,B]] + \cdots $$</div>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">BCH</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">Multiplying finite Lie group elements = adding generators + commutator corrections. When $[A,B] = 0$ all corrections vanish and $e^A e^B = e^{A+B}$, recovering the scalar law exactly.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ CONCEPT MAP ══════════════════════ -->
+  <div style="max-width:780px; margin:100px auto 0; text-align:center;">
+    <div style="height:1px; background:linear-gradient(90deg,transparent,#CFC1A6,transparent); margin:0 0 40px;"></div>
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Summary</div>
+    <h2 style="font:500 clamp(28px,4.4vw,42px)/1.08 'Newsreader',serif; letter-spacing:-.015em; margin:0 0 30px;">Concept Map</h2>
   </div>
-</section>
 
-<!-- §15 -->
-<section id="t15" data-screen-label="§15 BCH Formula" data-rv="1" style="padding:52px 0;border-bottom:1px solid #C8B99F;">
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:12px;">§15 · Noncommutativity &amp; BCH Formula</h2>
-  <p style="color:#3A2E20;max-width:65ch;margin-bottom:16px;line-height:1.78;font-size:.97rem;">For scalars \(e^{a+b}=e^ae^b\). For matrices this fails when \(AB\ne BA\). The commutator \([A,B]=AB-BA\) measures the failure — and BCH quantifies the correction.</p>
-  <div style="background:#E8E0D0;border-left:3px solid #2D8A84;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ [A,B]=AB-BA \qquad\Rightarrow\qquad e^{\varepsilon A}e^{\varepsilon B}e^{-\varepsilon A}e^{-\varepsilon B}\approx I+\varepsilon^2[A,B] \]</div>
-  <div style="background:#E8E0D0;border-left:3px solid #A8832A;padding:11px 16px;border-radius:0 5px 5px 0;overflow-x:auto;margin-bottom:12px;">\[ \log(e^Ae^B)=A+B+\tfrac{1}{2}[A,B]+\tfrac{1}{12}[A,[A,B]]-\tfrac{1}{12}[B,[A,B]]+\cdots \]</div>
-  <div style="background:#F3ECDD;border-left:3px solid #B8552F;padding:11px 16px;border-radius:0 5px 5px 0;font-size:.88rem;color:#4A3D2E;line-height:1.72;"><strong style="color:#1A140E;">BCH:</strong> Multiplying finite transformations = adding generators + commutator corrections. When \([A,B]=0\) all corrections vanish and \(e^Ae^B=e^{A+B}\).</div>
-</section>
-
-<!-- CONCEPT MAP -->
-<section id="cmap" data-screen-label="Concept Map" data-rv="1" style="padding-top:60px;padding-bottom:60px;">
-  <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#8A6A50;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;">Summary</div>
-  <h2 style="font-family:'Newsreader',Georgia,serif;font-size:1.75rem;font-weight:600;color:#1A140E;margin-bottom:22px;">Concept Map</h2>
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:36px;">
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #2D8A84;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#2D8A84;margin-bottom:4px;">§1–3</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Sequences</div><div style="font-size:.78rem;color:#9A7A60;">\(a_n\to L\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #2D8A84;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#2D8A84;margin-bottom:4px;">§1–3</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Series</div><div style="font-size:.78rem;color:#9A7A60;">\(S_N\to S\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #4A8A3A;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A8A3A;margin-bottom:4px;">§4–5</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Geometric</div><div style="font-size:.78rem;color:#9A7A60;">\(a/(1-r)\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #4A8A3A;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#4A8A3A;margin-bottom:4px;">§4–5</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Power Series</div><div style="font-size:.78rem;color:#9A7A60;">\(\sum a_nx^n\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #B8552F;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#B8552F;margin-bottom:4px;">§6–8</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Taylor</div><div style="font-size:.78rem;color:#9A7A60;">\(\sum f^{(n)}/n!\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #B8552F;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#B8552F;margin-bottom:4px;">§8</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Euler</div><div style="font-size:.78rem;color:#9A7A60;">\(e^{ix}=\cos+i\sin\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #A8832A;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#A8832A;margin-bottom:4px;">§9–12</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Radius R</div><div style="font-size:.78rem;color:#9A7A60;">\(1/\limsup\sqrt[n]{|a_n|}\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #A8832A;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#A8832A;margin-bottom:4px;">§12</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Remainder</div><div style="font-size:.78rem;color:#9A7A60;">\(f^{(n+1)}(c)/(n+1)!\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #B8682A;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#B8682A;margin-bottom:4px;">§13–14</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">Matrix Exp</div><div style="font-size:.78rem;color:#9A7A60;">\(e^A=\sum A^n/n!\)</div></div>
-    <div style="background:#EEE6D8;border:1px solid #C0B098;border-top:2px solid #B8682A;border-radius:0 0 5px 5px;padding:12px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:#B8682A;margin-bottom:4px;">§15</div><div style="font-family:'Newsreader',Georgia,serif;font-size:1rem;font-weight:600;color:#1A140E;margin-bottom:4px;">BCH</div><div style="font-size:.78rem;color:#9A7A60;">\(A+B+\tfrac12[A,B]+\cdots\)</div></div>
+  <div style="max-width:780px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; padding:0 0 40px;">
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #1D7A74; border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#1D7A74; margin-bottom:6px;">§1–3</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Sequences</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$a_n \to L$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #1D7A74; border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#1D7A74; margin-bottom:6px;">§1–3</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Series</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$S_N \to S$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #2A6A1A; border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#2A6A1A; margin-bottom:6px;">§4–5</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Geometric</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$a/(1-r)$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #2A6A1A; border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#2A6A1A; margin-bottom:6px;">§4–5</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Power Series</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$\sum a_n x^n$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid var(--accent); border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:var(--accent); margin-bottom:6px;">§6–8</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Taylor</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$\sum f^{(n)}/n!$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid var(--accent); border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:var(--accent); margin-bottom:6px;">§8</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Euler</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$e^{ix}=\cos+i\sin$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #8A6820; border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#8A6820; margin-bottom:6px;">§9–12</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Radius $R$</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$1/\limsup\sqrt[n]{|a_n|}$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #8A6820; border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#8A6820; margin-bottom:6px;">§12</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Remainder</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$f^{(n+1)}(c)/(n+1)!$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #B8682A; border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#B8682A; margin-bottom:6px;">§13–14</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Matrix Exp</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$e^A = \sum A^n/n!$</div>
+    </div>
+    <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #B8682A; border-radius:0 0 8px 8px; padding:14px;">
+      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#B8682A; margin-bottom:6px;">§15</div>
+      <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">BCH</div>
+      <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$A+B+\tfrac{1}{2}[A,B]+\cdots$</div>
+    </div>
   </div>
-  <p style="font-family:'Newsreader',Georgia,serif;font-style:italic;color:#9A7A60;font-size:.97rem;line-height:1.85;max-width:70ch;border-top:1px solid #C8B99F;padding-top:22px;">A sequence watches individual terms, a series watches accumulated partial sums, convergence asks whether the infinite process settles, Taylor series rebuild functions from local derivative data, and matrix series extend these ideas into geometry — where exponentials create finite transformations, logarithms recover infinitesimal generators, and commutators measure the cost of order.</p>
-</section>
 
-</div>
+  <p style="max-width:660px; margin:0 auto; font:italic 400 18px/1.85 'Newsreader',serif; color:#8B7E69; text-align:center; padding:0 0 20px;">A sequence watches individual terms; a series watches accumulated partial sums; convergence asks whether the infinite process settles; Taylor series rebuild functions from local derivative data; and matrix series extend these ideas into geometry — where exponentials create finite transformations, logarithms recover infinitesimal generators, and commutators measure the cost of order.</p>
+
+</div><!-- end lie-doc -->
+
 <script>
 const SeriesPage = {
-
   componentDidMount() {
-    setTimeout(() => { this._rev(); this._nav(); this._anims(); }, 60);
+    setTimeout(() => { this._anims(); }, 60);
     const go = () => { if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise(); else setTimeout(go, 350); };
     setTimeout(go, 400);
-  },
-  _rev() {
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; io.unobserve(e.target); }
-    }), { threshold: 0.04, rootMargin: '0px 0px -30px 0px' });
-    document.querySelectorAll('[data-rv]').forEach(el => io.observe(el));
-  },
-  _nav() {
-    const io = new IntersectionObserver(es => es.forEach(e => {
-      const n = document.getElementById('na' + e.target.id.slice(1));
-      if (n) n.style.color = e.isIntersecting ? '#B8552F' : '#6B5040';
-    }), { threshold: 0.25 });
-    for (let i = 1; 16 > i; i++) { const s = document.getElementById('t'+i); if (s) io.observe(s); }
   },
   _gc(id) {
     const c = document.getElementById(id); if (!c) return null;
@@ -301,155 +504,160 @@ const SeriesPage = {
     io.observe(canvas);
   },
   _anims() {
-    // Walker
+    // §1 — Walker
     this._sa('v1', (ctx, w, h, t) => {
       ctx.fillStyle='#EDE6D8'; ctx.fillRect(0,0,w,h);
       const mg=44, lw=w-mg*2, r1=72, r2=148, tx=v=>mg+(v/2.2)*lw;
-      ctx.fillStyle='#252548'; ctx.font='10px IBM Plex Mono,monospace';
+      ctx.fillStyle='#8A7060'; ctx.font='10px IBM Plex Mono,monospace';
       ctx.fillText('SEQUENCE', 8, r1-24); ctx.fillText('SERIES', 8, r2-24);
       [r1,r2].forEach(ry => {
         ctx.strokeStyle='#C0B098'; ctx.lineWidth=1;
         ctx.beginPath(); ctx.moveTo(mg,ry); ctx.lineTo(w-mg+8,ry); ctx.stroke();
         [0,1,2].forEach(v => {
-          ctx.strokeStyle='#A09078'; ctx.beginPath(); ctx.moveTo(tx(v),ry-5); ctx.lineTo(tx(v),ry+5); ctx.stroke();
+          ctx.strokeStyle='#B8A888'; ctx.beginPath(); ctx.moveTo(tx(v),ry-5); ctx.lineTo(tx(v),ry+5); ctx.stroke();
           ctx.fillStyle='#4A3D2E'; ctx.textAlign='center'; ctx.fillText(v,tx(v),ry+17); ctx.textAlign='left';
         });
       });
       [1,0.5,0.25,0.125,0.0625,0.03125].forEach((v,i) => {
-        const a=Math.max(0,Math.min(1,(t-i*0.35)*3)); if (0 >= a) return;
+        const a=Math.max(0,Math.min(1,(t-i*0.35)*3)); if (0>=a) return;
         ctx.beginPath(); ctx.arc(tx(v),r1,5,0,Math.PI*2); ctx.fillStyle='rgba(15,90,86,'+a+')'; ctx.fill();
-        ctx.beginPath(); ctx.arc(tx(v),r1,8,0,Math.PI*2); ctx.fillStyle='rgba(15,90,86,'+(a*0.12)+')'; ctx.fill();
+        ctx.beginPath(); ctx.arc(tx(v),r1,9,0,Math.PI*2); ctx.fillStyle='rgba(15,90,86,'+(a*0.15)+')'; ctx.fill();
       });
       const terms=[1,0.5,0.25,0.125,0.0625,0.03125,0.015625];
       const cyc=3.5, ph=t%cyc, full=Math.floor(ph/(cyc/terms.length));
-      let sum=0; for (let i=0; terms.length > i && full > i; i++) sum+=terms[i];
-      if (terms.length > full) sum+=terms[full]*Math.min(1,(ph%(cyc/terms.length))/(cyc/terms.length)*2);
+      let sum=0; for (let i=0;terms.length>i&&full>i;i++) sum+=terms[i];
+      if (terms.length>full) sum+=terms[full]*Math.min(1,(ph%(cyc/terms.length))/(cyc/terms.length)*2);
       const wx=tx(sum);
-      ctx.fillStyle='rgba(15,90,86,0.14)'; ctx.fillRect(tx(0),r2-8,wx-tx(0),16);
-      ctx.strokeStyle='rgba(160,100,20,0.55)'; ctx.setLineDash([3,5]); ctx.lineWidth=1;
+      ctx.fillStyle='rgba(15,90,86,0.12)'; ctx.fillRect(tx(0),r2-8,wx-tx(0),16);
+      ctx.strokeStyle='rgba(138,104,32,0.6)'; ctx.setLineDash([3,5]); ctx.lineWidth=1.5;
       ctx.beginPath(); ctx.moveTo(tx(2),r2-22); ctx.lineTo(tx(2),r2+22); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle='#7A5210'; ctx.font='10px IBM Plex Mono,monospace'; ctx.fillText('2',tx(2)+5,r2-10);
+      ctx.fillStyle='#7A5210'; ctx.font='10px IBM Plex Mono,monospace'; ctx.fillText('2',tx(2)+6,r2-11);
       ctx.beginPath(); ctx.arc(wx,r2,6,0,Math.PI*2); ctx.fillStyle='#0F5A56'; ctx.fill();
-      ctx.beginPath(); ctx.arc(wx,r2,10,0,Math.PI*2); ctx.fillStyle='rgba(15,90,86,0.18)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(wx,r2,11,0,Math.PI*2); ctx.fillStyle='rgba(15,90,86,0.18)'; ctx.fill();
     });
-    // Epsilon cage
+
+    // §2 — Epsilon cage
     this._sa('v2', (ctx, w, h, t) => {
       ctx.fillStyle='#EDE6D8'; ctx.fillRect(0,0,w,h);
       const mg=48, L=1.5, maxV=3, ry=h/2, tx=v=>mg+(v/maxV)*(w-mg*2);
       ctx.strokeStyle='#C0B098'; ctx.lineWidth=1;
       ctx.beginPath(); ctx.moveTo(mg,ry); ctx.lineTo(w-mg+8,ry); ctx.stroke();
       [0,1,2,3].forEach(v => {
-        ctx.strokeStyle='#A09078'; ctx.beginPath(); ctx.moveTo(tx(v),ry-5); ctx.lineTo(tx(v),ry+5); ctx.stroke();
+        ctx.strokeStyle='#B8A888'; ctx.beginPath(); ctx.moveTo(tx(v),ry-5); ctx.lineTo(tx(v),ry+5); ctx.stroke();
         ctx.fillStyle='#4A3D2E'; ctx.font='9px IBM Plex Mono,monospace'; ctx.textAlign='center'; ctx.fillText(v,tx(v),ry+17); ctx.textAlign='left';
       });
       const eps=Math.max(0.04,0.45*Math.exp(-0.28*t)*(0.7+0.3*Math.cos(t*1.2)));
-      const cl=tx(L-eps), cr=tx(L+eps), ch=28;
-      ctx.fillStyle='rgba(160,100,20,0.12)'; ctx.fillRect(cl,ry-ch/2,cr-cl,ch);
-      ctx.strokeStyle='rgba(160,100,20,0.75)'; ctx.lineWidth=1;
+      const cl=tx(L-eps), cr=tx(L+eps), ch=30;
+      ctx.fillStyle='rgba(138,104,32,0.10)'; ctx.fillRect(cl,ry-ch/2,cr-cl,ch);
+      ctx.strokeStyle='rgba(138,104,32,0.80)'; ctx.lineWidth=1.5;
       ctx.beginPath(); ctx.moveTo(cl,ry-ch/2-4); ctx.lineTo(cl,ry+ch/2+4); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(cr,ry-ch/2-4); ctx.lineTo(cr,ry+ch/2+4); ctx.stroke();
-      ctx.fillStyle='#7A5210'; ctx.font='10px IBM Plex Mono,monospace'; ctx.textAlign='center'; ctx.fillText('e',(cl+cr)/2,ry-ch/2-7); ctx.textAlign='left';
-      ctx.strokeStyle='#2A6A1A'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(tx(L),ry-18); ctx.lineTo(tx(L),ry+18); ctx.stroke();
-      ctx.fillStyle='#1E6A14'; ctx.font='12px serif'; ctx.fillText('L',tx(L)+5,ry-8);
+      ctx.fillStyle='#7A5210'; ctx.font='11px IBM Plex Mono,monospace'; ctx.textAlign='center'; ctx.fillText('ε',(cl+cr)/2,ry-ch/2-8); ctx.textAlign='left';
+      ctx.strokeStyle='#1E6A14'; ctx.lineWidth=2;
+      ctx.beginPath(); ctx.moveTo(tx(L),ry-20); ctx.lineTo(tx(L),ry+20); ctx.stroke();
+      ctx.fillStyle='#1E6A14'; ctx.font='13px IBM Plex Mono,monospace'; ctx.fillText('L',tx(L)+6,ry-8);
       const numT=Math.min(12,Math.floor(t*1.2));
-      for (let i=0; numT > i; i++) {
-        const v=L+(i%2?1:-1)*0.8/(i+1), inside=Math.abs(v-L) > eps ? false : true, a=Math.min(1,(t*1.2-i)*3);
-        ctx.beginPath(); ctx.arc(tx(v),ry,4,0,Math.PI*2);
-        ctx.fillStyle=inside?'rgba(15,90,86,'+a+')':'rgba(217,108,78,'+(a*0.8)+')'; ctx.fill();
+      for (let i=0;numT>i;i++) {
+        const v=L+(i%2?1:-1)*0.8/(i+1), inside=Math.abs(v-L)<=eps, a=Math.min(1,(t*1.2-i)*3);
+        ctx.beginPath(); ctx.arc(tx(v),ry,5,0,Math.PI*2);
+        ctx.fillStyle=inside?'rgba(15,90,86,'+a+')':'rgba(146,32,40,'+(a*0.9)+')'; ctx.fill();
       }
     });
-    // Geometric bars
+
+    // §4 — Geometric bars
     this._sa('v4', (ctx, w, h, t) => {
       ctx.fillStyle='#EDE6D8'; ctx.fillRect(0,0,w,h);
       const terms=[1,0.5,0.25,0.125,0.0625,0.03125,0.015625,0.0078125];
-      const colors=['#2D8A84','#77B7A8','#A7A06C','#B98255','#B8552F','#B86A4F','#A85C4B','#965146'];
-      const sx=52, maxW=w-sx-44, bh=28, cy=h/2, tgtX=sx+maxW;
-      ctx.strokeStyle='rgba(160,100,20,0.55)'; ctx.setLineDash([4,6]); ctx.lineWidth=1;
-      ctx.beginPath(); ctx.moveTo(tgtX,cy-44); ctx.lineTo(tgtX,cy+44); ctx.stroke(); ctx.setLineDash([]);
-      ctx.fillStyle='#7A5210'; ctx.font='10px IBM Plex Mono,monospace'; ctx.fillText('2',tgtX-14,cy-36);
+      const colors=['#0F5A56','#1E6A4A','#2A6A1A','#6A5A1A','#B8552F','#922028','#6A2018','#4A1810'];
+      const sx=52, maxW=w-sx-44, bh=30, cy=h/2, tgtX=sx+maxW;
+      ctx.strokeStyle='rgba(138,104,32,0.55)'; ctx.setLineDash([4,6]); ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.moveTo(tgtX,cy-46); ctx.lineTo(tgtX,cy+46); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle='#7A5210'; ctx.font='11px IBM Plex Mono,monospace'; ctx.fillText('2',tgtX-16,cy-38);
       ctx.strokeStyle='#C0B098'; ctx.lineWidth=1;
-      ctx.beginPath(); ctx.moveTo(sx,cy+bh/2+12); ctx.lineTo(tgtX+14,cy+bh/2+12); ctx.stroke();
-      ctx.fillStyle='#4A3D2E'; ctx.textAlign='center'; ctx.fillText('0',sx,cy+bh/2+24); ctx.textAlign='left';
+      ctx.beginPath(); ctx.moveTo(sx,cy+bh/2+13); ctx.lineTo(tgtX+14,cy+bh/2+13); ctx.stroke();
+      ctx.fillStyle='#4A3D2E'; ctx.textAlign='center'; ctx.fillText('0',sx,cy+bh/2+25); ctx.textAlign='left';
       const cyc=4, ph=t%cyc, nf=Math.floor(ph/(cyc/terms.length)), fr=(ph%(cyc/terms.length))/(cyc/terms.length);
       let cx2=sx;
-      for (let i=0; terms.length > i; i++) {
+      for (let i=0;terms.length>i;i++) {
         const tw=(terms[i]/2)*maxW;
-        const vw=nf > i ? tw : nf === i ? tw*Math.min(1,fr*2) : 0;
-        if (vw > 0) {
+        const vw=nf>i?tw:nf===i?tw*Math.min(1,fr*2):0;
+        if (vw>0) {
           ctx.fillStyle=colors[i]; ctx.fillRect(cx2,cy-bh/2,vw,bh);
-          if (26 > tw) { cx2+=tw; continue; }
-          ctx.fillStyle='rgba(255,255,255,0.70)'; ctx.font='8px IBM Plex Mono,monospace'; ctx.textAlign='center'; ctx.fillText('1/'+Math.pow(2,i),cx2+tw/2,cy+4); ctx.textAlign='left';
+          if (tw>28) {
+            ctx.fillStyle='rgba(255,255,255,0.82)'; ctx.font='9px IBM Plex Mono,monospace'; ctx.textAlign='center';
+            ctx.fillText('1/'+Math.pow(2,i),cx2+tw/2,cy+4); ctx.textAlign='left';
+          }
         }
         cx2+=tw;
       }
     });
-    // Taylor approx
+
+    // §6 — Taylor approximations
     this._sa('v6', (ctx, w, h, t) => {
       ctx.fillStyle='#EDE6D8'; ctx.fillRect(0,0,w,h);
       const ox=38, oy=h/2, pw=w-76;
       const xs=pw/(2*Math.PI), ys=(h-54)/3;
       const sx=x=>ox+(x+Math.PI)*xs, sy=y=>oy-y*ys;
       const fact=n=>{let r=1;for(let i=2;n>=i;i++)r*=i;return r;};
-      const sinP=(x,d)=>{let s=0;for(let k=0;d >= k*2+1;k++)s+=Math.pow(-1,k)*Math.pow(x,2*k+1)/fact(2*k+1);return s;};
+      const sinP=(x,d)=>{let s=0;for(let k=0;d>=k*2+1;k++)s+=Math.pow(-1,k)*Math.pow(x,2*k+1)/fact(2*k+1);return s;};
       [-1,-0.5,0,0.5,1].forEach(y=>{
-        ctx.strokeStyle='#CDC4B2'; ctx.lineWidth=0.8;
+        ctx.strokeStyle='#CDC4B4'; ctx.lineWidth=0.8;
         ctx.beginPath(); ctx.moveTo(ox,sy(y)); ctx.lineTo(ox+pw,sy(y)); ctx.stroke();
-        if(y!==0){ctx.fillStyle='#B8A888';ctx.font='8px IBM Plex Mono,monospace';ctx.fillText(y,4,sy(y)+3);}
+        if(y!==0){ctx.fillStyle='#8A7060';ctx.font='8px IBM Plex Mono,monospace';ctx.fillText(y,4,sy(y)+3);}
       });
       ctx.strokeStyle='#A09078'; ctx.lineWidth=1;
       ctx.beginPath(); ctx.moveTo(ox-4,oy); ctx.lineTo(ox+pw+10,oy); ctx.stroke();
       ctx.beginPath(); let ff=true;
       for(let px=0;pw>=px;px+=2){const xv=-Math.PI+(px/pw)*2*Math.PI,yy=sy(Math.sin(xv));if(5>yy||yy>h-5){ff=true;continue;}ff?ctx.moveTo(ox+px,yy):ctx.lineTo(ox+px,yy);ff=false;}
-      ctx.strokeStyle='#8A6A50'; ctx.lineWidth=1.5; ctx.stroke();
-      const polys=[{d:1,c:'#B84030'},{d:3,c:'#B8682A'},{d:5,c:'#A8832A'},{d:7,c:'#4A8A3A'},{d:9,c:'#2D8A84'}];
+      ctx.strokeStyle='#8A7060'; ctx.lineWidth=1.5; ctx.stroke();
+      const polys=[{d:1,c:'#B84030'},{d:3,c:'#B8682A'},{d:5,c:'#8A6820'},{d:7,c:'#2A6A1A'},{d:9,c:'#0F5A56'}];
       const cyc=9, ph3=(t/cyc)%1, ci=Math.floor(ph3*polys.length);
-      for(let pi=0;ci>=pi&&polys.length > pi;pi++){
-        const p=polys[pi], al=ci > pi ? 0.4 : Math.min(1,(ph3*polys.length-pi)*3);
+      for(let pi=0;ci>=pi&&polys.length>pi;pi++){
+        const p=polys[pi], al=ci>pi?0.45:Math.min(1,(ph3*polys.length-pi)*3);
         const rv=parseInt(p.c.slice(1,3),16),gv=parseInt(p.c.slice(3,5),16),bv=parseInt(p.c.slice(5,7),16);
         ctx.beginPath(); ff=true;
         for(let px=0;pw>=px;px+=2){const xv=-Math.PI+(px/pw)*2*Math.PI,yy=sy(sinP(xv,p.d));if(5>yy||yy>h-5){ff=true;continue;}ff?ctx.moveTo(ox+px,yy):ctx.lineTo(ox+px,yy);ff=false;}
-        ctx.strokeStyle='rgba('+rv+','+gv+','+bv+','+al+')'; ctx.lineWidth=ci===pi?1.8:1; ctx.stroke();
+        ctx.strokeStyle='rgba('+rv+','+gv+','+bv+','+al+')'; ctx.lineWidth=ci===pi?2:1; ctx.stroke();
         if(ci===pi){ctx.fillStyle='rgba('+rv+','+gv+','+bv+','+al+')';ctx.font='10px IBM Plex Mono,monospace';ctx.fillText('P'+p.d,ox+pw+5,22+pi*17);}
       }
-      ctx.fillStyle='#8A6A50'; ctx.font='10px IBM Plex Mono,monospace'; ctx.fillText('sin x',ox+pw+5,8);
+      ctx.fillStyle='#8A7060'; ctx.font='10px IBM Plex Mono,monospace'; ctx.fillText('sin x',ox+pw+5,8);
     });
-    // Euler circle
+
+    // §8 — Euler circle
     this._sa('v8', (ctx, w, h, t) => {
       ctx.fillStyle='#EDE6D8'; ctx.fillRect(0,0,w,h);
       const cx=w*0.4, cy=h/2, R=Math.min(cx-34,cy-24);
       const theta=t*0.65, cosT=Math.cos(theta), sinT=Math.sin(theta);
       const px=cx+R*cosT, py=cy-R*sinT;
-      ctx.strokeStyle='#CDC4B2'; ctx.lineWidth=0.5;
+      ctx.strokeStyle='#CDC4B4'; ctx.lineWidth=0.6;
       for(let x=cx-R-18;cx+R+18>=x;x+=26){ctx.beginPath();ctx.moveTo(x,cy-R-18);ctx.lineTo(x,cy+R+18);ctx.stroke();}
       for(let y=cy-R-18;cy+R+18>=y;y+=26){ctx.beginPath();ctx.moveTo(cx-R-18,y);ctx.lineTo(cx+R+18,y);ctx.stroke();}
-      ctx.strokeStyle='#C0B098'; ctx.lineWidth=1;
+      ctx.strokeStyle='#A09078'; ctx.lineWidth=1;
       ctx.beginPath(); ctx.moveTo(cx-R-20,cy); ctx.lineTo(cx+R+20,cy); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(cx,cy-R-20); ctx.lineTo(cx,cy+R+20); ctx.stroke();
-      ctx.fillStyle='#8A6A50'; ctx.font='9px IBM Plex Mono,monospace';
+      ctx.fillStyle='#8A7060'; ctx.font='9px IBM Plex Mono,monospace';
       ctx.fillText('Re',cx+R+6,cy+13); ctx.fillText('Im',cx+6,cy-R-10);
-      ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.strokeStyle='#A09078'; ctx.lineWidth=1.5; ctx.stroke();
-      ctx.setLineDash([4,5]); ctx.lineWidth=1;
+      ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2); ctx.strokeStyle='#ACA080'; ctx.lineWidth=1.5; ctx.stroke();
+      ctx.setLineDash([4,5]); ctx.lineWidth=1.2;
       ctx.strokeStyle='rgba(30,100,20,0.65)'; ctx.beginPath(); ctx.moveTo(cx,py); ctx.lineTo(px,py); ctx.stroke();
-      ctx.strokeStyle='rgba(160,60,20,0.65)'; ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px,cy); ctx.stroke();
+      ctx.strokeStyle='rgba(184,85,47,0.70)'; ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px,cy); ctx.stroke();
       ctx.setLineDash([]);
-      ctx.strokeStyle='rgba(15,90,86,0.85)'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(px,py); ctx.stroke();
-      ctx.strokeStyle='rgba(160,100,20,0.70)'; ctx.lineWidth=1;
-      ctx.beginPath(); ctx.arc(cx,cy,R*0.23,0,-theta,0 > theta); ctx.stroke();
+      ctx.strokeStyle='rgba(15,90,86,0.90)'; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(px,py); ctx.stroke();
+      ctx.strokeStyle='rgba(138,104,32,0.55)'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.arc(cx,cy,R*0.23,0,-theta,0>theta); ctx.stroke();
       ctx.beginPath(); ctx.arc(px,py,6,0,Math.PI*2); ctx.fillStyle='#0F5A56'; ctx.fill();
-      ctx.beginPath(); ctx.arc(px,py,10,0,Math.PI*2); ctx.fillStyle='rgba(15,90,86,0.18)'; ctx.fill();
-      ctx.beginPath(); ctx.arc(px,cy,4,0,Math.PI*2); ctx.fillStyle='#1E6A14'; ctx.fill();
-      ctx.beginPath(); ctx.arc(cx,py,4,0,Math.PI*2); ctx.fillStyle='#B8552F'; ctx.fill();
+      ctx.beginPath(); ctx.arc(px,py,11,0,Math.PI*2); ctx.fillStyle='rgba(15,90,86,0.18)'; ctx.fill();
+      ctx.beginPath(); ctx.arc(px,cy,5,0,Math.PI*2); ctx.fillStyle='#1E6A14'; ctx.fill();
+      ctx.beginPath(); ctx.arc(cx,py,5,0,Math.PI*2); ctx.fillStyle='#B8552F'; ctx.fill();
       const ix=cx+R+36;
-      ctx.fillStyle='rgba(15,90,86,0.95)'; ctx.font='11px IBM Plex Mono,monospace'; ctx.fillText('e^(ih)',ix,cy-50);
+      ctx.fillStyle='#0F5A56'; ctx.font='11px IBM Plex Mono,monospace'; ctx.fillText('e^(ih)',ix,cy-50);
       ctx.fillStyle='#1E6A14'; ctx.fillText('cos h = '+cosT.toFixed(3),ix,cy-26);
       ctx.fillStyle='#B8552F'; ctx.fillText('sin h = '+sinT.toFixed(3),ix,cy-8);
       ctx.fillStyle='#7A5210'; ctx.fillText('h = '+(((theta%(2*Math.PI))+2*Math.PI)%(2*Math.PI)).toFixed(2),ix,cy+16);
     });
-  },
-  renderVals() { return {}; }
-
+  }
 };
-document.addEventListener("DOMContentLoaded", () => SeriesPage.componentDidMount());
+document.addEventListener('DOMContentLoaded', () => SeriesPage.componentDidMount());
 </script>
 </body>
 </html>
