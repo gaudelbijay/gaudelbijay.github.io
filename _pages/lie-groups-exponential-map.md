@@ -200,14 +200,14 @@ nav: false
 
   .cbh-path-a {
     animation: cbh-path-a 3.8s ease-in-out infinite;
-    stroke-dasharray: 120;
-    stroke-dashoffset: 120;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
   }
 
   .cbh-path-b {
     animation: cbh-path-b 3.8s ease-in-out infinite;
-    stroke-dasharray: 120;
-    stroke-dashoffset: 120;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
   }
 
   @keyframes exp-flow-step {
@@ -379,7 +379,7 @@ nav: false
 
   @keyframes cbh-path-a {
     0% {
-      stroke-dashoffset: 120;
+      stroke-dashoffset: 220;
       opacity: 0.25;
     }
     42%,
@@ -392,7 +392,7 @@ nav: false
   @keyframes cbh-path-b {
     0%,
     22% {
-      stroke-dashoffset: 120;
+      stroke-dashoffset: 220;
       opacity: 0.25;
     }
     64%,
