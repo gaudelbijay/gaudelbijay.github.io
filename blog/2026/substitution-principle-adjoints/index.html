@@ -162,7 +162,8 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
   </div>
 </div>
 
-<p class="body">Matrices support all three. So the recipe runs perfectly for matrices — and the <em>same</em> machine that produces e² from 2 now produces exp(X) from X.</p>
+<p class="body">Matrices support all three. They can be added. They can be multiplied. Their infinite sums can be made meaningful when convergence is controlled. That means the symbols in a power series do not have to be read as “number instructions.” They can be read as structural instructions: start with an identity object, add the object, add its square, add its cube, and keep going with smaller and smaller weights.</p>
+<p class="body">This is the first conceptual shift. A power series is not asking “is X a number?” It is asking “can X be added, multiplied by itself, scaled, and summed safely?” If yes, the recipe can run. The <em>same</em> machine that produces e² from 2 now produces exp(X) from a matrix X.</p>
 
 <div style="display:flex;justify-content:center;margin:44px 0;">
   <svg width="700" height="320" viewBox="0 0 700 320">
@@ -201,6 +202,7 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
 <div class="rule" style="background:#5E7A4E;"></div>
 <p class="lead">Here is the key insight in a single line:</p>
 <p class="body">For a number, x³ means x·x·x. For a matrix, X³ means X·X·X. The <em>instruction</em> is identical. The coefficients 1/3! don't know whether X is a number or a matrix — they only multiply and add.</p>
+<p class="body">The substitution principle is saying that algebraic identities between power series are identities between recipes. If two recipes always produce the same scalar function because their coefficients and operations match, then substituting a matrix into those same recipes preserves the identity, as long as the infinite sums converge. The object changes; the formal instructions do not.</p>
 
 <div class="thm" style="background:#0d1a0d;border-color:#5E7A4E55;">
   <p>Theorem (Rossmann — Substitution Principle)</p>
@@ -211,6 +213,7 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
   <p>The algebra is <span style="color:#C2723C;">identical to the scalar case</span> — no new proof required.</p>
 </div>
 
+<p class="body">Read the three lines as promises. The first says adding recipes before substitution is the same as substituting first and then adding outputs. The second says multiplying recipes before substitution is the same as substituting first and multiplying outputs. The third says nesting recipes is still legitimate: if G produces an object that F can accept, then F(G(X)) behaves exactly like composition should.</p>
 <p class="body">This theorem is not just a convenience. It changes the conceptual landscape: power series are no longer tied to numbers. They are <em>universal recipes</em> that run on anything with addition, multiplication, and convergence.</p>
 
 <div class="divider"></div>
@@ -218,8 +221,9 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
 <!-- §4 CONVERGENCE -->
 <h2 class="sec">§4 — Convergence: The Safety Net</h2>
 <div class="rule" style="background:#41568F;"></div>
-<p class="body">Infinite sums are delicate. Rearranging terms can change the value — or make it diverge. <strong style="color:#41568F;">Absolute convergence</strong> is the safety net: it licenses all regrouping, all rearranging. Every algebraic identity that works for scalars then carries over to matrices unchanged.</p>
-<p class="body">The good news for the exponential: the series converges absolutely for <em>every</em> square matrix, with no condition on X required. Watch the partial sums converge:</p>
+<p class="body">The only reason this does not become reckless symbol pushing is convergence. A finite polynomial causes no danger: it has only finitely many additions and multiplications. A power series is different because it asks us to add infinitely many objects. If the tail does not become harmless, the recipe has no stable output.</p>
+<p class="body"><strong style="color:#41568F;">Absolute convergence</strong> is the safety net. It says the total size of the terms is finite even before cancellation. That matters because algebraic manipulation of power series often regroups terms, multiplies series, or compares coefficients. Absolute convergence is what prevents those rearrangements from changing the answer.</p>
+<p class="body">The good news for the exponential: the factorials make the terms shrink so aggressively that the series converges absolutely for <em>every</em> square matrix, with no condition on X required. Watch the partial sums converge:</p>
 
 <canvas id="c-conv" class="vis" data-anim="conv" width="800" height="420"></canvas>
 <p class="cap">Partial sums of e^0.5 = 1 + 0.5 + 0.5²/2! + 0.5³/3! + ⋯ converging to the exact value (dashed green line).</p>
@@ -234,10 +238,11 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
 <h2 class="sec">§5 — X as an Infinitesimal Motion</h2>
 <div class="rule" style="background:#C2723C;"></div>
 <p class="lead">Now the geometric heart of the story.</p>
-<p class="body">Imagine X encodes a tiny rotation — an infinitesimal nudge in a direction. Taking one step of size X means performing that nudge once. Taking two steps means performing it twice. And so on.</p>
+<p class="body">A matrix can describe an instantaneous tendency. For example, a rotation generator does not itself look like a finished rotation; it tells every vector which way it should start moving at that instant. That is why we call X infinitesimal: it is not the whole motion, but the local instruction for motion.</p>
+<p class="body">Imagine X encodes a tiny rotation — an infinitesimal nudge in a direction. Taking one small step means applying a little bit of that instruction. Taking many tiny steps means repeatedly updating the position by the same local rule. The exponential is what happens when the steps become infinitely small but infinitely many.</p>
 <p class="body">Now look at the exponential formula from this angle:</p>
 <span class="mjd" data-t="e^X = \lim_{N\to\infty}\!\left(I+\frac{X}{N}\right)^N" style="text-align:center;font-size:1.25em;margin:28px 0;"></span>
-<p class="body">This says: take N equal steps of size X/N. As N → ∞, the piecewise-linear path converges to a perfectly smooth curve. That smooth curve IS exp(X). Watch it happen:</p>
+<p class="body">This says: take N equal steps of size X/N. Each step is almost identity plus a tiny motion. As N → ∞, the step size shrinks, the number of steps grows, and the jagged path converges to a perfectly smooth transformation. That smooth transformation is exp(X). Watch it happen:</p>
 
 <canvas id="c-steps" class="vis" data-anim="steps" width="800" height="500"></canvas>
 <p class="cap">The blue piecewise-linear path (n equal chord steps) converges to the smooth golden arc as n → ∞. The smooth arc is exp(X).</p>
@@ -270,7 +275,8 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
   </div>
 </div>
 
-<p class="body">The exponential map takes a tangent vector X at the identity and follows it for one unit of time. It is the mathematical mechanism that <em>integrates</em> an infinitesimal direction into a finite transformation. The Substitution Principle guarantees that the same power series formula works.</p>
+<p class="body">The identity element is the “do nothing” transformation. The Lie algebra 𝔤 is the space of possible first-order ways to leave that identity. A vector X in 𝔤 is not yet a group element; it is a direction of departure from the identity. The Lie group G contains the actual finite transformations reached after moving.</p>
+<p class="body">The exponential map takes a tangent vector X at the identity and follows it for one unit of time. It is the mathematical mechanism that <em>integrates</em> an infinitesimal direction into a finite transformation. The Substitution Principle guarantees that the same power series formula works when X is a matrix or operator rather than an ordinary number.</p>
 
 <div class="divider"></div>
 
@@ -278,14 +284,15 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
 <h2 class="sec">§7 — Enter Conjugation: gXg⁻¹</h2>
 <div class="rule" style="background:#8B3D23;"></div>
 <p class="lead">Now we ask: how does the group G act on its own Lie algebra?</p>
+<p class="body">A group element g is a finite change of frame. A tangent vector X is an infinitesimal motion described at the identity. Conjugation asks a natural question: if I view the same infinitesimal motion from the coordinate frame moved by g, what infinitesimal motion do I see back at the identity?</p>
 <p class="body">Given a group element g ∈ G and a tangent vector X ∈ 𝔤, form the conjugate:</p>
 <span class="mjd" data-t="\operatorname{Ad}_g(X)\;:=\;g\,X\,g^{-1}" style="text-align:center;font-size:1.3em;margin:28px 0;"></span>
-<p class="body">The three-step interpretation: <span style="color:#8B3D23;">step into g's frame of reference</span>, let X act, <span style="color:#8B3D23;">step back</span>. The result gXg⁻¹ is again a tangent vector — the group acts on its own algebra. Watch the animation below:</p>
+<p class="body">The three-step interpretation is: first <span style="color:#8B3D23;">step into g's frame of reference</span>, then let X act there, then <span style="color:#8B3D23;">step back</span>. The result gXg⁻¹ is again a tangent vector. Nothing mystical happened: we transported an infinitesimal direction through a finite change of frame.</p>
 
 <canvas id="c-conj" class="vis" data-anim="conj" width="800" height="460"></canvas>
 <p class="cap">Conjugation Ad_g(Y) = gYg⁻¹: a vector Y in the Lie algebra is transformed to a new direction as g rotates the frame.</p>
 
-<p class="body">The collection of these maps — one for each g — defines a <strong style="color:#C2723C;">group representation</strong>:</p>
+<p class="body">The collection of these maps — one for each g — defines a <strong style="color:#C2723C;">group representation</strong>. That means every group element is being represented as a linear transformation of the Lie algebra. The group is acting on its own infinitesimal directions:</p>
 <span class="mjd" data-t="\operatorname{Ad}:G\to\operatorname{GL}(\mathfrak{g}),\quad g\mapsto\operatorname{Ad}_g" style="text-align:center;font-size:1.15em;margin:24px 0;"></span>
 
 <div class="divider"></div>
@@ -293,16 +300,16 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
 <!-- §8 LIE BRACKET -->
 <h2 class="sec">§8 — Differentiating Ad: The Lie Bracket</h2>
 <div class="rule" style="background:#5E7A4E;"></div>
-<p class="body">Every group representation has an infinitesimal version — obtained by differentiating at the identity. Set g = e<sup>tX</sup> and differentiate at t = 0:</p>
+<p class="body">Every group representation has an infinitesimal version — obtained by differentiating at the identity. The path g(t)=e<sup>tX</sup> starts at the identity when t=0 and moves in the infinitesimal direction X. If Ad tells us how each finite g moves Y, then differentiating Ad<sub>e<sup>tX</sup></sub>(Y) at t=0 tells us the instantaneous velocity of Y under that action.</p>
 <span class="mjd" data-t="\operatorname{ad}_X(Y)\;:=\;\left.\frac{d}{dt}\right|_{t=0}\!\operatorname{Ad}_{e^{tX}}(Y)" style="text-align:center;font-size:1.2em;margin:28px 0;"></span>
-<p class="body">By direct computation, this derivative is exactly the <strong style="color:#5E7A4E;">commutator</strong>:</p>
+<p class="body">The notation ad<sub>X</sub>(Y) means: hold X fixed, let it generate a tiny conjugation motion, and watch how Y initially changes. By direct computation, this derivative is exactly the <strong style="color:#5E7A4E;">commutator</strong>:</p>
 <span class="mjd" data-t="\operatorname{ad}_X(Y)=XY-YX=:[X,\,Y]" style="text-align:center;font-size:1.3em;margin:28px 0;"></span>
 
 <canvas id="c-comm" class="vis" data-anim="comm" width="800" height="460"></canvas>
 <p class="cap">As t varies, Ad_{exp(tX)}(Y) rotates in the Lie algebra. The velocity at t = 0 (gold arrow) is exactly [X, Y].</p>
 
 <div class="pull" style="border-color:#5E7A4E;background:#0e2e1e;">
-  <p style="color:#5E7A4E;">The Lie bracket [X, Y] = XY − YX measures how much X and Y fail to commute. It is the fundamental operation of the Lie algebra — and it arises naturally from differentiating the group action.</p>
+  <p style="color:#5E7A4E;">The Lie bracket [X, Y] = XY − YX measures how much X and Y fail to commute. More conceptually, it is the instantaneous change of Y caused by the infinitesimal motion generated by X.</p>
 </div>
 
 <div class="divider"></div>
@@ -310,9 +317,9 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
 <!-- §9 COMMUTATOR GEOMETRY -->
 <h2 class="sec">§9 — The Commutator as Geometry</h2>
 <div class="rule" style="background:#C2723C;"></div>
-<p class="body">The Lie bracket has beautiful geometric content. In the Lie group G, follow exp(X) then exp(Y). Now follow exp(Y) then exp(X). They arrive at different points:</p>
+<p class="body">The Lie bracket has beautiful geometric content. In ordinary addition, going east then north lands at the same point as going north then east. In a curved or noncommutative transformation space, the order of moves can matter. In the Lie group G, follow exp(X) then exp(Y). Now follow exp(Y) then exp(X). They may arrive at different points:</p>
 <span class="mjd" data-t="e^X e^Y\;\neq\; e^Y e^X\quad\text{in general}" style="text-align:center;font-size:1.2em;margin:24px 0;"></span>
-<p class="body">The failure to close — the gap between the two endpoints — is measured to second order by [X, Y]:</p>
+<p class="body">The failure to close — the gap between the two endpoints — is measured to second order by [X, Y]. That means the bracket is not an arbitrary algebraic gadget; it is the first visible trace of order-dependence in the geometry of the group:</p>
 <span class="mjd" data-t="e^X e^Y e^{-X} e^{-Y}\;\approx\; e^{[X,Y]}+\text{higher order terms}" style="text-align:center;font-size:1.15em;margin:24px 0;"></span>
 
 <canvas id="c-gap" class="vis" data-anim="gap" width="800" height="520"></canvas>
@@ -328,9 +335,10 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
 <h2 class="sec">§10 — The Crown Jewel</h2>
 <div class="rule" style="background:#C2723C;"></div>
 <p class="lead">Now apply the Substitution Principle one final time.</p>
-<p class="body">We have the operator ad<sub>X</sub> acting on the Lie algebra 𝔤. It is a linear map — the kind of object a power series can accept. So feed it into the exponential recipe:</p>
+<p class="body">We have the operator ad<sub>X</sub> acting on the Lie algebra 𝔤. This operator takes an input Y and returns [X,Y]. In other words, ad<sub>X</sub> is not a vector in 𝔤; it is a linear transformation of the whole Lie algebra. But a linear transformation can be added, composed with itself, and placed inside a convergent power series. So the substitution principle applies again.</p>
+<p class="body">Feeding ad<sub>X</sub> into the exponential recipe means: start with the identity operation on 𝔤, add one application of ad<sub>X</sub>, then add repeated applications of ad<sub>X</sub> with factorial weights:</p>
 <span class="mjd" data-t="\exp(\operatorname{ad}_X)=I+\operatorname{ad}_X+\frac{(\operatorname{ad}_X)^2}{2!}+\frac{(\operatorname{ad}_X)^3}{3!}+\cdots" style="text-align:center;font-size:1.1em;margin:24px 0;"></span>
-<p class="body">What is the result? The Substitution Principle — applied three times, to numbers, to matrices, and now to operators — gives us the master formula:</p>
+<p class="body">What transformation does that infinite operator series produce? It produces the same effect as conjugating by the finite group element exp(X). This is the master formula:</p>
 
 <div class="formula-hero">
   <span class="mjd" data-t="\exp(\operatorname{ad}_X)\;=\;\operatorname{Ad}_{\exp(X)}" style="font-size:1.7em;"></span>
@@ -347,7 +355,7 @@ canvas.vis{display:block;width:100%;border-radius:12px;background:#F2E9D8;margin
   </div>
 </div>
 
-<p class="body" style="margin-top:32px;">Both sides compute the same transformation on the Lie algebra. The bridge between the group and the algebra — built entirely from the Substitution Principle applied three times over.</p>
+<p class="body" style="margin-top:32px;">Both sides compute the same transformation on the Lie algebra. The left side says: “flow inside the algebra using the bracket operator.” The right side says: “move in the group by exp(X), then conjugate.” The formula says those two stories are the same story told at two levels — infinitesimal and finite.</p>
 
 <div class="divider"></div>
 
