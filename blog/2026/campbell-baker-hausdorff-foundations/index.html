@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campbell-Baker-Hausdorff Foundations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+  <style>
+    :root {
+      --paper: #fcf9f1;
+      --ink: #2a241e;
+      --muted: #5d5144;
+      --soft: #8b7e69;
+      --line: #e3d9c5;
+      --accent: #b8552f;
+      --clay: #c2723c;
+      --blue: #41568f;
+      --green: #5e7a4e;
+      --dark: #17120d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Newsreader", Georgia, serif;
+    }
+
+    .cbh-page {
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(184, 85, 47, 0.1), transparent 28rem),
+        radial-gradient(circle at 86% 30%, rgba(65, 86, 143, 0.1), transparent 26rem),
+        var(--paper);
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      place-items: center;
+      padding: clamp(4rem, 8vw, 7rem) 1.4rem 3.2rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner,
+    .section,
+    .reading-path {
+      width: min(1040px, calc(100vw - 2rem));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 1.1rem;
+      color: var(--accent);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0 auto;
+      font-size: clamp(3.25rem, 9vw, 7.8rem);
+      line-height: 0.92;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-align: center;
+    }
+
+    h1 .amp {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .subtitle {
+      max-width: 840px;
+      margin: 2rem auto 0;
+      color: var(--muted);
+      font-size: clamp(1.25rem, 2.4vw, 1.8rem);
+      font-style: italic;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem 1.1rem;
+      margin: 2.7rem 0 0;
+      color: var(--soft);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .meta a,
+    .chapter-card a,
+    .body a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.18em;
+    }
+
+    .reading-path {
+      margin-top: 2.6rem;
+      padding: 1.35rem 1.45rem;
+      border: 1px solid #d7c9ae;
+      border-radius: 8px;
+      background: rgba(255, 252, 245, 0.62);
+    }
+
+    .reading-path h2,
+    .panel-title {
+      margin: 0 0 0.75rem;
+      color: #92613a;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .reading-path p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.55;
+    }
+
+    .section {
+      padding: clamp(3rem, 7vw, 5.5rem) 0;
+      border-bottom: 1px solid rgba(227, 217, 197, 0.72);
+    }
+
+    .section h2 {
+      max-width: 820px;
+      margin: 0 auto 1rem;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.02;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .lead {
+      max-width: 780px;
+      margin: 0 auto 2.2rem;
+      color: var(--muted);
+      font-size: clamp(1.15rem, 2vw, 1.42rem);
+      line-height: 1.62;
+      text-align: center;
+    }
+
+    .body {
+      max-width: 760px;
+      margin: 1rem auto 0;
+      color: var(--muted);
+      font-size: 1.16rem;
+      line-height: 1.7;
+    }
+
+    .formula {
+      max-width: 800px;
+      margin: 1.5rem auto;
+      padding: 1.15rem;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+      color: var(--ink);
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      max-width: 940px;
+      margin: 2rem auto 0;
+    }
+
+    .card,
+    .chapter-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, 0.78);
+      box-shadow: 0 12px 28px rgba(42, 36, 30, 0.06);
+    }
+
+    .card {
+      padding: 1.15rem;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--ink);
+      font-size: 1.18rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .video-shell {
+      max-width: 960px;
+      margin: 2rem auto 0;
+      border: 1px solid #d6c5a7;
+      border-radius: 8px;
+      background: #17120d;
+      box-shadow: 0 18px 42px rgba(42, 36, 30, 0.18);
+      overflow: hidden;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #17120d;
+    }
+
+    .caption {
+      margin: 0;
+      padding: 0.85rem 1rem 1rem;
+      color: #e9deca;
+      font-size: 0.98rem;
+      line-height: 1.45;
+    }
+
+    .canvas-wrap {
+      max-width: 920px;
+      margin: 2rem auto 0;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 6px;
+      background: #fcf9f1;
+    }
+
+    .answer-list {
+      max-width: 820px;
+      margin: 2rem auto 0;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffdf8;
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 1rem 1.1rem;
+      color: var(--ink);
+      font-size: 1.12rem;
+      font-weight: 600;
+    }
+
+    details p {
+      margin: 0;
+      padding: 0 1.1rem 1.1rem;
+      color: var(--muted);
+      font-size: 1.06rem;
+      line-height: 1.6;
+    }
+
+    .chapter-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: center;
+      max-width: 880px;
+      margin: 2.4rem auto 0;
+      padding: 1.25rem;
+    }
+
+    .chapter-card p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .arrow {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--accent);
+      color: #fffdf8;
+      font-size: 1.7rem;
+    }
+
+    @media (max-width: 720px) {
+      .grid,
+      .chapter-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+    }
+  </style>
+</head>
+<body>
+<main class="cbh-page">
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Rossmann §1.3 companion</p>
+      <h1>Campbell-Baker-Hausdorff <span class="amp">Foundations</span></h1>
+      <p class="subtitle">The first question of Lie theory is not “what is a bracket?” It is: if two infinitesimal motions become two group motions, what infinitesimal motion represents their product?</p>
+      <div class="meta">
+        <span>Chapter 1</span>
+        <span>after Rossmann</span>
+        <a href="/assets/pdf/blog/cbh/cbh-blogpost.pdf">source PDF</a>
+      </div>
+      <div class="reading-path">
+        <h2>Connected Reading Path</h2>
+        <p>Read this after <a href="/blog/2026/the-exponential-map/">The Engine &amp; the Motion</a> and <a href="/blog/2026/substitution-principle-adjoints/">The Substitution Principle</a>. Those posts explain why \(e^X\) is a motion and why power-series recipes may be applied to matrices. This post asks what happens when two such motions are multiplied.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>The question that starts the subject</h2>
+    <p class="lead">A Lie group is where the finite transformations live. A Lie algebra is the tangent space at the identity, the place where the infinitesimal directions live. The exponential map is the bridge from an infinitesimal direction to a finite move.</p>
+    <p class="body">Let \(G\) be a Lie group and \(\mathfrak g\) its Lie algebra. If \(X,Y\in\mathfrak g\), then \(\exp(X)\) and \(\exp(Y)\) are group elements. Their product is also a group element. The Campbell-Baker-Hausdorff problem asks whether that product can be expressed as a single exponential again.</p>
+    <div class="formula">\[
+      A=\exp(X),\qquad B=\exp(Y),\qquad AB=\exp(X)\exp(Y)=\exp(Z)\;?
+    \]</div>
+    <p class="body">That question is the local dictionary between algebra and geometry. If we can write \(Z\) in terms of \(X\) and \(Y\), then we know how group multiplication looks when translated back into the infinitesimal language of the Lie algebra.</p>
+  </section>
+
+  <section class="section">
+    <h2>The tempting answer is almost right</h2>
+    <p class="lead">For ordinary numbers, exponentials turn addition into multiplication: \(e^x e^y=e^{x+y}\). The first guess is therefore \(Z=X+Y\). The exact point where this guess fails is the birth of the Lie bracket.</p>
+    <div class="grid">
+      <div class="card">
+        <strong>When \(XY=YX\)</strong>
+        <p>The matrices commute. Their exponential series can be rearranged like ordinary products, so \(\exp(X)\exp(Y)=\exp(X+Y)\).</p>
+      </div>
+      <div class="card">
+        <strong>When \(XY\ne YX\)</strong>
+        <p>The order of multiplication matters. The product \(\exp(X)\exp(Y)\) is still a group element, but its logarithm is no longer merely \(X+Y\).</p>
+      </div>
+    </div>
+    <p class="body">This is why non-commutativity is not an annoyance added after the fact. It is the central geometric signal. The group remembers the order in which motions were composed, and the algebra must contain a way to measure that order-dependence.</p>
+  </section>
+
+  <section class="section">
+    <h2>The animation: two paths, one gap</h2>
+    <p class="lead">The video supplied with these notes visualizes the same idea geometrically: moving by \(X\) and then \(Y\) is not generally the same as moving by \(Y\) and then \(X\). The small mismatch is the first visible shadow of \([X,Y]\).</p>
+    <div class="video-shell">
+      <video controls preload="metadata" playsinline>
+        <source src="/assets/video/blog/cbh/cbh-animation.mp4" type="video/mp4">
+      </video>
+      <p class="caption">CBH animation: the exponential map takes infinitesimal directions \(X,Y\) into finite group motions; composing them in different orders produces the geometric gap that the bracket measures.</p>
+    </div>
+    <div class="canvas-wrap">
+      <canvas id="cbh-canvas" width="1280" height="720" aria-label="Animated commutator gap diagram"></canvas>
+    </div>
+    <p class="body">The point of the animation is not that the group is literally a flat plane. The point is local: near the identity, two tiny motions form an almost-parallelogram. If the motions commute, the parallelogram closes. If they do not, the failure to close is detected, to first meaningful order, by the commutator \(XY-YX\).</p>
+  </section>
+
+  <section class="section">
+    <h2>The first miracle</h2>
+    <p class="lead">If we expand \(\log(\exp(X)\exp(Y))\), the raw expansion initially contains ordinary products like \(XY\), \(XYY\), \(XXY\), and \(XYX\). Nothing yet looks intrinsically like Lie theory.</p>
+    <p class="body">But after terms are collected in the right way, the first correction is not a random product. It is the commutator:</p>
+    <div class="formula">\[
+      XY-YX=[X,Y].
+    \]</div>
+    <p class="body">This is the first miracle in the notes. The logarithm of a product of exponentials reorganizes ordinary associative multiplication into the non-associative bracket language of the Lie algebra.</p>
+    <div class="formula">\[
+      \log(\exp(X)\exp(Y))
+      =X+Y+\frac12[X,Y]+\cdots
+    \]</div>
+    <p class="body">The coefficient \(\frac12\) should not be read as decoration. It says the first correction is shared symmetrically between the two possible orders of infinitesimal motion. The term \([X,Y]\) is the first correction that knows \(XY\) and \(YX\) are different.</p>
+  </section>
+
+  <section class="section">
+    <h2>What Dynkin's formula is really saying</h2>
+    <p class="lead">Rossmann's deeper result is that the dots are not arbitrary matrix products. Every correction can be written using nested Lie brackets alone.</p>
+    <div class="formula">\[
+      Z
+      =X+Y+\frac12[X,Y]
+      +\frac1{12}[X,[X,Y]]
+      -\frac1{12}[Y,[X,Y]]
+      +\cdots
+    \]</div>
+    <p class="body">This is profound because it means the Lie algebra is not merely a tangent approximation. Locally, it contains the full multiplication law of the group. The bracket tells us not only that order matters, but also how order matters, correction after correction.</p>
+    <div class="grid">
+      <div class="card">
+        <strong>\([X,Y]\)</strong>
+        <p>The first-order obstruction to commuting two infinitesimal motions.</p>
+      </div>
+      <div class="card">
+        <strong>\([X,[X,Y]]\)</strong>
+        <p>The correction saying that the obstruction itself changes when transported along \(X\).</p>
+      </div>
+      <div class="card">
+        <strong>\([Y,[X,Y]]\)</strong>
+        <p>The matching correction from transporting the obstruction along \(Y\).</p>
+      </div>
+      <div class="card">
+        <strong>No bare \(XY\) survives</strong>
+        <p>The final language is intrinsic to the Lie algebra, not to one chosen matrix representation.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Questions this answers at the beginning</h2>
+    <p class="lead">CBH is often presented too late, as a complicated formula. Conceptually, it answers beginner questions that appear as soon as Lie groups and Lie algebras are introduced.</p>
+    <div class="answer-list">
+      <details open>
+        <summary>What is a Lie group?</summary>
+        <p>A Lie group is a space of transformations where multiplication and inversion are smooth. Examples include rotations, invertible matrices, and area-preserving linear maps. The word “group” remembers composition; the word “Lie” remembers smooth motion.</p>
+      </details>
+      <details open>
+        <summary>What is a Lie algebra?</summary>
+        <p>The Lie algebra is the tangent space at the identity element. It contains infinitesimal directions: the ways a one-parameter family of group elements can begin moving away from doing nothing.</p>
+      </details>
+      <details open>
+        <summary>Why do we need the exponential map?</summary>
+        <p>The exponential map turns an infinitesimal generator \(X\) into the finite motion \(\exp(X)\). It is the bridge between the linear tangent world and the nonlinear group world.</p>
+      </details>
+      <details open>
+        <summary>Why is the bracket forced?</summary>
+        <p>Because group multiplication is generally non-commutative. When the two products \(\exp(X)\exp(Y)\) and \(\exp(Y)\exp(X)\) disagree, the first algebraic measurement of that disagreement is \(XY-YX=[X,Y]\).</p>
+      </details>
+      <details open>
+        <summary>What does CBH tell us?</summary>
+        <p>It tells us how to multiply group elements using Lie algebra data: \(\exp(X)\exp(Y)=\exp(Z)\), where \(Z\) is built from \(X\), \(Y\), and nested brackets. Locally, the group law is encoded by the algebra and its bracket.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Where to go next</h2>
+    <p class="lead">This post is Part 0: the conceptual foundation. The next layer is to derive the displayed coefficients from the series for \(\exp\) and \(\log\), then read Dynkin's formula symbol by symbol.</p>
+    <div class="chapter-card">
+      <div>
+        <div class="panel-title">Continue Chapter 1</div>
+        <p>Return to the chapter page for the surrounding posts on stretch/shear geometry, the exponential map, and the substitution principle.</p>
+      </div>
+      <a class="arrow" href="/blog/lie-groups/the-exponential-map/" aria-label="Back to Chapter 1">→</a>
+    </div>
+  </section>
+</main>
+
+<script>
+  function renderMath() {
+    if (!window.renderMathInElement) return;
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "\\[", right: "\\]", display: true },
+        { left: "\\(", right: "\\)", display: false },
+        { left: "$", right: "$", display: false }
+      ],
+      throwOnError: false,
+      ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code", "canvas"]
+    });
+  }
+
+  function arrow(ctx, x1, y1, x2, y2, color, width) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const len = Math.hypot(dx, dy);
+    if (len < 2) return;
+    const nx = dx / len;
+    const ny = dy / len;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2 - nx * 18, y2 - ny * 18);
+    ctx.stroke();
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2 - 20 * nx + 7 * ny, y2 - 20 * ny - 7 * nx);
+    ctx.lineTo(x2 - 20 * nx - 7 * ny, y2 - 20 * ny + 7 * nx);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function drawCBH() {
+    const canvas = document.getElementById("cbh-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const W = canvas.width;
+    const H = canvas.height;
+    const origin = { x: W * 0.28, y: H * 0.68 };
+    const xStep = { x: W * 0.28, y: -H * 0.03 };
+    const yStep = { x: W * 0.08, y: -H * 0.34 };
+    let t = 0;
+
+    function frame() {
+      t += 0.012;
+      const phase = (t % 8) / 8;
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = "#fcf9f1";
+      ctx.fillRect(0, 0, W, H);
+
+      for (let x = 80; x < W - 80; x += 62) {
+        for (let y = 92; y < H - 70; y += 62) {
+          ctx.beginPath();
+          ctx.arc(x, y, 2.4, 0, Math.PI * 2);
+          ctx.fillStyle = "#e3d9c5";
+          ctx.fill();
+        }
+      }
+
+      ctx.fillStyle = "#2a241e";
+      ctx.font = "600 34px Newsreader, serif";
+      ctx.textAlign = "center";
+      ctx.fillText("Two orders of infinitesimal motion", W / 2, 58);
+      ctx.fillStyle = "#5d5144";
+      ctx.font = "23px Newsreader, serif";
+      ctx.fillText("the closing gap is measured by the bracket [X,Y]", W / 2, 94);
+
+      const p0 = origin;
+      const pX = { x: p0.x + xStep.x, y: p0.y + xStep.y };
+      const pY = { x: p0.x + yStep.x, y: p0.y + yStep.y };
+      const skew = { x: W * 0.055, y: -H * 0.045 };
+      const pXY = { x: pX.x + yStep.x + skew.x, y: pX.y + yStep.y + skew.y };
+      const pYX = { x: pY.x + xStep.x - skew.x, y: pY.y + xStep.y - skew.y };
+
+      ctx.beginPath();
+      ctx.arc(p0.x, p0.y, 9, 0, Math.PI * 2);
+      ctx.fillStyle = "#2a241e";
+      ctx.fill();
+      ctx.font = "26px Newsreader, serif";
+      ctx.textAlign = "right";
+      ctx.fillText("e", p0.x - 16, p0.y + 8);
+
+      const k = Math.min(1, phase * 5);
+      arrow(ctx, p0.x, p0.y, p0.x + xStep.x * k, p0.y + xStep.y * k, "#b8552f", 5);
+      ctx.fillStyle = "#b8552f";
+      ctx.textAlign = "center";
+      ctx.fillText("first X", p0.x + xStep.x * 0.5, p0.y + xStep.y * 0.5 + 34);
+
+      if (phase > 0.22) {
+        const q = Math.min(1, (phase - 0.22) * 5);
+        arrow(ctx, pX.x, pX.y, pX.x + (pXY.x - pX.x) * q, pX.y + (pXY.y - pX.y) * q, "#5e7a4e", 5);
+        ctx.fillStyle = "#5e7a4e";
+        ctx.fillText("then Y", pX.x + (pXY.x - pX.x) * 0.5 + 36, pX.y + (pXY.y - pX.y) * 0.5);
+      }
+
+      if (phase > 0.42) {
+        const q = Math.min(1, (phase - 0.42) * 5);
+        arrow(ctx, p0.x, p0.y, p0.x + yStep.x * q, p0.y + yStep.y * q, "rgba(94,122,78,.55)", 4);
+        ctx.fillStyle = "#5e7a4e";
+        ctx.fillText("first Y", p0.x + yStep.x * 0.5 - 54, p0.y + yStep.y * 0.5);
+      }
+
+      if (phase > 0.62) {
+        const q = Math.min(1, (phase - 0.62) * 5);
+        arrow(ctx, pY.x, pY.y, pY.x + (pYX.x - pY.x) * q, pY.y + (pYX.y - pY.y) * q, "rgba(184,85,47,.55)", 4);
+        ctx.fillStyle = "#b8552f";
+        ctx.fillText("then X", pY.x + (pYX.x - pY.x) * 0.5, pY.y + (pYX.y - pY.y) * 0.5 - 28);
+      }
+
+      if (phase > 0.78) {
+        const pulse = 0.65 + 0.35 * Math.sin(t * 5);
+        arrow(ctx, pYX.x, pYX.y, pXY.x, pXY.y, `rgba(194,114,60,${pulse})`, 6);
+        ctx.fillStyle = `rgba(139,61,35,${pulse})`;
+        ctx.font = "700 34px Newsreader, serif";
+        ctx.fillText("[X,Y]", (pXY.x + pYX.x) / 2, (pXY.y + pYX.y) / 2 - 24);
+      }
+
+      ctx.fillStyle = "#2a241e";
+      ctx.font = "24px Newsreader, serif";
+      ctx.textAlign = "left";
+      ctx.fillText("exp(X)exp(Y)", pXY.x + 14, pXY.y + 4);
+      ctx.fillText("exp(Y)exp(X)", pYX.x + 14, pYX.y + 30);
+      requestAnimationFrame(frame);
+    }
+
+    frame();
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    renderMath();
+    drawCBH();
+  });
+</script>
+</body>
+</html>
