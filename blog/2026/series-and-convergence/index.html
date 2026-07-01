@@ -162,7 +162,12 @@
 
 <div>$$ S_N(1-r) = 1 - r^{N+1} \;\implies\; \sum_{n=0}^{\infty} ar^n = \frac{a}{1-r} \quad (|r| &lt; 1) $$</div>
 
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 0;">The bars below fill in one by one, each half the last, total approaching the dashed line at 2. When $|r| \geq 1$ the partial sums never settle.</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 0;">This cancellation is the whole message of the geometric series: a tail is manageable when every future term is a fixed fraction of the previous one. If $|r|&lt;1$, the far tail is just a smaller copy of the original problem, so the infinite sum can be solved by algebra. If $|r|\ge1$, the copy does not shrink, so there is no reason for the running totals to settle.</p>
+
+    <div style="margin:24px 0 0; padding:18px 20px; background:#F7F0E4; border:1px solid #D6C8AD; border-radius:11px;">
+      <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#8A6820; margin-bottom:10px;">What the formula is trying to convince you of</div>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0;">The infinite sum is finite because the future is self-similar and smaller. The expression $1/(1-r)$ is not a trick; it is the price of repeatedly adding a fixed fraction of what remains.</p>
+    </div>
   </section>
 
   <figure style="max-width:760px; margin:24px auto 0;">
@@ -174,7 +179,7 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">5 &nbsp;·&nbsp; Power series</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">From a fixed ratio to a variable one</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Replace constant $r$ with variable $x$. Integrate to get $\log$ and $\arctan$. All three grow from the same geometric root, but each lives only inside its radius of convergence:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Replace the fixed ratio $r$ with a variable $x$. Now the same expression is not one sum but a family of sums, one for every input. Integrating the geometric series term by term produces $\log$ and $\arctan$, but the inheritance is conditional: the new series keeps a convergence boundary.</p>
 
 <div>$$ \frac{1}{1-x} = \sum x^n, \quad \log(1+x) = x - \tfrac{x^2}{2} + \tfrac{x^3}{3} - \cdots, \quad \arctan x = x - \tfrac{x^3}{3} + \tfrac{x^5}{5} - \cdots \quad (|x| \leq 1) $$</div>
 
@@ -196,7 +201,8 @@
 
     <div style="margin:10px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">Insight</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">A series has its own domain. The function $1/(1-x)$ lives beyond $|x|=1$; its power series does not. Every power series is confined to a disc in the complex plane whose radius is determined by the nearest singularity.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0 0 10px;">A series has its own domain. The function $1/(1-x)$ lives beyond $|x|=1$; its power series does not. A power series is a local representation: it describes the function only as far as the infinite tail remains controlled.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The formulation is trying to convince you that “same formula” and “same domain” are different claims. A function may continue past the boundary, while the particular infinite expansion stops being trustworthy there.</p>
     </div>
   </section>
 
@@ -204,11 +210,35 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">6 &nbsp;·&nbsp; Taylor series</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Rebuilding a function from derivatives at one point</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Taylor's idea: if you know every derivative of $f$ at a single point $a$, you can reconstruct $f$ everywhere (within the radius of convergence). Each new term matches one more layer of bending. Factorials appear because differentiating $x^n$ repeatedly brings down $n!$:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Taylor series begin with a practical problem: a function may be globally complicated, but near one chosen point it can be measured very precisely. We choose a center $a$ because that is the point where we know the function's local behavior. Around $a$, the natural coordinate is not $x$ itself but the displacement $x-a$: how far have we moved from the point we understand?</p>
 
-<div>$$ f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n!}(x-a)^n, \qquad c_n = \frac{f^{(n)}(0)}{n!} $$</div>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Now build a polynomial in powers of that displacement:</p>
 
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 0;">The animation shows $\sin x$ and successive polynomial approximations $P_1$ through $P_9$. Each odd degree extends the accurate region further.</p>
+<div>$$ P(x)=c_0+c_1(x-a)+c_2(x-a)^2+c_3(x-a)^3+\cdots. $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">The coefficients are not guessed. They are forced by asking the polynomial to imitate $f$ at $a$ as deeply as possible. First match height:</p>
+
+<div>$$ P(a)=c_0=f(a). $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">Then match slope. Differentiating gives $P'(a)=c_1$, because every term containing $(x-a)$ disappears at $x=a$ except the linear one:</p>
+
+<div>$$ P'(a)=c_1=f'(a). $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">Then match curvature. The second derivative of $c_2(x-a)^2$ is $2c_2$, so $2c_2=f''(a)$ and therefore $c_2=f''(a)/2!$. The same pattern continues: the $n$th derivative of $(x-a)^n$ at $a$ is $n!$, while lower powers vanish after too many derivatives and higher powers still contain a factor of $(x-a)$.</p>
+
+<div>$$ c_n=\frac{f^{(n)}(a)}{n!}. $$</div>
+
+    <div style="margin:24px 0 0; padding:20px 22px; background:#F7F0E4; border:1px solid #D6C8AD; border-radius:11px;">
+      <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#8A6820; margin-bottom:10px;">Why the center matters</div>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0 0 10px;">Centering at $a$ makes every power $(x-a)^n$ vanish at $x=a$. That is what lets derivatives isolate one coefficient at a time. The center is the anchor point where the polynomial and the function are forced to have the same height, slope, curvature, and higher-order behavior.</p>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0;">Moving the center changes the story. A Taylor series centered at $0$ explains the function from the viewpoint of $0$; a Taylor series centered at $a$ explains it from the viewpoint of $a$. The radius of convergence then asks how far that local viewpoint can see before it hits a singularity or loses control of the remainder.</p>
+    </div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:24px 0 0;">Putting the forced coefficients back into the polynomial gives the Taylor series:</p>
+
+<div>$$ f(x)=\sum_{n=0}^{\infty}\frac{f^{(n)}(a)}{n!}(x-a)^n. $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 0;">This formula is trying to convince you that derivatives are not merely rates of change; together, they are local instructions for building a polynomial model. The animation shows $\sin x$ and successive polynomial approximations $P_1$ through $P_9$. Each odd degree matches more local behavior at the center and extends the accurate region further.</p>
   </section>
 
   <figure style="max-width:760px; margin:24px auto 0;">
@@ -220,7 +250,7 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">7 &nbsp;·&nbsp; Exponential series</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Factorial domination — convergence everywhere</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Every derivative of $e^x$ is $e^x$, so every Taylor coefficient is $1/n!$. The ratio test kills convergence globally: once $n$ exceeds $|x|$, every extra factor in $(n+1)!$ beats $|x|$ and the ratio collapses to zero.</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The exponential is the cleanest Taylor series because differentiating it never changes its identity. At $0$, every derivative equals $1$, so the only thing shaping the coefficients is the factorial denominator. The formula is trying to show that factorial growth is stronger than any fixed power $|x|^n$.</p>
 
 <div>$$ e^x = \sum_{n=0}^{\infty} \frac{x^n}{n!}, \qquad \left|\frac{a_{n+1}}{a_n}\right| = \frac{|x|}{n+1} \xrightarrow{n\to\infty} 0 \quad \forall x \implies R = \infty $$</div>
 
@@ -238,19 +268,24 @@
         <div style="font:500 22px/1 'Newsreader',serif; color:#8A6820;">$R = \infty$</div>
       </div>
     </div>
+
+    <div style="margin:24px 0 0; padding:18px 20px; background:#F7F0E4; border:1px solid #D6C8AD; border-radius:11px;">
+      <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#8A6820; margin-bottom:10px;">What factorial domination means</div>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0;">For any fixed $x$, the numerator keeps multiplying by $|x|$, but the denominator keeps multiplying by larger and larger integers. Eventually the denominator wins permanently. That is why $e^x$ has no convergence wall.</p>
+    </div>
   </section>
 
   <!-- §8 Euler -->
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">8 &nbsp;·&nbsp; Sine, cosine &amp; Euler's formula</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Substituting $ix$ into the exponential</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Substitute $ix$ into the exponential series. Sort real and imaginary parts using $i^2=-1, i^3=-i, i^4=1, \ldots$ The real part <em>is</em> $\cos x$; the imaginary part <em>is</em> $\sin x$. Euler's formula is not a definition — it is a consequence:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Substitute $ix$ into the exponential series. Powers of $i$ cycle through $1,i,-1,-i$, so the even powers become a real alternating series and the odd powers become an imaginary alternating series. Those two pieces are exactly the Taylor series for cosine and sine. Euler's formula is not a definition; it is the exponential series reorganizing itself into rotation.</p>
 
 <div>$$ e^{ix} = \cos x + i\sin x $$</div>
 
     <blockquote style="margin:28px 0; text-align:center; font:italic 500 22px/1.45 'Newsreader',serif; color:var(--accent);">Real exp = growth. Imaginary exp = rotation.</blockquote>
 
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Combined: $e^{(a+bi)t}$ gives a rotating spiral — the skeleton of all oscillation. The animation shows $e^{i\theta}$ tracing the unit circle; the green shadow is $\cos\theta$, the orange shadow is $\sin\theta$.</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The formulation is trying to convince you that oscillation is exponential motion in an imaginary direction. Real exponentials stretch; imaginary exponentials rotate. Combined, $e^{(a+bi)t}$ gives a rotating spiral: growth/decay from $a$, rotation from $b$. The animation shows $e^{i\theta}$ tracing the unit circle; the green shadow is $\cos\theta$, the orange shadow is $\sin\theta$.</p>
   </section>
 
   <figure style="max-width:760px; margin:24px auto 0;">
@@ -262,7 +297,7 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">9 &nbsp;·&nbsp; Tangent series &amp; convergence walls</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The nearest singularity sets the radius</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\tan x = \sin x / \cos x$ blows up when $\cos x = 0$, at $\pm\pi/2$. Those are the nearest singularities to $x=0$ in the complex plane, so the radius of convergence is exactly $\pi/2$:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\tan x=\sin x/\cos x$ is not allowed to ignore the zeros of its denominator. It blows up when $\cos x=0$, at $\pm\pi/2$. A Taylor series centered at $0$ cannot cross a blow-up point because an infinite polynomial-like expansion remains locally finite where it converges. The nearest obstruction therefore becomes the convergence wall.</p>
 
 <div>$$ \tan x = x + \frac{x^3}{3} + \frac{2x^5}{15} + \frac{17x^7}{315} + \cdots \qquad |x| &lt; \frac{\pi}{2} $$</div>
 
@@ -283,7 +318,7 @@
 
     <div style="padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">General principle</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$R$ = distance from the center to the nearest singularity, measured in the <em>complex</em> plane. The real-line behavior is just a slice of this complex picture.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$R$ = distance from the center to the nearest singularity, measured in the <em>complex</em> plane. The message is geometric: a Taylor series expands outward like a circular wave until it hits the first place where the function stops being analytic. The real-line interval is only one slice of that complex-plane circle.</p>
     </div>
   </section>
 
@@ -436,13 +471,13 @@
   <section style="max-width:680px; margin:64px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">13 &nbsp;·&nbsp; Absolute &amp; conditional convergence</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Rearrangement safety</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;"><em>Absolute convergence</em>: $\sum|a_n| < \infty$. <em>Conditional convergence</em>: the series converges, but $\sum|a_n| = \infty$. The distinction governs whether you can safely rearrange terms:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Absolute convergence asks whether the series still converges after you erase all signs. That is a stress test: if the positive sizes alone have finite total mass, then cancellation is not essential. Conditional convergence means the original signed series converges only because positive and negative terms balance each other carefully.</p>
 
 <div>$$ \underbrace{1 - \tfrac{1}{2} + \tfrac{1}{3} - \tfrac{1}{4} + \cdots = \log 2}_{\text{conditional: positive/negative parts each diverge}} \qquad \underbrace{\sum \frac{(-1)^n}{n^2}}_{\text{absolute: }\sum n^{-2} &lt; \infty} $$</div>
 
     <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#922028;">Riemann rearrangement</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">A conditionally convergent series can be rearranged to converge to <em>any</em> value — or to diverge entirely. Absolutely convergent series are immune: their sum is the same in any order.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">A conditionally convergent series has infinite positive mass and infinite negative mass. Rearranging terms lets you spend those two infinite reserves in different rhythms, which can force the partial sums toward any chosen value or make them diverge. Absolutely convergent series are immune because their total unsigned mass is finite; rearranging finite mass cannot change the final total.</p>
     </div>
   </section>
 
@@ -522,11 +557,13 @@
   <section style="max-width:680px; margin:64px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">16 &nbsp;·&nbsp; Matrix series &amp; the matrix exponential</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Replace scalar $x$ with a square matrix $A$</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Replace $1$ with the identity $I$. Matrix powers mean repeated composition: $A^2=A\circ A$, $A^3=A\circ A\circ A$, and so on. To justify convergence, choose any submultiplicative matrix norm, so $\|A^n\|\le\|A\|^n$. Then the matrix series is dominated by the scalar exponential series:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A matrix series is the same infinite-sum idea, but the terms are transformations instead of numbers. Replace the scalar $1$ with the identity transformation $I$. Matrix powers mean repeated composition: $A^2=A\circ A$, $A^3=A\circ A\circ A$, and so on. The question is whether these infinitely many transformations settle to a well-defined transformation.</p>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">To justify convergence, measure matrix size with a submultiplicative norm. The inequality $\|A^n\|\le\|A\|^n$ says repeated composition cannot grow faster than multiplying sizes. That turns the matrix problem back into a scalar comparison:</p>
 
 <div>$$ \sum_{n=0}^{\infty}\left\|\frac{A^n}{n!}\right\|\le \sum_{n=0}^{\infty}\frac{\|A\|^n}{n!}=e^{\|A\|}&lt;\infty $$</div>
 
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">That is why the same factorial denominators that gave $e^x$ its infinite radius guarantee convergence for every matrix, regardless of size:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">The formula is trying to convince you that noncommutativity does not threaten convergence here. The factorial denominator still dominates the size of $A^n$, so the exponential matrix series converges for every square matrix:</p>
 
 <div>$$ e^A = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots \quad \text{converges for all } A $$</div>
 
@@ -536,7 +573,7 @@
 
     <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">Core of Lie theory</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$A$ is the infinitesimal generator; $e^{tA}$ is the finite transformation after time $t$. Every smooth symmetry has a matrix logarithm generating it — the exponential map is the bridge between the Lie algebra and the Lie group.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$A$ is the infinitesimal generator: it describes the instant-by-instant tendency of a motion. The exponential $e^{tA}$ accumulates those infinitesimal instructions into a finite transformation after time $t$. This is the bridge from Lie algebra language, where we add generators, to Lie group language, where we compose transformations.</p>
     </div>
   </section>
 
@@ -544,19 +581,24 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">17 &nbsp;·&nbsp; Matrix logarithm</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The inverse of exp — local, not global</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Given $G \approx I$, recover the generator $A$ with $e^A = G$. Without factorials, convergence is only local, and the logarithm can be multi-valued:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The matrix logarithm asks the inverse question: given a finite transformation $G$, can we recover a generator $A$ with $e^A=G$? Near the identity, write $G=I+A$ and imitate the scalar logarithm. But the logarithm series has no factorial denominators, so it does not have the same global protection as the exponential series.</p>
 
 <div>$$ \log(I + A) = A - \frac{A^2}{2} + \frac{A^3}{3} - \cdots \quad (\|A\| &lt; 1) $$</div>
 
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px;">
       <div style="padding:18px 20px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:10px;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A6A1A; margin-bottom:8px;">exp — global</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">Factorials → converges for all $A$. The exponential map is everywhere defined.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">Factorials crush powers of $A$, so the exponential map is defined for every square matrix.</p>
       </div>
       <div style="padding:18px 20px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:10px;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#B8682A; margin-bottom:8px;">log — local</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">No factorials → needs $\|A\| < 1$. Local inverse only; can be multi-valued.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0;">No factorials means the powers must already be small. The logarithm is local and can be multi-valued.</p>
       </div>
+    </div>
+
+    <div style="margin:22px 0 0; padding:18px 20px; background:#F7F0E4; border:1px solid #D6C8AD; border-radius:11px;">
+      <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#8A6820; margin-bottom:10px;">What local inverse means</div>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0;">Near $I$, transformations have a clear “small motion” interpretation, so the logarithm can recover a nearby generator. Far from $I$, there may be several generators producing the same transformation, just as many angles describe the same rotation after adding multiples of $2\pi$.</p>
     </div>
   </section>
 
@@ -564,17 +606,17 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">18 &nbsp;·&nbsp; Noncommutativity &amp; BCH</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">When $AB \neq BA$, multiplication costs extra</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For scalars $e^{a+b} = e^a e^b$. For matrices this fails when $AB \neq BA$. The commutator $[A,B] = AB - BA$ measures the failure, and a small loop test makes it concrete:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For scalars, order does not matter, so $e^{a+b}=e^ae^b$. Matrices are transformations, and transformations can depend on order. Doing $A$ then $B$ may not equal doing $B$ then $A$. The commutator $[A,B]=AB-BA$ measures that failure of order-independence.</p>
 
 <div>$$ [A,B] = AB - BA \qquad \Rightarrow \qquad e^{\varepsilon A}e^{\varepsilon B}e^{-\varepsilon A}e^{-\varepsilon B} \approx I + \varepsilon^2[A,B] $$</div>
 
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 18px;">The Baker–Campbell–Hausdorff formula quantifies how much extra the product costs at every order:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 18px;">The small loop formula is trying to convince you that noncommutativity is visible as a second-order residue: go forward in $A$, forward in $B$, backward in $A$, backward in $B$, and you do not quite return to the identity. The leftover is controlled by $[A,B]$. The Baker–Campbell–Hausdorff formula then quantifies how much extra the product costs at every order:</p>
 
 <div>$$ \log(e^A e^B) = A + B + \tfrac{1}{2}[A,B] + \tfrac{1}{12}[A,[A,B]] - \tfrac{1}{12}[B,[A,B]] + \cdots $$</div>
 
     <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">BCH</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">Multiplying finite Lie group elements = adding generators + commutator corrections. When $[A,B] = 0$ all corrections vanish and $e^A e^B = e^{A+B}$, recovering the scalar law exactly.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">Multiplying finite Lie group elements equals adding generators only in the commutative case. In general, multiplication equals addition plus a record of order effects: first $[A,B]$, then nested commutators such as $[A,[A,B]]$. When $[A,B]=0$, all corrections vanish and $e^Ae^B=e^{A+B}$, recovering the scalar law exactly.</p>
     </div>
   </section>
 
