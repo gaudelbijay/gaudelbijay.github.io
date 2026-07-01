@@ -218,6 +218,34 @@ nav_order: 6
     transform-origin: center;
   }
 
+  .lie-constellation-ring {
+    animation: lie-constellation-turn 12s linear infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .lie-constellation-node-a {
+    animation: lie-constellation-pulse 4.8s ease-in-out infinite;
+  }
+
+  .lie-constellation-node-b {
+    animation: lie-constellation-pulse 4.8s ease-in-out infinite 0.6s;
+  }
+
+  .lie-constellation-node-c {
+    animation: lie-constellation-pulse 4.8s ease-in-out infinite 1.2s;
+  }
+
+  .lie-constellation-node-d {
+    animation: lie-constellation-pulse 4.8s ease-in-out infinite 1.8s;
+  }
+
+  .lie-constellation-bracket {
+    animation: lie-constellation-bracket 5.2s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
   @keyframes cone-spin {
     from {
       transform: rotate(0deg);
@@ -357,6 +385,39 @@ nav_order: 6
     }
   }
 
+  @keyframes lie-constellation-turn {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes lie-constellation-pulse {
+    0%,
+    100% {
+      opacity: 0.58;
+      transform: scale(0.86);
+    }
+    45% {
+      opacity: 1;
+      transform: scale(1.18);
+    }
+  }
+
+  @keyframes lie-constellation-bracket {
+    0%,
+    100% {
+      transform: scale(0.92);
+      opacity: 0.62;
+    }
+    50% {
+      transform: scale(1.08);
+      opacity: 1;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cone-ring,
     .cone-shadow,
@@ -372,7 +433,13 @@ nav_order: 6
     .series-bar-b,
     .series-bar-c,
     .series-bar-d,
-    .series-dot {
+    .series-dot,
+    .lie-constellation-ring,
+    .lie-constellation-node-a,
+    .lie-constellation-node-b,
+    .lie-constellation-node-c,
+    .lie-constellation-node-d,
+    .lie-constellation-bracket {
       animation: none;
     }
   }
@@ -394,41 +461,41 @@ nav_order: 6
     <div class="blog-card-body">
       <div class="blog-card-date">Chapters</div>
       <h2 class="blog-card-title">Lie - Groups</h2>
-      <p class="blog-card-summary">CBH foundations, The Engine &amp; the Motion, Stretch vs Shear, and the Substitution Principle, listed newest written first inside the chapter.</p>
+      <p class="blog-card-summary">A chapter path through CBH foundations, matrix exponentials, stretch and shear, and the substitution principle.</p>
     </div>
     <div class="blog-card-visual" aria-hidden="true">
       <svg viewBox="0 0 240 210" role="img">
         <defs>
-          <marker id="recipeArrow" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
-            <path d="M0 0 L7 3.5 L0 7 Z" fill="#f0c28f"></path>
-          </marker>
-          <linearGradient id="recipeCoreFill" x1="72" y1="58" x2="168" y2="150" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#3a6fa8" stop-opacity="0.28"></stop>
-            <stop offset="1" stop-color="#b8552f" stop-opacity="0.2"></stop>
-          </linearGradient>
+          <radialGradient id="lieConstellationGlow" cx="50%" cy="48%" r="58%">
+            <stop offset="0" stop-color="#f0c28f" stop-opacity="0.34"></stop>
+            <stop offset="0.72" stop-color="#3a6fa8" stop-opacity="0.12"></stop>
+            <stop offset="1" stop-color="#b8552f" stop-opacity="0"></stop>
+          </radialGradient>
         </defs>
-        <rect class="recipe-core" x="74" y="52" width="92" height="106" rx="8" fill="url(#recipeCoreFill)" stroke="#3a6fa8" stroke-width="3"></rect>
-        <text x="120" y="89" text-anchor="middle" fill="#2a241e" font-size="17" font-family="serif">1 + X</text>
-        <text x="120" y="115" text-anchor="middle" fill="#2a241e" font-size="16" font-family="serif">+ X²/2!</text>
-        <text x="120" y="139" text-anchor="middle" fill="#2a241e" font-size="15" font-family="serif">+ ···</text>
-        <g class="recipe-flow-a">
-          <circle cx="28" cy="72" r="10" fill="#3a6fa8" fill-opacity="0.88"></circle>
-          <line x1="42" y1="72" x2="70" y2="72" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <circle cx="120" cy="105" r="76" fill="url(#lieConstellationGlow)"></circle>
+        <g class="lie-constellation-ring">
+          <ellipse cx="120" cy="105" rx="74" ry="44" fill="none" stroke="#2a241e" stroke-opacity="0.18" stroke-width="2"></ellipse>
+          <ellipse cx="120" cy="105" rx="74" ry="44" fill="none" stroke="#2a241e" stroke-opacity="0.14" stroke-width="2" transform="rotate(60 120 105)"></ellipse>
+          <ellipse cx="120" cy="105" rx="74" ry="44" fill="none" stroke="#2a241e" stroke-opacity="0.14" stroke-width="2" transform="rotate(120 120 105)"></ellipse>
         </g>
-        <g class="recipe-flow-b">
-          <rect x="22" y="101" width="22" height="22" rx="3" fill="#b8552f" fill-opacity="0.84"></rect>
-          <line x1="47" y1="112" x2="70" y2="112" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <path d="M66 75 C94 44 148 43 176 76 C204 109 177 163 120 165 C63 164 36 109 66 75Z" fill="none" stroke="#c8b99f" stroke-width="2"></path>
+        <g class="lie-constellation-node-a">
+          <circle cx="120" cy="48" r="8" fill="#b8552f"></circle>
+          <text x="120" y="52" text-anchor="middle" fill="#fcf9f1" font-size="10" font-family="serif">C</text>
         </g>
-        <g class="recipe-flow-c">
-          <path d="M24 151 C30 139 41 139 47 151" fill="none" stroke="#4a8c5c" stroke-width="5" stroke-linecap="round"></path>
-          <line x1="50" y1="151" x2="70" y2="151" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
+        <g class="lie-constellation-node-b">
+          <circle cx="184" cy="104" r="8" fill="#3a6fa8"></circle>
+          <text x="184" y="108" text-anchor="middle" fill="#fcf9f1" font-size="10" font-family="serif">E</text>
         </g>
-        <line x1="166" y1="86" x2="210" y2="72" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-        <line x1="166" y1="112" x2="210" y2="112" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-        <line x1="166" y1="138" x2="210" y2="151" stroke="#f0c28f" stroke-width="4" stroke-linecap="round" marker-end="url(#recipeArrow)"></line>
-        <text x="211" y="68" fill="#3a6fa8" font-size="15" font-family="serif">eˣ</text>
-        <text x="211" y="108" fill="#b8552f" font-size="15" font-family="serif">exp X</text>
-        <text x="211" y="151" fill="#4a8c5c" font-size="15" font-family="serif">Ad</text>
+        <g class="lie-constellation-node-c">
+          <circle cx="120" cy="162" r="8" fill="#5e7a4e"></circle>
+          <text x="120" y="166" text-anchor="middle" fill="#fcf9f1" font-size="10" font-family="serif">S</text>
+        </g>
+        <g class="lie-constellation-node-d">
+          <circle cx="56" cy="104" r="8" fill="#c2723c"></circle>
+          <text x="56" y="108" text-anchor="middle" fill="#fcf9f1" font-size="10" font-family="serif">P</text>
+        </g>
+        <text class="lie-constellation-bracket" x="120" y="116" text-anchor="middle" fill="#2a241e" font-size="36" font-family="serif">[ , ]</text>
       </svg>
     </div>
   </a>

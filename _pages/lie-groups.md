@@ -130,6 +130,32 @@ nav: false
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.055);
   }
 
+  .chapter-path-line {
+    animation: chapter-path-dash 5.8s ease-in-out infinite;
+  }
+
+  .chapter-path-dot-a {
+    animation: chapter-path-dot 5.8s ease-in-out infinite;
+  }
+
+  .chapter-path-dot-b {
+    animation: chapter-path-dot 5.8s ease-in-out infinite 0.55s;
+  }
+
+  .chapter-path-dot-c {
+    animation: chapter-path-dot 5.8s ease-in-out infinite 1.1s;
+  }
+
+  .chapter-path-dot-d {
+    animation: chapter-path-dot 5.8s ease-in-out infinite 1.65s;
+  }
+
+  .chapter-path-page {
+    animation: chapter-path-page 4.8s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
   .cone-ring {
     animation: cone-spin 6s linear infinite;
     transform-box: fill-box;
@@ -204,6 +230,40 @@ nav: false
     50% {
       opacity: 0.42;
       transform: scaleX(1.08);
+    }
+  }
+
+  @keyframes chapter-path-dash {
+    0%,
+    100% {
+      stroke-dashoffset: 140;
+      opacity: 0.5;
+    }
+    50% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes chapter-path-dot {
+    0%,
+    100% {
+      opacity: 0.42;
+      transform: scale(0.82);
+    }
+    42% {
+      opacity: 1;
+      transform: scale(1.18);
+    }
+  }
+
+  @keyframes chapter-path-page {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(2deg);
     }
   }
 
@@ -316,6 +376,12 @@ nav: false
   @media (prefers-reduced-motion: reduce) {
     .cone-ring,
     .cone-shadow,
+    .chapter-path-line,
+    .chapter-path-dot-a,
+    .chapter-path-dot-b,
+    .chapter-path-dot-c,
+    .chapter-path-dot-d,
+    .chapter-path-page,
     .recipe-flow-a,
     .recipe-flow-b,
     .recipe-flow-c,
@@ -348,26 +414,40 @@ nav: false
     <div class="lie-chapter-body">
       <div class="lie-chapter-date">Chapter 1</div>
       <h2 class="lie-chapter-title">The Exponential Map</h2>
-      <p class="lie-chapter-summary">Open the chapter to read the posts newest written first: Campbell-Baker-Hausdorff Foundations, The Engine &amp; the Motion, Stretch vs Shear, and The Substitution Principle.</p>
+      <p class="lie-chapter-summary">Four connected notes on matrix exponentials, stretch and shear, substitution, and the bracket corrections in CBH.</p>
     </div>
     <div class="lie-chapter-visual" aria-hidden="true">
       <svg viewBox="0 0 240 210" role="img">
         <defs>
-          <linearGradient id="coneFillLie" x1="60" y1="34" x2="180" y2="180" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#b8552f" stop-opacity="0.82"></stop>
-            <stop offset="1" stop-color="#3a6fa8" stop-opacity="0.3"></stop>
+          <linearGradient id="chapterPathFill" x1="48" y1="42" x2="184" y2="170" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#fcf9f1" stop-opacity="0.94"></stop>
+            <stop offset="1" stop-color="#ece3d0" stop-opacity="0.74"></stop>
           </linearGradient>
         </defs>
-        <ellipse class="cone-shadow" cx="120" cy="174" rx="60" ry="13" fill="#2a241e"></ellipse>
-        <path d="M120 34 L55 174 L185 174 Z" fill="url(#coneFillLie)" opacity="0.52"></path>
-        <path d="M55 174 C80 154 160 154 185 174" fill="none" stroke="#b8552f" stroke-width="4"></path>
-        <g class="cone-ring">
-          <ellipse cx="120" cy="112" rx="49" ry="16" fill="none" stroke="#f0c28f" stroke-width="4"></ellipse>
-          <circle cx="168" cy="112" r="5" fill="#f0c28f"></circle>
-          <circle cx="72" cy="112" r="3.5" fill="#3a6fa8"></circle>
+        <g class="chapter-path-page">
+          <path d="M58 38 H166 L190 62 V174 H58 Z" fill="url(#chapterPathFill)" stroke="#c8b99f" stroke-width="3"></path>
+          <path d="M166 38 V63 H190" fill="none" stroke="#c8b99f" stroke-width="3"></path>
+          <path d="M78 74 H153" stroke="#2a241e" stroke-opacity="0.18" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M78 92 H170" stroke="#2a241e" stroke-opacity="0.14" stroke-width="3" stroke-linecap="round"></path>
+          <path d="M78 110 H142" stroke="#2a241e" stroke-opacity="0.14" stroke-width="3" stroke-linecap="round"></path>
         </g>
-        <line x1="120" y1="34" x2="120" y2="178" stroke="#2a241e" stroke-opacity="0.34" stroke-width="2"></line>
-        <path d="M82 84 C104 70 139 70 160 84" fill="none" stroke="#2a241e" stroke-opacity="0.32" stroke-width="2"></path>
+        <path class="chapter-path-line" d="M70 150 C96 120 104 134 123 102 C145 65 166 82 180 55" fill="none" stroke="#b8552f" stroke-width="5" stroke-linecap="round" stroke-dasharray="12 10"></path>
+        <g class="chapter-path-dot-a">
+          <circle cx="70" cy="150" r="9" fill="#c2723c"></circle>
+          <text x="70" y="154" text-anchor="middle" fill="#fcf9f1" font-size="10" font-family="serif">P</text>
+        </g>
+        <g class="chapter-path-dot-b">
+          <circle cx="108" cy="126" r="9" fill="#5e7a4e"></circle>
+          <text x="108" y="130" text-anchor="middle" fill="#fcf9f1" font-size="10" font-family="serif">S</text>
+        </g>
+        <g class="chapter-path-dot-c">
+          <circle cx="136" cy="88" r="9" fill="#3a6fa8"></circle>
+          <text x="136" y="92" text-anchor="middle" fill="#fcf9f1" font-size="10" font-family="serif">E</text>
+        </g>
+        <g class="chapter-path-dot-d">
+          <circle cx="180" cy="55" r="9" fill="#b8552f"></circle>
+          <text x="180" y="59" text-anchor="middle" fill="#fcf9f1" font-size="10" font-family="serif">C</text>
+        </g>
       </svg>
     </div>
   </a>
