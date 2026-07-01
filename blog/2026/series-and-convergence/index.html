@@ -36,7 +36,7 @@
     <div style="display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:14px 18px; margin-top:34px; font:500 13px/1 'IBM Plex Mono',monospace; color:#8B7E69;">
       <span>Series Theory</span>
       <span style="width:5px; height:5px; border-radius:50%; background:#C9BBA0;"></span>
-      <span>15 sections · live animations</span>
+      <span>18 sections · live animations</span>
       <span style="width:5px; height:5px; border-radius:50%; background:#C9BBA0;"></span>
       <a href="/blog/math-quiz/series/" style="color:var(--accent); text-decoration:none; border-bottom:1px solid #D8B49E;">take the quiz →</a>
     </div>
@@ -143,7 +143,7 @@
 
     <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#922028;">Warning</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$a_n \not\to 0$ guarantees divergence — that is useful. But $a_n \to 0$ says nothing about convergence on its own. The terms must shrink <em>fast enough</em>, which is exactly what the convergence tests in §10 are designed to measure.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$a_n \not\to 0$ guarantees divergence — that is useful. But $a_n \to 0$ says nothing about convergence on its own. The terms must shrink <em>fast enough</em>, which is exactly what the convergence tests in §10–12 are designed to measure.</p>
     </div>
   </section>
 
@@ -315,6 +315,71 @@
     </div>
   </section>
 
+  <!-- §11 Test Playbook -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">11 &nbsp;·&nbsp; Convergence-test playbook</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Do not memorize tests as names — read the tail</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A convergence test is a way of recognizing the <em>shape of the tail</em>. The first question is always the term test: if $a_n\not\to0$, the series diverges immediately. If $a_n\to0$, the real work begins: decide whether the tail behaves like a geometric tail, a $p$-series tail, an alternating cancellation tail, or a function tail requiring uniform control.</p>
+
+    <div style="display:grid; grid-template-columns:1fr; gap:10px; margin-top:22px;">
+      <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #922028; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#922028; margin-bottom:8px;">Term test</div>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0;">If $\lim a_n\neq0$ or the limit does not exist, then $\sum a_n$ diverges. If $\lim a_n=0$, no conclusion follows.</p>
+      </div>
+      <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #1D7A74; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#1D7A74; margin-bottom:8px;">Comparison</div>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0;">For $a_n,b_n\ge0$: if $0\le a_n\le b_n$ eventually and $\sum b_n$ converges, then $\sum a_n$ converges. If $0\le b_n\le a_n$ eventually and $\sum b_n$ diverges, then $\sum a_n$ diverges.</p>
+      </div>
+      <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #1D7A74; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#1D7A74; margin-bottom:8px;">Limit comparison</div>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0;">For positive terms: if $\lim a_n/b_n=c$ with $0<c<\infty$, then $\sum a_n$ and $\sum b_n$ either both converge or both diverge.</p>
+      </div>
+      <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #8A6820; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#8A6820; margin-bottom:8px;">Integral test</div>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0;">If $f$ is positive, continuous, decreasing, and $a_n=f(n)$, then $\sum a_n$ converges exactly when $\int_1^\infty f(x)\,dx$ converges.</p>
+      </div>
+      <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #B8552F; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#B8552F; margin-bottom:8px;">Ratio and root tests</div>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0;">Ratio: $L=\lim|a_{n+1}/a_n|$. Root: $L=\limsup\sqrt[n]{|a_n|}$. In both, $L<1$ gives absolute convergence and $L>1$ gives divergence; $L=1$ means the test is silent.</p>
+      </div>
+      <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #2A6A1A; border-radius:0 8px 8px 0;">
+        <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A6A1A; margin-bottom:8px;">Alternating series test</div>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0;">If $b_n\ge0$, $b_n$ decreases eventually, and $b_n\to0$, then $\sum(-1)^n b_n$ converges. This proves convergence by shrinking overshoot, not by absolute size.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- §12 Worked Traps -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">12 &nbsp;·&nbsp; Worked traps and endpoint clinic</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The hard part is choosing the right lens</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The following examples are deliberately chosen because the first obvious test is not always the right one. A serious understanding of convergence means knowing why a test applies, why it fails, and what to try next.</p>
+
+    <div style="display:grid; gap:12px; margin-top:22px;">
+      <div style="padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+        <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#1D7A74; margin-bottom:10px;">Harmonic versus square harmonic</div>
+        <p style="font:400 17px/1.6 'Newsreader',serif; margin:0 0 10px;">$\sum 1/n$ and $\sum 1/n^2$ both have terms tending to zero. The difference is total tail mass: $1/n$ is exactly the divergent $p=1$ boundary, while $1/n^2$ has $p=2>1$ and converges.</p>
+        <div>$$ \sum_{n=1}^{\infty}\frac{1}{n}\;\text{ diverges},\qquad \sum_{n=1}^{\infty}\frac{1}{n^2}\;\text{ converges} $$</div>
+      </div>
+      <div style="padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+        <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#8A6820; margin-bottom:10px;">Alternating harmonic</div>
+        <p style="font:400 17px/1.6 'Newsreader',serif; margin:0 0 10px;">$\sum(-1)^{n+1}/n$ converges by the alternating series test because $1/n\downarrow0$, but it is not absolutely convergent because $\sum|(-1)^{n+1}/n|=\sum1/n$ diverges. This is the canonical conditionally convergent series.</p>
+        <div>$$ \sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}=\log 2,\qquad \sum_{n=1}^{\infty}\left|\frac{(-1)^{n+1}}{n}\right|=\infty $$</div>
+      </div>
+      <div style="padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+        <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#B8552F; margin-bottom:10px;">Factorial versus exponential powers</div>
+        <p style="font:400 17px/1.6 'Newsreader',serif; margin:0 0 10px;">For $\sum n!/n^n$, the ratio test is natural because both factorials and powers change cleanly from $n$ to $n+1$:</p>
+        <div>$$ \frac{a_{n+1}}{a_n}=\frac{(n+1)!}{(n+1)^{n+1}}\frac{n^n}{n!}=\left(\frac{n}{n+1}\right)^n\to e^{-1}<1 $$</div>
+        <p style="font:400 17px/1.6 'Newsreader',serif; margin:10px 0 0;">So the series converges absolutely. The point is not the final number; the point is recognizing geometric decay hidden inside the ratio.</p>
+      </div>
+      <div style="padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+        <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#922028; margin-bottom:10px;">Endpoint behavior of a power series</div>
+        <p style="font:400 17px/1.6 'Newsreader',serif; margin:0 0 10px;">For $\sum x^n/n$, the ratio test gives radius $R=1$. Inside $|x|<1$ it converges absolutely. At $x=1$ it becomes $\sum1/n$ and diverges. At $x=-1$ it becomes $-\sum(-1)^{n+1}/n$ and converges conditionally.</p>
+        <div>$$ \sum_{n=1}^{\infty}\frac{x^n}{n}:\quad [-1,1)\;\text{is the interval of convergence} $$</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════════ PART THREE ══════════════════════ -->
   <div style="max-width:780px; margin:100px auto 0; text-align:center;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Part Three</div>
@@ -322,9 +387,9 @@
     <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:500px; margin:14px auto 0;">What rearrangement costs, and how far a finite approximation deviates from truth.</p>
   </div>
 
-  <!-- §11 Absolute Convergence -->
+  <!-- §13 Absolute Convergence -->
   <section style="max-width:680px; margin:64px auto 0;">
-    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">11 &nbsp;·&nbsp; Absolute &amp; conditional convergence</div>
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">13 &nbsp;·&nbsp; Absolute &amp; conditional convergence</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Rearrangement safety</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;"><em>Absolute convergence</em>: $\sum|a_n| < \infty$. <em>Conditional convergence</em>: the series converges, but $\sum|a_n| = \infty$. The distinction governs whether you can safely rearrange terms:</p>
 
@@ -336,9 +401,9 @@
     </div>
   </section>
 
-  <!-- §12 Remainder -->
+  <!-- §14 Remainder -->
   <section style="max-width:680px; margin:74px auto 0;">
-    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">12 &nbsp;·&nbsp; Taylor remainder</div>
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">14 &nbsp;·&nbsp; Taylor remainder</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Quantifying the truncation error</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Stopping at degree $n$ leaves an error $R_n(x)$. Lagrange's form controls it exactly: there exists some $c$ between $a$ and $x$ such that:</p>
 
@@ -350,6 +415,22 @@
     </div>
   </section>
 
+  <!-- §15 Uniform Convergence -->
+  <section style="max-width:680px; margin:74px auto 0;">
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">15 &nbsp;·&nbsp; Uniform convergence</div>
+    <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">When one \(N\) must work everywhere</h3>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For a function series $\sum f_n(x)$, pointwise convergence freezes $x$ first and lets the required cutoff $N$ depend on that point. Uniform convergence is stricter: for every $\varepsilon>0$, one $N$ controls the tail for <em>all</em> $x$ in the domain.</p>
+
+<div>$$ \sum f_n \text{ converges uniformly if } \forall\varepsilon>0,\exists N:\; n>m\ge N \Rightarrow \sup_x |f_{m+1}(x)+\cdots+f_n(x)|<\varepsilon $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">Uniform convergence is the hypothesis that lets analysis behave politely. Under the right conditions it preserves continuity, allows termwise integration, and with extra derivative control permits termwise differentiation. Without uniform control, limits can leak through endpoints or create discontinuities.</p>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#1D7A74;">Weierstrass M-test</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">If $|f_n(x)|\le M_n$ for all $x$ and the numerical series $\sum M_n$ converges, then $\sum f_n(x)$ converges absolutely and uniformly. It is comparison test logic lifted from numbers to functions.</p>
+    </div>
+  </section>
+
   <!-- ══════════════════════ PART FOUR ══════════════════════ -->
   <div style="max-width:780px; margin:100px auto 0; text-align:center;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.34em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">Part Four</div>
@@ -357,11 +438,15 @@
     <p style="font:italic 400 18px/1.5 'Newsreader',serif; color:#8B7E69; max-width:500px; margin:14px auto 0;">The same series machinery, lifted from numbers to matrices — where it creates the transformations of Lie groups.</p>
   </div>
 
-  <!-- §13 Matrix Exponential -->
+  <!-- §16 Matrix Exponential -->
   <section style="max-width:680px; margin:64px auto 0;">
-    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">13 &nbsp;·&nbsp; Matrix series &amp; the matrix exponential</div>
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">16 &nbsp;·&nbsp; Matrix series &amp; the matrix exponential</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Replace scalar $x$ with a square matrix $A$</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Replace $1$ with the identity $I$. The same factorial denominators that gave $e^x$ its infinite radius guarantee convergence for every matrix, regardless of its norm:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Replace $1$ with the identity $I$. Matrix powers mean repeated composition: $A^2=A\circ A$, $A^3=A\circ A\circ A$, and so on. To justify convergence, choose any submultiplicative matrix norm, so $\|A^n\|\le\|A\|^n$. Then the matrix series is dominated by the scalar exponential series:</p>
+
+<div>$$ \sum_{n=0}^{\infty}\left\|\frac{A^n}{n!}\right\|\le \sum_{n=0}^{\infty}\frac{\|A\|^n}{n!}=e^{\|A\|}<\infty $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">That is why the same factorial denominators that gave $e^x$ its infinite radius guarantee convergence for every matrix, regardless of size:</p>
 
 <div>$$ e^A = I + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots \quad \text{converges for all } A $$</div>
 
@@ -375,9 +460,9 @@
     </div>
   </section>
 
-  <!-- §14 Matrix Log -->
+  <!-- §17 Matrix Log -->
   <section style="max-width:680px; margin:74px auto 0;">
-    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">14 &nbsp;·&nbsp; Matrix logarithm</div>
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">17 &nbsp;·&nbsp; Matrix logarithm</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The inverse of exp — local, not global</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Given $G \approx I$, recover the generator $A$ with $e^A = G$. Without factorials, convergence is only local, and the logarithm can be multi-valued:</p>
 
@@ -395,9 +480,9 @@
     </div>
   </section>
 
-  <!-- §15 BCH -->
+  <!-- §18 BCH -->
   <section style="max-width:680px; margin:74px auto 0;">
-    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">15 &nbsp;·&nbsp; Noncommutativity &amp; BCH</div>
+    <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">18 &nbsp;·&nbsp; Noncommutativity &amp; BCH</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">When $AB \neq BA$, multiplication costs extra</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For scalars $e^{a+b} = e^a e^b$. For matrices this fails when $AB \neq BA$. The commutator $[A,B] = AB - BA$ measures the failure, and a small loop test makes it concrete:</p>
 
