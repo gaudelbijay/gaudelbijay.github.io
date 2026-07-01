@@ -22,6 +22,36 @@ nav: false
     gap: 1.25rem;
   }
 
+  .lie-chapter-group {
+    padding: clamp(1.1rem, 3vw, 1.6rem);
+    background:
+      linear-gradient(135deg, rgba(184, 85, 47, 0.08), transparent 44%),
+      var(--global-card-bg-color);
+    border: 1px solid var(--global-divider-color);
+    border-radius: 8px;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.07);
+  }
+
+  .lie-chapter-group-header {
+    max-width: 44rem;
+    margin: 0 0 1.25rem;
+    padding: 0.15rem 0.2rem 0.35rem;
+  }
+
+  .lie-chapter-kicker {
+    margin-bottom: 0.65rem;
+    color: var(--global-theme-color);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .lie-chapter-posts {
+    display: grid;
+    gap: 1rem;
+  }
+
   .lie-chapter-card {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(210px, 32%);
@@ -93,6 +123,11 @@ nav: false
   .lie-chapter-visual svg {
     width: min(84%, 260px);
     height: auto;
+  }
+
+  .lie-chapter-posts .lie-chapter-card {
+    min-height: 200px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.055);
   }
 
   .cone-ring {
@@ -309,11 +344,19 @@ nav: false
 <p class="lie-group-note">These posts heavily use ideas from <em>Lie Groups: An Introduction Through Linear Groups</em> by Wulf Rossmann.</p>
 
 <div class="lie-chapter-cards">
+  <section class="lie-chapter-group" aria-labelledby="lie-chapter-one-title">
+    <div class="lie-chapter-group-header">
+      <div class="lie-chapter-kicker">Chapter 1</div>
+      <h2 id="lie-chapter-one-title" class="lie-chapter-title">The Exponential Map</h2>
+      <p class="lie-chapter-summary">A three-post path through the geometry that turns infinitesimal matrix directions into finite motion: stretch and shear, matrix exponentials, and the substitution principle behind adjoint action.</p>
+    </div>
+
+    <div class="lie-chapter-posts">
   <a class="lie-chapter-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">
     <div class="lie-chapter-body">
       <div class="lie-chapter-date">Jun 25, 2026</div>
-      <h2 class="lie-chapter-title">The Exponential Map</h2>
-      <p class="lie-chapter-summary">A visual guide to matrix exponentials, Lie algebra structure, and the geometry of SL(2, R).</p>
+      <h2 class="lie-chapter-title">The Engine &amp; the Motion</h2>
+      <p class="lie-chapter-summary">A visual guide to how matrices act, how exponentials turn generators into flows, and how trace-zero directions become motions in SL(2, R).</p>
     </div>
     <div class="lie-chapter-visual" aria-hidden="true">
       <svg viewBox="0 0 240 210" role="img">
@@ -407,4 +450,6 @@ nav: false
       </svg>
     </div>
   </a>
+    </div>
+  </section>
 </div>
