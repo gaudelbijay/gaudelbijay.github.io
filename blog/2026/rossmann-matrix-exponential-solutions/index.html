@@ -375,7 +375,7 @@ figure svg{max-width:100%;height:auto}
   <div style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2563a4;margin-bottom:14px">Wulf Rossmann · Lie Groups: An Introduction Through Linear Groups</div>
   <h1 style="font-family:'EB Garamond',Georgia,serif;font-size:42px;font-weight:500;margin:0 0 10px;color:#1c3358;line-height:1.15;text-wrap:balance">Problems for §1.1 & §1.2</h1>
   <h2 style="font-family:'EB Garamond',Georgia,serif;font-size:22px;font-weight:400;font-style:italic;margin:0 0 22px;color:#555;line-height:1.3">Matrix Exponentials — Detailed Solutions with Visualizations</h2>
-  <p style="font-size:15.5px;color:#555;margin:0;line-height:1.65;max-width:640px">Complete worked solutions for all 23 problems across Sections 1.1 and 1.2, covering: the matrix exponential as a flow, orthogonality and skew-symmetry, Rodrigues' rotation formula, Jordan blocks, affine fields, nilpotent/unipotent correspondences, Jordan decomposition, Euler and Trotter product formulas, the Jacobi identity, and Jacobi's determinant formula.</p>
+  <p style="font-size:15.5px;color:#555;margin:0;line-height:1.65;max-width:640px">A guided set of solutions across Sections 1.1 and 1.2, covering: the matrix exponential as a flow, orthogonality and skew-symmetry, Rodrigues' rotation formula, Jordan blocks, affine fields, nilpotent/unipotent correspondences, Jordan decomposition, Euler and Trotter product formulas, the Jacobi identity, and Jacobi's determinant formula.</p>
 </header>
 
 <!-- ═══════════════════════════════════════════════════ TOC -->
@@ -942,38 +942,48 @@ figure svg{max-width:100%;height:auto}
 
 <!-- Structure visualization -->
 <figure style="margin:0 0 44px;padding:24px;background:#f9f7f4;border-radius:10px;border:1px solid #ddd8d0">
-  <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:16px;text-align:center">Algebraic Structure: How exp Respects Matrix Type</figcaption>
-  <svg viewBox="0 0 640 130" style="width:100%;display:block;font-family:'DM Sans',system-ui,sans-serif" aria-label="exp maps nilpotent to unipotent and semisimple to semisimple">
-    <defs><marker id="arr-s" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L8 4L0 8z" fill="#6b6660"></path></marker>
-    <marker id="arr-sl" viewBox="0 0 8 8" refX="1" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M8 0L0 4L8 8z" fill="#6b6660"></path></marker></defs>
+  <figcaption style="font-family:'DM Sans',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:16px;text-align:center">Algebraic structure: additive matrix data becomes group data</figcaption>
+  <svg viewBox="0 0 760 270" style="width:100%;display:block;font-family:'DM Sans',system-ui,sans-serif" aria-label="Matrix exponential carries compatible additive structure into multiplicative group structure">
+    <defs>
+      <marker id="arr-s" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#6b6660"></path></marker>
+    </defs>
 
-    <!-- Nilpotent box -->
-    <rect x="10" y="20" width="165" height="90" rx="8" fill="#f0f4f8" stroke="#2563a4" stroke-width="1.5"></rect>
-    <text x="92" y="48" text-anchor="middle" font-size="11" font-weight="700" fill="#2563a4" letter-spacing="0.5">NILPOTENT</text>
-    <text x="92" y="72" text-anchor="middle" font-size="13" fill="#1c3358" font-style="italic">X^k = 0</text>
-    <text x="92" y="95" text-anchor="middle" font-size="11" fill="#666">for some k</text>
+    <rect x="26" y="24" width="310" height="92" rx="9" fill="#f0f4f8" stroke="#2f5d8c" stroke-width="1.4"></rect>
+    <text x="181" y="49" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#2f5d8c">LIE ALGEBRA SIDE</text>
+    <text x="181" y="76" text-anchor="middle" font-size="18" fill="#1c3358">X = S + N,  [S,N] = 0</text>
+    <text x="181" y="99" text-anchor="middle" font-size="12" fill="#5f6470">S semisimple, N nilpotent, bracket measures noncommutation</text>
 
-    <!-- Arrow right -->
-    <line x1="175" y1="65" x2="215" y2="65" stroke="#555" stroke-width="1.5" marker-end="url(#arr-s)"></line>
-    <text x="195" y="56" text-anchor="middle" font-size="11" fill="#555">exp</text>
-    <line x1="215" y1="75" x2="175" y2="75" stroke="#555" stroke-width="1.5" marker-end="url(#arr-sl)"></line>
-    <text x="195" y="89" text-anchor="middle" font-size="11" fill="#555">log</text>
+    <rect x="424" y="24" width="310" height="92" rx="9" fill="#eef6f1" stroke="#2f6d4f" stroke-width="1.4"></rect>
+    <text x="579" y="49" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1" fill="#2f6d4f">GROUP SIDE</text>
+    <text x="579" y="76" text-anchor="middle" font-size="18" fill="#1c3358">exp(X) = exp(S)exp(N)</text>
+    <text x="579" y="99" text-anchor="middle" font-size="12" fill="#5f6470">semisimple factor times unipotent factor</text>
 
-    <!-- Unipotent box -->
-    <rect x="217" y="20" width="165" height="90" rx="8" fill="#eef6f1" stroke="#1a5c3a" stroke-width="1.5"></rect>
-    <text x="299" y="48" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5c3a" letter-spacing="0.5">UNIPOTENT</text>
-    <text x="299" y="72" text-anchor="middle" font-size="13" fill="#1c3358" font-style="italic">(a−I)^k = 0</text>
-    <text x="299" y="95" text-anchor="middle" font-size="11" fill="#666">for some k</text>
+    <line x1="342" y1="70" x2="414" y2="70" stroke="#6b6660" stroke-width="1.8" marker-end="url(#arr-s)"></line>
+    <text x="378" y="58" text-anchor="middle" font-size="12" fill="#6b6660">exp</text>
 
-    <!-- Semisimple box -->
-    <rect x="415" y="20" width="165" height="90" rx="8" fill="#fff0ed" stroke="#8b1a2c" stroke-width="1.5"></rect>
-    <text x="498" y="48" text-anchor="middle" font-size="11" font-weight="700" fill="#8b1a2c" letter-spacing="0.5">SEMISIMPLE</text>
-    <text x="498" y="72" text-anchor="middle" font-size="13" fill="#1c3358" font-style="italic">diagonalizable</text>
-    <text x="498" y="95" text-anchor="middle" font-size="11" fill="#666">over ℂ</text>
-    <!-- Self-arrow for semisimple -->
-    <path d="M498 20 Q498 0 498 20" fill="none"></path>
-    <path d="M430 12 Q498 -8 570 12" fill="none" stroke="#8b1a2c" stroke-width="1.3" stroke-dasharray="3 2"></path>
-    <text x="498" y="8" text-anchor="middle" font-size="10" fill="#8b1a2c">exp maps to semisimple</text>
+    <rect x="30" y="156" width="160" height="76" rx="8" fill="#fffaf0" stroke="#b58a3a" stroke-width="1.2"></rect>
+    <text x="110" y="181" text-anchor="middle" font-size="12" font-weight="700" fill="#8b6424">NILPOTENT PART</text>
+    <text x="110" y="205" text-anchor="middle" font-size="14" fill="#1c3358">N^r = 0</text>
+    <text x="110" y="224" text-anchor="middle" font-size="11" fill="#666">series terminates</text>
+
+    <rect x="214" y="156" width="160" height="76" rx="8" fill="#fff4f0" stroke="#b15f43" stroke-width="1.2"></rect>
+    <text x="294" y="181" text-anchor="middle" font-size="12" font-weight="700" fill="#994d33">UNIPOTENT FACTOR</text>
+    <text x="294" y="205" text-anchor="middle" font-size="14" fill="#1c3358">exp(N) = I + nilpotent</text>
+    <text x="294" y="224" text-anchor="middle" font-size="11" fill="#666">(exp(N) - I)^m = 0</text>
+
+    <rect x="398" y="156" width="160" height="76" rx="8" fill="#f7f0ff" stroke="#7556a4" stroke-width="1.2"></rect>
+    <text x="478" y="181" text-anchor="middle" font-size="12" font-weight="700" fill="#67499b">FLOW LAW</text>
+    <text x="478" y="205" text-anchor="middle" font-size="14" fill="#1c3358">exp((s+t)X)</text>
+    <text x="478" y="224" text-anchor="middle" font-size="11" fill="#666">= exp(sX)exp(tX)</text>
+
+    <rect x="582" y="156" width="148" height="76" rx="8" fill="#f0f7f8" stroke="#4b8790" stroke-width="1.2"></rect>
+    <text x="656" y="181" text-anchor="middle" font-size="12" font-weight="700" fill="#3c747c">INVARIANCE</text>
+    <text x="656" y="205" text-anchor="middle" font-size="14" fill="#1c3358">X(W) ⊂ W</text>
+    <text x="656" y="224" text-anchor="middle" font-size="11" fill="#666">implies exp(X)(W) ⊂ W</text>
+
+    <path d="M110 156 C132 126 250 126 294 156" fill="none" stroke="#b58a3a" stroke-width="1.4" marker-end="url(#arr-s)"></path>
+    <path d="M478 156 C482 126 532 122 579 116" fill="none" stroke="#7556a4" stroke-width="1.4" marker-end="url(#arr-s)"></path>
+    <path d="M656 156 C650 128 628 122 594 116" fill="none" stroke="#4b8790" stroke-width="1.4" marker-end="url(#arr-s)"></path>
   </svg>
 </figure>
 
