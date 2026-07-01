@@ -108,14 +108,44 @@ nav: false
     height: auto;
   }
 
-  .cone-ring {
-    animation: cone-spin 6s linear infinite;
+  .exp-flow-step-a,
+  .exp-flow-step-b,
+  .exp-flow-step-c,
+  .exp-flow-step-d,
+  .exp-flow-step-e {
+    animation: exp-flow-step 5.6s ease-in-out infinite;
     transform-box: fill-box;
     transform-origin: center;
   }
 
-  .cone-shadow {
-    animation: cone-breathe 3s ease-in-out infinite;
+  .exp-flow-step-b {
+    animation-delay: 0.24s;
+  }
+
+  .exp-flow-step-c {
+    animation-delay: 0.48s;
+  }
+
+  .exp-flow-step-d {
+    animation-delay: 0.72s;
+  }
+
+  .exp-flow-step-e {
+    animation-delay: 0.96s;
+  }
+
+  .exp-flow-particle {
+    animation: exp-flow-particle 5.6s ease-in-out infinite;
+  }
+
+  .exp-flow-orbit {
+    animation: exp-flow-orbit 5.6s ease-in-out infinite;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+  }
+
+  .exp-flow-generator {
+    animation: exp-flow-generator 5.6s ease-in-out infinite;
     transform-box: fill-box;
     transform-origin: center;
   }
@@ -180,24 +210,64 @@ nav: false
     stroke-dashoffset: 120;
   }
 
-  @keyframes cone-spin {
-    from {
-      transform: rotate(0deg);
+  @keyframes exp-flow-step {
+    0%,
+    18%,
+    100% {
+      opacity: 0.2;
+      transform: scale(0.72);
     }
-    to {
-      transform: rotate(360deg);
+    42%,
+    74% {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 
-  @keyframes cone-breathe {
+  @keyframes exp-flow-orbit {
+    0% {
+      stroke-dashoffset: 220;
+      opacity: 0.28;
+    }
+    48%,
+    78% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 0.42;
+    }
+  }
+
+  @keyframes exp-flow-particle {
     0%,
     100% {
-      opacity: 0.24;
-      transform: scaleX(0.82);
+      transform: translate(0, 0);
+    }
+    22% {
+      transform: translate(24px, -22px);
+    }
+    44% {
+      transform: translate(58px, -28px);
+    }
+    66% {
+      transform: translate(90px, -8px);
+    }
+    82% {
+      transform: translate(106px, 24px);
+    }
+  }
+
+  @keyframes exp-flow-generator {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.78;
     }
     50% {
-      opacity: 0.42;
-      transform: scaleX(1.08);
+      transform: translateY(-7px);
+      opacity: 1;
     }
   }
 
@@ -346,8 +416,14 @@ nav: false
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .cone-ring,
-    .cone-shadow,
+    .exp-flow-step-a,
+    .exp-flow-step-b,
+    .exp-flow-step-c,
+    .exp-flow-step-d,
+    .exp-flow-step-e,
+    .exp-flow-particle,
+    .exp-flow-orbit,
+    .exp-flow-generator,
     .recipe-flow-a,
     .recipe-flow-b,
     .recipe-flow-c,
@@ -420,21 +496,37 @@ nav: false
     <div class="lie-post-visual" aria-hidden="true">
       <svg viewBox="0 0 240 210" role="img">
         <defs>
-          <linearGradient id="coneFillLieChapter" x1="60" y1="34" x2="180" y2="180" gradientUnits="userSpaceOnUse">
-            <stop offset="0" stop-color="#b8552f" stop-opacity="0.82"></stop>
-            <stop offset="1" stop-color="#3a6fa8" stop-opacity="0.3"></stop>
+          <linearGradient id="expFlowLieChapter" x1="46" y1="160" x2="190" y2="66" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#3a6fa8" stop-opacity="0.95"></stop>
+            <stop offset="0.52" stop-color="#b8552f" stop-opacity="0.92"></stop>
+            <stop offset="1" stop-color="#f0c28f" stop-opacity="0.88"></stop>
           </linearGradient>
+          <marker id="expArrowLieChapter" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M0 0 L8 4 L0 8 Z" fill="#b8552f"></path>
+          </marker>
         </defs>
-        <ellipse class="cone-shadow" cx="120" cy="174" rx="60" ry="13" fill="#2a241e"></ellipse>
-        <path d="M120 34 L55 174 L185 174 Z" fill="url(#coneFillLieChapter)" opacity="0.52"></path>
-        <path d="M55 174 C80 154 160 154 185 174" fill="none" stroke="#b8552f" stroke-width="4"></path>
-        <g class="cone-ring">
-          <ellipse cx="120" cy="112" rx="49" ry="16" fill="none" stroke="#f0c28f" stroke-width="4"></ellipse>
-          <circle cx="168" cy="112" r="5" fill="#f0c28f"></circle>
-          <circle cx="72" cy="112" r="3.5" fill="#3a6fa8"></circle>
+        <rect x="34" y="34" width="54" height="44" rx="12" fill="#2a241e" fill-opacity="0.9"></rect>
+        <g class="exp-flow-generator">
+          <text x="61" y="57" text-anchor="middle" fill="#fcf9f1" font-size="21" font-family="serif">X</text>
+          <path d="M82 57 C102 54 112 70 122 88" fill="none" stroke="#b8552f" stroke-width="3" marker-end="url(#expArrowLieChapter)"></path>
         </g>
-        <line x1="120" y1="34" x2="120" y2="178" stroke="#2a241e" stroke-opacity="0.34" stroke-width="2"></line>
-        <path d="M82 84 C104 70 139 70 160 84" fill="none" stroke="#2a241e" stroke-opacity="0.32" stroke-width="2"></path>
+        <path d="M56 162 C82 116 110 96 139 100 C167 104 184 130 178 158" fill="none" stroke="#2a241e" stroke-opacity="0.2" stroke-width="13" stroke-linecap="round"></path>
+        <path class="exp-flow-orbit" d="M56 162 C82 116 110 96 139 100 C167 104 184 130 178 158" fill="none" stroke="url(#expFlowLieChapter)" stroke-width="5" stroke-linecap="round"></path>
+        <g fill="#fcf9f1" stroke="#b8552f" stroke-width="2">
+          <circle class="exp-flow-step-a" cx="74" cy="134" r="6"></circle>
+          <circle class="exp-flow-step-b" cx="99" cy="110" r="6"></circle>
+          <circle class="exp-flow-step-c" cx="129" cy="100" r="6"></circle>
+          <circle class="exp-flow-step-d" cx="158" cy="112" r="6"></circle>
+          <circle class="exp-flow-step-e" cx="177" cy="148" r="6"></circle>
+        </g>
+        <g class="exp-flow-particle">
+          <circle cx="56" cy="162" r="8" fill="#3a6fa8"></circle>
+          <circle cx="56" cy="162" r="3" fill="#fcf9f1"></circle>
+        </g>
+        <text x="37" y="185" fill="#574c3b" font-size="15" font-family="serif">I</text>
+        <text x="151" y="181" fill="#b8552f" font-size="17" font-family="serif">e^X</text>
+        <text x="102" y="144" fill="#574c3b" font-size="13" font-family="serif">(I + X/n)^n</text>
+        <text x="138" y="70" fill="#3a6fa8" font-size="15" font-family="serif">e^{tX}</text>
       </svg>
     </div>
   </a>
