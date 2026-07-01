@@ -378,7 +378,7 @@ nav: false
 
 <a class="lie-back-link" href="{{ '/blog/lie-groups/' | relative_url }}">Back to Lie Groups</a>
 
-<p class="lie-chapter-note">Chapter 1 collects the connected posts around the exponential map: the geometry of stretch and shear, matrices becoming motion, the substitution principle, and the Campbell-Baker-Hausdorff question that asks how two exponential motions multiply.</p>
+<p class="lie-chapter-note">Chapter 1 is listed newest written first: Campbell-Baker-Hausdorff foundations, matrices becoming motion, stretch versus shear, and the substitution principle behind these exponential-map ideas.</p>
 
 <div class="lie-post-cards">
   <a class="lie-post-card" href="{{ '/blog/2026/campbell-baker-hausdorff-foundations/' | relative_url }}">

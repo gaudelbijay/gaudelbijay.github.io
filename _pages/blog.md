@@ -394,7 +394,7 @@ nav_order: 6
     <div class="blog-card-body">
       <div class="blog-card-date">Chapters</div>
       <h2 class="blog-card-title">Lie - Groups</h2>
-      <p class="blog-card-summary">Exponential map, Substitution Principle, Stretch vs Shear, and CBH foundations.</p>
+      <p class="blog-card-summary">CBH foundations, The Engine &amp; the Motion, Stretch vs Shear, and the Substitution Principle, listed newest written first inside the chapter.</p>
     </div>
     <div class="blog-card-visual" aria-hidden="true">
       <svg viewBox="0 0 240 210" role="img">

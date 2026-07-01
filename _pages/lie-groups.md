@@ -348,7 +348,7 @@ nav: false
     <div class="lie-chapter-body">
       <div class="lie-chapter-date">Chapter 1</div>
       <h2 class="lie-chapter-title">The Exponential Map</h2>
-      <p class="lie-chapter-summary">Open the chapter to read the three connected posts: Stretch vs Shear, The Engine &amp; the Motion, and The Substitution Principle.</p>
+      <p class="lie-chapter-summary">Open the chapter to read the posts newest written first: Campbell-Baker-Hausdorff Foundations, The Engine &amp; the Motion, Stretch vs Shear, and The Substitution Principle.</p>
     </div>
     <div class="lie-chapter-visual" aria-hidden="true">
       <svg viewBox="0 0 240 210" role="img">
