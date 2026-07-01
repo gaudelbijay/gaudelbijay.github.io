@@ -97,7 +97,7 @@
       why: raw`A series is a limit of partial sums. The terms may tend to zero while the accumulated totals fail to settle, as in the harmonic series.`
     },
     {
-      q: raw`The term test says: if \(\sum a_n\) converges, then \(a_n\to0\). Which inference is valid?`,
+      q: raw`The term test says: if \(\sum a_n\) converges, then necessarily \(a_n\to0\). Which inference is valid from this one-way implication?`,
       choices: [
         raw`If \(a_n\to0\), then \(\sum a_n\) converges, because every step eventually becomes negligible.`,
         raw`If \(a_n\not\to0\), then \(\sum a_n\) diverges, because partial sums cannot settle while the increments fail to vanish.`,
@@ -119,7 +119,7 @@
       why: raw`The dyadic block argument gives \((1/3+1/4)>1/2\), \((1/5+\cdots+1/8)>1/2\), and so on. Infinitely many fixed-size gains force divergence.`
     },
     {
-      q: raw`For a geometric series \(\sum_{n=0}^{\infty} ar^n\), what is the exact convergence condition?`,
+      q: raw`For a geometric series \(\sum_{n=0}^{\infty} ar^n\), the partial sums satisfy \(S_N=a(1-r^{N+1})/(1-r)\) when \(r\ne1\). What is the exact convergence condition?`,
       choices: [
         raw`It converges when \(|r|<1\), because \(r^{N+1}\to0\) in the finite partial-sum formula.`,
         raw`It converges when \(r\le1\), because the ratio never exceeds the first term.`,
@@ -141,7 +141,7 @@
       why: raw`The same \(a_n\) can be studied as a list of steps or accumulated into \(S_N\). These are different questions.`
     },
     {
-      q: raw`What does the \(\varepsilon\)-definition of \(a_n\to L\) require?`,
+      q: raw`The definition \(a_n\to L\) means: for every \(\varepsilon>0\), there is \(N\) such that \(n>N\Rightarrow |a_n-L|<\varepsilon\). What does this require conceptually?`,
       choices: [
         raw`For one sufficiently small tolerance, infinitely many terms must be close to \(L\).`,
         raw`For every tolerance \(\varepsilon>0\), all terms after some index \(N\) must remain inside \(|a_n-L|<\varepsilon\).`,
@@ -152,7 +152,7 @@
       why: raw`Convergence means eventual permanence inside every tolerance band, not occasional closeness.`
     },
     {
-      q: raw`Which statement best captures absolute versus conditional convergence?`,
+      q: raw`Absolute convergence means \(\sum |a_n|\) converges. Conditional convergence means \(\sum a_n\) converges but \(\sum |a_n|\) diverges. Which statement best captures the distinction?`,
       choices: [
         raw`Absolute convergence means \(\sum |a_n|\) converges; conditional convergence means \(\sum a_n\) converges but \(\sum |a_n|\) diverges.`,
         raw`Absolute convergence means every term is positive; conditional convergence means terms alternate signs.`,
@@ -174,7 +174,7 @@
       why: raw`If the positive magnitudes have small tails, then signed tails are also small by the triangle inequality.`
     },
     {
-      q: raw`The alternating series theorem says \(\sum (-1)^{n}b_n\) converges if \(b_n\downarrow0\). What role does monotone decrease play?`,
+      q: raw`The alternating series theorem says \(\sum (-1)^n b_n\) converges if \(b_n\ge0\), \(b_n\) decreases eventually, and \(b_n\to0\). What role does monotone decrease play?`,
       choices: [
         raw`It ensures the partial sums are trapped in nested intervals whose lengths shrink to zero.`,
         raw`It ensures \(\sum b_n\) converges absolutely.`,
@@ -196,7 +196,7 @@
       why: raw`Conditional convergence balances two divergent reservoirs. Rearrangement can exploit that balance. Absolute convergence prevents this.`
     },
     {
-      q: raw`What is the Cauchy criterion for a numerical series \(\sum a_n\)?`,
+      q: raw`The Cauchy criterion for a convergent sequence says late terms must become mutually close. Since a series \(\sum a_n\) converges when its partial sums \(S_N\) converge, what is the corresponding Cauchy criterion for the series?`,
       choices: [
         raw`For every \(\varepsilon>0\), there is \(N\) such that \(|a_n|<\varepsilon\) for all \(n>N\).`,
         raw`For every \(\varepsilon>0\), there is \(N\) such that \(|a_{n+1}-a_n|<\varepsilon\) for all \(n>N\).`,
@@ -207,7 +207,7 @@
       why: raw`Series convergence is convergence of partial sums, so the Cauchy condition is smallness of every sufficiently late finite tail.`
     },
     {
-      q: raw`What does the comparison test require for nonnegative series?`,
+      q: raw`The comparison test for nonnegative series uses inequalities \(0\le a_n\le b_n\) eventually. Which implication is valid?`,
       choices: [
         raw`A divergent larger series proves a smaller series diverges.`,
         raw`A convergent smaller series proves a larger series converges.`,
@@ -218,7 +218,7 @@
       why: raw`A convergent upper bound controls the total mass of the smaller nonnegative series. The reverse implications are traps.`
     },
     {
-      q: raw`What does the limit comparison test say when \(a_n,b_n>0\) and \(a_n/b_n\to c\) with \(0<c<\infty\)?`,
+      q: raw`The limit comparison test assumes \(a_n,b_n>0\) and \(\lim_{n\to\infty}a_n/b_n=c\) with \(0<c<\infty\). What does that hypothesis imply?`,
       choices: [
         raw`The two series have the same convergence behavior, because their tails are eventually comparable up to constant multiples.`,
         raw`The series with smaller individual terms must converge and the other must diverge.`,
@@ -229,7 +229,7 @@
       why: raw`A finite positive limiting ratio means neither tail is asymptotically much larger than the other.`
     },
     {
-      q: raw`For \(p\)-series \(\sum 1/n^p\), what is the sharp threshold?`,
+      q: raw`A \(p\)-series has the form \(\sum_{n=1}^{\infty}1/n^p\). What is the sharp convergence threshold?`,
       choices: [
         raw`It converges for \(p>0\), because all terms go to zero.`,
         raw`It converges for \(p\ge1\), because \(p=1\) is the boundary case included by equality.`,
@@ -240,7 +240,7 @@
       why: raw`The harmonic case \(p=1\) diverges. Only powers strictly stronger than \(1/n\) have finite total mass.`
     },
     {
-      q: raw`What is the main idea of the integral test?`,
+      q: raw`The integral test applies when \(a_n=f(n)\) for a positive, continuous, decreasing function \(f\). What is the main idea of the test?`,
       choices: [
         raw`A positive decreasing sequence can be compared to areas under a positive decreasing curve.`,
         raw`Every series is equal to the integral of its term formula.`,
@@ -251,7 +251,7 @@
       why: raw`The decreasing hypothesis lets rectangles bound area and area bound rectangles. Without that geometry the test loses its justification.`
     },
     {
-      q: raw`What does the ratio test measure most directly?`,
+      q: raw`The ratio test studies \(L=\lim_{n\to\infty}|a_{n+1}/a_n|\), with convergence when \(L<1\), divergence when \(L>1\), and no verdict when \(L=1\). What does it measure most directly?`,
       choices: [
         raw`Whether consecutive terms eventually shrink like a geometric series.`,
         raw`Whether the terms are eventually monotone.`,
@@ -262,7 +262,7 @@
       why: raw`The ratio test compares \(a_{n+1}\) to \(a_n\). A limiting ratio below one gives geometric decay.`
     },
     {
-      q: raw`When the ratio test gives limit \(L=1\), what should you conclude?`,
+      q: raw`For the ratio test \(L=\lim|a_{n+1}/a_n|\), the cases \(L<1\) and \(L>1\) decide convergence and divergence. When the ratio test gives \(L=1\), what should you conclude?`,
       choices: [
         raw`The series converges conditionally.`,
         raw`The series diverges by the term test.`,
@@ -273,7 +273,7 @@
       why: raw`The boundary \(L=1\) is exactly where the ratio test cannot distinguish harmonic-type divergence from \(p>1\)-type convergence.`
     },
     {
-      q: raw`What does the root test measure?`,
+      q: raw`The root test studies \(L=\limsup_{n\to\infty}\sqrt[n]{|a_n|}\), with convergence when \(L<1\) and divergence when \(L>1\). What does it measure?`,
       choices: [
         raw`The limiting average exponential size of \(|a_n|\), through \(\sqrt[n]{|a_n|}\).`,
         raw`The limiting arithmetic average of the first \(n\) terms.`,
@@ -284,7 +284,7 @@
       why: raw`The \(n\)th root sees exponential scale. It is especially natural when terms contain \(n\)th powers.`
     },
     {
-      q: raw`What is a power series centered at \(a\)?`,
+      q: raw`A power series centered at \(a\) is written \(\sum_{n=0}^{\infty}c_n(x-a)^n\). What is this object?`,
       choices: [
         raw`A series of the form \(\sum c_n(x-a)^n\), interpreted as a function where it converges.`,
         raw`A series whose terms are all positive powers of \(n\).`,
@@ -295,7 +295,7 @@
       why: raw`The coefficients \(c_n\) are fixed numbers; the variable appears through powers of \(x-a\).`
     },
     {
-      q: raw`What does the radius of convergence \(R\) of \(\sum c_n(x-a)^n\) describe?`,
+      q: raw`For a power series \(\sum c_n(x-a)^n\), the radius of convergence \(R\) gives convergence for \(|x-a|<R\) and divergence for \(|x-a|>R\). What does \(R\) describe?`,
       choices: [
         raw`The largest coefficient index for which the series has nonzero terms.`,
         raw`A distance from the center: convergence for \(|x-a|<R\), divergence for \(|x-a|>R\), with endpoints needing separate tests.`,
@@ -306,7 +306,7 @@
       why: raw`A power series has an interval of convergence around its center. Endpoints are not decided by the radius alone.`
     },
     {
-      q: raw`Why must endpoints of a power series interval be checked separately?`,
+      q: raw`For a real power series with radius \(R\), the interior \(|x-a|<R\) is decided automatically, but the endpoints \(x=a\pm R\) are not. Why must endpoints be checked separately?`,
       choices: [
         raw`Because the ratio or root test typically becomes inconclusive when \(|x-a|=R\).`,
         raw`Because endpoints are never included in the interval of convergence.`,
@@ -328,7 +328,7 @@
       why: raw`A function and its series representation can have different domains. The nearest singularity controls the power-series radius.`
     },
     {
-      q: raw`What does Taylor's theorem attempt to do conceptually?`,
+      q: raw`Taylor expansion writes \(f(x)\) near \(a\) as \(\sum_{n=0}^{\infty} f^{(n)}(a)(x-a)^n/n!\), when the series converges to \(f\). What is it attempting to do conceptually?`,
       choices: [
         raw`Rebuild a function near a point from the function's derivatives at that point.`,
         raw`Replace every convergent series by a geometric series.`,
@@ -350,7 +350,7 @@
       why: raw`The normalization makes the \(n\)th derivative of the Taylor polynomial match \(f^{(n)}(a)\).`
     },
     {
-      q: raw`Which statement about smoothness and Taylor series is correct?`,
+      q: raw`A function is smooth if it has derivatives of all orders, but it is analytic only when its Taylor series actually converges to the function locally. Which statement is correct?`,
       choices: [
         raw`If a function has derivatives of all orders at a point, its Taylor series must converge to the function near that point.`,
         raw`A smooth function has Taylor coefficients, but its Taylor series may fail to represent the function away from the center.`,
@@ -361,7 +361,7 @@
       why: raw`Smoothness gives formal coefficients. Analyticity is the stronger property that the Taylor series actually represents the function locally.`
     },
     {
-      q: raw`What is the Taylor series for \(e^x\) centered at \(0\), conceptually?`,
+      q: raw`The Taylor formula at \(0\) is \(f(x)=\sum_{n=0}^{\infty}f^{(n)}(0)x^n/n!\), when the series represents \(f\). What is the Taylor series for \(e^x\) centered at \(0\)?`,
       choices: [
         raw`It is \(\sum x^n/n!\), because every derivative of \(e^x\) at \(0\) equals \(1\).`,
         raw`It is \(\sum n!x^n\), because repeated differentiation creates factorials in the numerator.`,
@@ -372,7 +372,7 @@
       why: raw`The derivative data of \(e^x\) at zero are all \(1\), so the Taylor normalization gives \(x^n/n!\).`
     },
     {
-      q: raw`Why does the exponential series converge for every real \(x\)?`,
+      q: raw`The exponential series is \(e^x=\sum_{n=0}^{\infty}x^n/n!\). Why does this series converge for every real \(x\)?`,
       choices: [
         raw`The factorial \(n!\) eventually dominates every fixed power \(|x|^n\), making the ratio tend to zero.`,
         raw`The terms are all positive, so monotone convergence applies automatically.`,
@@ -394,7 +394,7 @@
       why: raw`Even powers of \(i\) build cosine and odd powers build sine. The series converts exponential flow into rotation.`
     },
     {
-      q: raw`What is the Cauchy product of two absolutely convergent series designed to represent?`,
+      q: raw`The Cauchy product of \(\sum a_n\) and \(\sum b_n\) has coefficients \(c_n=\sum_{k=0}^{n}a_kb_{n-k}\). What is it designed to represent?`,
       choices: [
         raw`The coefficient rule for multiplying two infinite sums, where the \(n\)th coefficient collects all pairs whose indices add to \(n\).`,
         raw`The derivative of a product of two power series.`,
@@ -405,7 +405,7 @@
       why: raw`Multiplying series requires collecting diagonals \(a_0b_n+a_1b_{n-1}+\cdots+a_nb_0\). Absolute convergence justifies the rearrangement.`
     },
     {
-      q: raw`Why is uniform convergence stronger than pointwise convergence?`,
+      q: raw`Pointwise convergence lets the cutoff \(N\) depend on \(x\). Uniform convergence requires one \(N\) that works for every \(x\) in the domain. Why is uniform convergence stronger?`,
       choices: [
         raw`Uniform convergence uses a single \(N\) that works for every point in the domain, while pointwise convergence may require \(N\) to depend on the point.`,
         raw`Uniform convergence means every term is constant across the domain.`,
@@ -416,7 +416,7 @@
       why: raw`Uniform convergence controls the whole domain at once. This is why it preserves operations such as continuity under suitable hypotheses.`
     },
     {
-      q: raw`What does the Weierstrass \(M\)-test say?`,
+      q: raw`The Weierstrass \(M\)-test assumes \(|f_n(x)|\le M_n\) for all \(x\), and that the numerical series \(\sum M_n\) converges. What does it conclude?`,
       choices: [
         raw`If \(|f_n(x)|\le M_n\) for all \(x\) and \(\sum M_n\) converges, then \(\sum f_n\) converges uniformly and absolutely.`,
         raw`If \(f_n(x)\to0\) for each \(x\), then \(\sum f_n(x)\) converges uniformly.`,
@@ -427,7 +427,7 @@
       why: raw`The \(M\)-test turns a hard function-series problem into a numerical majorant problem.`
     },
     {
-      q: raw`When may a power series be differentiated term by term inside its radius of convergence?`,
+      q: raw`For a power series \(\sum c_n(x-a)^n\) with radius \(R\), what is true about differentiating term by term on the interior \(|x-a|<R\)?`,
       choices: [
         raw`Inside \(|x-a|<R\), the differentiated power series has the same radius of convergence and represents the derivative of the sum.`,
         raw`Only at the center \(a\), because derivatives away from \(a\) use different coefficients.`,
@@ -438,7 +438,7 @@
       why: raw`Power series are exceptionally well behaved in the interior of their convergence interval: termwise differentiation and integration are valid there.`
     },
     {
-      q: raw`What is the main danger in substituting a matrix \(A\) into a scalar power series \(\sum c_n x^n\)?`,
+      q: raw`A scalar power series \(\sum c_nx^n\) becomes a matrix series \(\sum c_nA^n\) when \(x\) is replaced by a square matrix \(A\). What is the main danger in making this substitution?`,
       choices: [
         raw`Matrix powers are meaningless unless \(A\) is diagonal.`,
         raw`One must justify convergence in a matrix norm and respect noncommutativity when manipulating products.`,
@@ -449,7 +449,7 @@
       why: raw`Matrix power series are valid, but convergence and algebraic manipulation require structure. This is exactly the substitution-principle issue.`
     },
     {
-      q: raw`Why is \(e^A=\sum_{n=0}^{\infty}A^n/n!\) defined for every square matrix \(A\)?`,
+      q: raw`The matrix exponential is defined by \(e^A=\sum_{n=0}^{\infty}A^n/n!\). Why is this series defined for every square matrix \(A\)?`,
       choices: [
         raw`Because factorial decay gives absolute convergence in any matrix norm, just as it controls scalar powers.`,
         raw`Because \(A^n=0\) for all sufficiently large \(n\) for every square matrix.`,
@@ -460,7 +460,7 @@
       why: raw`Submultiplicative norm estimates reduce convergence to the scalar exponential series for \(\|A\|\).`
     },
     {
-      q: raw`What is the correct reason \(e^{A+B}=e^Ae^B\) can fail for matrices?`,
+      q: raw`For scalars, \(e^{a+b}=e^ae^b\). For matrices, \(e^{A+B}=e^Ae^B\) generally requires \(AB=BA\). What is the correct reason it can fail?`,
       choices: [
         raw`The scalar identity depends on commuting multiplication; matrices need \(AB=BA\) for the usual proof to transfer.`,
         raw`The matrix exponential is not defined for non-diagonal matrices.`,
@@ -471,7 +471,7 @@
       why: raw`Noncommutativity changes the combinatorics of the power series. If \(A\) and \(B\) commute, the scalar binomial argument works.`
     },
     {
-      q: raw`What does the radius of convergence become for a complex power series?`,
+      q: raw`For a complex power series \(\sum c_n(z-a)^n\), convergence happens inside a disk rather than merely on a real interval. What does the radius of convergence become?`,
       choices: [
         raw`A disk centered at the expansion point, with radius determined by the nearest obstruction to analytic continuation.`,
         raw`A rectangle whose side lengths are determined by real and imaginary parts separately.`,
@@ -493,7 +493,7 @@
       why: raw`The logarithm series inherits a finite radius from the geometric series for \(1/(1+x)\). Coefficients going to zero are not enough.`
     },
     {
-      q: raw`What is the most reliable first question when seeing an unfamiliar infinite series?`,
+      q: raw`When seeing an unfamiliar infinite series \(\sum a_n\), the term test first asks whether \(a_n\to0\). After that, what is the most reliable next question?`,
       choices: [
         raw`Do the terms go to zero, and if so what known tail behavior or convergence test matches them?`,
         raw`Can the first five terms be added exactly?`,
@@ -504,7 +504,7 @@
       why: raw`The term test screens impossible convergence; comparison, ratio, root, integral, and alternating tests then identify tail behavior.`
     },
     {
-      q: raw`What is a subtle limitation of the ratio test for \(\sum 1/n^p\)?`,
+      q: raw`For the \(p\)-series \(\sum 1/n^p\), the ratio test computes \(\lim |a_{n+1}/a_n|\). What is a subtle limitation of using that test here?`,
       choices: [
         raw`The ratio tends to \(1\) for every \(p\), so the test cannot see the crucial \(p>1\) threshold.`,
         raw`The ratio test applies only to alternating series.`,
@@ -515,7 +515,7 @@
       why: raw`Polynomial decay is too slow for the ratio test to distinguish. Integral or comparison tests see the \(p\)-threshold.`
     },
     {
-      q: raw`What does it mean for a series of functions \(\sum f_n(x)\) to converge pointwise?`,
+      q: raw`A function series \(\sum f_n(x)\) converges pointwise when each fixed input \(x\) gives a convergent numerical series. What does this mean?`,
       choices: [
         raw`For each fixed \(x\), the numerical series \(\sum f_n(x)\) converges, possibly with convergence speed depending on \(x\).`,
         raw`There is one \(N\) that makes every tail small for every \(x\) at once.`,
@@ -548,7 +548,7 @@
       why: raw`Vanishing terms are local information about steps. Convergence is global information about accumulated tails.`
     },
     {
-      q: raw`What does the remainder term in Taylor's theorem measure?`,
+      q: raw`Taylor's theorem writes \(f(x)=P_n(x)+R_n(x)\), where \(P_n\) is the degree-\(n\) Taylor polynomial and \(R_n\) is the remainder. What does \(R_n(x)\) measure?`,
       choices: [
         raw`The error between the function and the finite Taylor polynomial after truncating the infinite expansion.`,
         raw`The sum of all coefficients that are exactly zero.`,
@@ -603,7 +603,7 @@
       why: raw`Inconclusive means exactly no conclusion. Ratio-test limit \(1\) is the classic example.`
     },
     {
-      q: raw`Which statement best describes the interval of convergence for a real power series?`,
+      q: raw`For a real power series \(\sum c_n(x-a)^n\), convergence is automatic for \(|x-a|<R\), divergence is automatic for \(|x-a|>R\), and endpoints require separate tests. Which statement best describes the interval of convergence?`,
       choices: [
         raw`It is centered at the expansion point and consists of an open interval plus possibly one, both, or neither endpoint.`,
         raw`It is always closed because limits preserve endpoints.`,
@@ -651,15 +651,20 @@
     const list = document.getElementById('series-questions');
     list.innerHTML = questions.map((question, index) => {
       const name = `series-q${index + 1}`;
-      const best = question.choices[question.correct];
+      const rotations = [0, 2, 3, 1, 1, 3, 2, 0];
+      const rotation = rotations[index % rotations.length];
+      const orderedChoices = question.choices.map((choice, originalIndex) => ({ choice, originalIndex }));
+      const displayedChoices = orderedChoices.slice(rotation).concat(orderedChoices.slice(0, rotation));
+      const displayedCorrect = displayedChoices.findIndex((item) => item.originalIndex === question.correct);
+      const best = displayedChoices[displayedCorrect].choice;
       const safeQuestion = escapeHtml(question.q);
       const labels = ['A', 'B', 'C', 'D'];
-      const choices = question.choices.map((choice, choiceIndex) => {
-        const correct = choiceIndex === question.correct;
+      const choices = displayedChoices.map((item, choiceIndex) => {
+        const correct = item.originalIndex === question.correct;
         const feedback = correct
           ? `Correct. ${question.why}`
-          : `Not quite. The best answer is ${labels[question.correct]}: ${best} ${question.why}`;
-        const safeChoice = escapeHtml(choice);
+          : `Not quite. The best answer is ${labels[displayedCorrect]}: ${best} ${question.why}`;
+        const safeChoice = escapeHtml(item.choice);
         const safeFeedback = escapeHtml(feedback);
         return `
           <label class="choice">
