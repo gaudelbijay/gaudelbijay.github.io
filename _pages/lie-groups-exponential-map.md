@@ -381,7 +381,39 @@ nav: false
 <p class="lie-chapter-note">Chapter 1 collects the connected posts around the exponential map: the geometry of stretch and shear, matrices becoming motion, the substitution principle, and the Campbell-Baker-Hausdorff question that asks how two exponential motions multiply.</p>
 
 <div class="lie-post-cards">
-  <a class="lie-post-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}" style="order:3;">
+  <a class="lie-post-card" href="{{ '/blog/2026/campbell-baker-hausdorff-foundations/' | relative_url }}">
+    <div class="lie-post-body">
+      <div class="lie-post-date">Jul 1, 2026</div>
+      <h2 class="lie-post-title">Campbell-Baker-Hausdorff Foundations</h2>
+      <p class="lie-post-summary">A comprehensive animated companion to Rossmann §1.3: why Lie groups need Lie algebras, why brackets are forced, and how exp(X)exp(Y) becomes one exponential.</p>
+    </div>
+    <div class="lie-post-visual" aria-hidden="true" style="background:#fcf2df;">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <marker id="cbhArrowLieChapterA" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
+          </marker>
+          <marker id="cbhArrowLieChapterB" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#5e7a4e"></path>
+          </marker>
+        </defs>
+        <path d="M34 160 H208" stroke="#2a241e" stroke-opacity="0.14" stroke-width="2"></path>
+        <path d="M56 178 V42" stroke="#2a241e" stroke-opacity="0.12" stroke-width="2"></path>
+        <circle cx="56" cy="160" r="6" fill="#2a241e"></circle>
+        <text x="42" y="178" fill="#2a241e" font-size="16" font-family="serif">e</text>
+        <path class="cbh-path-a" d="M56 160 L132 144 L172 76" fill="none" stroke="#b8552f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cbhArrowLieChapterA)"></path>
+        <path class="cbh-path-b" d="M56 160 L96 90 L158 116" fill="none" stroke="#5e7a4e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cbhArrowLieChapterB)"></path>
+        <line class="cbh-gap" x1="158" y1="116" x2="172" y2="76" stroke="#c2723c" stroke-width="6" stroke-linecap="round"></line>
+        <circle cx="172" cy="76" r="7" fill="#b8552f"></circle>
+        <circle cx="158" cy="116" r="7" fill="#5e7a4e"></circle>
+        <text x="122" y="136" fill="#b8552f" font-size="16" font-family="serif">X then Y</text>
+        <text x="70" y="86" fill="#5e7a4e" font-size="16" font-family="serif">Y then X</text>
+        <text x="181" y="103" fill="#c2723c" font-size="17" font-family="serif">[X,Y]</text>
+      </svg>
+    </div>
+  </a>
+
+  <a class="lie-post-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">
     <div class="lie-post-body">
       <div class="lie-post-date">Jun 25, 2026</div>
       <h2 class="lie-post-title">The Engine &amp; the Motion</h2>
@@ -409,7 +441,35 @@ nav: false
     </div>
   </a>
 
-  <a class="lie-post-card" href="{{ '/blog/2026/substitution-principle-adjoints/' | relative_url }}" style="order:1;">
+  <a class="lie-post-card" href="{{ '/blog/2026/stretch-vs-shear/' | relative_url }}">
+    <div class="lie-post-body">
+      <div class="lie-post-date">Jun 22, 2026</div>
+      <h2 class="lie-post-title">Stretch vs Shear</h2>
+      <p class="lie-post-summary">A visual comparison of hyperbolic stretches and parabolic shears in SL(2, R), through eigen-directions, area preservation, and the geometry of the unit circle.</p>
+    </div>
+    <div class="lie-post-visual" aria-hidden="true" style="background:#ece3d0;">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <marker id="stretchShearArrowLieChapter" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
+          </marker>
+        </defs>
+        <path d="M30 164 H210" stroke="#2a241e" stroke-opacity="0.22" stroke-width="2"></path>
+        <path d="M120 184 V26" stroke="#2a241e" stroke-opacity="0.18" stroke-width="2"></path>
+        <ellipse class="stretch-shear-stretch" cx="83" cy="108" rx="42" ry="16" fill="#6e7a36" fill-opacity="0.14" stroke="#6e7a36" stroke-width="4"></ellipse>
+        <line class="stretch-shear-stretch-line" x1="39" y1="108" x2="129" y2="108" stroke="#6e7a36" stroke-width="5" stroke-linecap="round" marker-end="url(#stretchShearArrowLieChapter)"></line>
+        <ellipse class="stretch-shear-shear" cx="157" cy="108" rx="36" ry="18" fill="#b8552f" fill-opacity="0.14" stroke="#b8552f" stroke-width="4"></ellipse>
+        <path class="stretch-shear-shear-line" d="M123 135 L182 74" fill="none" stroke="#b8552f" stroke-width="5" stroke-linecap="round" marker-end="url(#stretchShearArrowLieChapter)"></path>
+        <circle cx="83" cy="108" r="5" fill="#2a241e"></circle>
+        <circle cx="157" cy="108" r="5" fill="#2a241e"></circle>
+        <text x="83" y="58" text-anchor="middle" fill="#6e7a36" font-size="17" font-family="serif">Stretch</text>
+        <text x="157" y="58" text-anchor="middle" fill="#b8552f" font-size="17" font-family="serif">Shear</text>
+        <text class="stretch-shear-det" x="120" y="177" text-anchor="middle" fill="#2a241e" font-size="16" font-family="serif">det = 1</text>
+      </svg>
+    </div>
+  </a>
+
+  <a class="lie-post-card" href="{{ '/blog/2026/substitution-principle-adjoints/' | relative_url }}">
     <div class="lie-post-body">
       <div class="lie-post-date">Jun 20, 2026</div>
       <h2 class="lie-post-title">The Substitution Principle</h2>
@@ -448,66 +508,6 @@ nav: false
         <text x="211" y="68" fill="#4aa8ff" font-size="15" font-family="serif">e^x</text>
         <text x="211" y="108" fill="#ffd060" font-size="15" font-family="serif">exp X</text>
         <text x="211" y="151" fill="#3dc9b0" font-size="15" font-family="serif">Ad</text>
-      </svg>
-    </div>
-  </a>
-
-  <a class="lie-post-card" href="{{ '/blog/2026/campbell-baker-hausdorff-foundations/' | relative_url }}" style="order:4;">
-    <div class="lie-post-body">
-      <div class="lie-post-date">Jul 1, 2026</div>
-      <h2 class="lie-post-title">Campbell-Baker-Hausdorff Foundations</h2>
-      <p class="lie-post-summary">A comprehensive animated companion to Rossmann §1.3: why Lie groups need Lie algebras, why brackets are forced, and how exp(X)exp(Y) becomes one exponential.</p>
-    </div>
-    <div class="lie-post-visual" aria-hidden="true" style="background:#fcf2df;">
-      <svg viewBox="0 0 240 210" role="img">
-        <defs>
-          <marker id="cbhArrowLieChapterA" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
-            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
-          </marker>
-          <marker id="cbhArrowLieChapterB" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
-            <path d="M0 0 L7 3.5 L0 7 Z" fill="#5e7a4e"></path>
-          </marker>
-        </defs>
-        <path d="M34 160 H208" stroke="#2a241e" stroke-opacity="0.14" stroke-width="2"></path>
-        <path d="M56 178 V42" stroke="#2a241e" stroke-opacity="0.12" stroke-width="2"></path>
-        <circle cx="56" cy="160" r="6" fill="#2a241e"></circle>
-        <text x="42" y="178" fill="#2a241e" font-size="16" font-family="serif">e</text>
-        <path class="cbh-path-a" d="M56 160 L132 144 L172 76" fill="none" stroke="#b8552f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cbhArrowLieChapterA)"></path>
-        <path class="cbh-path-b" d="M56 160 L96 90 L158 116" fill="none" stroke="#5e7a4e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cbhArrowLieChapterB)"></path>
-        <line class="cbh-gap" x1="158" y1="116" x2="172" y2="76" stroke="#c2723c" stroke-width="6" stroke-linecap="round"></line>
-        <circle cx="172" cy="76" r="7" fill="#b8552f"></circle>
-        <circle cx="158" cy="116" r="7" fill="#5e7a4e"></circle>
-        <text x="122" y="136" fill="#b8552f" font-size="16" font-family="serif">X then Y</text>
-        <text x="70" y="86" fill="#5e7a4e" font-size="16" font-family="serif">Y then X</text>
-        <text x="181" y="103" fill="#c2723c" font-size="17" font-family="serif">[X,Y]</text>
-      </svg>
-    </div>
-  </a>
-
-  <a class="lie-post-card" href="{{ '/blog/2026/stretch-vs-shear/' | relative_url }}" style="order:2;">
-    <div class="lie-post-body">
-      <div class="lie-post-date">Jun 22, 2026</div>
-      <h2 class="lie-post-title">Stretch vs Shear</h2>
-      <p class="lie-post-summary">A visual comparison of hyperbolic stretches and parabolic shears in SL(2, R), through eigen-directions, area preservation, and the geometry of the unit circle.</p>
-    </div>
-    <div class="lie-post-visual" aria-hidden="true" style="background:#ece3d0;">
-      <svg viewBox="0 0 240 210" role="img">
-        <defs>
-          <marker id="stretchShearArrowLieChapter" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
-            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
-          </marker>
-        </defs>
-        <path d="M30 164 H210" stroke="#2a241e" stroke-opacity="0.22" stroke-width="2"></path>
-        <path d="M120 184 V26" stroke="#2a241e" stroke-opacity="0.18" stroke-width="2"></path>
-        <ellipse class="stretch-shear-stretch" cx="83" cy="108" rx="42" ry="16" fill="#6e7a36" fill-opacity="0.14" stroke="#6e7a36" stroke-width="4"></ellipse>
-        <line class="stretch-shear-stretch-line" x1="39" y1="108" x2="129" y2="108" stroke="#6e7a36" stroke-width="5" stroke-linecap="round" marker-end="url(#stretchShearArrowLieChapter)"></line>
-        <ellipse class="stretch-shear-shear" cx="157" cy="108" rx="36" ry="18" fill="#b8552f" fill-opacity="0.14" stroke="#b8552f" stroke-width="4"></ellipse>
-        <path class="stretch-shear-shear-line" d="M123 135 L182 74" fill="none" stroke="#b8552f" stroke-width="5" stroke-linecap="round" marker-end="url(#stretchShearArrowLieChapter)"></path>
-        <circle cx="83" cy="108" r="5" fill="#2a241e"></circle>
-        <circle cx="157" cy="108" r="5" fill="#2a241e"></circle>
-        <text x="83" y="58" text-anchor="middle" fill="#6e7a36" font-size="17" font-family="serif">Stretch</text>
-        <text x="157" y="58" text-anchor="middle" fill="#b8552f" font-size="17" font-family="serif">Shear</text>
-        <text class="stretch-shear-det" x="120" y="177" text-anchor="middle" fill="#2a241e" font-size="16" font-family="serif">det = 1</text>
       </svg>
     </div>
   </a>
