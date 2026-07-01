@@ -164,6 +164,22 @@ nav: false
     animation: stretch-shear-det 4.8s ease-in-out infinite;
   }
 
+  .cbh-gap {
+    animation: cbh-gap 3.8s ease-in-out infinite;
+  }
+
+  .cbh-path-a {
+    animation: cbh-path-a 3.8s ease-in-out infinite;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+  }
+
+  .cbh-path-b {
+    animation: cbh-path-b 3.8s ease-in-out infinite;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+  }
+
   @keyframes cone-spin {
     from {
       transform: rotate(0deg);
@@ -291,6 +307,44 @@ nav: false
     }
   }
 
+  @keyframes cbh-path-a {
+    0% {
+      stroke-dashoffset: 120;
+      opacity: 0.25;
+    }
+    42%,
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+  }
+
+  @keyframes cbh-path-b {
+    0%,
+    22% {
+      stroke-dashoffset: 120;
+      opacity: 0.25;
+    }
+    64%,
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 0.95;
+    }
+  }
+
+  @keyframes cbh-gap {
+    0%,
+    62% {
+      opacity: 0.15;
+      transform: scaleX(0.2);
+    }
+    78%,
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cone-ring,
     .cone-shadow,
@@ -302,7 +356,10 @@ nav: false
     .stretch-shear-stretch-line,
     .stretch-shear-shear,
     .stretch-shear-shear-line,
-    .stretch-shear-det {
+    .stretch-shear-det,
+    .cbh-gap,
+    .cbh-path-a,
+    .cbh-path-b {
       animation: none;
     }
   }
@@ -321,7 +378,7 @@ nav: false
 
 <a class="lie-back-link" href="{{ '/blog/lie-groups/' | relative_url }}">Back to Lie Groups</a>
 
-<p class="lie-chapter-note">Chapter 1 collects the three connected posts around the exponential map: the geometry of stretch and shear, matrices becoming motion, and the substitution principle that makes the same power-series recipe work across numbers, matrices, operators, and adjoint action.</p>
+<p class="lie-chapter-note">Chapter 1 collects the connected posts around the exponential map: the geometry of stretch and shear, matrices becoming motion, the substitution principle, and the Campbell-Baker-Hausdorff question that asks how two exponential motions multiply.</p>
 
 <div class="lie-post-cards">
   <a class="lie-post-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">
@@ -391,6 +448,38 @@ nav: false
         <text x="211" y="68" fill="#4aa8ff" font-size="15" font-family="serif">e^x</text>
         <text x="211" y="108" fill="#ffd060" font-size="15" font-family="serif">exp X</text>
         <text x="211" y="151" fill="#3dc9b0" font-size="15" font-family="serif">Ad</text>
+      </svg>
+    </div>
+  </a>
+
+  <a class="lie-post-card" href="{{ '/blog/2026/campbell-baker-hausdorff-foundations/' | relative_url }}">
+    <div class="lie-post-body">
+      <div class="lie-post-date">Jul 1, 2026</div>
+      <h2 class="lie-post-title">Campbell-Baker-Hausdorff Foundations</h2>
+      <p class="lie-post-summary">A comprehensive animated companion to Rossmann §1.3: why Lie groups need Lie algebras, why brackets are forced, and how exp(X)exp(Y) becomes one exponential.</p>
+    </div>
+    <div class="lie-post-visual" aria-hidden="true" style="background:#fcf2df;">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <marker id="cbhArrowLieChapterA" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
+          </marker>
+          <marker id="cbhArrowLieChapterB" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#5e7a4e"></path>
+          </marker>
+        </defs>
+        <path d="M34 160 H208" stroke="#2a241e" stroke-opacity="0.14" stroke-width="2"></path>
+        <path d="M56 178 V42" stroke="#2a241e" stroke-opacity="0.12" stroke-width="2"></path>
+        <circle cx="56" cy="160" r="6" fill="#2a241e"></circle>
+        <text x="42" y="178" fill="#2a241e" font-size="16" font-family="serif">e</text>
+        <path class="cbh-path-a" d="M56 160 L132 144 L172 76" fill="none" stroke="#b8552f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cbhArrowLieChapterA)"></path>
+        <path class="cbh-path-b" d="M56 160 L96 90 L158 116" fill="none" stroke="#5e7a4e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#cbhArrowLieChapterB)"></path>
+        <line class="cbh-gap" x1="158" y1="116" x2="172" y2="76" stroke="#c2723c" stroke-width="6" stroke-linecap="round"></line>
+        <circle cx="172" cy="76" r="7" fill="#b8552f"></circle>
+        <circle cx="158" cy="116" r="7" fill="#5e7a4e"></circle>
+        <text x="122" y="136" fill="#b8552f" font-size="16" font-family="serif">X then Y</text>
+        <text x="70" y="86" fill="#5e7a4e" font-size="16" font-family="serif">Y then X</text>
+        <text x="181" y="103" fill="#c2723c" font-size="17" font-family="serif">[X,Y]</text>
       </svg>
     </div>
   </a>
