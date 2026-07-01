@@ -450,13 +450,35 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">14 &nbsp;·&nbsp; Taylor remainder</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Quantifying the truncation error</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Stopping at degree $n$ leaves an error $R_n(x)$. Lagrange's form controls it exactly: there exists some $c$ between $a$ and $x$ such that:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A Taylor polynomial is the best local impersonation of a function using only finitely many derivatives at one point. If we stop at degree $n$, we force the polynomial to match $f$ at $a$ through the $n$th derivative, but we have not controlled what happens after that. The remainder $R_n(x)$ measures exactly what the finite polynomial failed to capture.</p>
 
-<div>$$ f(x) = P_n(x) + R_n(x), \qquad R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1} $$</div>
+<div>$$ P_n(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2+\cdots+\frac{f^{(n)}(a)}{n!}(x-a)^n $$</div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">The formula below says the leftover error has the same shape as the next Taylor term, except the derivative is not necessarily taken at $a$. It is taken at some unknown point $c$ between $a$ and $x$:</p>
+
+<div>$$ f(x)=P_n(x)+R_n(x),\qquad R_n(x)=\frac{f^{(n+1)}(c)}{(n+1)!}(x-a)^{n+1}. $$</div>
+
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F7F0E4; border:1px solid #D6C8AD; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#8A6820;">What the formula is saying</span><span style="flex:1; height:1px; background:#D6C8AD;"></span></div>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0 0 10px;">The factor $(x-a)^{n+1}$ says distance matters: close to $a$, the error is forced to be small because many powers of a small number collapse rapidly. The factorial $(n+1)!$ says higher-order Taylor terms are heavily discounted. The derivative $f^{(n+1)}(c)$ says the function can still fight back: if the next derivative is huge somewhere between $a$ and $x$, the error may not be small.</p>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0;">So the remainder is not just a formula. It is a negotiation between distance from the center, factorial decay, and the size of the next derivative.</p>
+    </div>
+
+    <div style="margin:18px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#B8552F;">Where it comes from</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0 0 10px;">For degree $0$, Taylor's theorem is the mean value theorem: $f(x)=f(a)+f'(c)(x-a)$. The linear approximation misses by a derivative sampled somewhere between the two points. Higher-degree Taylor's theorem repeats the same idea after subtracting off more matched derivatives. Each time you force another derivative to agree at $a$, the first possible nonzero mismatch moves one order higher.</p>
+      <div>$$ f(x)-P_n(x)\quad\text{has a zero of order }n+1\text{ at }a. $$</div>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:10px 0 0;">That is why the error must contain $(x-a)^{n+1}$. The Lagrange form then says the coefficient of that leftover power is controlled by the next derivative somewhere between $a$ and $x$.</p>
+    </div>
 
     <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#2A6A1A;">When Taylor = function</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">The Taylor series equals $f$ precisely when $R_n(x) \to 0$. For $e^x$ and $\sin x$ the $(n+1)$th derivative is bounded and $(n+1)!$ dominates — so the error vanishes for every $x$. Not every smooth function is analytic: bump functions are infinitely differentiable but cannot equal their Taylor series outside a point.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0 0 10px;">The Taylor series equals $f$ at a point $x$ precisely when the remainder goes to zero:</p>
+      <div>$$ \lim_{n\to\infty}R_n(x)=0. $$</div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:10px 0;">For $e^x$, every derivative is $e^x$. On a fixed interval between $a$ and $x$, those derivatives are bounded by some constant $M$, so</p>
+      <div>$$ |R_n(x)|\le \frac{M}{(n+1)!}|x-a|^{n+1}\to0. $$</div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:10px 0;">For $\sin x$ and $\cos x$, every derivative is one of $\pm\sin x,\pm\cos x$, so its absolute value is at most $1$. Again the factorial wins. This is the real reason those Taylor series become the function.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">But smoothness alone is not enough. A bump function can have derivatives of every order and still fail to equal its Taylor series. Taylor series are not guaranteed by having infinitely many derivatives; they are guaranteed only when the remainder actually vanishes.</p>
     </div>
   </section>
 
@@ -464,15 +486,28 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">15 &nbsp;·&nbsp; Uniform convergence</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">When one \(N\) must work everywhere</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For a function series $\sum f_n(x)$, pointwise convergence freezes $x$ first and lets the required cutoff $N$ depend on that point. Uniform convergence is stricter: for every $\varepsilon>0$, one $N$ controls the tail for <em>all</em> $x$ in the domain.</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For a numerical series, the tail has only one place to go. For a function series $\sum f_n(x)$, every value of $x$ has its own tail. Pointwise convergence lets each point negotiate separately: first choose $x$, then find a cutoff $N$ that works for that particular $x$. Uniform convergence demands one shared cutoff that works across the whole domain at once.</p>
 
 <div>$$ \sum f_n \text{ converges uniformly if } \forall\varepsilon>0,\exists N:\; n>m\ge N \Rightarrow \sup_x |f_{m+1}(x)+\cdots+f_n(x)|&lt;\varepsilon $$</div>
 
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">Uniform convergence is the hypothesis that lets analysis behave politely. Under the right conditions it preserves continuity, allows termwise integration, and with extra derivative control permits termwise differentiation. Without uniform control, limits can leak through endpoints or create discontinuities.</p>
+    <div style="margin:26px 0 0; padding:20px 22px; background:#F7F0E4; border:1px solid #D6C8AD; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#8A6820;">What this is trying to communicate</span><span style="flex:1; height:1px; background:#D6C8AD;"></span></div>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0 0 10px;">The symbol $\sup_x$ is the heart of the definition. It asks for the worst remaining error anywhere in the domain. Uniform convergence says that even the worst point eventually has a small tail.</p>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0;">Pointwise convergence can hide trouble because the bad location may move as $N$ changes. Uniform convergence forbids that escape. It says the whole graph of the tail collapses toward zero, not just each vertical fiber one at a time.</p>
+    </div>
+
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0;">This is why uniform convergence is the hypothesis that lets analysis behave politely. If continuous functions converge uniformly, the limit remains continuous. Under the right hypotheses, uniform control allows termwise integration, and with extra derivative control it permits termwise differentiation. Without uniform control, limits can leak through endpoints, sharpen into corners, or create discontinuities even when every partial function looks well-behaved.</p>
 
     <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#1D7A74;">Weierstrass M-test</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">If $|f_n(x)|\le M_n$ for all $x$ and the numerical series $\sum M_n$ converges, then $\sum f_n(x)$ converges absolutely and uniformly. It is comparison test logic lifted from numbers to functions.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0 0 10px;">The M-test is comparison test logic lifted from numbers to functions. It asks: can every function term be trapped below a numerical term that does not depend on $x$?</p>
+      <div>$$ |f_n(x)|\le M_n\quad\text{for every }x,\qquad \sum_{n=1}^{\infty}M_n\text{ converges}. $$</div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:10px 0 0;">If yes, then no point in the domain can have a tail larger than the convergent numerical tail $\sum M_n$. That gives absolute convergence and uniform convergence at the same time. The test is not about computing the exact sum; it is about building a single protective envelope around all the function tails.</p>
+    </div>
+
+    <div style="margin:18px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#922028;">Reading note</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">When you see pointwise convergence, imagine many separate clocks, one for each $x$. When you see uniform convergence, imagine one master clock controlling the whole domain. That one-clock condition is exactly what prevents limiting processes from changing the shape of a function unexpectedly.</p>
     </div>
   </section>
 
