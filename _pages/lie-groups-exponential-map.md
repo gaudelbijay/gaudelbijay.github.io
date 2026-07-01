@@ -381,7 +381,7 @@ nav: false
 <p class="lie-chapter-note">Chapter 1 collects the connected posts around the exponential map: the geometry of stretch and shear, matrices becoming motion, the substitution principle, and the Campbell-Baker-Hausdorff question that asks how two exponential motions multiply.</p>
 
 <div class="lie-post-cards">
-  <a class="lie-post-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}">
+  <a class="lie-post-card" href="{{ '/blog/2026/the-exponential-map/' | relative_url }}" style="order:3;">
     <div class="lie-post-body">
       <div class="lie-post-date">Jun 25, 2026</div>
       <h2 class="lie-post-title">The Engine &amp; the Motion</h2>
@@ -409,9 +409,9 @@ nav: false
     </div>
   </a>
 
-  <a class="lie-post-card" href="{{ '/blog/2026/substitution-principle-adjoints/' | relative_url }}">
+  <a class="lie-post-card" href="{{ '/blog/2026/substitution-principle-adjoints/' | relative_url }}" style="order:1;">
     <div class="lie-post-body">
-      <div class="lie-post-date">Jun 26, 2026</div>
+      <div class="lie-post-date">Jun 20, 2026</div>
       <h2 class="lie-post-title">The Substitution Principle</h2>
       <p class="lie-post-summary">A geometric route from power series as universal recipes to conjugation, Lie brackets, and adjoint representations.</p>
     </div>
@@ -452,7 +452,7 @@ nav: false
     </div>
   </a>
 
-  <a class="lie-post-card" href="{{ '/blog/2026/campbell-baker-hausdorff-foundations/' | relative_url }}">
+  <a class="lie-post-card" href="{{ '/blog/2026/campbell-baker-hausdorff-foundations/' | relative_url }}" style="order:4;">
     <div class="lie-post-body">
       <div class="lie-post-date">Jul 1, 2026</div>
       <h2 class="lie-post-title">Campbell-Baker-Hausdorff Foundations</h2>
@@ -484,7 +484,7 @@ nav: false
     </div>
   </a>
 
-  <a class="lie-post-card" href="{{ '/blog/2026/stretch-vs-shear/' | relative_url }}">
+  <a class="lie-post-card" href="{{ '/blog/2026/stretch-vs-shear/' | relative_url }}" style="order:2;">
     <div class="lie-post-body">
       <div class="lie-post-date">Jun 22, 2026</div>
       <h2 class="lie-post-title">Stretch vs Shear</h2>
