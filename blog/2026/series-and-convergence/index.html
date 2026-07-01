@@ -291,41 +291,42 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">10 &nbsp;·&nbsp; Radius of convergence &amp; tests</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Inside converges, outside diverges, boundary needs work</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 16px;">A power series is not just an ordinary series with an $x$ inside it. It is a machine that produces one numerical series for each input $x$. For</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 16px;">A power series is not just an ordinary series with an $x$ inside it. It is a machine that produces one numerical series for each input $x$. The question is not “does the formula look nice?” The question is: when $n$ becomes large, does the input $x$ make the terms shrink fast enough to make the infinite tail harmless?</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 16px;">For a centered power series</p>
     <div>$$ \sum_{n=0}^{\infty} a_n(x-c)^n, $$</div>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:16px 0 16px;">there is a number $R$, called the radius of convergence, with a sharp meaning: if $|x-c|&lt;R$, the series converges absolutely; if $|x-c|&gt;R$, the terms cannot shrink fast enough and the series diverges. The only points the radius does not decide are the boundary points $|x-c|=R$.</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:16px 0 16px;">there is a number $R$, called the radius of convergence. It is a boundary between two worlds. Inside, the factor $(x-c)^n$ is small enough to beat the coefficient growth, so the series converges absolutely. Outside, $(x-c)^n$ is too large, so the terms eventually fail to shrink in the right way and the series diverges. On the boundary, the two forces are balanced, so the radius alone cannot decide.</p>
 
     <div style="padding:18px 20px; background:#F3ECDD; border:1px solid #D6C8AD; border-radius:11px; margin:22px 0;">
       <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#922028; margin-bottom:10px;">How to read the radius</div>
-      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0 0 10px;">The coefficient $a_n$ tells you the built-in size of the $n$th term; the factor $(x-c)^n$ either damps it or amplifies it. The radius is the exact point where this competition changes character.</p>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:0 0 10px;">The coefficient $a_n$ tells you the built-in size of the $n$th term; the factor $(x-c)^n$ either damps it or amplifies it. The radius is the exact point where damping stops clearly winning.</p>
       <div>$$ R=\frac{1}{\limsup_{n\to\infty}\sqrt[n]{|a_n|}}. $$</div>
-      <p style="font:400 17px/1.58 'Newsreader',serif; margin:10px 0 0;">This formula says: take the exponential growth rate of the coefficients, then invert it. Fast-growing coefficients give a small radius. Fast-decaying coefficients give a large radius. If the coefficients decay faster than exponentially, the radius may be infinite.</p>
+      <p style="font:400 17px/1.58 'Newsreader',serif; margin:10px 0 0;">This formula is not magic notation. The $n$th root asks: “what is the average multiplicative growth per step?” Then the reciprocal says how much room $x-c$ has before that growth defeats convergence. Fast-growing coefficients give a small radius. Fast-decaying coefficients give a large radius. If the coefficients decay faster than exponentially, the radius may be infinite.</p>
     </div>
 
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:22px;">
       <div style="padding:16px 18px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #1D7A74; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#1D7A74; margin-bottom:8px;">Ratio Test</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0 0 8px;">Use when the term contains factorials, products, or powers whose change from $n$ to $n+1$ simplifies.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0 0 8px;">What it is asking: “from one term to the next, is the tail repeatedly being multiplied by something smaller than $1$?”</p>
         <div>$$ L=\lim_{n\to\infty}\left|\frac{u_{n+1}}{u_n}\right|. $$</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:8px 0 0;">If $L&lt;1$, the tail is eventually smaller than a geometric tail. If $L&gt;1$, the terms do not go to zero fast enough. If $L=1$, the test says nothing.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:8px 0 0;">If $L&lt;1$, the series is behaving like a geometric decay process, so the total remaining tail is finite. If $L&gt;1$, the terms are eventually growing or not shrinking enough, so convergence is impossible. If $L=1$, the test is saying: “this is not a geometric-speed question; look for a subtler scale.”</p>
       </div>
       <div style="padding:16px 18px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #1D7A74; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#1D7A74; margin-bottom:8px;">Root Test</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0 0 8px;">Use when the whole term is raised to the $n$th power, such as $((n+1)/(2n+3))^n$.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0 0 8px;">What it is asking: “after removing the $n$th power, what is the average size being repeated?”</p>
         <div>$$ L=\limsup_{n\to\infty}\sqrt[n]{|u_n|}. $$</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:8px 0 0;">Again $L&lt;1$ gives absolute convergence, $L&gt;1$ gives divergence, and $L=1$ is inconclusive.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:8px 0 0;">This is the ratio test without needing adjacent terms. It detects hidden geometric behavior inside expressions like $q^n$, $n^n$, or complicated terms raised to $n$. If the average repeated factor is below $1$, the tail dies exponentially.</p>
       </div>
       <div style="padding:16px 18px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #2A6A1A; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A6A1A; margin-bottom:8px;">p-series</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0 0 8px;">Use as the basic scale for polynomial decay.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0 0 8px;">What it is asking: “is polynomial decay strong enough to have finite total mass?”</p>
         <div>$$ \sum_{n=1}^{\infty}\frac{1}{n^p}\quad\text{converges exactly when}\quad p&gt;1. $$</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:8px 0 0;">The boundary $p=1$ is the harmonic series, which still diverges even though its terms go to zero.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:8px 0 0;">This test communicates the difference between “terms go to zero” and “the total leftover amount is finite.” The harmonic tail $1/n$ thins out, but too slowly. A power like $1/n^2$ thins out fast enough.</p>
       </div>
       <div style="padding:16px 18px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #2A6A1A; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A6A1A; margin-bottom:8px;">Alternating</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0 0 8px;">Use only when signs alternate and the magnitudes shrink steadily.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:0 0 8px;">What it is asking: “do the positive and negative errors cancel while the overshoot keeps shrinking?”</p>
         <div>$$ \sum (-1)^n b_n \quad\text{converges if}\quad b_n\downarrow 0. $$</div>
-        <p style="font:400 15px/1.55 'Newsreader',serif; margin:8px 0 0;">This is cancellation convergence, not necessarily absolute convergence.</p>
+        <p style="font:400 15px/1.55 'Newsreader',serif; margin:8px 0 0;">This is not saying the total size is finite. It is saying the partial sums get trapped by smaller and smaller left-right mistakes. That is why absolute convergence must be checked separately.</p>
       </div>
     </div>
   </section>
@@ -334,48 +335,48 @@
   <section style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">11 &nbsp;·&nbsp; Convergence-test playbook</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Do not memorize tests as names — read the tail</h3>
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A convergence test is not a label to memorize; it is a way of recognizing the <em>shape of the tail</em>. The tail means what the terms look like after $n$ is already large. Small early terms, large early terms, or a pretty closed form rarely matter. Convergence is decided by the eventual behavior.</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A convergence test is not a label to memorize; it is a diagnostic question about the <em>tail</em>. The tail means what the terms look like after $n$ is already large. Small early terms, large early terms, or a pretty closed form rarely matter. Convergence is decided by the eventual behavior.</p>
 
     <div style="padding:20px 22px; background:#F7F0E4; border:1px solid #D6C8AD; border-radius:11px; margin:22px 0;">
       <div style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#8A6820; margin-bottom:10px;">A practical reading order</div>
-      <p style="font:400 17px/1.6 'Newsreader',serif; margin:0;">First ask whether the individual terms go to zero. If they do not, stop: the series diverges. If they do, ask what kind of tail remains. Exponential or factorial structure suggests ratio/root tests. Polynomial decay suggests comparison with a $p$-series. Alternating signs suggest checking cancellation. Terms that look like sampled values of a decreasing function suggest the integral test.</p>
+      <p style="font:400 17px/1.6 'Newsreader',serif; margin:0;">First ask whether the individual terms go to zero. If they do not, stop: infinitely many chunks of nonzero size cannot add to a finite total. If they do go to zero, ask what kind of shrinking is happening. Geometric shrinking means each term is roughly a fixed fraction of the previous one. Polynomial shrinking means the term looks like a power of $1/n$. Alternating shrinking means cancellation may rescue a series whose absolute values are too large. Function-like shrinking means area under a curve may be the right model.</p>
     </div>
 
     <div style="display:grid; grid-template-columns:1fr; gap:10px; margin-top:22px;">
       <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #922028; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#922028; margin-bottom:8px;">Term test</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">The term test asks the most basic necessary question: can the individual terms become negligible?</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">The term test asks the most basic physical question: are you adding pieces that eventually become negligible? If not, there is no hope. An infinite sum cannot settle if the new pieces never fade away.</p>
         <div>$$ \text{If }\lim_{n\to\infty}a_n\ne0\text{ or the limit does not exist, then }\sum a_n\text{ diverges.} $$</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">If $\lim a_n=0$, no conclusion follows. This is the most common trap: terms going to zero is required, but it is not enough.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">If $\lim a_n=0$, the test is only saying “possible.” It is not saying “convergent.” The harmonic series is the warning example: the pieces fade away, but the accumulated tail is still infinite.</p>
       </div>
       <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #1D7A74; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#1D7A74; margin-bottom:8px;">Comparison</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">Comparison is for nonnegative terms. It works when one tail is visibly bounded above or below by a known tail.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">Comparison is containment. You compare your unknown tail to a tail whose total mass you already understand.</p>
         <div>$$ 0\le a_n\le b_n\text{ eventually and }\sum b_n\text{ converges}\quad\Rightarrow\quad \sum a_n\text{ converges}. $$</div>
         <div>$$ 0\le b_n\le a_n\text{ eventually and }\sum b_n\text{ diverges}\quad\Rightarrow\quad \sum a_n\text{ diverges}. $$</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">The direction matters. To prove convergence, dominate your series by something finite. To prove divergence, show it dominates something already infinite.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">The direction matters because the story is about mass. To prove convergence, trap your tail below a finite pile. To prove divergence, trap an infinite pile below your tail.</p>
       </div>
       <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #1D7A74; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#1D7A74; margin-bottom:8px;">Limit comparison</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">Limit comparison is the cleaner version of comparison when the two tails have the same leading size.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">Limit comparison says two tails with the same long-run size must share the same fate. It ignores cosmetic differences and keeps only the dominant scale.</p>
         <div>$$ \lim_{n\to\infty}\frac{a_n}{b_n}=c,\qquad 0&lt;c&lt;\infty. $$</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">Then $\sum a_n$ and $\sum b_n$ have the same convergence behavior. This is ideal for rational expressions, where the highest powers of $n$ determine the tail.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">Then $\sum a_n$ and $\sum b_n$ have the same convergence behavior. For rational expressions, this usually means: ignore lower-order terms and compare the highest powers of $n$.</p>
       </div>
       <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #8A6820; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#8A6820; margin-bottom:8px;">Integral test</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">The integral test turns tail area into tail mass. It requires a positive, continuous, decreasing function $f$ with $a_n=f(n)$.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">The integral test says a decreasing sequence can be read as bars under a curve. If the curve has finite area, the stacked bars have finite total height; if the area is infinite, the bars keep accumulating forever.</p>
         <div>$$ \sum_{n=1}^{\infty}a_n\text{ converges}\quad\Longleftrightarrow\quad \int_1^\infty f(x)\,dx\text{ converges}. $$</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">It is especially useful for logarithms, borderline powers, and terms that look more like a function than a simple algebraic comparison.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">It is especially useful when the expression looks like a sampled function: logarithms, borderline powers, and tails where comparison is not visually obvious.</p>
       </div>
       <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #B8552F; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#B8552F; margin-bottom:8px;">Ratio and root tests</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">These tests detect geometric behavior. They do not care whether the expression looks complicated; they ask whether the tail is eventually multiplied by a factor smaller than one.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">These tests detect geometric behavior. They are trying to decide whether the tail has an exponential engine underneath it.</p>
         <div>$$ L_{\mathrm{ratio}}=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|,\qquad L_{\mathrm{root}}=\limsup_{n\to\infty}\sqrt[n]{|a_n|}. $$</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">For either test, $L&lt;1$ gives absolute convergence, $L&gt;1$ gives divergence, and $L=1$ means the test is silent. Silence is not failure of mathematics; it means the tail is not geometrically decisive.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">For either test, $L&lt;1$ means exponential decay wins; $L&gt;1$ means the terms are not shrinking properly; $L=1$ means the exponential part has canceled out and a slower effect, usually polynomial or logarithmic, is deciding the problem.</p>
       </div>
       <div style="padding:17px 19px; background:#F3ECDD; border:1px solid #E3D9C5; border-left:3px solid #2A6A1A; border-radius:0 8px 8px 0;">
         <div style="font:600 10px/1 'IBM Plex Mono',monospace; letter-spacing:.12em; text-transform:uppercase; color:#2A6A1A; margin-bottom:8px;">Alternating series test</div>
-        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">The alternating series test is a cancellation test. It says the partial sums overshoot and undershoot by smaller and smaller amounts.</p>
+        <p style="font:400 16px/1.55 'Newsreader',serif; margin:0 0 8px;">The alternating series test is a cancellation test. It does not measure total mass; it measures whether the errors cancel in a controlled shrinking pattern.</p>
         <div>$$ b_n\ge0,\qquad b_n\text{ decreases eventually},\qquad b_n\to0\quad\Rightarrow\quad \sum(-1)^n b_n\text{ converges}. $$</div>
         <p style="font:400 16px/1.55 'Newsreader',serif; margin:8px 0 0;">After that, still ask whether $\sum b_n$ converges. If $\sum b_n$ diverges, the original alternating series is only conditionally convergent.</p>
       </div>
