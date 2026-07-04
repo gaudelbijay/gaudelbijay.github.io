@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campbell-Baker-Hausdorff Quiz</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root { --paper:#e9dfcc; --ink:#2f2a24; --muted:#716553; --line:#c8b99f; --accent:#8a5a32; --green:#416f4a; --red:#943a31; --card:rgba(255,255,255,.28); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.58; }
+    main { width:min(1040px, calc(100% - 32px)); margin:0 auto; padding:56px 0 80px; }
+    .eyebrow { color:var(--accent); font:700 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:12px 0; font-size:clamp(2.3rem,8vw,5rem); line-height:.95; letter-spacing:0; }
+    .lead { max-width:790px; margin:0 0 28px; color:var(--muted); font-size:1.16rem; }
+    nav,.post-links { display:flex; flex-wrap:wrap; gap:10px; }
+    nav { margin:28px 0 42px; }
+    nav a,.post-links a { display:inline-flex; align-items:center; min-height:38px; padding:8px 12px; color:var(--ink); text-decoration:none; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    nav a:hover,.post-links a:hover { border-color:var(--accent); color:var(--accent); }
+    .quiz-section { margin:54px 0; padding-top:10px; }
+    .section-heading span { display:block; margin-bottom:8px; color:var(--accent); font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h2 { margin:0 0 10px; font-size:clamp(1.7rem,4vw,2.5rem); line-height:1.08; }
+    .section-note { max-width:800px; margin:0 0 20px; color:var(--muted); }
+    .post-links { margin:16px 0 24px; }
+    .score-panel { display:flex; flex-wrap:wrap; align-items:center; gap:10px 12px; margin:0 0 24px; padding:12px; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    .score-panel button { min-height:38px; padding:8px 12px; border:1px solid var(--accent); border-radius:8px; background:var(--accent); color:#fffaf0; font:700 13px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.03em; cursor:pointer; }
+    .score-panel button:hover { filter:brightness(.96); }
+    .score-panel output { color:var(--ink); font-weight:700; }
+    .score-panel span { color:var(--muted); }
+    .question-list { display:grid; gap:14px; }
+    .question { border:1px solid var(--line); border-radius:8px; background:var(--card); padding:18px; }
+    .question h3 { margin:0 0 14px; font-size:1.05rem; line-height:1.4; }
+    fieldset { margin:0; padding:0; border:0; display:grid; gap:9px; }
+    .choice { display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; padding:11px 12px; border:1px solid rgba(200,185,159,.82); border-radius:8px; background:rgba(255,255,255,.24); cursor:pointer; }
+    .choice:hover { border-color:var(--accent); }
+    .choice input { margin-top:.3rem; }
+    .choice-text { min-width:0; }
+    .feedback { display:none; grid-column:2; margin-top:6px; padding:10px 12px; border-radius:7px; font-size:.96rem; }
+    .choice input:checked ~ .feedback { display:block; }
+    .feedback.correct { border-left:4px solid var(--green); background:rgba(79,122,87,.13); color:#31513a; }
+    .feedback.wrong { border-left:4px solid var(--red); background:rgba(155,63,52,.11); color:#6e3029; }
+    @media (max-width:640px) { main { width:min(100% - 22px,1040px); padding-top:38px; } .question { padding:14px; } .choice { grid-template-columns:1fr; gap:6px; } .choice input { margin:0; } .feedback { grid-column:1; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Campbell-Baker-Hausdorff quiz</div>
+  <h1>Campbell-Baker-Hausdorff</h1>
+  <p class="lead">Choose an option to reveal feedback. This page contains only the 50-question CBH quiz.</p>
+  <nav aria-label="Quiz pages">
+    <a href="/blog/math-quiz/">All quiz topics</a>
+    <a href="/blog/2026/campbell-baker-hausdorff-foundations/">Back to related post</a>
+  </nav>
+  <section id="cbh" class="quiz-section">
+    <div class="section-heading"><span>50 questions</span><h2>Campbell-Baker-Hausdorff Foundations</h2></div>
+    <p class="section-note">Fifty conceptual questions about the CBH formula, brackets, local logarithms, nested commutators, and non-commuting flows.</p>
+    <div class="post-links">
+      <a href="/blog/2026/campbell-baker-hausdorff-foundations/">Back to CBH Foundations</a>
+      <a href="/blog/2026/the-exponential-map/">The Exponential Map</a>
+      <a href="/blog/2026/substitution-principle-adjoints/">The Substitution Principle</a>
+    </div>
+    <div class="score-panel">
+      <button type="button" data-score-section="cbh">Check CBH Score</button>
+      <output id="cbh-score">0 correct out of 0 attempts</output>
+      <span>Attempts count only questions where one option is selected.</span>
+    </div>
+    <div class="question-list" id="cbh-questions"></div>
+  </section>
+</main>
+<script>
+  const questions = [
+    {
+      q: `The CBH question starts with nearby Lie algebra elements \\(X,Y\\). What is the precise object it tries to find?`,
+      a: `An element \\(Z\\) near \\(0\\) such that \\(\\exp(X)\\exp(Y)=\\exp(Z)\\).`,
+      w: [
+        `A scalar number \\(z\\) such that \\(e^z=\\det(\\exp(X)\\exp(Y))\\).`,
+        `A matrix \\(Z\\) satisfying \\(Z=X+Y\\) for all non-commuting \\(X,Y\\).`,
+        `A group element \\(Z\\in G\\) such that \\(Z=\\exp(X)+\\exp(Y)\\).`
+      ],
+      why: `CBH pulls the group product back through the logarithm. Near the identity, the product \\(\\exp(X)\\exp(Y)\\) can be written as one exponential \\(\\exp(Z)\\), and CBH describes \\(Z\\) using \\(X,Y\\) and brackets.`
+    },
+    {
+      q: `Why is \\(X+Y\\) the first guess for \\(\\log(\\exp(X)\\exp(Y))\\)?`,
+      a: `Because for commuting quantities the exponential law gives \\(\\exp(X)\\exp(Y)=\\exp(X+Y)\\).`,
+      w: [
+        `Because matrix multiplication is always distributive over the logarithm.`,
+        `Because the determinant of \\(\\exp(X)\\exp(Y)\\) only depends on \\(X+Y\\).`,
+        `Because \\(X+Y\\) is the only element of the Lie algebra that can be exponentiated.`
+      ],
+      why: `The scalar identity \\(e^xe^y=e^{x+y}\\) survives for commuting matrices. CBH begins by asking how this identity must be corrected when multiplication remembers order.`
+    },
+    {
+      q: `What does the bracket \\([X,Y]=XY-YX\\) measure in the matrix setting?`,
+      a: `The first algebraic measurement of the failure of \\(X\\) and \\(Y\\) to commute.`,
+      w: [
+        `The difference between the eigenvalues of \\(X\\) and the eigenvalues of \\(Y\\).`,
+        `The projection of \\(X+Y\\) onto the center of the Lie algebra.`,
+        `The scalar area swept by the two flows, independent of representation.`
+      ],
+      why: `If \\(XY=YX\\), then \\([X,Y]=0\\). When \\(XY\\neq YX\\), the bracket records the ordered difference that ordinary addition cannot see.`
+    },
+    {
+      q: `In the expansion \\(Z=X+Y+C_2+\\cdots\\), what does \\(C_2\\) represent?`,
+      a: `The part of \\(Z\\) that is second order in the small quantities \\(X\\) and \\(Y\\).`,
+      w: [
+        `The second eigenvalue of the matrix \\(Z\\).`,
+        `The correction that appears only when \\(X\\) and \\(Y\\) are diagonal.`,
+        `The constant term in \\(\\exp(X)\\exp(Y)\\).`
+      ],
+      why: `The notation separates degrees. \\(X+Y\\) is first order; \\(C_2\\) collects terms with two factors, such as \\(XY\\), \\(YX\\), \\(X^2\\), or \\(Y^2\\).`
+    },
+    {
+      q: `When comparing second-order terms, why does \\(\\frac12[X,Y]\\) appear?`,
+      a: `The product has \\(XY\\), while \\(\\frac12(X+Y)^2\\) contributes the symmetric average \\(\\frac12XY+\\frac12YX\\).`,
+      w: [
+        `The logarithm always divides every non-commuting term by exactly two.`,
+        `The term \\(YX\\) disappears from \\(e^Z\\), so it must be restored by adding \\(\\frac12YX\\).`,
+        `The factor \\(\\frac12\\) comes only from choosing time \\(t=1/2\\) in the flow.`
+      ],
+      why: `Matching \\(e^Xe^Y\\) with \\(e^Z\\) forces the missing second-order mixed part to be \\(XY-\\frac12XY-\\frac12YX=\\frac12(XY-YX)\\).`
+    },
+    {
+      q: `What condition makes the first CBH correction \\(\\frac12[X,Y]\\) vanish?`,
+      a: `\\(X\\) and \\(Y\\) commute, so \\(XY=YX\\).`,
+      w: [
+        `\\(X\\) and \\(Y\\) have the same trace.`,
+        `\\(X\\) and \\(Y\\) are both invertible.`,
+        `\\(\\exp(X)\\) and \\(\\exp(Y)\\) have determinant one.`
+      ],
+      why: `The bracket is \\(XY-YX\\). It vanishes exactly when the ordered products agree, which is the algebraic signature of commuting directions.`
+    },
+    {
+      q: `Why is CBH usually stated locally near the identity?`,
+      a: `Because the logarithm may fail to be globally single-valued or defined, while near the identity it behaves like a coordinate inverse to \\(\\exp\\).`,
+      w: [
+        `Because matrix multiplication is undefined far from the identity.`,
+        `Because Lie algebras contain only matrices whose entries are small real numbers.`,
+        `Because the bracket changes its definition away from the identity.`
+      ],
+      why: `CBH uses \\(Z=\\log(\\exp(X)\\exp(Y))\\). That logarithm is safest in a neighborhood where \\(\\exp\\) is locally invertible.`
+    },
+    {
+      q: `In the commutator loop \\(e^{tX}e^{tY}e^{-tX}e^{-tY}\\), why is the first nonzero term second order?`,
+      a: `The first-order \\(X\\), \\(Y\\), \\(-X\\), and \\(-Y\\) motions cancel, leaving the order effect at size \\(t^2\\).`,
+      w: [
+        `Every exponential series begins at degree two when the determinant is one.`,
+        `The inverse terms remove all bracket terms and leave only traces.`,
+        `The loop is closed exactly for every Lie group, so only numerical error remains.`
+      ],
+      why: `The loop walks forward and backward in both directions. Linear displacement cancels, but the failure of the two moves to commute survives as \\(t^2[X,Y]\\).`
+    },
+    {
+      q: `What is the meaning of \\(\\operatorname{ad}_X(Y)\\)?`,
+      a: `It is the linear operation “bracket with \\(X\\),” namely \\(\\operatorname{ad}_X(Y)=[X,Y]\\).`,
+      w: [
+        `It is the determinant-preserving part of \\(X\\) applied to \\(Y\\).`,
+        `It is the group element obtained by multiplying \\(X\\) and \\(Y\\).`,
+        `It is the average \\(\\frac12(XY+YX)\\).`
+      ],
+      why: `The symbol \\(\\operatorname{ad}_X\\) packages repeated bracketing. It is a linear map on the Lie algebra whose input is \\(Y\\) and output is \\([X,Y]\\).`
+    },
+    {
+      q: `What does the nested bracket \\([X,[X,Y]]\\) communicate geometrically?`,
+      a: `The first commutation error \\([X,Y]\\) is itself being transported or changed along the \\(X\\)-direction.`,
+      w: [
+        `The bracket \\([X,Y]\\) has become a scalar and is multiplied by \\(X\\).`,
+        `The two flows commute after exactly two applications of \\(X\\).`,
+        `The second derivative of \\(X\\) as a function of the matrix entries is being taken.`
+      ],
+      why: `Nested brackets are not decorative. They describe higher corrections: not only does order matter, but the order-error changes as it is moved through other infinitesimal directions.`
+    },
+    {
+      q: `Which statement best describes the beginning of the CBH formula?`,
+      a: `\\(\\log(\\exp(X)\\exp(Y))=X+Y+\\frac12[X,Y]+\\cdots\\).`,
+      w: [
+        `\\(\\log(\\exp(X)\\exp(Y))=XY+YX+\\frac12[X,Y]+\\cdots\\).`,
+        `\\(\\log(\\exp(X)\\exp(Y))=X-Y+\\frac12[X,Y]+\\cdots\\).`,
+        `\\(\\log(\\exp(X)\\exp(Y))=\\exp(X+Y)+\\frac12[X,Y]+\\cdots\\).`
+      ],
+      why: `The first approximation is addition of generators. The first correction is half the commutator. Higher terms are nested brackets.`
+    },
+    {
+      q: `Why is \\(\\exp(X)\\exp(Y)\\) composition rather than addition?`,
+      a: `\\(\\exp(X)\\) and \\(\\exp(Y)\\) are group elements, and the group operation composes finite transformations.`,
+      w: [
+        `Because exponentials of matrices cannot be added entrywise.`,
+        `Because \\(X\\) and \\(Y\\) stop belonging to the Lie algebra after exponentiation.`,
+        `Because the Lie bracket is defined only for group elements.`
+      ],
+      why: `The exponential map sends algebra elements to the group. Once in the group, the natural operation is group multiplication, interpreted as composition of transformations.`
+    },
+    {
+      q: `If \\([X,Y]=0\\), what happens to all nested brackets built from only \\(X\\), \\(Y\\), and \\([X,Y]\\)?`,
+      a: `They vanish, so the CBH series reduces to \\(X+Y\\).`,
+      w: [
+        `They become powers \\(X^nY^n\\), so the series usually diverges.`,
+        `They collapse to \\(\\operatorname{tr}(X)Y-\\operatorname{tr}(Y)X\\).`,
+        `They become nonzero unless \\(X\\) and \\(Y\\) are diagonal.`
+      ],
+      why: `If the first bracket is zero, then bracketing it again with \\(X\\) or \\(Y\\) gives zero. The non-commutative correction hierarchy disappears.`
+    },
+    {
+      q: `What is the role of Dynkin's formula in this story?`,
+      a: `It shows the logarithm of \\(\\exp(X)\\exp(Y)\\) can be written using nested Lie brackets, not arbitrary matrix products.`,
+      w: [
+        `It proves every matrix is diagonalizable before applying CBH.`,
+        `It replaces the exponential map with the determinant map.`,
+        `It says the bracket term is always the final term of the expansion.`
+      ],
+      why: `Dynkin's formula is important because it keeps the answer intrinsic to the Lie algebra generated by \\(X\\) and \\(Y\\).`
+    },
+    {
+      q: `Why is the term \\(XY+YX\\) not the bracket?`,
+      a: `It is symmetric in \\(X,Y\\), while the bracket \\(XY-YX\\) changes sign when the order is reversed.`,
+      w: [
+        `It is not defined for square matrices.`,
+        `It always equals zero in a Lie algebra.`,
+        `It belongs to the group rather than the algebra.`
+      ],
+      why: `The bracket measures order-dependence. A symmetric expression cannot detect which order came first; \\(XY-YX\\) can.`
+    },
+    {
+      q: `What does “addition plus bracket corrections” mean in CBH?`,
+      a: `The pulled-back group product begins as \\(X+Y\\), then adds terms measuring non-commuting order effects.`,
+      w: [
+        `The group product is literally computed by adding matrices entry by entry.`,
+        `The exponential map is replaced by repeated scalar addition.`,
+        `The bracket is added only after the series has converged numerically.`
+      ],
+      why: `Near the identity, Lie algebra coordinates turn group multiplication into a series. The first term is addition; the rest correct for non-commutativity.`
+    },
+    {
+      q: `Which object lives in the Lie group rather than the Lie algebra?`,
+      a: `\\(\\exp(X)\\exp(Y)\\).`,
+      w: [
+        `\\([X,Y]\\).`,
+        `\\(X+Y+\\frac12[X,Y]\\).`,
+        `\\(\\operatorname{ad}_X(Y)\\).`
+      ],
+      why: `Exponentials are group elements, and their product is again in the group. Brackets and sums of generators live in the Lie algebra.`
+    },
+    {
+      q: `Which object lives in the Lie algebra rather than the Lie group?`,
+      a: `\\(Z=\\log(\\exp(X)\\exp(Y))\\).`,
+      w: [
+        `\\(\\exp(X)\\).`,
+        `\\(\\exp(Y)\\exp(X)\\).`,
+        `The identity element \\(I\\) viewed as a group element.`
+      ],
+      why: `The logarithm pulls a nearby group element back to the tangent algebra. CBH describes that algebra element \\(Z\\).`
+    },
+    {
+      q: `Why can the product \\(e^Xe^Y\\) contain the ordered term \\(XY\\) at second order?`,
+      a: `Multiplying \\((I+X+\\cdots)(I+Y+\\cdots)\\) produces \\(XY\\) in that order.`,
+      w: [
+        `The logarithm of any matrix product always begins with \\(XY\\).`,
+        `The determinant expansion forces \\(XY\\) to appear before \\(X+Y\\).`,
+        `The term \\(XY\\) appears only if \\(X^2=Y^2=0\\).`
+      ],
+      why: `The product expansion remembers factor order. The \\(X\\) from the first exponential multiplies the \\(Y\\) from the second exponential, giving \\(XY\\).`
+    },
+    {
+      q: `When expanding \\(e^Z\\) with \\(Z=X+Y+C_2+\\cdots\\), why does \\(C_2\\) not affect \\(Z^2\\) at second order?`,
+      a: `Because multiplying \\(C_2\\), already second order, by \\(X\\) or \\(Y\\) produces third-order terms.`,
+      w: [
+        `Because \\(C_2\\) is a scalar and commutes with every matrix.`,
+        `Because \\(C_2\\) is defined to be zero before comparing terms.`,
+        `Because \\(Z^2\\) is ignored in all logarithmic calculations.`
+      ],
+      why: `Degree counting matters. At second order, \\(Z^2\\) only needs \\((X+Y)^2\\); terms involving \\(C_2\\) are too high order.`
+    },
+    {
+      q: `What does the identity \\(e^XYe^{-X}=e^{\\operatorname{ad}_X}(Y)\\) say conceptually?`,
+      a: `Conjugating \\(Y\\) by the finite motion \\(e^X\\) equals flowing \\(Y\\) through repeated brackets with \\(X\\).`,
+      w: [
+        `The matrix \\(Y\\) is unchanged by every exponential conjugation.`,
+        `The determinant of \\(Y\\) is the same as the determinant of \\(X\\).`,
+        `The product \\(e^XYe^{-X}\\) is always equal to \\(X+Y-X\\).`
+      ],
+      why: `The adjoint identity connects finite conjugation in the group with the infinitesimal bracket operator in the algebra.`
+    },
+    {
+      q: `What is the best interpretation of \\(\\gamma(t)=\\log(e^{tX}e^{tY})\\)?`,
+      a: `It records the single algebra element whose exponential matches the composed small-time motions at scale \\(t\\).`,
+      w: [
+        `It is the determinant curve of the two exponentials.`,
+        `It is a path in the group obtained by adding \\(tX\\) and \\(tY\\).`,
+        `It is always exactly \\(tX+tY\\), regardless of commutation.`
+      ],
+      why: `The parameter \\(t\\) lets the CBH product grow from the identity. Studying \\(\\gamma(t)\\) turns the formula into a differential problem.`
+    },
+    {
+      q: `Why does differentiating exponentials become difficult in the non-commutative setting?`,
+      a: `A small change cannot simply pass through an exponential; moving it through creates bracket terms.`,
+      w: [
+        `The derivative of every matrix exponential fails to exist unless the matrix is diagonal.`,
+        `The derivative is difficult only because determinants are nonlinear.`,
+        `The ordinary scalar chain rule becomes false for real-valued functions.`
+      ],
+      why: `For non-commuting matrices, order matters inside products. Moving variations through exponentials creates commutators, which is why \\(\\operatorname{ad}\\)-operators appear.`
+    },
+    {
+      q: `What is meant by saying the bracket is the “first visible shadow” of non-commutativity?`,
+      a: `After first-order motion cancels in a tiny loop, the second-order residue is governed by \\([X,Y]\\).`,
+      w: [
+        `The bracket can be seen only after plotting eigenvalues in the complex plane.`,
+        `The bracket is the zeroth-order term of every exponential product.`,
+        `Non-commutativity is invisible to all finite products but visible to traces.`
+      ],
+      why: `Tiny commutator loops cancel the linear movement. The leftover order effect appears at the next scale and is measured by the bracket.`
+    },
+    {
+      q: `Which statement correctly distinguishes \\(XY\\) from \\([X,Y]\\)?`,
+      a: `\\(XY\\) is one ordered associative product; \\([X,Y]=XY-YX\\) compares two orders.`,
+      w: [
+        `\\(XY\\) is in the Lie algebra, while \\([X,Y]\\) is always in the Lie group.`,
+        `\\(XY\\) is symmetric, while \\([X,Y]\\) is symmetric only for diagonal matrices.`,
+        `\\(XY\\) exists only locally, while \\([X,Y]\\) exists globally near the identity.`
+      ],
+      why: `CBH transforms raw products into bracket expressions. The bracket is built from products but captures their order difference.`
+    },
+    {
+      q: `Why does the CBH formula use nested brackets instead of only \\([X,Y]\\)?`,
+      a: `Higher-order corrections must record how the first commutation error changes when moved along \\(X\\) and \\(Y\\).`,
+      w: [
+        `The first bracket is never part of the actual formula.`,
+        `Nested brackets are used only to make the notation shorter, not to add information.`,
+        `The formula stops being local unless at least three brackets are written.`
+      ],
+      why: `The first bracket captures the first order effect of non-commutation. Higher powers of small motion require repeated order corrections, hence nested brackets.`
+    },
+    {
+      q: `What does the coefficient \\(\\frac1{12}\\) in terms like \\([X,[X,Y]]\\) represent?`,
+      a: `A precise weight forced by matching higher-order terms in the logarithm of the product.`,
+      w: [
+        `A choice of normalization for the trace inner product.`,
+        `The dimension of the smallest non-abelian Lie algebra.`,
+        `A correction used only when \\(X\\) and \\(Y\\) commute.`
+      ],
+      why: `Like \\(\\frac12\\), higher coefficients are not decorative. They are forced by the power-series comparison behind CBH.`
+    },
+    {
+      q: `What is the cleanest reason \\(\\exp(X)\\exp(Y)=\\exp(X+Y)\\) may fail?`,
+      a: `Terms in the exponential series cannot be freely rearranged when \\(XY\\neq YX\\).`,
+      w: [
+        `The exponential map is not defined for non-diagonal matrices.`,
+        `The sum \\(X+Y\\) leaves the Lie algebra whenever \\(X\\) and \\(Y\\) do not commute.`,
+        `The identity matrix stops being the identity for non-commuting products.`
+      ],
+      why: `The scalar proof of \\(e^xe^y=e^{x+y}\\) silently rearranges factors. Non-commuting matrices do not permit that rearrangement.`
+    },
+    {
+      q: `Which answer best explains why the algebra must remember order?`,
+      a: `The group product remembers whether \\(\\exp(X)\\) came before or after \\(\\exp(Y)\\).`,
+      w: [
+        `The algebra contains only ordered pairs, not individual tangent vectors.`,
+        `The identity element has two different tangent spaces.`,
+        `The trace function changes sign whenever two matrices are swapped.`
+      ],
+      why: `Ordinary addition forgets order: \\(X+Y=Y+X\\). Group multiplication may not: \\(\\exp(X)\\exp(Y)\\neq\\exp(Y)\\exp(X)\\).`
+    },
+    {
+      q: `If \\(G\\) is abelian near the identity, what should CBH reduce to?`,
+      a: `\\(Z=X+Y\\), because all bracket corrections vanish.`,
+      w: [
+        `\\(Z=[X,Y]\\), because addition is no longer needed.`,
+        `\\(Z=XY\\), because the product is already commutative.`,
+        `\\(Z=\\frac12(X+Y)\\), because two equal paths are averaged.`
+      ],
+      why: `An abelian group has no local order effects. Its Lie algebra has zero bracket, so CBH becomes ordinary addition in exponential coordinates.`
+    },
+    {
+      q: `Why is \\(\\log(\\exp(X)\\exp(Y))\\) not best understood as applying scalar logarithm laws?`,
+      a: `Because \\(\\log(AB)=\\log A+\log B\\) is not generally valid for non-commuting matrices.`,
+      w: [
+        `Because matrix logarithms never exist near the identity.`,
+        `Because \\(\\exp(X)\\exp(Y)\\) is not invertible.`,
+        `Because scalar logarithms are unrelated to power series.`
+      ],
+      why: `The failure of scalar log laws is exactly the issue. CBH tells us the corrected logarithm law in the non-commutative setting.`
+    },
+    {
+      q: `In \\(e^{tX}e^{tY}e^{-tX}e^{-tY}=I+t^2[X,Y]+O(t^3)\\), what does \\(O(t^3)\\) mean here?`,
+      a: `Terms whose size is third order or smaller relative to the small parameter \\(t\\).`,
+      w: [
+        `An unknown constant matrix that is independent of \\(t\\).`,
+        `The exact third derivative of \\(e^{tX}\\) alone.`,
+        `A term that vanishes only when \\(X\\) and \\(Y\\) are invertible.`
+      ],
+      why: `The displayed formula isolates the leading nonzero behavior. The \\(O(t^3)\\) terms are higher-order corrections beyond the bracket residue.`
+    },
+    {
+      q: `Which expression is antisymmetric in \\(X\\) and \\(Y\\)?`,
+      a: `\\([X,Y]\\), because \\([Y,X]=-[X,Y]\\).`,
+      w: [
+        `\\(XY+YX\\), because swapping \\(X,Y\\) changes its sign.`,
+        `\\(X+Y\\), because addition remembers which term was first.`,
+        `\\(X^2+Y^2\\), because squares reverse order.`
+      ],
+      why: `The commutator reverses sign when the inputs are swapped. That antisymmetry is why it records oriented order failure.`
+    },
+    {
+      q: `What is the relationship between the bracket and the Lie algebra generated by \\(X\\) and \\(Y\\)?`,
+      a: `Repeated brackets of \\(X\\) and \\(Y\\) stay inside that generated Lie algebra and supply CBH corrections.`,
+      w: [
+        `The bracket leaves the generated Lie algebra and enters the full matrix group.`,
+        `Only \\(X+Y\\) belongs to the generated Lie algebra; brackets do not.`,
+        `The generated Lie algebra is defined by determinants, not brackets.`
+      ],
+      why: `One strength of CBH is closure: the local group product is encoded using elements already generated by \\(X\\), \\(Y\\), and their brackets.`
+    },
+    {
+      q: `What is wrong with saying CBH is only a formula for multiplying matrices?`,
+      a: `Its content is intrinsic to Lie groups and Lie algebras; matrices are one important model where the products are visible.`,
+      w: [
+        `CBH never applies to matrices, only to abstract manifolds.`,
+        `CBH applies only to scalar complex numbers.`,
+        `CBH is about determinants, so multiplication is irrelevant.`
+      ],
+      why: `Matrix groups make the formula concrete, but the bracket and local group law are Lie-theoretic ideas, not merely entrywise matrix tricks.`
+    },
+    {
+      q: `Why does the post say the bracket is not decorative?`,
+      a: `It is forced by the need to encode non-commutative group multiplication in tangent-space language.`,
+      w: [
+        `It is optional notation used after the formula is already complete.`,
+        `It appears only to shorten determinant computations.`,
+        `It is chosen by convention and has no effect on local multiplication.`
+      ],
+      why: `Without the bracket, the algebra would only know addition, which cannot distinguish \\(X\\) then \\(Y\\) from \\(Y\\) then \\(X\\).`
+    },
+    {
+      q: `What does “pulling the product back to the algebra” mean?`,
+      a: `Applying a local logarithm to a nearby group product so it is represented by a Lie algebra element.`,
+      w: [
+        `Multiplying \\(X\\) and \\(Y\\) directly inside the group.`,
+        `Replacing every exponential with its determinant.`,
+        `Projecting the group product onto the diagonal entries of \\(X+Y\\).`
+      ],
+      why: `The product lives in the group. The logarithm, when available locally, returns the corresponding infinitesimal coordinate in the Lie algebra.`
+    },
+    {
+      q: `Which statement correctly describes the “single infinitesimal instruction” \\(Z\\)?`,
+      a: `Its time-one exponential has the same local effect as first applying \\(\\exp(Y)\\) and \\(\\exp(X)\\) in the chosen product order.`,
+      w: [
+        `It is always the arithmetic mean of \\(X\\) and \\(Y\\).`,
+        `It is a group element whose square equals \\(\\exp(X)\\exp(Y)\\).`,
+        `It is the unique global logarithm of every group element.`
+      ],
+      why: `CBH asks for one generator whose exponential reproduces the composed finite motion, at least locally.`
+    },
+    {
+      q: `Why is \\(\\frac12XY+\\frac12YX\\) called symmetric in the second-order comparison?`,
+      a: `Swapping \\(X\\) and \\(Y\\) leaves \\(\\frac12XY+\\frac12YX\\) unchanged.`,
+      w: [
+        `It equals zero whenever \\(X\\) and \\(Y\\) are nonzero.`,
+        `It changes sign under the exchange \\(X\\leftrightarrow Y\\).`,
+        `It is the same as the commutator \\([X,Y]\\).`
+      ],
+      why: `The square \\((X+Y)^2\\) naturally produces both mixed orders equally. The product \\(e^Xe^Y\\) produces an ordered mixed term, so the difference is the bracket.`
+    },
+    {
+      q: `What does it mean that CBH reconstructs local multiplication from the Lie algebra?`,
+      a: `Near the identity, the group product can be expressed through algebra operations: addition, brackets, and nested brackets.`,
+      w: [
+        `Every global topological property of the group is determined by \\(X+Y\\) alone.`,
+        `The Lie algebra replaces the group identity with a new multiplication table of matrices.`,
+        `The exponential map becomes a linear isomorphism on the entire group.`
+      ],
+      why: `CBH is local, but locally powerful: it says the bracket structure contains the correction data needed for the group law near the identity.`
+    },
+    {
+      q: `If the answer choices include \\(X+Y+\\frac12(XY+YX)\\) as CBH's second-order logarithm, what is the flaw?`,
+      a: `It uses the symmetric mixed term instead of the antisymmetric correction \\(\\frac12(XY-YX)\\).`,
+      w: [
+        `It forgets the first-order terms \\(X+Y\\).`,
+        `It includes no second-order terms at all.`,
+        `It belongs to the group because sums of matrices are group elements.`
+      ],
+      why: `The symmetric mixed term appears inside the expansion of \\(e^Z\\), but the correction needed in \\(Z\\) is the ordered difference, half the commutator.`
+    },
+    {
+      q: `Which phrase best explains “finite motion” versus “infinitesimal generator”?`,
+      a: `\\(X\\) is a tangent direction at the identity; \\(\\exp(X)\\) is the group motion reached by flowing from it.`,
+      w: [
+        `\\(X\\) is always a group element; \\(\\exp(X)\\) is its tangent vector.`,
+        `Both \\(X\\) and \\(\\exp(X)\\) live in the same vector space with the same addition law.`,
+        `\\(\\exp(X)\\) is only a notation for \\(I+X\\), with no higher terms.`
+      ],
+      why: `Lie theory separates the tangent object from the finite transformation. The exponential map is the bridge between them.`
+    },
+    {
+      q: `Why does the tiny loop use inverse motions \\(e^{-tX}\\) and \\(e^{-tY}\\)?`,
+      a: `They cancel the first-order displacement, isolating the order-dependent residue.`,
+      w: [
+        `They make the matrices diagonal before the bracket is computed.`,
+        `They force \\(X\\) and \\(Y\\) to commute exactly.`,
+        `They convert the group product into an ordinary scalar product.`
+      ],
+      why: `Walking forward and backward removes the obvious movement. What remains is not translation, but the failure of the two directions to commute.`
+    },
+    {
+      q: `What does it mean for a correction term to be “intrinsic to the Lie algebra”?`,
+      a: `It can be expressed using the Lie bracket operations inside the algebra, not by choosing arbitrary outside matrix products.`,
+      w: [
+        `It is independent of \\(X\\) and \\(Y\\).`,
+        `It is computed only from the determinant and trace.`,
+        `It exists only when the group is abelian.`
+      ],
+      why: `Nested brackets are operations of the Lie algebra itself. CBH is remarkable because the logarithm of a product stays expressible in that language.`
+    },
+    {
+      q: `Which statement about \\([Y,X]\\) is correct?`,
+      a: `\\([Y,X]=-[X,Y]\\).`,
+      w: [
+        `\\([Y,X]=[X,Y]\\) for every Lie algebra.`,
+        `\\([Y,X]=XY+YX\\).`,
+        `\\([Y,X]=0\\) whenever \\([X,Y]\\neq0\\).`
+      ],
+      why: `The bracket is antisymmetric. Reversing the order reverses the sign of the measured order effect.`
+    },
+    {
+      q: `What is the most accurate reading of “the first correction knows \\(XY\\) and \\(YX\\) are different”?`,
+      a: `The term \\(\\frac12[X,Y]\\) vanishes if the two ordered products agree and changes sign if the order is reversed.`,
+      w: [
+        `The term \\(\\frac12[X,Y]\\) compares the two traces, not the two products.`,
+        `The term \\(\\frac12[X,Y]\\) is present only when both matrices are singular.`,
+        `The term \\(\\frac12[X,Y]\\) is a scalar that counts how many entries differ.`
+      ],
+      why: `The bracket is precisely \\(XY-YX\\), so it responds directly to the difference between the two possible multiplication orders.`
+    },
+    {
+      q: `Why is the local exponential coordinate picture enough for CBH's main idea?`,
+      a: `The formula is about how multiplication looks infinitesimally near the identity, where local coordinates capture the group law.`,
+      w: [
+        `Because Lie groups have no meaningful behavior away from the identity.`,
+        `Because the exponential map is globally one-to-one for every Lie group.`,
+        `Because all group products outside the identity are commutative.`
+      ],
+      why: `CBH is a local theorem. It does not need a global logarithm to reveal how the bracket encodes nearby multiplication.`
+    },
+    {
+      q: `Which is the best reason the CBH formula starts Lie theory naturally?`,
+      a: `It shows why the tangent space needs a bracket in order to remember local group multiplication.`,
+      w: [
+        `It avoids defining the exponential map entirely.`,
+        `It proves every Lie group is a matrix group.`,
+        `It makes all higher-order terms disappear after the first bracket.`
+      ],
+      why: `The bracket is motivated by the question of multiplying exponentials. That makes the Lie algebra's extra structure feel necessary rather than ornamental.`
+    },
+    {
+      q: `If someone claims \\(\\log(e^Xe^Y)=X+Y\\) because logarithms turn products into sums, what is the precise objection?`,
+      a: `That logarithm law requires commutation; non-commuting products need CBH correction terms.`,
+      w: [
+        `The expression \\(e^Xe^Y\\) is never inside the domain of any logarithm.`,
+        `The objection is only that \\(X+Y\\) has the wrong determinant.`,
+        `The scalar logarithm law fails even for positive real numbers.`
+      ],
+      why: `The familiar scalar law hides commutativity. CBH is the replacement law when the factors do not commute.`
+    },
+    {
+      q: `What does the term \\(-\\frac1{12}[Y,[X,Y]]\\) indicate in the displayed CBH expansion?`,
+      a: `A higher-order correction involving how the first bracket changes when bracketed with \\(Y\\), with a sign and weight fixed by the series.`,
+      w: [
+        `A determinant correction caused by \\(Y\\) having negative eigenvalues.`,
+        `The statement that \\([X,Y]\\) is zero after applying \\(Y\\).`,
+        `A replacement for the first-order term \\(Y\\).`
+      ],
+      why: `This term is a nested-bracket correction. It is part of the hierarchy beyond \\(X+Y+\\frac12[X,Y]\\).`
+    }
+  ];
+
+  function escapeHtml(value) {
+    return value.replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[char]);
+  }
+
+  function renderQuiz() {
+    const list = document.getElementById('cbh-questions');
+    if (!list) return;
+    const labels = ['A', 'B', 'C', 'D'];
+    const rotations = [1, 3, 0, 2, 2, 0, 3, 1, 0, 2, 3, 1];
+    list.innerHTML = questions.map((question, index) => {
+      const name = `cbh-q${index + 1}`;
+      const choices = [{ text: question.a, ok: true }, ...question.w.map(text => ({ text, ok: false }))];
+      const rotation = rotations[index % rotations.length];
+      const displayedChoices = choices.slice(rotation).concat(choices.slice(0, rotation));
+      const displayedCorrect = displayedChoices.findIndex(item => item.ok);
+      const best = displayedChoices[displayedCorrect].text;
+      const renderedChoices = displayedChoices.map((item, choiceIndex) => {
+        const feedback = item.ok
+          ? `Correct. ${question.why}`
+          : `Not quite. The best answer is ${labels[displayedCorrect]}: ${best} ${question.why}`;
+        return `
+          <label class="choice">
+            <input type="radio" name="${name}" value="${labels[choiceIndex]}">
+            <span class="choice-text"><b>${labels[choiceIndex]}.</b> ${escapeHtml(item.text)}</span>
+            <span class="feedback ${item.ok ? 'correct' : 'wrong'}">${escapeHtml(feedback)}</span>
+          </label>
+        `;
+      }).join('');
+      return `
+        <article class="question" id="${name}">
+          <h3>${index + 1}. ${escapeHtml(question.q)}</h3>
+          <fieldset>${renderedChoices}</fieldset>
+        </article>
+      `;
+    }).join('');
+    if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise([list]);
+  }
+
+  renderQuiz();
+
+  document.querySelectorAll('[data-score-section]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const section = document.getElementById(button.dataset.scoreSection);
+      const output = document.getElementById(`${button.dataset.scoreSection}-score`);
+      if (!section || !output) return;
+      let attempts = 0;
+      let correct = 0;
+      section.querySelectorAll('.question').forEach((question) => {
+        const checked = question.querySelector('input[type="radio"]:checked');
+        if (!checked) return;
+        attempts += 1;
+        if (checked.parentElement.querySelector('.feedback.correct')) correct += 1;
+      });
+      output.textContent = `${correct} correct out of ${attempts} attempts`;
+    });
+  });
+</script>
+</body>
+</html>

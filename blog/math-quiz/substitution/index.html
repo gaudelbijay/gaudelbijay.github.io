@@ -79,1245 +79,615 @@
       <output id="substitution-score">0 correct out of 0 attempts</output>
       <span>Attempts count only questions where one option is selected.</span>
     </div>
-    <div class="question-list">
-      <article class="question" id="substitution-q1">
-        <h3>1. What does the Substitution Principle mean for a power series such as \(\exp(x)\), \(\sin(x)\), or \(\log(1+x)\)?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q1" value="A">
-            <span class="choice-text"><b>A.</b> It treats nilpotent matrices as zero matrices, because their high powers eventually disappear.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The same series recipe can be evaluated on another object if that object has the needed addition, multiplication, scalar multiplication, identity element, and convergence. The theorem is about structural compatibility. It does not say every scalar intuition survives.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q1" value="B">
-            <span class="choice-text"><b>B.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as \(x<y\).</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The same series recipe can be evaluated on another object if that object has the needed addition, multiplication, scalar multiplication, identity element, and convergence. The theorem is about structural compatibility. It does not say every scalar intuition survives.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q1" value="C">
-            <span class="choice-text"><b>C.</b> The same series recipe can be evaluated on another object if that object has the needed addition, multiplication, scalar multiplication, identity element, and convergence.</span>
-            <span class="feedback correct">Correct. The theorem is about structural compatibility. It does not say every scalar intuition survives.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q1" value="D">
-            <span class="choice-text"><b>D.</b> It says finite-dimensionality alone makes every infinite series converge in every possible normed algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The same series recipe can be evaluated on another object if that object has the needed addition, multiplication, scalar multiplication, identity element, and convergence. The theorem is about structural compatibility. It does not say every scalar intuition survives.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q2">
-        <h3>2. In the matrix exponential theorem, what does \(\exp(A)=I+A+A^2/2!+A^3/3!+\cdots\) mean?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q2" value="A">
-            <span class="choice-text"><b>A.</b> The scalar exponential series is evaluated using matrix addition, matrix multiplication, and the identity matrix I.</span>
-            <span class="feedback correct">Correct. The scalar constant 1 becomes the identity matrix because I is the multiplicative neutral element for matrices.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q2" value="B">
-            <span class="choice-text"><b>B.</b> It says a matrix polynomial is meaningful only when the matrix is invertible.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The scalar exponential series is evaluated using matrix addition, matrix multiplication, and the identity matrix I. The scalar constant 1 becomes the identity matrix because I is the multiplicative neutral element for matrices.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q2" value="C">
-            <span class="choice-text"><b>C.</b> It says scalar coefficients such as 1/2! must be replaced by diagonal matrices with that number on the diagonal.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The scalar exponential series is evaluated using matrix addition, matrix multiplication, and the identity matrix I. The scalar constant 1 becomes the identity matrix because I is the multiplicative neutral element for matrices.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q2" value="D">
-            <span class="choice-text"><b>D.</b> It treats the substitution principle as a rule about notation rather than a rule about operations and hypotheses.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The scalar exponential series is evaluated using matrix addition, matrix multiplication, and the identity matrix I. The scalar constant 1 becomes the identity matrix because I is the multiplicative neutral element for matrices.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q3">
-        <h3>3. Why is the identity matrix I the first term in \(\exp(A)\)?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q3" value="A">
-            <span class="choice-text"><b>A.</b> It treats convergence in each entry as enough to justify all matrix products and rearrangements.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The constant term 1 in the scalar series must become the multiplicative identity in the matrix algebra. A power series evaluated on matrices replaces scalar constants by the matching matrix-level constants.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q3" value="B">
-            <span class="choice-text"><b>B.</b> It says branch issues for logarithms are only a numerical precision problem.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The constant term 1 in the scalar series must become the multiplicative identity in the matrix algebra. A power series evaluated on matrices replaces scalar constants by the matching matrix-level constants.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q3" value="C">
-            <span class="choice-text"><b>C.</b> The constant term 1 in the scalar series must become the multiplicative identity in the matrix algebra.</span>
-            <span class="feedback correct">Correct. A power series evaluated on matrices replaces scalar constants by the matching matrix-level constants.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q3" value="D">
-            <span class="choice-text"><b>D.</b> It says the finite adjoint action is obtained by replacing every bracket with an inner product.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The constant term 1 in the scalar series must become the multiplicative identity in the matrix algebra. A power series evaluated on matrices replaces scalar constants by the matching matrix-level constants.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q4">
-        <h3>4. For a matrix power series \(\sum_{k=0}^\infty a_k A^k\), which condition turns the formal expression into an actual matrix rather than just a sequence of partial sums?</h3>
-        <fieldset>
-          <label class="choice"><input type="radio" name="substitution-q4" value="A"><span class="choice-text"><b>A.</b> The sequence of partial sums must converge in a matrix norm, which in finite dimensions is independent of the particular norm chosen.</span><span class="feedback correct">Correct. Infinite matrix series need an actual limit; finite algebraic meaning of each partial sum is not enough.</span></label>
-          <label class="choice"><input type="radio" name="substitution-q4" value="B"><span class="choice-text"><b>B.</b> The entries of \(A\) must all be positive, so every scalar coefficient produces a monotone scalar series entry by entry.</span><span class="feedback wrong">Not quite. The best answer is A: The sequence of partial sums must converge in a matrix norm, which in finite dimensions is independent of the particular norm chosen. Infinite matrix series need an actual limit; finite algebraic meaning of each partial sum is not enough.</span></label>
-          <label class="choice"><input type="radio" name="substitution-q4" value="C"><span class="choice-text"><b>C.</b> The determinant of each partial sum must converge, because determinant convergence implies matrix convergence.</span><span class="feedback wrong">Not quite. The best answer is A: The sequence of partial sums must converge in a matrix norm, which in finite dimensions is independent of the particular norm chosen. Infinite matrix series need an actual limit; finite algebraic meaning of each partial sum is not enough.</span></label>
-          <label class="choice"><input type="radio" name="substitution-q4" value="D"><span class="choice-text"><b>D.</b> The eigenvalues of \(A\) must be distinct, because repeated eigenvalues make every infinite power series ambiguous.</span><span class="feedback wrong">Not quite. The best answer is A: The sequence of partial sums must converge in a matrix norm, which in finite dimensions is independent of the particular norm chosen. Infinite matrix series need an actual limit; finite algebraic meaning of each partial sum is not enough.</span></label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q5">
-        <h3>5. What is the difference between substituting a matrix into a polynomial and into an infinite series?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q5" value="A">
-            <span class="choice-text"><b>A.</b> It assumes the transpose is the same thing as the adjoint representation \(\operatorname{Ad}_g\).</span>
-            <span class="feedback wrong">Not quite. The best answer is C: A polynomial needs only finitely many matrix additions and multiplications, while an infinite series also needs convergence. This distinction is one of the main reasons hypotheses are required.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q5" value="B">
-            <span class="choice-text"><b>B.</b> It assumes the result of a matrix series must be a diagonal matrix because scalar series have one-dimensional outputs.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: A polynomial needs only finitely many matrix additions and multiplications, while an infinite series also needs convergence. This distinction is one of the main reasons hypotheses are required.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q5" value="C">
-            <span class="choice-text"><b>C.</b> A polynomial needs only finitely many matrix additions and multiplications, while an infinite series also needs convergence.</span>
-            <span class="feedback correct">Correct. This distinction is one of the main reasons hypotheses are required.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q5" value="D">
-            <span class="choice-text"><b>D.</b> It works because trace and determinant contain all information needed by analytic matrix functions.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: A polynomial needs only finitely many matrix additions and multiplications, while an infinite series also needs convergence. This distinction is one of the main reasons hypotheses are required.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q6">
-        <h3>6. What does it mean to say that a function is a recipe rather than only a graph?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q6" value="A">
-            <span class="choice-text"><b>A.</b> It means the function can be understood as algebraic instructions that may run on non-scalar objects when the required operations exist.</span>
-            <span class="feedback correct">Correct. A graph is tied to scalar inputs and outputs; a recipe can be structurally transported.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q6" value="B">
-            <span class="choice-text"><b>B.</b> It assumes choosing a convenient basis can make every pair of matrices commute.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It means the function can be understood as algebraic instructions that may run on non-scalar objects when the required operations exist. A graph is tied to scalar inputs and outputs; a recipe can be structurally transported.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q6" value="C">
-            <span class="choice-text"><b>C.</b> It says convergence is unnecessary once every finite partial sum can be written down.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It means the function can be understood as algebraic instructions that may run on non-scalar objects when the required operations exist. A graph is tied to scalar inputs and outputs; a recipe can be structurally transported.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q6" value="D">
-            <span class="choice-text"><b>D.</b> It says Ad and ad differ only by capitalization, not by finite-versus-infinitesimal meaning.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It means the function can be understood as algebraic instructions that may run on non-scalar objects when the required operations exist. A graph is tied to scalar inputs and outputs; a recipe can be structurally transported.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q7">
-        <h3>7. If f(x)=x^2+3x+I is evaluated at a matrix A, what is the correct meaning of \(A^2\)?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q7" value="A">
-            <span class="choice-text"><b>A.</b> It treats a matrix function as applying the scalar function independently to every entry of the matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: \(A^2\) means A composed with itself, represented as matrix multiplication A times A. Matrix powers are repeated action, not entrywise squaring by default.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q7" value="B">
-            <span class="choice-text"><b>B.</b> It says the logarithm is a global inverse of the exponential for all invertible matrices.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: \(A^2\) means A composed with itself, represented as matrix multiplication A times A. Matrix powers are repeated action, not entrywise squaring by default.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q7" value="C">
-            <span class="choice-text"><b>C.</b> \(A^2\) means A composed with itself, represented as matrix multiplication A times A.</span>
-            <span class="feedback correct">Correct. Matrix powers are repeated action, not entrywise squaring by default.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q7" value="D">
-            <span class="choice-text"><b>D.</b> It defines \(f(A)\) by first choosing any basis and applying f to each coordinate axis separately.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: \(A^2\) means A composed with itself, represented as matrix multiplication A times A. Matrix powers are repeated action, not entrywise squaring by default.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q8">
-        <h3>8. Why is entrywise exponentiation not the same as the matrix exponential?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q8" value="A">
-            <span class="choice-text"><b>A.</b> The matrix exponential treats the matrix as one linear operator and uses powers \(A^k\), not independent exponentials of each entry.</span>
-            <span class="feedback correct">Correct. The matrix is an action; its entries are only coordinates for that action.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q8" value="B">
-            <span class="choice-text"><b>B.</b> It says the identity matrix appears because \(\exp(A)\) must always preserve every vector length.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers \(A^k\), not independent exponentials of each entry. The matrix is an action; its entries are only coordinates for that action.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q8" value="C">
-            <span class="choice-text"><b>C.</b> It says the matrix exponential is always diagonal because scalar exponentials never mix coordinates.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers \(A^k\), not independent exponentials of each entry. The matrix is an action; its entries are only coordinates for that action.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q8" value="D">
-            <span class="choice-text"><b>D.</b> It defines \(\sin(A)\) and \(\cos(A)\) by taking sine and cosine of the singular values only.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The matrix exponential treats the matrix as one linear operator and uses powers \(A^k\), not independent exponentials of each entry. The matrix is an action; its entries are only coordinates for that action.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q9">
-        <h3>9. What does \(\exp(\operatorname{ad}_X)\) mean in Lie theory?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q9" value="A">
-            <span class="choice-text"><b>A.</b> It means \(\operatorname{ad}_X\) is exponentiated by exponentiating X first and then taking ordinary powers of the entries.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator \(\operatorname{ad}_X\), where \(\operatorname{ad}_X(Y)=[X,Y]\). Here the input to exp is not X itself but the operator that brackets with X.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q9" value="B">
-            <span class="choice-text"><b>B.</b> It assumes all scalar constants become multiples of the zero matrix except the coefficient of x.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator \(\operatorname{ad}_X\), where \(\operatorname{ad}_X(Y)=[X,Y]\). Here the input to exp is not X itself but the operator that brackets with X.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q9" value="C">
-            <span class="choice-text"><b>C.</b> It means applying the exponential power series to the linear operator \(\operatorname{ad}_X\), where \(\operatorname{ad}_X(Y)=[X,Y]\).</span>
-            <span class="feedback correct">Correct. Here the input to exp is not X itself but the operator that brackets with X.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q9" value="D">
-            <span class="choice-text"><b>D.</b> It assumes the same theorem holds for matrices only when all eigenvalues are real.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means applying the exponential power series to the linear operator \(\operatorname{ad}_X\), where \(\operatorname{ad}_X(Y)=[X,Y]\). Here the input to exp is not X itself but the operator that brackets with X.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q10">
-        <h3>10. What does \(\operatorname{ad}_X(Y)=[X,Y]\) mean?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q10" value="A">
-            <span class="choice-text"><b>A.</b> It is the infinitesimal adjoint action: the operator that sends Y to the commutator \(XY-YX\).</span>
-            <span class="feedback correct">Correct. The bracket measures how X and Y fail to commute.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q10" value="B">
-            <span class="choice-text"><b>B.</b> It says absolute convergence matters only for numerical approximation, not for proving identities.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator \(XY-YX\). The bracket measures how X and Y fail to commute.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q10" value="C">
-            <span class="choice-text"><b>C.</b> It assumes power series are formal symbols, so no topology or norm is ever involved.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator \(XY-YX\). The bracket measures how X and Y fail to commute.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q10" value="D">
-            <span class="choice-text"><b>D.</b> It evaluates a matrix function by applying the scalar function to the rank and nullity of the matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the infinitesimal adjoint action: the operator that sends Y to the commutator \(XY-YX\). The bracket measures how X and Y fail to commute.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q11">
-        <h3>11. What does the identity \(\exp(\operatorname{ad}_X)=\operatorname{Ad}_{\exp(X)}\) mean?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q11" value="A">
-            <span class="choice-text"><b>A.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as \(x<y\).</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action \(\operatorname{ad}_X\) gives the finite adjoint action by \(\exp(X)\). This named identity connects the operator-level exponential with group-level conjugation.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q11" value="B">
-            <span class="choice-text"><b>B.</b> It says finite-dimensionality alone makes every infinite series converge in every possible normed algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action \(\operatorname{ad}_X\) gives the finite adjoint action by \(\exp(X)\). This named identity connects the operator-level exponential with group-level conjugation.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q11" value="C">
-            <span class="choice-text"><b>C.</b> Exponentiating the infinitesimal adjoint action \(\operatorname{ad}_X\) gives the finite adjoint action by \(\exp(X)\).</span>
-            <span class="feedback correct">Correct. This named identity connects the operator-level exponential with group-level conjugation.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q11" value="D">
-            <span class="choice-text"><b>D.</b> It says scalar multiplication by coefficients changes the domain of the operator at every term.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Exponentiating the infinitesimal adjoint action \(\operatorname{ad}_X\) gives the finite adjoint action by \(\exp(X)\). This named identity connects the operator-level exponential with group-level conjugation.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q12">
-        <h3>12. What does \(\operatorname{Ad}_g\) usually mean for a matrix Lie group?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q12" value="A">
-            <span class="choice-text"><b>A.</b> It is the action on the Lie algebra induced by conjugation: roughly X maps to gXg^{-1}.</span>
-            <span class="feedback correct">Correct. Uppercase Ad is a finite group action on infinitesimal directions.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q12" value="B">
-            <span class="choice-text"><b>B.</b> It says scalar coefficients such as 1/2! must be replaced by diagonal matrices with that number on the diagonal.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the action on the Lie algebra induced by conjugation: roughly X maps to gXg^{-1}. Uppercase Ad is a finite group action on infinitesimal directions.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q12" value="C">
-            <span class="choice-text"><b>C.</b> It treats the substitution principle as a rule about notation rather than a rule about operations and hypotheses.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the action on the Lie algebra induced by conjugation: roughly X maps to gXg^{-1}. Uppercase Ad is a finite group action on infinitesimal directions.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q12" value="D">
-            <span class="choice-text"><b>D.</b> It is valid only after diagonalizing the matrix, because the theorem is really a statement about eigenvalues rather than operations.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the action on the Lie algebra induced by conjugation: roughly X maps to gXg^{-1}. Uppercase Ad is a finite group action on infinitesimal directions.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q13">
-        <h3>13. What does the commutator \([X,Y]=XY-YX\) tell you?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q13" value="A">
-            <span class="choice-text"><b>A.</b> It says branch issues for logarithms are only a numerical precision problem.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It tells how much the two linear actions fail to commute at first nontrivial order. The commutator is not a determinant or a size; it is an order-error operator.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q13" value="B">
-            <span class="choice-text"><b>B.</b> It says the finite adjoint action is obtained by replacing every bracket with an inner product.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It tells how much the two linear actions fail to commute at first nontrivial order. The commutator is not a determinant or a size; it is an order-error operator.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q13" value="C">
-            <span class="choice-text"><b>C.</b> It tells how much the two linear actions fail to commute at first nontrivial order.</span>
-            <span class="feedback correct">Correct. The commutator is not a determinant or a size; it is an order-error operator.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q13" value="D">
-            <span class="choice-text"><b>D.</b> It depends on the Cayley-Hamilton theorem reducing every infinite series to a polynomial before the function is defined.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It tells how much the two linear actions fail to commute at first nontrivial order. The commutator is not a determinant or a size; it is an order-error operator.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q14">
-        <h3>14. Why does noncommutativity not prevent \(\exp(A)\) from being defined?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q14" value="A">
-            <span class="choice-text"><b>A.</b> The series for \(\exp(A)\) uses powers of the single matrix A, so each term \(A^k\) is unambiguous.</span>
-            <span class="feedback correct">Correct. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q14" value="B">
-            <span class="choice-text"><b>B.</b> It says a power series cannot act on \(\operatorname{ad}_X\) because \(\operatorname{ad}_X\) acts on matrices rather than vectors.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The series for \(\exp(A)\) uses powers of the single matrix A, so each term \(A^k\) is unambiguous. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q14" value="C">
-            <span class="choice-text"><b>C.</b> It replaces the matrix by its determinant first, applies the scalar theorem, and then lifts the result back to a matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The series for \(\exp(A)\) uses powers of the single matrix A, so each term \(A^k\) is unambiguous. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q14" value="D">
-            <span class="choice-text"><b>D.</b> It assumes matrix multiplication can be rearranged inside any power-series proof just like scalar multiplication.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The series for \(\exp(A)\) uses powers of the single matrix A, so each term \(A^k\) is unambiguous. Noncommutativity becomes a problem when combining different matrices such as A and B.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q15">
-        <h3>15. Why is \(\exp(A+B)=\exp(A)\exp(B)\) not generally true for matrices?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q15" value="A">
-            <span class="choice-text"><b>A.</b> It assumes the result of a matrix series must be a diagonal matrix because scalar series have one-dimensional outputs.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The scalar law requires A and B to commute; otherwise bracket correction terms appear. The scalar identity transfers only under the right structural condition.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q15" value="B">
-            <span class="choice-text"><b>B.</b> It works because trace and determinant contain all information needed by analytic matrix functions.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The scalar law requires A and B to commute; otherwise bracket correction terms appear. The scalar identity transfers only under the right structural condition.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q15" value="C">
-            <span class="choice-text"><b>C.</b> The scalar law requires A and B to commute; otherwise bracket correction terms appear.</span>
-            <span class="feedback correct">Correct. The scalar identity transfers only under the right structural condition.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q15" value="D">
-            <span class="choice-text"><b>D.</b> It makes \(\exp(A+B)=\exp(A)\exp(B)\) true as soon as A and B have the same eigenvalues.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The scalar law requires A and B to commute; otherwise bracket correction terms appear. The scalar identity transfers only under the right structural condition.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q16">
-        <h3>16. What is the Baker-Campbell-Hausdorff theorem about in this context?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q16" value="A">
-            <span class="choice-text"><b>A.</b> It describes \(\log(\exp(A)\exp(B))\) using A, B, and commutator correction terms when A and B do not commute.</span>
-            <span class="feedback correct">Correct. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q16" value="B">
-            <span class="choice-text"><b>B.</b> It says convergence is unnecessary once every finite partial sum can be written down.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It describes \(\log(\exp(A)\exp(B))\) using A, B, and commutator correction terms when A and B do not commute. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q16" value="C">
-            <span class="choice-text"><b>C.</b> It says Ad and ad differ only by capitalization, not by finite-versus-infinitesimal meaning.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It describes \(\log(\exp(A)\exp(B))\) using A, B, and commutator correction terms when A and B do not commute. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q16" value="D">
-            <span class="choice-text"><b>D.</b> It says formulas transfer because every matrix is equivalent to a scalar under similarity.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It describes \(\log(\exp(A)\exp(B))\) using A, B, and commutator correction terms when A and B do not commute. The theorem explains exactly how the scalar law fails and how it is repaired.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q17">
-        <h3>17. What is a safe way to use scalar intuition with matrix functions?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q17" value="A">
-            <span class="choice-text"><b>A.</b> It says the logarithm is a global inverse of the exponential for all invertible matrices.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Use scalar intuition as a guide, then check whether the matrix operations and hypotheses support the same claim. The substitution principle is disciplined transfer, not automatic transfer.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q17" value="B">
-            <span class="choice-text"><b>B.</b> It defines \(f(A)\) by first choosing any basis and applying f to each coordinate axis separately.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Use scalar intuition as a guide, then check whether the matrix operations and hypotheses support the same claim. The substitution principle is disciplined transfer, not automatic transfer.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q17" value="C">
-            <span class="choice-text"><b>C.</b> Use scalar intuition as a guide, then check whether the matrix operations and hypotheses support the same claim.</span>
-            <span class="feedback correct">Correct. The substitution principle is disciplined transfer, not automatic transfer.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q17" value="D">
-            <span class="choice-text"><b>D.</b> It says an operator series returns a scalar because operators are measured by their trace.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Use scalar intuition as a guide, then check whether the matrix operations and hypotheses support the same claim. The substitution principle is disciplined transfer, not automatic transfer.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q18">
-        <h3>18. What does it mean for a theorem proof to transfer by substitution?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q18" value="A">
-            <span class="choice-text"><b>A.</b> Every operation used in the proof must still be valid in the new algebraic setting.</span>
-            <span class="feedback correct">Correct. A proof is also a recipe, so its ingredients must survive the change of object.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q18" value="B">
-            <span class="choice-text"><b>B.</b> It says the matrix exponential is always diagonal because scalar exponentials never mix coordinates.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Every operation used in the proof must still be valid in the new algebraic setting. A proof is also a recipe, so its ingredients must survive the change of object.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q18" value="C">
-            <span class="choice-text"><b>C.</b> It defines \(\sin(A)\) and \(\cos(A)\) by taking sine and cosine of the singular values only.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Every operation used in the proof must still be valid in the new algebraic setting. A proof is also a recipe, so its ingredients must survive the change of object.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q18" value="D">
-            <span class="choice-text"><b>D.</b> It treats the exponential map as a naming convention rather than a construction from a series or flow.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Every operation used in the proof must still be valid in the new algebraic setting. A proof is also a recipe, so its ingredients must survive the change of object.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q19">
-        <h3>19. Why can diagonalization help compute \(f(A)\) but not define \(f(A)\) in general?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q19" value="A">
-            <span class="choice-text"><b>A.</b> It assumes all scalar constants become multiples of the zero matrix except the coefficient of x.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, \(f(A)\) can be computed through eigenvalues, but power series can define \(f(A)\) even when A is not diagonalizable. Diagonalization is a convenience, not the foundation of matrix functions.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q19" value="B">
-            <span class="choice-text"><b>B.</b> It assumes the same theorem holds for matrices only when all eigenvalues are real.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, \(f(A)\) can be computed through eigenvalues, but power series can define \(f(A)\) even when A is not diagonalizable. Diagonalization is a convenience, not the foundation of matrix functions.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q19" value="C">
-            <span class="choice-text"><b>C.</b> If A is diagonalizable, \(f(A)\) can be computed through eigenvalues, but power series can define \(f(A)\) even when A is not diagonalizable.</span>
-            <span class="feedback correct">Correct. Diagonalization is a convenience, not the foundation of matrix functions.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q19" value="D">
-            <span class="choice-text"><b>D.</b> It says every theorem involving exp is really a theorem about positive real numbers.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: If A is diagonalizable, \(f(A)\) can be computed through eigenvalues, but power series can define \(f(A)\) even when A is not diagonalizable. Diagonalization is a convenience, not the foundation of matrix functions.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q20">
-        <h3>20. What happens when a power series is evaluated at a nilpotent matrix N with \(N^k=0\)?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q20" value="A">
-            <span class="choice-text"><b>A.</b> The infinite series may become a finite sum because all sufficiently high powers vanish.</span>
-            <span class="feedback correct">Correct. Nilpotent matrices show how algebraic structure changes the behavior of a familiar series.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q20" value="B">
-            <span class="choice-text"><b>B.</b> It assumes power series are formal symbols, so no topology or norm is ever involved.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The infinite series may become a finite sum because all sufficiently high powers vanish. Nilpotent matrices show how algebraic structure changes the behavior of a familiar series.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q20" value="C">
-            <span class="choice-text"><b>C.</b> It evaluates a matrix function by applying the scalar function to the rank and nullity of the matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The infinite series may become a finite sum because all sufficiently high powers vanish. Nilpotent matrices show how algebraic structure changes the behavior of a familiar series.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q20" value="D">
-            <span class="choice-text"><b>D.</b> It claims substitution removes the need to distinguish local statements from global statements.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The infinite series may become a finite sum because all sufficiently high powers vanish. Nilpotent matrices show how algebraic structure changes the behavior of a familiar series.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q21">
-        <h3>21. What does the theorem \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) mean?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q21" value="A">
-            <span class="choice-text"><b>A.</b> It says finite-dimensionality alone makes every infinite series converge in every possible normed algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The determinant of the matrix exponential equals the scalar exponential of the trace of A. This theorem relates a finite volume-scaling quantity to an infinitesimal volume-growth quantity.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q21" value="B">
-            <span class="choice-text"><b>B.</b> It says scalar multiplication by coefficients changes the domain of the operator at every term.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The determinant of the matrix exponential equals the scalar exponential of the trace of A. This theorem relates a finite volume-scaling quantity to an infinitesimal volume-growth quantity.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q21" value="C">
-            <span class="choice-text"><b>C.</b> The determinant of the matrix exponential equals the scalar exponential of the trace of A.</span>
-            <span class="feedback correct">Correct. This theorem relates a finite volume-scaling quantity to an infinitesimal volume-growth quantity.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q21" value="D">
-            <span class="choice-text"><b>D.</b> It is justified because every finite-dimensional algebra is automatically commutative after choosing a basis.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The determinant of the matrix exponential equals the scalar exponential of the trace of A. This theorem relates a finite volume-scaling quantity to an infinitesimal volume-growth quantity.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q22">
-        <h3>22. Why does \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) not mean \(\exp(A)\) is determined by \(\operatorname{tr}(A)\)?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q22" value="A">
-            <span class="choice-text"><b>A.</b> Trace gives only one scalar invariant; it does not contain the full matrix action.</span>
-            <span class="feedback correct">Correct. Many different matrices can have the same trace but very different exponentials.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q22" value="B">
-            <span class="choice-text"><b>B.</b> It treats the substitution principle as a rule about notation rather than a rule about operations and hypotheses.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Trace gives only one scalar invariant; it does not contain the full matrix action. Many different matrices can have the same trace but very different exponentials.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q22" value="C">
-            <span class="choice-text"><b>C.</b> It is valid only after diagonalizing the matrix, because the theorem is really a statement about eigenvalues rather than operations.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Trace gives only one scalar invariant; it does not contain the full matrix action. Many different matrices can have the same trace but very different exponentials.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q22" value="D">
-            <span class="choice-text"><b>D.</b> It means the scalar graph of the function is reproduced geometrically by every matrix input.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Trace gives only one scalar invariant; it does not contain the full matrix action. Many different matrices can have the same trace but very different exponentials.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q23">
-        <h3>23. What does it mean to substitute an operator into a power series?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q23" value="A">
-            <span class="choice-text"><b>A.</b> It says the finite adjoint action is obtained by replacing every bracket with an inner product.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The result is another operator formed from identity, powers of that operator, scalar coefficients, and limits. Operator substitution is the same recipe at a higher level of abstraction.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q23" value="B">
-            <span class="choice-text"><b>B.</b> It depends on the Cayley-Hamilton theorem reducing every infinite series to a polynomial before the function is defined.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The result is another operator formed from identity, powers of that operator, scalar coefficients, and limits. Operator substitution is the same recipe at a higher level of abstraction.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q23" value="C">
-            <span class="choice-text"><b>C.</b> The result is another operator formed from identity, powers of that operator, scalar coefficients, and limits.</span>
-            <span class="feedback correct">Correct. Operator substitution is the same recipe at a higher level of abstraction.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q23" value="D">
-            <span class="choice-text"><b>D.</b> It relies on the determinant preserving addition, since \(\det(A+B)=\det(A)+\det(B)\) is the hidden scalar rule.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The result is another operator formed from identity, powers of that operator, scalar coefficients, and limits. Operator substitution is the same recipe at a higher level of abstraction.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q24">
-        <h3>24. Why is the identity operator needed when exponentiating an operator T?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q24" value="A">
-            <span class="choice-text"><b>A.</b> The constant term 1 must become the identity operator on the space where T acts.</span>
-            <span class="feedback correct">Correct. The neutral element changes with the algebra being used.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q24" value="B">
-            <span class="choice-text"><b>B.</b> It replaces the matrix by its determinant first, applies the scalar theorem, and then lifts the result back to a matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The constant term 1 must become the identity operator on the space where T acts. The neutral element changes with the algebra being used.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q24" value="C">
-            <span class="choice-text"><b>C.</b> It assumes matrix multiplication can be rearranged inside any power-series proof just like scalar multiplication.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The constant term 1 must become the identity operator on the space where T acts. The neutral element changes with the algebra being used.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q24" value="D">
-            <span class="choice-text"><b>D.</b> It requires the matrix entries to be small, not the operator or series behavior to be controlled.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The constant term 1 must become the identity operator on the space where T acts. The neutral element changes with the algebra being used.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q25">
-        <h3>25. What does “same formula, different object” mean?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q25" value="A">
-            <span class="choice-text"><b>A.</b> It works because trace and determinant contain all information needed by analytic matrix functions.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The written expression may look the same, but addition, multiplication, identity, and geometry are supplied by the new object. This is why formulas can be powerful and dangerous at the same time.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q25" value="B">
-            <span class="choice-text"><b>B.</b> It makes \(\exp(A+B)=\exp(A)\exp(B)\) true as soon as A and B have the same eigenvalues.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The written expression may look the same, but addition, multiplication, identity, and geometry are supplied by the new object. This is why formulas can be powerful and dangerous at the same time.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q25" value="C">
-            <span class="choice-text"><b>C.</b> The written expression may look the same, but addition, multiplication, identity, and geometry are supplied by the new object.</span>
-            <span class="feedback correct">Correct. This is why formulas can be powerful and dangerous at the same time.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q25" value="D">
-            <span class="choice-text"><b>D.</b> It says the theorem \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) determines \(\exp(A)\) up to a change of basis.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The written expression may look the same, but addition, multiplication, identity, and geometry are supplied by the new object. This is why formulas can be powerful and dangerous at the same time.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q26">
-        <h3>26. What is the correct meaning of \(\log(I+A)\) as a matrix series?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q26" value="A">
-            <span class="choice-text"><b>A.</b> It is the scalar \(\log(1+x)\) series evaluated with x replaced by A, when A is in a domain where the series converges.</span>
-            <span class="feedback correct">Correct. The formula is not automatically a global inverse to exp on all matrices.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q26" value="B">
-            <span class="choice-text"><b>B.</b> It says Ad and ad differ only by capitalization, not by finite-versus-infinitesimal meaning.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar \(\log(1+x)\) series evaluated with x replaced by A, when A is in a domain where the series converges. The formula is not automatically a global inverse to exp on all matrices.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q26" value="C">
-            <span class="choice-text"><b>C.</b> It says formulas transfer because every matrix is equivalent to a scalar under similarity.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar \(\log(1+x)\) series evaluated with x replaced by A, when A is in a domain where the series converges. The formula is not automatically a global inverse to exp on all matrices.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q26" value="D">
-            <span class="choice-text"><b>D.</b> It says the proof transfers if the final formula looks the same, even when intermediate steps fail.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It is the scalar \(\log(1+x)\) series evaluated with x replaced by A, when A is in a domain where the series converges. The formula is not automatically a global inverse to exp on all matrices.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q27">
-        <h3>27. Why does the matrix logarithm have branch and domain issues?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q27" value="A">
-            <span class="choice-text"><b>A.</b> It defines \(f(A)\) by first choosing any basis and applying f to each coordinate axis separately.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Because exp may fail to be globally one-to-one and some matrices may have multiple or no appropriate logarithms under chosen constraints. Substitution defines local recipes; it does not remove global ambiguity.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q27" value="B">
-            <span class="choice-text"><b>B.</b> It says an operator series returns a scalar because operators are measured by their trace.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Because exp may fail to be globally one-to-one and some matrices may have multiple or no appropriate logarithms under chosen constraints. Substitution defines local recipes; it does not remove global ambiguity.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q27" value="C">
-            <span class="choice-text"><b>C.</b> Because exp may fail to be globally one-to-one and some matrices may have multiple or no appropriate logarithms under chosen constraints.</span>
-            <span class="feedback correct">Correct. Substitution defines local recipes; it does not remove global ambiguity.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q27" value="D">
-            <span class="choice-text"><b>D.</b> It says substitution is valid whenever the output type can be printed as a square array.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Because exp may fail to be globally one-to-one and some matrices may have multiple or no appropriate logarithms under chosen constraints. Substitution defines local recipes; it does not remove global ambiguity.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q28">
-        <h3>28. What does a commutative subalgebra allow you to recover?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q28" value="A">
-            <span class="choice-text"><b>A.</b> Inside a set of mutually commuting objects, more scalar-like identities can hold safely.</span>
-            <span class="feedback correct">Correct. Commutativity is the missing condition behind many familiar scalar rules.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q28" value="B">
-            <span class="choice-text"><b>B.</b> It defines \(\sin(A)\) and \(\cos(A)\) by taking sine and cosine of the singular values only.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Inside a set of mutually commuting objects, more scalar-like identities can hold safely. Commutativity is the missing condition behind many familiar scalar rules.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q28" value="C">
-            <span class="choice-text"><b>C.</b> It treats the exponential map as a naming convention rather than a construction from a series or flow.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Inside a set of mutually commuting objects, more scalar-like identities can hold safely. Commutativity is the missing condition behind many familiar scalar rules.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q28" value="D">
-            <span class="choice-text"><b>D.</b> It treats equality of power series as equality of pictures rather than equality of operations in an algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Inside a set of mutually commuting objects, more scalar-like identities can hold safely. Commutativity is the missing condition behind many familiar scalar rules.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q29">
-        <h3>29. What does it mean to evaluate \(\sin(A)\) and \(\cos(A)\) for a matrix A?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q29" value="A">
-            <span class="choice-text"><b>A.</b> It assumes the same theorem holds for matrices only when all eigenvalues are real.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Use the sine and cosine power series with matrix powers and the identity matrix. These are operator-level functions, not entrywise functions unless explicitly stated.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q29" value="B">
-            <span class="choice-text"><b>B.</b> It says every theorem involving exp is really a theorem about positive real numbers.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Use the sine and cosine power series with matrix powers and the identity matrix. These are operator-level functions, not entrywise functions unless explicitly stated.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q29" value="C">
-            <span class="choice-text"><b>C.</b> Use the sine and cosine power series with matrix powers and the identity matrix.</span>
-            <span class="feedback correct">Correct. These are operator-level functions, not entrywise functions unless explicitly stated.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q29" value="D">
-            <span class="choice-text"><b>D.</b> It says scalar identities transfer whenever the notation is identical, even if multiplication in the new setting behaves differently.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Use the sine and cosine power series with matrix powers and the identity matrix. These are operator-level functions, not entrywise functions unless explicitly stated.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q30">
-        <h3>30. Why do the formulas for \(\sin(A)\) and \(\cos(A)\) contain alternating signs and factorials?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q30" value="A">
-            <span class="choice-text"><b>A.</b> Those scalar coefficients are part of the original power-series recipe and still multiply the matrix powers.</span>
-            <span class="feedback correct">Correct. Substitution changes the input object, not the scalar coefficients of the recipe.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q30" value="B">
-            <span class="choice-text"><b>B.</b> It evaluates a matrix function by applying the scalar function to the rank and nullity of the matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Those scalar coefficients are part of the original power-series recipe and still multiply the matrix powers. Substitution changes the input object, not the scalar coefficients of the recipe.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q30" value="C">
-            <span class="choice-text"><b>C.</b> It claims substitution removes the need to distinguish local statements from global statements.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Those scalar coefficients are part of the original power-series recipe and still multiply the matrix powers. Substitution changes the input object, not the scalar coefficients of the recipe.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q30" value="D">
-            <span class="choice-text"><b>D.</b> It means the eigenvalues determine the whole matrix function even when the matrix is not diagonalizable.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Those scalar coefficients are part of the original power-series recipe and still multiply the matrix powers. Substitution changes the input object, not the scalar coefficients of the recipe.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q31">
-        <h3>31. What does Euler’s formula \(\exp(iA)=\cos(A)+i\sin(A)\) require conceptually?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q31" value="A">
-            <span class="choice-text"><b>A.</b> It says scalar multiplication by coefficients changes the domain of the operator at every term.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It requires working in an algebra where complex scalars, matrix operations, and the relevant convergent series are valid. Named identities need their algebraic assumptions checked before transfer.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q31" value="B">
-            <span class="choice-text"><b>B.</b> It is justified because every finite-dimensional algebra is automatically commutative after choosing a basis.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It requires working in an algebra where complex scalars, matrix operations, and the relevant convergent series are valid. Named identities need their algebraic assumptions checked before transfer.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q31" value="C">
-            <span class="choice-text"><b>C.</b> It requires working in an algebra where complex scalars, matrix operations, and the relevant convergent series are valid.</span>
-            <span class="feedback correct">Correct. Named identities need their algebraic assumptions checked before transfer.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q31" value="D">
-            <span class="choice-text"><b>D.</b> It turns an operator into a number by measuring how much the operator stretches the largest vector.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It requires working in an algebra where complex scalars, matrix operations, and the relevant convergent series are valid. Named identities need their algebraic assumptions checked before transfer.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q32">
-        <h3>32. Why is “all scalar theorems are true for matrices” false?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q32" value="A">
-            <span class="choice-text"><b>A.</b> Some scalar theorems use commutativity, ordering, or global properties that matrices may not have.</span>
-            <span class="feedback correct">Correct. The substitution principle is conditional, not unlimited.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q32" value="B">
-            <span class="choice-text"><b>B.</b> It is valid only after diagonalizing the matrix, because the theorem is really a statement about eigenvalues rather than operations.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Some scalar theorems use commutativity, ordering, or global properties that matrices may not have. The substitution principle is conditional, not unlimited.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q32" value="C">
-            <span class="choice-text"><b>C.</b> It means the scalar graph of the function is reproduced geometrically by every matrix input.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Some scalar theorems use commutativity, ordering, or global properties that matrices may not have. The substitution principle is conditional, not unlimited.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q32" value="D">
-            <span class="choice-text"><b>D.</b> It interprets the Cauchy product theorem as permission to swap all matrix factors freely.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Some scalar theorems use commutativity, ordering, or global properties that matrices may not have. The substitution principle is conditional, not unlimited.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q33">
-        <h3>33. Let \(\Phi\) be a unital algebra homomorphism, meaning \(\Phi(I)=I\), \(\Phi(A+B)=\Phi(A)+\Phi(B)\), and \(\Phi(AB)=\Phi(A)\Phi(B)\). For a convergent power series \(f(z)=\sum a_k z^k\), which statement is the correct functional-calculus consequence?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q33" value="A">
-            <span class="choice-text"><b>A.</b> \(\Phi(f(A))=f(\Phi(A))\), provided the series converges and \(\Phi\) is compatible with the needed limits.</span>
-            <span class="feedback correct">Correct. The theorem is the homomorphism rule for polynomial or analytic functional calculus: preserving sums, products, units, and limits lets the same series commute with \(\Phi\).</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q33" value="B">
-            <span class="choice-text"><b>B.</b> \(f(\Phi(A))=\Phi(A)\) for every analytic \(f\), because homomorphisms preserve multiplication.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: \(\Phi(f(A))=f(\Phi(A))\), provided the series converges and \(\Phi\) is compatible with the needed limits. The theorem is the homomorphism rule for polynomial or analytic functional calculus: preserving sums, products, units, and limits lets the same series commute with \(\Phi\).</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q33" value="C">
-            <span class="choice-text"><b>C.</b> \(\Phi(f(A))=f(A)\), because applying \(f\) removes dependence on the target algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: \(\Phi(f(A))=f(\Phi(A))\), provided the series converges and \(\Phi\) is compatible with the needed limits. The theorem is the homomorphism rule for polynomial or analytic functional calculus: preserving sums, products, units, and limits lets the same series commute with \(\Phi\).</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q33" value="D">
-            <span class="choice-text"><b>D.</b> \(\Phi(f(A))=f(\Phi(A))\) only when \(A\) is diagonalizable, even for polynomial \(f\).</span>
-            <span class="feedback wrong">Not quite. The best answer is A: \(\Phi(f(A))=f(\Phi(A))\), provided the series converges and \(\Phi\) is compatible with the needed limits. The theorem is the homomorphism rule for polynomial or analytic functional calculus: preserving sums, products, units, and limits lets the same series commute with \(\Phi\).</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q34">
-        <h3>34. The spectral mapping theorem says that for a polynomial or holomorphic function \(f\), the spectrum of \(f(A)\) is \(f\) applied to the spectrum of \(A\): \(\sigma(f(A))=f(\sigma(A))\). What does this theorem not determine?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q34" value="A">
-            <span class="choice-text"><b>A.</b> It determines the eigenvalues of \(f(A)\), but not the full Jordan or nilpotent structure of \(f(A)\).</span>
-            <span class="feedback correct">Correct. Spectral mapping tracks eigenvalues. It does not, by itself, recover eigenvectors, Jordan blocks, singular values, or the whole operator.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q34" value="B">
-            <span class="choice-text"><b>B.</b> It determines the singular values of \(f(A)\), because singular values are just absolute values of eigenvalues.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It determines the eigenvalues of \(f(A)\), but not the full Jordan or nilpotent structure of \(f(A)\). Spectral mapping tracks eigenvalues. It does not, by itself, recover eigenvectors, Jordan blocks, singular values, or the whole operator.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q34" value="C">
-            <span class="choice-text"><b>C.</b> It determines whether \(f(A)\) is diagonalizable whenever the eigenvalues of \(A\) are known.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It determines the eigenvalues of \(f(A)\), but not the full Jordan or nilpotent structure of \(f(A)\). Spectral mapping tracks eigenvalues. It does not, by itself, recover eigenvectors, Jordan blocks, singular values, or the whole operator.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q34" value="D">
-            <span class="choice-text"><b>D.</b> It determines \(f(A)\) itself up to equality, because a matrix is determined by its spectrum.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It determines the eigenvalues of \(f(A)\), but not the full Jordan or nilpotent structure of \(f(A)\). Spectral mapping tracks eigenvalues. It does not, by itself, recover eigenvectors, Jordan blocks, singular values, or the whole operator.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q35">
-        <h3>35. What does it mean to ask whether an algebra is complete?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q35" value="A">
-            <span class="choice-text"><b>A.</b> It makes \(\exp(A+B)=\exp(A)\exp(B)\) true as soon as A and B have the same eigenvalues.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It asks whether convergent Cauchy sequences or infinite sums actually have limits inside the space. Completeness is an analytic condition needed for many infinite recipes.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q35" value="B">
-            <span class="choice-text"><b>B.</b> It says the theorem \(\det(\exp(A))=\exp(\operatorname{tr}(A))\) determines \(\exp(A)\) up to a change of basis.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It asks whether convergent Cauchy sequences or infinite sums actually have limits inside the space. Completeness is an analytic condition needed for many infinite recipes.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q35" value="C">
-            <span class="choice-text"><b>C.</b> It asks whether convergent Cauchy sequences or infinite sums actually have limits inside the space.</span>
-            <span class="feedback correct">Correct. Completeness is an analytic condition needed for many infinite recipes.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q35" value="D">
-            <span class="choice-text"><b>D.</b> It assumes commutator corrections disappear when matrices have equal traces.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It asks whether convergent Cauchy sequences or infinite sums actually have limits inside the space. Completeness is an analytic condition needed for many infinite recipes.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q36">
-        <h3>36. Why does a finite-dimensional matrix norm help define \(\exp(A)\)?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q36" value="A">
-            <span class="choice-text"><b>A.</b> It provides a way to prove the infinite matrix series converges.</span>
-            <span class="feedback correct">Correct. A norm turns the formal infinite sum into a controlled limiting process.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q36" value="B">
-            <span class="choice-text"><b>B.</b> It says formulas transfer because every matrix is equivalent to a scalar under similarity.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It provides a way to prove the infinite matrix series converges. A norm turns the formal infinite sum into a controlled limiting process.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q36" value="C">
-            <span class="choice-text"><b>C.</b> It says the proof transfers if the final formula looks the same, even when intermediate steps fail.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It provides a way to prove the infinite matrix series converges. A norm turns the formal infinite sum into a controlled limiting process.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q36" value="D">
-            <span class="choice-text"><b>D.</b> It assumes convergence of \(\exp(A)\) follows from the determinant being nonzero.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It provides a way to prove the infinite matrix series converges. A norm turns the formal infinite sum into a controlled limiting process.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q37">
-        <h3>37. What does “formal manipulation” mean in power-series arguments?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q37" value="A">
-            <span class="choice-text"><b>A.</b> It says an operator series returns a scalar because operators are measured by their trace.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means rearranging, multiplying, or regrouping series symbolically before verifying that these steps are allowed. The theorem tells when formal-looking work becomes legitimate.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q37" value="B">
-            <span class="choice-text"><b>B.</b> It says substitution is valid whenever the output type can be printed as a square array.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means rearranging, multiplying, or regrouping series symbolically before verifying that these steps are allowed. The theorem tells when formal-looking work becomes legitimate.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q37" value="C">
-            <span class="choice-text"><b>C.</b> It means rearranging, multiplying, or regrouping series symbolically before verifying that these steps are allowed.</span>
-            <span class="feedback correct">Correct. The theorem tells when formal-looking work becomes legitimate.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q37" value="D">
-            <span class="choice-text"><b>D.</b> It says the theorem is about memorizing which symbols are allowed to appear inside exp.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It means rearranging, multiplying, or regrouping series symbolically before verifying that these steps are allowed. The theorem tells when formal-looking work becomes legitimate.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q38">
-        <h3>38. Why is absolute convergence stronger than ordinary convergence for series manipulation?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q38" value="A">
-            <span class="choice-text"><b>A.</b> It allows safer rearrangement and regrouping of terms.</span>
-            <span class="feedback correct">Correct. Many identities for products of series rely on this additional control.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q38" value="B">
-            <span class="choice-text"><b>B.</b> It treats the exponential map as a naming convention rather than a construction from a series or flow.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It allows safer rearrangement and regrouping of terms. Many identities for products of series rely on this additional control.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q38" value="C">
-            <span class="choice-text"><b>C.</b> It treats equality of power series as equality of pictures rather than equality of operations in an algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It allows safer rearrangement and regrouping of terms. Many identities for products of series rely on this additional control.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q38" value="D">
-            <span class="choice-text"><b>D.</b> It works only for symmetric matrices, since only symmetric matrices have enough geometry for a power series.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It allows safer rearrangement and regrouping of terms. Many identities for products of series rely on this additional control.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q39">
-        <h3>39. What is the Cauchy product theorem for series, in plain language?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q39" value="A">
-            <span class="choice-text"><b>A.</b> It says every theorem involving exp is really a theorem about positive real numbers.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It explains when the product of two infinite series equals the series formed by collecting all pairwise products of terms. This theorem underlies multiplication of power series.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q39" value="B">
-            <span class="choice-text"><b>B.</b> It says scalar identities transfer whenever the notation is identical, even if multiplication in the new setting behaves differently.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It explains when the product of two infinite series equals the series formed by collecting all pairwise products of terms. This theorem underlies multiplication of power series.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q39" value="C">
-            <span class="choice-text"><b>C.</b> It explains when the product of two infinite series equals the series formed by collecting all pairwise products of terms.</span>
-            <span class="feedback correct">Correct. This theorem underlies multiplication of power series.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q39" value="D">
-            <span class="choice-text"><b>D.</b> It requires A and every derivative of A to commute with all matrices of the same size.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: It explains when the product of two infinite series equals the series formed by collecting all pairwise products of terms. This theorem underlies multiplication of power series.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q40">
-        <h3>40. Why is the Cauchy product theorem delicate for matrices?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q40" value="A">
-            <span class="choice-text"><b>A.</b> The order of products matters, so terms must be collected without assuming AB=BA.</span>
-            <span class="feedback correct">Correct. Noncommutativity changes how product expansions are handled.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q40" value="B">
-            <span class="choice-text"><b>B.</b> It claims substitution removes the need to distinguish local statements from global statements.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The order of products matters, so terms must be collected without assuming AB=BA. Noncommutativity changes how product expansions are handled.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q40" value="C">
-            <span class="choice-text"><b>C.</b> It means the eigenvalues determine the whole matrix function even when the matrix is not diagonalizable.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The order of products matters, so terms must be collected without assuming AB=BA. Noncommutativity changes how product expansions are handled.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q40" value="D">
-            <span class="choice-text"><b>D.</b> It treats nilpotent matrices as zero matrices, because their high powers eventually disappear.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The order of products matters, so terms must be collected without assuming AB=BA. Noncommutativity changes how product expansions are handled.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q41">
-        <h3>41. What does it mean for \(\exp(A)\) to be invertible with inverse \(\exp(-A)\)?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q41" value="A">
-            <span class="choice-text"><b>A.</b> It is justified because every finite-dimensional algebra is automatically commutative after choosing a basis.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The matrix exponential always has a two-sided inverse given by the exponential of the negative matrix. This follows from the series/product identity for A and -A, which commute because they are scalar multiples of the same matrix.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q41" value="B">
-            <span class="choice-text"><b>B.</b> It turns an operator into a number by measuring how much the operator stretches the largest vector.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The matrix exponential always has a two-sided inverse given by the exponential of the negative matrix. This follows from the series/product identity for A and -A, which commute because they are scalar multiples of the same matrix.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q41" value="C">
-            <span class="choice-text"><b>C.</b> The matrix exponential always has a two-sided inverse given by the exponential of the negative matrix.</span>
-            <span class="feedback correct">Correct. This follows from the series/product identity for A and -A, which commute because they are scalar multiples of the same matrix.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q41" value="D">
-            <span class="choice-text"><b>D.</b> It says a matrix polynomial is meaningful only when the matrix is invertible.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The matrix exponential always has a two-sided inverse given by the exponential of the negative matrix. This follows from the series/product identity for A and -A, which commute because they are scalar multiples of the same matrix.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q42">
-        <h3>42. Why do A and -A commute?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q42" value="A">
-            <span class="choice-text"><b>A.</b> They are scalar multiples of the same matrix, so A(-A)=(-A)A.</span>
-            <span class="feedback correct">Correct. This is a specific commutation fact, not a claim that all matrices commute.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q42" value="B">
-            <span class="choice-text"><b>B.</b> It means the scalar graph of the function is reproduced geometrically by every matrix input.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: They are scalar multiples of the same matrix, so A(-A)=(-A)A. This is a specific commutation fact, not a claim that all matrices commute.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q42" value="C">
-            <span class="choice-text"><b>C.</b> It interprets the Cauchy product theorem as permission to swap all matrix factors freely.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: They are scalar multiples of the same matrix, so A(-A)=(-A)A. This is a specific commutation fact, not a claim that all matrices commute.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q42" value="D">
-            <span class="choice-text"><b>D.</b> It treats convergence in each entry as enough to justify all matrix products and rearrangements.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: They are scalar multiples of the same matrix, so A(-A)=(-A)A. This is a specific commutation fact, not a claim that all matrices commute.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q43">
-        <h3>43. What does “recipe survives” mean in this setting?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q43" value="A">
-            <span class="choice-text"><b>A.</b> It relies on the determinant preserving addition, since \(\det(A+B)=\det(A)+\det(B)\) is the hidden scalar rule.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The operations used by the formula still exist and obey enough rules for the formula to make sense. It does not mean the visual graph or every scalar consequence survives.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q43" value="B">
-            <span class="choice-text"><b>B.</b> It means the bracket \([X,Y]\) is a substitute for ordinary multiplication rather than a measure of order failure.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The operations used by the formula still exist and obey enough rules for the formula to make sense. It does not mean the visual graph or every scalar consequence survives.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q43" value="C">
-            <span class="choice-text"><b>C.</b> The operations used by the formula still exist and obey enough rules for the formula to make sense.</span>
-            <span class="feedback correct">Correct. It does not mean the visual graph or every scalar consequence survives.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q43" value="D">
-            <span class="choice-text"><b>D.</b> It turns composition powers into entrywise powers whenever the matrix is written in coordinates.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The operations used by the formula still exist and obey enough rules for the formula to make sense. It does not mean the visual graph or every scalar consequence survives.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q44">
-        <h3>44. The Cayley-Hamilton theorem says a square matrix \(A\) satisfies its own characteristic polynomial: \(p_A(A)=0\). What is the precise implication for computing a power-series function \(f(A)\) in finite dimensions?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q44" value="A">
-            <span class="choice-text"><b>A.</b> After \(f(A)\) is defined, powers of \(A\) can often be reduced modulo the minimal polynomial, so \(f(A)\) can be represented by a polynomial of degree below that minimal polynomial.</span>
-            <span class="feedback correct">Correct. Cayley-Hamilton is mainly a reduction and computation theorem here. Existence of \(f(A)\) still comes from a valid series, polynomial, or holomorphic functional calculus.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q44" value="B">
-            <span class="choice-text"><b>B.</b> Cayley-Hamilton is what makes \(f(A)\) exist; without it, the infinite series definition has no meaning.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: After \(f(A)\) is defined, powers of \(A\) can often be reduced modulo the minimal polynomial, so \(f(A)\) can be represented by a polynomial of degree below that minimal polynomial. Cayley-Hamilton is mainly a reduction and computation theorem here. Existence of \(f(A)\) still comes from a valid series, polynomial, or holomorphic functional calculus.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q44" value="C">
-            <span class="choice-text"><b>C.</b> Cayley-Hamilton implies every matrix power series terminates after degree \(n-1\).</span>
-            <span class="feedback wrong">Not quite. The best answer is A: After \(f(A)\) is defined, powers of \(A\) can often be reduced modulo the minimal polynomial, so \(f(A)\) can be represented by a polynomial of degree below that minimal polynomial. Cayley-Hamilton is mainly a reduction and computation theorem here. Existence of \(f(A)\) still comes from a valid series, polynomial, or holomorphic functional calculus.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q44" value="D">
-            <span class="choice-text"><b>D.</b> Cayley-Hamilton implies \(f(A)\) depends only on \(\det(A)\) and \(\operatorname{tr}(A)\).</span>
-            <span class="feedback wrong">Not quite. The best answer is A: After \(f(A)\) is defined, powers of \(A\) can often be reduced modulo the minimal polynomial, so \(f(A)\) can be represented by a polynomial of degree below that minimal polynomial. Cayley-Hamilton is mainly a reduction and computation theorem here. Existence of \(f(A)\) still comes from a valid series, polynomial, or holomorphic functional calculus.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q45">
-        <h3>45. The theorem \(\exp(A+B)=\exp(A)\exp(B)\) is valid when \(AB=BA\). If \(AB\ne BA\), what is the technically correct replacement near zero?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q45" value="A">
-            <span class="choice-text"><b>A.</b> The Baker-Campbell-Hausdorff formula: \(\log(\exp(A)\exp(B))=A+B+\frac12[A,B]+\cdots\), with higher nested commutators.</span>
-            <span class="feedback correct">Correct. Noncommutativity is measured by commutators. BCH is the local theorem that replaces the scalar exponential product law.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q45" value="B">
-            <span class="choice-text"><b>B.</b> The determinant correction: \(\exp(A+B)=\det(\exp(A)\exp(B))I\).</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The Baker-Campbell-Hausdorff formula: \(\log(\exp(A)\exp(B))=A+B+\frac12[A,B]+\cdots\), with higher nested commutators. Noncommutativity is measured by commutators. BCH is the local theorem that replaces the scalar exponential product law.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q45" value="C">
-            <span class="choice-text"><b>C.</b> The trace correction: \(\exp(A+B)=\exp(A)\exp(B)\exp(-\operatorname{tr}([A,B])I)\).</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The Baker-Campbell-Hausdorff formula: \(\log(\exp(A)\exp(B))=A+B+\frac12[A,B]+\cdots\), with higher nested commutators. Noncommutativity is measured by commutators. BCH is the local theorem that replaces the scalar exponential product law.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q45" value="D">
-            <span class="choice-text"><b>D.</b> The SVD correction: replace \(A\) and \(B\) by their singular values before exponentiating.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: The Baker-Campbell-Hausdorff formula: \(\log(\exp(A)\exp(B))=A+B+\frac12[A,B]+\cdots\), with higher nested commutators. Noncommutativity is measured by commutators. BCH is the local theorem that replaces the scalar exponential product law.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q46">
-        <h3>46. What does it mean for \(\exp(A)\) to solve \(X(t)=\exp(tA)\)?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q46" value="A">
-            <span class="choice-text"><b>A.</b> It gives a one-parameter family of transformations generated by A.</span>
-            <span class="feedback correct">Correct. The series is not just symbolic; it describes a flow.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q46" value="B">
-            <span class="choice-text"><b>B.</b> It says the proof transfers if the final formula looks the same, even when intermediate steps fail.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It gives a one-parameter family of transformations generated by A. The series is not just symbolic; it describes a flow.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q46" value="C">
-            <span class="choice-text"><b>C.</b> It assumes convergence of \(\exp(A)\) follows from the determinant being nonzero.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It gives a one-parameter family of transformations generated by A. The series is not just symbolic; it describes a flow.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q46" value="D">
-            <span class="choice-text"><b>D.</b> It treats a matrix function as applying the scalar function independently to every entry of the matrix.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: It gives a one-parameter family of transformations generated by A. The series is not just symbolic; it describes a flow.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q47">
-        <h3>47. Why should a reader distinguish notation from meaning?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q47" value="A">
-            <span class="choice-text"><b>A.</b> It says substitution is valid whenever the output type can be printed as a square array.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The same notation can represent scalar multiplication, matrix composition, or operator composition depending on context. Clear meaning comes from the algebra behind the symbols.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q47" value="B">
-            <span class="choice-text"><b>B.</b> It says the theorem is about memorizing which symbols are allowed to appear inside exp.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The same notation can represent scalar multiplication, matrix composition, or operator composition depending on context. Clear meaning comes from the algebra behind the symbols.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q47" value="C">
-            <span class="choice-text"><b>C.</b> The same notation can represent scalar multiplication, matrix composition, or operator composition depending on context.</span>
-            <span class="feedback correct">Correct. Clear meaning comes from the algebra behind the symbols.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q47" value="D">
-            <span class="choice-text"><b>D.</b> It says the identity matrix appears because \(\exp(A)\) must always preserve every vector length.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: The same notation can represent scalar multiplication, matrix composition, or operator composition depending on context. Clear meaning comes from the algebra behind the symbols.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q48">
-        <h3>48. What is a correct checklist before substituting into a theorem?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q48" value="A">
-            <span class="choice-text"><b>A.</b> Check the operations used, the identities assumed, convergence or domain conditions, and whether commutativity is required.</span>
-            <span class="feedback correct">Correct. This checklist prevents most invalid transfers.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q48" value="B">
-            <span class="choice-text"><b>B.</b> It treats equality of power series as equality of pictures rather than equality of operations in an algebra.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Check the operations used, the identities assumed, convergence or domain conditions, and whether commutativity is required. This checklist prevents most invalid transfers.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q48" value="C">
-            <span class="choice-text"><b>C.</b> It works only for symmetric matrices, since only symmetric matrices have enough geometry for a power series.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Check the operations used, the identities assumed, convergence or domain conditions, and whether commutativity is required. This checklist prevents most invalid transfers.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q48" value="D">
-            <span class="choice-text"><b>D.</b> It means \(\operatorname{ad}_X\) is exponentiated by exponentiating X first and then taking ordinary powers of the entries.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Check the operations used, the identities assumed, convergence or domain conditions, and whether commutativity is required. This checklist prevents most invalid transfers.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q49">
-        <h3>49. What does the substitution principle ultimately train you to do?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q49" value="A">
-            <span class="choice-text"><b>A.</b> It says scalar identities transfer whenever the notation is identical, even if multiplication in the new setting behaves differently.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Move formulas between numbers, matrices, and operators while explicitly tracking the structure that makes the move valid. That is the conceptual habit connecting all three quiz sections.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q49" value="B">
-            <span class="choice-text"><b>B.</b> It requires A and every derivative of A to commute with all matrices of the same size.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Move formulas between numbers, matrices, and operators while explicitly tracking the structure that makes the move valid. That is the conceptual habit connecting all three quiz sections.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q49" value="C">
-            <span class="choice-text"><b>C.</b> Move formulas between numbers, matrices, and operators while explicitly tracking the structure that makes the move valid.</span>
-            <span class="feedback correct">Correct. That is the conceptual habit connecting all three quiz sections.</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q49" value="D">
-            <span class="choice-text"><b>D.</b> It says absolute convergence matters only for numerical approximation, not for proving identities.</span>
-            <span class="feedback wrong">Not quite. The best answer is C: Move formulas between numbers, matrices, and operators while explicitly tracking the structure that makes the move valid. That is the conceptual habit connecting all three quiz sections.</span>
-          </label>
-        </fieldset>
-      </article>
-      <article class="question" id="substitution-q50">
-        <h3>50. When a theorem uses a named object such as \(\operatorname{ad}_X\), what must you identify first?</h3>
-        <fieldset>
-          <label class="choice">
-            <input type="radio" name="substitution-q50" value="A">
-            <span class="choice-text"><b>A.</b> Identify the space it acts on, the rule defining it, and the operation used in that rule.</span>
-            <span class="feedback correct">Correct. For \(\operatorname{ad}_X\), the space is the Lie algebra and the rule is Y maps to \([X,Y]\).</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q50" value="B">
-            <span class="choice-text"><b>B.</b> It means the eigenvalues determine the whole matrix function even when the matrix is not diagonalizable.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule. For \(\operatorname{ad}_X\), the space is the Lie algebra and the rule is Y maps to \([X,Y]\).</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q50" value="C">
-            <span class="choice-text"><b>C.</b> It treats nilpotent matrices as zero matrices, because their high powers eventually disappear.</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule. For \(\operatorname{ad}_X\), the space is the Lie algebra and the rule is Y maps to \([X,Y]\).</span>
-          </label>
-          <label class="choice">
-            <input type="radio" name="substitution-q50" value="D">
-            <span class="choice-text"><b>D.</b> It claims every analytic identity transfers to matrices even when its proof uses ordering such as \(x<y\).</span>
-            <span class="feedback wrong">Not quite. The best answer is A: Identify the space it acts on, the rule defining it, and the operation used in that rule. For \(\operatorname{ad}_X\), the space is the Lie algebra and the rule is Y maps to \([X,Y]\).</span>
-          </label>
-        </fieldset>
-      </article>
-    </div>
+    <div class="question-list" id="substitution-questions"></div>
   </section>
 </main>
 <script>
+  const raw = String.raw;
+  const questions = [
+    {
+      q: raw`The theorem called the Substitution Principle says that if \(F(x)=\sum a_nx^n\) and \(G(x)=\sum b_nx^n\) are power series, then under the right algebraic and convergence hypotheses the same formal recipes may be evaluated at a matrix or operator \(A\). What is the main point?`,
+      choices: [
+        raw`The symbols \(+\), multiplication, scalar multiplication, identity, and limits must have compatible meanings in the new algebra before the formula is transported.`,
+        raw`Every scalar identity involving \(<\), positivity, or ordering automatically remains true for matrices because matrices have entries.`,
+        raw`A matrix may be substituted into a scalar formula only when it is diagonal with distinct real eigenvalues.`,
+        raw`The substitution is valid because finite-dimensional objects make all infinite series terminate after finitely many powers.`
+      ],
+      correct: 0,
+      why: raw`Substitution is structural, not typographical. The recipe must use operations available in the target algebra, and the relevant series must converge there.`
+    },
+    {
+      q: raw`For a matrix \(A\), what does \(e^A=I+A+\frac{A^2}{2!}+\frac{A^3}{3!}+\cdots\) mean?`,
+      choices: [
+        raw`It is the limit, in a matrix norm, of partial sums made from repeated matrix composition powers of \(A\).`,
+        raw`It is the scalar exponential applied separately to each entry of \(A\), regardless of basis.`,
+        raw`It is defined only when \(A\) is already an exponential of another matrix.`,
+        raw`It is a symbolic abbreviation for \(I+A\); higher powers are ignored unless \(A\) is diagonal.`
+      ],
+      correct: 0,
+      why: raw`Matrix powers mean repeated multiplication/composition. The infinite sum is meaningful because the exponential series converges for every finite matrix.`
+    },
+    {
+      q: raw`Why is convergence part of the Substitution Principle rather than a technical afterthought?`,
+      choices: [
+        raw`Without convergence, the formal expression may not define an actual matrix or operator, even if every finite partial sum is meaningful.`,
+        raw`Convergence is needed only to compute decimal approximations, not to prove identities between matrix functions.`,
+        raw`Convergence can be replaced by checking whether the determinant of the first partial sum is nonzero.`,
+        raw`Convergence is automatic for every power series once the input is a square matrix.`
+      ],
+      correct: 0,
+      why: raw`A power series identity becomes an identity of actual outputs only after both sides converge in the target algebra.`
+    },
+    {
+      q: raw`The scalar identity \(e^{x+y}=e^xe^y\) is true for numbers. What is the correct matrix version?`,
+      choices: [
+        raw`\(e^{A+B}=e^Ae^B\) is guaranteed when \(A\) and \(B\) commute, i.e. \(AB=BA\).`,
+        raw`\(e^{A+B}=e^Ae^B\) is guaranteed whenever \(A\) and \(B\) have the same trace.`,
+        raw`\(e^{A+B}=e^Ae^B\) is guaranteed whenever \(A\) and \(B\) are invertible.`,
+        raw`\(e^{A+B}=e^Ae^B\) is guaranteed for all matrices because addition is commutative.`
+      ],
+      correct: 0,
+      why: raw`The scalar proof rearranges factors freely. For matrices, that rearrangement is legitimate only under a commutation hypothesis.`
+    },
+    {
+      q: raw`What is wrong with using a scalar identity whose proof depends on order, such as positivity or \(x<y\), as if it automatically applies to matrices?`,
+      choices: [
+        raw`General matrices do not carry a total order compatible with multiplication in the way real numbers do.`,
+        raw`Matrices cannot be added, so inequalities are the only possible replacement.`,
+        raw`Order arguments transfer exactly when the matrix has complex entries.`,
+        raw`The problem disappears if one writes the inequality entry by entry in any basis.`
+      ],
+      correct: 0,
+      why: raw`The Substitution Principle transports algebraic power-series operations, not every scalar property that happens to coexist with those operations on \(\mathbb R\).`
+    },
+    {
+      q: raw`For a nilpotent matrix \(N\) with \(N^3=0\), what is the clean reason \(e^N=I+N+\frac12N^2\)?`,
+      choices: [
+        raw`All powers \(N^k\) with \(k\ge3\) vanish, so the exponential series terminates exactly.`,
+        raw`Nilpotent matrices are treated as the zero matrix inside every analytic formula.`,
+        raw`The determinant of \(N\) is zero, so every term after \(I\) disappears.`,
+        raw`The eigenvalues of \(N\) are zero, so \(e^N\) must equal the identity matrix.`
+      ],
+      correct: 0,
+      why: raw`Nilpotent does not mean zero. It means sufficiently high powers vanish; lower powers can still produce shear-like effects.`
+    },
+    {
+      q: raw`The formula \((1-x)^{-1}=1+x+x^2+\cdots\) becomes \((I-A)^{-1}=I+A+A^2+\cdots\) only under what kind of condition?`,
+      choices: [
+        raw`A convergence condition such as \(\|A\|<1\), or more generally spectral radius less than \(1\).`,
+        raw`A determinant condition \(\det(A)=1\), because determinant one makes geometric series converge.`,
+        raw`A symmetry condition \(A^T=A\), because only symmetric matrices can be inverted by a series.`,
+        raw`No condition; every matrix geometric series converges because the powers eventually repeat.`
+      ],
+      correct: 0,
+      why: raw`The Neumann series requires powers of \(A\) to decay. Invertibility of \(I-A\) alone is not the same as convergence of the displayed series.`
+    },
+    {
+      q: raw`What does \(F(A)G(A)\) mean when \(F\) and \(G\) are matrix-valued power-series outputs?`,
+      choices: [
+        raw`It means matrix multiplication/composition of the two resulting matrices, not pointwise multiplication of entries unless explicitly stated.`,
+        raw`It means multiplying the eigenvalues of \(A\) and ignoring eigenvectors.`,
+        raw`It means scalar multiplication by \(\det(F(A))\det(G(A))\).`,
+        raw`It means concatenating the two power series without multiplying any terms.`
+      ],
+      correct: 0,
+      why: raw`The target algebra decides what multiplication means. For matrices and linear operators, multiplication is composition.`
+    },
+    {
+      q: raw`If \(F(x)G(x)=H(x)\) as power series, when is it legitimate to conclude \(F(A)G(A)=H(A)\)?`,
+      choices: [
+        raw`When the substituted series converge and the product operation in the target algebra matches the multiplication used in the series identity.`,
+        raw`Whenever \(A\) has at least one real eigenvalue.`,
+        raw`Whenever the first two coefficients of \(F\), \(G\), and \(H\) agree.`,
+        raw`Only when \(A\) is a scalar multiple of the identity, because all other substitutions are undefined.`
+      ],
+      correct: 0,
+      why: raw`Power-series identities transport through compatible algebra operations and convergence, not through superficial similarity of notation.`
+    },
+    {
+      q: raw`For matrix functions defined by power series, why is \(F(A)+G(A)=(F+G)(A)\) usually safer than \(F(A)G(B)=(FG)(A+B)\)?`,
+      choices: [
+        raw`Addition of series is coefficientwise at the same input, while the second expression changes both multiplication and the input structure.`,
+        raw`Matrix addition is non-associative, so only the first expression has a conventional meaning.`,
+        raw`Products of matrix functions are forbidden unless every matrix is diagonal.`,
+        raw`The second expression is always true but only after taking determinants.`
+      ],
+      correct: 0,
+      why: raw`The substitution principle is precise about which recipe is being transported. Changing the input from \(A\) and \(B\) to \(A+B\) is a different claim.`
+    },
+    {
+      q: raw`What does \(F(G(A))\) require before it can be interpreted by the Substitution Principle?`,
+      choices: [
+        raw`The output \(G(A)\) must lie in a domain where the series or formula defining \(F\) is meaningful and convergent.`,
+        raw`The entries of \(G(A)\) must all be positive real numbers.`,
+        raw`The determinant of \(G(A)\) must equal the determinant of \(A\).`,
+        raw`The formula is always meaningless, because functions cannot be composed after matrix substitution.`
+      ],
+      correct: 0,
+      why: raw`Composition is allowed only when the output of the inner recipe is a valid input for the outer recipe.`
+    },
+    {
+      q: raw`Why does \(e^{tD}f(x)=f(x+t)\) for the derivative operator \(D=\frac{d}{dx}\) illustrate substitution?`,
+      choices: [
+        raw`The exponential series is evaluated at an operator, and its powers \(D^n\) assemble the Taylor translation formula.`,
+        raw`The derivative operator is secretly a number, so no new structure is involved.`,
+        raw`The formula works because every function is a polynomial of bounded degree.`,
+        raw`The exponential sign means shifting the graph by definition, not by the series recipe.`
+      ],
+      correct: 0,
+      why: raw`Here the same exponential recipe accepts an operator input. The powers of \(D\) become repeated differentiation.`
+    },
+    {
+      q: raw`In the translation identity \(e^{tD}f(x)=f(x+t)\), what hypothesis is being quietly used?`,
+      choices: [
+        raw`The Taylor series for \(f\) around \(x\) must represent the shifted value \(f(x+t)\) in the region considered.`,
+        raw`Every differentiable function has a globally convergent Taylor series.`,
+        raw`The derivative operator \(D\) must be nilpotent on all smooth functions.`,
+        raw`The variable \(t\) must be an integer so the shift can be repeated finitely many times.`
+      ],
+      correct: 0,
+      why: raw`The operator formula is powerful but still depends on analytic or domain conditions. Smoothness alone does not guarantee equality with the Taylor series.`
+    },
+    {
+      q: raw`What is the matrix meaning of \(p(A)\) for a polynomial \(p(x)=c_0+c_1x+c_2x^2\)?`,
+      choices: [
+        raw`\(p(A)=c_0I+c_1A+c_2A^2\), using the identity matrix for the constant term.`,
+        raw`\(p(A)\) is obtained by replacing each entry \(a_{ij}\) with \(p(a_{ij})\).`,
+        raw`\(p(A)=c_0+c_1A+c_2A^2\), where \(c_0\) is added as a scalar to every entry.`,
+        raw`\(p(A)\) is defined only when \(A\) has three distinct eigenvalues.`
+      ],
+      correct: 0,
+      why: raw`The constant scalar becomes \(c_0I\), because the identity is the multiplicative unit in the matrix algebra.`
+    },
+    {
+      q: raw`Why is entrywise substitution usually the wrong interpretation of a matrix function \(F(A)\)?`,
+      choices: [
+        raw`Matrix powers in the series mean composition powers \(A^n\), which mix coordinates and depend on the linear transformation, not on isolated entries.`,
+        raw`Entrywise substitution is wrong only because it is slower to compute.`,
+        raw`Entrywise substitution is correct for every basis-independent construction.`,
+        raw`Matrix functions are never allowed to use powers of \(A\).`
+      ],
+      correct: 0,
+      why: raw`A matrix function built from a power series is about the operator \(A\), not a table of unrelated scalar entries.`
+    },
+    {
+      q: raw`If \(A=PDP^{-1}\) and \(F\) is defined by a convergent power series, what is \(F(A)\)?`,
+      choices: [
+        raw`\(F(A)=PF(D)P^{-1}\), because powers satisfy \(A^n=PD^nP^{-1}\).`,
+        raw`\(F(A)=F(P)F(D)F(P^{-1})\), because functions distribute over every product.`,
+        raw`\(F(A)=F(P+D+P^{-1})\), because conjugation becomes addition inside a function.`,
+        raw`\(F(A)=D\), because diagonalization erases the original basis information.`
+      ],
+      correct: 0,
+      why: raw`Power-series substitution respects similarity: every power of \(A\) conjugates the corresponding power of \(D\).`
+    },
+    {
+      q: raw`If \(A\) is not diagonalizable, why can \(F(A)\) still be meaningful?`,
+      choices: [
+        raw`The power series uses powers of \(A\) directly, so diagonalization is helpful but not required for the definition.`,
+        raw`Every non-diagonalizable matrix is nilpotent, so the series always terminates.`,
+        raw`Only eigenvalues matter for matrix functions, so Jordan structure is irrelevant.`,
+        raw`Non-diagonalizable matrices cannot be substituted into any analytic formula.`
+      ],
+      correct: 0,
+      why: raw`Power-series definitions do not require an eigenbasis. Jordan blocks affect the value, but they do not prevent the substitution.`
+    },
+    {
+      q: raw`For a Jordan block \(J=\lambda I+N\) with nilpotent \(N\), why does \(F(J)\) involve derivatives of \(F\) at \(\lambda\)?`,
+      choices: [
+        raw`Because substituting \(\lambda I+N\) expands the scalar function around \(\lambda\), and powers of \(N\) encode the nilpotent directions.`,
+        raw`Because derivatives replace eigenvectors whenever the determinant is zero.`,
+        raw`Because every Jordan block is diagonal after applying any analytic function.`,
+        raw`Because \(N\) is ignored and only the scalar value \(F(\lambda)\) remains.`
+      ],
+      correct: 0,
+      why: raw`The nilpotent part makes the Taylor expansion finite in powers of \(N\): \(F(\lambda I+N)=\sum F^{(k)}(\lambda)N^k/k!\).`
+    },
+    {
+      q: raw`What is the correct interpretation of \(\log(I+A)=A-\frac12A^2+\frac13A^3-\cdots\)?`,
+      choices: [
+        raw`It is a matrix logarithm series valid under a convergence condition such as \(\|A\|<1\), not a universal formula for every invertible matrix.`,
+        raw`It is valid for every matrix \(A\) because \(I+A\) is always invertible.`,
+        raw`It means the logarithm is taken entry by entry and then recombined into a matrix.`,
+        raw`It is valid only for diagonal matrices whose diagonal entries are all integers.`
+      ],
+      correct: 0,
+      why: raw`Unlike the exponential series, the logarithm series has a limited domain of convergence.`
+    },
+    {
+      q: raw`Why does the exponential series converge for every finite matrix \(A\)?`,
+      choices: [
+        raw`The factorial denominators dominate the growth of \(\|A^n\|\), giving absolute convergence in any matrix norm.`,
+        raw`Every finite matrix has some power equal to zero.`,
+        raw`Every finite matrix has entries between \(-1\) and \(1\) after choosing a basis.`,
+        raw`The Cayley-Hamilton theorem says all matrix power series stop after degree one.`
+      ],
+      correct: 0,
+      why: raw`A submultiplicative norm gives \(\|A^n\|\le\|A\|^n\), and \(\sum\|A\|^n/n!\) converges.`
+    },
+    {
+      q: raw`What does \(\operatorname{Ad}_g(Y)\) mean in matrix groups?`,
+      choices: [
+        raw`It is the infinitesimal generator obtained by conjugating the subgroup \(\exp(tY)\): for matrices \(\operatorname{Ad}_g(Y)=gYg^{-1}\).`,
+        raw`It is the scalar product of \(g\) and \(Y\) after flattening both matrices into vectors.`,
+        raw`It is the determinant of \(g\) times the trace of \(Y\).`,
+        raw`It is obtained by applying \(g\) to each entry of \(Y\) as if \(g\) were a scalar function.`
+      ],
+      correct: 0,
+      why: raw`Adjoint action is conjugation transported back to the Lie algebra. It is not entrywise application.`
+    },
+    {
+      q: raw`What does \(\operatorname{ad}_X(Y)=[X,Y]\) mean?`,
+      choices: [
+        raw`For fixed \(X\), \(\operatorname{ad}_X\) is the linear operator on the Lie algebra sending \(Y\) to the commutator \(XY-YX\).`,
+        raw`It is the determinant of \(X\) multiplied by the vector \(Y\).`,
+        raw`It is a group element formed by multiplying \(\exp(X)\) and \(\exp(Y)\).`,
+        raw`It is the symmetric product \(XY+YX\), which forgets order.`
+      ],
+      correct: 0,
+      why: raw`The small adjoint operator is itself a valid input for power-series recipes such as \(e^{\operatorname{ad}_X}\).`
+    },
+    {
+      q: raw`What is the precise meaning of \(e^{\operatorname{ad}_X}\)?`,
+      choices: [
+        raw`It is the exponential series applied to the linear operator \(\operatorname{ad}_X\): \(I+\operatorname{ad}_X+\frac{(\operatorname{ad}_X)^2}{2!}+\cdots\).`,
+        raw`It is obtained by exponentiating every entry of the matrix \([X,Y]\).`,
+        raw`It means \(e^X\) multiplied by \(\operatorname{ad}\) as a scalar coefficient.`,
+        raw`It is undefined because only numbers, never operators, can be substituted into a power series.`
+      ],
+      correct: 0,
+      why: raw`This is a direct use of substitution: the input object is now an operator acting on the Lie algebra.`
+    },
+    {
+      q: raw`The identity \(e^{\operatorname{ad}_X}=\operatorname{Ad}_{e^X}\) compares which two things?`,
+      choices: [
+        raw`A power series in the bracket operator on the Lie algebra and the finite conjugation action by the group element \(e^X\).`,
+        raw`The entrywise exponential of \([X,Y]\) and the determinant of \(e^X\).`,
+        raw`The scalar number \(e^{\operatorname{tr}X}\) and the matrix \(e^X\).`,
+        raw`Two unrelated notations that are equal only when \(X=0\).`
+      ],
+      correct: 0,
+      why: raw`The formula says infinitesimal bracketing exponentiates to finite conjugation. It is one of the central substitution-principle payoffs.`
+    },
+    {
+      q: raw`Why is \([X,Y]=XY-YX\) the right object for detecting non-commutation?`,
+      choices: [
+        raw`It vanishes exactly when the two ordered products \(XY\) and \(YX\) agree, and it changes sign when the order is reversed.`,
+        raw`It is always positive, so it behaves like a distance between \(X\) and \(Y\).`,
+        raw`It equals \(XY+YX\), the average of the two possible orders.`,
+        raw`It depends only on the eigenvalues of \(X\) and \(Y\), not on their action.`
+      ],
+      correct: 0,
+      why: raw`The commutator is the algebraic record of order-dependence.`
+    },
+    {
+      q: raw`When substituting matrices into scalar identities, why must commutativity be tracked explicitly?`,
+      choices: [
+        raw`Many scalar manipulations silently rearrange factors, which is legal for numbers but not for arbitrary matrices.`,
+        raw`Matrices are never associative under multiplication.`,
+        raw`Commutativity is needed only when calculating determinants, not matrix functions.`,
+        raw`Every identity becomes false as soon as matrices fail to commute, including addition identities.`
+      ],
+      correct: 0,
+      why: raw`The danger is not matrices themselves; it is importing a proof step that used commutativity without noticing it.`
+    },
+    {
+      q: raw`What is a good test before accepting a substituted formula?`,
+      choices: [
+        raw`Ask which operations the formula uses, whether those operations exist in the target algebra, whether the series converges, and whether commutativity or order was used.`,
+        raw`Check only that the letters in the formula can be replaced by capital letters.`,
+        raw`Compute one numerical example and treat success there as proof of the identity.`,
+        raw`Verify that all matrices involved have positive entries, since positivity replaces convergence.`
+      ],
+      correct: 0,
+      why: raw`This checklist prevents invalid transfers while preserving the powerful ones.`
+    },
+    {
+      q: raw`Why is the identity element important in matrix substitution?`,
+      choices: [
+        raw`The constant term of a scalar series becomes that scalar times the multiplicative identity \(I\).`,
+        raw`The identity element is used only to make matrices square, not in the series itself.`,
+        raw`The constant term is added to the first row of the matrix by convention.`,
+        raw`The identity matrix is needed only when the matrix has determinant one.`
+      ],
+      correct: 0,
+      why: raw`In an algebra, the scalar \(1\) is represented by the multiplicative unit. For matrices, that unit is \(I\).`
+    },
+    {
+      q: raw`What does it mean for a power-series identity to be an identity of recipes?`,
+      choices: [
+        raw`It means the equality is built from coefficients and algebraic operations, so the same construction can be interpreted in another compatible algebra.`,
+        raw`It means the identity is true because the graphs of the two scalar functions look similar.`,
+        raw`It means the proof cannot involve limits or convergence.`,
+        raw`It means the result applies only to cooking-like step-by-step algorithms, not to mathematics.`
+      ],
+      correct: 0,
+      why: raw`The recipe viewpoint is about formal operations plus convergence, not visual resemblance or wordplay.`
+    },
+    {
+      q: raw`Why does \(\sin(A)^2+\cos(A)^2=I\) make sense for a single matrix \(A\)?`,
+      choices: [
+        raw`Both \(\sin(A)\) and \(\cos(A)\) are power series in the same matrix \(A\), so their factors commute and the scalar identity transfers.`,
+        raw`It is true because every matrix is a rotation after applying sine and cosine.`,
+        raw`It means the entrywise sine and cosine satisfy the identity after ordinary matrix multiplication.`,
+        raw`It is false for all nonzero matrices because matrices are non-commutative.`
+      ],
+      correct: 0,
+      why: raw`Functions of the same matrix commute because they are built from powers of that one matrix.`
+    },
+    {
+      q: raw`Why does \(\sin(A+B)\) generally not split into a simple scalar addition formula involving \(\sin A\), \(\cos B\), etc.?`,
+      choices: [
+        raw`The scalar derivation requires commuting inputs; \(A\) and \(B\) may not commute with each other.`,
+        raw`Sine and cosine cannot be defined for matrices.`,
+        raw`The formula fails only because \(A+B\) is not a square matrix.`,
+        raw`The formula becomes true after replacing multiplication by entrywise multiplication in every term.`
+      ],
+      correct: 0,
+      why: raw`Addition formulas for functions of two inputs usually hide commutation assumptions when moved to matrices.`
+    },
+    {
+      q: raw`What does the Substitution Principle teach about notation such as \(A^2\)?`,
+      choices: [
+        raw`The meaning depends on the algebra: for matrices it means \(A\circ A\) or matrix multiplication, not squaring each entry.`,
+        raw`It always means squaring each coordinate independently.`,
+        raw`It has no meaning unless \(A\) is diagonal.`,
+        raw`It means multiplying \(A\) by its determinant.`
+      ],
+      correct: 0,
+      why: raw`Substitution requires reading the operations in the target algebra, not carrying over a vague scalar picture.`
+    },
+    {
+      q: raw`What is the relation between the Substitution Principle and the exponential map in Lie theory?`,
+      choices: [
+        raw`The exponential map uses the scalar exponential power series with a Lie algebra element, often a matrix or operator, as input.`,
+        raw`The exponential map is unrelated because Lie theory avoids power series.`,
+        raw`The exponential map applies entrywise to coordinates on every Lie group.`,
+        raw`The exponential map is just the determinant of the matrix exponential.`
+      ],
+      correct: 0,
+      why: raw`The matrix exponential is a central example of moving a scalar recipe into a non-scalar algebra.`
+    },
+    {
+      q: raw`What is wrong with the claim “same formula, therefore same intuition”?`,
+      choices: [
+        raw`The formula may transfer while scalar intuitions involving order, positivity, size, or commutativity may not.`,
+        raw`No formula ever transfers from scalars to matrices.`,
+        raw`The only intuition that transfers is entrywise calculation.`,
+        raw`The formula transfers only when all matrices are orthogonal.`
+      ],
+      correct: 0,
+      why: raw`The theorem preserves algebraic recipe structure under hypotheses, not every informal scalar habit.`
+    },
+    {
+      q: raw`If \(A\) and \(B\) commute, why can power series in \(A\) and \(B\) often be manipulated more like scalar series?`,
+      choices: [
+        raw`Because products of powers \(A^mB^n\) can be rearranged consistently when \(AB=BA\).`,
+        raw`Because commuting matrices are always scalar multiples of the identity.`,
+        raw`Because commutation makes every infinite series finite.`,
+        raw`Because commutation turns matrix multiplication into entrywise multiplication in every basis.`
+      ],
+      correct: 0,
+      why: raw`Commutation restores the rearrangement freedom used in many scalar power-series proofs.`
+    },
+    {
+      q: raw`For \(F(A)\) defined by a power series, what does basis-independence mean?`,
+      choices: [
+        raw`If \(A\) is represented in a new basis by \(PAP^{-1}\), then the function is represented by \(PF(A)P^{-1}\).`,
+        raw`The entries of \(F(A)\) are the same in every basis.`,
+        raw`Changing basis turns \(F(A)\) into \(F(P)+F(A)+F(P^{-1})\).`,
+        raw`Basis-independence holds only for diagonal matrices.`
+      ],
+      correct: 0,
+      why: raw`Power-series functions respect similarity because powers respect similarity.`
+    },
+    {
+      q: raw`What is a subtle danger in saying “evaluate the same formula on matrices”?`,
+      choices: [
+        raw`One might forget that the formula may contain hidden assumptions such as commutativity, convergence radius, or a chosen branch of logarithm.`,
+        raw`One might accidentally make the matrix too small to have eigenvalues.`,
+        raw`One might use too many identity matrices, causing all terms to cancel.`,
+        raw`One might turn a matrix into a vector simply by writing parentheses around it.`
+      ],
+      correct: 0,
+      why: raw`The hard work is often identifying the hypotheses under which the scalar recipe remains valid.`
+    },
+    {
+      q: raw`What does \(F(A)\) depend on when \(F\) is defined by a power series?`,
+      choices: [
+        raw`The linear transformation \(A\), including its nilpotent/Jordan behavior, not merely a list of diagonal entries in an arbitrary basis.`,
+        raw`Only the determinant of \(A\).`,
+        raw`Only the trace of \(A\).`,
+        raw`Only the largest entry of \(A\) in the displayed matrix.`
+      ],
+      correct: 0,
+      why: raw`Power-series substitution sees powers of the operator. Nilpotent parts and generalized eigenspaces can matter.`
+    },
+    {
+      q: raw`Why is \(e^{A}e^{-A}=I\) safe for every matrix \(A\)?`,
+      choices: [
+        raw`Both factors are power series in the same matrix \(A\), so they commute and the scalar identity \(e^xe^{-x}=1\) transfers.`,
+        raw`It is safe because \(A\) and \(-A\) always have positive entries.`,
+        raw`It is safe only when \(A\) has determinant one.`,
+        raw`It is safe because every matrix exponential is orthogonal.`
+      ],
+      correct: 0,
+      why: raw`Here the input is one matrix, so no independent non-commuting variable is being rearranged.`
+    },
+    {
+      q: raw`Why is \(e^Ae^B=e^Be^A\) not guaranteed for arbitrary matrices?`,
+      choices: [
+        raw`Because the power-series outputs need not commute when the underlying matrices \(A\) and \(B\) do not commute.`,
+        raw`Because matrix exponentials are never invertible.`,
+        raw`Because exponentials of matrices always have determinant zero.`,
+        raw`Because \(e^A\) is a scalar and \(e^B\) is a matrix.`
+      ],
+      correct: 0,
+      why: raw`Non-commutativity can survive through functions. Exponentiating does not automatically erase order-dependence.`
+    },
+    {
+      q: raw`What is the correct way to read \(\operatorname{Ad}_{e^X}\) in \(e^{\operatorname{ad}_X}=\operatorname{Ad}_{e^X}\)?`,
+      choices: [
+        raw`It is the linear map on the Lie algebra induced by conjugation with the group element \(e^X\).`,
+        raw`It is the scalar exponential of the determinant of \(X\).`,
+        raw`It is the entrywise exponential of the matrix named \(\operatorname{Ad}\).`,
+        raw`It is a notation saying that \(X\) must be diagonal before the formula makes sense.`
+      ],
+      correct: 0,
+      why: raw`The right side is finite conjugation action; the left side is the exponential of the infinitesimal bracket action.`
+    },
+    {
+      q: raw`Why is the theorem \(e^{\operatorname{ad}_X}=\operatorname{Ad}_{e^X}\) a strong example of substitution rather than a mere notation trick?`,
+      choices: [
+        raw`It substitutes the operator \(\operatorname{ad}_X\) into the exponential series and obtains a genuine linear transformation of the Lie algebra.`,
+        raw`It works because \(\operatorname{ad}_X\) is a scalar abbreviation for \(X\).`,
+        raw`It avoids all convergence questions by using only the first term.`,
+        raw`It says conjugation and differentiation are unrelated but share a symbol.`
+      ],
+      correct: 0,
+      why: raw`This is substitution at a higher level: the input is an operator whose powers are repeated brackets.`
+    },
+    {
+      q: raw`What must be true before using a scalar branch of \(\log\) to define a matrix logarithm by series or functional calculus?`,
+      choices: [
+        raw`The spectrum/domain must avoid the branch obstruction, and the chosen series or calculus must be valid for the matrix.`,
+        raw`The matrix must have entries that are all logarithms of integers.`,
+        raw`The matrix must be nilpotent, otherwise no logarithm can exist.`,
+        raw`The determinant must be exactly \(0\), because logarithms require singular matrices.`
+      ],
+      correct: 0,
+      why: raw`Matrix logarithms are domain-sensitive. Unlike \(e^A\), logarithms require branch and convergence care.`
+    },
+    {
+      q: raw`What is the difference between a formal power series identity and an analytic identity after substitution?`,
+      choices: [
+        raw`A formal identity concerns algebraic manipulation of coefficients; an analytic substituted identity also needs convergence or a valid functional calculus.`,
+        raw`There is no difference; formal writing always gives an actual matrix value.`,
+        raw`Formal identities apply only to diagonal matrices, while analytic identities apply only to nilpotent matrices.`,
+        raw`Analytic identities ignore coefficients and use only graphs.`
+      ],
+      correct: 0,
+      why: raw`Formal algebra explains the recipe; analytic hypotheses ensure the recipe produces actual objects.`
+    },
+    {
+      q: raw`What does the radius of convergence of a scalar power series tell you when substituting a matrix \(A\)?`,
+      choices: [
+        raw`It gives a norm or spectral-size condition under which the same series is guaranteed to converge for \(A\).`,
+        raw`It gives the number of rows \(A\) must have.`,
+        raw`It tells you how many eigenvectors \(A\) has.`,
+        raw`It becomes irrelevant because matrices are finite-dimensional.`
+      ],
+      correct: 0,
+      why: raw`Finite-dimensionality does not erase convergence radius for general power series such as logarithm or geometric series.`
+    },
+    {
+      q: raw`When can a polynomial identity \(p(x)=q(x)\) be safely evaluated at every square matrix \(A\)?`,
+      choices: [
+        raw`When it is truly an identity of polynomials with the same coefficients, since polynomial substitution is finite and needs no convergence.`,
+        raw`Only when \(A\) is invertible, because polynomials require division.`,
+        raw`Only when \(A\) is diagonalizable over \(\mathbb R\).`,
+        raw`Never; polynomial identities are scalar-only statements.`
+      ],
+      correct: 0,
+      why: raw`Finite polynomial identities are the easiest substitution case: no infinite limiting process is involved.`
+    },
+    {
+      q: raw`What extra care appears when a formula uses division, such as \((1-x)^{-1}\)?`,
+      choices: [
+        raw`The substituted object must have the relevant inverse, and any series expansion for that inverse must converge.`,
+        raw`Division turns into taking the trace of the denominator.`,
+        raw`Division is always illegal for matrices, even when an inverse exists.`,
+        raw`Division means entrywise reciprocal in every matrix formula.`
+      ],
+      correct: 0,
+      why: raw`In a non-scalar algebra, division means invertibility of an element, not casual cancellation.`
+    },
+    {
+      q: raw`What is the best way to understand \(I+A+A^2+\cdots\) geometrically?`,
+      choices: [
+        raw`It adds repeated applications of the transformation \(A\), so convergence means the accumulated transformation settles.`,
+        raw`It lists the entries of \(A\) from left to right.`,
+        raw`It approximates the determinant of \(A\) by adding all rows.`,
+        raw`It is a finite sum because every transformation eventually becomes identity.`
+      ],
+      correct: 0,
+      why: raw`Matrix powers are repeated action. Infinite sums of transformations need the tail transformations to decay.`
+    },
+    {
+      q: raw`Why is \(F(A)\) often a better notation than writing \(F\) “of the entries of \(A\)”?`,
+      choices: [
+        raw`Because \(F(A)\) treats \(A\) as one linear operator and uses composition powers, preserving coordinate-free meaning.`,
+        raw`Because entries are never allowed to be used in any calculation.`,
+        raw`Because matrix functions ignore multiplication.`,
+        raw`Because \(F(A)\) always means diagonalizing \(A\) by an orthogonal matrix.`
+      ],
+      correct: 0,
+      why: raw`The substitution principle is about the algebra of the operator, not about isolated coordinates.`
+    },
+    {
+      q: raw`Suppose \(A\) and \(B\) do not commute. Which statement is most careful?`,
+      choices: [
+        raw`Identities involving only one input, such as \(e^Ae^{-A}=I\), may still transfer, but identities mixing \(A\) and \(B\) must be checked for hidden commutation.`,
+        raw`No identity involving \(A\) or \(B\) can transfer.`,
+        raw`All scalar identities transfer because non-commutation affects only determinants.`,
+        raw`The problem is solved by replacing every product with \(AB+BA\).`
+      ],
+      correct: 0,
+      why: raw`Non-commutativity is specific. It invalidates some transfers, not all substitution.`
+    },
+  ];
+
+  function escapeHtml(value) {
+    return value.replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    })[char]);
+  }
+
+  function renderQuiz() {
+    const list = document.getElementById('substitution-questions');
+    if (!list) return;
+    const labels = ['A', 'B', 'C', 'D'];
+    const rotations = [2, 0, 3, 1, 1, 3, 0, 2, 3, 1, 0, 2];
+    list.innerHTML = questions.map((question, index) => {
+      const name = `substitution-q${index + 1}`;
+      const rotation = rotations[index % rotations.length];
+      const orderedChoices = question.choices.map((choice, originalIndex) => ({ choice, originalIndex }));
+      const displayedChoices = orderedChoices.slice(rotation).concat(orderedChoices.slice(0, rotation));
+      const displayedCorrect = displayedChoices.findIndex((item) => item.originalIndex === question.correct);
+      const best = displayedChoices[displayedCorrect].choice;
+      const choices = displayedChoices.map((item, choiceIndex) => {
+        const correct = item.originalIndex === question.correct;
+        const feedback = correct
+          ? `Correct. ${question.why}`
+          : `Not quite. The best answer is ${labels[displayedCorrect]}: ${best} ${question.why}`;
+        return `
+          <label class="choice">
+            <input type="radio" name="${name}" value="${labels[choiceIndex]}">
+            <span class="choice-text"><b>${labels[choiceIndex]}.</b> ${escapeHtml(item.choice)}</span>
+            <span class="feedback ${correct ? 'correct' : 'wrong'}">${escapeHtml(feedback)}</span>
+          </label>
+        `;
+      }).join('');
+
+      return `
+        <article class="question" id="${name}">
+          <h3>${index + 1}. ${escapeHtml(question.q)}</h3>
+          <fieldset>${choices}</fieldset>
+        </article>
+      `;
+    }).join('');
+
+    if (window.MathJax?.typesetPromise) {
+      window.MathJax.typesetPromise([list]);
+    }
+  }
+
+  renderQuiz();
+
   document.querySelectorAll('[data-score-section]').forEach((button) => {
     button.addEventListener('click', () => {
       const section = document.getElementById(button.dataset.scoreSection);
@@ -1337,5 +707,6 @@
     });
   });
 </script>
+
 </body>
 </html>
