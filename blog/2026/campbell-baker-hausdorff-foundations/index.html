@@ -393,10 +393,11 @@
   </section>
 
   <section class="section">
-    <h2>Why definitions should wait</h2>
-    <p class="lead">The markdown notes have the right philosophy: never introduce a definition before the question that forces it. CBH is the cleanest example of that attitude.</p>
-    <p class="body">If we begin by saying “a Lie algebra has a bracket,” the bracket can feel like an extra operation attached by decree. But if we begin with \(\exp(X)\exp(Y)=?\), the bracket appears because ordinary addition does not remember order. The group product remembers order perfectly; the algebra must therefore acquire a way to record order at infinitesimal scale.</p>
-    <p class="body">So the bracket is not a decorative definition. It is the first piece of data that survives when we compare two almost-identical ways of composing tiny motions. The slogan is:</p>
+    <h2>Why the bracket is forced</h2>
+    <p class="lead">The bracket appears when addition is asked to describe a product that remembers order.</p>
+    <p class="body">If \(X\) and \(Y\) were ordinary numbers, the product \(e^Xe^Y\) would collapse to \(e^{X+Y}\). For matrices and Lie groups, composition usually remembers order: doing the \(Y\)-motion and then the \(X\)-motion need not equal doing them in the opposite order. The algebra therefore needs a term that can detect the difference between \(XY\) and \(YX\).</p>
+    <p class="body">That term is the bracket. It is not an extra operation attached by decree. It is the first correction that becomes unavoidable when the product \(\exp(X)\exp(Y)\) is pulled back through the logarithm and written as a single infinitesimal instruction.</p>
+    <p class="body">So the bracket is the first piece of data that survives when we compare two almost-identical ways of composing tiny motions. The local dictionary is:</p>
     <div class="formula">\[
       \text{group multiplication near } I
       \quad\Longleftrightarrow\quad
@@ -463,7 +464,7 @@
 
   <section class="section">
     <h2>The animation: two paths, one gap</h2>
-    <p class="lead">The video supplied with these notes visualizes the same idea geometrically: moving by \(X\) and then \(Y\) is not generally the same as moving by \(Y\) and then \(X\). The small mismatch is the first visible shadow of \([X,Y]\).</p>
+    <p class="lead">Move by \(X\) and then \(Y\). Now move by \(Y\) and then \(X\). If the endpoints disagree, the small mismatch is the first visible shadow of \([X,Y]\).</p>
     <div class="video-shell">
       <video controls preload="metadata" playsinline>
         <source src="/assets/video/blog/cbh/cbh-animation.mp4" type="video/mp4">
@@ -490,7 +491,7 @@
     <div class="formula">\[
       XY-YX=[X,Y].
     \]</div>
-    <p class="body">This is the first miracle in the notes. The logarithm of a product of exponentials reorganizes ordinary associative multiplication into the non-associative bracket language of the Lie algebra.</p>
+    <p class="body">This is the first structural fact behind CBH: the logarithm of a product of exponentials reorganizes ordinary associative multiplication into the non-associative bracket language of the Lie algebra.</p>
     <div class="formula">\[
       \log(\exp(X)\exp(Y))
       =X+Y+\frac12[X,Y]+\cdots
