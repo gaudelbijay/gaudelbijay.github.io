@@ -647,6 +647,15 @@
     })[char]);
   }
 
+  function typesetMath(root, attempt = 0) {
+    if (window.MathJax?.typesetPromise) {
+      window.MathJax.typesetClear?.([root]);
+      window.MathJax.typesetPromise([root]);
+      return;
+    }
+    if (attempt < 80) setTimeout(() => typesetMath(root, attempt + 1), 75);
+  }
+
   function renderQuiz() {
     const list = document.getElementById('substitution-questions');
     if (!list) return;
@@ -681,9 +690,7 @@
       `;
     }).join('');
 
-    if (window.MathJax?.typesetPromise) {
-      window.MathJax.typesetPromise([list]);
-    }
+    typesetMath(list);
   }
 
   renderQuiz();
