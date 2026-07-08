@@ -186,6 +186,34 @@ nav: false
     animation: stretch-shear-det 4.8s ease-in-out infinite;
   }
 
+  .lie-theory-generator-x,
+  .lie-theory-generator-y,
+  .lie-theory-generator-z {
+    animation: lie-theory-generator 4.6s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: 120px 110px;
+  }
+
+  .lie-theory-generator-y {
+    animation-delay: 0.32s;
+  }
+
+  .lie-theory-generator-z {
+    animation-delay: 0.64s;
+  }
+
+  .lie-theory-bracket {
+    animation: lie-theory-bracket 4.6s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .lie-theory-spark {
+    animation: lie-theory-spark 4.6s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
   @keyframes cone-spin {
     from {
       transform: rotate(0deg);
@@ -313,6 +341,48 @@ nav: false
     }
   }
 
+  @keyframes lie-theory-generator {
+    0%,
+    100% {
+      opacity: 0.72;
+      transform: translate(0, 0) rotate(0deg);
+    }
+    42% {
+      opacity: 1;
+      transform: translate(4px, -3px) rotate(5deg);
+    }
+    68% {
+      opacity: 0.9;
+      transform: translate(-3px, 4px) rotate(-4deg);
+    }
+  }
+
+  @keyframes lie-theory-bracket {
+    0%,
+    100% {
+      opacity: 0.64;
+      transform: scale(0.92);
+    }
+    46% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  @keyframes lie-theory-spark {
+    0%,
+    28%,
+    100% {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    50%,
+    72% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .cone-ring,
     .cone-shadow,
@@ -324,7 +394,12 @@ nav: false
     .stretch-shear-stretch-line,
     .stretch-shear-shear,
     .stretch-shear-shear-line,
-    .stretch-shear-det {
+    .stretch-shear-det,
+    .lie-theory-generator-x,
+    .lie-theory-generator-y,
+    .lie-theory-generator-z,
+    .lie-theory-bracket,
+    .lie-theory-spark {
       animation: none;
     }
   }
@@ -386,12 +461,13 @@ nav: false
           <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.16" stroke-width="3" transform="rotate(62 120 110)"></ellipse>
           <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.13" stroke-width="3" transform="rotate(122 120 110)"></ellipse>
         </g>
-        <line x1="120" y1="110" x2="176" y2="110" stroke="#1a5ca8" stroke-width="5" stroke-linecap="round"></line>
-        <line x1="120" y1="110" x2="120" y2="48" stroke="#1a7a40" stroke-width="5" stroke-linecap="round"></line>
-        <line x1="120" y1="110" x2="74" y2="146" stroke="#c0392b" stroke-width="5" stroke-linecap="round"></line>
+        <line class="lie-theory-generator-x" x1="120" y1="110" x2="176" y2="110" stroke="#1a5ca8" stroke-width="5" stroke-linecap="round"></line>
+        <line class="lie-theory-generator-y" x1="120" y1="110" x2="120" y2="48" stroke="#1a7a40" stroke-width="5" stroke-linecap="round"></line>
+        <line class="lie-theory-generator-z" x1="120" y1="110" x2="74" y2="146" stroke="#c0392b" stroke-width="5" stroke-linecap="round"></line>
         <circle cx="120" cy="110" r="6" fill="#162244"></circle>
         <text x="78" y="184" fill="#162244" font-size="20" font-family="serif">SO(3)</text>
-        <text x="150" y="184" fill="#b5820e" font-size="17" font-family="serif">[ , ]</text>
+        <circle class="lie-theory-spark" cx="151" cy="105" r="5" fill="#b5820e"></circle>
+        <text class="lie-theory-bracket" x="150" y="184" fill="#b5820e" font-size="17" font-family="serif">[ , ]</text>
       </svg>
     </div>
   </a>
