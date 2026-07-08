@@ -108,54 +108,6 @@ nav: false
     height: auto;
   }
 
-  .so3-ring {
-    animation: so3-spin 7s linear infinite;
-    transform-box: fill-box;
-    transform-origin: center;
-  }
-
-  .so3-axis-x,
-  .so3-axis-y,
-  .so3-axis-z {
-    animation: so3-pulse 3.6s ease-in-out infinite;
-  }
-
-  .so3-axis-y {
-    animation-delay: 0.35s;
-  }
-
-  .so3-axis-z {
-    animation-delay: 0.7s;
-  }
-
-  @keyframes so3-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  @keyframes so3-pulse {
-    0%,
-    100% {
-      opacity: 0.72;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .so3-ring,
-    .so3-axis-x,
-    .so3-axis-y,
-    .so3-axis-z {
-      animation: none;
-    }
-  }
-
   @media (max-width: 680px) {
     .lie-post-card {
       grid-template-columns: 1fr;
@@ -182,14 +134,14 @@ nav: false
     <div class="lie-post-visual" aria-hidden="true" style="background:#faf9f5;">
       <svg viewBox="0 0 240 210" role="img">
         <circle cx="120" cy="110" r="70" fill="#ffffff" stroke="#e4e0d8" stroke-width="2"></circle>
-        <g class="so3-ring">
+        <g>
           <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.2" stroke-width="3"></ellipse>
           <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.16" stroke-width="3" transform="rotate(62 120 110)"></ellipse>
           <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.13" stroke-width="3" transform="rotate(122 120 110)"></ellipse>
         </g>
-        <line class="so3-axis-x" x1="120" y1="110" x2="176" y2="110" stroke="#1a5ca8" stroke-width="5" stroke-linecap="round"></line>
-        <line class="so3-axis-y" x1="120" y1="110" x2="120" y2="48" stroke="#1a7a40" stroke-width="5" stroke-linecap="round"></line>
-        <line class="so3-axis-z" x1="120" y1="110" x2="74" y2="146" stroke="#c0392b" stroke-width="5" stroke-linecap="round"></line>
+        <line x1="120" y1="110" x2="176" y2="110" stroke="#1a5ca8" stroke-width="5" stroke-linecap="round"></line>
+        <line x1="120" y1="110" x2="120" y2="48" stroke="#1a7a40" stroke-width="5" stroke-linecap="round"></line>
+        <line x1="120" y1="110" x2="74" y2="146" stroke="#c0392b" stroke-width="5" stroke-linecap="round"></line>
         <circle cx="120" cy="110" r="6" fill="#162244"></circle>
         <text x="77" y="184" fill="#162244" font-size="20" font-family="serif">SO(3)</text>
         <text x="149" y="184" fill="#b5820e" font-size="17" font-family="serif">exp</text>
