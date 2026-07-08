@@ -371,4 +371,28 @@ nav: false
       </svg>
     </div>
   </a>
+
+  <a class="lie-chapter-card" href="{{ '/blog/lie-groups/lie-theory/' | relative_url }}">
+    <div class="lie-chapter-body">
+      <div class="lie-chapter-date">Chapter 2</div>
+      <h2 class="lie-chapter-title">Lie theory</h2>
+      <p class="lie-chapter-summary">Concrete Lie groups and algebras, starting with SO(3): rotations, infinitesimal generators, brackets, and the exponential bridge.</p>
+    </div>
+    <div class="lie-chapter-visual" aria-hidden="true" style="background:#faf9f5;">
+      <svg viewBox="0 0 240 210" role="img">
+        <circle cx="120" cy="110" r="70" fill="#ffffff" stroke="#e4e0d8" stroke-width="2"></circle>
+        <g class="cone-ring">
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.2" stroke-width="3"></ellipse>
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.16" stroke-width="3" transform="rotate(62 120 110)"></ellipse>
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.13" stroke-width="3" transform="rotate(122 120 110)"></ellipse>
+        </g>
+        <line x1="120" y1="110" x2="176" y2="110" stroke="#1a5ca8" stroke-width="5" stroke-linecap="round"></line>
+        <line x1="120" y1="110" x2="120" y2="48" stroke="#1a7a40" stroke-width="5" stroke-linecap="round"></line>
+        <line x1="120" y1="110" x2="74" y2="146" stroke="#c0392b" stroke-width="5" stroke-linecap="round"></line>
+        <circle cx="120" cy="110" r="6" fill="#162244"></circle>
+        <text x="78" y="184" fill="#162244" font-size="20" font-family="serif">SO(3)</text>
+        <text x="150" y="184" fill="#b5820e" font-size="17" font-family="serif">[ , ]</text>
+      </svg>
+    </div>
+  </a>
 </div>
