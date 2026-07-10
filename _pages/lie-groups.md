@@ -453,21 +453,21 @@ nav: false
       <h2 class="lie-chapter-title">Lie theory</h2>
       <p class="lie-chapter-summary">Concrete Lie groups and algebras, starting with SO(3): rotations, infinitesimal generators, brackets, and the exponential bridge.</p>
     </div>
-    <div class="lie-chapter-visual" aria-hidden="true" style="background:#faf9f5;">
+    <div class="lie-chapter-visual" aria-hidden="true" style="background:#ECE3D0;">
       <svg viewBox="0 0 240 210" role="img">
         <circle cx="120" cy="110" r="70" fill="#ffffff" stroke="#e4e0d8" stroke-width="2"></circle>
         <g>
-          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.2" stroke-width="3"></ellipse>
-          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.16" stroke-width="3" transform="rotate(62 120 110)"></ellipse>
-          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.13" stroke-width="3" transform="rotate(122 120 110)"></ellipse>
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#2A241E" stroke-opacity="0.2" stroke-width="3"></ellipse>
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#2A241E" stroke-opacity="0.16" stroke-width="3" transform="rotate(62 120 110)"></ellipse>
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#2A241E" stroke-opacity="0.13" stroke-width="3" transform="rotate(122 120 110)"></ellipse>
         </g>
         <line class="lie-theory-generator-x" x1="120" y1="110" x2="176" y2="110" stroke="#1a5ca8" stroke-width="5" stroke-linecap="round"></line>
         <line class="lie-theory-generator-y" x1="120" y1="110" x2="120" y2="48" stroke="#1a7a40" stroke-width="5" stroke-linecap="round"></line>
         <line class="lie-theory-generator-z" x1="120" y1="110" x2="74" y2="146" stroke="#c0392b" stroke-width="5" stroke-linecap="round"></line>
-        <circle cx="120" cy="110" r="6" fill="#162244"></circle>
-        <text x="78" y="184" fill="#162244" font-size="20" font-family="serif">SO(3)</text>
-        <circle class="lie-theory-spark" cx="151" cy="105" r="5" fill="#b5820e"></circle>
-        <text class="lie-theory-bracket" x="150" y="184" fill="#b5820e" font-size="17" font-family="serif">[ , ]</text>
+        <circle cx="120" cy="110" r="6" fill="#2A241E"></circle>
+        <text x="78" y="184" fill="#2A241E" font-size="20" font-family="serif">SO(3)</text>
+        <circle class="lie-theory-spark" cx="151" cy="105" r="5" fill="#B8552F"></circle>
+        <text class="lie-theory-bracket" x="150" y="184" fill="#B8552F" font-size="17" font-family="serif">[ , ]</text>
       </svg>
     </div>
   </a>

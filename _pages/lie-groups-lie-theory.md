@@ -196,25 +196,25 @@ nav: false
   <a class="lie-post-card" href="{{ '/blog/2026/so3-complete-study-guide/' | relative_url }}">
     <div class="lie-post-body">
       <div class="lie-post-date">Jul 7, 2026</div>
-      <h2 class="lie-post-title">SO(3) Complete Study Guide</h2>
+      <h2 class="lie-post-title">SO(3): Rotations and Infinitesimal Motion</h2>
       <p class="lie-post-summary">A compact guide to the rotation group: orthogonal matrices, determinant one, non-commutativity, Rodrigues' formula, $\mathfrak{so}(3)$, brackets, and the exponential map.</p>
     </div>
-    <div class="lie-post-visual" aria-hidden="true" style="background:#faf9f5;">
+    <div class="lie-post-visual" aria-hidden="true" style="background:#ECE3D0;">
       <svg viewBox="0 0 240 210" role="img">
         <circle cx="120" cy="110" r="70" fill="#ffffff" stroke="#e4e0d8" stroke-width="2"></circle>
         <g>
-          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.2" stroke-width="3"></ellipse>
-          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.16" stroke-width="3" transform="rotate(62 120 110)"></ellipse>
-          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#162244" stroke-opacity="0.13" stroke-width="3" transform="rotate(122 120 110)"></ellipse>
-          <ellipse class="so3-orbit-trace" cx="120" cy="110" rx="49" ry="20" fill="none" stroke="#b5820e" stroke-width="3"></ellipse>
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#2A241E" stroke-opacity="0.2" stroke-width="3"></ellipse>
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#2A241E" stroke-opacity="0.16" stroke-width="3" transform="rotate(62 120 110)"></ellipse>
+          <ellipse cx="120" cy="110" rx="76" ry="28" fill="none" stroke="#2A241E" stroke-opacity="0.13" stroke-width="3" transform="rotate(122 120 110)"></ellipse>
+          <ellipse class="so3-orbit-trace" cx="120" cy="110" rx="49" ry="20" fill="none" stroke="#B8552F" stroke-width="3"></ellipse>
         </g>
         <line x1="120" y1="110" x2="176" y2="110" stroke="#1a5ca8" stroke-width="5" stroke-linecap="round"></line>
         <line x1="120" y1="110" x2="120" y2="48" stroke="#1a7a40" stroke-width="5" stroke-linecap="round"></line>
         <line x1="120" y1="110" x2="74" y2="146" stroke="#c0392b" stroke-width="5" stroke-linecap="round"></line>
-        <circle cx="120" cy="110" r="6" fill="#162244"></circle>
-        <circle class="so3-orbit-dot" cx="120" cy="110" r="6" fill="#b5820e"></circle>
-        <text x="77" y="184" fill="#162244" font-size="20" font-family="serif">SO(3)</text>
-        <text class="so3-exp-label" x="149" y="184" fill="#b5820e" font-size="17" font-family="serif">exp</text>
+        <circle cx="120" cy="110" r="6" fill="#2A241E"></circle>
+        <circle class="so3-orbit-dot" cx="120" cy="110" r="6" fill="#B8552F"></circle>
+        <text x="77" y="184" fill="#2A241E" font-size="20" font-family="serif">SO(3)</text>
+        <text class="so3-exp-label" x="149" y="184" fill="#B8552F" font-size="17" font-family="serif">exp</text>
         <text x="176" y="104" fill="#1a5ca8" font-size="12" font-family="monospace">e3</text>
         <text x="126" y="48" fill="#1a7a40" font-size="12" font-family="monospace">e2</text>
         <text x="58" y="158" fill="#c0392b" font-size="12" font-family="monospace">e1</text>
