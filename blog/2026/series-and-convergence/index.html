@@ -63,7 +63,7 @@
   </div>
 
   <!-- §1 Sequence vs Series -->
-  <section style="max-width:680px; margin:64px auto 0;">
+  <section id="sequence-vs-series" style="max-width:680px; margin:64px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">1 &nbsp;·&nbsp; Sequence vs series</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">A series is a sequence of partial sums</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A <em>sequence</em> lists numbers: $a_1, a_2, a_3, \ldots$ A <em>series</em> adds them. The distinction is sharper than it sounds: series convergence is defined through a new sequence $S_N$ of running totals, and asking whether the series converges is exactly asking whether that new sequence converges.</p>
@@ -143,7 +143,7 @@
 
     <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
       <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:#922028;">Warning</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
-      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$a_n \not\to 0$ guarantees divergence — that is useful. But $a_n \to 0$ says nothing about convergence on its own. The terms must shrink <em>fast enough</em>, which is exactly what the convergence tests in §10–12 are designed to measure.</p>
+      <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$a_n \not\to 0$ guarantees divergence — that is useful. But $a_n \to 0$ says nothing about convergence on its own. The terms must shrink <em>fast enough</em>, which is exactly what the convergence tests in <a href="#radius-tests" style="color:#922028;">§10</a>–<a href="#worked-traps" style="color:#922028;">§12</a> are designed to measure.</p>
     </div>
   </section>
 
@@ -155,7 +155,7 @@
   </div>
 
   <!-- §4 Geometric -->
-  <section style="max-width:680px; margin:64px auto 0;">
+  <section id="geometric-series" style="max-width:680px; margin:64px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">4 &nbsp;·&nbsp; Geometric series</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The first fully solved infinite sum</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Multiply the partial sum $S_N$ by $r$, then subtract — everything cancels except the first and last term. The result is a clean closed form whenever $|r| < 1$:</p>
@@ -176,7 +176,7 @@
   </figure>
 
   <!-- §5 Power Series -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="power-series" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">5 &nbsp;·&nbsp; Power series</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">From a fixed ratio to a variable one</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Replace the fixed ratio $r$ with a variable $x$. Now the same expression is not one sum but a family of sums, one for every input. Integrating the geometric series term by term produces $\log$ and $\arctan$, but the inheritance is conditional: the new series keeps a convergence boundary.</p>
@@ -207,7 +207,7 @@
   </section>
 
   <!-- §6 Taylor -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="taylor-series" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">6 &nbsp;·&nbsp; Taylor series</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Rebuilding a function from derivatives at one point</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Taylor series begin with a practical problem: a function may be globally complicated, but near one chosen point it can be measured very precisely. We choose a center $a$ because that is the point where we know the function's local behavior. Around $a$, the natural coordinate is not $x$ itself but the displacement $x-a$: how far have we moved from the point we understand?</p>
@@ -247,7 +247,7 @@
   </figure>
 
   <!-- §7 Exponential -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="exponential-series" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">7 &nbsp;·&nbsp; Exponential series</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Factorial domination — convergence everywhere</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The exponential is the cleanest Taylor series because differentiating it never changes its identity. At $0$, every derivative equals $1$, so the only thing shaping the coefficients is the factorial denominator. The formula is trying to show that factorial growth is stronger than any fixed power $|x|^n$.</p>
@@ -276,7 +276,7 @@
   </section>
 
   <!-- §8 Euler -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="euler-formula" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">8 &nbsp;·&nbsp; Sine, cosine &amp; Euler's formula</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Substituting $ix$ into the exponential</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">Substitute $ix$ into the exponential series. Powers of $i$ cycle through $1,i,-1,-i$, so the even powers become a real alternating series and the odd powers become an imaginary alternating series. Those two pieces are exactly the Taylor series for cosine and sine. Euler's formula is not a definition; it is the exponential series reorganizing itself into rotation.</p>
@@ -294,7 +294,7 @@
   </figure>
 
   <!-- §9 Tangent -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="tangent-series" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">9 &nbsp;·&nbsp; Tangent series &amp; convergence walls</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The nearest singularity sets the radius</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">$\tan x=\sin x/\cos x$ is not allowed to ignore the zeros of its denominator. It blows up when $\cos x=0$, at $\pm\pi/2$. A Taylor series centered at $0$ cannot cross a blow-up point because an infinite polynomial-like expansion remains locally finite where it converges. The nearest obstruction therefore becomes the convergence wall.</p>
@@ -323,7 +323,7 @@
   </section>
 
   <!-- §10 Radius & Tests -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="radius-tests" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">10 &nbsp;·&nbsp; Radius of convergence &amp; tests</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Inside converges, outside diverges, boundary needs work</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 16px;">A power series is not just an ordinary series with an $x$ inside it. It is a machine that produces one numerical series for each input $x$. The question is not “does the formula look nice?” The question is: when $n$ becomes large, does the input $x$ make the terms shrink fast enough to make the infinite tail harmless?</p>
@@ -367,7 +367,7 @@
   </section>
 
   <!-- §11 Test Playbook -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="test-playbook" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">11 &nbsp;·&nbsp; Convergence-test playbook</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Do not memorize tests as names — read the tail</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A convergence test is not a label to memorize; it is a diagnostic question about the <em>tail</em>. The tail means what the terms look like after $n$ is already large. Small early terms, large early terms, or a pretty closed form rarely matter. Convergence is decided by the eventual behavior.</p>
@@ -419,7 +419,7 @@
   </section>
 
   <!-- §12 Worked Traps -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="worked-traps" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">12 &nbsp;·&nbsp; Worked traps and endpoint clinic</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The hard part is choosing the right lens</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The following examples are deliberately chosen because the first obvious thought is not always enough. A serious understanding of convergence means knowing what the tail resembles, why a test applies, why a test becomes silent, and what to try next.</p>
@@ -559,7 +559,7 @@
   </div>
 
   <!-- §16 Matrix Exponential -->
-  <section style="max-width:680px; margin:64px auto 0;">
+  <section id="matrix-exponential" style="max-width:680px; margin:64px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">16 &nbsp;·&nbsp; Matrix series &amp; the matrix exponential</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">Replace scalar $x$ with a square matrix $A$</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">A matrix series is the same infinite-sum idea, but the terms are transformations instead of numbers. Replace the scalar $1$ with the identity transformation $I$. Matrix powers mean repeated composition: $A^2=A\circ A$, $A^3=A\circ A\circ A$, and so on. The question is whether these infinitely many transformations settle to a well-defined transformation.</p>
@@ -577,13 +577,13 @@
 <div>$$ J = \begin{bmatrix}0 & -1 \\ 1 & 0\end{bmatrix}, \quad J^2 = -I \implies e^{\theta J} = \begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{bmatrix} $$</div>
 
     <div style="margin:26px 0 0; padding:20px 22px; background:#F3ECDD; border:1px solid #E3D9C5; border-radius:11px;">
-      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><span style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent);">Core of Lie theory</span><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:13px;"><a href="/blog/lie-groups/lie-theory/" style="font:600 11px/1 'IBM Plex Mono',monospace; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); text-decoration:none;">Core of Lie theory</a><span style="flex:1; height:1px; background:#E3D9C5;"></span></div>
       <p style="font:400 17px/1.55 'Newsreader',serif; margin:0;">$A$ is the infinitesimal generator: it describes the instant-by-instant tendency of a motion. The exponential $e^{tA}$ accumulates those infinitesimal instructions into a finite transformation after time $t$. This is the bridge from Lie algebra language, where we add generators, to Lie group language, where we compose transformations.</p>
     </div>
   </section>
 
   <!-- §17 Matrix Log -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="matrix-logarithm" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">17 &nbsp;·&nbsp; Matrix logarithm</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">The inverse of exp — local, not global</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">The matrix logarithm asks the inverse question: given a finite transformation $G$, can we recover a generator $A$ with $e^A=G$? Near the identity, write $G=I+A$ and imitate the scalar logarithm. But the logarithm series has no factorial denominators, so it does not have the same global protection as the exponential series.</p>
@@ -608,14 +608,14 @@
   </section>
 
   <!-- §18 BCH -->
-  <section style="max-width:680px; margin:74px auto 0;">
+  <section id="bch" style="max-width:680px; margin:74px auto 0;">
     <div style="font:600 12px/1 'IBM Plex Mono',monospace; letter-spacing:.28em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">18 &nbsp;·&nbsp; Noncommutativity &amp; BCH</div>
     <h3 style="font:500 33px/1.12 'Newsreader',serif; letter-spacing:-.01em; margin:0 0 20px;">When $AB \neq BA$, multiplication costs extra</h3>
     <p style="font:400 19px/1.66 'Newsreader',serif; margin:0 0 18px;">For scalars, order does not matter, so $e^{a+b}=e^ae^b$. Matrices are transformations, and transformations can depend on order. Doing $A$ then $B$ may not equal doing $B$ then $A$. The commutator $[A,B]=AB-BA$ measures that failure of order-independence.</p>
 
 <div>$$ [A,B] = AB - BA \qquad \Rightarrow \qquad e^{\varepsilon A}e^{\varepsilon B}e^{-\varepsilon A}e^{-\varepsilon B} \approx I + \varepsilon^2[A,B] $$</div>
 
-    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 18px;">The small loop formula is trying to convince you that noncommutativity is visible as a second-order residue: go forward in $A$, forward in $B$, backward in $A$, backward in $B$, and you do not quite return to the identity. The leftover is controlled by $[A,B]$. The Baker–Campbell–Hausdorff formula then quantifies how much extra the product costs at every order:</p>
+    <p style="font:400 19px/1.66 'Newsreader',serif; margin:18px 0 18px;">The small loop formula is trying to convince you that noncommutativity is visible as a second-order residue: go forward in $A$, forward in $B$, backward in $A$, backward in $B$, and you do not quite return to the identity. The leftover is controlled by $[A,B]$. The <a href="/blog/2026/campbell-baker-hausdorff-foundations/" style="color:#8A5A32;">Baker–Campbell–Hausdorff formula</a> then quantifies how much extra the product costs at every order:</p>
 
 <div>$$ \log(e^A e^B) = A + B + \tfrac{1}{2}[A,B] + \tfrac{1}{12}[A,[A,B]] - \tfrac{1}{12}[B,[A,B]] + \cdots $$</div>
 
@@ -634,52 +634,52 @@
 
   <div style="max-width:780px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; padding:0 0 40px;">
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #1D7A74; border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#1D7A74; margin-bottom:6px;">§1–3</div>
+      <a href="#sequence-vs-series" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#1D7A74; margin-bottom:6px; display:inline-block; text-decoration:none;">§1–3</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Sequences</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$a_n \to L$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #1D7A74; border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#1D7A74; margin-bottom:6px;">§1–3</div>
+      <a href="#sequence-vs-series" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#1D7A74; margin-bottom:6px; display:inline-block; text-decoration:none;">§1–3</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Series</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$S_N \to S$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #2A6A1A; border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#2A6A1A; margin-bottom:6px;">§4–5</div>
+      <a href="#geometric-series" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#2A6A1A; margin-bottom:6px; display:inline-block; text-decoration:none;">§4–5</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Geometric</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$a/(1-r)$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #2A6A1A; border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#2A6A1A; margin-bottom:6px;">§4–5</div>
+      <a href="#power-series" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#2A6A1A; margin-bottom:6px; display:inline-block; text-decoration:none;">§4–5</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Power Series</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$\sum a_n x^n$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid var(--accent); border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:var(--accent); margin-bottom:6px;">§6–8</div>
+      <a href="#taylor-series" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:var(--accent); margin-bottom:6px; display:inline-block; text-decoration:none;">§6–8</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Taylor</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$\sum f^{(n)}/n!$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid var(--accent); border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:var(--accent); margin-bottom:6px;">§8</div>
+      <a href="#euler-formula" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:var(--accent); margin-bottom:6px; display:inline-block; text-decoration:none;">§8</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Euler</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$e^{ix}=\cos+i\sin$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #8A6820; border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#8A6820; margin-bottom:6px;">§9–12</div>
+      <a href="#tangent-series" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#8A6820; margin-bottom:6px; display:inline-block; text-decoration:none;">§9–12</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Radius $R$</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$1/\limsup\sqrt[n]{|a_n|}$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #8A6820; border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#8A6820; margin-bottom:6px;">§12</div>
+      <a href="#worked-traps" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#8A6820; margin-bottom:6px; display:inline-block; text-decoration:none;">§12</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Remainder</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$f^{(n+1)}(c)/(n+1)!$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #B8682A; border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#B8682A; margin-bottom:6px;">§13–14</div>
+      <a href="#matrix-exponential" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#B8682A; margin-bottom:6px; display:inline-block; text-decoration:none;">§16</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">Matrix Exp</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$e^A = \sum A^n/n!$</div>
     </div>
     <div style="background:#F3ECDD; border:1px solid #E3D9C5; border-top:2px solid #B8682A; border-radius:0 0 8px 8px; padding:14px;">
-      <div style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#B8682A; margin-bottom:6px;">§15</div>
+      <a href="#bch" style="font:600 9px/1 'IBM Plex Mono',monospace; letter-spacing:.1em; color:#B8682A; margin-bottom:6px; display:inline-block; text-decoration:none;">§18</a>
       <div style="font:600 16px/1.2 'Newsreader',serif; color:#2A241E; margin-bottom:6px;">BCH</div>
       <div style="font:italic 400 13px/1.4 'Newsreader',serif; color:#8B7E69;">$A+B+\tfrac{1}{2}[A,B]+\cdots$</div>
     </div>
