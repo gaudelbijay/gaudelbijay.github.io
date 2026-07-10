@@ -193,7 +193,7 @@ nav: false
 <p class="lie-chapter-note">Chapter 2 gathers the core Lie theory objects: groups, tangent algebras, brackets, exponentials, and concrete examples where the abstract definitions become visible.</p>
 
 <div class="lie-post-cards">
-  <a class="lie-post-card" href="{{ '/blog/2026/so3-complete-study-guide/' | relative_url }}">
+  <a class="lie-post-card" href="{{ '/blog/2026/so3-rotations-infinitesimal-motion/' | relative_url }}">
     <div class="lie-post-body">
       <div class="lie-post-date">Jul 7, 2026</div>
       <h2 class="lie-post-title">SO(3): Rotations and Infinitesimal Motion</h2>
