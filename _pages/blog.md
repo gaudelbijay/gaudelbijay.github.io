@@ -218,6 +218,28 @@ nav_order: 6
     transform-origin: center;
   }
 
+  .vector-angle-sweep {
+    animation: vector-angle-sweep 5.2s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: 72px 152px;
+  }
+
+  .vector-area-plane {
+    animation: vector-area-plane 5.2s ease-in-out infinite 0.35s;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .vector-normal {
+    animation: vector-normal 5.2s ease-in-out infinite 0.65s;
+    transform-box: fill-box;
+    transform-origin: center bottom;
+  }
+
+  .vector-product-label {
+    animation: vector-product-label 5.2s ease-in-out infinite;
+  }
+
   .lie-constellation-ring {
     animation: lie-constellation-turn 12s linear infinite;
     transform-box: fill-box;
@@ -385,6 +407,58 @@ nav_order: 6
     }
   }
 
+  @keyframes vector-angle-sweep {
+    0%,
+    100% {
+      stroke-dashoffset: 42;
+      opacity: 0.38;
+      transform: rotate(-4deg);
+    }
+    48%,
+    76% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+      transform: rotate(6deg);
+    }
+  }
+
+  @keyframes vector-area-plane {
+    0%,
+    100% {
+      opacity: 0.12;
+      transform: scale(0.9) skewX(-4deg);
+    }
+    50% {
+      opacity: 0.28;
+      transform: scale(1.04) skewX(2deg);
+    }
+  }
+
+  @keyframes vector-normal {
+    0%,
+    100% {
+      opacity: 0.42;
+      transform: scaleY(0.56);
+    }
+    50% {
+      opacity: 1;
+      transform: scaleY(1.08);
+    }
+  }
+
+  @keyframes vector-product-label {
+    0%,
+    100% {
+      opacity: 0.44;
+      transform: translateY(5px);
+    }
+    45%,
+    75% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @keyframes lie-constellation-turn {
     from {
       transform: rotate(0deg);
@@ -434,6 +508,10 @@ nav_order: 6
     .series-bar-c,
     .series-bar-d,
     .series-dot,
+    .vector-angle-sweep,
+    .vector-area-plane,
+    .vector-normal,
+    .vector-product-label,
     .lie-constellation-ring,
     .lie-constellation-node-a,
     .lie-constellation-node-b,
@@ -526,6 +604,37 @@ nav_order: 6
         <line x1="176" y1="86" x2="176" y2="168" stroke="#b8552f" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 7"></line>
         <circle class="series-dot" cx="142" cy="102" r="7" fill="#b8552f"></circle>
         <text x="156" y="125" fill="#2a241e" font-size="15" font-family="serif">Sₙ → S</text>
+      </svg>
+    </div>
+  </a>
+
+  <a class="blog-card" href="{{ '/blog/2025/vector-products/' | relative_url }}">
+    <div class="blog-card-body">
+      <div class="blog-card-date">Mar 20, 2025</div>
+      <h2 class="blog-card-title">Vector Products</h2>
+      <p class="blog-card-summary">A visual guide to dot, cross, wedge, tensor, and geometric products: what each operation preserves about the relationship between two vectors.</p>
+    </div>
+    <div class="blog-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 240 210" role="img">
+        <defs>
+          <marker id="vectorArrowWarm" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#b8552f"></path>
+          </marker>
+          <marker id="vectorArrowCool" markerHeight="7" markerWidth="7" orient="auto" refX="6" refY="3.5">
+            <path d="M0 0 L7 3.5 L0 7 Z" fill="#3a6fa8"></path>
+          </marker>
+        </defs>
+        <rect x="34" y="34" width="172" height="142" rx="8" fill="#fbf7ee" stroke="#c8b99f" stroke-opacity="0.55" stroke-width="3"></rect>
+        <path class="vector-area-plane" d="M72 152 L178 152 L158 84 L52 84 Z" fill="#b8552f" fill-opacity="0.18" stroke="#b8552f" stroke-opacity="0.72" stroke-width="3"></path>
+        <path d="M48 152 H190" stroke="#2a241e" stroke-opacity="0.22" stroke-width="2"></path>
+        <path d="M72 166 V60" stroke="#2a241e" stroke-opacity="0.18" stroke-width="2"></path>
+        <line x1="72" y1="152" x2="178" y2="152" stroke="#b8552f" stroke-width="5" stroke-linecap="round" marker-end="url(#vectorArrowWarm)"></line>
+        <line x1="72" y1="152" x2="158" y2="84" stroke="#3a6fa8" stroke-width="5" stroke-linecap="round" marker-end="url(#vectorArrowCool)"></line>
+        <path class="vector-angle-sweep" d="M99 152 C104 134 117 121 134 114" fill="none" stroke="#2a241e" stroke-width="4" stroke-linecap="round" stroke-dasharray="42 42"></path>
+        <line class="vector-normal" x1="126" y1="125" x2="126" y2="54" stroke="#2a241e" stroke-width="5" stroke-linecap="round"></line>
+        <circle class="vector-product-label" cx="126" cy="54" r="7" fill="#2a241e"></circle>
+        <text x="87" y="132" fill="#2a241e" font-size="14" font-family="serif">a · b</text>
+        <text x="145" y="107" fill="#2a241e" font-size="14" font-family="serif">a ∧ b</text>
       </svg>
     </div>
   </a>
