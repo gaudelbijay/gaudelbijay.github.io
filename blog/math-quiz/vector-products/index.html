@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vector Products Quiz</title>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)'], ['$', '$']],
+        displayMath: [['\\[', '\\]'], ['$$', '$$']],
+        processEscapes: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root { --paper:#e9dfcc; --ink:#2f2a24; --muted:#716553; --line:#c8b99f; --accent:#8a5a32; --green:#416f4a; --red:#943a31; --card:rgba(255,255,255,.28); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Georgia,"Times New Roman",serif; line-height:1.58; }
+    main { width:min(1040px, calc(100% - 32px)); margin:0 auto; padding:56px 0 80px; }
+    .eyebrow { color:var(--accent); font:700 12px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:12px 0; font-size:clamp(2.3rem,8vw,5rem); line-height:.95; letter-spacing:0; }
+    .lead { max-width:790px; margin:0 0 28px; color:var(--muted); font-size:1.16rem; }
+    nav,.post-links { display:flex; flex-wrap:wrap; gap:10px; }
+    nav { margin:28px 0 42px; }
+    nav a,.post-links a { display:inline-flex; align-items:center; min-height:38px; padding:8px 12px; color:var(--ink); text-decoration:none; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    nav a:hover,.post-links a:hover { border-color:var(--accent); color:var(--accent); }
+    .quiz-section { margin:54px 0; padding-top:10px; }
+    .section-heading span { display:block; margin-bottom:8px; color:var(--accent); font:700 11px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.12em; text-transform:uppercase; }
+    h2 { margin:0 0 10px; font-size:clamp(1.7rem,4vw,2.5rem); line-height:1.08; }
+    .section-note { max-width:800px; margin:0 0 20px; color:var(--muted); }
+    .post-links { margin:16px 0 24px; }
+    .score-panel { display:flex; flex-wrap:wrap; align-items:center; gap:10px 12px; margin:0 0 24px; padding:12px; border:1px solid var(--line); border-radius:8px; background:rgba(255,255,255,.22); }
+    .score-panel button { min-height:38px; padding:8px 12px; border:1px solid var(--accent); border-radius:8px; background:var(--accent); color:#fffaf0; font:700 13px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace; letter-spacing:.03em; cursor:pointer; }
+    .score-panel button:hover { filter:brightness(.96); }
+    .score-panel output { color:var(--ink); font-weight:700; }
+    .score-panel span { color:var(--muted); }
+    .question-list { display:grid; gap:14px; }
+    .question { border:1px solid var(--line); border-radius:8px; background:var(--card); padding:18px; }
+    .question h3 { margin:0 0 14px; font-size:1.05rem; line-height:1.4; }
+    fieldset { margin:0; padding:0; border:0; display:grid; gap:9px; }
+    .choice { display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:start; padding:11px 12px; border:1px solid rgba(200,185,159,.82); border-radius:8px; background:rgba(255,255,255,.24); cursor:pointer; }
+    .choice:hover { border-color:var(--accent); }
+    .choice input { margin-top:.3rem; }
+    .choice-text { min-width:0; }
+    .feedback { display:none; grid-column:2; margin-top:6px; padding:10px 12px; border-radius:7px; font-size:.96rem; }
+    .choice input:checked ~ .feedback { display:block; }
+    .feedback.correct { border-left:4px solid var(--green); background:rgba(79,122,87,.13); color:#31513a; }
+    .feedback.wrong { border-left:4px solid var(--red); background:rgba(155,63,52,.11); color:#6e3029; }
+    @media (max-width:640px) { main { width:min(100% - 22px,1040px); padding-top:38px; } .question { padding:14px; } .choice { grid-template-columns:1fr; gap:6px; } .choice input { margin:0; } .feedback { grid-column:1; } }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Vector Products quiz</div>
+  <h1>Dot, Cross, Wedge, and Friends</h1>
+  <p class="lead">Choose an option to reveal feedback. This page contains only the 50-question Vector Products quiz connected to the Vector Products post.</p>
+  <nav aria-label="Quiz pages">
+    <a href="/blog/math-quiz/">All quiz topics</a>
+    <a href="/blog/2025/vector-products/">Back to related post</a>
+  </nav>
+  <section id="vector-products" class="quiz-section">
+    <div class="section-heading"><span>50 questions</span><h2>Vector Products</h2></div>
+    <p class="section-note">Fifty conceptual questions about dot, cross, wedge, tensor, geometric, triple, matrix, and Hadamard products: what each one measures, what it returns, and when it is the right tool.</p>
+    <div class="post-links">
+      <a href="/blog/2025/vector-products/">Back to Vector Products</a>
+      <a href="/blog/math-quiz/linear/">Linear Algebra quiz</a>
+      <a href="/blog/math-quiz/exponential/">Exponential Map quiz</a>
+    </div>
+    <div class="score-panel">
+      <button type="button" data-score-section="vector-products">Check Vector Products Score</button>
+      <output id="vector-products-score">0 correct out of 0 attempts</output>
+      <span>Attempts count only questions where one option is selected.</span>
+    </div>
+    <div class="question-list" id="vector-products-questions"></div>
+  </section>
+</main>
+<script>
+  const raw = String.raw;
+  const questions = [
+    {
+      q: raw`Why does vector algebra have several different "products" instead of one universal multiplication?`,
+      a: raw`Because different products preserve different geometric information: agreement, oriented area, full pairwise interaction, composition, or componentwise matching.`,
+      w: [
+        raw`Because mathematicians could not agree on notation for a single product.`,
+        raw`Because vectors cannot be multiplied unless they live in three dimensions.`,
+        raw`Because every vector product is secretly the same scalar operation in disguise.`
+      ],
+      why: raw`The post's central idea is that each product answers a different question. Asking for "the product" of two vectors is incomplete until you say what information you want kept.`
+    },
+    {
+      q: raw`What geometric question does the dot product answer most directly?`,
+      a: raw`How much two vectors point in the same direction, including length.`,
+      w: [
+        raw`Which oriented plane the two vectors span.`,
+        raw`Which perpendicular axis is produced by the right-hand rule.`,
+        raw`How to compose one linear map after another.`
+      ],
+      why: raw`The dot product is directional agreement: \(a\cdot b=|a||b|\cos\theta\). It is largest when directions align and zero when directions are perpendicular.`
+    },
+    {
+      q: raw`What does \(a\cdot b=0\) mean for nonzero Euclidean vectors?`,
+      a: raw`The vectors are perpendicular.`,
+      w: [
+        raw`The vectors are parallel but point in opposite directions.`,
+        raw`The vectors span no plane.`,
+        raw`The vectors have equal length.`
+      ],
+      why: raw`For nonzero vectors, \(a\cdot b=|a||b|\cos\theta\). The product vanishes exactly when \(\cos\theta=0\), which means \(\theta=90^\circ\).`
+    },
+    {
+      q: raw`Why can the dot product be negative?`,
+      a: raw`Because the projection of one vector onto the other can point in the opposite direction.`,
+      w: [
+        raw`Because negative dot products mean the vectors have negative lengths.`,
+        raw`Because the dot product is an oriented area.`,
+        raw`Because cross products have been hidden inside the formula.`
+      ],
+      why: raw`A negative dot product means \(\cos\theta<0\), so the angle is obtuse. The agreement is anti-alignment rather than alignment.`
+    },
+    {
+      q: raw`Why does the dot product depend on a metric?`,
+      a: raw`Because it needs a rule for measuring lengths and angles.`,
+      w: [
+        raw`Because it needs an orientation of space.`,
+        raw`Because it only works after choosing a cross product.`,
+        raw`Because it is defined by matrix multiplication alone.`
+      ],
+      why: raw`A dot product is not just component multiplication. It encodes a geometry: what counts as length, angle, and perpendicularity.`
+    },
+    {
+      q: raw`In ordinary coordinates, what does \(a\cdot b=\sum_i a_i b_i\) do conceptually?`,
+      a: raw`It adds the matching component-by-component agreements.`,
+      w: [
+        raw`It builds an oriented parallelogram from every pair of components.`,
+        raw`It keeps all \(a_i b_j\) interactions as a matrix.`,
+        raw`It applies one vector as a function to the other vector.`
+      ],
+      why: raw`The coordinate formula is a bookkeeping form of agreement: each axis contributes one matching product, then those contributions are summed.`
+    },
+    {
+      q: raw`What does the cross product \(a\times b\) return in \(\mathbb R^3\)?`,
+      a: raw`A vector perpendicular to both \(a\) and \(b\), with magnitude equal to the parallelogram area.`,
+      w: [
+        raw`A scalar measuring only directional agreement.`,
+        raw`A bivector that exists unchanged in every dimension.`,
+        raw`A matrix containing every component interaction \(a_i b_j\).`
+      ],
+      why: raw`The cross product packages the oriented area spanned by \(a,b\) as a perpendicular vector, which is a special convenience of three dimensions.`
+    },
+    {
+      q: raw`What does \(|a\times b|\) measure?`,
+      a: raw`The area of the parallelogram spanned by \(a\) and \(b\).`,
+      w: [
+        raw`The length of the projection of \(a\) onto \(b\).`,
+        raw`The volume of the parallelepiped spanned by two vectors.`,
+        raw`The number of coordinates in the ambient space.`
+      ],
+      why: raw`The magnitude is \(|a||b|\sin\theta\), exactly base times height for the parallelogram formed by the two vectors.`
+    },
+    {
+      q: raw`Why is \(a\times b=0\) when \(a\) and \(b\) are parallel?`,
+      a: raw`Because the parallelogram they span has zero area.`,
+      w: [
+        raw`Because parallel vectors have no dot product.`,
+        raw`Because the perpendicular direction becomes longer than both vectors.`,
+        raw`Because the tensor product cancels all component pairs.`
+      ],
+      why: raw`Parallel vectors collapse the parallelogram into a line segment. Since the area is zero, the cross product vector has zero magnitude.`
+    },
+    {
+      q: raw`What information does the direction of \(a\times b\) encode?`,
+      a: raw`The orientation of the ordered pair \(a,b\), chosen by the right-hand rule.`,
+      w: [
+        raw`The angle bisector between \(a\) and \(b\).`,
+        raw`The projection direction of \(b\) onto \(a\).`,
+        raw`The coordinate axis with the largest component of \(a\).`
+      ],
+      why: raw`Swapping the order reverses the orientation: \(b\times a=-(a\times b)\). The direction is not arbitrary decoration; it records order.`
+    },
+    {
+      q: raw`Why is the usual cross product special to three-dimensional vector space?`,
+      a: raw`Because in three dimensions an oriented plane has a unique perpendicular line, so area can be represented by a vector.`,
+      w: [
+        raw`Because only \(\mathbb R^3\) has vectors with lengths.`,
+        raw`Because determinants do not exist outside three dimensions.`,
+        raw`Because dot products vanish in every dimension except three.`
+      ],
+      why: raw`The cross product is a 3D disguise for oriented area. In other dimensions, the oriented plane should usually remain a bivector rather than being forced into a perpendicular arrow.`
+    },
+    {
+      q: raw`Which identity expresses the anti-commutativity of the cross product?`,
+      a: raw`\(a\times b=-(b\times a)\).`,
+      w: [
+        raw`\(a\times b=b\times a\).`,
+        raw`\(a\times(b\times c)=(a\times b)\times c\).`,
+        raw`\(a\times b=a\cdot b\).`
+      ],
+      why: raw`The cross product is order-sensitive. Reversing the order reverses the orientation of the area and therefore flips the perpendicular vector.`
+    },
+    {
+      q: raw`What is the wedge product \(a\wedge b\) trying to keep that the cross product hides?`,
+      a: raw`The oriented plane segment spanned by \(a\) and \(b\) itself.`,
+      w: [
+        raw`Only the scalar projection of \(a\) onto \(b\).`,
+        raw`Only the componentwise products \(a_i b_i\).`,
+        raw`Only the final perpendicular vector after choosing a normal direction.`
+      ],
+      why: raw`The wedge product is the natural oriented-area object. It does not turn the plane into an axis unless an additional duality operation is chosen.`
+    },
+    {
+      q: raw`What kind of object is \(a\wedge b\)?`,
+      a: raw`A bivector, an oriented two-dimensional area element.`,
+      w: [
+        raw`A scalar with no orientation.`,
+        raw`A vector that must be perpendicular to both inputs.`,
+        raw`A diagonal matrix of matching component products.`
+      ],
+      why: raw`A bivector represents an oriented plane patch. It is the thing the cross product borrows and then repackages as a perpendicular vector in 3D.`
+    },
+    {
+      q: raw`Why is the wedge product often more natural than the cross product in higher dimensions?`,
+      a: raw`Because an oriented plane exists in any dimension, while a unique perpendicular vector does not.`,
+      w: [
+        raw`Because the wedge product ignores orientation entirely.`,
+        raw`Because the wedge product only works for orthonormal coordinate axes.`,
+        raw`Because higher dimensions have no meaningful notion of area.`
+      ],
+      why: raw`Two vectors span a plane whether the surrounding space has dimension 2, 3, 4, or more. The wedge product keeps that plane directly.`
+    },
+    {
+      q: raw`What does \(a\wedge b=0\) mean geometrically?`,
+      a: raw`The two vectors are linearly dependent, so they span no nonzero area.`,
+      w: [
+        raw`The two vectors are perpendicular.`,
+        raw`The two vectors have equal norms.`,
+        raw`The two vectors have a negative dot product.`
+      ],
+      why: raw`The wedge product measures oriented area. If the vectors lie on the same line, the area collapses to zero.`
+    },
+    {
+      q: raw`How are \(a\wedge b\) and \(b\wedge a\) related?`,
+      a: raw`They are negatives: \(a\wedge b=-(b\wedge a)\).`,
+      w: [
+        raw`They are always equal.`,
+        raw`Their dot product is always one.`,
+        raw`They are unrelated unless \(a,b\in\mathbb R^3\).`
+      ],
+      why: raw`The wedge product records orientation. Reversing the ordered pair reverses the orientation of the same plane patch.`
+    },
+    {
+      q: raw`What does the Hodge dual do in the 3D cross-product story?`,
+      a: raw`It turns the bivector \(a\wedge b\) into the perpendicular vector \(a\times b\).`,
+      w: [
+        raw`It turns a dot product into a determinant without using geometry.`,
+        raw`It removes the metric from the construction.`,
+        raw`It proves that all dimensions have the same cross product.`
+      ],
+      why: raw`In 3D, the Hodge dual gives a bridge between oriented area planes and perpendicular vectors. The cross product is essentially the dual of the wedge product.`
+    },
+    {
+      q: raw`What extra structures are needed to turn a wedge product into a cross product?`,
+      a: raw`A metric and an orientation.`,
+      w: [
+        raw`Only a list of coordinate names.`,
+        raw`Only a choice of origin.`,
+        raw`Only the lengths of \(a\) and \(b\), not their angle.`
+      ],
+      why: raw`The metric says what perpendicular means; the orientation chooses which side is positive. Without them, the bivector should not be forced into a vector.`
+    },
+    {
+      q: raw`What is the scalar triple product \(a\cdot(b\times c)\)?`,
+      a: raw`The oriented volume of the parallelepiped spanned by \(a,b,c\).`,
+      w: [
+        raw`The area of the parallelogram spanned only by \(a,b\).`,
+        raw`The componentwise product of three vectors.`,
+        raw`The vector perpendicular to all three inputs.`
+      ],
+      why: raw`First \(b\times c\) gives the oriented base-area vector. Dotting with \(a\) measures the signed height through that base.`
+    },
+    {
+      q: raw`What does the sign of \(a\cdot(b\times c)\) encode?`,
+      a: raw`The orientation of the ordered triple \(a,b,c\).`,
+      w: [
+        raw`Whether the three vectors all have positive coordinates.`,
+        raw`Whether the three vectors have the same length.`,
+        raw`Whether \(a\) is perpendicular to \(b\).`
+      ],
+      why: raw`The scalar triple product is a signed volume. Reordering the vectors can reverse the handedness and therefore the sign.`
+    },
+    {
+      q: raw`What does \(a\cdot(b\times c)=0\) imply?`,
+      a: raw`The three vectors are coplanar or linearly dependent, so the volume is zero.`,
+      w: [
+        raw`The vectors must all be zero.`,
+        raw`Every pair of the vectors is perpendicular.`,
+        raw`The cross product \(b\times c\) has maximum length.`
+      ],
+      why: raw`Zero signed volume means the parallelepiped is flat. The three vectors fail to span a genuine 3D volume.`
+    },
+    {
+      q: raw`Why is the vector triple product \(a\times(b\times c)\) not just an associative cross product?`,
+      a: raw`Because the cross product is not associative; the parentheses change the result.`,
+      w: [
+        raw`Because \(b\times c\) is a scalar, not a vector.`,
+        raw`Because every triple product is automatically zero.`,
+        raw`Because dot products are needed before any cross product can be formed.`
+      ],
+      why: raw`In general, \(a\times(b\times c)\ne(a\times b)\times c\). Cross products are order-sensitive and parenthesis-sensitive.`
+    },
+    {
+      q: raw`What does the identity \(a\times(b\times c)=b(a\cdot c)-c(a\cdot b)\) say conceptually?`,
+      a: raw`The result lies in the plane spanned by \(b\) and \(c\), with weights determined by dot products with \(a\).`,
+      w: [
+        raw`The result is perpendicular to the plane spanned by \(b\) and \(c\).`,
+        raw`The result is always equal to \(a\).`,
+        raw`The result is the same as the scalar triple product.`
+      ],
+      why: raw`The vector triple product returns a vector combination of \(b\) and \(c\). The dot products decide how much of each direction remains.`
+    },
+    {
+      q: raw`What does the tensor product \(a\otimes b\) keep?`,
+      a: raw`Every pairwise interaction \(a_i b_j\), not just the summed or antisymmetric parts.`,
+      w: [
+        raw`Only the perpendicular vector from \(a\) and \(b\).`,
+        raw`Only the scalar agreement between matching components.`,
+        raw`Only the area magnitude, with orientation removed.`
+      ],
+      why: raw`The tensor product is the full outer product table. Dot and wedge can be viewed as different summaries of this richer object.`
+    },
+    {
+      q: raw`How is the dot product related to the tensor product in coordinates?`,
+      a: raw`It is the trace-like sum of the matching diagonal interactions.`,
+      w: [
+        raw`It is the antisymmetric part of the tensor product.`,
+        raw`It is the determinant of the tensor product.`,
+        raw`It is the part left after deleting all diagonal entries.`
+      ],
+      why: raw`The dot product keeps the matching coordinate interactions \(a_i b_i\) and sums them, collapsing the full interaction table into one scalar.`
+    },
+    {
+      q: raw`How is the wedge product related to \(a\otimes b\)?`,
+      a: raw`It keeps the antisymmetric part, the part that changes sign when \(a\) and \(b\) are swapped.`,
+      w: [
+        raw`It keeps only the diagonal part.`,
+        raw`It keeps only the symmetric average.`,
+        raw`It keeps only the determinant of the full tensor table.`
+      ],
+      why: raw`The wedge product is built from the order-sensitive part of pairwise interaction: \(a\otimes b-b\otimes a\), up to convention.`
+    },
+    {
+      q: raw`What does the geometric product combine?`,
+      a: raw`The dot product and the wedge product: \(ab=a\cdot b+a\wedge b\).`,
+      w: [
+        raw`The cross product and the matrix inverse.`,
+        raw`The tensor product and the Hadamard product only.`,
+        raw`The determinant and the trace of two vectors.`
+      ],
+      why: raw`In geometric algebra, the product keeps both agreement and separation: scalar part plus oriented-area part.`
+    },
+    {
+      q: raw`Why is the geometric product useful for rotations?`,
+      a: raw`It lets rotations be represented by multiplication with plane-oriented objects rather than a separate ad hoc rule.`,
+      w: [
+        raw`It removes the need for any notion of angle.`,
+        raw`It makes every rotation commute with every other rotation.`,
+        raw`It works only when all vectors are parallel.`
+      ],
+      why: raw`The post emphasizes that rotations happen in planes. Bivectors and geometric products make that plane-based nature explicit.`
+    },
+    {
+      q: raw`What does the section "rotation happens in a plane, not around a line" try to correct?`,
+      a: raw`The habit of treating the 3D rotation axis as the primary object instead of the rotation plane.`,
+      w: [
+        raw`The idea that dot products measure angle.`,
+        raw`The fact that cross products are anti-commutative.`,
+        raw`The use of coordinates in determinant formulas.`
+      ],
+      why: raw`In 3D, an axis is dual to the plane of rotation. The deeper geometric object is the oriented plane; the axis is a 3D convenience.`
+    },
+    {
+      q: raw`What does the interior product or contraction do conceptually?`,
+      a: raw`It inserts a vector into a higher-grade object, reducing its grade by measuring directional participation.`,
+      w: [
+        raw`It multiplies matching coordinates and always returns a scalar.`,
+        raw`It turns every bivector into a matrix inverse.`,
+        raw`It deletes all metric information from a vector space.`
+      ],
+      why: raw`Contraction asks how much a vector lives inside an oriented object such as an area element or volume element.`
+    },
+    {
+      q: raw`What does \(i_v(a\wedge b)\) measure informally?`,
+      a: raw`How the vector \(v\) participates in the oriented plane spanned by \(a,b\).`,
+      w: [
+        raw`The componentwise square of \(v\).`,
+        raw`The unique vector perpendicular to \(a,b,v\) in every dimension.`,
+        raw`The determinant of a matrix whose rows are all \(v\).`
+      ],
+      why: raw`Interior products contract a vector into an area object. They are a way to probe a bivector using a direction.`
+    },
+    {
+      q: raw`What does ordinary matrix multiplication represent when matrices are linear maps?`,
+      a: raw`Composition: apply one transformation after another.`,
+      w: [
+        raw`Componentwise multiplication of entries with no summation.`,
+        raw`An oriented area element between two column vectors only.`,
+        raw`A scalar measure of angle between two matrices.`
+      ],
+      why: raw`Matrix multiplication is not just an array trick. Its main conceptual meaning is transformation composition.`
+    },
+    {
+      q: raw`Why is matrix multiplication generally non-commutative?`,
+      a: raw`Because doing transformation \(A\) then \(B\) can differ from doing \(B\) then \(A\).`,
+      w: [
+        raw`Because matrix entries cannot be real numbers.`,
+        raw`Because every matrix product is a cross product.`,
+        raw`Because summation over an index removes all order information.`
+      ],
+      why: raw`Composition remembers order. Rotations, shears, and projections often give different outcomes when their order is swapped.`
+    },
+    {
+      q: raw`What does the Hadamard product do?`,
+      a: raw`It multiplies matching entries component by component.`,
+      w: [
+        raw`It composes two linear maps.`,
+        raw`It forms an oriented area bivector.`,
+        raw`It computes a scalar triple product.`
+      ],
+      why: raw`The Hadamard product is entrywise. It is useful when coordinates are aligned samples or features, not when matrices represent maps to compose.`
+    },
+    {
+      q: raw`When is the Hadamard product conceptually appropriate?`,
+      a: raw`When corresponding components have the same meaning and should interact only with their matches.`,
+      w: [
+        raw`Whenever one matrix should be applied after another.`,
+        raw`Whenever two vectors span a plane.`,
+        raw`Whenever the answer must be independent of coordinates.`
+      ],
+      why: raw`Hadamard multiplication assumes component labels matter. It is a coordinatewise operation, not an intrinsic geometric product.`
+    },
+    {
+      q: raw`Which product is symmetric: \(a*b=b*a\)?`,
+      a: raw`The dot product, in ordinary Euclidean geometry.`,
+      w: [
+        raw`The cross product.`,
+        raw`The wedge product.`,
+        raw`Matrix multiplication in general.`
+      ],
+      why: raw`The dot product is symmetric: \(a\cdot b=b\cdot a\). Cross and wedge products are anti-symmetric, and matrix multiplication usually remembers order.`
+    },
+    {
+      q: raw`Which product is anti-symmetric for vectors?`,
+      a: raw`The wedge product and the 3D cross product.`,
+      w: [
+        raw`The dot product only.`,
+        raw`The Hadamard product only.`,
+        raw`Ordinary scalar multiplication only.`
+      ],
+      why: raw`Both \(a\wedge b\) and \(a\times b\) change sign when the inputs are swapped. This sign records orientation.`
+    },
+    {
+      q: raw`What does bilinearity mean for these products?`,
+      a: raw`The product is linear in each input separately when the other input is held fixed.`,
+      w: [
+        raw`The product is always commutative.`,
+        raw`The product always returns a scalar.`,
+        raw`The product cannot depend on coordinates.`
+      ],
+      why: raw`Dot, wedge, cross, tensor, and matrix multiplication are all bilinear in appropriate settings. Bilinearity is about how addition and scalar multiplication pass through each slot.`
+    },
+    {
+      q: raw`Why is "associative" a delicate word for vector products?`,
+      a: raw`Some products are associative, like matrix or geometric products, while cross products are not.`,
+      w: [
+        raw`No product in vector algebra is associative.`,
+        raw`Associativity only applies to scalar products.`,
+        raw`Every bilinear product is automatically associative.`
+      ],
+      why: raw`The post separates properties carefully. Bilinear does not imply associative, and the cross product is the classic warning sign.`
+    },
+    {
+      q: raw`What does \(dx\wedge dy\) represent in calculus?`,
+      a: raw`An oriented infinitesimal area element in the \(xy\)-plane.`,
+      w: [
+        raw`A scalar length along the \(x\)-axis.`,
+        raw`A componentwise product of two matrices.`,
+        raw`A vector perpendicular to every possible surface.`
+      ],
+      why: raw`Differential forms use wedge products to encode oriented line, area, and volume elements. \(dx\wedge dy\) is area with orientation.`
+    },
+    {
+      q: raw`Why does \(dx\wedge dy=-dy\wedge dx\)?`,
+      a: raw`Because switching the order reverses the orientation of the area element.`,
+      w: [
+        raw`Because \(dx\) and \(dy\) have negative length.`,
+        raw`Because calculus forbids multiplying differentials.`,
+        raw`Because all area elements are zero.`
+      ],
+      why: raw`The wedge product is anti-symmetric. Order matters because orientation matters.`
+    },
+    {
+      q: raw`Which product would you choose to measure work done by a force along a displacement?`,
+      a: raw`The dot product.`,
+      w: [
+        raw`The wedge product.`,
+        raw`The tensor product.`,
+        raw`The Hadamard product.`
+      ],
+      why: raw`Work cares about the component of force along the displacement direction: \(W=F\cdot d\). This is exactly directional agreement.`
+    },
+    {
+      q: raw`Which product naturally describes torque \(r\times F\) in ordinary 3D physics?`,
+      a: raw`The cross product, because it packages rotational tendency as an axial vector.`,
+      w: [
+        raw`The dot product, because torque is pure directional agreement.`,
+        raw`The Hadamard product, because torque is entrywise multiplication.`,
+        raw`The tensor product, because torque must keep all pairwise interactions.`
+      ],
+      why: raw`In 3D, torque is commonly represented by a cross product. More deeply, it is an oriented plane of rotation dualized into an axial vector.`
+    },
+    {
+      q: raw`If you want the oriented area of the parallelogram spanned by two vectors without turning it into a perpendicular vector, what should you use?`,
+      a: raw`The wedge product.`,
+      w: [
+        raw`The dot product.`,
+        raw`The Hadamard product.`,
+        raw`The scalar triple product.`
+      ],
+      why: raw`The wedge product keeps the area as an oriented plane object. That is the clean answer when the plane itself matters.`
+    },
+    {
+      q: raw`If you want every coordinate interaction \(a_i b_j\) preserved before simplifying, what product should you use?`,
+      a: raw`The tensor product.`,
+      w: [
+        raw`The dot product.`,
+        raw`The cross product.`,
+        raw`The scalar triple product.`
+      ],
+      why: raw`The tensor product keeps the whole interaction table. Dot and wedge are ways to compress or extract parts of that table.`
+    },
+    {
+      q: raw`If you want a signed volume from three 3D vectors, which expression is appropriate?`,
+      a: raw`\(a\cdot(b\times c)\).`,
+      w: [
+        raw`\(a\cdot b\).`,
+        raw`\(a\wedge b\).`,
+        raw`\(a\odot b\), the Hadamard product.`
+      ],
+      why: raw`The scalar triple product computes oriented volume. The sign records handedness; the magnitude records volume.`
+    },
+    {
+      q: raw`What is misleading about saying the cross product "is" area?`,
+      a: raw`It represents area only after a 3D duality turns an oriented plane into a perpendicular vector.`,
+      w: [
+        raw`The cross product has no relation to area at all.`,
+        raw`The cross product only measures length, never orientation.`,
+        raw`The cross product is always a scalar.`
+      ],
+      why: raw`The cross product's magnitude is area, but its vector direction is a 3D encoding of the plane's orientation. The wedge product is closer to the raw area object.`
+    },
+    {
+      q: raw`What is misleading about treating the cross product's perpendicular vector as the original geometric object?`,
+      a: raw`The original object is the oriented plane spanned by the inputs; the perpendicular vector is a 3D representation of it.`,
+      w: [
+        raw`The perpendicular vector never exists in \(\mathbb R^3\).`,
+        raw`The original object is always the scalar dot product.`,
+        raw`The perpendicular vector erases all magnitude information.`
+      ],
+      why: raw`The post pushes the intuition that planes are primary. The perpendicular arrow is a useful encoding, not the whole story.`
+    },
+    {
+      q: raw`Why does the wedge product remember order?`,
+      a: raw`Because ordered inputs determine an orientation of the spanned area.`,
+      w: [
+        raw`Because it sorts coordinates alphabetically.`,
+        raw`Because it ignores scalar multiplication.`,
+        raw`Because it is defined only for ordered bases.`
+      ],
+      why: raw`The same parallelogram can be oriented in two opposite ways. \(a\wedge b\) and \(b\wedge a\) represent those opposite orientations.`
+    }
+  ];
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function typesetMath(root, attempt = 0) {
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise([root]);
+      return;
+    }
+    if (attempt < 80) setTimeout(() => typesetMath(root, attempt + 1), 75);
+  }
+
+  function renderQuiz() {
+    const list = document.getElementById('vector-products-questions');
+    if (!list) return;
+    const labels = ['A', 'B', 'C', 'D'];
+    const rotations = [1, 3, 0, 2, 2, 0, 3, 1, 0, 2, 3, 1];
+    list.innerHTML = questions.map((question, index) => {
+      const name = `vector-products-q${index + 1}`;
+      const choices = [{ text: question.a, ok: true }, ...question.w.map(text => ({ text, ok: false }))];
+      const rotation = rotations[index % rotations.length];
+      const displayedChoices = choices.slice(rotation).concat(choices.slice(0, rotation));
+      const displayedCorrect = displayedChoices.findIndex(item => item.ok);
+      const best = displayedChoices[displayedCorrect].text;
+      const renderedChoices = displayedChoices.map((item, choiceIndex) => {
+        const feedback = item.ok
+          ? `Correct. ${question.why}`
+          : `Not quite. The best answer is ${labels[displayedCorrect]}: ${best} ${question.why}`;
+        return `
+          <label class="choice">
+            <input type="radio" name="${name}" value="${labels[choiceIndex]}">
+            <span class="choice-text"><b>${labels[choiceIndex]}.</b> ${escapeHtml(item.text)}</span>
+            <span class="feedback ${item.ok ? 'correct' : 'wrong'}">${escapeHtml(feedback)}</span>
+          </label>
+        `;
+      }).join('');
+      return `
+        <article class="question" id="${name}">
+          <h3>${index + 1}. ${escapeHtml(question.q)}</h3>
+          <fieldset>${renderedChoices}</fieldset>
+        </article>
+      `;
+    }).join('');
+    typesetMath(list);
+  }
+
+  renderQuiz();
+
+  document.querySelectorAll('[data-score-section]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const section = document.getElementById(button.dataset.scoreSection);
+      const output = document.getElementById(`${button.dataset.scoreSection}-score`);
+      if (!section || !output) return;
+      let attempts = 0;
+      let correct = 0;
+      section.querySelectorAll('.question').forEach((question) => {
+        const checked = question.querySelector('input[type="radio"]:checked');
+        if (!checked) return;
+        attempts += 1;
+        if (checked.parentElement.querySelector('.feedback.correct')) correct += 1;
+      });
+      output.textContent = `${correct} correct out of ${attempts} attempts`;
+    });
+  });
+</script>
+</body>
+</html>
