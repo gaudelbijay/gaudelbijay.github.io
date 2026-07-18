@@ -368,6 +368,37 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (window.Babel && typeof window.Babel.transformScriptTags === 'function') {
       window.Babel.transformScriptTags();
     }
+
+    // Keep the separately hosted SO(3) quiz clearly connected to this post.
+    setTimeout(function() {
+      if (document.getElementById('so3-quiz-cta')) return;
+
+      const section = document.createElement('section');
+      section.id = 'so3-quiz-cta';
+      section.setAttribute('aria-labelledby', 'so3-quiz-title');
+      section.style.cssText = 'max-width:960px;margin:72px auto 56px;padding:36px 28px;text-align:center;background:#F5F1E8;border:1px solid #DDD8CF;border-radius:5px;color:#1A1A2E;font-family:system-ui,sans-serif;box-sizing:border-box;';
+
+      const eyebrow = document.createElement('p');
+      eyebrow.textContent = '50 questions';
+      eyebrow.style.cssText = 'margin:0 0 10px;color:#B5820E;font:600 12px/1.4 IBM Plex Mono,monospace;letter-spacing:.12em;text-transform:uppercase;';
+
+      const heading = document.createElement('h2');
+      heading.id = 'so3-quiz-title';
+      heading.textContent = 'Test your SO(3) understanding';
+      heading.style.cssText = 'margin:0 0 12px;font:400 32px/1.2 EB Garamond,Georgia,serif;color:#162244;';
+
+      const copy = document.createElement('p');
+      copy.textContent = 'Practice rotations, the Lie algebra so(3), exponential coordinates, Rodrigues’ formula, and related geometry with immediate feedback.';
+      copy.style.cssText = 'max-width:680px;margin:0 auto 24px;font-size:17px;line-height:1.65;color:#555;';
+
+      const link = document.createElement('a');
+      link.href = '/blog/math-quiz/so3/';
+      link.textContent = 'Take the SO(3) quiz →';
+      link.style.cssText = 'display:inline-block;padding:12px 20px;background:#162244;color:#FFF;text-decoration:none;border-radius:4px;font-weight:600;line-height:1.4;';
+
+      section.append(eyebrow, heading, copy, link);
+      document.body.appendChild(section);
+    }, 250);
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
