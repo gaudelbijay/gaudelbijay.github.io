@@ -189,6 +189,38 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (window.Babel && typeof window.Babel.transformScriptTags === 'function') {
       window.Babel.transformScriptTags();
     }
+
+    // The generated article bundle does not include the site's separate quiz.
+    // Add a persistent call-to-action after React has mounted the article.
+    setTimeout(function() {
+      if (document.getElementById('vector-products-quiz-cta')) return;
+
+      const section = document.createElement('section');
+      section.id = 'vector-products-quiz-cta';
+      section.setAttribute('aria-labelledby', 'vector-products-quiz-title');
+      section.style.cssText = 'max-width:960px;margin:72px auto 56px;padding:36px 28px;text-align:center;background:#F3ECDD;border:1px solid #DDD3C0;border-radius:4px;color:#1C1A16;font-family:IBM Plex Sans,system-ui,sans-serif;box-sizing:border-box;';
+
+      const eyebrow = document.createElement('p');
+      eyebrow.textContent = '50 questions';
+      eyebrow.style.cssText = 'margin:0 0 10px;color:#B6412F;font:600 12px/1.4 IBM Plex Mono,monospace;letter-spacing:.12em;text-transform:uppercase;';
+
+      const heading = document.createElement('h2');
+      heading.id = 'vector-products-quiz-title';
+      heading.textContent = 'Test your understanding';
+      heading.style.cssText = 'margin:0 0 12px;font:400 32px/1.2 Georgia,serif;color:#1F3A5F;';
+
+      const copy = document.createElement('p');
+      copy.textContent = 'Practice dot, cross, wedge, tensor, and related vector products with immediate feedback.';
+      copy.style.cssText = 'max-width:640px;margin:0 auto 24px;font-size:17px;line-height:1.65;color:#55504A;';
+
+      const link = document.createElement('a');
+      link.href = '/blog/math-quiz/vector-products/';
+      link.textContent = 'Take the Vector Products quiz →';
+      link.style.cssText = 'display:inline-block;padding:12px 20px;background:#1F3A5F;color:#FBF7EE;text-decoration:none;border-radius:3px;font-weight:600;line-height:1.4;';
+
+      section.append(eyebrow, heading, copy, link);
+      document.body.appendChild(section);
+    }, 250);
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
