@@ -385,6 +385,21 @@ document.addEventListener('DOMContentLoaded', async function() {
       }
 
     }, 250);
+
+    // Proposition 1E is populated by the component after its initial mount.
+    // Run KaTeX again once those dynamic equation strings are in the DOM.
+    setTimeout(function() {
+      const proposition = document.getElementById('s-ballmodel');
+      if (proposition && window.renderMathInElement) {
+        window.renderMathInElement(proposition, {
+          delimiters: [
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    }, 1200);
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
