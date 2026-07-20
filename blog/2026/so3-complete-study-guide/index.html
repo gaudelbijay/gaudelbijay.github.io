@@ -379,20 +379,62 @@ document.addEventListener('DOMContentLoaded', async function() {
     }
 
     // Keep the separately hosted SO(3) quiz clearly connected to this post.
-    setTimeout(function() {
+    (function renderPropositionTitle(attempt) {
       const propositionTitle = document.getElementById('so3-exp-rotation-title');
-      if (propositionTitle && window.renderMathInElement) {
-        window.renderMathInElement(propositionTitle, {
-          delimiters: [{ left: '\\(', right: '\\)', display: false }],
-          throwOnError: false
-        });
+      if (!propositionTitle || typeof window.renderMathInElement !== 'function') {
+        if (attempt < 40) {
+          setTimeout(function() { renderPropositionTitle(attempt + 1); }, 100);
+        }
+        return;
       }
 
-    }, 250);
+      window.renderMathInElement(propositionTitle, {
+        delimiters: [{ left: '\\(', right: '\\)', display: false }],
+        throwOnError: false
+      });
+    })(0);
 
-    // Proposition 1E is populated by the component after its initial mount.
-    // Run KaTeX again once those dynamic equation strings are in the DOM.
-    setTimeout(function() {
+    // Proposition 1E is populated asynchronously by the component. Render
+    // Part (a) directly once both its target and KaTeX exist, avoiding a
+    // fixed-delay auto-render pass that can run before the content is ready.
+    (function renderProposition1EPartA(attempt) {
+      const target = document.getElementById('math-pe-a');
+      if (!target || !window.katex || typeof window.katex.render !== 'function') {
+        if (attempt < 40) {
+          setTimeout(function() { renderProposition1EPartA(attempt + 1); }, 100);
+        }
+        return;
+      }
+
+      target.replaceChildren();
+      const equation = document.createElement('div');
+      window.katex.render(
+        '\\exp:\\mathfrak{so}(3)\\to SO(3),\\qquad X\\mapsto '
+          + '\\text{the right-handed rotation through }\\alpha=\\lVert\\vec X\\rVert '
+          + '\\text{ about the axis }\\vec X',
+        equation,
+        { displayMode: true, throwOnError: false }
+      );
+      target.appendChild(equation);
+
+      const proof = document.createElement('p');
+      proof.append('Proof idea: write ');
+      const inlineFormulae = [
+        '\\vec X=\\alpha\\,c e_3',
+        'c\\in SO(3)',
+        '\\alpha\\ge 0',
+        'X=\\alpha\\,\\operatorname{Ad}(c)E_3=\\alpha\\,cE_3c^{-1}',
+        'z'
+      ];
+      const separators = [', with ', ' and ', '; then ', ', reducing to the standard ', '-axis case of Lemma 1B.'];
+      inlineFormulae.forEach(function(formula, index) {
+        const span = document.createElement('span');
+        window.katex.render(formula, span, { displayMode: false, throwOnError: false });
+        proof.appendChild(span);
+        proof.append(separators[index]);
+      });
+      target.appendChild(proof);
+
       const proposition = document.getElementById('s-ballmodel');
       if (proposition && window.renderMathInElement) {
         window.renderMathInElement(proposition, {
@@ -403,7 +445,7 @@ document.addEventListener('DOMContentLoaded', async function() {
           throwOnError: false
         });
       }
-    }, 1200);
+    })(0);
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
