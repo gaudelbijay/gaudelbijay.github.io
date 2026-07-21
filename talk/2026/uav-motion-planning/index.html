@@ -79,8 +79,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     const manifest = JSON.parse(manifestEl.textContent);
     let template = JSON.parse(templateEl.textContent);
-    const talkNote = '<p style="margin:0 0 24px;padding:12px 16px;border-left:4px solid var(--orange);background:rgba(255,255,255,.06);font-family:\'IBM Plex Sans\',sans-serif;font-size:22px;line-height:1.45;color:var(--paper);">This talk was delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal.</p>';
-    template = template.replace(/(<section data-label="Title"[^>]*>)/, '$1' + talkNote);
 
     // Nested page bundles (iframe targets). Each ships ONCE, in the ROOT
     // document's manifest; frame srcs carry an about:blank#<uuid> marker
