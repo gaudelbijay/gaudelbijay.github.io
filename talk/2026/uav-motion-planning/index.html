@@ -370,6 +370,52 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (window.Babel && typeof window.Babel.transformScriptTags === 'function') {
       window.Babel.transformScriptTags();
     }
+
+    // Presentation controls for the standalone talk page.
+    (function addPresentationControls() {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.setAttribute('aria-label', 'Present in fullscreen');
+      button.style.cssText = 'position:fixed;right:18px;bottom:18px;z-index:99998;padding:11px 16px;border:1px solid rgba(255,255,255,.28);border-radius:7px;background:#12161c;color:#f5f3ee;box-shadow:0 8px 24px rgba(0,0,0,.28);font:600 14px/1.2 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;';
+
+      function fullscreenElement() {
+        return document.fullscreenElement || document.webkitFullscreenElement;
+      }
+
+      function updateButton() {
+        const active = Boolean(fullscreenElement());
+        button.textContent = active ? 'Exit fullscreen' : '⛶  Present fullscreen';
+        button.setAttribute('aria-label', active ? 'Exit fullscreen presentation' : 'Present in fullscreen');
+      }
+
+      async function toggleFullscreen() {
+        try {
+          if (fullscreenElement()) {
+            const exit = document.exitFullscreen || document.webkitExitFullscreen;
+            if (exit) await exit.call(document);
+          } else {
+            const enter = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
+            if (enter) await enter.call(document.documentElement);
+          }
+        } catch (error) {
+          console.warn('[presentation] Fullscreen request failed:', error);
+        }
+      }
+
+      button.addEventListener('click', toggleFullscreen);
+      document.addEventListener('fullscreenchange', updateButton);
+      document.addEventListener('webkitfullscreenchange', updateButton);
+      document.addEventListener('keydown', function(event) {
+        const tag = event.target && event.target.tagName;
+        if (event.key.toLowerCase() === 'f' && tag !== 'INPUT' && tag !== 'TEXTAREA' && !event.ctrlKey && !event.metaKey && !event.altKey) {
+          event.preventDefault();
+          toggleFullscreen();
+        }
+      });
+
+      updateButton();
+      document.body.appendChild(button);
+    })();
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
