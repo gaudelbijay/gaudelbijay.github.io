@@ -77,9 +77,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     const manifest = JSON.parse(manifestEl.textContent);
     let template = JSON.parse(templateEl.textContent);
     template = template.split('SO3 Quiz.dc.html').join('/blog/math-quiz/so3/');
-    template = template
-      .split('Part (a) — exp is rotation by ‖X⃗‖ around X⃗')
-      .join('<span id="so3-exp-rotation-title">Part (a) — \\(\\exp(X)\\) is rotation by \\(\\lVert\\vec X\\rVert\\) about the axis \\(\\vec X\\)</span>');
     const explorerSection = '<section id="so3-explorer-link" aria-labelledby="so3-explorer-title" style="margin:0 0 36px;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:#162244;border:1px solid #2f4270;border-radius:8px;color:#fff;font-family:system-ui,sans-serif;box-sizing:border-box;"><div style="flex:1;min-width:240px;"><p style="margin:0 0 7px;color:#d5a829;font:600 11px/1.4 IBM Plex Mono,monospace;letter-spacing:.13em;text-transform:uppercase;">Interactive 3D visualization</p><h2 id="so3-explorer-title" style="margin:0 0 7px;font:400 25px/1.2 EB Garamond,Georgia,serif;color:#fff;">Explore SO(3) and 𝔰𝔬(3) visually</h2><p style="margin:0;color:#cdd8f0;font-size:14px;line-height:1.55;">Drag rotations, compare composition order, inspect the π-ball, and see the exponential map, tangent spaces, geodesics, brackets, and quaternion cover.</p></div><a href="/blog/2026/so3-explorer/" style="display:inline-block;padding:11px 17px;background:#d5a829;color:#162244;text-decoration:none;border-radius:5px;font-weight:700;line-height:1.4;white-space:nowrap;">Open the 3D Explorer →</a></section>';
     template = template.replace(/<main[^>]*>/, function(opening) {
       return opening + explorerSection;
@@ -378,21 +375,39 @@ document.addEventListener('DOMContentLoaded', async function() {
       window.Babel.transformScriptTags();
     }
 
-    // Keep the separately hosted SO(3) quiz clearly connected to this post.
-    (function renderPropositionTitle(attempt) {
-      const propositionTitle = document.getElementById('so3-exp-rotation-title');
-      if (!propositionTitle || typeof window.renderMathInElement !== 'function') {
-        if (attempt < 40) {
-          setTimeout(function() { renderPropositionTitle(attempt + 1); }, 100);
-        }
-        return;
+    // The component mounts after the bundle shell and can recreate this title
+    // on later state updates. Observe its output instead of formatting a shell
+    // node that React immediately replaces.
+    (function keepPropositionTitleRendered() {
+      const plainTitle = 'Part (a) — exp is rotation by ‖X⃗‖ around X⃗';
+
+      function renderTitle() {
+        if (!window.katex || typeof window.katex.render !== 'function') return;
+
+        const section = document.getElementById('s-ballmodel');
+        if (!section) return;
+        const title = Array.from(section.querySelectorAll('div')).find(function(element) {
+          return element.childElementCount === 0 && element.textContent.trim() === plainTitle;
+        });
+        if (!title) return;
+
+        title.replaceChildren(document.createTextNode('Part (a) — '));
+        [
+          ['\\exp(X)', ' is rotation by '],
+          ['\\lVert\\vec X\\rVert', ' about the axis '],
+          ['\\vec X', '']
+        ].forEach(function(part) {
+          const math = document.createElement('span');
+          window.katex.render(part[0], math, { displayMode: false, throwOnError: false });
+          title.appendChild(math);
+          title.append(part[1]);
+        });
       }
 
-      window.renderMathInElement(propositionTitle, {
-        delimiters: [{ left: '\\(', right: '\\)', display: false }],
-        throwOnError: false
-      });
-    })(0);
+      const observer = new MutationObserver(renderTitle);
+      observer.observe(document.body, { childList: true, subtree: true });
+      renderTitle();
+    })();
 
     // Proposition 1E is populated asynchronously by the component. Render
     // Part (a) directly once both its target and KaTeX exist, avoiding a
