@@ -37,6 +37,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
+        },{id: "nav-talk",
+          title: "Talk",
+          description: "Invited talks, lectures, and presentation materials.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/talk/";
+          },
         },{id: "projects-event-camera-reinforcement-learning-navigation-on-jackal",
           title: 'Event-Camera Reinforcement Learning Navigation on Jackal',
           description: "Event-driven reinforcement learning for autonomous navigation with neuromorphic vision.",
