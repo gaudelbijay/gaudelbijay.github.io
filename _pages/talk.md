@@ -83,22 +83,24 @@ nav_order: 7
   }
 </style>
 
-<a class="talk-card" href="{{ '/talk/2026/uav-motion-planning/' | relative_url }}">
-  <div class="talk-card-content">
-    <div class="talk-card-label">Guest lecture · Interactive presentation</div>
-    <h2 class="talk-card-title">UAV Motion Planning</h2>
-    <p class="talk-card-description">
-      A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore configuration spaces, graph search, trajectory optimization, obstacle avoidance, and autonomous UAV missions.
-    </p>
-  </div>
-  <div class="talk-card-visual" aria-hidden="true">
-    <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
-      <rect width="360" height="220" fill="#12161c" />
-      <rect x="138" y="71" width="55" height="55" rx="5" fill="none" stroke="#2e7bd6" stroke-width="4" />
-      <rect x="222" y="112" width="45" height="45" rx="5" fill="none" stroke="#2e7bd6" stroke-width="4" />
-      <path d="M45 174 C 102 167, 125 115, 184 106 S 274 85, 315 43" fill="none" stroke="#e4572e" stroke-linecap="round" stroke-width="7" />
-      <circle cx="45" cy="174" r="10" fill="#3fa66a" />
-      <circle cx="315" cy="43" r="10" fill="#e4572e" />
-    </svg>
-  </div>
-</a>
+<div class="talk-cards">
+  <a class="talk-card" href="{{ '/talk/2026/uav-motion-planning/' | relative_url }}">
+    <div class="talk-card-content">
+      <div class="talk-card-label">Guest lecture · Interactive presentation</div>
+      <h2 class="talk-card-title">UAV Motion Planning</h2>
+      <p class="talk-card-description">
+        A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore configuration spaces, graph search, trajectory optimization, obstacle avoidance, and autonomous UAV missions.
+      </p>
+    </div>
+    <div class="talk-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="220" fill="#12161c" />
+        <rect x="138" y="71" width="55" height="55" rx="5" fill="none" stroke="#2e7bd6" stroke-width="4" />
+        <rect x="222" y="112" width="45" height="45" rx="5" fill="none" stroke="#2e7bd6" stroke-width="4" />
+        <path d="M45 174 C 102 167, 125 115, 184 106 S 274 85, 315 43" fill="none" stroke="#e4572e" stroke-linecap="round" stroke-width="7" />
+        <circle cx="45" cy="174" r="10" fill="#3fa66a" />
+        <circle cx="315" cy="43" r="10" fill="#e4572e" />
+      </svg>
+    </div>
+  </a>
+</div>
