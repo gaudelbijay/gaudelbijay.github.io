@@ -578,6 +578,25 @@ nav_order: 6
     </div>
   </a>
 
+  <a class="blog-card" href="{{ '/blog/2026/hat-operator/' | relative_url }}">
+    <div class="blog-card-body">
+      <div class="blog-card-date">Jul 21, 2026</div>
+      <h2 class="blog-card-title">The Hat Operator</h2>
+      <p class="blog-card-summary">An interactive guide to the bridge between vectors, cross products, and skew-symmetric matrices in three dimensions.</p>
+    </div>
+    <div class="blog-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 240 210" role="img">
+        <rect x="34" y="34" width="172" height="142" rx="8" fill="#0b0f16" stroke="#c8b99f" stroke-width="3"></rect>
+        <text x="120" y="66" text-anchor="middle" fill="#ffcf5c" font-size="25" font-family="serif">ω̂</text>
+        <path d="M72 136 L112 96" stroke="#5aa9ff" stroke-width="5" stroke-linecap="round"></path>
+        <path d="M112 96 L165 115" stroke="#43e0a0" stroke-width="5" stroke-linecap="round"></path>
+        <path d="M112 96 L112 54" stroke="#ffcf5c" stroke-width="5" stroke-linecap="round"></path>
+        <circle cx="112" cy="96" r="7" fill="#e7ecf3"></circle>
+        <text x="120" y="160" text-anchor="middle" fill="#93a1b3" font-size="15" font-family="serif">ω̂a = ω × a</text>
+      </svg>
+    </div>
+  </a>
+
   <a class="blog-card" href="{{ '/blog/2026/series-and-convergence/' | relative_url }}">
     <div class="blog-card-body">
       <div class="blog-card-date">Jun 28, 2026</div>
