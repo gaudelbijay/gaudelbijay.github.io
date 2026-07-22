@@ -79,6 +79,11 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     const manifest = JSON.parse(manifestEl.textContent);
     let template = JSON.parse(templateEl.textContent);
+    const presentButton = '<button type="button" title="Present fullscreen" aria-label="Present fullscreen" onclick="var root=document.documentElement;var enter=root.requestFullscreen||root.webkitRequestFullscreen;if(enter)enter.call(root);" style="margin-left:auto;padding:12px 18px;border:2px solid #fff;border-radius:7px;background:#e4572e;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.38);font:700 18px/1.2 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;white-space:nowrap;">Present fullscreen</button>';
+    template = template.replace(
+      '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-l);">Autonomous Aerial Systems</span>',
+      presentButton
+    );
 
     // Nested page bundles (iframe targets). Each ships ONCE, in the ROOT
     // document's manifest; frame srcs carry an about:blank#<uuid> marker
@@ -371,61 +376,6 @@ document.addEventListener('DOMContentLoaded', async function() {
       window.Babel.transformScriptTags();
     }
 
-    // Presentation controls for the standalone talk page.
-    (function addPresentationControls() {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.setAttribute('aria-label', 'Present in fullscreen');
-      button.title = 'Present fullscreen (F)';
-      button.style.cssText = 'position:fixed;top:16px;right:18px;z-index:2147483647;padding:12px 18px;border:2px solid #fff;border-radius:7px;background:#e4572e;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.38);font:700 15px/1.2 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;';
-
-      function fullscreenElement() {
-        return document.fullscreenElement || document.webkitFullscreenElement;
-      }
-
-      function updateButton() {
-        const active = Boolean(fullscreenElement());
-        button.textContent = active ? 'Exit fullscreen' : '⛶  Present fullscreen';
-        button.setAttribute('aria-label', active ? 'Exit fullscreen presentation' : 'Present in fullscreen');
-      }
-
-      async function toggleFullscreen() {
-        try {
-          if (fullscreenElement()) {
-            const exit = document.exitFullscreen || document.webkitExitFullscreen;
-            if (exit) await exit.call(document);
-          } else {
-            const enter = document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen;
-            if (enter) await enter.call(document.documentElement);
-          }
-        } catch (error) {
-          console.warn('[presentation] Fullscreen request failed:', error);
-        }
-      }
-
-      button.addEventListener('click', toggleFullscreen);
-      document.addEventListener('fullscreenchange', updateButton);
-      document.addEventListener('webkitfullscreenchange', updateButton);
-      document.addEventListener('keydown', function(event) {
-        const tag = event.target && event.target.tagName;
-        if (event.key.toLowerCase() === 'f' && tag !== 'INPUT' && tag !== 'TEXTAREA' && !event.ctrlKey && !event.metaKey && !event.altKey) {
-          event.preventDefault();
-          toggleFullscreen();
-        }
-      });
-
-      updateButton();
-      document.body.appendChild(button);
-
-      // Some bundled presentation components rebuild their surrounding DOM
-      // after initialization. Keep the control attached if that happens.
-      const controlObserver = new MutationObserver(function() {
-        if (document.body && !document.body.contains(button)) {
-          document.body.appendChild(button);
-        }
-      });
-      controlObserver.observe(document.documentElement, { childList: true, subtree: true });
-    })();
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
