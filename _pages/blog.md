@@ -218,6 +218,45 @@ nav_order: 6
     transform-origin: center;
   }
 
+  .hat-card-frame {
+    animation: hat-card-frame 4.8s ease-in-out infinite;
+  }
+
+  .hat-card-symbol {
+    animation: hat-card-symbol 4.8s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .hat-card-input,
+  .hat-card-output,
+  .hat-card-axis {
+    transform-box: view-box;
+    transform-origin: 112px 96px;
+  }
+
+  .hat-card-input {
+    animation: hat-card-input 4.8s ease-in-out infinite;
+  }
+
+  .hat-card-output {
+    animation: hat-card-output 4.8s ease-in-out infinite;
+  }
+
+  .hat-card-axis {
+    animation: hat-card-axis 4.8s ease-in-out infinite;
+  }
+
+  .hat-card-hub {
+    animation: hat-card-hub 2.4s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .hat-card-identity {
+    animation: hat-card-identity 4.8s ease-in-out infinite;
+  }
+
   .vector-angle-sweep {
     animation: vector-angle-sweep 5.2s ease-in-out infinite;
     transform-box: fill-box;
@@ -407,6 +446,86 @@ nav_order: 6
     }
   }
 
+  @keyframes hat-card-frame {
+    0%,
+    100% {
+      stroke: #c8b99f;
+      filter: drop-shadow(0 0 0 rgba(255, 207, 92, 0));
+    }
+    50% {
+      stroke: #ffcf5c;
+      filter: drop-shadow(0 0 7px rgba(255, 207, 92, 0.42));
+    }
+  }
+
+  @keyframes hat-card-symbol {
+    0%,
+    100% {
+      opacity: 0.62;
+      transform: translateY(3px) scale(0.94);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-2px) scale(1.08);
+    }
+  }
+
+  @keyframes hat-card-input {
+    0%,
+    100% {
+      transform: rotate(-8deg) scale(0.88);
+    }
+    50% {
+      transform: rotate(16deg) scale(1.08);
+    }
+  }
+
+  @keyframes hat-card-output {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: rotate(-13deg) scale(0.82);
+    }
+    50% {
+      opacity: 1;
+      transform: rotate(10deg) scale(1.12);
+    }
+  }
+
+  @keyframes hat-card-axis {
+    0%,
+    100% {
+      opacity: 0.58;
+      transform: rotate(-12deg) scaleY(0.78);
+    }
+    50% {
+      opacity: 1;
+      transform: rotate(12deg) scaleY(1.12);
+    }
+  }
+
+  @keyframes hat-card-hub {
+    0%,
+    100% {
+      transform: scale(0.82);
+    }
+    50% {
+      transform: scale(1.22);
+    }
+  }
+
+  @keyframes hat-card-identity {
+    0%,
+    100% {
+      fill: #6f7d90;
+      opacity: 0.58;
+    }
+    50% {
+      fill: #e7ecf3;
+      opacity: 1;
+    }
+  }
+
   @keyframes vector-angle-sweep {
     0%,
     100% {
@@ -508,6 +627,13 @@ nav_order: 6
     .series-bar-c,
     .series-bar-d,
     .series-dot,
+    .hat-card-frame,
+    .hat-card-symbol,
+    .hat-card-input,
+    .hat-card-output,
+    .hat-card-axis,
+    .hat-card-hub,
+    .hat-card-identity,
     .vector-angle-sweep,
     .vector-area-plane,
     .vector-normal,
@@ -586,13 +712,13 @@ nav_order: 6
     </div>
     <div class="blog-card-visual" aria-hidden="true">
       <svg viewBox="0 0 240 210" role="img">
-        <rect x="34" y="34" width="172" height="142" rx="8" fill="#0b0f16" stroke="#c8b99f" stroke-width="3"></rect>
-        <text x="120" y="66" text-anchor="middle" fill="#ffcf5c" font-size="25" font-family="serif">ω̂</text>
-        <path d="M72 136 L112 96" stroke="#5aa9ff" stroke-width="5" stroke-linecap="round"></path>
-        <path d="M112 96 L165 115" stroke="#43e0a0" stroke-width="5" stroke-linecap="round"></path>
-        <path d="M112 96 L112 54" stroke="#ffcf5c" stroke-width="5" stroke-linecap="round"></path>
-        <circle cx="112" cy="96" r="7" fill="#e7ecf3"></circle>
-        <text x="120" y="160" text-anchor="middle" fill="#93a1b3" font-size="15" font-family="serif">ω̂a = ω × a</text>
+        <rect class="hat-card-frame" x="34" y="34" width="172" height="142" rx="8" fill="#0b0f16" stroke="#c8b99f" stroke-width="3"></rect>
+        <text class="hat-card-symbol" x="120" y="66" text-anchor="middle" fill="#ffcf5c" font-size="25" font-family="serif">ω̂</text>
+        <path class="hat-card-input" d="M72 136 L112 96" stroke="#5aa9ff" stroke-width="5" stroke-linecap="round"></path>
+        <path class="hat-card-output" d="M112 96 L165 115" stroke="#43e0a0" stroke-width="5" stroke-linecap="round"></path>
+        <path class="hat-card-axis" d="M112 96 L112 54" stroke="#ffcf5c" stroke-width="5" stroke-linecap="round"></path>
+        <circle class="hat-card-hub" cx="112" cy="96" r="7" fill="#e7ecf3"></circle>
+        <text class="hat-card-identity" x="120" y="160" text-anchor="middle" fill="#93a1b3" font-size="15" font-family="serif">ω̂a = ω × a</text>
       </svg>
     </div>
   </a>
