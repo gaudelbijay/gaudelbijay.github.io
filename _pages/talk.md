@@ -72,6 +72,122 @@ nav_order: 7
     height: auto;
   }
 
+  .talk-obstacle-a,
+  .talk-obstacle-b {
+    animation: talk-obstacle 4.8s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .talk-obstacle-b {
+    animation-delay: 0.65s;
+  }
+
+  .talk-route {
+    animation: talk-route 5.6s ease-in-out infinite;
+    stroke-dasharray: 390;
+    stroke-dashoffset: 390;
+  }
+
+  .talk-start,
+  .talk-goal {
+    animation: talk-node 2.8s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .talk-goal {
+    animation-delay: 1.4s;
+  }
+
+  .talk-drone {
+    offset-path: path("M45 174 C102 167 125 115 184 106 S274 85 315 43");
+    animation: talk-drone-flight 5.6s ease-in-out infinite;
+    filter: drop-shadow(0 0 6px rgba(245, 243, 238, 0.9));
+  }
+
+  @keyframes talk-obstacle {
+    0%,
+    100% {
+      opacity: 0.48;
+      transform: translateY(4px) scale(0.92);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(-4px) scale(1.06);
+    }
+  }
+
+  @keyframes talk-route {
+    0% {
+      opacity: 0.32;
+      stroke-dashoffset: 390;
+    }
+    42%,
+    78% {
+      opacity: 1;
+      stroke-dashoffset: 0;
+    }
+    100% {
+      opacity: 0.32;
+      stroke-dashoffset: -390;
+    }
+  }
+
+  @keyframes talk-node {
+    0%,
+    100% {
+      opacity: 0.62;
+      transform: scale(0.78);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.28);
+    }
+  }
+
+  @keyframes talk-drone-flight {
+    0%,
+    8% {
+      opacity: 0;
+      offset-distance: 0%;
+      transform: scale(0.7);
+    }
+    16% {
+      opacity: 1;
+    }
+    78% {
+      opacity: 1;
+      offset-distance: 100%;
+      transform: scale(1);
+    }
+    90%,
+    100% {
+      opacity: 0;
+      offset-distance: 100%;
+      transform: scale(0.7);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .talk-obstacle-a,
+    .talk-obstacle-b,
+    .talk-route,
+    .talk-start,
+    .talk-goal,
+    .talk-drone {
+      animation: none;
+    }
+
+    .talk-route {
+      stroke-dashoffset: 0;
+    }
+
+    .talk-drone {
+      display: none;
+    }
+  }
+
   @media (max-width: 767px) {
     .talk-card {
       grid-template-columns: 1fr;
@@ -95,11 +211,12 @@ nav_order: 7
     <div class="talk-card-visual" aria-hidden="true">
       <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="220" fill="#12161c" />
-        <rect x="138" y="71" width="55" height="55" rx="5" fill="none" stroke="#2e7bd6" stroke-width="4" />
-        <rect x="222" y="112" width="45" height="45" rx="5" fill="none" stroke="#2e7bd6" stroke-width="4" />
-        <path d="M45 174 C 102 167, 125 115, 184 106 S 274 85, 315 43" fill="none" stroke="#e4572e" stroke-linecap="round" stroke-width="7" />
-        <circle cx="45" cy="174" r="10" fill="#3fa66a" />
-        <circle cx="315" cy="43" r="10" fill="#e4572e" />
+        <rect class="talk-obstacle-a" x="138" y="71" width="55" height="55" rx="5" fill="none" stroke="#2e7bd6" stroke-width="4" />
+        <rect class="talk-obstacle-b" x="222" y="112" width="45" height="45" rx="5" fill="none" stroke="#2e7bd6" stroke-width="4" />
+        <path class="talk-route" d="M45 174 C 102 167, 125 115, 184 106 S 274 85, 315 43" fill="none" stroke="#e4572e" stroke-linecap="round" stroke-width="7" />
+        <circle class="talk-start" cx="45" cy="174" r="10" fill="#3fa66a" />
+        <circle class="talk-goal" cx="315" cy="43" r="10" fill="#e4572e" />
+        <circle class="talk-drone" cx="0" cy="0" r="6" fill="#f5f3ee" />
       </svg>
     </div>
   </a>
