@@ -79,11 +79,28 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     const manifest = JSON.parse(manifestEl.textContent);
     let template = JSON.parse(templateEl.textContent);
-    const presentButton = '<button type="button" title="Present fullscreen" aria-label="Present fullscreen" onclick="var root=document.documentElement;var enter=root.requestFullscreen||root.webkitRequestFullscreen;if(enter)enter.call(root);" style="margin-left:auto;padding:12px 18px;border:2px solid #fff;border-radius:7px;background:#e4572e;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.38);font:700 18px/1.2 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;white-space:nowrap;">Present fullscreen</button>';
+    const presentButton = '<button type="button" data-present-fullscreen title="Present fullscreen" aria-label="Present fullscreen" style="margin-left:auto;padding:12px 18px;border:2px solid #fff;border-radius:7px;background:#e4572e;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.38);font:700 18px/1.2 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;white-space:nowrap;">Present fullscreen</button>';
     template = template.replace(
       '<span style="font-family:\'IBM Plex Mono\',monospace;font-size:24px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut-l);">Autonomous Aerial Systems</span>',
       presentButton
     );
+
+    // Delegate outside React so the presentation runtime receives no string
+    // onClick prop while the browser still handles the user gesture directly.
+    document.addEventListener('click', function(event) {
+      const target = event.target instanceof Element ? event.target.closest('[data-present-fullscreen]') : null;
+      if (!target) return;
+
+      const active = document.fullscreenElement || document.webkitFullscreenElement;
+      if (active) {
+        const exit = document.exitFullscreen || document.webkitExitFullscreen;
+        if (exit) exit.call(document);
+      } else {
+        const root = document.documentElement;
+        const enter = root.requestFullscreen || root.webkitRequestFullscreen;
+        if (enter) enter.call(root);
+      }
+    });
 
     // Nested page bundles (iframe targets). Each ships ONCE, in the ROOT
     // document's manifest; frame srcs carry an about:blank#<uuid> marker
