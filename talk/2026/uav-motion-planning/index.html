@@ -376,7 +376,8 @@ document.addEventListener('DOMContentLoaded', async function() {
       const button = document.createElement('button');
       button.type = 'button';
       button.setAttribute('aria-label', 'Present in fullscreen');
-      button.style.cssText = 'position:fixed;right:18px;bottom:18px;z-index:99998;padding:11px 16px;border:1px solid rgba(255,255,255,.28);border-radius:7px;background:#12161c;color:#f5f3ee;box-shadow:0 8px 24px rgba(0,0,0,.28);font:600 14px/1.2 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;';
+      button.title = 'Present fullscreen (F)';
+      button.style.cssText = 'position:fixed;top:16px;right:18px;z-index:2147483647;padding:12px 18px;border:2px solid #fff;border-radius:7px;background:#e4572e;color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.38);font:700 15px/1.2 system-ui,sans-serif;letter-spacing:.01em;cursor:pointer;';
 
       function fullscreenElement() {
         return document.fullscreenElement || document.webkitFullscreenElement;
@@ -415,6 +416,15 @@ document.addEventListener('DOMContentLoaded', async function() {
 
       updateButton();
       document.body.appendChild(button);
+
+      // Some bundled presentation components rebuild their surrounding DOM
+      // after initialization. Keep the control attached if that happens.
+      const controlObserver = new MutationObserver(function() {
+        if (document.body && !document.body.contains(button)) {
+          document.body.appendChild(button);
+        }
+      });
+      controlObserver.observe(document.documentElement, { childList: true, subtree: true });
     })();
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
