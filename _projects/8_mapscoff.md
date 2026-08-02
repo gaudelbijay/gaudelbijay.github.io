@@ -61,9 +61,9 @@ _styles: |
 
   .gc-hand-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    margin: 1.25rem 0 2rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin: 1.25rem 0 2.5rem;
   }
 
   .gc-hand-card {
@@ -85,6 +85,12 @@ _styles: |
     aspect-ratio: 4 / 3;
     object-fit: cover;
     background: #111;
+  }
+
+  .gc-hand-card:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 0.625rem);
+    justify-self: center;
   }
 
   .gc-hand-card figcaption {
@@ -485,6 +491,13 @@ _styles: |
     .gc-pipe-arrow {
       display: none;
     }
+    .gc-hand-grid {
+      grid-template-columns: 1fr;
+    }
+    .gc-hand-card:last-child {
+      grid-column: auto;
+      width: 100%;
+    }
   }
 
 ---
@@ -494,6 +507,41 @@ _styles: |
   <span class="gc-badge">7 robot hands</span>
   <span class="gc-badge">Passive by construction</span>
   <span class="gc-badge">0 passivity violations</span>
+</div>
+
+## Seven Hands, One Cross-Embodiment Challenge
+
+This is the central visual showcase of the project: **every robot hand used in the benchmark**, spanning rigid parallel grippers, underactuated mechanisms, a soft tendon-spring hand, and dexterous four-finger embodiments. Each animation shows an actual simulated grasp configuration used to generate the wrench-displacement dataset.
+
+<div class="gc-hand-grid">
+  <figure class="gc-hand-card">
+    <img src="{{ '/assets/img/projects/mapscoff/franka.gif' | relative_url }}" alt="Franka parallel-jaw gripper grasping the test object">
+    <figcaption><strong>Franka</strong><span>2-finger · parallel-jaw gripper</span></figcaption>
+  </figure>
+  <figure class="gc-hand-card">
+    <img src="{{ '/assets/img/projects/mapscoff/robotiq-2f85.gif' | relative_url }}" alt="Robotiq 2F-85 underactuated gripper grasping the test object">
+    <figcaption><strong>Robotiq 2F-85</strong><span>2-finger · underactuated gripper</span></figcaption>
+  </figure>
+  <figure class="gc-hand-card">
+    <img src="{{ '/assets/img/projects/mapscoff/umi.gif' | relative_url }}" alt="UMI parallel squeeze gripper grasping the test object">
+    <figcaption><strong>UMI</strong><span>2-finger · parallel squeeze gripper</span></figcaption>
+  </figure>
+  <figure class="gc-hand-card">
+    <img src="{{ '/assets/img/projects/mapscoff/sbir.gif' | relative_url }}" alt="SBIR soft tendon-spring hand grasping the test object">
+    <figcaption><strong>SBIR</strong><span>3-finger · soft tendon-spring hand</span></figcaption>
+  </figure>
+  <figure class="gc-hand-card">
+    <img src="{{ '/assets/img/projects/mapscoff/dex-ee.gif' | relative_url }}" alt="DEX-EE three-finger hand grasping the test object">
+    <figcaption><strong>DEX-EE</strong><span>3-finger · dexterous end effector</span></figcaption>
+  </figure>
+  <figure class="gc-hand-card">
+    <img src="{{ '/assets/img/projects/mapscoff/leap.gif' | relative_url }}" alt="LEAP direct-drive hand grasping the test object">
+    <figcaption><strong>LEAP Hand</strong><span>4-finger · direct-drive dexterous hand</span></figcaption>
+  </figure>
+  <figure class="gc-hand-card">
+    <img src="{{ '/assets/img/projects/mapscoff/allegro.gif' | relative_url }}" alt="Allegro direct-drive hand grasping the test object">
+    <figcaption><strong>Allegro Hand</strong><span>4-finger · direct-drive dexterous hand</span></figcaption>
+  </figure>
 </div>
 
 <div class="gc-hero">
@@ -510,41 +558,6 @@ _styles: |
   <div class="gc-metric"><strong>436,609</strong><span>Stable wrench responses</span></div>
   <div class="gc-metric"><strong>20 probes</strong><span>Few-shot adaptation for a held-out hand</span></div>
   <div class="gc-metric"><strong>0</strong><span>Passivity violations by construction</span></div>
-</div>
-
-## Seven-Hand Grasp Showcase
-
-The benchmark spans rigid industrial grippers, an underactuated gripper, a soft tendon-driven hand, and dexterous multi-finger hands. These animations show the actual simulated grasp configurations used to generate the wrench-displacement data.
-
-<div class="gc-hand-grid">
-  <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/franka.gif' | relative_url }}" alt="Franka parallel-jaw gripper grasping the test object" loading="lazy">
-    <figcaption><strong>Franka</strong><span>2-finger · parallel-jaw gripper</span></figcaption>
-  </figure>
-  <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/robotiq-2f85.gif' | relative_url }}" alt="Robotiq 2F-85 underactuated gripper grasping the test object" loading="lazy">
-    <figcaption><strong>Robotiq 2F-85</strong><span>2-finger · underactuated gripper</span></figcaption>
-  </figure>
-  <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/umi.gif' | relative_url }}" alt="UMI parallel squeeze gripper grasping the test object" loading="lazy">
-    <figcaption><strong>UMI</strong><span>2-finger · parallel squeeze gripper</span></figcaption>
-  </figure>
-  <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/sbir.gif' | relative_url }}" alt="SBIR soft tendon-spring hand grasping the test object" loading="lazy">
-    <figcaption><strong>SBIR</strong><span>3-finger · soft tendon-spring hand</span></figcaption>
-  </figure>
-  <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/dex-ee.gif' | relative_url }}" alt="DEX-EE three-finger hand grasping the test object" loading="lazy">
-    <figcaption><strong>DEX-EE</strong><span>3-finger · dexterous end effector</span></figcaption>
-  </figure>
-  <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/leap.gif' | relative_url }}" alt="LEAP direct-drive hand grasping the test object" loading="lazy">
-    <figcaption><strong>LEAP Hand</strong><span>4-finger · direct-drive dexterous hand</span></figcaption>
-  </figure>
-  <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/allegro.gif' | relative_url }}" alt="Allegro direct-drive hand grasping the test object" loading="lazy">
-    <figcaption><strong>Allegro Hand</strong><span>4-finger · direct-drive dexterous hand</span></figcaption>
-  </figure>
 </div>
 
 ## Problem formulation
