@@ -2,7 +2,7 @@
 layout: page
 title: Safe Cross-Embodiment Grasp-Compliance Calibration
 description: Few-shot calibration of passive grasp-compliance models for previously unseen robot hands.
-img: assets/img/projects/mapscoff/overview-card.png
+img: assets/img/projects/mapscoff/allegro.gif
 importance: 0
 category: work
 github: https://github.com/stevens-armlab/graspCompliance
