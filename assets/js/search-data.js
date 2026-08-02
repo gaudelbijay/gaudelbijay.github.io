@@ -79,6 +79,11 @@ ninja.data = [{
           description: "Privacy-conscious, resume-aware job discovery with evidence-based filtering and ranking.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/7_roleradar/";
+            },},{id: "projects-safe-cross-embodiment-grasp-compliance-calibration",
+          title: 'Safe Cross-Embodiment Grasp-Compliance Calibration',
+          description: "Few-shot calibration of passive grasp-compliance models for previously unseen robot hands.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/8_mapscoff/";
             },},{
         id: 'social-email',
         title: 'email',
