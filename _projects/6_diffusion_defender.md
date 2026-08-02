@@ -3,7 +3,7 @@ layout: page
 title: Diffusion-Based Defense Against Adversarial Perception Attacks
 description: Adversarial image-attack detection and denoising with diffusion models and image-domain Fourier-transform frequency analysis.
 img: assets/img/projects/diffusion-defender/attacked-iteration-212.png
-importance: 6
+importance: 7
 category: work
 github: https://github.com/gaudelbijay/diffusion-defender
 ---

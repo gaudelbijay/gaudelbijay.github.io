@@ -3,7 +3,7 @@ layout: page
 title: Event-Camera Reinforcement Learning Navigation on Jackal
 description: Event-driven reinforcement learning for autonomous navigation with neuromorphic vision.
 img: assets/img/projects/event-jackal/navigation-rollout.gif
-importance: 1
+importance: 3
 category: work
 github: https://github.com/gaudelbijay/event_jackal
 _styles: |

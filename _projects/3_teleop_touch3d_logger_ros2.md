@@ -3,7 +3,7 @@ layout: page
 title: ROS 2 Haptic Teleoperation Data Logger for Manipulation Learning
 description: ROS 2 teleoperation and experiment logging stack for Geomagic Touch-based arm control.
 img: assets/img/projects/teleop-touch3d/haptic-frame.png
-importance: 3
+importance: 4
 category: work
 github: https://github.com/stevens-armlab/teleop_touch3d_logger_ros2
 ---

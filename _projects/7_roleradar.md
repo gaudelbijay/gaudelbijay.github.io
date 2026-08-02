@@ -3,7 +3,7 @@ layout: page
 title: RoleRadar
 description: Privacy-conscious, resume-aware job discovery with evidence-based filtering and ranking.
 img: assets/img/projects/roleradar/job-search-results.png
-importance: 7
+importance: 8
 category: work
 github: https://github.com/gaudelbijay/RoleRadar
 ---
