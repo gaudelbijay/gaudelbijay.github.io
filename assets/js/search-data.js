@@ -74,6 +74,11 @@ ninja.data = [{
           description: "Adversarial image-attack detection and denoising with diffusion models and image-domain Fourier-transform frequency analysis.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/6_diffusion_defender/";
+            },},{id: "projects-roleradar",
+          title: 'RoleRadar',
+          description: "Privacy-conscious, resume-aware job discovery with evidence-based filtering and ranking.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/7_roleradar/";
             },},{
         id: 'social-email',
         title: 'email',
