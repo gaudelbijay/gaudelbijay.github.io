@@ -1,10 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
-  <title id="title">MAPscoff cross-embodiment grasp-compliance calibration</title>
+  <title id="title">Safe cross-embodiment grasp-compliance calibration</title>
   <desc id="desc">A flow diagram from a new robot hand and a small set of wrench-displacement probes to a passive compliance matrix and settling offset.</desc>
+  <style>
+    .flow { stroke-dasharray: 14 12; animation: flow 1.4s linear infinite; }
+    .probe { animation: pulse 1.8s ease-in-out infinite; transform-origin: 625px 347px; }
+    .safe { animation: glow 2.2s ease-in-out infinite; }
+    @keyframes flow { to { stroke-dashoffset: -26; } }
+    @keyframes pulse { 50% { transform: scale(1.025); } }
+    @keyframes glow { 50% { opacity: 0.82; } }
+    @media (prefers-reduced-motion: reduce) {
+      .flow, .probe, .safe { animation: none; }
+    }
+  </style>
   <rect width="1200" height="675" fill="#f8fafc"/>
   <rect x="48" y="44" width="1104" height="587" rx="24" fill="#fff" stroke="#e2e8f0" stroke-width="3"/>
-  <text x="92" y="115" fill="#0f172a" font-family="Arial, sans-serif" font-size="48" font-weight="700">MAPscoff</text>
-  <text x="92" y="158" fill="#64748b" font-family="Arial, sans-serif" font-size="25">Few-shot, cross-embodiment grasp-compliance calibration</text>
+  <text x="92" y="112" fill="#0f172a" font-family="Arial, sans-serif" font-size="38" font-weight="700">Safe Cross-Embodiment Grasp-Compliance Calibration</text>
+  <text x="92" y="154" fill="#64748b" font-family="Arial, sans-serif" font-size="24">Few-shot estimation of passive grasp compliance for an unseen robot hand</text>
 
   <g transform="translate(92 225)">
     <rect width="250" height="245" rx="18" fill="#eff6ff" stroke="#93c5fd" stroke-width="3"/>
@@ -15,10 +26,10 @@
     <rect x="54" y="190" width="142" height="28" rx="12" fill="#60a5fa"/>
   </g>
 
-  <path d="M370 347h105" stroke="#94a3b8" stroke-width="5"/>
+  <path class="flow" d="M370 347h105" stroke="#1d4ed8" stroke-width="5"/>
   <path d="m463 334 18 13-18 13" fill="none" stroke="#94a3b8" stroke-width="5"/>
 
-  <g transform="translate(500 225)">
+  <g class="probe" transform="translate(500 225)">
     <rect width="250" height="245" rx="18" fill="#fff" stroke="#cbd5e1" stroke-width="3"/>
     <text x="26" y="48" fill="#0f172a" font-family="Arial, sans-serif" font-size="23" font-weight="700">K = 20 PROBES</text>
     <text x="26" y="91" fill="#64748b" font-family="Arial, sans-serif" font-size="21">applied wrench</text>
@@ -28,16 +39,16 @@
     <text x="26" y="228" fill="#1d4ed8" font-family="monospace" font-size="26">Δx ∈ R⁶</text>
   </g>
 
-  <path d="M778 347h105" stroke="#94a3b8" stroke-width="5"/>
-  <path d="m871 334 18 13-18 13" fill="none" stroke="#94a3b8" stroke-width="5"/>
+  <path class="flow" d="M778 347h72" stroke="#1d4ed8" stroke-width="5"/>
+  <path d="m838 334 18 13-18 13" fill="none" stroke="#94a3b8" stroke-width="5"/>
 
-  <g transform="translate(908 225)">
-    <rect width="200" height="245" rx="18" fill="#1d4ed8"/>
-    <text x="24" y="47" fill="#dbeafe" font-family="Arial, sans-serif" font-size="21" font-weight="700">SAFE MODEL</text>
-    <text x="24" y="102" fill="#fff" font-family="monospace" font-size="28">Δx = Cw + b</text>
-    <text x="24" y="153" fill="#fff" font-family="monospace" font-size="30" font-weight="700">C ⪰ 0</text>
-    <text x="24" y="190" fill="#dbeafe" font-family="Arial, sans-serif" font-size="19">passive by</text>
-    <text x="24" y="218" fill="#dbeafe" font-family="Arial, sans-serif" font-size="19">construction</text>
+  <g class="safe" transform="translate(875 225)">
+    <rect width="233" height="245" rx="18" fill="#1d4ed8"/>
+    <text x="116.5" y="47" fill="#dbeafe" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">SAFE MODEL</text>
+    <text x="116.5" y="104" fill="#fff" font-family="monospace" font-size="25" text-anchor="middle">Δx = Cw + b</text>
+    <text x="116.5" y="154" fill="#fff" font-family="monospace" font-size="28" font-weight="700" text-anchor="middle">C ⪰ 0</text>
+    <path d="M30 176h173" stroke="#60a5fa" stroke-width="2" opacity="0.7"/>
+    <text x="116.5" y="207" fill="#dbeafe" font-family="Arial, sans-serif" font-size="18" text-anchor="middle">passive by construction</text>
   </g>
 
   <text x="92" y="554" fill="#0f172a" font-family="Arial, sans-serif" font-size="25" font-weight="700">Frozen cross-hand prior + MAP estimation + gated settling offset</text>
