@@ -502,7 +502,7 @@ _styles: |
 
 <p class="gc-lede">MAPscoff is a few-shot calibration method for predicting how a grasped object will move when forces and torques are applied to it. The central challenge is <strong>cross-embodiment generalization</strong>: the method must adapt to a robot hand whose kinematics, actuation, contact mechanics, and compliance regime were absent from training.</p>
 
-<p>The method estimates an interpretable local compliance model from only \(K=20\) probe measurements while guaranteeing that the resulting compliance is passive. This safety property matters because the calibrated model can be inverted and used by a Cartesian impedance controller; an unconstrained, non-passive estimate can inject energy and destabilize that controller.</p>
+<p>The method estimates an interpretable local compliance model from only $K=20$ probe measurements while guaranteeing that the resulting compliance is passive. This safety property matters because the calibrated model can be inverted and used by a Cartesian impedance controller; an unconstrained, non-passive estimate can inject energy and destabilize that controller.</p>
 
 <div class="gc-metrics">
   <div class="gc-metric"><strong>7 hands</strong><span>Two-, three-, and four-finger embodiments</span></div>
@@ -553,21 +553,21 @@ The benchmark spans rigid industrial grippers, an underactuated gripper, a soft 
 
 <div class="gc-concept">
   <h3>Force in, motion out — mapped by <span style="color: var(--global-theme-color);">C</span></h3>
-  <p>Compliance is just the local relationship between a wrench applied to a grasped object and the small displacement it produces. Probe the grasp with a force/torque \(w\), watch the object settle at a new pose, and the ratio between the two is the compliance operator \(C\). A stiffer grasp produces a smaller displacement for the same wrench; a softer one produces a larger one.</p>
+  <p>Compliance is just the local relationship between a wrench applied to a grasped object and the small displacement it produces. Probe the grasp with a force/torque $w$, watch the object settle at a new pose, and the ratio between the two is the compliance operator $C$. A stiffer grasp produces a smaller displacement for the same wrench; a softer one produces a larger one.</p>
   <div class="gc-flow">
-    <span class="gc-flow-term">wrench \(w\)</span>
+    <span class="gc-flow-term">wrench $w$</span>
     <span class="gc-flow-arrow">&#8594;</span>
     <span class="gc-flow-box">C</span>
     <span class="gc-flow-arrow out">&#8594;</span>
-    <span class="gc-flow-term">displacement \(\Delta x\)</span>
+    <span class="gc-flow-term">displacement $\Delta x$</span>
   </div>
 </div>
 
 ### Local grasp-response model
 
-Each scenario \(s\) is a stable grasp equilibrium defined by one robot hand, one object, one contact configuration, and one set of physical parameters. The grasp is probed locally with small Cartesian loads so that its response can be approximated around that equilibrium.
+Each scenario $s$ is a stable grasp equilibrium defined by one robot hand, one object, one contact configuration, and one set of physical parameters. The grasp is probed locally with small Cartesian loads so that its response can be approximated around that equilibrium.
 
-For probe \(i\), the input is a six-dimensional wrench
+For probe $i$, the input is a six-dimensional wrench
 
 $$
 \mathbf{w}_{s,i}
@@ -590,7 +590,7 @@ $$
 \in \mathbb{R}^{6}.
 $$
 
-The complete response set for scenario \(s\) is
+The complete response set for scenario $s$ is
 
 $$
 \mathcal{D}_s
@@ -612,11 +612,11 @@ $$
 
 where
 
-- \(\mathbf{C}_s\in\mathbb{R}^{6\times6}\) is the local Cartesian compliance operator,
-- \(\mathbf{b}_s\in\mathbb{R}^{6}\) is a wrench-independent quasi-static settling offset, and
-- \(\boldsymbol{\varepsilon}_{s,i}\) captures measurement noise and residual local nonlinearity.
+- $\mathbf{C}\_s\in\mathbb{R}^{6\times6}$ is the local Cartesian compliance operator,
+- $\mathbf{b}\_s\in\mathbb{R}^{6}$ is a wrench-independent quasi-static settling offset, and
+- $\boldsymbol{\varepsilon}\_{s,i}$ captures measurement noise and residual local nonlinearity.
 
-The matrix \(\mathbf{C}_s\) maps force and torque into translation and rotation. Its translational, rotational, and coupled blocks can be written as
+The matrix $\mathbf{C}\_s$ maps force and torque into translation and rotation. Its translational, rotational, and coupled blocks can be written as
 
 $$
 \mathbf{C}_s
@@ -627,11 +627,11 @@ $$
 \end{bmatrix},
 $$
 
-so the model captures not only direct translation under force and rotation under torque, but also cross-coupled behavior such as torque-induced translation. Neither \(\mathbf{C}_s\) nor \(\mathbf{b}_s\) is stored as a supervised label; both must be inferred from the raw wrench-displacement observations.
+so the model captures not only direct translation under force and rotation under torque, but also cross-coupled behavior such as torque-induced translation. Neither $\mathbf{C}\_s$ nor $\mathbf{b}\_s$ is stored as a supervised label; both must be inferred from the raw wrench-displacement observations.
 
 ### Cross-embodiment few-shot task
 
-Let \(\mathcal{H}_{\mathrm{train}}\) denote the source hands and let \(h^{\star}\notin\mathcal{H}_{\mathrm{train}}\) be a held-out target hand. All learned priors and baselines are trained without any scenario from \(h^{\star}\). At deployment, the calibrator receives only a small support set from one target-hand grasp,
+Let $\mathcal{H}\_{\mathrm{train}}$ denote the source hands and let $h^{\star}\notin\mathcal{H}\_{\mathrm{train}}$ be a held-out target hand. All learned priors and baselines are trained without any scenario from $h^{\star}$. At deployment, the calibrator receives only a small support set from one target-hand grasp,
 
 $$
 \mathcal{S}_{K}
@@ -642,7 +642,7 @@ $$
 \qquad K\in\{0,1,2,3,5,10,20\}.
 $$
 
-It must estimate \(\widehat{\mathbf{C}}\) and \(\widehat{\mathbf{b}}\), then predict displacements for disjoint query wrenches:
+It must estimate $\widehat{\mathbf{C}}$ and $\widehat{\mathbf{b}}$, then predict displacements for disjoint query wrenches:
 
 $$
 \widehat{\Delta\mathbf{x}}_j
@@ -670,7 +670,7 @@ $$
 \mathbf{C}\succeq\mathbf{0}.
 $$
 
-  <p>Equivalently, every wrench must satisfy \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge 0\). This inequality is the quasi-static passivity condition — it prevents the learned wrench-to-displacement map from containing a negative-work direction.</p>
+  <p>Equivalently, every wrench must satisfy $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge 0$. This inequality is the quasi-static passivity condition — it prevents the learned wrench-to-displacement map from containing a negative-work direction.</p>
 </div>
 
 ## Why passivity matters
@@ -684,7 +684,7 @@ $$
 \quad\text{for every }\mathbf{w}.
 $$
 
-The quantity \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\) represents the work associated with the wrench-induced displacement. A negative value means the estimated grasp moves against the applied wrench and behaves as if it adds energy. This can make \(\mathbf{K}_x=\mathbf{C}^{-1}\) unsuitable as a controller stiffness and lead to unstable behavior.
+The quantity $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}$ represents the work associated with the wrench-induced displacement. A negative value means the estimated grasp moves against the applied wrench and behaves as if it adds energy. This can make $\mathbf{K}\_x=\mathbf{C}^{-1}$ unsuitable as a controller stiffness and lead to unstable behavior.
 
 <div class="gc-compare" aria-label="Animated comparison of passive and non-passive compliance">
   <div class="gc-panel">
@@ -694,7 +694,7 @@ The quantity \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\) represents the work assoc
       <span class="gc-puck"></span>
     </div>
     <div class="gc-rail-legend"><span>&#8594; applied wrench</span><span>&#9679; object response</span></div>
-    <p>The displacement follows the applied wrench: \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge0\). The model does not add energy.</p>
+    <p>The displacement follows the applied wrench: $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge0$. The model does not add energy.</p>
   </div>
   <div class="gc-panel unsafe">
     <div class="gc-panel-head"><span class="gc-panel-icon">!</span><strong>Passivity violation</strong></div>
@@ -703,29 +703,29 @@ The quantity \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\) represents the work assoc
       <span class="gc-puck"></span>
     </div>
     <div class="gc-rail-legend"><span>&#8594; applied wrench</span><span>&#9679; object response</span></div>
-    <p>The displacement opposes the wrench: \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}<0\). An unconstrained model can destabilize control.</p>
+    <p>The displacement opposes the wrench: $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}<0$. An unconstrained model can destabilize control.</p>
   </div>
 </div>
 
-MAPscoff constrains \(\mathbf{C}\) to be positive semidefinite by construction, so every estimate is passive. In the reported evaluation it produced **zero passivity violations**. By comparison, unconstrained fits produced 101,767 violations on the matched benchmark and 54,771 on the multibig benchmark.
+MAPscoff constrains $\mathbf{C}$ to be positive semidefinite by construction, so every estimate is passive. In the reported evaluation it produced **zero passivity violations**. By comparison, unconstrained fits produced 101,767 violations on the matched benchmark and 54,771 on the multibig benchmark.
 
 ## Method
 
 MAPscoff combines a learned physical prior with constrained few-shot estimation.
 
 <div class="gc-pipeline">
-  <div class="gc-pipe"><strong>1. Passive prior</strong><span>A neural head predicts a factor A; \(C_{\text{prior}}=AA^\top\) is symmetric PSD by construction.</span></div>
+  <div class="gc-pipe"><strong>1. Passive prior</strong><span>A neural head predicts a factor A; $C_{\text{prior}}=AA^\top$ is symmetric PSD by construction.</span></div>
   <div class="gc-pipe-arrow">&#8594;</div>
   <div class="gc-pipe"><strong>2. Scale correction</strong><span>A conservative scalar gain rescales the prior to the target grasp using the support set.</span></div>
   <div class="gc-pipe-arrow">&#8594;</div>
-  <div class="gc-pipe"><strong>3. MAP calibration</strong><span>The support set fits a PSD \(C\) while staying anchored to the scaled prior.</span></div>
+  <div class="gc-pipe"><strong>3. MAP calibration</strong><span>The support set fits a PSD $C$ while staying anchored to the scaled prior.</span></div>
   <div class="gc-pipe-arrow">&#8594;</div>
-  <div class="gc-pipe"><strong>4. Gated offset</strong><span>An affine term \(b\) is kept only when it reduces held-out support error.</span></div>
+  <div class="gc-pipe"><strong>4. Gated offset</strong><span>An affine term $b$ is kept only when it reduces held-out support error.</span></div>
 </div>
 
 ### 1. Passive learned prior
 
-A topology-independent grasp descriptor is passed through a neural head that predicts a factor \(\mathbf{A}\in\mathbb{R}^{6\times6}\). The prior compliance is constructed as
+A topology-independent grasp descriptor is passed through a neural head that predicts a factor $\mathbf{A}\in\mathbb{R}^{6\times6}$. The prior compliance is constructed as
 
 $$
 \mathbf{C}_{\mathrm{prior}}
@@ -733,7 +733,7 @@ $$
 \mathbf{A}\mathbf{A}^{\top}.
 $$
 
-This factorization makes \(\mathbf{C}_{\mathrm{prior}}\) symmetric and positive semidefinite by construction. The prior captures structure shared across source hands, but it is used as an anchor rather than trusted as the final zero-shot answer.
+This factorization makes $\mathbf{C}\_{\mathrm{prior}}$ symmetric and positive semidefinite by construction. The prior captures structure shared across source hands, but it is used as an anchor rather than trusted as the final zero-shot answer.
 
 ### 2. Scale-from-support correction
 
@@ -771,7 +771,7 @@ s\mathbf{W}\mathbf{C}_{\mathrm{prior}}^{\top}
 \right\|_{F}^{2}.
 $$
 
-The clipped, scaled prior \(s^{\star}\mathbf{C}_{\mathrm{prior}}\) corrects large stiffness differences between the source hands and the target embodiment.
+The clipped, scaled prior $s^{\star}\mathbf{C}\_{\mathrm{prior}}$ corrects large stiffness differences between the source hands and the target embodiment.
 
 ### 3. Prior-anchored passive MAP calibration
 
@@ -791,7 +791,7 @@ $$
 \right\|_{F}^{2}.
 $$
 
-The first term fits the support observations. The second is the negative log-prior, anchoring the low-data estimate to transferable structure. The regularization strength is derived from an equivalent prior count and support curvature: the estimator reduces to the prior when \(K=0\), then becomes increasingly support-driven as more probes arrive.
+The first term fits the support observations. The second is the negative log-prior, anchoring the low-data estimate to transferable structure. The regularization strength is derived from an equivalent prior count and support curvature: the estimator reduces to the prior when $K=0$, then becomes increasingly support-driven as more probes arrive.
 
 ### 4. Gated wrench-independent offset
 
@@ -821,9 +821,9 @@ $$
 \end{aligned}
 $$
 
-with \(\mathbf{b}_0=\mathbf{0}\) at deployment. When enough support pairs are available, the support set is split internally and the affine offset is retained only when it reduces held-out support error. This gate activates the offset on hands such as LEAP and Allegro while leaving it mostly inactive on clean parallel-jaw grasps.
+with $\mathbf{b}\_0=\mathbf{0}$ at deployment. When enough support pairs are available, the support set is split internally and the affine offset is retained only when it reduces held-out support error. This gate activates the offset on hands such as LEAP and Allegro while leaving it mostly inactive on clean parallel-jaw grasps.
 
-The offset does not alter the passivity guarantee because passivity belongs to the wrench-to-displacement operator \(\mathbf{C}\). The vector \(\mathbf{b}\) represents the equilibrium baseline of the measurement window, not a stiffness or an energy-generating mode.
+The offset does not alter the passivity guarantee because passivity belongs to the wrench-to-displacement operator $\mathbf{C}$. The vector $\mathbf{b}$ represents the equilibrium baseline of the measurement window, not a stiffness or an energy-generating mode.
 
 The comparison baseline is MAML: a shared initialization followed by inner-loop gradient adaptation on the same support pairs. Its model uses
 
@@ -842,7 +842,7 @@ Each simulated scenario follows a controlled probe protocol.
   <div class="gc-step"><span class="gc-step-number">2</span><strong>Build and equilibrate</strong><span>Allow the grasp to settle for 20 seconds.</span></div>
   <div class="gc-step"><span class="gc-step-number">3</span><strong>Freeze state</strong><span>Save one snapshot and rewind to it before every probe.</span></div>
   <div class="gc-step"><span class="gc-step-number">4</span><strong>Probe 60 wrenches</strong><span>Use 30 force-only and 30 force-plus-torque loads.</span></div>
-  <div class="gc-step"><span class="gc-step-number">5</span><strong>Measure displacement</strong><span>Ramp for 0.25 seconds, hold for one second, and record \(\Delta x\).</span></div>
+  <div class="gc-step"><span class="gc-step-number">5</span><strong>Measure displacement</strong><span>Ramp for 0.25 seconds, hold for one second, and record $\Delta x$.</span></div>
   <div class="gc-step"><span class="gc-step-number">6</span><strong>Filter</strong><span>Keep scenarios with at least 12 stable loads.</span></div>
 </div>
 
@@ -850,7 +850,7 @@ The resulting dataset contains **8,805 grasp scenarios** and **436,609 stable re
 
 ### Embodiment differences
 
-The two-finger grippers are comparatively rigid and are dominated by the wrench-dependent term \(Cw\). SBIR is approximately 30 times softer than those grippers. LEAP and Allegro exhibit a large wrench-independent settling offset, making them especially useful tests of whether the model captures \(b\).
+The two-finger grippers are comparatively rigid and are dominated by the wrench-dependent term $Cw$. SBIR is approximately 30 times softer than those grippers. LEAP and Allegro exhibit a large wrench-independent settling offset, making them especially useful tests of whether the model captures $b$.
 
 ## Evaluation protocol
 
@@ -901,13 +901,13 @@ MAPscoff delivers its clearest matched-benchmark gain on LEAP. Franka and Roboti
   </table>
 </div>
 
-MAPscoff beats MAML on all four reported multibig held-out hands. DEX-EE is also reported as a statistical tie against the strongest learned adapter, CNP, with a difference of +0.0004 and \(p=0.36\).
+MAPscoff beats MAML on all four reported multibig held-out hands. DEX-EE is also reported as a statistical tie against the strongest learned adapter, CNP, with a difference of +0.0004 and $p=0.36$.
 
 ## Why MAPscoff performs well on dexterous hands
 
 <div class="gc-callout">
   <span class="gc-callout-label">Insight</span>
-  <p>For LEAP and Allegro, the settling offset \(b\) accounts for roughly 80–95% of the total displacement in a typical scenario. A model of the form \(\Delta x=Cw\) is pinned to the origin and cannot represent motion at zero net wrench. MAPscoff's affine model explicitly estimates \(b\), allowing it to recover this dominant behavior. On Franka and Robotiq, by contrast, \(b\approx0\) and \(Cw\) contributes about 95% of the displacement, so a linear gradient-based adapter is naturally competitive.</p>
+  <p>For LEAP and Allegro, the settling offset $b$ accounts for roughly 80–95% of the total displacement in a typical scenario. A model of the form $\Delta x=Cw$ is pinned to the origin and cannot represent motion at zero net wrench. MAPscoff's affine model explicitly estimates $b$, allowing it to recover this dominant behavior. On Franka and Robotiq, by contrast, $b\approx0$ and $Cw$ contributes about 95% of the displacement, so a linear gradient-based adapter is naturally competitive.</p>
 </div>
 
 ## Characterized limitation: matched SBIR
