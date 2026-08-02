@@ -2,7 +2,7 @@
 layout: page
 title: Safe Cross-Embodiment Grasp-Compliance Calibration
 description: Few-shot calibration of passive grasp-compliance models for previously unseen robot hands.
-img: assets/img/projects/mapscoff/overview.svg
+img: assets/img/projects/mapscoff/overview-card.png
 importance: 0
 category: work
 github: https://github.com/stevens-armlab/graspCompliance
@@ -260,9 +260,9 @@ The benchmark spans rigid industrial grippers, an underactuated gripper, a soft 
 
 ### Local grasp-response model
 
-Each scenario \(s\) is a stable grasp equilibrium defined by one robot hand, one object, one contact configuration, and one set of physical parameters. The grasp is probed locally with small Cartesian loads so that its response can be approximated around that equilibrium.
+Each scenario $s$ is a stable grasp equilibrium defined by one robot hand, one object, one contact configuration, and one set of physical parameters. The grasp is probed locally with small Cartesian loads so that its response can be approximated around that equilibrium.
 
-For probe \(i\), the input is a six-dimensional wrench
+For probe $i$, the input is a six-dimensional wrench
 
 $$
 \mathbf{w}_{s,i}
@@ -285,7 +285,7 @@ $$
 \in \mathbb{R}^{6}.
 $$
 
-The complete response set for scenario \(s\) is
+The complete response set for scenario $s$ is
 
 $$
 \mathcal{D}_s
@@ -307,11 +307,11 @@ $$
 
 where
 
-- \(\mathbf{C}_s\in\mathbb{R}^{6\times6}\) is the local Cartesian compliance operator,
-- \(\mathbf{b}_s\in\mathbb{R}^{6}\) is a wrench-independent quasi-static settling offset, and
-- \(\boldsymbol{\varepsilon}_{s,i}\) captures measurement noise and residual local nonlinearity.
+- $\mathbf{C}_s\in\mathbb{R}^{6\times6}$ is the local Cartesian compliance operator,
+- $\mathbf{b}_s\in\mathbb{R}^{6}$ is a wrench-independent quasi-static settling offset, and
+- $\boldsymbol{\varepsilon}_{s,i}$ captures measurement noise and residual local nonlinearity.
 
-The matrix \(\mathbf{C}_s\) maps force and torque into translation and rotation. Its translational, rotational, and coupled blocks can be written as
+The matrix $\mathbf{C}_s$ maps force and torque into translation and rotation. Its translational, rotational, and coupled blocks can be written as
 
 $$
 \mathbf{C}_s
@@ -322,11 +322,11 @@ $$
 \end{bmatrix},
 $$
 
-so the model captures not only direct translation under force and rotation under torque, but also cross-coupled behavior such as torque-induced translation. Neither \(\mathbf{C}_s\) nor \(\mathbf{b}_s\) is stored as a supervised label; both must be inferred from the raw wrench-displacement observations.
+so the model captures not only direct translation under force and rotation under torque, but also cross-coupled behavior such as torque-induced translation. Neither $\mathbf{C}_s$ nor $\mathbf{b}_s$ is stored as a supervised label; both must be inferred from the raw wrench-displacement observations.
 
 ### Cross-embodiment few-shot task
 
-Let \(\mathcal{H}_{\mathrm{train}}\) denote the source hands and let \(h^{\star}\notin\mathcal{H}_{\mathrm{train}}\) be a held-out target hand. All learned priors and baselines are trained without any scenario from \(h^{\star}\). At deployment, the calibrator receives only a small support set from one target-hand grasp,
+Let $\mathcal{H}_{\mathrm{train}}$ denote the source hands and let $h^{\star}\notin\mathcal{H}_{\mathrm{train}}$ be a held-out target hand. All learned priors and baselines are trained without any scenario from $h^{\star}$. At deployment, the calibrator receives only a small support set from one target-hand grasp,
 
 $$
 \mathcal{S}_{K}
@@ -337,7 +337,7 @@ $$
 \qquad K\in\{0,1,2,3,5,10,20\}.
 $$
 
-It must estimate \(\widehat{\mathbf{C}}\) and \(\widehat{\mathbf{b}}\), then predict displacements for disjoint query wrenches:
+It must estimate $\widehat{\mathbf{C}}$ and $\widehat{\mathbf{b}}$, then predict displacements for disjoint query wrenches:
 
 $$
 \widehat{\Delta\mathbf{x}}_j
@@ -382,20 +382,20 @@ $$
 \quad\text{for every }\mathbf{w}.
 $$
 
-The quantity \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\) represents the work associated with the wrench-induced displacement. A negative value means the estimated grasp moves against the applied wrench and behaves as if it adds energy. This can make \(\mathbf{K}_x=\mathbf{C}^{-1}\) unsuitable as a controller stiffness and lead to unstable behavior.
+The quantity $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}$ represents the work associated with the wrench-induced displacement. A negative value means the estimated grasp moves against the applied wrench and behaves as if it adds energy. This can make $\mathbf{K}_x=\mathbf{C}^{-1}$ unsuitable as a controller stiffness and lead to unstable behavior.
 
 <div class="gc-passivity" aria-label="Animated comparison of passive and non-passive compliance">
   <div class="gc-energy">
     <div class="gc-energy-head"><span class="gc-energy-dot"></span><strong>Passive estimate</strong></div>
-    <p>The displacement follows the applied wrench: \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge0\). The model does not add energy.</p>
+    <p>The displacement follows the applied wrench: $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge0$. The model does not add energy.</p>
   </div>
   <div class="gc-energy unsafe">
     <div class="gc-energy-head"><span class="gc-energy-dot"></span><strong>Passivity violation</strong></div>
-    <p>The displacement opposes the wrench: \(\mathbf{w}^{\top}\mathbf{C}\mathbf{w}<0\). An unconstrained model can destabilize control.</p>
+    <p>The displacement opposes the wrench: $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}<0$. An unconstrained model can destabilize control.</p>
   </div>
 </div>
 
-MAPscoff constrains \(\mathbf{C}\) to be positive semidefinite by construction, so every estimate is passive. In the reported evaluation it produced **zero passivity violations**. By comparison, unconstrained fits produced 101,767 violations on the matched benchmark and 54,771 on the multibig benchmark.
+MAPscoff constrains $\mathbf{C}$ to be positive semidefinite by construction, so every estimate is passive. In the reported evaluation it produced **zero passivity violations**. By comparison, unconstrained fits produced 101,767 violations on the matched benchmark and 54,771 on the multibig benchmark.
 
 ## Method
 
@@ -403,7 +403,7 @@ MAPscoff combines a learned physical prior with constrained few-shot estimation.
 
 ### 1. Passive learned prior
 
-A topology-independent grasp descriptor is passed through a neural head that predicts a factor \(\mathbf{A}\in\mathbb{R}^{6\times6}\). The prior compliance is constructed as
+A topology-independent grasp descriptor is passed through a neural head that predicts a factor $\mathbf{A}\in\mathbb{R}^{6\times6}$. The prior compliance is constructed as
 
 $$
 \mathbf{C}_{\mathrm{prior}}
@@ -411,7 +411,7 @@ $$
 \mathbf{A}\mathbf{A}^{\top}.
 $$
 
-This factorization makes \(\mathbf{C}_{\mathrm{prior}}\) symmetric and positive semidefinite by construction. The prior captures structure shared across source hands, but it is used as an anchor rather than trusted as the final zero-shot answer.
+This factorization makes $\mathbf{C}_{\mathrm{prior}}$ symmetric and positive semidefinite by construction. The prior captures structure shared across source hands, but it is used as an anchor rather than trusted as the final zero-shot answer.
 
 ### 2. Scale-from-support correction
 
@@ -449,7 +449,7 @@ s\mathbf{W}\mathbf{C}_{\mathrm{prior}}^{\top}
 \right\|_{F}^{2}.
 $$
 
-The clipped, scaled prior \(s^{\star}\mathbf{C}_{\mathrm{prior}}\) corrects large stiffness differences between the source hands and the target embodiment.
+The clipped, scaled prior $s^{\star}\mathbf{C}_{\mathrm{prior}}$ corrects large stiffness differences between the source hands and the target embodiment.
 
 ### 3. Prior-anchored passive MAP calibration
 
@@ -469,7 +469,7 @@ $$
 \right\|_{F}^{2}.
 $$
 
-The first term fits the support observations. The second is the negative log-prior, anchoring the low-data estimate to transferable structure. The regularization strength is derived from an equivalent prior count and support curvature: the estimator reduces to the prior when \(K=0\), then becomes increasingly support-driven as more probes arrive.
+The first term fits the support observations. The second is the negative log-prior, anchoring the low-data estimate to transferable structure. The regularization strength is derived from an equivalent prior count and support curvature: the estimator reduces to the prior when $K=0$, then becomes increasingly support-driven as more probes arrive.
 
 ### 4. Gated wrench-independent offset
 
@@ -499,16 +499,16 @@ $$
 \end{aligned}
 $$
 
-with \(\mathbf{b}_0=\mathbf{0}\) at deployment. When enough support pairs are available, the support set is split internally and the affine offset is retained only when it reduces held-out support error. This gate activates the offset on hands such as LEAP and Allegro while leaving it mostly inactive on clean parallel-jaw grasps.
+with $\mathbf{b}_0=\mathbf{0}$ at deployment. When enough support pairs are available, the support set is split internally and the affine offset is retained only when it reduces held-out support error. This gate activates the offset on hands such as LEAP and Allegro while leaving it mostly inactive on clean parallel-jaw grasps.
 
-The offset does not alter the passivity guarantee because passivity belongs to the wrench-to-displacement operator \(\mathbf{C}\). The vector \(\mathbf{b}\) represents the equilibrium baseline of the measurement window, not a stiffness or an energy-generating mode.
+The offset does not alter the passivity guarantee because passivity belongs to the wrench-to-displacement operator $\mathbf{C}$. The vector $\mathbf{b}$ represents the equilibrium baseline of the measurement window, not a stiffness or an energy-generating mode.
 
 In summary, the method uses:
 
 1. **A frozen zero-shot prior.** A prior is learned across the training hands and kept fixed when a new embodiment is introduced.
 2. **A support-derived scale correction.** The prior is rescaled to the target grasp before calibration.
-3. **Maximum a posteriori calibration.** The support set fits a positive-semidefinite \(\mathbf{C}\) while remaining anchored to the learned prior.
-4. **A gated settling offset.** The vector \(\mathbf{b}\) captures justified wrench-independent drift.
+3. **Maximum a posteriori calibration.** The support set fits a positive-semidefinite $\mathbf{C}$ while remaining anchored to the learned prior.
+4. **A gated settling offset.** The vector $\mathbf{b}$ captures justified wrench-independent drift.
 
 The comparison baseline is MAML: a shared initialization followed by inner-loop gradient adaptation on the same support pairs. Its model uses
 

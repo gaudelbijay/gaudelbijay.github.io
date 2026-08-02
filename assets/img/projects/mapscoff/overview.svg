@@ -2,14 +2,21 @@
   <title id="title">Safe cross-embodiment grasp-compliance calibration</title>
   <desc id="desc">A flow diagram from a new robot hand and a small set of wrench-displacement probes to a passive compliance matrix and settling offset.</desc>
   <style>
-    .flow { stroke-dasharray: 14 12; animation: flow 1.4s linear infinite; }
-    .probe { animation: pulse 1.8s ease-in-out infinite; transform-origin: 625px 347px; }
-    .safe { animation: glow 2.2s ease-in-out infinite; }
-    @keyframes flow { to { stroke-dashoffset: -26; } }
-    @keyframes pulse { 50% { transform: scale(1.025); } }
-    @keyframes glow { 50% { opacity: 0.82; } }
+    .flow {
+      stroke-dasharray: 14 12;
+      animation: flow 1.4s linear infinite;
+    }
+    .safe-model {
+      animation: safe-glow 2.2s ease-in-out infinite;
+    }
+    @keyframes flow {
+      to { stroke-dashoffset: -26; }
+    }
+    @keyframes safe-glow {
+      50% { opacity: 0.86; }
+    }
     @media (prefers-reduced-motion: reduce) {
-      .flow, .probe, .safe { animation: none; }
+      .flow, .safe-model { animation: none; }
     }
   </style>
   <rect width="1200" height="675" fill="#f8fafc"/>
@@ -29,7 +36,7 @@
   <path class="flow" d="M370 347h105" stroke="#1d4ed8" stroke-width="5"/>
   <path d="m463 334 18 13-18 13" fill="none" stroke="#94a3b8" stroke-width="5"/>
 
-  <g class="probe" transform="translate(500 225)">
+  <g transform="translate(500 225)">
     <rect width="250" height="245" rx="18" fill="#fff" stroke="#cbd5e1" stroke-width="3"/>
     <text x="26" y="48" fill="#0f172a" font-family="Arial, sans-serif" font-size="23" font-weight="700">K = 20 PROBES</text>
     <text x="26" y="91" fill="#64748b" font-family="Arial, sans-serif" font-size="21">applied wrench</text>
@@ -42,7 +49,7 @@
   <path class="flow" d="M778 347h72" stroke="#1d4ed8" stroke-width="5"/>
   <path d="m838 334 18 13-18 13" fill="none" stroke="#94a3b8" stroke-width="5"/>
 
-  <g class="safe" transform="translate(875 225)">
+  <g class="safe-model" transform="translate(875 225)">
     <rect width="233" height="245" rx="18" fill="#1d4ed8"/>
     <text x="116.5" y="47" fill="#dbeafe" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle">SAFE MODEL</text>
     <text x="116.5" y="104" fill="#fff" font-family="monospace" font-size="25" text-anchor="middle">Δx = Cw + b</text>
