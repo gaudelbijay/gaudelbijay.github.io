@@ -68,6 +68,14 @@ cv:
         summary: "Gaudel, B., D. Guan, W. Yuan, D. Shrestha, B. Chen, and Y. Tu."
 
     Projects:
+      - name: Safe Cross-Embodiment Grasp-Compliance Calibration
+        url: https://github.com/stevens-armlab/graspCompliance
+        highlights:
+          - Developed MAPscoff, a few-shot method that calibrates passive Cartesian grasp-compliance models for previously unseen robot hands from only 20 wrench-displacement probes.
+          - Constrained the compliance estimate to be symmetric positive-semidefinite by construction, guaranteeing passivity for safe use with an inverted Cartesian impedance controller.
+          - Built a cross-embodiment benchmark spanning 7 robot hands, 8,805 grasp scenarios, and 436,609 stable wrench-displacement responses.
+          - Outperformed a MAML baseline on leave-one-hand-out evaluation while producing zero passivity violations, versus over 100,000 for unconstrained baselines.
+
       - name: Joint-Angle Human Pose Estimation for Casualty Manipulation
         url: https://github.com/stevens-armlab/casperjointpose
         highlights:
