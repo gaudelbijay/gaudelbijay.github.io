@@ -203,9 +203,9 @@ nav_order: 7
   <a class="talk-card" href="{{ '/talk/2026/uav-motion-planning/' | relative_url }}">
     <div class="talk-card-content">
       <div class="talk-card-label">Guest lecture · Interactive presentation</div>
-      <h2 class="talk-card-title">Dijkstra and A* for UAV Motion Planning</h2>
+      <h2 class="talk-card-title">UAV Motion Planning</h2>
       <p class="talk-card-description">
-        A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore Dijkstra's algorithm, A*, configuration spaces, graph search, sampling-based planning, and autonomous UAV missions.
+        A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore configuration spaces, graph search, trajectory optimization, obstacle avoidance, and autonomous UAV missions.
       </p>
     </div>
     <div class="talk-card-visual" aria-hidden="true">
@@ -217,6 +217,28 @@ nav_order: 7
         <circle class="talk-start" cx="45" cy="174" r="10" fill="#3fa66a" />
         <circle class="talk-goal" cx="315" cy="43" r="10" fill="#e4572e" />
         <circle class="talk-drone" cx="0" cy="0" r="6" fill="#f5f3ee" />
+      </svg>
+    </div>
+  </a>
+
+  <a class="talk-card" href="{{ '/talk/2026/dijkstra-a-star/' | relative_url }}">
+    <div class="talk-card-content">
+      <div class="talk-card-label">Interactive presentation · Graph search</div>
+      <h2 class="talk-card-title">Dijkstra and A*</h2>
+      <p class="talk-card-description">
+        Explore shortest-path search, priority queues, admissible heuristics, grid planning, algorithmic complexity, and the transition from graph search to sampling-based motion planning.
+      </p>
+    </div>
+    <div class="talk-card-visual" aria-hidden="true">
+      <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
+        <rect width="360" height="220" fill="#12161c" />
+        <path d="M42 161 L126 76 L204 143 L311 49" fill="none" stroke="#27324a" stroke-width="5" />
+        <path d="M42 161 L126 76 L311 49" fill="none" stroke="#41b8ff" stroke-width="7" />
+        <circle cx="42" cy="161" r="11" fill="#37d08a" />
+        <circle cx="126" cy="76" r="11" fill="#41b8ff" />
+        <circle cx="204" cy="143" r="11" fill="#ffd36b" />
+        <circle cx="311" cy="49" r="13" fill="#ffb021" />
+        <text x="180" y="205" fill="#eaeef7" font-family="monospace" font-size="30" font-weight="700" text-anchor="middle">Dijkstra · A*</text>
       </svg>
     </div>
   </a>

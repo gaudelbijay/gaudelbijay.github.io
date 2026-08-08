@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Dijkstra and A* for UAV Motion Planning
-permalink: /talk/2026/uav-motion-planning/
-description: An interactive presentation on Dijkstra's algorithm, A*, and sampling-based motion planning for autonomous UAVs.
+title: Dijkstra and A*
+permalink: /talk/2026/dijkstra-a-star/
+description: An interactive presentation on Dijkstra's shortest-path algorithm, A*, heuristics, and sampling-based motion planning.
 nav: false
 ---
 
@@ -33,13 +33,13 @@ nav: false
 </style>
 
 <p class="talk-deck-intro">
-  An interactive guest lecture on shortest-path search and motion planning, presented to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal.
+  An interactive presentation on shortest-path search, from Dijkstra's algorithm and A* heuristics to sampling-based motion planning.
 </p>
 
 <iframe
   class="talk-deck-frame"
   src="{{ '/assets/talks/dijkstra-a-star.html' | relative_url }}"
-  title="Dijkstra and A* for UAV Motion Planning interactive presentation"
+  title="Dijkstra and A* interactive presentation"
   loading="eager"
   allowfullscreen
 ></iframe>
