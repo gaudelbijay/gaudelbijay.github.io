@@ -371,6 +371,32 @@ document.addEventListener('DOMContentLoaded', async function() {
       window.Babel.transformScriptTags();
     }
 
+    // Link this broader UAV motion-planning talk to the dedicated
+    // Dijkstra and A* presentation from the deck's own toolbar.
+    const installDijkstraLink = () => {
+      const deck = document.querySelector('deck-stage');
+      const controls = deck && deck.shadowRoot;
+      const reset = controls && controls.querySelector('.reset');
+      if (!reset || controls.querySelector('.dijkstra-link')) return false;
+
+      const link = document.createElement('a');
+      link.className = 'btn dijkstra-link';
+      link.href = '../dijkstra-a-star/';
+      link.setAttribute('aria-label', 'Open the Dijkstra and A* talk');
+      link.title = 'Open the Dijkstra and A* talk';
+      link.textContent = 'Dijkstra & A*';
+      link.style.textDecoration = 'none';
+      reset.insertAdjacentElement('afterend', link);
+      return true;
+    };
+
+    let dijkstraLinkAttempts = 0;
+    const waitForDeckControls = () => {
+      if (installDijkstraLink() || dijkstraLinkAttempts++ > 300) return;
+      requestAnimationFrame(waitForDeckControls);
+    };
+    waitForDeckControls();
+
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
