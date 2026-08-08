@@ -224,9 +224,9 @@ nav_order: 7
   <a class="talk-card" href="{{ '/talk/2026/dijkstra-a-star/' | relative_url }}">
     <div class="talk-card-content">
       <div class="talk-card-label">Interactive presentation · Graph search</div>
-      <h2 class="talk-card-title">Dijkstra and A*</h2>
+      <h2 class="talk-card-title">Dijkstra, A*, and RRT</h2>
       <p class="talk-card-description">
-        Explore shortest-path search, priority queues, admissible heuristics, grid planning, algorithmic complexity, and the transition from graph search to sampling-based motion planning.
+        Explore shortest-path search, priority queues, admissible heuristics, grid planning, algorithmic complexity, and RRT-based sampling for motion planning.
       </p>
     </div>
     <div class="talk-card-visual" aria-hidden="true">
@@ -238,7 +238,7 @@ nav_order: 7
         <circle cx="126" cy="76" r="11" fill="#41b8ff" />
         <circle cx="204" cy="143" r="11" fill="#ffd36b" />
         <circle cx="311" cy="49" r="13" fill="#ffb021" />
-        <text x="180" y="205" fill="#eaeef7" font-family="monospace" font-size="30" font-weight="700" text-anchor="middle">Dijkstra · A*</text>
+        <text x="180" y="205" fill="#eaeef7" font-family="monospace" font-size="27" font-weight="700" text-anchor="middle">Dijkstra · A* · RRT</text>
       </svg>
     </div>
   </a>
