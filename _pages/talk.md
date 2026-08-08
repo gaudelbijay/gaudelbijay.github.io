@@ -226,7 +226,7 @@ nav_order: 7
       <div class="talk-card-label">Interactive presentation · Graph search</div>
       <h2 class="talk-card-title">Dijkstra, A*, and RRT</h2>
       <p class="talk-card-description">
-        Explore shortest-path search, priority queues, admissible heuristics, grid planning, algorithmic complexity, and RRT-based sampling for motion planning.
+        A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore shortest-path search, priority queues, admissible heuristics, grid planning, algorithmic complexity, and RRT-based sampling for motion planning.
       </p>
     </div>
     <div class="talk-card-visual" aria-hidden="true">
