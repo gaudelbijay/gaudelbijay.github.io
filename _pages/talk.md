@@ -106,6 +106,24 @@ nav_order: 7
     filter: drop-shadow(0 0 6px rgba(245, 243, 238, 0.9));
   }
 
+  .talk-search-node {
+    animation: talk-search-node 3.2s ease-in-out infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .talk-search-node:nth-of-type(2) {
+    animation-delay: 0.45s;
+  }
+
+  .talk-search-node:nth-of-type(3) {
+    animation-delay: 0.9s;
+  }
+
+  .talk-search-node:nth-of-type(4) {
+    animation-delay: 1.35s;
+  }
+
   @keyframes talk-obstacle {
     0%,
     100% {
@@ -169,13 +187,26 @@ nav_order: 7
     }
   }
 
+  @keyframes talk-search-node {
+    0%,
+    100% {
+      opacity: 0.58;
+      transform: scale(0.82);
+    }
+    45% {
+      opacity: 1;
+      transform: scale(1.22);
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .talk-obstacle-a,
     .talk-obstacle-b,
     .talk-route,
     .talk-start,
     .talk-goal,
-    .talk-drone {
+    .talk-drone,
+    .talk-search-node {
       animation: none;
     }
 
@@ -233,11 +264,11 @@ nav_order: 7
       <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
         <rect width="360" height="220" fill="#12161c" />
         <path d="M42 161 L126 76 L204 143 L311 49" fill="none" stroke="#27324a" stroke-width="5" />
-        <path d="M42 161 L126 76 L311 49" fill="none" stroke="#41b8ff" stroke-width="7" />
-        <circle cx="42" cy="161" r="11" fill="#37d08a" />
-        <circle cx="126" cy="76" r="11" fill="#41b8ff" />
-        <circle cx="204" cy="143" r="11" fill="#ffd36b" />
-        <circle cx="311" cy="49" r="13" fill="#ffb021" />
+        <path class="talk-route" d="M42 161 L126 76 L311 49" fill="none" stroke="#41b8ff" stroke-width="7" />
+        <circle class="talk-search-node" cx="42" cy="161" r="11" fill="#37d08a" />
+        <circle class="talk-search-node" cx="126" cy="76" r="11" fill="#41b8ff" />
+        <circle class="talk-search-node" cx="204" cy="143" r="11" fill="#ffd36b" />
+        <circle class="talk-search-node" cx="311" cy="49" r="13" fill="#ffb021" />
         <text x="180" y="205" fill="#eaeef7" font-family="monospace" font-size="27" font-weight="700" text-anchor="middle">Dijkstra · A* · RRT</text>
       </svg>
     </div>
