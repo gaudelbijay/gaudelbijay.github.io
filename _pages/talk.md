@@ -203,9 +203,9 @@ nav_order: 7
   <a class="talk-card" href="{{ '/talk/2026/uav-motion-planning/' | relative_url }}">
     <div class="talk-card-content">
       <div class="talk-card-label">Guest lecture · Interactive presentation</div>
-      <h2 class="talk-card-title">UAV Motion Planning</h2>
+      <h2 class="talk-card-title">Dijkstra and A* for UAV Motion Planning</h2>
       <p class="talk-card-description">
-        A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore configuration spaces, graph search, trajectory optimization, obstacle avoidance, and autonomous UAV missions.
+        A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore Dijkstra's algorithm, A*, configuration spaces, graph search, sampling-based planning, and autonomous UAV missions.
       </p>
     </div>
     <div class="talk-card-visual" aria-hidden="true">
