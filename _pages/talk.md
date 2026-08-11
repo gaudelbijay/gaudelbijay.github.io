@@ -233,7 +233,7 @@ nav_order: 7
 <div class="talk-cards">
   <a class="talk-card" href="{{ '/talk/2026/uav-motion-planning/' | relative_url }}">
     <div class="talk-card-content">
-      <div class="talk-card-label">Guest lecture · Interactive presentation</div>
+      <div class="talk-card-label">Guest lecture</div>
       <h2 class="talk-card-title">UAV Motion Planning</h2>
       <p class="talk-card-description">
         A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore configuration spaces, graph search, trajectory optimization, obstacle avoidance, and autonomous UAV missions.
