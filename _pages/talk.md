@@ -254,7 +254,7 @@ nav_order: 7
 
   <a class="talk-card" href="{{ '/talk/2026/dijkstra-a-star/' | relative_url }}">
     <div class="talk-card-content">
-      <div class="talk-card-label">Interactive presentation · Graph search</div>
+      <div class="talk-card-label">Guest lecture · Interactive presentation</div>
       <h2 class="talk-card-title">Dijkstra, A*, and RRT</h2>
       <p class="talk-card-description">
         A talk delivered to fourth-year aeronautical engineering students at Pulchowk Campus in Kathmandu, Nepal. Explore shortest-path search, priority queues, admissible heuristics, grid planning, algorithmic complexity, and RRT-based sampling for motion planning.
