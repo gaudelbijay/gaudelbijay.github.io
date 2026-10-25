@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Safe Cross-Embodiment Grasp-Compliance Calibration
-description: Few-shot calibration of passive grasp-compliance models for previously unseen robot hands.
+title: Few-Shot Grasp Compliance Identification Across Robot Hands
+description: Identifying a grasp's 6x6 compliance from only three load tests on an unseen robot hand, using a population prior learned from other hands.
 img: assets/img/projects/mapscoff/allegro.gif
 importance: 0
 category: work
@@ -85,12 +85,6 @@ _styles: |
     aspect-ratio: 4 / 3;
     object-fit: cover;
     background: #111;
-  }
-
-  .gc-hand-card:last-child {
-    grid-column: 1 / -1;
-    width: calc(50% - 0.625rem);
-    justify-self: center;
   }
 
   .gc-hand-card figcaption {
@@ -393,7 +387,7 @@ _styles: |
   }
 
   .gc-benchmarks {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .gc-benchmark {
@@ -494,70 +488,62 @@ _styles: |
     .gc-hand-grid {
       grid-template-columns: 1fr;
     }
-    .gc-hand-card:last-child {
-      grid-column: auto;
-      width: 100%;
-    }
   }
 
 ---
 
 <div class="gc-badges">
-  <span class="gc-badge">Few-shot · K ≤ 20</span>
-  <span class="gc-badge">7 robot hands</span>
-  <span class="gc-badge">Passive by construction</span>
-  <span class="gc-badge">0 passivity violations</span>
+  <span class="gc-badge">Few-shot · K = 3 load tests</span>
+  <span class="gc-badge">6 robot hands</span>
+  <span class="gc-badge">MuJoCo + Isaac Gym</span>
+  <span class="gc-badge">PSD compliance by construction</span>
 </div>
 
-## Seven Hands, One Cross-Embodiment Challenge
+<p class="gc-lede">A grasp is usually judged by whether it holds the object. In forceful tasks such as tool use, insertion, or in-hand placement, a held object still moves under load, and <strong>grasp compliance</strong>, the matrix relating a load on the object to its displacement, governs that motion. This project estimates a grasp's compliance on a <strong>robot hand it has never seen</strong> from only <strong>three load tests</strong>, by completing those few measurements with what other hands have in common.</p>
 
-This is the central visual showcase of the project: **every robot hand used in the benchmark**, spanning rigid parallel grippers, underactuated mechanisms, a soft tendon-spring hand, and dexterous four-finger embodiments. Each animation shows an actual simulated grasp configuration used to generate the wrench-displacement dataset.
+<p>The paper, <em>Few-Shot Grasp Compliance Identification Across Robot Hands</em>, first adapts positive-semidefinite (PSD) least squares to grasps, then proposes <strong>MAPS</strong>, a maximum a posteriori estimator whose prior is learned from other hands' identified compliances. Its selective variant, <strong>S-MAP</strong>, drops that prior when a grasp's own load tests contradict it.</p>
+
+<div class="gc-metrics">
+  <div class="gc-metric"><strong>3 loads</strong><span>Load tests per grasp, against ≥7 needed without a prior</span></div>
+  <div class="gc-metric"><strong>34–77%</strong><span>Lower error than PSD least squares at K = 3</span></div>
+  <div class="gc-metric"><strong>74%</strong><span>Lower error on 115 fresh grasps with all settings frozen</span></div>
+  <div class="gc-metric"><strong>14–29%</strong><span>Directional-stiffness error from three load tests</span></div>
+  <div class="gc-metric"><strong>23 ms</strong><span>Median S-MAP calibration time on one CPU core</span></div>
+</div>
+
+## Six Hands, One Cross-Hand Question
+
+The study spans **six robot hands**: rigid two-finger grippers, a soft tendon-driven hand, and dexterous three- and four-finger hands. Each animation shows a simulated grasp of the kind probed by the load tests. Every result on this page is a transfer to a held-out hand whose data never enter its own prior.
 
 <div class="gc-hand-grid">
   <figure class="gc-hand-card">
     <img src="{{ '/assets/img/projects/mapscoff/franka.gif' | relative_url }}" alt="Franka parallel-jaw gripper grasping the test object">
-    <figcaption><strong>Franka</strong><span>2-finger · parallel-jaw gripper</span></figcaption>
+    <figcaption><strong>Franka Hand</strong><span>2-finger · parallel-jaw gripper</span></figcaption>
   </figure>
   <figure class="gc-hand-card">
     <img src="{{ '/assets/img/projects/mapscoff/robotiq-2f85.gif' | relative_url }}" alt="Robotiq 2F-85 underactuated gripper grasping the test object">
     <figcaption><strong>Robotiq 2F-85</strong><span>2-finger · underactuated gripper</span></figcaption>
   </figure>
   <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/umi.gif' | relative_url }}" alt="UMI parallel squeeze gripper grasping the test object">
-    <figcaption><strong>UMI</strong><span>2-finger · parallel squeeze gripper</span></figcaption>
+    <img src="{{ '/assets/img/projects/mapscoff/sbir.gif' | relative_url }}" alt="SBIR tendon-driven hand grasping the test object">
+    <figcaption><strong>SBIR</strong><span>3-finger · tendon-driven research hand</span></figcaption>
   </figure>
   <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/sbir.gif' | relative_url }}" alt="SBIR soft tendon-spring hand grasping the test object">
-    <figcaption><strong>SBIR</strong><span>3-finger · soft tendon-spring hand</span></figcaption>
+    <img src="{{ '/assets/img/projects/mapscoff/dex-ee.gif' | relative_url }}" alt="Shadow DEX-EE three-finger hand grasping the test object">
+    <figcaption><strong>Shadow DEX-EE</strong><span>3-finger · dexterous end effector</span></figcaption>
   </figure>
   <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/dex-ee.gif' | relative_url }}" alt="DEX-EE three-finger hand grasping the test object">
-    <figcaption><strong>DEX-EE</strong><span>3-finger · dexterous end effector</span></figcaption>
+    <img src="{{ '/assets/img/projects/mapscoff/leap.gif' | relative_url }}" alt="LEAP Hand grasping the test object">
+    <figcaption><strong>LEAP Hand</strong><span>4-finger · dexterous hand</span></figcaption>
   </figure>
   <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/leap.gif' | relative_url }}" alt="LEAP direct-drive hand grasping the test object">
-    <figcaption><strong>LEAP Hand</strong><span>4-finger · direct-drive dexterous hand</span></figcaption>
-  </figure>
-  <figure class="gc-hand-card">
-    <img src="{{ '/assets/img/projects/mapscoff/allegro.gif' | relative_url }}" alt="Allegro direct-drive hand grasping the test object">
-    <figcaption><strong>Allegro Hand</strong><span>4-finger · direct-drive dexterous hand</span></figcaption>
+    <img src="{{ '/assets/img/projects/mapscoff/allegro.gif' | relative_url }}" alt="Allegro Hand grasping the test object">
+    <figcaption><strong>Allegro Hand</strong><span>4-finger · dexterous hand</span></figcaption>
   </figure>
 </div>
 
 <div class="gc-hero">
-  {% include figure.liquid path="assets/img/projects/mapscoff/overview.svg" class="img-fluid rounded z-depth-1" zoomable=true caption="MAPscoff adapts a passive grasp-compliance model to an unseen robot hand using only 20 wrench-displacement probes." %}
-</div>
-
-<p class="gc-lede">MAPscoff is a few-shot calibration method for predicting how a grasped object will move when forces and torques are applied to it. The central challenge is <strong>cross-embodiment generalization</strong>: the method must adapt to a robot hand whose kinematics, actuation, contact mechanics, and compliance regime were absent from training.</p>
-
-<p>The method estimates an interpretable local compliance model from only $K=20$ probe measurements while guaranteeing that the resulting compliance is passive. This safety property matters because the calibrated model can be inverted and used by a Cartesian impedance controller; an unconstrained, non-passive estimate can inject energy and destabilize that controller.</p>
-
-<div class="gc-metrics">
-  <div class="gc-metric"><strong>7 hands</strong><span>Two-, three-, and four-finger embodiments</span></div>
-  <div class="gc-metric"><strong>8,805</strong><span>Simulated grasp scenarios</span></div>
-  <div class="gc-metric"><strong>436,609</strong><span>Stable wrench responses</span></div>
-  <div class="gc-metric"><strong>20 probes</strong><span>Few-shot adaptation for a held-out hand</span></div>
-  <div class="gc-metric"><strong>0</strong><span>Passivity violations by construction</span></div>
+  {% include figure.liquid path="assets/img/projects/mapscoff/paper-overview.png" class="img-fluid rounded z-depth-1" zoomable=true caption="Overview. (a) A wrench w produces motion x. (b) Compliances identified on source hands and their mean form the population prior. (c) A few load tests excite only part of the wrench space. (d) For a held-out grasp, the tests alone leave directions unresolved, which the prior fills in. (e) The identified compliance predicts responses, warns when a calibration is unreliable, and plans loads." %}
 </div>
 
 ## Problem formulation
@@ -565,377 +551,291 @@ This is the central visual showcase of the project: **every robot hand used in t
 ### What is grasp compliance?
 
 <div class="gc-concept">
-  <h3>Force in, motion out — mapped by <span style="color: var(--global-theme-color);">C</span></h3>
-  <p>Compliance is just the local relationship between a wrench applied to a grasped object and the small displacement it produces. Probe the grasp with a force/torque $w$, watch the object settle at a new pose, and the ratio between the two is the compliance operator $C$. A stiffer grasp produces a smaller displacement for the same wrench; a softer one produces a larger one.</p>
+  <h3>Force in, motion out, mapped by <span style="color: var(--global-theme-color);">C</span></h3>
+  <p>Apply a small wrench $w$ (force and torque) to a grasped object and it settles at a slightly different pose relative to the hand. The local map from load to displacement is the grasp compliance $C$. A stiffer grasp moves less under the same load, a softer one moves more, and $C$ also says <em>which directions</em> the grasp yields to.</p>
   <div class="gc-flow">
     <span class="gc-flow-term">wrench $w$</span>
     <span class="gc-flow-arrow">&#8594;</span>
     <span class="gc-flow-box">C</span>
     <span class="gc-flow-arrow out">&#8594;</span>
-    <span class="gc-flow-term">displacement $\Delta x$</span>
+    <span class="gc-flow-term">displacement $x$</span>
   </div>
 </div>
 
-### Local grasp-response model
-
-Each scenario $s$ is a stable grasp equilibrium defined by one robot hand, one object, one contact configuration, and one set of physical parameters. The grasp is probed locally with small Cartesian loads so that its response can be approximated around that equilibrium.
-
-For probe $i$, the input is a six-dimensional wrench
+Classical grasp mechanics predicts the Cartesian stiffness from contact compliance $C\_c$, joint compliance $C\_\theta$, the hand Jacobian $J$ and the grasp matrix $G$:
 
 $$
-\mathbf{w}_{s,i}
-=
-\begin{bmatrix}
-f_x & f_y & f_z & \tau_x & \tau_y & \tau_z
-\end{bmatrix}^{\!\top}
-\in \mathbb{R}^{6},
-$$
-
-and the measured output is the corresponding six-dimensional object displacement in the palm frame,
-
-$$
-\Delta\mathbf{x}_{s,i}
-=
-\begin{bmatrix}
-\Delta p_x & \Delta p_y & \Delta p_z &
-\Delta r_x & \Delta r_y & \Delta r_z
-\end{bmatrix}^{\!\top}
-\in \mathbb{R}^{6}.
-$$
-
-The complete response set for scenario $s$ is
-
-$$
-\mathcal{D}_s
-=
-\left\{
-\left(\mathbf{w}_{s,i},\Delta\mathbf{x}_{s,i}\right)
-\right\}_{i=1}^{N_s}.
-$$
-
-Within the small-motion regime, the grasp is represented by the affine model
-
-$$
-\Delta\mathbf{x}_{s,i}
-=
-\mathbf{C}_s\mathbf{w}_{s,i}
-+ \mathbf{b}_s
-+ \boldsymbol{\varepsilon}_{s,i},
-$$
-
-where
-
-- $\mathbf{C}\_s\in\mathbb{R}^{6\times6}$ is the local Cartesian compliance operator,
-- $\mathbf{b}\_s\in\mathbb{R}^{6}$ is a wrench-independent quasi-static settling offset, and
-- $\boldsymbol{\varepsilon}\_{s,i}$ captures measurement noise and residual local nonlinearity.
-
-The matrix $\mathbf{C}\_s$ maps force and torque into translation and rotation. Its translational, rotational, and coupled blocks can be written as
-
-$$
-\mathbf{C}_s
-=
-\begin{bmatrix}
-\mathbf{C}_{pp} & \mathbf{C}_{p\tau} \\
-\mathbf{C}_{rp} & \mathbf{C}_{r\tau}
-\end{bmatrix},
-$$
-
-so the model captures not only direct translation under force and rotation under torque, but also cross-coupled behavior such as torque-induced translation. Neither $\mathbf{C}\_s$ nor $\mathbf{b}\_s$ is stored as a supervised label; both must be inferred from the raw wrench-displacement observations.
-
-### Cross-embodiment few-shot task
-
-Let $\mathcal{H}\_{\mathrm{train}}$ denote the source hands and let $h^{\star}\notin\mathcal{H}\_{\mathrm{train}}$ be a held-out target hand. All learned priors and baselines are trained without any scenario from $h^{\star}$. At deployment, the calibrator receives only a small support set from one target-hand grasp,
-
-$$
-\mathcal{S}_{K}
-=
-\left\{
-\left(\mathbf{w}_i,\Delta\mathbf{x}_i\right)
-\right\}_{i=1}^{K},
-\qquad K\in\{0,1,2,3,5,10,20\}.
-$$
-
-It must estimate $\widehat{\mathbf{C}}$ and $\widehat{\mathbf{b}}$, then predict displacements for disjoint query wrenches:
-
-$$
-\widehat{\Delta\mathbf{x}}_j
-=
-\widehat{\mathbf{C}}\mathbf{w}_j
-+\widehat{\mathbf{b}},
+K_x = G\left(C_c + J C_\theta J^{\top}\right)^{-1} G^{\top},
 \qquad
-\left(\mathbf{w}_j,\Delta\mathbf{x}_j\right)
-\in\mathcal{Q},
-\qquad
-\mathcal{S}_K\cap\mathcal{Q}=\varnothing.
+C_x = K_x^{-1}.
 $$
 
-This is stricter than ordinary regression: the output must generalize to unseen loads, come from a previously unseen hand, use very little calibration data, and remain suitable for downstream control.
+Those stiffnesses are rarely known for a new hand and change with every grasp, so instead of modelling them we **identify the effective compliance directly from load tests**. This folds friction, the hand's controller, and the finite settling time into one predictive model of the closed grasp.
 
-### Physical requirement
+### Load tests and the local model
+
+A scenario $s$ fixes a hand, object, grasp state, controller, and collection protocol. Load tests apply load cases that yield wrench–response pairs
+
+$$
+\mathcal{G}_s=\left\{(w_{s,i},\,x_{s,i})\right\}_{i=1}^{M_s},
+\qquad
+w=\begin{bmatrix} f^{\top} & \tau^{\top}\end{bmatrix}^{\top}\in\mathbb{R}^{6},
+$$
+
+where $x\in\mathbb{R}^6$ is the measured object translation and rotation relative to the hand. Forces and torques, translations and rotations carry different units, so they are rescaled into **energy-conjugate coordinates** with a fixed object length $\ell$:
+
+$$
+D=\operatorname{diag}(I_3,\ \ell I_3),\qquad y=Dx,\qquad u=D^{-\top}w,
+$$
+
+which keeps the work $u^{\top}y=w^{\top}x$ unchanged and maps a physical compliance $C\_p$ to $C=DC\_pD^{\top}$. The response is modelled locally as
+
+$$
+y_i = C\,u_i + b + \epsilon_i,
+\qquad
+C=C^{\top}\succeq 0,
+$$
+
+where $b$ collects wrench-independent motion such as settling drift and $\epsilon\_i$ collects noise and model mismatch. The pair $(C,b)$ is the grasp's compliance operator. Effective stiffness along a direction $e$ is $1/(e^{\top}Ce)$.
 
 <div class="gc-callout">
-  <span class="gc-callout-label">Passivity requirement</span>
-  <p>The desired compliance is a symmetric positive-semidefinite operator:</p>
-
-$$
-\mathbf{C}=\mathbf{C}^{\top},
-\qquad
-\mathbf{C}\succeq\mathbf{0}.
-$$
-
-  <p>Equivalently, every wrench must satisfy $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge 0$. This inequality is the quasi-static passivity condition — it prevents the learned wrench-to-displacement map from containing a negative-work direction.</p>
+  <span class="gc-callout-label">Why positive semidefinite</span>
+  <p>In the conservative case the grasp stores elastic energy $\tfrac12 w^{\top}C_x w$ under load $w$, like a generalized spring. The PSD constraint makes the static map monotone, $(u_1-u_2)^{\top}(\hat y_1-\hat y_2)\ge 0$: a load increment never does negative work on the displacement increment it causes.</p>
 </div>
 
-## Why passivity matters
-
-A physically safe compliance must therefore satisfy
-
-$$
-\mathbf{C}\succeq\mathbf{0}
-\quad\Longleftrightarrow\quad
-\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge0
-\quad\text{for every }\mathbf{w}.
-$$
-
-The quantity $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}$ represents the work associated with the wrench-induced displacement. A negative value means the estimated grasp moves against the applied wrench and behaves as if it adds energy. This can make $\mathbf{K}\_x=\mathbf{C}^{-1}$ unsuitable as a controller stiffness and lead to unstable behavior.
-
-<div class="gc-compare" aria-label="Animated comparison of passive and non-passive compliance">
+<div class="gc-compare" aria-label="Comparison of a monotone and a non-monotone compliance estimate">
   <div class="gc-panel">
-    <div class="gc-panel-head"><span class="gc-panel-icon">&#10003;</span><strong>Passive estimate</strong></div>
+    <div class="gc-panel-head"><span class="gc-panel-icon">&#10003;</span><strong>PSD estimate</strong></div>
     <div class="gc-rail">
-      <span class="gc-rail-force">wrench w &#8594;</span>
+      <span class="gc-rail-force">load w &#8594;</span>
       <span class="gc-puck"></span>
     </div>
-    <div class="gc-rail-legend"><span>&#8594; applied wrench</span><span>&#9679; object response</span></div>
-    <p>The displacement follows the applied wrench: $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}\ge0$. The model does not add energy.</p>
+    <div class="gc-rail-legend"><span>&#8594; applied load</span><span>&#9679; object response</span></div>
+    <p>The displacement follows the load: $w^{\top}Cw\ge0$. The grasp behaves like a spring.</p>
   </div>
   <div class="gc-panel unsafe">
-    <div class="gc-panel-head"><span class="gc-panel-icon">!</span><strong>Passivity violation</strong></div>
+    <div class="gc-panel-head"><span class="gc-panel-icon">!</span><strong>Indefinite estimate</strong></div>
     <div class="gc-rail">
-      <span class="gc-rail-force">wrench w &#8594;</span>
+      <span class="gc-rail-force">load w &#8594;</span>
       <span class="gc-puck"></span>
     </div>
-    <div class="gc-rail-legend"><span>&#8594; applied wrench</span><span>&#9679; object response</span></div>
-    <p>The displacement opposes the wrench: $\mathbf{w}^{\top}\mathbf{C}\mathbf{w}<0$. An unconstrained model can destabilize control.</p>
+    <div class="gc-rail-legend"><span>&#8594; applied load</span><span>&#9679; object response</span></div>
+    <p>The displacement opposes the load: $w^{\top}Cw<0$. No physical grasp responds this way.</p>
   </div>
 </div>
 
-MAPscoff constrains $\mathbf{C}$ to be positive semidefinite by construction, so every estimate is passive. In the reported evaluation it produced **zero passivity violations**. By comparison, unconstrained fits produced 101,767 violations on the matched benchmark and 54,771 on the multibig benchmark.
+### Few-shot identification on a held-out hand
+
+The held-out hand $h^{\star}$ stands in for a new hand: none of its load tests shape the prior or any hyperparameter. On it, $K$ load cases, the **support**, calibrate one grasp's estimate $(\widehat C,\widehat b)$, which is then scored on further load cases on the same grasp, the **queries**, that were never used for calibration or for choosing any setting.
+
+<div class="gc-callout warn">
+  <span class="gc-callout-label">Why three load tests are not enough on their own</span>
+  <p>A symmetric $C$ has 21 free entries and $b$ six more. With a free offset only differences between load cases inform $C$, so $K$ load cases excite at most $K-1$ wrench directions, and with $r$ excited directions $(6-r)(7-r)/2$ entries of $C$ are unobservable. Uniquely identifying $C$ from the target alone needs <strong>at least seven</strong> well-spread load cases (six with a separately measured zero-load tare). At $K=3$, at least ten of the 21 entries are unconstrained by the grasp's own data, and each extra load case costs time and may break the grasp.</p>
+  <p>The goal is therefore a <strong>prior-regularized estimate</strong> at $K=3$ that fills the unexcited directions with knowledge from other hands.</p>
+</div>
 
 ## Method
 
-MAPscoff combines a learned physical prior with constrained few-shot estimation.
-
 <div class="gc-pipeline">
-  <div class="gc-pipe"><strong>1. Passive prior</strong><span>A neural head predicts a factor A; $C_{\text{prior}}=AA^\top$ is symmetric PSD by construction.</span></div>
+  <div class="gc-pipe"><strong>1. Load test</strong><span>PSD least squares adapted to grasps: tare, energy-conjugate coordinates, robust re-weighting.</span></div>
   <div class="gc-pipe-arrow">&#8594;</div>
-  <div class="gc-pipe"><strong>2. Scale correction</strong><span>A conservative scalar gain rescales the prior to the target grasp using the support set.</span></div>
+  <div class="gc-pipe"><strong>2. Population prior</strong><span>Mean and covariance of compliances identified on source hands, rescaled to the target.</span></div>
   <div class="gc-pipe-arrow">&#8594;</div>
-  <div class="gc-pipe"><strong>3. MAP calibration</strong><span>The support set fits a PSD $C$ while staying anchored to the scaled prior.</span></div>
+  <div class="gc-pipe"><strong>3. MAPS</strong><span>MAP fit of a PSD $C$ and offset $b$ anchored to the scaled prior.</span></div>
   <div class="gc-pipe-arrow">&#8594;</div>
-  <div class="gc-pipe"><strong>4. Gated offset</strong><span>An affine term $b$ is kept only when it reduces held-out support error.</span></div>
+  <div class="gc-pipe"><strong>4. S-MAP check</strong><span>Leave-one-out comparison with a prior-free fit; keep whichever predicts better.</span></div>
 </div>
 
-### 1. Passive learned prior
+### 1. The load test
 
-A topology-independent grasp descriptor is passed through a neural head that predicts a factor $\mathbf{A}\in\mathbb{R}^{6\times6}$. The prior compliance is constructed as
-
-$$
-\mathbf{C}_{\mathrm{prior}}
-=
-\mathbf{A}\mathbf{A}^{\top}.
-$$
-
-This factorization makes $\mathbf{C}\_{\mathrm{prior}}$ symmetric and positive semidefinite by construction. The prior captures structure shared across source hands, but it is used as an anchor rather than trusted as the final zero-shot answer.
-
-### 2. Scale-from-support correction
-
-Cross-hand transfer may preserve the directional shape of compliance while missing its absolute scale. Given support matrices
+A zero-load tare precedes the $K$ load cases where it is recorded. $C$ is kept inside the PSD cone throughout the solve rather than projected afterwards. Contacts can slip or reseat under a load, so inconsistent load cases are down-weighted with robust weights
 
 $$
-\mathbf{W}
-=
-\begin{bmatrix}
-\mathbf{w}_1^{\top}\\
-\vdots\\
-\mathbf{w}_K^{\top}
-\end{bmatrix}
-\in\mathbb{R}^{K\times6},
+v_i=\min\!\left(1,\ \frac{t}{\max(r_i,10^{-12})}\right),
 \qquad
-\mathbf{X}
-=
-\begin{bmatrix}
-\Delta\mathbf{x}_1^{\top}\\
-\vdots\\
-\Delta\mathbf{x}_K^{\top}
-\end{bmatrix}
-\in\mathbb{R}^{K\times6},
+r_i=\lVert Cu_i+b-y_i\rVert,
+\qquad
+t=\operatorname{median}(r)+1.5\,\sigma_{\mathrm{rob}}(r),
 $$
 
-the method first estimates a conservative scalar gain
+recomputed over three refitting rounds. Each weighted subproblem is solved by accelerated projected gradient, where eigenvalue clipping is the exact Frobenius projection onto the PSD cone.
+
+### 2. A learned population prior over hand compliances
+
+Each source grasp is fitted with the robust PSD load test, and its upper-triangular entries are stacked into $\theta\_s=\operatorname{vech}(C\_s)\in\mathbb{R}^{21}$. Their sample mean $\mu$ and covariance $\Sigma$ summarize how compliance varies across hands. The prior's **shape** is the normalized precision
 
 $$
-s^{\star}
-=
-\underset{s}{\operatorname{argmin}}
-\left\|
-s\mathbf{W}\mathbf{C}_{\mathrm{prior}}^{\top}
--\mathbf{X}
-\right\|_{F}^{2}.
+\Sigma_\rho=(1-\rho)\Sigma+\rho\operatorname{diag}(\Sigma)+\varepsilon I,
+\qquad
+P=\frac{21\,\Sigma_\rho^{-1}}{\operatorname{tr}\left(\Sigma_\rho^{-1}\right)},
 $$
 
-The clipped, scaled prior $s^{\star}\mathbf{C}\_{\mathrm{prior}}$ corrects large stiffness differences between the source hands and the target embodiment.
-
-### 3. Prior-anchored passive MAP calibration
-
-The core estimator solves
+so directions that vary more across hands are constrained more loosely. Hands differ in overall softness, so the mean compliance $\bar C=\operatorname{vech}^{-1}(\mu)$ is rescaled to the target by one least-squares gain fitted from the target's own load cases:
 
 $$
-\widehat{\mathbf{C}}
-=
-\underset{\mathbf{C}\succeq\mathbf{0}}{\operatorname{argmin}}
-\left\|
-\mathbf{W}\mathbf{C}^{\top}-\mathbf{X}
-\right\|_{F}^{2}
-+
-\lambda
-\left\|
-\mathbf{C}-s^{\star}\mathbf{C}_{\mathrm{prior}}
-\right\|_{F}^{2}.
+a=\frac{\sum_i(\bar C u_i)^{\top}y_i}{\sum_i\lVert\bar C u_i\rVert^2+10^{-12}}.
 $$
 
-The first term fits the support observations. The second is the negative log-prior, anchoring the low-data estimate to transferable structure. The regularization strength is derived from an equivalent prior count and support curvature: the estimator reduces to the prior when $K=0$, then becomes increasingly support-driven as more probes arrive.
+### 3. MAPS: prior-regularized identification
 
-### 4. Gated wrench-independent offset
-
-An origin-pinned model cannot represent the settling drift observed on dexterous multi-contact hands. MAPscoff therefore fits the affine objective
+Given the target support, MAPS solves
 
 $$
-\begin{aligned}
-\left(\widehat{\mathbf{C}},\widehat{\mathbf{b}}\right)
-=
-\underset{\mathbf{C}\succeq\mathbf{0},\,\mathbf{b}}{\operatorname{argmin}}
-\;&
-\left\|
-\mathbf{W}\mathbf{C}^{\top}
-+\mathbf{1}\mathbf{b}^{\top}
--\mathbf{X}
-\right\|_{F}^{2}\\
-&+
-\lambda
-\left\|
-\mathbf{C}-s^{\star}\mathbf{C}_{\mathrm{prior}}
-\right\|_{F}^{2}
-+
-\lambda_b
-\left\|
-\mathbf{b}-\mathbf{b}_0
-\right\|_{2}^{2},
-\end{aligned}
+\min_{C=C^{\top}\succeq0,\ b}\;
+\sum_{i=1}^{K} v_i\left\lVert Cu_i+b-y_i\right\rVert^2
++\lambda\left\lVert\operatorname{vech}(C)-a\mu\right\rVert_P^2
++\lambda_b\lVert b\rVert^2 .
 $$
 
-with $\mathbf{b}\_0=\mathbf{0}$ at deployment. When enough support pairs are available, the support set is split internally and the affine offset is retained only when it reduces held-out support error. This gate activates the offset on hands such as LEAP and Allegro while leaving it mostly inactive on clean parallel-jaw grasps.
+This is the MAP estimate under Gaussian noise and the prior $\operatorname{vech}(C)\sim\mathcal{N}\!\left(a\mu,(\lambda P)^{-1}\right)$, restricted to the PSD cone. The prior weight is set as $\lambda=n\_0\,\operatorname{tr}(A^{\top}A)/(21K)$, with $A$ the least-squares design matrix of the support, so the prior counts as roughly $n\_0$ extra load cases of average curvature. The prior term fills the unloaded directions and pulls hardest where source hands agree; the PSD constraint only acts where plain Bayesian ridge regression would return an indefinite operator.
 
-The offset does not alter the passivity guarantee because passivity belongs to the wrench-to-displacement operator $\mathbf{C}$. The vector $\mathbf{b}$ represents the equilibrium baseline of the measurement window, not a stiffness or an energy-generating mode.
+### 4. S-MAP: checking the prior against the target
 
-The comparison baseline is MAML: a shared initialization followed by inner-loop gradient adaptation on the same support pairs. Its model uses
+A prior helps when the target resembles the source hands and hurts when it does not. Two mechanisms adapt using only the support:
 
-$$
-\Delta\mathbf{x}=\mathbf{C}\mathbf{w},
-$$
+- **Conflict attenuation.** The prior's leftover prediction error, normalized by the spread of the target responses, gives a disagreement $d$ and a trust factor $g=1/(1+(d/\tau)^2)$ that scales the prior strength $n\_0\to g\,n\_0$.
+- **Support selection.** For each support pair, both the attenuated MAPS fit $F$ and a prior-free local fit $L$ are refit without it and scored on it. S-MAP keeps $L$ if $E\_L<\eta E\_F$ and $F$ otherwise.
 
-without an offset and without a positive-semidefinite constraint. It can therefore miss an important part of dexterous-grasp motion and offers no passivity guarantee.
+The same folds give a calibration-time **reliability score**, the normalized leave-one-out error $s\_{\mathrm{LOO}}=\sqrt{E\_{\mathrm{sel}}/\sum\_i\lVert y\_i\rVert^2}$, which ranks calibrations by risk. Every setting ($n\_0$, $n\_b$, $\rho$, rescaling, $\tau$, $\eta$) is selected on source-hand validation grasps only.
 
-## Data collection
+## Simulated load tests
 
-Each simulated scenario follows a controlled probe protocol.
-
-<div class="gc-protocol" aria-label="Six-step data-collection protocol">
-  <div class="gc-step"><span class="gc-step-number">1</span><strong>Sample physics</strong><span>Grip, contact softness, joint damping, and small variations.</span></div>
-  <div class="gc-step"><span class="gc-step-number">2</span><strong>Build and equilibrate</strong><span>Allow the grasp to settle for 20 seconds.</span></div>
-  <div class="gc-step"><span class="gc-step-number">3</span><strong>Freeze state</strong><span>Save one snapshot and rewind to it before every probe.</span></div>
-  <div class="gc-step"><span class="gc-step-number">4</span><strong>Probe 60 wrenches</strong><span>Use 30 force-only and 30 force-plus-torque loads.</span></div>
-  <div class="gc-step"><span class="gc-step-number">5</span><strong>Measure displacement</strong><span>Ramp for 0.25 seconds, hold for one second, and record $\Delta x$.</span></div>
-  <div class="gc-step"><span class="gc-step-number">6</span><strong>Filter</strong><span>Keep scenarios with at least 12 stable loads.</span></div>
+<div class="gc-hero">
+  {% include figure.liquid path="assets/img/projects/mapscoff/paper-protocol.png" class="img-fluid rounded z-depth-1" zoomable=true caption="Load-test protocol in the randomized MuJoCo corpus: grasp acquisition, one load test, eligible and rejected loads of a LEAP sphere grasp, its force-only responses (whose slope is the compliance), and the source / held-out splits." %}
 </div>
 
-The resulting dataset contains **8,805 grasp scenarios** and **436,609 stable responses** across seven hands. Each scenario stores the 60 wrench-displacement pairs, stability masks, a deployment-observable six-dimensional grasp signature, simulated physical descriptors, closure Jacobians, and the equilibrium object pose.
+<div class="gc-protocol" aria-label="Load-test protocol">
+  <div class="gc-step"><span class="gc-step-number">1</span><strong>Acquire grasp</strong><span>The hand closes and settles; at least two fingers must hold the object.</span></div>
+  <div class="gc-step"><span class="gc-step-number">2</span><strong>Randomize physics</strong><span>Grip strength, contact softness, joint damping, friction, and palm pose vary per grasp.</span></div>
+  <div class="gc-step"><span class="gc-step-number">3</span><strong>Tare</strong><span>A zero-load reference records the unloaded pose where the corpus provides one.</span></div>
+  <div class="gc-step"><span class="gc-step-number">4</span><strong>Apply a load case</strong><span>Restore the settled grasp and ramp one wrench in over 0.25 s.</span></div>
+  <div class="gc-step"><span class="gc-step-number">5</span><strong>Measure response</strong><span>Object pose change relative to the palm at the end of the window.</span></div>
+  <div class="gc-step"><span class="gc-step-number">6</span><strong>Filter</strong><span>Keep responses that stay finite and hold; keep grasps with ≥ 28 eligible responses.</span></div>
+</div>
 
-### Embodiment differences
-
-The two-finger grippers are comparatively rigid and are dominated by the wrench-dependent term $Cw$. SBIR is approximately 30 times softer than those grippers. LEAP and Allegro exhibit a large wrench-independent settling offset, making them especially useful tests of whether the model captures $b$.
-
-## Evaluation protocol
-
-The experiments use leave-one-hand-out evaluation. A target hand is completely excluded from training, then calibrated from 20 support probes. Accuracy and passivity are measured only on held-out query loads that were not used during calibration.
-
-Two benchmarks test complementary forms of generalization:
+Three independent corpora are collected, each with its own source library and held-out-hand splits; they are never pooled.
 
 <div class="gc-benchmarks">
-  <div class="gc-benchmark"><strong>Matched</strong><p>Four hands grasp the same 50 objects under fixed nominal physics. This controls object variation and isolates the cross-embodiment gap. The headline comparison uses 87 scenarios per held-out hand.</p></div>
-  <div class="gc-benchmark"><strong>Multibig</strong><p>All seven hands contribute larger, hand-specific collections with randomized grip, contact softness, and joint damping. This benchmark tests robustness across both morphology and physics variation.</p></div>
+  <div class="gc-benchmark"><strong>Matched (MuJoCo)</strong><p>Four hands on a shared catalog of 50 objects. 535 grasps, 80,750 responses.</p></div>
+  <div class="gc-benchmark"><strong>Randomized (MuJoCo)</strong><p>Five hands, 16 objects from five shape families, broad physics randomization, zero-load tare. 505 grasps, 114,596 responses.</p></div>
+  <div class="gc-benchmark"><strong>Isaac (PhysX)</strong><p>The study repeated in Isaac Gym with its own objects and grasps. 145 grasps, 125,897 responses.</p></div>
 </div>
 
-Accuracy is measured with root-mean-square error between the predicted and observed query displacements. Lower RMSE is better. Paired bootstrap tests are used for significance across the leave-one-hand-out trials.
+Errors are reported as query NRMSE, normalized by each grasp's own response energy so that hands of different stiffness are comparable; **predicting zero motion scores 1**. Lower is better.
 
 ## Results
 
-### Matched benchmark
+### Accuracy with three and seven load tests
 
 <div class="gc-table-wrap">
   <table class="gc-table">
     <thead>
-      <tr><th>Held-out hand</th><th>MAPscoff RMSE ↓</th><th>MAML RMSE ↓</th><th>Improvement Δ</th><th>Scenario win rate</th><th>p-value</th></tr>
+      <tr><th>Corpus (equal-hand mean)</th><th>Prior only, K=0</th><th>PSD LS, K=3</th><th>MAPS, K=3</th><th>S-MAP, K=3</th><th>PSD LS, K=7</th><th>S-MAP, K=7</th></tr>
     </thead>
     <tbody>
-      <tr><td>LEAP</td><td class="gc-win">0.0141</td><td>0.0648</td><td class="gc-delta-pos">+0.0507</td><td>100%</td><td>&lt;0.001</td></tr>
-      <tr><td>Franka</td><td class="gc-win">0.0591</td><td>0.0623</td><td class="gc-delta-pos">+0.0032</td><td>66%</td><td>&lt;0.001</td></tr>
-      <tr><td>Robotiq</td><td class="gc-win">0.1697</td><td>0.1730</td><td class="gc-delta-pos">+0.0032</td><td>46%</td><td>0.020</td></tr>
-      <tr><td>SBIR</td><td>0.0713</td><td class="gc-win">0.0171</td><td class="gc-delta-neg">−0.0542</td><td>80%</td><td>&lt;0.001</td></tr>
+      <tr><td>Matched, excl. LEAP</td><td>4.447</td><td>1.420</td><td class="gc-win">0.651</td><td>0.656</td><td>0.727</td><td class="gc-win">0.508</td></tr>
+      <tr><td>Matched, all four hands</td><td>3.614</td><td>3.203</td><td>0.687</td><td class="gc-win">0.606</td><td>0.898</td><td class="gc-win">0.397</td></tr>
+      <tr><td>Randomized</td><td>8.010</td><td>1.431</td><td class="gc-win">0.322</td><td>0.330</td><td>0.366</td><td class="gc-win">0.247</td></tr>
+      <tr><td>Isaac</td><td>0.852</td><td>0.782</td><td>0.520</td><td class="gc-win">0.517</td><td>0.655</td><td class="gc-win">0.379</td></tr>
     </tbody>
   </table>
 </div>
 
-MAPscoff delivers its clearest matched-benchmark gain on LEAP. Franka and Robotiq are close because their rigid, nearly offset-free behavior already suits MAML's linear model. SBIR is the only mean loss: MAPscoff wins most individual scenarios, but a small number of large errors dominate the average.
+S-MAP beats PSD least squares hand by hand in **all 13 of 13** held-out settings at both K=3 and K=7, and MAPS alone lowers K=3 error by 34–77%. With twenty load cases, enough to identify $C$ without any prior, S-MAP is still 17–23% better than PSD least squares. Holding out objects as well as hands (60 folds) barely changes the matched K=3 errors (0.680 / 0.613).
 
-### Multibig benchmark
+### What the prior itself adds
+
+Against the same load test run with a source-tuned ridge instead of the prior, the prior's own contribution at K=3 is **11%, 14%, and 4%** across the matched, randomized, and Isaac corpora, and it vanishes by K=20. Most of the gain over PSD least squares comes from adapting the load test to grasps; the prior earns its keep where load cases are scarce. Removing energy-conjugate coordinates is the most damaging single change (randomized K=3 error rises to 1.086, worse than predicting zero).
+
+### Learned and structured baselines
 
 <div class="gc-table-wrap">
   <table class="gc-table">
     <thead>
-      <tr><th>Held-out hand</th><th>Scenarios</th><th>MAPscoff RMSE ↓</th><th>MAML RMSE ↓</th><th>Improvement Δ</th><th>Scenario win rate</th><th>p-value</th></tr>
+      <tr><th>Method</th><th>Matched K=3</th><th>Matched K=20</th><th>Randomized K=3</th><th>Randomized K=20</th></tr>
     </thead>
     <tbody>
-      <tr><td>LEAP</td><td>1,336</td><td class="gc-win">0.0118</td><td>0.0559</td><td class="gc-delta-pos">+0.0441</td><td>98%</td><td>&lt;0.001</td></tr>
-      <tr><td>Allegro</td><td>979</td><td class="gc-win">0.0141</td><td>0.0509</td><td class="gc-delta-pos">+0.0368</td><td>100%</td><td>&lt;0.001</td></tr>
-      <tr><td>SBIR</td><td>1,200</td><td class="gc-win">0.0004</td><td>0.0053</td><td class="gc-delta-pos">+0.0049</td><td>100%</td><td>&lt;0.001</td></tr>
-      <tr><td>DEX-EE</td><td>939</td><td class="gc-win">0.0076</td><td>0.0169</td><td class="gc-delta-pos">+0.0093</td><td>win</td><td>—</td></tr>
+      <tr><td><strong>MAPS (ours)</strong></td><td class="gc-win">0.651</td><td class="gc-win">0.410</td><td class="gc-win">0.322</td><td class="gc-win">0.199</td></tr>
+      <tr><td><strong>S-MAP (ours)</strong></td><td>0.656</td><td class="gc-win">0.410</td><td>0.330</td><td class="gc-win">0.199</td></tr>
+      <tr><td>Prior-free fit (tuned)</td><td>0.729</td><td>0.418</td><td>0.375</td><td class="gc-win">0.199</td></tr>
+      <tr><td>Local fit $L$</td><td>0.840</td><td>0.425</td><td>0.596</td><td>0.203</td></tr>
+      <tr><td>Neural operator (PSD decoder)</td><td>0.735</td><td>0.595</td><td>0.427</td><td>0.339</td></tr>
+      <tr><td>CNP-N (conditional neural process)</td><td>0.732</td><td>0.612</td><td>0.462</td><td>0.383</td></tr>
+      <tr><td>KRR (RBF kernel)</td><td>0.903</td><td>0.498</td><td>0.795</td><td>0.314</td></tr>
+      <tr><td>Isotropic $C=\alpha I$</td><td>0.894</td><td>0.737</td><td>0.808</td><td>0.680</td></tr>
+      <tr><td>PSD least squares (Krislock et al.)</td><td>1.420</td><td>0.536</td><td>1.431</td><td>0.240</td></tr>
     </tbody>
   </table>
 </div>
 
-MAPscoff beats MAML on all four reported multibig held-out hands. DEX-EE is also reported as a statistical tie against the strongest learned adapter, CNP, with a difference of +0.0004 and $p=0.36$.
+Matched columns exclude the drift-dominated LEAP hand. Both neural models are trained on the source hands with source-selected hyperparameters; with only four or five source hands, an explicit mean-and-covariance prior is easier to estimate than a flexible learned function.
 
-## Why MAPscoff performs well on dexterous hands
+### Fresh grasps, frozen settings
+
+To check that the gains do not depend on the benchmark's own grasps, every setting was frozen and new grasps were acquired: 200 attempts, of which **115 held** through 20 support and 8 query responses.
+
+<div class="gc-table-wrap">
+  <table class="gc-table">
+    <thead>
+      <tr><th>Hand</th><th>Acquired / eligible</th><th>PSD LS, K=3</th><th>MAPS, K=3</th><th>S-MAP, K=3</th><th>Grasps improved</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>SBIR</td><td>50 / 50</td><td>1.815</td><td class="gc-win">0.829</td><td>0.856</td><td>48 of 50</td></tr>
+      <tr><td>Franka</td><td>50 / 21</td><td>0.773</td><td class="gc-win">0.433</td><td class="gc-win">0.433</td><td>21 of 21</td></tr>
+      <tr><td>Robotiq</td><td>50 / 29</td><td>1.846</td><td class="gc-win">0.476</td><td>0.485</td><td>27 of 29</td></tr>
+      <tr><td>LEAP</td><td>50 / 15</td><td>4.370</td><td>0.689</td><td class="gc-win">0.483</td><td>15 of 15</td></tr>
+      <tr><td><strong>All</strong></td><td>200 / 115</td><td>2.201</td><td>0.607</td><td class="gc-win">0.564</td><td>111 of 115</td></tr>
+    </tbody>
+  </table>
+</div>
+
+S-MAP lowers K=3 error by **74%** relative to PSD least squares on these fresh grasps (60% without LEAP), with a sign test of $p\le6\times10^{-5}$ on every hand.
+
+### Effective directional stiffness
+
+The identified compliance gives the effective stiffness along a force direction $e$, $\hat k\_e=1/(e^{\top}\widehat C\_{p,tt}\,e)$, validated against the secant stiffness of withheld force-only load pairs.
+
+<div class="gc-table-wrap">
+  <table class="gc-table">
+    <thead>
+      <tr><th>Hand (randomized corpus)</th><th>S-MAP, K=3</th><th>PSD LS, K=3</th><th>S-MAP, K=5</th><th>PSD LS, K=5</th><th>S-MAP, K=20</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>SBIR</td><td class="gc-win">25.6%</td><td>30.3%</td><td class="gc-win">15.3%</td><td>19.7%</td><td>14.6%</td></tr>
+      <tr><td>Franka</td><td class="gc-win">28.8%</td><td>43.9%</td><td class="gc-win">23.4%</td><td>28.2%</td><td>14.4%</td></tr>
+      <tr><td>Robotiq</td><td class="gc-win">14.3%</td><td>27.8%</td><td class="gc-win">7.3%</td><td>11.5%</td><td>4.6%</td></tr>
+      <tr><td>LEAP</td><td class="gc-win">19.2%</td><td>24.9%</td><td class="gc-win">10.8%</td><td>12.7%</td><td>7.3%</td></tr>
+      <tr><td>Allegro</td><td class="gc-win">14.1%</td><td>19.9%</td><td class="gc-win">9.6%</td><td>10.0%</td><td>6.6%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+Three load tests recover directional stiffness to within **14–29%** on all five hands. The compliance also tells which directions a grasp yields to, loaded or not: at K=3, MAPS classifies 82.6% of query loads correctly as soft or stiff, against 74.3% for PSD least squares (randomized corpus).
+
+## What transfers between hands
 
 <div class="gc-callout">
   <span class="gc-callout-label">Insight</span>
-  <p>For LEAP and Allegro, the settling offset $b$ accounts for roughly 80–95% of the total displacement in a typical scenario. A model of the form $\Delta x=Cw$ is pinned to the origin and cannot represent motion at zero net wrench. MAPscoff's affine model explicitly estimates $b$, allowing it to recover this dominant behavior. On Franka and Robotiq, by contrast, $b\approx0$ and $Cw$ contributes about 95% of the displacement, so a linear gradient-based adapter is naturally competitive.</p>
+  <p>The source-hand mean alone predicts poorly: hands differ so much in overall softness that it scores worse than predicting zero motion. A single load case already fixes most of this by setting the scale $a$ and the offset. The <strong>shape</strong> of the compliance transfers across hands; only its <strong>magnitude</strong> has to be measured on the target.</p>
+  <p>A diagonal prior matches the full covariance within 0.003 in all three corpora, while a mean-only prior is 14–44% worse at K=3. What transfers is the mean operator and each entry's variance, much like a nominal compliance with a per-entry tolerance. More source hands help: randomized K=3 S-MAP error falls from 0.384 with one source hand to 0.322 with four.</p>
 </div>
 
-## Characterized limitation: matched SBIR
+## When to trust an identification
+
+Three load cases is also the smallest budget that can **check its own identification**. The leave-one-out score $s\_{\mathrm{LOO}}$ ranks failing calibrations with an AUROC of 0.89 in the randomized corpus (only three failures among 505 grasps, so indicative) and 0.72 in the matched corpus (62 failures), where flagging the riskiest 20% for extra load cases lowers the remaining mean error from 0.654 to 0.551. On matched LEAP grasps, whose settling drift contradicts the prior, S-MAP switches to the prior-free fit in 55% of episodes and lowers error by 0.08.
 
 <div class="gc-callout warn">
-  <span class="gc-callout-label">Limitation</span>
-  <p>SBIR exposes an important limitation of the current prior. The zero-shot prior is learned mainly from substantially more rigid hands, while SBIR is about 30 times softer. In a few rank-deficient grasps, the available support wrenches do not constrain every compliance direction, and the extrapolated prior can fill those directions with pathological values. These outliers cause the matched-benchmark mean loss even though MAPscoff wins 80% of SBIR scenarios.</p>
-  <p>The proposed remedy is an <strong>amortized, support-conditioned prior</strong> that reads the support pairs before producing its prior parameters. This would retain the physical constraint while avoiding unsupported extrapolation from rigid hands. The multibig result provides supporting evidence: when SBIR's own physics-randomized data is represented, MAPscoff reaches an RMSE of 0.0004 versus 0.0053 for MAML and wins every evaluated scenario.</p>
+  <span class="gc-callout-label">Limitations</span>
+  <p><strong>Blind spot.</strong> A mismatch confined to directions the load cases never excited is invisible to any three-load check: in a synthetic test MAPS's error doubles there while S-MAP switches in only 2.6% of episodes, though $s_{\mathrm{LOO}}$ still rises with it.</p>
+  <p><strong>Settling drift.</strong> Matched-corpus LEAP grasps start unsettled, so drift is a median 99.5% of their response energy. A zero-load tare taken before the load cases is the remedy (K=3 error drops to 0.077 with an idealized reference).</p>
+  <p><strong>Simulation only.</strong> Exact resets between load cases are not available on hardware; with no reset, three sequential load cases keep the grasp intact in 81% of runs and K=3 error rises from 0.278 to 0.793 for MAPS (0.578 to 1.297 without the prior). Each prior also comes from only four or five hands. Hardware validation with force and pose sensing is the next step.</p>
 </div>
 
 ## Takeaway
 
 <div class="gc-callout tip">
   <span class="gc-callout-label">Takeaway</span>
-  <p>MAPscoff shows that few-shot cross-embodiment calibration does not require choosing between predictive accuracy and physical safety. Its positive-semidefinite parameterization guarantees passive compliance, while the gated offset captures a dominant source of motion in dexterous multi-contact grasps. The method produces decisive gains on LEAP and Allegro, remains competitive on rigid two-finger grippers, and clearly identifies where a more adaptive prior is needed for very soft hands.</p>
+  <p>Grasp calibration does not have to fit each grasp in isolation. A population prior learned from other hands, on a load test adapted to grasps, identifies grasp compliance and its implied stiffness from three load tests more accurately than PSD least squares at every budget tested, with the largest gain where load cases are scarce. The result stays an explicit, inspectable, positive-semidefinite compliance, and its leave-one-out score flags the calibrations not to trust.</p>
 </div>
 
 <a class="gc-cta" href="https://github.com/stevens-armlab/graspCompliance"><i class="fa-brands fa-github"></i> View the graspCompliance repository</a>

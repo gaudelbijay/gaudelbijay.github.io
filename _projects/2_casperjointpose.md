@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Joint-Angle Human Pose Estimation for Casualty Manipulation
-description: Contact-aware 23-DoF human joint-state observer for robot-assisted casualty manipulation.
-img: assets/img/projects/casualty-pose/human_casualty_manipulation.png
+title: Robot-as-Sensor Joint-Angle Estimation for Casualty Manipulation
+description: A robot holding a casualty's limb corrects the camera's joint-angle estimate, fusing an RGB-D pose network with arm and hand proprioception in a grasp-aware error-state EKF.
+img: assets/img/projects/casualty-pose/robot-grasp-forearm.png
 importance: 2
 category: work
-github: https://github.com/stevens-armlab/casperjointpose
+github: https://github.com/gaudelbijay/caveman_ros2_isaac
 _styles: |
   .casper-hero {
     display: grid;
@@ -124,6 +124,25 @@ _styles: |
     font-weight: 700;
   }
 
+  .casper-table td.win {
+    color: var(--global-theme-color);
+    font-weight: 700;
+  }
+
+  .casper-eq {
+    margin: 0.8rem 0 1rem;
+  }
+
+  .casper-callout + .casper-callout {
+    margin-top: 0.8rem;
+  }
+
+  .casper-callout.warn {
+    border-left-color: var(--global-warning-block-title);
+    background: var(--global-warning-block-bg);
+    color: var(--global-warning-block-text);
+  }
+
   @media (max-width: 820px) {
     .casper-hero,
     .casper-two-col {
@@ -136,57 +155,135 @@ _styles: |
   <div>
     <p class="casper-kicker">Casualty manipulation perception</p>
     <p class="casper-lede">
-      This project estimates the joint angles of a passive human body while a mobile
-      manipulator grasps and moves a casualty. The goal is not only to see a body in
-      depth, but to give the robot a physically meaningful 23-DoF joint state, contact
-      belief, and uncertainty signal it can use while handling limbs safely.
+      Can a robot that is holding a casualty's limb estimate the casualty's joint angles
+      better than a camera alone? This project treats the robot itself as a sensor: a
+      UR5 arm with a LEAP hand grasps a lying person's forearm or shank, and its own arm
+      and hand encoders and wrist force are fused with an RGB-D pose network in a
+      grasp-aware error-state EKF. Everything is built on an anatomical, physics-simulated
+      human ("caveman") in Isaac Sim with a ROS 2 interface.
     </p>
   </div>
   <img
     class="casper-image"
-    src="{{ '/assets/img/projects/casualty-pose/human_casualty_manipulation.png' | relative_url }}"
-    alt="Mobile manipulator interacting with an articulated casualty model"
+    src="{{ '/assets/img/projects/casualty-pose/robot-grasp-forearm.png' | relative_url }}"
+    alt="UR5 arm with a LEAP hand grasping the forearm of a simulated lying casualty"
   />
 </section>
 
 <div class="casper-metrics">
   <div class="casper-metric">
-    <strong>23 DoF</strong>
-    <span>articulated human state estimated from a single depth view</span>
+    <strong>+37.0%</strong>
+    <span>forearm joint-angle error removed vs. vision alone (95% CI +27.6 to +45.9)</span>
   </div>
   <div class="casper-metric">
-    <strong>65,350</strong>
-    <span>simulated frames across five Gazebo worlds</span>
+    <strong>8.66&deg; &rarr; 5.46&deg;</strong>
+    <span>shoulder and elbow flexion MAE over the manipulation</span>
   </div>
   <div class="casper-metric">
-    <strong>2.89&deg;</strong>
-    <span>test MAE for the best medium model</span>
+    <strong>30 of 38</strong>
+    <span>accepted forearm grasps improved (Wilcoxon p = 3&times;10<sup>-6</sup>)</span>
   </div>
   <div class="casper-metric">
-    <strong>88.35%</strong>
-    <span>test joints within 5 degrees</span>
+    <strong>6.86&deg;</strong>
+    <span>vision-only MAE on 12 primary angles, unseen test people</span>
   </div>
   <div class="casper-metric">
-    <strong>92.82%</strong>
-    <span>test joints within 10 degrees</span>
+    <strong>700,128</strong>
+    <span>synthetic RGB-D frames of 36 people</span>
   </div>
   <div class="casper-metric">
-    <strong>702 FPS</strong>
-    <span>small model throughput at 1.425 ms per frame</span>
+    <strong>32 DoF</strong>
+    <span>anatomical human with passive joint mechanics</span>
   </div>
 </div>
 
 <section class="casper-section">
   <h2>Story</h2>
   <p>
-    Casualty manipulation is a harder perception problem than ordinary pose
-    detection. A rescue robot may be holding a forearm or leg, the body can be
-    partially occluded, and the action that matters is a joint-space action: whether a
-    limb is bending toward or away from feasible human motion. I built the observer
-    around that constraint. It predicts bounded joint-angle pseudo-measurements,
-    estimates which body link is in contact, and keeps a calibrated feasible set of
-    likely human configurations rather than a single brittle pose.
+    During casualty manipulation the camera is at its weakest exactly when the estimate
+    matters most: the person is lying, limbs are self-occluded or hidden by the robot,
+    and the pose being produced is unusual. A pose network also tends to misread a held
+    limb the same way for many seconds. The robot, however, knows precisely where its
+    palm is and that it is holding the limb. The question is whether that grasp geometry
+    can correct the camera's persistent error, using only signals a real robot has:
+    arm and hand encoders, finger closure, and wrist force.
   </p>
+</section>
+
+<figure class="casper-figure">
+  <img
+    src="{{ '/assets/img/projects/casualty-pose/robot-sensor-architecture.png' | relative_url }}"
+    alt="Architecture of the robot-as-sensor estimator: pose network, pivot model, grasp gate, iterated error-state EKF and corrected joint angle"
+  />
+  <figcaption>
+    The robot as a sensor for a lying casualty's limb pose. (a) The pose network reads depth
+    and colour and predicts joint angles and the pelvis pose; its grasp site feeds the grasp
+    planner. (b) From the arm and hand encoders, the pivot model turns the planned grasp about
+    the elbow as the palm rises, giving the grasp line. (c) The grasp is a measurement only while
+    the fingers are closed on the limb and the wrist force stays below the protective stop.
+    (d) An iterated error-state EKF fuses vision, with a persistent bias state, and the grasp line.
+    (e) Elbow flexion in one test episode: while held, vision errs by 8.4&deg;, the fused
+    estimate by 1.4&deg;. Blue: camera; orange: robot; magenta: fused estimate.
+  </figcaption>
+</figure>
+
+<section class="casper-section">
+  <h2>Problem formulation</h2>
+  <p>
+    A casualty lies on the floor in view of a static RGB-D camera. The robot grasps the distal
+    forearm or shank, lifts or slides it, moves it, and releases it. At each camera frame $t$ the
+    goal is the casualty's joint angles $\boldsymbol{\theta}_t$, reported on shoulder and elbow
+    flexion for the forearm (hip and knee for the shank), over the whole manipulation from grasp
+    to release. The available signals are:
+  </p>
+  <ul>
+    <li><strong>Vision:</strong> joint angles $\hat{\boldsymbol{\theta}}_t$ and pelvis pose $\hat T_{P,t}$ from the pose network, and a body scale $\hat\kappa$ from depth.</li>
+    <li><strong>Robot:</strong> the palm pose $T_{H,t}$ from arm and hand encoders, the finger gap $\Delta_t$, and the wrist force $\mathbf{F}_t$.</li>
+  </ul>
+  <p>The filter state collects the pose, the grasp, the body scale, and the vision bias:</p>
+  <div class="casper-eq">
+$$
+\mathbf{x}=\left(\boldsymbol{\theta},\ T_P,\ G,\ \kappa,\ \mathbf{b}\right),
+$$
+  </div>
+  <p>
+    where $T_P$ is the pelvis pose, $G$ the grasp (the limb relative to the palm), $\kappa$ a
+    uniform body scale, and $\mathbf{b}$ a slowly varying vision bias. Treating the network's error as
+    persistent rather than white is the key modelling choice: the vision residual is
+  </p>
+  <div class="casper-eq">
+$$
+\mathbf{r}_v=\boldsymbol{\theta}+\mathbf{b}-\hat{\boldsymbol{\theta}}_t ,
+$$
+  </div>
+  <p>
+    and the bias decays with a time constant $\tau$ chosen on validation people. While the grasp
+    gate $h_t$ is on, the robot contributes a <strong>grasp line</strong> $\boldsymbol{\ell}_t$: the limb axis
+    predicted from the palm, $(\tilde{\mathbf{p}},\tilde{\mathbf{u}})$ from $T_{H,t}G^{-1}$, must agree
+    with the axis $(\mathbf{p},\mathbf{u})$ of the estimated limb given by $\boldsymbol{\theta}$, $T_P$ and $\kappa$:
+  </p>
+  <div class="casper-eq">
+$$
+\mathbf{r}_g=
+\begin{bmatrix}
+\left(I-\mathbf{u}\mathbf{u}^{\top}\right)\left(\tilde{\mathbf{p}}-\mathbf{p}\right)\\
+\tilde{\mathbf{u}}\times\mathbf{u}
+\end{bmatrix}.
+$$
+  </div>
+  <p>
+    Only the perpendicular offset and the direction are constrained; sliding along the limb and
+    rolling about it are left free, because a compliant hand is a ring around the limb rather than a
+    clamp. The predict step moves the limb with the measured palm displacement and decays the bias,
+    and the update is iterated on the manifold:
+  </p>
+  <div class="casper-eq">
+$$
+\mathbf{x}_t^{-}=f\!\left(\mathbf{x}_{t-1}^{+},\ \delta T_{H,t}\right),
+\qquad
+\mathbf{x}_t^{+}=\mathbf{x}_t^{-}\boxplus K\mathbf{r}.
+$$
+  </div>
 </section>
 
 <section class="casper-section">
@@ -194,135 +291,220 @@ _styles: |
   <div class="casper-two-col">
     <div>
       <p>
-        The perception stack uses one depth camera and wrist force/torque sensing.
-        The paper's observer takes a two-channel input made from normalized depth and
-        an invalid-depth mask, then passes it through a fixed lightweight CNN encoder.
-        Four CNN stages are pooled with GAP + Linear + GELU into a global descriptor
-        \( \mathbf{z}_\tau \). Direct projection heads use that descriptor to predict
-        bounded joint-angle pseudo-measurements, per-joint log-variance,
-        grasped-link probabilities, and the optional energy score used for
-        feasible-set supervision. Those outputs feed a contact-aware extended Kalman
-        filter that gates contact updates, blocks joints according to the likely
-        grasped link, masks unstable gains, and inflates innovation covariance when
-        the normalized innovation squared test indicates mismatch.
+        <strong>Pivot model.</strong> During the lift the forearm tilts 14&ndash;23&deg; inside the hand,
+        always the same way. The grasp line therefore starts at the planned grasp $G_0$ at onset and is
+        turned about the elbow as the palm rises from its pose at grasp $T_{H,t_0}$. This cuts the median
+        axis-direction error from 17.5&deg; to 5.4&deg;.
       </p>
       <p>
-        Training data was collected in simulation with randomized Gazebo scenes and
-        small camera-pose variation. The final dataset contains 65,350 frames split
-        80/10/10 for train, validation, and test, with contact classes balanced across
-        left forearm, right forearm, left leg, right leg, and no contact.
+        <strong>Grasp gate.</strong> The grasp is a measurement only while the finger encoders show the
+        hand closed on the limb (a hysteretic finger-gap band) and the wrist force before the lift stays
+        below the UR5's 150 N protective stop. Only grasps the robot itself accepts are evaluated.
       </p>
     </div>
-    <figure class="casper-figure">
-      <img
-        src="{{ '/assets/img/projects/casualty-pose/overview.png' | relative_url }}"
-        alt="Overview of the depth observer, contact reasoning, and EKF fusion pipeline"
-      />
-      <figcaption>
-        The full observer fuses depth, segmentation, robot kinematics, and wrist force
-        signals into joint angles, contact belief, and uncertainty.
-      </figcaption>
-    </figure>
+    <div>
+      <p>
+        <strong>Pose network.</strong> The vision model reads segmented RGB and depth aligned to colour
+        in a person-centred crop with eight frames of history, using a DINOv3-L backbone and a causal
+        temporal transformer. It predicts 12 primary flexion angles plus a pelvis head (3.5 cm and 7.0&deg;
+        on test people).
+      </p>
+      <p>
+        <strong>Body scale.</strong> Head-to-heel length from the first depth frame, divided by the template's,
+        gives $\hat\kappa$ to within 0.3% of the true length.
+      </p>
+    </div>
   </div>
-
-  <figure class="casper-figure">
-    <img
-      src="{{ '/assets/img/projects/casualty-pose/architecture.png' | relative_url }}"
-      alt="Network architecture for depth-based joint angle, uncertainty, and contact prediction"
-    />
-    <figcaption>
-      The reported observer uses a compact CNN encoder with direct per-joint
-      projection heads. It does not use attention-based query decoding or kinematic
-      graph refinement, keeping the backbone/head design fixed across ablations.
-    </figcaption>
-  </figure>
 </section>
 
 <section class="casper-section">
-  <h2>Results</h2>
+  <h2>Simulated human and dataset</h2>
   <p>
-    The best medium model reached <strong>2.89&deg; &plusmn; 0.13&deg;</strong> test
-    MAE, with <strong>88.35% &plusmn; 0.53%</strong> of joint estimates within
-    5 degrees and <strong>92.82% &plusmn; 0.35%</strong> within 10 degrees. Against
-    reproduced depth-pose baselines, the MAE dropped by 30.53% versus Abobakr,
-    33.10% versus D3KE, 58.30% versus Collings, and 58.54% versus Pose2Sim.
+    The caveman is built on NVIDIA's rigged people with 32 anatomical degrees of freedom, human
+    ranges of motion (including a shoulder joint sinus), de Leva segment masses, soft-tissue collision
+    hulls, and passive joint mechanics so that a relaxed or unconscious body settles realistically.
+    A ROS 2 Jazzy interface exposes joint states, commands, and active, passive, or effort control.
+  </p>
+  <p>
+    The dataset contains <strong>14,586 sequences (700,128 frames)</strong> of 36 people, split by
+    person, from a simulated RealSense D435 with stereo noise, shadows, and dropout. Activities range
+    from walking, falling, and crawling to 5,476 lying sequences, labelled with 32 joint angles at 30 and
+    120 Hz, keypoints, person masks, and camera poses.
   </p>
 
   <div class="casper-table-wrap">
     <table class="casper-table">
       <thead>
         <tr>
-          <th>Model</th>
-          <th>Test MAE</th>
-          <th>&le;5&deg;</th>
-          <th>&le;7&deg;</th>
-          <th>&le;10&deg;</th>
-          <th>Link accuracy</th>
+          <th>Vision model (6 test people, MAE)</th>
+          <th>GT masks</th>
+          <th>Segmenter-like masks</th>
+          <th>Depth only</th>
+          <th>Lying postures</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Best medium observer</td>
-          <td>2.89&deg; &plusmn; 0.13&deg;</td>
-          <td>88.35% &plusmn; 0.53%</td>
-          <td>90.32% &plusmn; 0.34%</td>
-          <td>92.82% &plusmn; 0.35%</td>
-          <td>89.44% &plusmn; 1.06%</td>
+          <td><strong>DINOv3-L + pelvis head</strong> (used in the robot study)</td>
+          <td class="win">6.86&deg;</td>
+          <td>6.93&deg;</td>
+          <td>6.95&deg;</td>
+          <td>12.35&deg;</td>
         </tr>
+        <tr><td>DINOv3-L</td><td>6.91&deg;</td><td>6.97&deg;</td><td>7.01&deg;</td><td>12.63&deg;</td></tr>
+        <tr><td>DINOv2-L</td><td>7.06&deg;</td><td>7.13&deg;</td><td>7.16&deg;</td><td>13.08&deg;</td></tr>
+        <tr><td>CAFormer-B36</td><td>8.07&deg;</td><td>8.10&deg;</td><td>8.14&deg;</td><td>16.14&deg;</td></tr>
+        <tr><td>ConvNeXt-V2-B</td><td>9.49&deg;</td><td>9.49&deg;</td><td>9.51&deg;</td><td>18.64&deg;</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Lying postures roughly double the vision error, which is exactly where the robot's grasp has to help.</p>
+</section>
+
+<section class="casper-section">
+  <h2>Robot study</h2>
+  <p>
+    A UR5 with a full LEAP hand at its real gains and 550 mA current limit, with a flange force/torque
+    sensor, runs at 600 Hz physics next to a static D435 model at 30 Hz. The robot grasps the distal
+    forearm and lifts it about 8 cm, or slides the shank on its heel, moves the limb, and releases it.
+    The grasp is planned with vision-level error. Every setting is chosen on validation people; the test is
+    a fresh confirmation set of 72 episodes on 4 test people, generated after the method was fixed.
+  </p>
+
+  <div class="casper-table-wrap">
+    <table class="casper-table">
+      <thead>
         <tr>
-          <td>Best small observer</td>
-          <td>2.94&deg; &plusmn; 0.04&deg;</td>
-          <td>88.35% &plusmn; 0.00%</td>
-          <td>90.29% &plusmn; 0.34%</td>
-          <td>92.55% &plusmn; 0.05%</td>
-          <td>93.67% &plusmn; 0.29%</td>
+          <th>Method (test, accepted grasps)</th>
+          <th>Forearm MAE (38)</th>
+          <th>Gain vs. vision [95% CI]</th>
+          <th>Episodes better</th>
+          <th>Shank MAE (7)</th>
+          <th>Shank gain</th>
         </tr>
+      </thead>
+      <tbody>
+        <tr><td>Vision only (pose network)</td><td>8.66&deg;</td><td>&ndash;</td><td>&ndash;</td><td>4.97&deg;</td><td>&ndash;</td></tr>
+        <tr><td>EKF without robot data</td><td>8.68&deg;</td><td>&minus;0.2%</td><td>4 of 38</td><td>4.97&deg;</td><td>&minus;0.1%</td></tr>
+        <tr>
+          <td><strong>Ours: grasp line, pivot model</strong></td>
+          <td class="win">5.46&deg;</td>
+          <td class="win">+37.0% [+27.6, +45.9]</td>
+          <td class="win">30 of 38</td>
+          <td class="win">4.54&deg;</td>
+          <td class="win">+8.6%</td>
+        </tr>
+        <tr><td>Grasp line on the true limb axis (reference)</td><td>4.85&deg;</td><td>+44.0% [+36.0, +50.9]</td><td>33 of 38</td><td>4.55&deg;</td><td>+8.4%</td></tr>
+        <tr><td>Manip4Care: rigid-grasp kinematics</td><td>8.91&deg;</td><td>&minus;2.8%</td><td>12 of 38</td><td>7.31&deg;</td><td>&minus;47.2%</td></tr>
+        <tr><td>Zhu et al.: held-point tracking</td><td>14.84&deg;</td><td>&minus;71.3%</td><td>6 of 38</td><td>7.35&deg;</td><td>&minus;47.9%</td></tr>
+        <tr><td>Zhu et al., given the true start posture</td><td>4.92&deg;</td><td>+43.2% [+24.0, +54.9]</td><td>35 of 38</td><td>4.48&deg;</td><td>+9.7%</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="casper-callout">
-    Contact fusion improved the useful part of the distribution without making the
-    system separably worse at the 5 degree threshold. The contact-aware EKF beat an
-    unguided contact-on filter by +1.62, +3.28, +0.55, and +0.34 percentage points
-    across the right forearm, left forearm, left leg, and right leg contact modes.
-  </div>
-</section>
-
-<section class="casper-section">
-  <h2>Plots</h2>
-  <div class="casper-two-col">
-    <figure class="casper-figure">
-      <img
-        src="{{ '/assets/img/projects/casualty-pose/coverage_vs_target.png' | relative_url }}"
-        alt="Coverage transfer curves for feasible-set calibration"
-      />
-      <figcaption>
-        Coverage transfer curves show how feasible-set calibration tracks target
-        inclusion across validation and test splits.
-      </figcaption>
-    </figure>
-    <figure class="casper-figure">
-      <img
-        src="{{ '/assets/img/projects/casualty-pose/feasible_set_pareto.png' | relative_url }}"
-        alt="Feasible-set inclusion and set-size Pareto plot"
-      />
-      <figcaption>
-        The feasible-set Pareto plot makes the tradeoff between candidate-set size and
-        inclusion explicit.
-      </figcaption>
-    </figure>
+    The robot removes 37% of the forearm vision error over the whole manipulation, and about 45% while
+    it holds the arm. Every test person gains (+33 to +48%) on both arms, and the pivot model gets within
+    7 points of a line through the true limb axis. Prior trackers given the same inputs lose to vision:
+    a rigid grasp ignores that the arm turns in a compliant hand, and held-point tracking accumulates the
+    error of its unknown start. Only when given the casualty's true start posture, which cannot be measured
+    on an unresponsive person, does Zhu et al. match the mean, with a wider spread (95th percentile 15.3&deg;
+    vs. 12.6&deg;).
   </div>
 
   <figure class="casper-figure">
     <img
-      src="{{ '/assets/img/projects/casualty-pose/calibration_benchmark.png' | relative_url }}"
-      alt="Calibration benchmark boxplots for contact confidence"
+      src="{{ '/assets/img/projects/casualty-pose/fig-errors.png' | relative_url }}"
+      alt="Per-episode chain-angle error for each method"
+    />
+    <figcaption>Chain-angle error per episode (box: median and quartiles; points: episodes; log scale).</figcaption>
+  </figure>
+
+  <div class="casper-two-col">
+    <div>
+      <h3>Ablations (forearm)</h3>
+      <div class="casper-table-wrap">
+        <table class="casper-table" style="min-width: 0">
+          <thead><tr><th>Variant</th><th>Gain vs. vision</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Full method</strong></td><td class="win">+37.0%</td></tr>
+            <tr><td>No vision-bias state (white vision noise)</td><td>+0.4%</td></tr>
+            <tr><td>Camera blind to the held limb</td><td>+31.1%</td></tr>
+            <tr><td>Camera blind, no palm displacement in predict</td><td>+24.2%</td></tr>
+            <tr><td>Learned person mask instead of the true one</td><td>+32.0%</td></tr>
+            <tr><td>No grasp gate</td><td>+34.5% (shank &minus;8.3%)</td></tr>
+            <tr><td>Body scale not measured</td><td>+36.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Without the bias state the gain vanishes: the vision error is persistent, and modelling it as a
+        slowly varying bias is what lets the grasp correct it. The palm displacement carries the estimate
+        when the camera cannot see the limb.
+      </p>
+    </div>
+    <div>
+      <h3>Off-the-shelf vision</h3>
+      <div class="casper-table-wrap">
+        <table class="casper-table" style="min-width: 0">
+          <thead><tr><th>Vision source</th><th>Forearm gain</th><th>Shank gain</th></tr></thead>
+          <tbody>
+            <tr><td>Our network</td><td class="win">+37.0%</td><td>+8.6%</td></tr>
+            <tr><td>NLF, as is</td><td>&minus;50.9%</td><td>&minus;18.4%</td></tr>
+            <tr><td>NLF, anchored + own noise</td><td>+8.0%</td><td class="win">+17.7%</td></tr>
+            <tr><td>SAM 3D Body, as is</td><td>&minus;48.5%</td><td>&minus;0.7%</td></tr>
+            <tr><td>SAM 3D Body, anchored + own noise</td><td>+22.9%</td><td>+9.9%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        Single-image 3D pose models place the body 10&ndash;20 cm off and jitter frame to frame. Anchoring
+        their pelvis with depth and giving them their own per-frame noise (both chosen on validation) lets
+        the filter improve them too; with the robot, SAM 3D Body reaches 5.6&deg; on the forearm.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="casper-section">
+  <h2>Manipulation episodes</h2>
+  <figure class="casper-figure">
+    <img
+      src="{{ '/assets/img/projects/casualty-pose/fig-trajectories.png' | relative_url }}"
+      alt="True, vision-only and corrected joint angles over a manipulation for each limb"
     />
     <figcaption>
-      Temperature scaling preserved contact classification performance while improving
-      calibration: ECE15 dropped from 0.159 to 0.071 and Brier score from 0.074 to
-      0.050.
+      A typical episode per limb (gain closest to that limb's median): true, vision-only, and corrected
+      joint angles over the manipulation.
     </figcaption>
   </figure>
+  <figure class="casper-figure">
+    <img
+      src="{{ '/assets/img/projects/casualty-pose/fig-sequences.jpg' | relative_url }}"
+      alt="Camera views of approach, grasp, lift, move and release for the left forearm, right forearm and shank"
+    />
+    <figcaption>
+      The same manipulations from the camera at approach, grasp, lift or slide, move, and release, with the
+      limb's true joints (solid) and where they were at the grasp (dashed). The camera looks down, so the lift
+      shows mostly as the elbow bending; the shank only slides.
+    </figcaption>
+  </figure>
+</section>
+
+<section class="casper-section">
+  <h2>Limitations and next steps</h2>
+  <div class="casper-callout warn">
+    <strong>Shank.</strong> The leg is slid on its heel rather than lifted, because a straight leg needs more
+    ankle force than the arm and hand can carry, so it moves little and the planned axis is never corrected by
+    a lift; 13 of 24 shank grasps hit the protective stop. The shank gain is therefore small (+8.6% on 7 accepted grasps).
+  </div>
+  <div class="casper-callout warn">
+    <strong>In-grip turning.</strong> While the arm is moved it also turns 3&ndash;6&deg; inside the compliant grip.
+    The grasp line is fixed in the palm after the hold starts, so the estimate gets the elbow's level right but
+    not its faster swings. Modelling that turn, as the pivot model does for the lift, is the next step.
+  </div>
+  <div class="casper-callout">
+    All results so far are in simulation. A hardware study with the lab's UR5, LEAP hand, and force/torque
+    sensor, first on a mannequin and then on people, is planned.
+  </div>
 </section>
