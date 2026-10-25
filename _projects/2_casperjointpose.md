@@ -305,8 +305,8 @@ $$
     <div>
       <p>
         <strong>Pose network.</strong> The vision model reads segmented RGB and depth aligned to colour
-        in a person-centred crop with eight frames of history, using a large self-supervised vision
-        transformer backbone and a causal temporal transformer. It predicts 12 primary flexion angles plus a pelvis head (3.5 cm and 7.0&deg;
+        in a person-centred crop with eight frames of history, using a DINOv3-L backbone and a causal
+        temporal transformer. It predicts 12 primary flexion angles plus a pelvis head (3.5 cm and 7.0&deg;
         on test people).
       </p>
       <p>
@@ -336,7 +336,7 @@ $$
     <table class="casper-table">
       <thead>
         <tr>
-          <th>Pose network (6 test people, MAE)</th>
+          <th>Vision model (6 test people, MAE)</th>
           <th>GT masks</th>
           <th>Segmenter-like masks</th>
           <th>Depth only</th>
@@ -345,12 +345,16 @@ $$
       </thead>
       <tbody>
         <tr>
-          <td><strong>Joint angles, 12 primary angles</strong></td>
+          <td><strong>DINOv3-L + pelvis head</strong> (used in the robot study)</td>
           <td class="win">6.86&deg;</td>
           <td>6.93&deg;</td>
           <td>6.95&deg;</td>
           <td>12.35&deg;</td>
         </tr>
+        <tr><td>DINOv3-L</td><td>6.91&deg;</td><td>6.97&deg;</td><td>7.01&deg;</td><td>12.63&deg;</td></tr>
+        <tr><td>DINOv2-L</td><td>7.06&deg;</td><td>7.13&deg;</td><td>7.16&deg;</td><td>13.08&deg;</td></tr>
+        <tr><td>CAFormer-B36</td><td>8.07&deg;</td><td>8.10&deg;</td><td>8.14&deg;</td><td>16.14&deg;</td></tr>
+        <tr><td>ConvNeXt-V2-B</td><td>9.49&deg;</td><td>9.49&deg;</td><td>9.51&deg;</td><td>18.64&deg;</td></tr>
       </tbody>
     </table>
   </div>
