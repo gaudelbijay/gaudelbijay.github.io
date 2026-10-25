@@ -49,9 +49,9 @@ ninja.data = [{
           description: "Event-driven reinforcement learning for autonomous navigation with neuromorphic vision.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_event_jackal/";
-            },},{id: "projects-joint-angle-human-pose-estimation-for-casualty-manipulation",
-          title: 'Joint-Angle Human Pose Estimation for Casualty Manipulation',
-          description: "Contact-aware 23-DoF human joint-state observer for robot-assisted casualty manipulation.",
+            },},{id: "projects-robot-as-sensor-joint-angle-estimation-for-casualty-manipulation",
+          title: 'Robot-as-Sensor Joint-Angle Estimation for Casualty Manipulation',
+          description: "A robot holding a casualty&#39;s limb corrects the camera&#39;s joint-angle estimate, fusing an RGB-D pose network with arm and hand proprioception in a grasp-aware error-state EKF.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_casperjointpose/";
             },},{id: "projects-ros-2-haptic-teleoperation-data-logger-for-manipulation-learning",
@@ -79,9 +79,9 @@ ninja.data = [{
           description: "Privacy-conscious, resume-aware job discovery with evidence-based filtering and ranking.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/7_roleradar/";
-            },},{id: "projects-safe-cross-embodiment-grasp-compliance-calibration",
-          title: 'Safe Cross-Embodiment Grasp-Compliance Calibration',
-          description: "Few-shot calibration of passive grasp-compliance models for previously unseen robot hands.",
+            },},{id: "projects-few-shot-grasp-compliance-identification-across-robot-hands",
+          title: 'Few-Shot Grasp Compliance Identification Across Robot Hands',
+          description: "Identifying a grasp&#39;s 6x6 compliance from only three load tests on an unseen robot hand, using a population prior learned from other hands.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/8_mapscoff/";
             },},{
