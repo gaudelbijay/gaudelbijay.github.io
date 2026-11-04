@@ -476,12 +476,19 @@ _styles: |
     color: var(--global-hover-text-color) !important;
   }
 
-  .gc-photo {
-    max-width: 760px;
-    margin: 1.2rem auto 1.6rem;
+  .gc-photo-pair {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    margin: 1.2rem 0 1.6rem;
   }
 
-  .gc-photo img {
+  .gc-photo-pair figure {
+    margin: 0;
+  }
+
+  .gc-photo-pair img {
     display: block;
     width: 100%;
     height: auto;
@@ -489,7 +496,7 @@ _styles: |
     border-radius: 10px;
   }
 
-  .gc-photo figcaption {
+  .gc-photo-pair figcaption {
     margin-top: 0.5rem;
     color: var(--global-text-color-light);
     font-size: 0.86rem;
@@ -499,7 +506,8 @@ _styles: |
   @media (max-width: 780px) {
     .gc-protocol,
     .gc-compare,
-    .gc-benchmarks {
+    .gc-benchmarks,
+    .gc-photo-pair {
       grid-template-columns: 1fr;
     }
     .gc-pipe-arrow {
@@ -524,10 +532,16 @@ _styles: |
 
 <p>The paper, <em>Few-Shot Grasp Compliance Identification Across Robot Hands</em>, first adapts positive-semidefinite (PSD) least squares to grasps, then proposes <strong>MAPS</strong>, a maximum a posteriori estimator whose prior is learned from other hands' identified compliances. Its selective variant, <strong>S-MAP</strong>, drops that prior when a grasp's own load tests contradict it. The main study covers six hands in two physics engines, and a first <strong>hardware pilot on the real SBIR hand</strong> applies a prior learned only in simulation, without retraining.</p>
 
-<figure class="gc-photo">
-  <img src="{{ '/assets/img/projects/mapscoff/hardware-setup.jpg' | relative_url }}" alt="SBIR hand on an xArm7 with a wrist force/torque sensor, holding an ArUco-tagged ultrasound probe in front of a RealSense camera">
-  <figcaption>Hardware setup: the SBIR hand on an xArm7 with a wrist force/torque sensor grasps an ultrasound probe carrying ArUco tags, tracked by a RealSense camera. Each load case is a push on the grasped probe: the wrist sensor measures the load and the tag gives the probe's motion relative to the hand.</figcaption>
-</figure>
+<div class="gc-photo-pair">
+  <figure>
+    <img src="{{ '/assets/img/projects/mapscoff/hardware-setup.jpg' | relative_url }}" alt="SBIR hand on an xArm7 with a wrist force/torque sensor, holding an ArUco-tagged ultrasound probe in front of a RealSense camera; an external wrench is applied to the probe">
+    <figcaption><strong>(a) Hardware setup.</strong> The SBIR hand on an xArm7 grasps an ultrasound probe carrying ArUco markers. Each load case is an external wrench $w=(f,\tau)$ applied to the probe: the wrist force/torque sensor measures it, and the RealSense camera tracks the probe's motion relative to the hand.</figcaption>
+  </figure>
+  <figure>
+    <img src="{{ '/assets/img/projects/mapscoff/hardware-tracking.jpg' | relative_url }}" alt="Live ArUco tracking interface showing the tag overlay with pose readouts and the raw colour image of the pushed probe">
+    <figcaption><strong>(b) Live tracking during a push.</strong> Tag poses and displacement in the camera frame (left, overlay with readouts; right, raw colour), paired with the compensated wrist wrench.</figcaption>
+  </figure>
+</div>
 
 <div class="gc-metrics">
   <div class="gc-metric"><strong>3 loads</strong><span>Load tests per grasp, against ≥7 needed without a prior</span></div>
