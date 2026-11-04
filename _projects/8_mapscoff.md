@@ -476,6 +476,26 @@ _styles: |
     color: var(--global-hover-text-color) !important;
   }
 
+  .gc-photo {
+    max-width: 760px;
+    margin: 1.2rem auto 1.6rem;
+  }
+
+  .gc-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 10px;
+  }
+
+  .gc-photo figcaption {
+    margin-top: 0.5rem;
+    color: var(--global-text-color-light);
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
   @media (max-width: 780px) {
     .gc-protocol,
     .gc-compare,
@@ -497,11 +517,12 @@ _styles: |
   <span class="gc-badge">6 robot hands</span>
   <span class="gc-badge">MuJoCo + Isaac Gym</span>
   <span class="gc-badge">PSD compliance by construction</span>
+  <span class="gc-badge">Hardware pilot · real SBIR hand</span>
 </div>
 
 <p class="gc-lede">A grasp is usually judged by whether it holds the object. In forceful tasks such as tool use, insertion, or in-hand placement, a held object still moves under load, and <strong>grasp compliance</strong>, the matrix relating a load on the object to its displacement, governs that motion. This project estimates a grasp's compliance on a <strong>robot hand it has never seen</strong> from only <strong>three load tests</strong>, by completing those few measurements with what other hands have in common.</p>
 
-<p>The paper, <em>Few-Shot Grasp Compliance Identification Across Robot Hands</em>, first adapts positive-semidefinite (PSD) least squares to grasps, then proposes <strong>MAPS</strong>, a maximum a posteriori estimator whose prior is learned from other hands' identified compliances. Its selective variant, <strong>S-MAP</strong>, drops that prior when a grasp's own load tests contradict it.</p>
+<p>The paper, <em>Few-Shot Grasp Compliance Identification Across Robot Hands</em>, first adapts positive-semidefinite (PSD) least squares to grasps, then proposes <strong>MAPS</strong>, a maximum a posteriori estimator whose prior is learned from other hands' identified compliances. Its selective variant, <strong>S-MAP</strong>, drops that prior when a grasp's own load tests contradict it. The main study covers six hands in two physics engines, and a first <strong>hardware pilot on the real SBIR hand</strong> applies a prior learned only in simulation, without retraining.</p>
 
 <div class="gc-metrics">
   <div class="gc-metric"><strong>3 loads</strong><span>Load tests per grasp, against ≥7 needed without a prior</span></div>
@@ -509,6 +530,7 @@ _styles: |
   <div class="gc-metric"><strong>74%</strong><span>Lower error on 115 fresh grasps with all settings frozen</span></div>
   <div class="gc-metric"><strong>14–29%</strong><span>Directional-stiffness error from three load tests</span></div>
   <div class="gc-metric"><strong>23 ms</strong><span>Median S-MAP calibration time on one CPU core</span></div>
+  <div class="gc-metric"><strong>0.65 vs 0.89</strong><span>S-MAP vs. prior-free fit at K = 3 on the real SBIR hand</span></div>
 </div>
 
 ## Six Hands, One Cross-Hand Question
@@ -812,6 +834,43 @@ The identified compliance gives the effective stiffness along a force direction 
 
 Three load tests recover directional stiffness to within **14–29%** on all five hands. The compliance also tells which directions a grasp yields to, loaded or not: at K=3, MAPS classifies 82.6% of query loads correctly as soft or stiff, against 74.3% for PSD least squares (randomized corpus).
 
+## Hardware pilot: the real SBIR hand
+
+Does a prior learned in simulation transfer to a real hand? The prior trained on the Isaac/PhysX corpus with the SBIR hand held out was applied to the **physical SBIR hand without any retraining**.
+
+<figure class="gc-photo">
+  <img src="{{ '/assets/img/projects/mapscoff/hardware-setup.jpg' | relative_url }}" alt="SBIR hand on an xArm7 with a wrist force/torque sensor, holding an ArUco-tagged ultrasound probe in front of a RealSense camera" loading="lazy">
+  <figcaption>Hardware setup: the SBIR hand on an xArm7 with a wrist force/torque sensor grasps an ultrasound probe carrying ArUco tags, tracked by a RealSense camera. Each load case is a push on the grasped probe: the wrist sensor measures the load and the tag gives the probe's motion relative to the hand.</figcaption>
+</figure>
+
+The hand grasped an ultrasound probe (150 × 57 × 35 mm, $\ell$ = 0.040 m). Three grasps were recorded, with 4, 6, and 14 usable pushes. The pushes ramp up and down without a steady hold and the grasp slips slightly while loading, so the elastic response is taken from each push's **unloading ramp**, from the force peak to the settled pose after release (median linearity $R^2$ = 0.95). Error is measured at the probe centre on held-out pushes. A grasp is scored at a budget K only if at least three test pushes remain, so K = 3 uses two grasps and K = 5 and 7 use the 14-push grasp.
+
+<div class="gc-table-wrap">
+  <table class="gc-table">
+    <thead>
+      <tr><th>Method (real SBIR hand, NRMSE ↓)</th><th>K = 3 (2 grasps)</th><th>K = 5 (1 grasp)</th><th>K = 7 (1 grasp)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>S-MAP (sim prior, SBIR held out)</strong></td><td class="gc-win">0.65 ± 0.11</td><td class="gc-win">0.61 ± 0.23</td><td class="gc-win">0.56 ± 0.24</td></tr>
+      <tr><td>Prior only</td><td>0.73 ± 0.16</td><td>0.85 ± 0.12</td><td>0.86 ± 0.18</td></tr>
+      <tr><td>Offset only (mean response)</td><td>0.87 ± 0.10</td><td>0.93 ± 0.13</td><td>0.94 ± 0.19</td></tr>
+      <tr><td>Local fit $L$ (no prior)</td><td>0.89 ± 0.13</td><td>1.30 ± 0.98</td><td>1.05 ± 1.12</td></tr>
+      <tr><td>PSD least squares (Krislock et al.)</td><td>1.27 ± 0.12</td><td>2.79 ± 3.31</td><td>2.21 ± 2.23</td></tr>
+    </tbody>
+  </table>
+</div>
+
+At K = 3 every set of three support pushes is scored and ± is the spread across grasps; at K = 5 and 7, ± is over 80 random support draws.
+
+- **Same ordering as in simulation.** S-MAP has the lowest error at every K ≥ 3. On identical supports at K = 3 it beats the prior-free fit on 90–93% of support sets and PSD least squares on 75–99%.
+- **Hand pushes excite few directions.** Even using all pushes of a grasp, they span only 1.7–3.0 of the six wrench directions, so the grasp's own loads leave much of $C$ undetermined. This is exactly the regime the prior is for: even at K = 7 the prior-free fit is worse than predicting the mean response.
+- **Physical stiffness.** At the probe centre the identified grasp is about 3.2 ± 0.3 N/mm along y and 2.7 ± 0.6 N/mm along z across grasps.
+
+<div class="gc-callout warn">
+  <span class="gc-callout-label">Scope of the pilot</span>
+  <p>One object, three grasps, hand pushes larger than the small-load regime, and an estimated sensor-to-camera frame. K = 5 and 7 rest on a single grasp. The gap between S-MAP and the prior alone at K = 3 (0.08) is within the spread across grasps, and with the tag centre as the reference point instead of the probe centre the prior alone is slightly better (0.75 vs. 0.82). A full hardware evaluation with controlled, well-spread loads and more grasps is next.</p>
+</div>
+
 ## What transfers between hands
 
 <div class="gc-callout">
@@ -828,14 +887,14 @@ Three load cases is also the smallest budget that can **check its own identifica
   <span class="gc-callout-label">Limitations</span>
   <p><strong>Blind spot.</strong> A mismatch confined to directions the load cases never excited is invisible to any three-load check: in a synthetic test MAPS's error doubles there while S-MAP switches in only 2.6% of episodes, though $s_{\mathrm{LOO}}$ still rises with it.</p>
   <p><strong>Settling drift.</strong> Matched-corpus LEAP grasps start unsettled, so drift is a median 99.5% of their response energy. A zero-load tare taken before the load cases is the remedy (K=3 error drops to 0.077 with an idealized reference).</p>
-  <p><strong>Simulation only.</strong> Exact resets between load cases are not available on hardware; with no reset, three sequential load cases keep the grasp intact in 81% of runs and K=3 error rises from 0.278 to 0.793 for MAPS (0.578 to 1.297 without the prior). Each prior also comes from only four or five hands. Hardware validation with force and pose sensing is the next step.</p>
+  <p><strong>Mostly simulated.</strong> The main results are simulated, and the hardware evidence so far is a pilot on one hand and one object. Exact resets between load cases are not available on hardware; in simulation without resets, three sequential load cases keep the grasp intact in 81% of runs and K=3 error rises from 0.278 to 0.793 for MAPS (0.578 to 1.297 without the prior). Each prior also comes from only four or five hands.</p>
 </div>
 
 ## Takeaway
 
 <div class="gc-callout tip">
   <span class="gc-callout-label">Takeaway</span>
-  <p>Grasp calibration does not have to fit each grasp in isolation. A population prior learned from other hands, on a load test adapted to grasps, identifies grasp compliance and its implied stiffness from three load tests more accurately than PSD least squares at every budget tested, with the largest gain where load cases are scarce. The result stays an explicit, inspectable, positive-semidefinite compliance, and its leave-one-out score flags the calibrations not to trust.</p>
+  <p>Grasp calibration does not have to fit each grasp in isolation. A population prior learned from other hands, on a load test adapted to grasps, identifies grasp compliance and its implied stiffness from three load tests more accurately than PSD least squares at every budget tested, with the largest gain where load cases are scarce. The result stays an explicit, inspectable, positive-semidefinite compliance, and its leave-one-out score flags the calibrations not to trust. A first pilot on the real SBIR hand, using a prior learned only in simulation, shows the same ordering of methods as in simulation.</p>
 </div>
 
 <a class="gc-cta" href="https://github.com/stevens-armlab/graspCompliance"><i class="fa-brands fa-github"></i> View the graspCompliance repository</a>
