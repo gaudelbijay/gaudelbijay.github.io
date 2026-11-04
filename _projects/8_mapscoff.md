@@ -524,6 +524,11 @@ _styles: |
 
 <p>The paper, <em>Few-Shot Grasp Compliance Identification Across Robot Hands</em>, first adapts positive-semidefinite (PSD) least squares to grasps, then proposes <strong>MAPS</strong>, a maximum a posteriori estimator whose prior is learned from other hands' identified compliances. Its selective variant, <strong>S-MAP</strong>, drops that prior when a grasp's own load tests contradict it. The main study covers six hands in two physics engines, and a first <strong>hardware pilot on the real SBIR hand</strong> applies a prior learned only in simulation, without retraining.</p>
 
+<figure class="gc-photo">
+  <img src="{{ '/assets/img/projects/mapscoff/hardware-setup.jpg' | relative_url }}" alt="SBIR hand on an xArm7 with a wrist force/torque sensor, holding an ArUco-tagged ultrasound probe in front of a RealSense camera">
+  <figcaption>Hardware setup: the SBIR hand on an xArm7 with a wrist force/torque sensor grasps an ultrasound probe carrying ArUco tags, tracked by a RealSense camera. Each load case is a push on the grasped probe: the wrist sensor measures the load and the tag gives the probe's motion relative to the hand.</figcaption>
+</figure>
+
 <div class="gc-metrics">
   <div class="gc-metric"><strong>3 loads</strong><span>Load tests per grasp, against ≥7 needed without a prior</span></div>
   <div class="gc-metric"><strong>34–77%</strong><span>Lower error than PSD least squares at K = 3</span></div>
@@ -836,12 +841,7 @@ Three load tests recover directional stiffness to within **14–29%** on all fiv
 
 ## Hardware pilot: the real SBIR hand
 
-Does a prior learned in simulation transfer to a real hand? The prior trained on the Isaac/PhysX corpus with the SBIR hand held out was applied to the **physical SBIR hand without any retraining**.
-
-<figure class="gc-photo">
-  <img src="{{ '/assets/img/projects/mapscoff/hardware-setup.jpg' | relative_url }}" alt="SBIR hand on an xArm7 with a wrist force/torque sensor, holding an ArUco-tagged ultrasound probe in front of a RealSense camera" loading="lazy">
-  <figcaption>Hardware setup: the SBIR hand on an xArm7 with a wrist force/torque sensor grasps an ultrasound probe carrying ArUco tags, tracked by a RealSense camera. Each load case is a push on the grasped probe: the wrist sensor measures the load and the tag gives the probe's motion relative to the hand.</figcaption>
-</figure>
+Does a prior learned in simulation transfer to a real hand? The prior trained on the Isaac/PhysX corpus with the SBIR hand held out was applied to the **physical SBIR hand without any retraining**, using the setup shown at the top of this page.
 
 The hand grasped an ultrasound probe (150 × 57 × 35 mm, $\ell$ = 0.040 m). Three grasps were recorded, with 4, 6, and 14 usable pushes. The pushes ramp up and down without a steady hold and the grasp slips slightly while loading, so the elastic response is taken from each push's **unloading ramp**, from the force peak to the settled pose after release (median linearity $R^2$ = 0.95). Error is measured at the probe centre on held-out pushes. A grasp is scored at a budget K only if at least three test pushes remain, so K = 3 uses two grasps and K = 5 and 7 use the 14-push grasp.
 
