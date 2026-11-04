@@ -538,8 +538,8 @@ _styles: |
     <figcaption><strong>(a) Hardware setup.</strong> The SBIR hand on an xArm7 grasps an ultrasound probe carrying ArUco markers. Each load case is an external wrench $w=(f,\tau)$ applied to the probe: the wrist force/torque sensor measures it, and the RealSense camera tracks the probe's motion relative to the hand.</figcaption>
   </figure>
   <figure>
-    <img src="{{ '/assets/img/projects/mapscoff/hardware-tracking.jpg' | relative_url }}" alt="Live ArUco tracking interface showing the tag overlay with pose readouts and the raw colour image of the pushed probe">
-    <figcaption><strong>(b) Live tracking during a push.</strong> Tag poses and displacement in the camera frame (left, overlay with readouts; right, raw colour), paired with the compensated wrist wrench.</figcaption>
+    <img src="{{ '/assets/img/projects/mapscoff/hardware-tracking.jpg' | relative_url }}" alt="Live ArUco tracking overlay: the two tags on the pushed probe detected with pose axes and position, displacement and rotation readouts">
+    <figcaption><strong>(b) Live tracking during a push.</strong> Both ArUco tags on the probe are detected (yellow boxes, pose axes), with their position, displacement and rotation read out live in the camera frame and paired with the wrist wrench.</figcaption>
   </figure>
 </div>
 
