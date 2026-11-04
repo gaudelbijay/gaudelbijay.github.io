@@ -857,7 +857,7 @@ Three load tests recover directional stiffness to within **14–29%** on all fiv
 
 Does a prior learned in simulation transfer to a real hand? The prior trained on the Isaac/PhysX corpus with the SBIR hand held out was applied to the **physical SBIR hand without any retraining**, using the setup shown at the top of this page.
 
-The hand grasped an ultrasound probe (150 × 57 × 35 mm, $\ell$ = 0.040 m). Three grasps were recorded, with 4, 6, and 14 usable pushes. The pushes ramp up and down without a steady hold and the grasp slips slightly while loading, so the elastic response is taken from each push's **unloading ramp**, from the force peak to the settled pose after release (median linearity $R^2$ = 0.95). Error is measured at the probe centre on held-out pushes. A grasp is scored at a budget K only if at least three test pushes remain, so K = 3 uses two grasps and K = 5 and 7 use the 14-push grasp.
+The hand grasped an ultrasound probe (150 × 57 × 35 mm, $\ell$ = 0.040 m). Five grasps were recorded, with 4, 6, and 14 usable pushes. The pushes ramp up and down without a steady hold and the grasp slips slightly while loading, so the elastic response is taken from each push's **unloading ramp**, from the force peak to the settled pose after release (median linearity $R^2$ = 0.95). Error is measured at the probe centre on held-out pushes. A grasp is scored at a budget K only if at least three test pushes remain, so K = 3 uses two grasps and K = 5 and 7 use the 14-push grasp.
 
 <div class="gc-table-wrap">
   <table class="gc-table">
