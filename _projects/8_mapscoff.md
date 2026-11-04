@@ -882,7 +882,7 @@ At K = 3 every set of three support pushes is scored and ± is the spread across
 
 <div class="gc-callout warn">
   <span class="gc-callout-label">Scope of the pilot</span>
-  <p>One object, three grasps, hand pushes larger than the small-load regime, and an estimated sensor-to-camera frame. K = 5 and 7 rest on a single grasp. The gap between S-MAP and the prior alone at K = 3 (0.08) is within the spread across grasps, and with the tag centre as the reference point instead of the probe centre the prior alone is slightly better (0.75 vs. 0.82). A full hardware evaluation with controlled, well-spread loads and more grasps is next.</p>
+  <p>One object, five grasps, hand pushes larger than the small-load regime, and an estimated sensor-to-camera frame. K = 5 and 7 rest on a single grasp. The gap between S-MAP and the prior alone at K = 3 (0.08) is within the spread across grasps, and with the tag centre as the reference point instead of the probe centre the prior alone is slightly better (0.75 vs. 0.82). A full hardware evaluation with controlled, well-spread loads and more grasps is next.</p>
 </div>
 
 ## What transfers between hands
