@@ -862,7 +862,7 @@ The hand grasped an ultrasound probe (150 × 57 × 35 mm, $\ell$ = 0.040 m). Fiv
 <div class="gc-table-wrap">
   <table class="gc-table">
     <thead>
-      <tr><th>Method (real SBIR hand, NRMSE ↓)</th><th>K = 3 (2 grasps)</th><th>K = 5 (1 grasp)</th><th>K = 7 (1 grasp)</th></tr>
+      <tr><th>Method (real SBIR hand, NRMSE ↓)</th><th>K = 3 (5 grasps)</th><th>K = 5 (5 grasp)</th><th>K = 7 (5 grasp)</th></tr>
     </thead>
     <tbody>
       <tr><td><strong>S-MAP (sim prior, SBIR held out)</strong></td><td class="gc-win">0.65 ± 0.11</td><td class="gc-win">0.61 ± 0.23</td><td class="gc-win">0.56 ± 0.24</td></tr>
